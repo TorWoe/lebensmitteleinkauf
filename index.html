@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#145c38" />
+    <meta
+      name="description"
+      content="Antientzündliche Lebensmittel entdecken, filtern und als Einkaufsliste speichern."
+    />
+    <title>Lebensmitteleinkauf</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <a class="brand" href="#lebensmittel" aria-label="Lebensmitteleinkauf – Startseite">
+          <span class="brand-mark" aria-hidden="true">
+            <svg viewBox="0 0 40 40" role="img">
+              <path d="M20 30V17" />
+              <path d="M20 21c-7 0-11-4-11-11 7 0 11 4 11 11Z" />
+              <path d="M20 17c1-7 5-10 12-9-1 7-5 10-12 9Z" />
+              <path d="M12 31c4-3 12-3 16 0" />
+            </svg>
+          </span>
+          <span>
+            <strong>Lebensmittel</strong>
+            <small>bewusst einkaufen</small>
+          </span>
+        </a>
+
+        <nav class="desktop-nav" aria-label="Hauptnavigation">
+          <button class="nav-button is-active" data-view="foods" type="button">Lebensmittel</button>
+          <button class="nav-button" data-view="meals" type="button">Tagesbaukasten</button>
+          <button class="nav-button" data-view="insights" type="button">Auswertung</button>
+        </nav>
+
+        <button class="basket-button" id="basketButton" type="button" aria-controls="shoppingPanel">
+          <span class="button-icon" data-icon="basket" aria-hidden="true"></span>
+          <span class="basket-button-label">Einkaufsliste</span>
+          <span class="count-badge" id="headerCount">0</span>
+        </button>
+      </header>
+
+      <main>
+        <section class="view is-active" id="foodsView" data-view-panel="foods">
+          <div class="hero">
+            <div class="hero-copy">
+              <p class="eyebrow">Antientzündlich einkaufen</p>
+              <h1>Gute Auswahl.<br /><span>Einfacher Einkauf.</span></h1>
+              <p>
+                269 sorgfältig eingeordnete Lebensmittel – nach Sättigung,
+                Alltagstauglichkeit und aktiven Pflanzenstoffen.
+              </p>
+              <div class="hero-actions">
+                <button class="primary-button" id="showTopRated" type="button">
+                  Top-Lebensmittel ansehen
+                  <span aria-hidden="true">→</span>
+                </button>
+                <button class="text-button" data-view="meals" type="button">Mahlzeiten kombinieren</button>
+              </div>
+            </div>
+            <div class="hero-visual" aria-label="Übersicht der Lebensmitteldaten">
+              <div class="produce-orbit" aria-hidden="true">
+                <span class="orbit orbit-one"></span>
+                <span class="orbit orbit-two"></span>
+                <span class="leaf leaf-one"></span>
+                <span class="leaf leaf-two"></span>
+                <span class="leaf leaf-three"></span>
+                <span class="berry berry-one"></span>
+                <span class="berry berry-two"></span>
+              </div>
+              <div class="hero-stat stat-primary">
+                <strong>269</strong>
+                <span>Lebensmittel</span>
+              </div>
+              <div class="hero-stat stat-secondary">
+                <strong>102</strong>
+                <span>mit Score 4–5</span>
+              </div>
+              <div class="score-card">
+                <span>Orientierung</span>
+                <div class="score-dots" aria-label="Sättigungs-Score 5 von 5">
+                  <i></i><i></i><i></i><i></i><i></i>
+                </div>
+                <small>stark sättigend</small>
+              </div>
+            </div>
+          </div>
+
+          <div class="content-grid">
+            <section class="catalog" aria-labelledby="catalogTitle">
+              <div class="section-heading">
+                <div>
+                  <p class="eyebrow">Lebensmittel-Liste</p>
+                  <h2 id="catalogTitle">Was darf mit?</h2>
+                </div>
+                <span class="result-count" id="resultCount">269 Einträge</span>
+              </div>
+
+              <div class="filter-panel">
+                <label class="search-field" for="searchInput">
+                  <span class="button-icon" data-icon="search" aria-hidden="true"></span>
+                  <span class="sr-only">Lebensmittel suchen</span>
+                  <input id="searchInput" type="search" placeholder="Lebensmittel oder Wirkstoff suchen …" autocomplete="off" />
+                  <kbd>⌘ K</kbd>
+                </label>
+                <div class="filter-row">
+                  <label>
+                    <span>Kategorie</span>
+                    <select id="categoryFilter">
+                      <option value="">Alle Kategorien</option>
+                    </select>
+                  </label>
+                  <label>
+                    <span>Sättigung</span>
+                    <select id="scoreFilter">
+                      <option value="">Alle Scores</option>
+                      <option value="5">Score 5 · sehr hoch</option>
+                      <option value="4">Score 4 · hoch</option>
+                      <option value="3">Score 3 · mittel</option>
+                      <option value="2">Score 2 · niedrig bis mittel</option>
+                      <option value="1">Score 1 · niedrig</option>
+                    </select>
+                  </label>
+                  <label>
+                    <span>Priorität</span>
+                    <select id="priorityFilter">
+                      <option value="">Alle Prioritäten</option>
+                      <option value="sehr hoch">Sehr hoch</option>
+                      <option value="hoch">Hoch</option>
+                      <option value="mittel">Mittel</option>
+                      <option value="niedrig">Niedrig</option>
+                    </select>
+                  </label>
+                  <button class="reset-button" id="resetFilters" type="button">Zurücksetzen</button>
+                </div>
+              </div>
+
+              <div class="active-filter-row" id="activeFilters" aria-live="polite"></div>
+              <div class="food-grid" id="foodGrid"></div>
+              <button class="load-more" id="loadMore" type="button">Weitere Lebensmittel anzeigen</button>
+            </section>
+
+            <aside class="shopping-panel" id="shoppingPanel" aria-labelledby="shoppingTitle">
+              <div class="panel-handle" aria-hidden="true"></div>
+              <div class="shopping-heading">
+                <div>
+                  <p class="eyebrow">Deine Auswahl</p>
+                  <h2 id="shoppingTitle">Einkaufsliste</h2>
+                </div>
+                <button class="icon-button close-shopping" id="closeShopping" type="button" aria-label="Einkaufsliste schließen">×</button>
+              </div>
+              <div class="shopping-summary">
+                <span><strong id="shoppingCount">0</strong> ausgewählt</span>
+                <span id="categoryCount">0 Kategorien</span>
+              </div>
+              <div class="shopping-items" id="shoppingItems"></div>
+              <div class="shopping-actions" id="shoppingActions">
+                <button class="primary-button" id="downloadList" type="button">
+                  <span class="button-icon" data-icon="download" aria-hidden="true"></span>
+                  Als TXT speichern
+                </button>
+                <div class="secondary-actions">
+                  <button class="secondary-button" id="copyList" type="button">Kopieren</button>
+                  <button class="danger-button" id="clearList" type="button">Leeren</button>
+                </div>
+              </div>
+            </aside>
+          </div>
+        </section>
+
+        <section class="view" id="mealsView" data-view-panel="meals">
+          <div class="page-intro compact-intro">
+            <p class="eyebrow">Tagesbaukasten</p>
+            <h1>Aus guten Zutaten<br /><span>wird ein guter Tag.</span></h1>
+            <p>Zehn konkrete Kombinationen aus der Excelvorlage – vom Frühstück bis zur Würz-Basis.</p>
+          </div>
+          <div class="meal-grid" id="mealGrid"></div>
+        </section>
+
+        <section class="view" id="insightsView" data-view-panel="insights">
+          <div class="page-intro compact-intro">
+            <p class="eyebrow">Auswertung</p>
+            <h1>Die Auswahl<br /><span>auf einen Blick.</span></h1>
+            <p>Die wichtigsten Kennzahlen und Kategorien aus der Lebensmittelliste.</p>
+          </div>
+          <div class="metric-grid" id="metricGrid"></div>
+          <div class="insight-grid">
+            <article class="chart-card category-chart-card">
+              <div class="card-heading">
+                <div>
+                  <p class="eyebrow">Verteilung</p>
+                  <h2>Lebensmittel je Kategorie</h2>
+                </div>
+                <span class="chart-key"><i></i>Anzahl</span>
+              </div>
+              <div class="bar-chart" id="categoryChart"></div>
+            </article>
+            <article class="chart-card satiety-card">
+              <div class="card-heading">
+                <div>
+                  <p class="eyebrow">Sättigung</p>
+                  <h2>Score-Profil</h2>
+                </div>
+              </div>
+              <div class="donut-layout">
+                <div class="donut-chart" id="donutChart"><span><strong>269</strong>gesamt</span></div>
+                <div class="donut-legend" id="donutLegend"></div>
+              </div>
+            </article>
+          </div>
+          <article class="source-card">
+            <div>
+              <p class="eyebrow">Transparenz</p>
+              <h2>Quellen der Exceldatei</h2>
+              <p>Die fachlichen Einordnungen basieren auf den in der Arbeitsmappe dokumentierten Quellen.</p>
+            </div>
+            <div class="source-list" id="sourceList"></div>
+          </article>
+        </section>
+      </main>
+
+      <nav class="mobile-nav" aria-label="Mobile Navigation">
+        <button class="mobile-nav-button is-active" data-view="foods" type="button">
+          <span class="button-icon" data-icon="leaf" aria-hidden="true"></span><span>Lebensmittel</span>
+        </button>
+        <button class="mobile-nav-button" data-view="meals" type="button">
+          <span class="button-icon" data-icon="meal" aria-hidden="true"></span><span>Baukasten</span>
+        </button>
+        <button class="mobile-nav-button" data-view="insights" type="button">
+          <span class="button-icon" data-icon="chart" aria-hidden="true"></span><span>Auswertung</span>
+        </button>
+        <button class="mobile-nav-button mobile-basket" id="mobileBasket" type="button">
+          <span class="button-icon" data-icon="basket" aria-hidden="true"></span><span>Liste</span>
+          <i id="mobileCount">0</i>
+        </button>
+      </nav>
+    </div>
+
+    <div class="scrim" id="scrim"></div>
+
+    <dialog class="detail-dialog" id="detailDialog">
+      <button class="dialog-close" type="button" aria-label="Details schließen">×</button>
+      <div id="detailContent"></div>
+    </dialog>
+
+    <dialog class="confirm-dialog" id="confirmDialog">
+      <div class="confirm-icon"><span class="button-icon" data-icon="basket" aria-hidden="true"></span></div>
+      <h2 id="confirmTitle">Einkaufsliste leeren?</h2>
+      <p id="confirmText">Alle Markierungen werden entfernt.</p>
+      <div class="dialog-actions">
+        <button class="secondary-button" id="cancelConfirm" type="button">Abbrechen</button>
+        <button class="danger-button solid" id="acceptConfirm" type="button">Liste leeren</button>
+      </div>
+    </dialog>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+    <script src="data.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
