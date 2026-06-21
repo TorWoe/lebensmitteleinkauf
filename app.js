@@ -3,6 +3,7 @@
 
   const { foods, meals, sources } = window.APP_DATA;
   const storageKey = "lebensmitteleinkauf:selected:v1";
+  const foodByName = new Map(foods.map((food) => [normalizeFoodName(food.name), food]));
 
   const iconPaths = {
     basket: '<path d="M7 10 10 4M17 10l-3-6M4 10h16l-1.4 9H5.4L4 10Z"/><path d="M9 13v3M15 13v3"/>',
@@ -40,6 +41,7 @@
 
   const dom = {
     foodGrid: document.querySelector("#foodGrid"),
+    mealGrid: document.querySelector("#mealGrid"),
     resultCount: document.querySelector("#resultCount"),
     searchInput: document.querySelector("#searchInput"),
     mealSearchInput: document.querySelector("#mealSearchInput"),
@@ -97,6 +99,15 @@
       "'": "&#039;",
       '"': "&quot;",
     })[character]);
+  }
+
+  function normalizeFoodName(value) {
+    return String(value || "")
+      .toLocaleLowerCase("de")
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .replace(/[^a-z0-9]+/g, " ")
+      .trim();
   }
 
   function loadSelection() {
@@ -218,6 +229,25 @@
     persistSelection();
     renderFoods();
     renderShoppingList();
+    renderMeals();
+  }
+
+  function mealIngredientFoods(meal) {
+    return (meal.ingredients || []).map((ingredient) => foodByName.get(normalizeFoodName(ingredient))).filter(Boolean);
+  }
+
+  function addMealIngredients(mealId) {
+    const meal = meals.find((item) => item.id === mealId);
+    if (!meal) return;
+    const ingredients = mealIngredientFoods(meal);
+    const previousSize = state.selected.size;
+    ingredients.forEach((food) => state.selected.add(food.id));
+    const addedCount = state.selected.size - previousSize;
+    persistSelection();
+    renderFoods();
+    renderShoppingList();
+    renderMeals();
+    showToast(addedCount ? `${addedCount} Zutaten wurden auf die Liste gesetzt.` : "Alle Zutaten sind bereits auf der Liste.");
   }
 
   function openDetails(id) {
@@ -259,12 +289,14 @@
     const visibleMeals = meals
       .map((meal, index) => ({ meal, index }))
       .filter(({ meal }) => {
-        const searchable = `${meal.situation} ${meal.satiety} ${meal.combination} ${meal.reason} ${meal.variants} ${formatMealDate(meal.date)}`.toLocaleLowerCase("de");
+        const searchable = `${meal.situation} ${meal.satiety} ${meal.combination} ${(meal.ingredients || []).join(" ")} ${meal.reason} ${meal.variants} ${formatMealDate(meal.date)}`.toLocaleLowerCase("de");
         return !term || searchable.includes(term);
       });
 
-    document.querySelector("#mealGrid").innerHTML = visibleMeals.length ? visibleMeals.map(({ meal, index }) => {
+    dom.mealGrid.innerHTML = visibleMeals.length ? visibleMeals.map(({ meal, index }) => {
       const mealDate = formatMealDate(meal.date);
+      const ingredientFoods = mealIngredientFoods(meal);
+      const allIngredientsSelected = ingredientFoods.length > 0 && ingredientFoods.every((food) => state.selected.has(food.id));
       return `
       <article class="meal-card">
         <div class="meal-meta">
@@ -274,9 +306,13 @@
         <p class="eyebrow">${escapeHtml(meal.satiety)} sättigend</p>
         <h2>${escapeHtml(meal.situation)}</h2>
         <p class="meal-combination">${escapeHtml(meal.combination)}</p>
+        <p class="meal-ingredients"><strong>Zutaten:</strong> ${(meal.ingredients || []).map(escapeHtml).join(", ")}</p>
         <div class="meal-details">
           <div><span>Warum sinnvoll</span><p>${escapeHtml(meal.reason)}</p></div>
           <div><span>Varianten</span><p>${escapeHtml(meal.variants)}</p></div>
+        </div>
+        <div class="meal-card-footer">
+          <button class="meal-list-button${allIngredientsSelected ? " is-added" : ""}" type="button" data-meal-id="${meal.id}" aria-pressed="${allIngredientsSelected}">${allIngredientsSelected ? "Auf der Liste ✓" : "Auf die Liste →"}</button>
         </div>
       </article>`;
     }).join("") : '<div class="empty-results">Keine passenden Empfehlungen gefunden.</div>';
@@ -393,6 +429,7 @@
     persistSelection();
     renderFoods();
     renderShoppingList();
+    renderMeals();
     closeShopping();
     showToast("Alle Markierungen wurden gelöscht.");
   }
@@ -416,6 +453,10 @@
       const id = Number(card.dataset.id);
       if (event.target.closest(".select-food")) toggleFood(id);
       if (event.target.closest(".details-button")) openDetails(id);
+    });
+    dom.mealGrid.addEventListener("click", (event) => {
+      const button = event.target.closest("[data-meal-id]");
+      if (button) addMealIngredients(Number(button.dataset.mealId));
     });
     dom.shoppingItems.addEventListener("click", (event) => {
       const remove = event.target.closest("[data-remove-id]");
