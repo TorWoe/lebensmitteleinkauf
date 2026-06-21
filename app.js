@@ -188,6 +188,21 @@
     dom.activeFilters.innerHTML = chips.map((chip) => `<span class="filter-chip">${escapeHtml(chip)}</span>`).join("");
   }
 
+  function resetFoodFilters() {
+    state.search = "";
+    state.category = "";
+    state.score = "";
+    state.priority = "";
+    state.limit = window.innerWidth < 680 ? 18 : 28;
+
+    dom.searchInput.value = "";
+    dom.categoryFilter.selectedIndex = 0;
+    dom.scoreFilter.selectedIndex = 0;
+    dom.priorityFilter.selectedIndex = 0;
+
+    renderFoods();
+  }
+
   function selectedFoods() {
     return foods.filter((food) => state.selected.has(food.id));
   }
@@ -486,11 +501,7 @@
         renderFoods();
       });
     });
-    dom.resetFilters.addEventListener("click", () => {
-      state.search = state.category = state.score = state.priority = "";
-      dom.searchInput.value = dom.categoryFilter.value = dom.scoreFilter.value = dom.priorityFilter.value = "";
-      renderFoods();
-    });
+    dom.resetFilters.addEventListener("click", resetFoodFilters);
     dom.loadMore.addEventListener("click", () => {
       state.limit += window.innerWidth < 680 ? 18 : 28;
       renderFoods();
