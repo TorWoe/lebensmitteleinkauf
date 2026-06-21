@@ -271,6 +271,12 @@ main {
 
 .hero .eyebrow {
   color: #a9dec1;
+  font-size: clamp(21px, 2.55vw, 36px);
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  text-decoration: underline;
+  text-decoration-thickness: 0.08em;
+  text-underline-offset: 0.18em;
 }
 
 .hero h1,
@@ -1182,6 +1188,13 @@ dialog::backdrop { background: rgba(6, 31, 20, 0.52); backdrop-filter: blur(4px)
   main { width: calc(100% - 24px); }
   .hero { margin: 12px 0 38px; border-radius: 24px; }
   .hero-copy { padding: 38px 25px 30px; }
+  .hero .eyebrow {
+    font-size: clamp(14px, 4.5vw, 24px);
+    white-space: nowrap;
+    text-decoration: underline;
+    text-decoration-thickness: 0.08em;
+    text-underline-offset: 0.18em;
+  }
   .hero h1,
   .page-intro h1 { font-size: clamp(39px, 12.5vw, 54px); }
   .hero-copy > p:last-of-type { margin-top: 18px; font-size: 15px; line-height: 1.55; }
