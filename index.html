@@ -174,8 +174,14 @@
           <div class="page-intro compact-intro">
             <p class="eyebrow">Tagesbaukasten</p>
             <h1>Aus guten Zutaten<br /><span>wird ein guter Tag.</span></h1>
+            <label class="search-field meal-search-field" for="mealSearchInput">
+              <span class="button-icon" data-icon="search" aria-hidden="true"></span>
+              <span class="sr-only">Tagesbaukasten durchsuchen</span>
+              <input id="mealSearchInput" type="search" placeholder="Zutat oder Mahlzeit suchen …" autocomplete="off" />
+              <kbd>⌘ K</kbd>
+            </label>
           </div>
-          <div class="meal-grid" id="mealGrid"></div>
+          <div class="meal-grid" id="mealGrid" aria-live="polite"></div>
         </section>
 
         <section class="view" id="insightsView" data-view-panel="insights">
