@@ -29,6 +29,7 @@
   const state = {
     view: "foods",
     search: "",
+    mealSearch: "",
     category: "",
     score: "",
     priority: "",
@@ -41,6 +42,7 @@
     foodGrid: document.querySelector("#foodGrid"),
     resultCount: document.querySelector("#resultCount"),
     searchInput: document.querySelector("#searchInput"),
+    mealSearchInput: document.querySelector("#mealSearchInput"),
     categoryFilter: document.querySelector("#categoryFilter"),
     scoreFilter: document.querySelector("#scoreFilter"),
     priorityFilter: document.querySelector("#priorityFilter"),
@@ -253,7 +255,15 @@
   }
 
   function renderMeals() {
-    document.querySelector("#mealGrid").innerHTML = meals.map((meal, index) => {
+    const term = state.mealSearch.trim().toLocaleLowerCase("de");
+    const visibleMeals = meals
+      .map((meal, index) => ({ meal, index }))
+      .filter(({ meal }) => {
+        const searchable = `${meal.situation} ${meal.satiety} ${meal.combination} ${meal.reason} ${meal.variants} ${formatMealDate(meal.date)}`.toLocaleLowerCase("de");
+        return !term || searchable.includes(term);
+      });
+
+    document.querySelector("#mealGrid").innerHTML = visibleMeals.length ? visibleMeals.map(({ meal, index }) => {
       const mealDate = formatMealDate(meal.date);
       return `
       <article class="meal-card">
@@ -269,7 +279,7 @@
           <div><span>Varianten</span><p>${escapeHtml(meal.variants)}</p></div>
         </div>
       </article>`;
-    }).join("");
+    }).join("") : '<div class="empty-results">Keine passenden Empfehlungen gefunden.</div>';
   }
 
   function renderInsights() {
@@ -416,6 +426,10 @@
       state.limit = window.innerWidth < 680 ? 18 : 28;
       renderFoods();
     });
+    dom.mealSearchInput.addEventListener("input", () => {
+      state.mealSearch = dom.mealSearchInput.value;
+      renderMeals();
+    });
     [[dom.categoryFilter, "category"], [dom.scoreFilter, "score"], [dom.priorityFilter, "priority"]].forEach(([element, key]) => {
       element.addEventListener("change", () => {
         state[key] = element.value;
@@ -460,8 +474,11 @@
     document.addEventListener("keydown", (event) => {
       if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === "k") {
         event.preventDefault();
-        setView("foods");
-        dom.searchInput.focus();
+        if (state.view === "meals") dom.mealSearchInput.focus();
+        else {
+          setView("foods");
+          dom.searchInput.focus();
+        }
       }
       if (event.key === "Escape") closeShopping();
     });

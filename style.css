@@ -938,6 +938,7 @@ main {
 
 .page-intro h1 span { color: var(--forest-700); }
 .page-intro > p:last-child { max-width: 620px; margin: 22px 0 0; color: var(--muted); font-size: 17px; line-height: 1.6; }
+.meal-search-field { margin-top: 28px; }
 
 .meal-grid {
   display: grid;
@@ -1248,6 +1249,7 @@ dialog::backdrop { background: rgba(6, 31, 20, 0.52); backdrop-filter: blur(4px)
   .food-benefit { -webkit-line-clamp: 2; }
   .page-intro { padding: 50px 4px 36px; }
   .page-intro > p:last-child { margin-top: 18px; font-size: 15px; }
+  .meal-search-field { margin-top: 24px; }
   .meal-grid { gap: 12px; }
   .meal-card { min-height: 0; padding: 22px; border-radius: 20px; }
   .meal-card h2 { font-size: 22px; }
