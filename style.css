@@ -271,9 +271,10 @@ main {
 
 .hero .eyebrow {
   color: #a9dec1;
-  font-size: clamp(21px, 2.55vw, 36px);
+  font-size: clamp(18px, 1.9vw, 28px);
   letter-spacing: -0.02em;
   line-height: 1.1;
+  white-space: nowrap;
   text-decoration: underline;
   text-decoration-thickness: 0.08em;
   text-underline-offset: 0.18em;
