@@ -156,7 +156,7 @@
             <span class="priority-dot"><i></i>${escapeHtml(food.priority)}</span>
           </div>
           <div class="food-meta">
-            <span class="meta-pill score">Score ${food.score} · ${escapeHtml(food.satiety)}</span>
+            <span class="meta-pill score">Sättigung ${food.score}/5 · ${escapeHtml(food.satiety)}</span>
             <span class="meta-pill">KH ${escapeHtml(food.carbs)}</span>
           </div>
           <p class="food-benefit">${escapeHtml(food.benefit)}</p>
@@ -279,7 +279,7 @@
         <div class="detail-badges">
           <span class="meta-pill score">Sättigung ${food.score}/5 · ${escapeHtml(food.satiety)}</span>
           <span class="meta-pill">Kohlenhydrate ${escapeHtml(food.carbs)}</span>
-          <span class="meta-pill">Priorität ${escapeHtml(food.priority)}</span>
+          <span class="meta-pill">Empfehlung ${escapeHtml(food.priority)}</span>
         </div>
         ${detailSection("Warum sinnvoll", food.benefit)}
         ${detailSection("Aktive Stoffe", food.compounds)}
