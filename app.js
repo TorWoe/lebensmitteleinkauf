@@ -71,6 +71,7 @@
     acceptConfirm: document.querySelector("#acceptConfirm"),
     toast: document.querySelector("#toast"),
   };
+  const shoppingPanelHome = dom.shoppingPanel.parentElement;
 
   function icon(name, viewBox = "0 0 24 24") {
     return `<svg viewBox="${viewBox}" aria-hidden="true">${iconPaths[name] || iconPaths.leaf}</svg>`;
@@ -362,9 +363,16 @@
     window.scrollTo({ top: 0, behavior: "smooth" });
   }
 
+  function syncShoppingPanelPlacement() {
+    const target = window.innerWidth <= 900 ? document.body : shoppingPanelHome;
+    if (dom.shoppingPanel.parentElement !== target) target.append(dom.shoppingPanel);
+  }
+
   function openShopping() {
+    syncShoppingPanelPlacement();
     if (window.innerWidth > 900) {
-      dom.shoppingPanel.scrollIntoView({ behavior: "smooth", block: "start" });
+      if (state.view !== "foods") setView("foods");
+      requestAnimationFrame(() => dom.shoppingPanel.scrollIntoView({ behavior: "smooth", block: "start" }));
       return;
     }
     dom.shoppingPanel.classList.add("is-open");
@@ -523,9 +531,15 @@
       }
       if (event.key === "Escape") closeShopping();
     });
+    window.addEventListener("resize", () => {
+      const wasMobile = dom.shoppingPanel.parentElement === document.body;
+      syncShoppingPanelPlacement();
+      if (wasMobile && window.innerWidth > 900) closeShopping();
+    });
   }
 
   function initialize() {
+    syncShoppingPanelPlacement();
     document.querySelectorAll("[data-icon]").forEach((slot) => { slot.innerHTML = icon(slot.dataset.icon); });
     populateFilters();
     renderFoods();
