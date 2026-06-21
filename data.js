@@ -4577,6 +4577,7 @@ window.APP_DATA = {
   "meals": [
     {
       "id": 1,
+      "date": "2026-06-21",
       "situation": "Frühstück",
       "satiety": "hoch",
       "combination": "Skyr oder Quark + Heidelbeeren + geschrotete Leinsamen + Walnüsse + Zimt",
@@ -4585,6 +4586,7 @@ window.APP_DATA = {
     },
     {
       "id": 2,
+      "date": "2026-06-21",
       "situation": "Frühstück herzhaft",
       "satiety": "sehr hoch",
       "combination": "Omelett mit Spinat, Pilzen, roten Zwiebeln und Kräutern",
@@ -4593,6 +4595,7 @@ window.APP_DATA = {
     },
     {
       "id": 3,
+      "date": "2026-06-21",
       "situation": "Mittag",
       "satiety": "sehr hoch",
       "combination": "Linsensalat mit Rucola, Paprika, Tomaten, Petersilie und Olivenöl",
@@ -4601,6 +4604,7 @@ window.APP_DATA = {
     },
     {
       "id": 4,
+      "date": "2026-06-21",
       "situation": "Mittag low carb",
       "satiety": "sehr hoch",
       "combination": "Lachs mit Brokkoli, Pilzen und grünem Salat",
@@ -4609,6 +4613,7 @@ window.APP_DATA = {
     },
     {
       "id": 5,
+      "date": "2026-06-21",
       "situation": "Abend leicht",
       "satiety": "hoch",
       "combination": "Kabeljau oder Garnelen mit Pak Choi, Zucchini, Ingwer und Knoblauch",
@@ -4617,6 +4622,7 @@ window.APP_DATA = {
     },
     {
       "id": 6,
+      "date": "2026-06-21",
       "situation": "Snack",
       "satiety": "mittel bis hoch",
       "combination": "Naturjoghurt mit Brombeeren und Chiasamen",
@@ -4625,6 +4631,7 @@ window.APP_DATA = {
     },
     {
       "id": 7,
+      "date": "2026-06-21",
       "situation": "Snack salzig",
       "satiety": "hoch",
       "combination": "Hummus mit Paprika, Radieschen, Gurke und Kresse",
@@ -4633,6 +4640,7 @@ window.APP_DATA = {
     },
     {
       "id": 8,
+      "date": "2026-06-21",
       "situation": "Beilage",
       "satiety": "hoch",
       "combination": "Rosenkohl oder Rotkohl mit Olivenöl und Kräutern",
@@ -4641,6 +4649,7 @@ window.APP_DATA = {
     },
     {
       "id": 9,
+      "date": "2026-06-21",
       "situation": "Getränk",
       "satiety": "niedrig",
       "combination": "Grüner Tee oder ungesüßter Kakao",
@@ -4649,6 +4658,7 @@ window.APP_DATA = {
     },
     {
       "id": 10,
+      "date": "2026-06-21",
       "situation": "Würz-Basis",
       "satiety": "niedrig",
       "combination": "Kurkuma + schwarzer Pfeffer + Ingwer + Knoblauch + Olivenöl",

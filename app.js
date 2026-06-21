@@ -247,10 +247,20 @@
     return `<section class="detail-section"><h3>${escapeHtml(title)}</h3><p>${escapeHtml(value)}</p></section>`;
   }
 
+  function formatMealDate(value) {
+    const [year, month, day] = String(value || "").split("-");
+    return year && month && day ? `${day}.${month}.${year}` : String(value || "");
+  }
+
   function renderMeals() {
-    document.querySelector("#mealGrid").innerHTML = meals.map((meal, index) => `
+    document.querySelector("#mealGrid").innerHTML = meals.map((meal, index) => {
+      const mealDate = formatMealDate(meal.date);
+      return `
       <article class="meal-card">
-        <span class="meal-number">${String(index + 1).padStart(2, "0")}</span>
+        <div class="meal-meta">
+          ${mealDate ? `<time class="meal-date" datetime="${escapeHtml(meal.date)}">${escapeHtml(mealDate)}</time>` : ""}
+          <span class="meal-number">${String(index + 1).padStart(2, "0")}</span>
+        </div>
         <p class="eyebrow">${escapeHtml(meal.satiety)} sättigend</p>
         <h2>${escapeHtml(meal.situation)}</h2>
         <p class="meal-combination">${escapeHtml(meal.combination)}</p>
@@ -258,7 +268,8 @@
           <div><span>Warum sinnvoll</span><p>${escapeHtml(meal.reason)}</p></div>
           <div><span>Varianten</span><p>${escapeHtml(meal.variants)}</p></div>
         </div>
-      </article>`).join("");
+      </article>`;
+    }).join("");
   }
 
   function renderInsights() {

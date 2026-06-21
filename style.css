@@ -963,14 +963,30 @@ main {
   border-color: #d3e7f0;
 }
 
-.meal-number {
+.meal-meta {
   position: absolute;
-  top: 18px;
+  top: 16px;
   right: 22px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2px;
+}
+
+.meal-date {
+  color: rgba(20, 92, 56, 0.68);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  line-height: 1;
+}
+
+.meal-number {
   color: rgba(20, 92, 56, 0.09);
   font-size: 54px;
   font-weight: 800;
   letter-spacing: -0.06em;
+  line-height: 0.9;
 }
 
 .meal-card h2 { max-width: 70%; margin: 3px 0 14px; color: var(--forest-950); font-size: 24px; letter-spacing: -0.04em; }
