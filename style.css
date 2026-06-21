@@ -1230,11 +1230,10 @@ dialog::backdrop { background: rgba(6, 31, 20, 0.52); backdrop-filter: blur(4px)
   .filter-panel { margin-top: 18px; padding: 11px; border-radius: 17px; }
   .search-field { height: 47px; }
   .search-field kbd { display: none; }
-  .filter-row { display: flex; margin-top: 9px; overflow-x: auto; scrollbar-width: none; }
-  .filter-row::-webkit-scrollbar { display: none; }
-  .filter-row label { flex: 0 0 auto; }
-  .filter-row select { width: auto; max-width: 170px; }
-  .reset-button { flex: 0 0 auto; }
+  .filter-row { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 9px; margin-top: 9px; overflow: visible; }
+  .filter-row label { min-width: 0; }
+  .filter-row select { width: 100%; max-width: none; }
+  .reset-button { width: 100%; min-height: 42px; padding: 0 10px; border: 1px solid #d7e5dc; border-radius: 11px; background: var(--forest-50); }
   .food-grid { grid-template-columns: 1fr; gap: 11px; }
   .food-card { min-height: 0; padding: 16px; border-radius: 18px; }
   .food-card h3 { font-size: 18px; }
