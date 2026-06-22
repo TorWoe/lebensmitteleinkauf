@@ -285,16 +285,16 @@
         ${detailSection("Aktive Stoffe", food.compounds)}
         ${detailSection("Praktische Verwendung", food.use)}
         ${detailSection("Hinweise / Einschränkungen", food.caution)}
-        ${detailSection("Nährwerte", food.nutrition)}
-        ${detailSection("Menge pro Portion", food.portion)}
+        ${detailSection("Nährwerte", food.nutrition, "ohne Gewähr")}
+        ${detailSection("Menge pro Portion", food.portion, "Durchschnittswerte - individueller Bedarf oder Kombinationen mit weiteren Lebensmitteln können zu anderen Mengen führen.")}
         ${links.length ? `<section class="detail-section"><h3>Quellen</h3><div class="detail-sources">${links.map((url, index) => `<a href="${escapeHtml(url)}" target="_blank" rel="noreferrer">Quelle ${index + 1} ↗</a>`).join("")}</div></section>` : ""}
       </div>`;
     dom.detailDialog.showModal();
   }
 
-  function detailSection(title, value) {
+  function detailSection(title, value, note = "") {
     if (!value) return "";
-    return `<section class="detail-section"><h3>${escapeHtml(title)}</h3><p>${escapeHtml(value)}</p></section>`;
+    return `<section class="detail-section"><h3>${escapeHtml(title)}</h3>${note ? `<p class="detail-note">${escapeHtml(note)}</p>` : ""}<p>${escapeHtml(value)}</p></section>`;
   }
 
   function formatMealDate(value) {
