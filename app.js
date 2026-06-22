@@ -285,6 +285,8 @@
         ${detailSection("Aktive Stoffe", food.compounds)}
         ${detailSection("Praktische Verwendung", food.use)}
         ${detailSection("Hinweise / Einschränkungen", food.caution)}
+        ${detailSection("Nährwerte", food.nutrition)}
+        ${detailSection("Menge pro Portion", food.portion)}
         ${links.length ? `<section class="detail-section"><h3>Quellen</h3><div class="detail-sources">${links.map((url, index) => `<a href="${escapeHtml(url)}" target="_blank" rel="noreferrer">Quelle ${index + 1} ↗</a>`).join("")}</div></section>` : ""}
       </div>`;
     dom.detailDialog.showModal();

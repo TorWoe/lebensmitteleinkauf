@@ -15,6 +15,8 @@ window.APP_DATA = {
       "use": "Gebraten, gedünstet, aus dem Ofen oder als Salat; ideal mit Gemüse und Olivenöl.",
       "caution": "Thunfisch wegen möglicher Schadstoffbelastung nicht zu einseitig essen.",
       "priority": "sehr hoch",
+      "nutrition": "Energie / Kalorien: ca. 210 kcal; Fett: ca. 9,7 g; davon gesättigte Fettsäuren: ca. 2,2 g; Kohlenhydrate: ca. 0,0 g; davon Zucker: ca. 0,0 g; Eiweiß / Protein: ca. 28,9 g; Salz: ca. 3,7 g; Ballaststoffe: ca. 0,0 g",
+      "portion": "150 g",
       "sources": "https://www.health.harvard.edu/healthy-aging-and-longevity/foods-that-fight-inflammation; https://www.hopkinsmedicine.org/health/wellness-and-prevention/anti-inflammatory-diet; https://www.health.harvard.edu/diet-and-nutrition/fighting-inflammation-with-food"
     },
     {
@@ -32,6 +34,8 @@ window.APP_DATA = {
       "use": "Gebraten, gedünstet, aus dem Ofen oder als Salat; ideal mit Gemüse und Olivenöl.",
       "caution": "Thunfisch wegen möglicher Schadstoffbelastung nicht zu einseitig essen.",
       "priority": "sehr hoch",
+      "nutrition": "Energie / Kalorien: ca. 148 kcal; Fett: ca. 6,6 g; davon gesättigte Fettsäuren: ca. 1,4 g; Kohlenhydrate: ca. 0,0 g; davon Zucker: ca. 0,0 g; Eiweiß / Protein: ca. 20,5 g; Salz: ca. 0,1 g; Ballaststoffe: ca. 0,0 g",
+      "portion": "150 g",
       "sources": "https://www.health.harvard.edu/healthy-aging-and-longevity/foods-that-fight-inflammation; https://www.hopkinsmedicine.org/health/wellness-and-prevention/anti-inflammatory-diet; https://www.health.harvard.edu/diet-and-nutrition/fighting-inflammation-with-food"
     },
     {
@@ -49,6 +53,8 @@ window.APP_DATA = {
       "use": "Gebraten, gedünstet, aus dem Ofen oder als Salat; ideal mit Gemüse und Olivenöl.",
       "caution": "Thunfisch wegen möglicher Schadstoffbelastung nicht zu einseitig essen.",
       "priority": "sehr hoch",
+      "nutrition": "Energie / Kalorien: ca. 111 kcal; Fett: ca. 2,3 g; davon gesättigte Fettsäuren: ca. 0,5 g; Kohlenhydrate: ca. 0,0 g; davon Zucker: ca. 0,0 g; Eiweiß / Protein: ca. 20,8 g; Salz: ca. 0,2 g; Ballaststoffe: ca. 0,0 g",
+      "portion": "150 g",
       "sources": "https://www.health.harvard.edu/healthy-aging-and-longevity/foods-that-fight-inflammation; https://www.hopkinsmedicine.org/health/wellness-and-prevention/anti-inflammatory-diet; https://www.health.harvard.edu/diet-and-nutrition/fighting-inflammation-with-food"
     },
     {
@@ -66,6 +72,8 @@ window.APP_DATA = {
       "use": "Gebraten, gedünstet, aus dem Ofen oder als Salat; ideal mit Gemüse und Olivenöl.",
       "caution": "Thunfisch wegen möglicher Schadstoffbelastung nicht zu einseitig essen.",
       "priority": "sehr hoch",
+      "nutrition": "Energie / Kalorien: ca. 158 kcal; Fett: ca. 9,0 g; davon gesättigte Fettsäuren: ca. 2,0 g; Kohlenhydrate: ca. 0,0 g; davon Zucker: ca. 0,0 g; Eiweiß / Protein: ca. 18,0 g; Salz: ca. 0,2 g; Ballaststoffe: ca. 0,0 g",
+      "portion": "150 g",
       "sources": "https://www.health.harvard.edu/healthy-aging-and-longevity/foods-that-fight-inflammation; https://www.hopkinsmedicine.org/health/wellness-and-prevention/anti-inflammatory-diet; https://www.health.harvard.edu/diet-and-nutrition/fighting-inflammation-with-food"
     },
     {
@@ -83,6 +91,8 @@ window.APP_DATA = {
       "use": "Gebraten, gedünstet, aus dem Ofen oder als Salat; ideal mit Gemüse und Olivenöl.",
       "caution": "Thunfisch wegen möglicher Schadstoffbelastung nicht zu einseitig essen.",
       "priority": "sehr hoch",
+      "nutrition": "Energie / Kalorien: ca. 208 kcal; Fett: ca. 13,0 g; davon gesättigte Fettsäuren: ca. 3,1 g; Kohlenhydrate: ca. 0,0 g; davon Zucker: ca. 0,0 g; Eiweiß / Protein: ca. 20,0 g; Salz: ca. 0,1 g; Ballaststoffe: ca. 0,0 g",
+      "portion": "150 g",
       "sources": "https://www.health.harvard.edu/healthy-aging-and-longevity/foods-that-fight-inflammation; https://www.hopkinsmedicine.org/health/wellness-and-prevention/anti-inflammatory-diet; https://www.health.harvard.edu/diet-and-nutrition/fighting-inflammation-with-food"
     },
     {
@@ -100,6 +110,8 @@ window.APP_DATA = {
       "use": "Gebraten, gedünstet, aus dem Ofen oder als Salat; ideal mit Gemüse und Olivenöl.",
       "caution": "Thunfisch wegen möglicher Schadstoffbelastung nicht zu einseitig essen.",
       "priority": "sehr hoch",
+      "nutrition": "Energie / Kalorien: ca. 205 kcal; Fett: ca. 13,9 g; davon gesättigte Fettsäuren: ca. 3,3 g; Kohlenhydrate: ca. 0,0 g; davon Zucker: ca. 0,0 g; Eiweiß / Protein: ca. 18,6 g; Salz: ca. 0,1 g; Ballaststoffe: ca. 0,0 g",
+      "portion": "150 g",
       "sources": "https://www.health.harvard.edu/healthy-aging-and-longevity/foods-that-fight-inflammation; https://www.hopkinsmedicine.org/health/wellness-and-prevention/anti-inflammatory-diet; https://www.health.harvard.edu/diet-and-nutrition/fighting-inflammation-with-food"
     },
     {
@@ -117,6 +129,8 @@ window.APP_DATA = {
       "use": "Gebraten, gedünstet, aus dem Ofen oder als Salat; ideal mit Gemüse und Olivenöl.",
       "caution": "Thunfisch wegen möglicher Schadstoffbelastung nicht zu einseitig essen.",
       "priority": "sehr hoch",
+      "nutrition": "Energie / Kalorien: ca. 135 kcal; Fett: ca. 6,0 g; davon gesättigte Fettsäuren: ca. 1,2 g; Kohlenhydrate: ca. 0,0 g; davon Zucker: ca. 0,0 g; Eiweiß / Protein: ca. 20,0 g; Salz: ca. 0,1 g; Ballaststoffe: ca. 0,0 g",
+      "portion": "150 g",
       "sources": "https://www.health.harvard.edu/healthy-aging-and-longevity/foods-that-fight-inflammation; https://www.hopkinsmedicine.org/health/wellness-and-prevention/anti-inflammatory-diet; https://www.health.harvard.edu/diet-and-nutrition/fighting-inflammation-with-food"
     },
     {
@@ -134,6 +148,8 @@ window.APP_DATA = {
       "use": "Gebraten, gedünstet, aus dem Ofen oder als Salat; ideal mit Gemüse und Olivenöl.",
       "caution": "Thunfisch wegen möglicher Schadstoffbelastung nicht zu einseitig essen.",
       "priority": "sehr hoch",
+      "nutrition": "Energie / Kalorien: ca. 208 kcal; Fett: ca. 11,5 g; davon gesättigte Fettsäuren: ca. 1,5 g; Kohlenhydrate: ca. 0,0 g; davon Zucker: ca. 0,0 g; Eiweiß / Protein: ca. 24,6 g; Salz: ca. 0,5 g; Ballaststoffe: ca. 0,0 g",
+      "portion": "150 g",
       "sources": "https://www.health.harvard.edu/healthy-aging-and-longevity/foods-that-fight-inflammation; https://www.hopkinsmedicine.org/health/wellness-and-prevention/anti-inflammatory-diet; https://www.health.harvard.edu/diet-and-nutrition/fighting-inflammation-with-food"
     },
     {
@@ -151,6 +167,8 @@ window.APP_DATA = {
       "use": "Gebraten, gedünstet, aus dem Ofen oder als Salat; ideal mit Gemüse und Olivenöl.",
       "caution": "Thunfisch wegen möglicher Schadstoffbelastung nicht zu einseitig essen.",
       "priority": "sehr hoch",
+      "nutrition": "Energie / Kalorien: ca. 132 kcal; Fett: ca. 1,0 g; davon gesättigte Fettsäuren: ca. 0,3 g; Kohlenhydrate: ca. 0,0 g; davon Zucker: ca. 0,0 g; Eiweiß / Protein: ca. 29,0 g; Salz: ca. 0,1 g; Ballaststoffe: ca. 0,0 g",
+      "portion": "150 g",
       "sources": "https://www.health.harvard.edu/healthy-aging-and-longevity/foods-that-fight-inflammation; https://www.hopkinsmedicine.org/health/wellness-and-prevention/anti-inflammatory-diet; https://www.health.harvard.edu/diet-and-nutrition/fighting-inflammation-with-food"
     },
     {
@@ -168,6 +186,8 @@ window.APP_DATA = {
       "use": "Mit Brokkoli, Spinat, Pilzen oder Salat kombinieren.",
       "caution": "Für Omega-3 weniger stark als fetter Fisch.",
       "priority": "hoch",
+      "nutrition": "Energie / Kalorien: ca. 96 kcal; Fett: ca. 2,0 g; davon gesättigte Fettsäuren: ca. 0,5 g; Kohlenhydrate: ca. 0,0 g; davon Zucker: ca. 0,0 g; Eiweiß / Protein: ca. 19,0 g; Salz: ca. 0,1 g; Ballaststoffe: ca. 0,0 g",
+      "portion": "150 g",
       "sources": "https://www.health.harvard.edu/diet-and-nutrition/quick-start-guide-to-an-antiinflammation-diet; https://www.hopkinsmedicine.org/health/wellness-and-prevention/anti-inflammatory-diet"
     },
     {
@@ -185,6 +205,8 @@ window.APP_DATA = {
       "use": "Mit Brokkoli, Spinat, Pilzen oder Salat kombinieren.",
       "caution": "Für Omega-3 weniger stark als fetter Fisch.",
       "priority": "hoch",
+      "nutrition": "Energie / Kalorien: ca. 82 kcal; Fett: ca. 0,7 g; davon gesättigte Fettsäuren: ca. 0,1 g; Kohlenhydrate: ca. 0,0 g; davon Zucker: ca. 0,0 g; Eiweiß / Protein: ca. 18,0 g; Salz: ca. 0,2 g; Ballaststoffe: ca. 0,0 g",
+      "portion": "150 g",
       "sources": "https://www.health.harvard.edu/diet-and-nutrition/quick-start-guide-to-an-antiinflammation-diet; https://www.hopkinsmedicine.org/health/wellness-and-prevention/anti-inflammatory-diet"
     },
     {
@@ -202,6 +224,8 @@ window.APP_DATA = {
       "use": "Mit Brokkoli, Spinat, Pilzen oder Salat kombinieren.",
       "caution": "Für Omega-3 weniger stark als fetter Fisch.",
       "priority": "hoch",
+      "nutrition": "Energie / Kalorien: ca. 99 kcal; Fett: ca. 2,0 g; davon gesättigte Fettsäuren: ca. 0,4 g; Kohlenhydrate: ca. 0,0 g; davon Zucker: ca. 0,0 g; Eiweiß / Protein: ca. 18,0 g; Salz: ca. 0,2 g; Ballaststoffe: ca. 0,0 g",
+      "portion": "150 g",
       "sources": "https://www.health.harvard.edu/diet-and-nutrition/quick-start-guide-to-an-antiinflammation-diet; https://www.hopkinsmedicine.org/health/wellness-and-prevention/anti-inflammatory-diet"
     },
     {
@@ -219,6 +243,8 @@ window.APP_DATA = {
       "use": "Mit Brokkoli, Spinat, Pilzen oder Salat kombinieren.",
       "caution": "Für Omega-3 weniger stark als fetter Fisch.",
       "priority": "hoch",
+      "nutrition": "Energie / Kalorien: ca. 90 kcal; Fett: ca. 0,6 g; davon gesättigte Fettsäuren: ca. 0,1 g; Kohlenhydrate: ca. 0,0 g; davon Zucker: ca. 0,0 g; Eiweiß / Protein: ca. 20,0 g; Salz: ca. 0,2 g; Ballaststoffe: ca. 0,0 g",
+      "portion": "150 g",
       "sources": "https://www.health.harvard.edu/diet-and-nutrition/quick-start-guide-to-an-antiinflammation-diet; https://www.hopkinsmedicine.org/health/wellness-and-prevention/anti-inflammatory-diet"
     },
     {
@@ -236,6 +262,8 @@ window.APP_DATA = {
       "use": "Mit Brokkoli, Spinat, Pilzen oder Salat kombinieren.",
       "caution": "Für Omega-3 weniger stark als fetter Fisch.",
       "priority": "hoch",
+      "nutrition": "Energie / Kalorien: ca. 91 kcal; Fett: ca. 1,2 g; davon gesättigte Fettsäuren: ca. 0,3 g; Kohlenhydrate: ca. 0,0 g; davon Zucker: ca. 0,0 g; Eiweiß / Protein: ca. 18,5 g; Salz: ca. 0,2 g; Ballaststoffe: ca. 0,0 g",
+      "portion": "150 g",
       "sources": "https://www.health.harvard.edu/diet-and-nutrition/quick-start-guide-to-an-antiinflammation-diet; https://www.hopkinsmedicine.org/health/wellness-and-prevention/anti-inflammatory-diet"
     },
     {
@@ -253,6 +281,8 @@ window.APP_DATA = {
       "use": "Mit Brokkoli, Spinat, Pilzen oder Salat kombinieren.",
       "caution": "Für Omega-3 weniger stark als fetter Fisch.",
       "priority": "hoch",
+      "nutrition": "Energie / Kalorien: ca. 92 kcal; Fett: ca. 1,0 g; davon gesättigte Fettsäuren: ca. 0,2 g; Kohlenhydrate: ca. 0,0 g; davon Zucker: ca. 0,0 g; Eiweiß / Protein: ca. 19,0 g; Salz: ca. 0,2 g; Ballaststoffe: ca. 0,0 g",
+      "portion": "150 g",
       "sources": "https://www.health.harvard.edu/diet-and-nutrition/quick-start-guide-to-an-antiinflammation-diet; https://www.hopkinsmedicine.org/health/wellness-and-prevention/anti-inflammatory-diet"
     },
     {
@@ -270,6 +300,8 @@ window.APP_DATA = {
       "use": "Mit Brokkoli, Spinat, Pilzen oder Salat kombinieren.",
       "caution": "Für Omega-3 weniger stark als fetter Fisch.",
       "priority": "hoch",
+      "nutrition": "Energie / Kalorien: ca. 97 kcal; Fett: ca. 2,0 g; davon gesättigte Fettsäuren: ca. 0,5 g; Kohlenhydrate: ca. 0,0 g; davon Zucker: ca. 0,0 g; Eiweiß / Protein: ca. 18,0 g; Salz: ca. 0,1 g; Ballaststoffe: ca. 0,0 g",
+      "portion": "150 g",
       "sources": "https://www.health.harvard.edu/diet-and-nutrition/quick-start-guide-to-an-antiinflammation-diet; https://www.hopkinsmedicine.org/health/wellness-and-prevention/anti-inflammatory-diet"
     },
     {
@@ -287,6 +319,8 @@ window.APP_DATA = {
       "use": "Mit Brokkoli, Spinat, Pilzen oder Salat kombinieren.",
       "caution": "Für Omega-3 weniger stark als fetter Fisch.",
       "priority": "hoch",
+      "nutrition": "Energie / Kalorien: ca. 84 kcal; Fett: ca. 0,7 g; davon gesättigte Fettsäuren: ca. 0,2 g; Kohlenhydrate: ca. 0,0 g; davon Zucker: ca. 0,0 g; Eiweiß / Protein: ca. 19,0 g; Salz: ca. 0,1 g; Ballaststoffe: ca. 0,0 g",
+      "portion": "150 g",
       "sources": "https://www.health.harvard.edu/diet-and-nutrition/quick-start-guide-to-an-antiinflammation-diet; https://www.hopkinsmedicine.org/health/wellness-and-prevention/anti-inflammatory-diet"
     },
     {
@@ -304,6 +338,8 @@ window.APP_DATA = {
       "use": "Kurz braten, kochen oder in Gemüsepfannen verwenden.",
       "caution": "Bei Gicht/hoher Harnsäure individuell prüfen.",
       "priority": "hoch",
+      "nutrition": "Energie / Kalorien: ca. 68 kcal; Fett: ca. 2,5 g; davon gesättigte Fettsäuren: ca. 0,7 g; Kohlenhydrate: ca. 4,8 g; davon Zucker: ca. 0,0 g; Eiweiß / Protein: ca. 7,0 g; Salz: ca. 0,8 g; Ballaststoffe: ca. 0,0 g",
+      "portion": "150 g",
       "sources": "https://www.hopkinsmedicine.org/health/wellness-and-prevention/anti-inflammatory-diet; https://health.clevelandclinic.org/anti-inflammatory-diet"
     },
     {
@@ -321,6 +357,8 @@ window.APP_DATA = {
       "use": "Kurz braten, kochen oder in Gemüsepfannen verwenden.",
       "caution": "Bei Gicht/hoher Harnsäure individuell prüfen.",
       "priority": "hoch",
+      "nutrition": "Energie / Kalorien: ca. 99 kcal; Fett: ca. 0,3 g; davon gesättigte Fettsäuren: ca. 0,1 g; Kohlenhydrate: ca. 0,2 g; davon Zucker: ca. 0,0 g; Eiweiß / Protein: ca. 24,0 g; Salz: ca. 0,4 g; Ballaststoffe: ca. 0,0 g",
+      "portion": "150 g",
       "sources": "https://www.hopkinsmedicine.org/health/wellness-and-prevention/anti-inflammatory-diet; https://health.clevelandclinic.org/anti-inflammatory-diet"
     },
     {
@@ -338,6 +376,8 @@ window.APP_DATA = {
       "use": "Kurz braten, kochen oder in Gemüsepfannen verwenden.",
       "caution": "Bei Gicht/hoher Harnsäure individuell prüfen.",
       "priority": "hoch",
+      "nutrition": "Energie / Kalorien: ca. 89 kcal; Fett: ca. 0,9 g; davon gesättigte Fettsäuren: ca. 0,2 g; Kohlenhydrate: ca. 0,5 g; davon Zucker: ca. 0,0 g; Eiweiß / Protein: ca. 19,0 g; Salz: ca. 0,5 g; Ballaststoffe: ca. 0,0 g",
+      "portion": "150 g",
       "sources": "https://www.hopkinsmedicine.org/health/wellness-and-prevention/anti-inflammatory-diet; https://health.clevelandclinic.org/anti-inflammatory-diet"
     },
     {
@@ -355,6 +395,8 @@ window.APP_DATA = {
       "use": "Kurz braten, kochen oder in Gemüsepfannen verwenden.",
       "caution": "Bei Gicht/hoher Harnsäure individuell prüfen.",
       "priority": "hoch",
+      "nutrition": "Energie / Kalorien: ca. 88 kcal; Fett: ca. 0,8 g; davon gesättigte Fettsäuren: ca. 0,1 g; Kohlenhydrate: ca. 3,2 g; davon Zucker: ca. 0,0 g; Eiweiß / Protein: ca. 17,0 g; Salz: ca. 0,6 g; Ballaststoffe: ca. 0,0 g",
+      "portion": "150 g",
       "sources": "https://www.hopkinsmedicine.org/health/wellness-and-prevention/anti-inflammatory-diet; https://health.clevelandclinic.org/anti-inflammatory-diet"
     },
     {
@@ -372,6 +414,8 @@ window.APP_DATA = {
       "use": "Kurz braten, kochen oder in Gemüsepfannen verwenden.",
       "caution": "Bei Gicht/hoher Harnsäure individuell prüfen.",
       "priority": "hoch",
+      "nutrition": "Energie / Kalorien: ca. 97 kcal; Fett: ca. 1,5 g; davon gesättigte Fettsäuren: ca. 0,2 g; Kohlenhydrate: ca. 0,0 g; davon Zucker: ca. 0,0 g; Eiweiß / Protein: ca. 19,0 g; Salz: ca. 0,8 g; Ballaststoffe: ca. 0,0 g",
+      "portion": "150 g",
       "sources": "https://www.hopkinsmedicine.org/health/wellness-and-prevention/anti-inflammatory-diet; https://health.clevelandclinic.org/anti-inflammatory-diet"
     },
     {
@@ -389,6 +433,8 @@ window.APP_DATA = {
       "use": "Kurz braten, kochen oder in Gemüsepfannen verwenden.",
       "caution": "Bei Gicht/hoher Harnsäure individuell prüfen.",
       "priority": "hoch",
+      "nutrition": "Energie / Kalorien: ca. 86 kcal; Fett: ca. 2,2 g; davon gesättigte Fettsäuren: ca. 0,4 g; Kohlenhydrate: ca. 3,7 g; davon Zucker: ca. 0,0 g; Eiweiß / Protein: ca. 12,0 g; Salz: ca. 0,7 g; Ballaststoffe: ca. 0,0 g",
+      "portion": "150 g",
       "sources": "https://www.hopkinsmedicine.org/health/wellness-and-prevention/anti-inflammatory-diet; https://health.clevelandclinic.org/anti-inflammatory-diet"
     },
     {
@@ -406,6 +452,8 @@ window.APP_DATA = {
       "use": "Kurz braten, kochen oder in Gemüsepfannen verwenden.",
       "caution": "Bei Gicht/hoher Harnsäure individuell prüfen.",
       "priority": "hoch",
+      "nutrition": "Energie / Kalorien: ca. 79 kcal; Fett: ca. 0,7 g; davon gesättigte Fettsäuren: ca. 0,2 g; Kohlenhydrate: ca. 0,8 g; davon Zucker: ca. 0,0 g; Eiweiß / Protein: ca. 16,0 g; Salz: ca. 0,7 g; Ballaststoffe: ca. 0,0 g",
+      "portion": "150 g",
       "sources": "https://www.hopkinsmedicine.org/health/wellness-and-prevention/anti-inflammatory-diet; https://health.clevelandclinic.org/anti-inflammatory-diet"
     },
     {
@@ -423,6 +471,8 @@ window.APP_DATA = {
       "use": "Kurz braten, kochen oder in Gemüsepfannen verwenden.",
       "caution": "Bei Gicht/hoher Harnsäure individuell prüfen.",
       "priority": "hoch",
+      "nutrition": "Energie / Kalorien: ca. 92 kcal; Fett: ca. 1,4 g; davon gesättigte Fettsäuren: ca. 0,4 g; Kohlenhydrate: ca. 3,1 g; davon Zucker: ca. 0,0 g; Eiweiß / Protein: ca. 15,6 g; Salz: ca. 0,8 g; Ballaststoffe: ca. 0,0 g",
+      "portion": "150 g",
       "sources": "https://www.hopkinsmedicine.org/health/wellness-and-prevention/anti-inflammatory-diet; https://health.clevelandclinic.org/anti-inflammatory-diet"
     },
     {
@@ -440,6 +490,8 @@ window.APP_DATA = {
       "use": "Gegrillt, gebraten, geschmort oder als Suppe mit viel Gemüse.",
       "caution": "Antioxidativ schwächer als Gemüse/Beeren; Gemüseanteil hoch halten.",
       "priority": "hoch",
+      "nutrition": "Energie / Kalorien: ca. 110 kcal; Fett: ca. 1,5 g; davon gesättigte Fettsäuren: ca. 0,4 g; Kohlenhydrate: ca. 0,0 g; davon Zucker: ca. 0,0 g; Eiweiß / Protein: ca. 23,0 g; Salz: ca. 0,2 g; Ballaststoffe: ca. 0,0 g",
+      "portion": "150 g",
       "sources": "https://www.health.harvard.edu/diet-and-nutrition/quick-start-guide-to-an-antiinflammation-diet; https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/in-depth/mediterranean-diet/art-20047801"
     },
     {
@@ -457,6 +509,8 @@ window.APP_DATA = {
       "use": "Gegrillt, gebraten, geschmort oder als Suppe mit viel Gemüse.",
       "caution": "Antioxidativ schwächer als Gemüse/Beeren; Gemüseanteil hoch halten.",
       "priority": "hoch",
+      "nutrition": "Energie / Kalorien: ca. 149 kcal; Fett: ca. 7,0 g; davon gesättigte Fettsäuren: ca. 2,0 g; Kohlenhydrate: ca. 0,0 g; davon Zucker: ca. 0,0 g; Eiweiß / Protein: ca. 19,0 g; Salz: ca. 0,2 g; Ballaststoffe: ca. 0,0 g",
+      "portion": "150 g",
       "sources": "https://www.health.harvard.edu/diet-and-nutrition/quick-start-guide-to-an-antiinflammation-diet; https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/in-depth/mediterranean-diet/art-20047801"
     },
     {
@@ -474,6 +528,8 @@ window.APP_DATA = {
       "use": "Gegrillt, gebraten, geschmort oder als Suppe mit viel Gemüse.",
       "caution": "Antioxidativ schwächer als Gemüse/Beeren; Gemüseanteil hoch halten.",
       "priority": "hoch",
+      "nutrition": "Energie / Kalorien: ca. 107 kcal; Fett: ca. 1,2 g; davon gesättigte Fettsäuren: ca. 0,3 g; Kohlenhydrate: ca. 0,0 g; davon Zucker: ca. 0,0 g; Eiweiß / Protein: ca. 24,0 g; Salz: ca. 0,2 g; Ballaststoffe: ca. 0,0 g",
+      "portion": "150 g",
       "sources": "https://www.health.harvard.edu/diet-and-nutrition/quick-start-guide-to-an-antiinflammation-diet; https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/in-depth/mediterranean-diet/art-20047801"
     },
     {
@@ -491,6 +547,8 @@ window.APP_DATA = {
       "use": "Gegrillt, gebraten, geschmort oder als Suppe mit viel Gemüse.",
       "caution": "Antioxidativ schwächer als Gemüse/Beeren; Gemüseanteil hoch halten.",
       "priority": "hoch",
+      "nutrition": "Energie / Kalorien: ca. 140 kcal; Fett: ca. 5,0 g; davon gesättigte Fettsäuren: ca. 1,4 g; Kohlenhydrate: ca. 0,0 g; davon Zucker: ca. 0,0 g; Eiweiß / Protein: ca. 21,0 g; Salz: ca. 0,2 g; Ballaststoffe: ca. 0,0 g",
+      "portion": "150 g",
       "sources": "https://www.health.harvard.edu/diet-and-nutrition/quick-start-guide-to-an-antiinflammation-diet; https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/in-depth/mediterranean-diet/art-20047801"
     },
     {
@@ -508,6 +566,8 @@ window.APP_DATA = {
       "use": "Gegrillt, gebraten, geschmort oder als Suppe mit viel Gemüse.",
       "caution": "Antioxidativ schwächer als Gemüse/Beeren; Gemüseanteil hoch halten.",
       "priority": "hoch",
+      "nutrition": "Energie / Kalorien: ca. 215 kcal; Fett: ca. 15,0 g; davon gesättigte Fettsäuren: ca. 4,0 g; Kohlenhydrate: ca. 0,0 g; davon Zucker: ca. 0,0 g; Eiweiß / Protein: ca. 19,0 g; Salz: ca. 0,2 g; Ballaststoffe: ca. 0,0 g",
+      "portion": "150 g",
       "sources": "https://www.health.harvard.edu/diet-and-nutrition/quick-start-guide-to-an-antiinflammation-diet; https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/in-depth/mediterranean-diet/art-20047801"
     },
     {
@@ -525,6 +585,8 @@ window.APP_DATA = {
       "use": "Mit Kreuzblütlern, Salat oder Pilzen kombinieren.",
       "caution": "Rotes Fleisch eher begrenzen; verarbeitete Varianten meiden.",
       "priority": "mittel",
+      "nutrition": "Energie / Kalorien: ca. 112 kcal; Fett: ca. 2,4 g; davon gesättigte Fettsäuren: ca. 0,9 g; Kohlenhydrate: ca. 0,0 g; davon Zucker: ca. 0,0 g; Eiweiß / Protein: ca. 22,0 g; Salz: ca. 0,1 g; Ballaststoffe: ca. 0,0 g",
+      "portion": "150 g",
       "sources": "https://www.health.harvard.edu/diet-and-nutrition/quick-start-guide-to-an-antiinflammation-diet; https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/in-depth/mediterranean-diet/art-20047801"
     },
     {
@@ -542,6 +604,8 @@ window.APP_DATA = {
       "use": "Mit Kreuzblütlern, Salat oder Pilzen kombinieren.",
       "caution": "Rotes Fleisch eher begrenzen; verarbeitete Varianten meiden.",
       "priority": "mittel",
+      "nutrition": "Energie / Kalorien: ca. 112 kcal; Fett: ca. 2,7 g; davon gesättigte Fettsäuren: ca. 1,0 g; Kohlenhydrate: ca. 0,0 g; davon Zucker: ca. 0,0 g; Eiweiß / Protein: ca. 21,0 g; Salz: ca. 0,1 g; Ballaststoffe: ca. 0,0 g",
+      "portion": "150 g",
       "sources": "https://www.health.harvard.edu/diet-and-nutrition/quick-start-guide-to-an-antiinflammation-diet; https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/in-depth/mediterranean-diet/art-20047801"
     },
     {
@@ -559,6 +623,8 @@ window.APP_DATA = {
       "use": "Mit Kreuzblütlern, Salat oder Pilzen kombinieren.",
       "caution": "Rotes Fleisch eher begrenzen; verarbeitete Varianten meiden.",
       "priority": "mittel",
+      "nutrition": "Energie / Kalorien: ca. 136 kcal; Fett: ca. 5,5 g; davon gesättigte Fettsäuren: ca. 1,7 g; Kohlenhydrate: ca. 0,0 g; davon Zucker: ca. 0,0 g; Eiweiß / Protein: ca. 21,0 g; Salz: ca. 0,1 g; Ballaststoffe: ca. 0,0 g",
+      "portion": "150 g",
       "sources": "https://www.health.harvard.edu/diet-and-nutrition/quick-start-guide-to-an-antiinflammation-diet; https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/in-depth/mediterranean-diet/art-20047801"
     },
     {
@@ -576,6 +642,8 @@ window.APP_DATA = {
       "use": "Mit Kreuzblütlern, Salat oder Pilzen kombinieren.",
       "caution": "Rotes Fleisch eher begrenzen; verarbeitete Varianten meiden.",
       "priority": "mittel",
+      "nutrition": "Energie / Kalorien: ca. 130 kcal; Fett: ca. 5,0 g; davon gesättigte Fettsäuren: ca. 2,0 g; Kohlenhydrate: ca. 0,0 g; davon Zucker: ca. 0,0 g; Eiweiß / Protein: ca. 21,0 g; Salz: ca. 0,1 g; Ballaststoffe: ca. 0,0 g",
+      "portion": "150 g",
       "sources": "https://www.health.harvard.edu/diet-and-nutrition/quick-start-guide-to-an-antiinflammation-diet; https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/in-depth/mediterranean-diet/art-20047801"
     },
     {
@@ -593,6 +661,8 @@ window.APP_DATA = {
       "use": "Mit Kreuzblütlern, Salat oder Pilzen kombinieren.",
       "caution": "Rotes Fleisch eher begrenzen; verarbeitete Varianten meiden.",
       "priority": "mittel",
+      "nutrition": "Energie / Kalorien: ca. 111 kcal; Fett: ca. 2,0 g; davon gesättigte Fettsäuren: ca. 0,8 g; Kohlenhydrate: ca. 0,0 g; davon Zucker: ca. 0,0 g; Eiweiß / Protein: ca. 22,0 g; Salz: ca. 0,1 g; Ballaststoffe: ca. 0,0 g",
+      "portion": "150 g",
       "sources": "https://www.health.harvard.edu/diet-and-nutrition/quick-start-guide-to-an-antiinflammation-diet; https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/in-depth/mediterranean-diet/art-20047801"
     },
     {
@@ -610,6 +680,8 @@ window.APP_DATA = {
       "use": "Mit Kreuzblütlern, Salat oder Pilzen kombinieren.",
       "caution": "Rotes Fleisch eher begrenzen; verarbeitete Varianten meiden.",
       "priority": "mittel",
+      "nutrition": "Energie / Kalorien: ca. 120 kcal; Fett: ca. 4,0 g; davon gesättigte Fettsäuren: ca. 1,5 g; Kohlenhydrate: ca. 0,0 g; davon Zucker: ca. 0,0 g; Eiweiß / Protein: ca. 21,0 g; Salz: ca. 0,1 g; Ballaststoffe: ca. 0,0 g",
+      "portion": "150 g",
       "sources": "https://www.health.harvard.edu/diet-and-nutrition/quick-start-guide-to-an-antiinflammation-diet; https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/in-depth/mediterranean-diet/art-20047801"
     },
     {
@@ -627,6 +699,8 @@ window.APP_DATA = {
       "use": "Mit Kreuzblütlern, Salat oder Pilzen kombinieren.",
       "caution": "Rotes Fleisch eher begrenzen; verarbeitete Varianten meiden.",
       "priority": "mittel",
+      "nutrition": "Energie / Kalorien: ca. 115 kcal; Fett: ca. 2,5 g; davon gesättigte Fettsäuren: ca. 0,9 g; Kohlenhydrate: ca. 0,0 g; davon Zucker: ca. 0,0 g; Eiweiß / Protein: ca. 22,0 g; Salz: ca. 0,1 g; Ballaststoffe: ca. 0,0 g",
+      "portion": "150 g",
       "sources": "https://www.health.harvard.edu/diet-and-nutrition/quick-start-guide-to-an-antiinflammation-diet; https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/in-depth/mediterranean-diet/art-20047801"
     },
     {
@@ -644,6 +718,8 @@ window.APP_DATA = {
       "use": "Als Omelett mit Spinat/Pilzen oder gekocht im Salat.",
       "caution": "Bei individuellen Cholesterin-/Stoffwechselthemen ärztlich einordnen lassen.",
       "priority": "hoch",
+      "nutrition": "Energie / Kalorien: ca. 143 kcal; Fett: ca. 9,5 g; davon gesättigte Fettsäuren: ca. 3,1 g; Kohlenhydrate: ca. 0,7 g; davon Zucker: ca. 0,4 g; Eiweiß / Protein: ca. 12,6 g; Salz: ca. 0,3 g; Ballaststoffe: ca. 0,0 g",
+      "portion": "60 g",
       "sources": "https://lpi.oregonstate.edu/mic/dietary-factors/phytochemicals/carotenoids; https://www.health.harvard.edu/diet-and-nutrition/quick-start-guide-to-an-antiinflammation-diet"
     },
     {
@@ -661,6 +737,8 @@ window.APP_DATA = {
       "use": "Als Omelett mit Spinat/Pilzen oder gekocht im Salat.",
       "caution": "Bei individuellen Cholesterin-/Stoffwechselthemen ärztlich einordnen lassen.",
       "priority": "hoch",
+      "nutrition": "Energie / Kalorien: ca. 143 kcal; Fett: ca. 9,5 g; davon gesättigte Fettsäuren: ca. 3,1 g; Kohlenhydrate: ca. 0,7 g; davon Zucker: ca. 0,4 g; Eiweiß / Protein: ca. 12,6 g; Salz: ca. 0,3 g; Ballaststoffe: ca. 0,0 g",
+      "portion": "60 g",
       "sources": "https://lpi.oregonstate.edu/mic/dietary-factors/phytochemicals/carotenoids; https://www.health.harvard.edu/diet-and-nutrition/quick-start-guide-to-an-antiinflammation-diet"
     },
     {
@@ -678,6 +756,8 @@ window.APP_DATA = {
       "use": "Als Omelett mit Spinat/Pilzen oder gekocht im Salat.",
       "caution": "Bei individuellen Cholesterin-/Stoffwechselthemen ärztlich einordnen lassen.",
       "priority": "hoch",
+      "nutrition": "Energie / Kalorien: ca. 158 kcal; Fett: ca. 11,0 g; davon gesättigte Fettsäuren: ca. 3,6 g; Kohlenhydrate: ca. 0,4 g; davon Zucker: ca. 0,4 g; Eiweiß / Protein: ca. 13,0 g; Salz: ca. 0,3 g; Ballaststoffe: ca. 0,0 g",
+      "portion": "45 g",
       "sources": "https://lpi.oregonstate.edu/mic/dietary-factors/phytochemicals/carotenoids; https://www.health.harvard.edu/diet-and-nutrition/quick-start-guide-to-an-antiinflammation-diet"
     },
     {
@@ -695,6 +775,8 @@ window.APP_DATA = {
       "use": "Kleine Portionen, kombiniert mit Gemüse.",
       "caution": "Leber wegen Vitamin A nicht zu häufig essen.",
       "priority": "mittel",
+      "nutrition": "Energie / Kalorien: ca. 112 kcal; Fett: ca. 3,5 g; davon gesättigte Fettsäuren: ca. 1,1 g; Kohlenhydrate: ca. 0,0 g; davon Zucker: ca. 0,0 g; Eiweiß / Protein: ca. 18,0 g; Salz: ca. 0,2 g; Ballaststoffe: ca. 0,0 g",
+      "portion": "100 g",
       "sources": "https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/in-depth/mediterranean-diet/art-20047801"
     },
     {
@@ -712,6 +794,8 @@ window.APP_DATA = {
       "use": "Kleine Portionen, kombiniert mit Gemüse.",
       "caution": "Leber wegen Vitamin A nicht zu häufig essen.",
       "priority": "mittel",
+      "nutrition": "Energie / Kalorien: ca. 135 kcal; Fett: ca. 3,6 g; davon gesättigte Fettsäuren: ca. 1,2 g; Kohlenhydrate: ca. 3,9 g; davon Zucker: ca. 0,0 g; Eiweiß / Protein: ca. 20,0 g; Salz: ca. 0,2 g; Ballaststoffe: ca. 0,0 g",
+      "portion": "100 g",
       "sources": "https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/in-depth/mediterranean-diet/art-20047801"
     },
     {
@@ -729,6 +813,8 @@ window.APP_DATA = {
       "use": "Kleine Portionen, kombiniert mit Gemüse.",
       "caution": "Leber wegen Vitamin A nicht zu häufig essen.",
       "priority": "mittel",
+      "nutrition": "Energie / Kalorien: ca. 100 kcal; Fett: ca. 3,0 g; davon gesättigte Fettsäuren: ca. 0,9 g; Kohlenhydrate: ca. 0,0 g; davon Zucker: ca. 0,0 g; Eiweiß / Protein: ca. 17,0 g; Salz: ca. 0,2 g; Ballaststoffe: ca. 0,0 g",
+      "portion": "100 g",
       "sources": "https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/in-depth/mediterranean-diet/art-20047801"
     },
     {
@@ -746,6 +832,8 @@ window.APP_DATA = {
       "use": "Edamame als Snack; Tofu/Tempeh in Gemüsepfannen.",
       "caution": "Bei Schilddrüsenthemen Sojamengen mit Arzt/Apotheke abklären, wenn relevant.",
       "priority": "sehr hoch",
+      "nutrition": "Energie / Kalorien: ca. 121 kcal; Fett: ca. 5,2 g; davon gesättigte Fettsäuren: ca. 0,6 g; Kohlenhydrate: ca. 8,9 g; davon Zucker: ca. 2,2 g; Eiweiß / Protein: ca. 11,9 g; Salz: ca. 0,0 g; Ballaststoffe: ca. 5,2 g",
+      "portion": "100 g",
       "sources": "https://www.health.harvard.edu/diet-and-nutrition/quick-start-guide-to-an-antiinflammation-diet; https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/in-depth/mediterranean-diet/art-20047801; https://lpi.oregonstate.edu/mic/dietary-factors/phytochemicals/flavonoids"
     },
     {
@@ -763,6 +851,8 @@ window.APP_DATA = {
       "use": "Edamame als Snack; Tofu/Tempeh in Gemüsepfannen.",
       "caution": "Bei Schilddrüsenthemen Sojamengen mit Arzt/Apotheke abklären, wenn relevant.",
       "priority": "sehr hoch",
+      "nutrition": "Energie / Kalorien: ca. 212 kcal; Fett: ca. 11,0 g; davon gesättigte Fettsäuren: ca. 1,6 g; Kohlenhydrate: ca. 12,7 g; davon Zucker: ca. 4,9 g; Eiweiß / Protein: ca. 19,4 g; Salz: ca. 0,0 g; Ballaststoffe: ca. 5,4 g",
+      "portion": "100 g",
       "sources": "https://www.health.harvard.edu/diet-and-nutrition/quick-start-guide-to-an-antiinflammation-diet; https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/in-depth/mediterranean-diet/art-20047801; https://lpi.oregonstate.edu/mic/dietary-factors/phytochemicals/flavonoids"
     },
     {
@@ -780,6 +870,8 @@ window.APP_DATA = {
       "use": "Edamame als Snack; Tofu/Tempeh in Gemüsepfannen.",
       "caution": "Bei Schilddrüsenthemen Sojamengen mit Arzt/Apotheke abklären, wenn relevant.",
       "priority": "sehr hoch",
+      "nutrition": "Energie / Kalorien: ca. 172 kcal; Fett: ca. 9,0 g; davon gesättigte Fettsäuren: ca. 1,3 g; Kohlenhydrate: ca. 8,4 g; davon Zucker: ca. 3,0 g; Eiweiß / Protein: ca. 16,6 g; Salz: ca. 0,0 g; Ballaststoffe: ca. 6,0 g",
+      "portion": "100 g",
       "sources": "https://www.health.harvard.edu/diet-and-nutrition/quick-start-guide-to-an-antiinflammation-diet; https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/in-depth/mediterranean-diet/art-20047801; https://lpi.oregonstate.edu/mic/dietary-factors/phytochemicals/flavonoids"
     },
     {
@@ -797,6 +889,8 @@ window.APP_DATA = {
       "use": "Edamame als Snack; Tofu/Tempeh in Gemüsepfannen.",
       "caution": "Bei Schilddrüsenthemen Sojamengen mit Arzt/Apotheke abklären, wenn relevant.",
       "priority": "sehr hoch",
+      "nutrition": "Energie / Kalorien: ca. 193 kcal; Fett: ca. 11,0 g; davon gesättigte Fettsäuren: ca. 2,2 g; Kohlenhydrate: ca. 9,4 g; davon Zucker: ca. 0,0 g; Eiweiß / Protein: ca. 19,0 g; Salz: ca. 0,0 g; Ballaststoffe: ca. 5,0 g",
+      "portion": "100 g",
       "sources": "https://www.health.harvard.edu/diet-and-nutrition/quick-start-guide-to-an-antiinflammation-diet; https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/in-depth/mediterranean-diet/art-20047801; https://lpi.oregonstate.edu/mic/dietary-factors/phytochemicals/flavonoids"
     },
     {
@@ -814,6 +908,8 @@ window.APP_DATA = {
       "use": "Edamame als Snack; Tofu/Tempeh in Gemüsepfannen.",
       "caution": "Bei Schilddrüsenthemen Sojamengen mit Arzt/Apotheke abklären, wenn relevant.",
       "priority": "sehr hoch",
+      "nutrition": "Energie / Kalorien: ca. 76 kcal; Fett: ca. 4,8 g; davon gesättigte Fettsäuren: ca. 0,7 g; Kohlenhydrate: ca. 1,9 g; davon Zucker: ca. 0,6 g; Eiweiß / Protein: ca. 8,1 g; Salz: ca. 0,0 g; Ballaststoffe: ca. 0,3 g",
+      "portion": "100 g",
       "sources": "https://www.health.harvard.edu/diet-and-nutrition/quick-start-guide-to-an-antiinflammation-diet; https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/in-depth/mediterranean-diet/art-20047801; https://lpi.oregonstate.edu/mic/dietary-factors/phytochemicals/flavonoids"
     },
     {
@@ -831,6 +927,8 @@ window.APP_DATA = {
       "use": "Als Salat, Suppe, Dal oder Beilage zu Gemüse.",
       "caution": "Bei empfindlicher Verdauung langsam steigern.",
       "priority": "sehr hoch",
+      "nutrition": "Energie / Kalorien: ca. 116 kcal; Fett: ca. 0,4 g; davon gesättigte Fettsäuren: ca. 0,1 g; Kohlenhydrate: ca. 20,1 g; davon Zucker: ca. 1,8 g; Eiweiß / Protein: ca. 9,0 g; Salz: ca. 0,0 g; Ballaststoffe: ca. 8,0 g",
+      "portion": "100 g",
       "sources": "https://www.health.harvard.edu/diet-and-nutrition/quick-start-guide-to-an-antiinflammation-diet; https://www.health.harvard.edu/diet-and-nutrition/fighting-inflammation-with-food; https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/in-depth/mediterranean-diet/art-20047801; https://lpi.oregonstate.edu/mic/dietary-factors/phytochemicals/flavonoids"
     },
     {
@@ -848,6 +946,8 @@ window.APP_DATA = {
       "use": "Als Salat, Suppe, Dal oder Beilage zu Gemüse.",
       "caution": "Bei empfindlicher Verdauung langsam steigern.",
       "priority": "sehr hoch",
+      "nutrition": "Energie / Kalorien: ca. 116 kcal; Fett: ca. 0,4 g; davon gesättigte Fettsäuren: ca. 0,1 g; Kohlenhydrate: ca. 20,1 g; davon Zucker: ca. 1,8 g; Eiweiß / Protein: ca. 9,0 g; Salz: ca. 0,0 g; Ballaststoffe: ca. 8,0 g",
+      "portion": "100 g",
       "sources": "https://www.health.harvard.edu/diet-and-nutrition/quick-start-guide-to-an-antiinflammation-diet; https://www.health.harvard.edu/diet-and-nutrition/fighting-inflammation-with-food; https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/in-depth/mediterranean-diet/art-20047801; https://lpi.oregonstate.edu/mic/dietary-factors/phytochemicals/flavonoids"
     },
     {
@@ -865,6 +965,8 @@ window.APP_DATA = {
       "use": "Als Salat, Suppe, Dal oder Beilage zu Gemüse.",
       "caution": "Bei empfindlicher Verdauung langsam steigern.",
       "priority": "sehr hoch",
+      "nutrition": "Energie / Kalorien: ca. 116 kcal; Fett: ca. 0,4 g; davon gesättigte Fettsäuren: ca. 0,1 g; Kohlenhydrate: ca. 20,1 g; davon Zucker: ca. 1,8 g; Eiweiß / Protein: ca. 9,0 g; Salz: ca. 0,0 g; Ballaststoffe: ca. 8,0 g",
+      "portion": "100 g",
       "sources": "https://www.health.harvard.edu/diet-and-nutrition/quick-start-guide-to-an-antiinflammation-diet; https://www.health.harvard.edu/diet-and-nutrition/fighting-inflammation-with-food; https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/in-depth/mediterranean-diet/art-20047801; https://lpi.oregonstate.edu/mic/dietary-factors/phytochemicals/flavonoids"
     },
     {
@@ -882,6 +984,8 @@ window.APP_DATA = {
       "use": "Als Salat, Suppe, Dal oder Beilage zu Gemüse.",
       "caution": "Bei empfindlicher Verdauung langsam steigern.",
       "priority": "sehr hoch",
+      "nutrition": "Energie / Kalorien: ca. 116 kcal; Fett: ca. 0,4 g; davon gesättigte Fettsäuren: ca. 0,1 g; Kohlenhydrate: ca. 20,1 g; davon Zucker: ca. 1,8 g; Eiweiß / Protein: ca. 9,0 g; Salz: ca. 0,0 g; Ballaststoffe: ca. 7,9 g",
+      "portion": "100 g",
       "sources": "https://www.health.harvard.edu/diet-and-nutrition/quick-start-guide-to-an-antiinflammation-diet; https://www.health.harvard.edu/diet-and-nutrition/fighting-inflammation-with-food; https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/in-depth/mediterranean-diet/art-20047801; https://lpi.oregonstate.edu/mic/dietary-factors/phytochemicals/flavonoids"
     },
     {
@@ -899,6 +1003,8 @@ window.APP_DATA = {
       "use": "Als Salat, Suppe, Dal oder Beilage zu Gemüse.",
       "caution": "Bei empfindlicher Verdauung langsam steigern.",
       "priority": "sehr hoch",
+      "nutrition": "Energie / Kalorien: ca. 116 kcal; Fett: ca. 0,4 g; davon gesättigte Fettsäuren: ca. 0,1 g; Kohlenhydrate: ca. 20,1 g; davon Zucker: ca. 1,8 g; Eiweiß / Protein: ca. 9,0 g; Salz: ca. 0,0 g; Ballaststoffe: ca. 8,0 g",
+      "portion": "100 g",
       "sources": "https://www.health.harvard.edu/diet-and-nutrition/quick-start-guide-to-an-antiinflammation-diet; https://www.health.harvard.edu/diet-and-nutrition/fighting-inflammation-with-food; https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/in-depth/mediterranean-diet/art-20047801; https://lpi.oregonstate.edu/mic/dietary-factors/phytochemicals/flavonoids"
     },
     {
@@ -916,6 +1022,8 @@ window.APP_DATA = {
       "use": "Als Salat, Suppe, Dal oder Beilage zu Gemüse.",
       "caution": "Bei empfindlicher Verdauung langsam steigern.",
       "priority": "sehr hoch",
+      "nutrition": "Energie / Kalorien: ca. 116 kcal; Fett: ca. 0,4 g; davon gesättigte Fettsäuren: ca. 0,1 g; Kohlenhydrate: ca. 20,1 g; davon Zucker: ca. 1,8 g; Eiweiß / Protein: ca. 9,0 g; Salz: ca. 0,0 g; Ballaststoffe: ca. 7,9 g",
+      "portion": "100 g",
       "sources": "https://www.health.harvard.edu/diet-and-nutrition/quick-start-guide-to-an-antiinflammation-diet; https://www.health.harvard.edu/diet-and-nutrition/fighting-inflammation-with-food; https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/in-depth/mediterranean-diet/art-20047801; https://lpi.oregonstate.edu/mic/dietary-factors/phytochemicals/flavonoids"
     },
     {
@@ -933,6 +1041,8 @@ window.APP_DATA = {
       "use": "In Chili, Eintopf, Salat oder als Bohnenmus.",
       "caution": "Aus der Dose gut abspülen; bei Verdauung langsam steigern.",
       "priority": "sehr hoch",
+      "nutrition": "Energie / Kalorien: ca. 128 kcal; Fett: ca. 0,1 g; davon gesättigte Fettsäuren: ca. 0,0 g; Kohlenhydrate: ca. 24,8 g; davon Zucker: ca. 0,3 g; Eiweiß / Protein: ca. 7,5 g; Salz: ca. 0,0 g; Ballaststoffe: ca. 7,3 g",
+      "portion": "100 g",
       "sources": "https://www.health.harvard.edu/diet-and-nutrition/quick-start-guide-to-an-antiinflammation-diet; https://www.health.harvard.edu/diet-and-nutrition/fighting-inflammation-with-food; https://lpi.oregonstate.edu/mic/dietary-factors/phytochemicals/flavonoids"
     },
     {
@@ -950,6 +1060,8 @@ window.APP_DATA = {
       "use": "In Chili, Eintopf, Salat oder als Bohnenmus.",
       "caution": "Aus der Dose gut abspülen; bei Verdauung langsam steigern.",
       "priority": "sehr hoch",
+      "nutrition": "Energie / Kalorien: ca. 116 kcal; Fett: ca. 0,5 g; davon gesättigte Fettsäuren: ca. 0,1 g; Kohlenhydrate: ca. 20,8 g; davon Zucker: ca. 3,3 g; Eiweiß / Protein: ca. 7,7 g; Salz: ca. 0,0 g; Ballaststoffe: ca. 6,5 g",
+      "portion": "100 g",
       "sources": "https://www.health.harvard.edu/diet-and-nutrition/quick-start-guide-to-an-antiinflammation-diet; https://www.health.harvard.edu/diet-and-nutrition/fighting-inflammation-with-food; https://lpi.oregonstate.edu/mic/dietary-factors/phytochemicals/flavonoids"
     },
     {
@@ -967,6 +1079,8 @@ window.APP_DATA = {
       "use": "In Chili, Eintopf, Salat oder als Bohnenmus.",
       "caution": "Aus der Dose gut abspülen; bei Verdauung langsam steigern.",
       "priority": "sehr hoch",
+      "nutrition": "Energie / Kalorien: ca. 127 kcal; Fett: ca. 0,5 g; davon gesättigte Fettsäuren: ca. 0,1 g; Kohlenhydrate: ca. 22,8 g; davon Zucker: ca. 0,3 g; Eiweiß / Protein: ca. 8,7 g; Salz: ca. 0,0 g; Ballaststoffe: ca. 6,4 g",
+      "portion": "100 g",
       "sources": "https://www.health.harvard.edu/diet-and-nutrition/quick-start-guide-to-an-antiinflammation-diet; https://www.health.harvard.edu/diet-and-nutrition/fighting-inflammation-with-food; https://lpi.oregonstate.edu/mic/dietary-factors/phytochemicals/flavonoids"
     },
     {
@@ -984,6 +1098,8 @@ window.APP_DATA = {
       "use": "In Chili, Eintopf, Salat oder als Bohnenmus.",
       "caution": "Aus der Dose gut abspülen; bei Verdauung langsam steigern.",
       "priority": "sehr hoch",
+      "nutrition": "Energie / Kalorien: ca. 105 kcal; Fett: ca. 0,4 g; davon gesättigte Fettsäuren: ca. 0,1 g; Kohlenhydrate: ca. 19,2 g; davon Zucker: ca. 2,0 g; Eiweiß / Protein: ca. 7,0 g; Salz: ca. 0,0 g; Ballaststoffe: ca. 7,6 g",
+      "portion": "100 g",
       "sources": "https://www.health.harvard.edu/diet-and-nutrition/quick-start-guide-to-an-antiinflammation-diet; https://www.health.harvard.edu/diet-and-nutrition/fighting-inflammation-with-food; https://lpi.oregonstate.edu/mic/dietary-factors/phytochemicals/flavonoids"
     },
     {
@@ -1001,6 +1117,8 @@ window.APP_DATA = {
       "use": "In Chili, Eintopf, Salat oder als Bohnenmus.",
       "caution": "Aus der Dose gut abspülen; bei Verdauung langsam steigern.",
       "priority": "sehr hoch",
+      "nutrition": "Energie / Kalorien: ca. 143 kcal; Fett: ca. 0,7 g; davon gesättigte Fettsäuren: ca. 0,1 g; Kohlenhydrate: ca. 26,2 g; davon Zucker: ca. 0,3 g; Eiweiß / Protein: ca. 9,0 g; Salz: ca. 0,0 g; Ballaststoffe: ca. 9,0 g",
+      "portion": "100 g",
       "sources": "https://www.health.harvard.edu/diet-and-nutrition/quick-start-guide-to-an-antiinflammation-diet; https://www.health.harvard.edu/diet-and-nutrition/fighting-inflammation-with-food; https://lpi.oregonstate.edu/mic/dietary-factors/phytochemicals/flavonoids"
     },
     {
@@ -1018,6 +1136,8 @@ window.APP_DATA = {
       "use": "In Chili, Eintopf, Salat oder als Bohnenmus.",
       "caution": "Aus der Dose gut abspülen; bei Verdauung langsam steigern.",
       "priority": "sehr hoch",
+      "nutrition": "Energie / Kalorien: ca. 132 kcal; Fett: ca. 0,5 g; davon gesättigte Fettsäuren: ca. 0,1 g; Kohlenhydrate: ca. 23,7 g; davon Zucker: ca. 0,3 g; Eiweiß / Protein: ca. 8,9 g; Salz: ca. 0,0 g; Ballaststoffe: ca. 8,7 g",
+      "portion": "100 g",
       "sources": "https://www.health.harvard.edu/diet-and-nutrition/quick-start-guide-to-an-antiinflammation-diet; https://www.health.harvard.edu/diet-and-nutrition/fighting-inflammation-with-food; https://lpi.oregonstate.edu/mic/dietary-factors/phytochemicals/flavonoids"
     },
     {
@@ -1035,6 +1155,8 @@ window.APP_DATA = {
       "use": "In Chili, Eintopf, Salat oder als Bohnenmus.",
       "caution": "Aus der Dose gut abspülen; bei Verdauung langsam steigern.",
       "priority": "sehr hoch",
+      "nutrition": "Energie / Kalorien: ca. 139 kcal; Fett: ca. 0,4 g; davon gesättigte Fettsäuren: ca. 0,1 g; Kohlenhydrate: ca. 25,1 g; davon Zucker: ca. 0,4 g; Eiweiß / Protein: ca. 9,7 g; Salz: ca. 0,0 g; Ballaststoffe: ca. 6,3 g",
+      "portion": "100 g",
       "sources": "https://www.health.harvard.edu/diet-and-nutrition/quick-start-guide-to-an-antiinflammation-diet; https://www.health.harvard.edu/diet-and-nutrition/fighting-inflammation-with-food; https://lpi.oregonstate.edu/mic/dietary-factors/phytochemicals/flavonoids"
     },
     {
@@ -1052,6 +1174,8 @@ window.APP_DATA = {
       "use": "Hummus mit Rohkost; Erbsen/Lupinen in Salat oder Suppe.",
       "caution": "Hummus wegen Öl/Kalorien portionsbewusst essen.",
       "priority": "hoch",
+      "nutrition": "Energie / Kalorien: ca. 81 kcal; Fett: ca. 0,4 g; davon gesättigte Fettsäuren: ca. 0,1 g; Kohlenhydrate: ca. 14,5 g; davon Zucker: ca. 5,7 g; Eiweiß / Protein: ca. 5,4 g; Salz: ca. 0,0 g; Ballaststoffe: ca. 5,7 g",
+      "portion": "100 g",
       "sources": "https://www.health.harvard.edu/diet-and-nutrition/quick-start-guide-to-an-antiinflammation-diet; https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/in-depth/mediterranean-diet/art-20047801"
     },
     {
@@ -1069,6 +1193,8 @@ window.APP_DATA = {
       "use": "Hummus mit Rohkost; Erbsen/Lupinen in Salat oder Suppe.",
       "caution": "Hummus wegen Öl/Kalorien portionsbewusst essen.",
       "priority": "hoch",
+      "nutrition": "Energie / Kalorien: ca. 166 kcal; Fett: ca. 9,6 g; davon gesättigte Fettsäuren: ca. 1,4 g; Kohlenhydrate: ca. 14,3 g; davon Zucker: ca. 0,3 g; Eiweiß / Protein: ca. 7,9 g; Salz: ca. 0,6 g; Ballaststoffe: ca. 6,0 g",
+      "portion": "50 g",
       "sources": "https://www.health.harvard.edu/diet-and-nutrition/quick-start-guide-to-an-antiinflammation-diet; https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/in-depth/mediterranean-diet/art-20047801"
     },
     {
@@ -1086,6 +1212,8 @@ window.APP_DATA = {
       "use": "Hummus mit Rohkost; Erbsen/Lupinen in Salat oder Suppe.",
       "caution": "Hummus wegen Öl/Kalorien portionsbewusst essen.",
       "priority": "hoch",
+      "nutrition": "Energie / Kalorien: ca. 164 kcal; Fett: ca. 2,6 g; davon gesättigte Fettsäuren: ca. 0,3 g; Kohlenhydrate: ca. 27,4 g; davon Zucker: ca. 4,8 g; Eiweiß / Protein: ca. 8,9 g; Salz: ca. 0,0 g; Ballaststoffe: ca. 7,6 g",
+      "portion": "100 g",
       "sources": "https://www.health.harvard.edu/diet-and-nutrition/quick-start-guide-to-an-antiinflammation-diet; https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/in-depth/mediterranean-diet/art-20047801"
     },
     {
@@ -1103,6 +1231,8 @@ window.APP_DATA = {
       "use": "Hummus mit Rohkost; Erbsen/Lupinen in Salat oder Suppe.",
       "caution": "Hummus wegen Öl/Kalorien portionsbewusst essen.",
       "priority": "hoch",
+      "nutrition": "Energie / Kalorien: ca. 119 kcal; Fett: ca. 2,9 g; davon gesättigte Fettsäuren: ca. 0,4 g; Kohlenhydrate: ca. 9,9 g; davon Zucker: ca. 0,5 g; Eiweiß / Protein: ca. 15,6 g; Salz: ca. 0,0 g; Ballaststoffe: ca. 2,8 g",
+      "portion": "100 g",
       "sources": "https://www.health.harvard.edu/diet-and-nutrition/quick-start-guide-to-an-antiinflammation-diet; https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/in-depth/mediterranean-diet/art-20047801"
     },
     {
@@ -1120,6 +1250,8 @@ window.APP_DATA = {
       "use": "Hummus mit Rohkost; Erbsen/Lupinen in Salat oder Suppe.",
       "caution": "Hummus wegen Öl/Kalorien portionsbewusst essen.",
       "priority": "hoch",
+      "nutrition": "Energie / Kalorien: ca. 370 kcal; Fett: ca. 10,0 g; davon gesättigte Fettsäuren: ca. 1,5 g; Kohlenhydrate: ca. 12,0 g; davon Zucker: ca. 5,0 g; Eiweiß / Protein: ca. 40,0 g; Salz: ca. 0,1 g; Ballaststoffe: ca. 30,0 g",
+      "portion": "20 g",
       "sources": "https://www.health.harvard.edu/diet-and-nutrition/quick-start-guide-to-an-antiinflammation-diet; https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/in-depth/mediterranean-diet/art-20047801"
     },
     {
@@ -1137,6 +1269,8 @@ window.APP_DATA = {
       "use": "Hummus mit Rohkost; Erbsen/Lupinen in Salat oder Suppe.",
       "caution": "Hummus wegen Öl/Kalorien portionsbewusst essen.",
       "priority": "hoch",
+      "nutrition": "Energie / Kalorien: ca. 118 kcal; Fett: ca. 0,4 g; davon gesättigte Fettsäuren: ca. 0,1 g; Kohlenhydrate: ca. 21,0 g; davon Zucker: ca. 2,9 g; Eiweiß / Protein: ca. 8,3 g; Salz: ca. 0,0 g; Ballaststoffe: ca. 8,3 g",
+      "portion": "100 g",
       "sources": "https://www.health.harvard.edu/diet-and-nutrition/quick-start-guide-to-an-antiinflammation-diet; https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/in-depth/mediterranean-diet/art-20047801"
     },
     {
@@ -1154,6 +1288,8 @@ window.APP_DATA = {
       "use": "Mit Beeren, Leinsamen, Zimt oder Nüssen kombinieren.",
       "caution": "Ungezuckerte Varianten bevorzugen.",
       "priority": "hoch",
+      "nutrition": "Energie / Kalorien: ca. 37 kcal; Fett: ca. 0,5 g; davon gesättigte Fettsäuren: ca. 0,3 g; Kohlenhydrate: ca. 4,8 g; davon Zucker: ca. 4,8 g; Eiweiß / Protein: ca. 3,4 g; Salz: ca. 0,1 g; Ballaststoffe: ca. 0,0 g",
+      "portion": "200 g",
       "sources": "https://www.health.harvard.edu/diet-and-nutrition/quick-start-guide-to-an-antiinflammation-diet; https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/in-depth/mediterranean-diet/art-20047801"
     },
     {
@@ -1171,6 +1307,8 @@ window.APP_DATA = {
       "use": "Mit Beeren, Leinsamen, Zimt oder Nüssen kombinieren.",
       "caution": "Ungezuckerte Varianten bevorzugen.",
       "priority": "hoch",
+      "nutrition": "Energie / Kalorien: ca. 97 kcal; Fett: ca. 5,0 g; davon gesättigte Fettsäuren: ca. 3,2 g; Kohlenhydrate: ca. 3,6 g; davon Zucker: ca. 3,6 g; Eiweiß / Protein: ca. 9,0 g; Salz: ca. 0,1 g; Ballaststoffe: ca. 0,0 g",
+      "portion": "200 g",
       "sources": "https://www.health.harvard.edu/diet-and-nutrition/quick-start-guide-to-an-antiinflammation-diet; https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/in-depth/mediterranean-diet/art-20047801"
     },
     {
@@ -1188,6 +1326,8 @@ window.APP_DATA = {
       "use": "Mit Beeren, Leinsamen, Zimt oder Nüssen kombinieren.",
       "caution": "Ungezuckerte Varianten bevorzugen.",
       "priority": "hoch",
+      "nutrition": "Energie / Kalorien: ca. 98 kcal; Fett: ca. 4,3 g; davon gesättigte Fettsäuren: ca. 2,6 g; Kohlenhydrate: ca. 3,4 g; davon Zucker: ca. 3,4 g; Eiweiß / Protein: ca. 11,1 g; Salz: ca. 0,8 g; Ballaststoffe: ca. 0,0 g",
+      "portion": "200 g",
       "sources": "https://www.health.harvard.edu/diet-and-nutrition/quick-start-guide-to-an-antiinflammation-diet; https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/in-depth/mediterranean-diet/art-20047801"
     },
     {
@@ -1205,6 +1345,8 @@ window.APP_DATA = {
       "use": "Mit Beeren, Leinsamen, Zimt oder Nüssen kombinieren.",
       "caution": "Ungezuckerte Varianten bevorzugen.",
       "priority": "hoch",
+      "nutrition": "Energie / Kalorien: ca. 64 kcal; Fett: ca. 3,5 g; davon gesättigte Fettsäuren: ca. 2,2 g; Kohlenhydrate: ca. 4,0 g; davon Zucker: ca. 4,0 g; Eiweiß / Protein: ca. 3,3 g; Salz: ca. 0,1 g; Ballaststoffe: ca. 0,0 g",
+      "portion": "200 g",
       "sources": "https://www.health.harvard.edu/diet-and-nutrition/quick-start-guide-to-an-antiinflammation-diet; https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/in-depth/mediterranean-diet/art-20047801"
     },
     {
@@ -1222,6 +1364,8 @@ window.APP_DATA = {
       "use": "Mit Beeren, Leinsamen, Zimt oder Nüssen kombinieren.",
       "caution": "Ungezuckerte Varianten bevorzugen.",
       "priority": "hoch",
+      "nutrition": "Energie / Kalorien: ca. 61 kcal; Fett: ca. 3,3 g; davon gesättigte Fettsäuren: ca. 2,1 g; Kohlenhydrate: ca. 4,7 g; davon Zucker: ca. 4,7 g; Eiweiß / Protein: ca. 3,5 g; Salz: ca. 0,1 g; Ballaststoffe: ca. 0,0 g",
+      "portion": "200 g",
       "sources": "https://www.health.harvard.edu/diet-and-nutrition/quick-start-guide-to-an-antiinflammation-diet; https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/in-depth/mediterranean-diet/art-20047801"
     },
     {
@@ -1239,6 +1383,8 @@ window.APP_DATA = {
       "use": "Mit Beeren, Leinsamen, Zimt oder Nüssen kombinieren.",
       "caution": "Ungezuckerte Varianten bevorzugen.",
       "priority": "hoch",
+      "nutrition": "Energie / Kalorien: ca. 70 kcal; Fett: ca. 0,2 g; davon gesättigte Fettsäuren: ca. 0,1 g; Kohlenhydrate: ca. 4,0 g; davon Zucker: ca. 4,0 g; Eiweiß / Protein: ca. 12,0 g; Salz: ca. 0,1 g; Ballaststoffe: ca. 0,0 g",
+      "portion": "200 g",
       "sources": "https://www.health.harvard.edu/diet-and-nutrition/quick-start-guide-to-an-antiinflammation-diet; https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/in-depth/mediterranean-diet/art-20047801"
     },
     {
@@ -1256,6 +1402,8 @@ window.APP_DATA = {
       "use": "Mit Beeren, Leinsamen, Zimt oder Nüssen kombinieren.",
       "caution": "Ungezuckerte Varianten bevorzugen.",
       "priority": "hoch",
+      "nutrition": "Energie / Kalorien: ca. 63 kcal; Fett: ca. 0,2 g; davon gesättigte Fettsäuren: ca. 0,1 g; Kohlenhydrate: ca. 4,0 g; davon Zucker: ca. 4,0 g; Eiweiß / Protein: ca. 11,0 g; Salz: ca. 0,1 g; Ballaststoffe: ca. 0,0 g",
+      "portion": "200 g",
       "sources": "https://www.health.harvard.edu/diet-and-nutrition/quick-start-guide-to-an-antiinflammation-diet; https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/in-depth/mediterranean-diet/art-20047801"
     },
     {
@@ -1273,6 +1421,8 @@ window.APP_DATA = {
       "use": "Als Beilage zu Fisch, Ei, Tofu oder Hülsenfrüchten.",
       "caution": "Roh nicht stark erhitzen, wenn lebende Kulturen gewünscht sind; Salzgehalt beachten.",
       "priority": "hoch",
+      "nutrition": "Energie / Kalorien: ca. 15 kcal; Fett: ca. 0,5 g; davon gesättigte Fettsäuren: ca. 0,1 g; Kohlenhydrate: ca. 2,4 g; davon Zucker: ca. 1,1 g; Eiweiß / Protein: ca. 1,1 g; Salz: ca. 1,1 g; Ballaststoffe: ca. 1,6 g",
+      "portion": "40 g",
       "sources": "https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/in-depth/mediterranean-diet/art-20047801; https://health.clevelandclinic.org/anti-inflammatory-diet"
     },
     {
@@ -1290,6 +1440,8 @@ window.APP_DATA = {
       "use": "Als Beilage zu Fisch, Ei, Tofu oder Hülsenfrüchten.",
       "caution": "Roh nicht stark erhitzen, wenn lebende Kulturen gewünscht sind; Salzgehalt beachten.",
       "priority": "hoch",
+      "nutrition": "Energie / Kalorien: ca. 199 kcal; Fett: ca. 6,0 g; davon gesättigte Fettsäuren: ca. 1,0 g; Kohlenhydrate: ca. 26,5 g; davon Zucker: ca. 6,2 g; Eiweiß / Protein: ca. 12,8 g; Salz: ca. 12,0 g; Ballaststoffe: ca. 5,4 g",
+      "portion": "15 g",
       "sources": "https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/in-depth/mediterranean-diet/art-20047801; https://health.clevelandclinic.org/anti-inflammatory-diet"
     },
     {
@@ -1307,6 +1459,8 @@ window.APP_DATA = {
       "use": "Als Beilage zu Fisch, Ei, Tofu oder Hülsenfrüchten.",
       "caution": "Roh nicht stark erhitzen, wenn lebende Kulturen gewünscht sind; Salzgehalt beachten.",
       "priority": "hoch",
+      "nutrition": "Energie / Kalorien: ca. 19 kcal; Fett: ca. 0,1 g; davon gesättigte Fettsäuren: ca. 0,0 g; Kohlenhydrate: ca. 4,3 g; davon Zucker: ca. 1,8 g; Eiweiß / Protein: ca. 0,9 g; Salz: ca. 0,7 g; Ballaststoffe: ca. 2,9 g",
+      "portion": "40 g",
       "sources": "https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/in-depth/mediterranean-diet/art-20047801; https://health.clevelandclinic.org/anti-inflammatory-diet"
     },
     {
@@ -1324,6 +1478,8 @@ window.APP_DATA = {
       "use": "Als Beilage zu Fisch, Ei, Tofu oder Hülsenfrüchten.",
       "caution": "Roh nicht stark erhitzen, wenn lebende Kulturen gewünscht sind; Salzgehalt beachten.",
       "priority": "hoch",
+      "nutrition": "Energie / Kalorien: ca. 12 kcal; Fett: ca. 0,1 g; davon gesättigte Fettsäuren: ca. 0,0 g; Kohlenhydrate: ca. 2,3 g; davon Zucker: ca. 1,2 g; Eiweiß / Protein: ca. 0,5 g; Salz: ca. 1,3 g; Ballaststoffe: ca. 1,2 g",
+      "portion": "40 g",
       "sources": "https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/in-depth/mediterranean-diet/art-20047801; https://health.clevelandclinic.org/anti-inflammatory-diet"
     },
     {
@@ -1341,6 +1497,8 @@ window.APP_DATA = {
       "use": "Als Beilage zu Fisch, Ei, Tofu oder Hülsenfrüchten.",
       "caution": "Roh nicht stark erhitzen, wenn lebende Kulturen gewünscht sind; Salzgehalt beachten.",
       "priority": "hoch",
+      "nutrition": "Energie / Kalorien: ca. 35 kcal; Fett: ca. 0,2 g; davon gesättigte Fettsäuren: ca. 0,0 g; Kohlenhydrate: ca. 8,0 g; davon Zucker: ca. 4,7 g; Eiweiß / Protein: ca. 0,9 g; Salz: ca. 1,0 g; Ballaststoffe: ca. 2,8 g",
+      "portion": "40 g",
       "sources": "https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/in-depth/mediterranean-diet/art-20047801; https://health.clevelandclinic.org/anti-inflammatory-diet"
     },
     {
@@ -1358,6 +1516,8 @@ window.APP_DATA = {
       "use": "Kleine Menge als Ergänzung zu Salat/Gemüse.",
       "caution": "Nicht als Hauptquelle für Antioxidantien sehen.",
       "priority": "mittel",
+      "nutrition": "Energie / Kalorien: ca. 264 kcal; Fett: ca. 21,0 g; davon gesättigte Fettsäuren: ca. 15,0 g; Kohlenhydrate: ca. 4,1 g; davon Zucker: ca. 4,1 g; Eiweiß / Protein: ca. 14,2 g; Salz: ca. 2,8 g; Ballaststoffe: ca. 0,0 g",
+      "portion": "40 g",
       "sources": "https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/in-depth/mediterranean-diet/art-20047801"
     },
     {
@@ -1375,6 +1535,8 @@ window.APP_DATA = {
       "use": "Kleine Menge als Ergänzung zu Salat/Gemüse.",
       "caution": "Nicht als Hauptquelle für Antioxidantien sehen.",
       "priority": "mittel",
+      "nutrition": "Energie / Kalorien: ca. 250 kcal; Fett: ca. 24,0 g; davon gesättigte Fettsäuren: ca. 16,0 g; Kohlenhydrate: ca. 3,2 g; davon Zucker: ca. 3,2 g; Eiweiß / Protein: ca. 5,5 g; Salz: ca. 0,8 g; Ballaststoffe: ca. 0,0 g",
+      "portion": "40 g",
       "sources": "https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/in-depth/mediterranean-diet/art-20047801"
     },
     {
@@ -1392,6 +1554,8 @@ window.APP_DATA = {
       "use": "Kleine Menge als Ergänzung zu Salat/Gemüse.",
       "caution": "Nicht als Hauptquelle für Antioxidantien sehen.",
       "priority": "mittel",
+      "nutrition": "Energie / Kalorien: ca. 125 kcal; Fett: ca. 0,5 g; davon gesättigte Fettsäuren: ca. 0,3 g; Kohlenhydrate: ca. 0,0 g; davon Zucker: ca. 0,0 g; Eiweiß / Protein: ca. 30,0 g; Salz: ca. 2,5 g; Ballaststoffe: ca. 0,0 g",
+      "portion": "100 g",
       "sources": "https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/in-depth/mediterranean-diet/art-20047801"
     },
     {
@@ -1409,6 +1573,8 @@ window.APP_DATA = {
       "use": "Kleine Menge als Ergänzung zu Salat/Gemüse.",
       "caution": "Nicht als Hauptquelle für Antioxidantien sehen.",
       "priority": "mittel",
+      "nutrition": "Energie / Kalorien: ca. 240 kcal; Fett: ca. 18,0 g; davon gesättigte Fettsäuren: ca. 11,0 g; Kohlenhydrate: ca. 2,0 g; davon Zucker: ca. 1,0 g; Eiweiß / Protein: ca. 18,0 g; Salz: ca. 0,6 g; Ballaststoffe: ca. 0,0 g",
+      "portion": "80 g",
       "sources": "https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/in-depth/mediterranean-diet/art-20047801"
     },
     {
@@ -1426,6 +1592,8 @@ window.APP_DATA = {
       "use": "Kleine Menge als Ergänzung zu Salat/Gemüse.",
       "caution": "Nicht als Hauptquelle für Antioxidantien sehen.",
       "priority": "mittel",
+      "nutrition": "Energie / Kalorien: ca. 431 kcal; Fett: ca. 29,0 g; davon gesättigte Fettsäuren: ca. 19,0 g; Kohlenhydrate: ca. 4,1 g; davon Zucker: ca. 0,9 g; Eiweiß / Protein: ca. 38,0 g; Salz: ca. 3,8 g; Ballaststoffe: ca. 0,0 g",
+      "portion": "20 g",
       "sources": "https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/in-depth/mediterranean-diet/art-20047801"
     },
     {
@@ -1443,6 +1611,8 @@ window.APP_DATA = {
       "use": "Kleine Menge als Ergänzung zu Salat/Gemüse.",
       "caution": "Nicht als Hauptquelle für Antioxidantien sehen.",
       "priority": "mittel",
+      "nutrition": "Energie / Kalorien: ca. 300 kcal; Fett: ca. 25,0 g; davon gesättigte Fettsäuren: ca. 17,0 g; Kohlenhydrate: ca. 1,0 g; davon Zucker: ca. 1,0 g; Eiweiß / Protein: ca. 20,0 g; Salz: ca. 1,5 g; Ballaststoffe: ca. 0,0 g",
+      "portion": "40 g",
       "sources": "https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/in-depth/mediterranean-diet/art-20047801"
     },
     {
@@ -1460,6 +1630,8 @@ window.APP_DATA = {
       "use": "Kurz dämpfen, braten, roh als Salat oder als Beilage.",
       "caution": "Nicht zerkochen; Brokkolisprossen sehr intensiv verwenden.",
       "priority": "sehr hoch",
+      "nutrition": "Energie / Kalorien: ca. 25 kcal; Fett: ca. 0,3 g; davon gesättigte Fettsäuren: ca. 0,1 g; Kohlenhydrate: ca. 5,0 g; davon Zucker: ca. 1,9 g; Eiweiß / Protein: ca. 1,9 g; Salz: ca. 0,0 g; Ballaststoffe: ca. 2,0 g",
+      "portion": "150 g",
       "sources": "https://www.health.harvard.edu/healthy-aging-and-longevity/foods-that-fight-inflammation; https://www.health.harvard.edu/diet-and-nutrition/quick-start-guide-to-an-antiinflammation-diet; https://lpi.oregonstate.edu/mic/food-beverages/fruit-vegetables"
     },
     {
@@ -1477,6 +1649,8 @@ window.APP_DATA = {
       "use": "Kurz dämpfen, braten, roh als Salat oder als Beilage.",
       "caution": "Nicht zerkochen; Brokkolisprossen sehr intensiv verwenden.",
       "priority": "sehr hoch",
+      "nutrition": "Energie / Kalorien: ca. 34 kcal; Fett: ca. 0,4 g; davon gesättigte Fettsäuren: ca. 0,1 g; Kohlenhydrate: ca. 6,6 g; davon Zucker: ca. 1,7 g; Eiweiß / Protein: ca. 2,8 g; Salz: ca. 0,1 g; Ballaststoffe: ca. 2,6 g",
+      "portion": "150 g",
       "sources": "https://www.health.harvard.edu/healthy-aging-and-longevity/foods-that-fight-inflammation; https://www.health.harvard.edu/diet-and-nutrition/quick-start-guide-to-an-antiinflammation-diet; https://lpi.oregonstate.edu/mic/food-beverages/fruit-vegetables"
     },
     {
@@ -1494,6 +1668,8 @@ window.APP_DATA = {
       "use": "Kurz dämpfen, braten, roh als Salat oder als Beilage.",
       "caution": "Nicht zerkochen; Brokkolisprossen sehr intensiv verwenden.",
       "priority": "sehr hoch",
+      "nutrition": "Energie / Kalorien: ca. 35 kcal; Fett: ca. 0,4 g; davon gesättigte Fettsäuren: ca. 0,1 g; Kohlenhydrate: ca. 5,0 g; davon Zucker: ca. 1,5 g; Eiweiß / Protein: ca. 4,0 g; Salz: ca. 0,0 g; Ballaststoffe: ca. 3,0 g",
+      "portion": "150 g",
       "sources": "https://www.health.harvard.edu/healthy-aging-and-longevity/foods-that-fight-inflammation; https://www.health.harvard.edu/diet-and-nutrition/quick-start-guide-to-an-antiinflammation-diet; https://lpi.oregonstate.edu/mic/food-beverages/fruit-vegetables"
     },
     {
@@ -1511,6 +1687,8 @@ window.APP_DATA = {
       "use": "Kurz dämpfen, braten, roh als Salat oder als Beilage.",
       "caution": "Nicht zerkochen; Brokkolisprossen sehr intensiv verwenden.",
       "priority": "sehr hoch",
+      "nutrition": "Energie / Kalorien: ca. 13 kcal; Fett: ca. 0,2 g; davon gesättigte Fettsäuren: ca. 0,0 g; Kohlenhydrate: ca. 2,2 g; davon Zucker: ca. 1,2 g; Eiweiß / Protein: ca. 1,5 g; Salz: ca. 0,0 g; Ballaststoffe: ca. 1,0 g",
+      "portion": "150 g",
       "sources": "https://www.health.harvard.edu/healthy-aging-and-longevity/foods-that-fight-inflammation; https://www.health.harvard.edu/diet-and-nutrition/quick-start-guide-to-an-antiinflammation-diet; https://lpi.oregonstate.edu/mic/food-beverages/fruit-vegetables"
     },
     {
@@ -1528,6 +1706,8 @@ window.APP_DATA = {
       "use": "Kurz dämpfen, braten, roh als Salat oder als Beilage.",
       "caution": "Nicht zerkochen; Brokkolisprossen sehr intensiv verwenden.",
       "priority": "sehr hoch",
+      "nutrition": "Energie / Kalorien: ca. 27 kcal; Fett: ca. 0,1 g; davon gesättigte Fettsäuren: ca. 0,0 g; Kohlenhydrate: ca. 6,2 g; davon Zucker: ca. 2,6 g; Eiweiß / Protein: ca. 1,7 g; Salz: ca. 0,0 g; Ballaststoffe: ca. 3,6 g",
+      "portion": "150 g",
       "sources": "https://www.health.harvard.edu/healthy-aging-and-longevity/foods-that-fight-inflammation; https://www.health.harvard.edu/diet-and-nutrition/quick-start-guide-to-an-antiinflammation-diet; https://lpi.oregonstate.edu/mic/food-beverages/fruit-vegetables"
     },
     {
@@ -1545,6 +1725,8 @@ window.APP_DATA = {
       "use": "Kurz dämpfen, braten, roh als Salat oder als Beilage.",
       "caution": "Nicht zerkochen; Brokkolisprossen sehr intensiv verwenden.",
       "priority": "sehr hoch",
+      "nutrition": "Energie / Kalorien: ca. 32 kcal; Fett: ca. 0,7 g; davon gesättigte Fettsäuren: ca. 0,1 g; Kohlenhydrate: ca. 5,5 g; davon Zucker: ca. 0,6 g; Eiweiß / Protein: ca. 2,6 g; Salz: ca. 0,0 g; Ballaststoffe: ca. 1,1 g",
+      "portion": "150 g",
       "sources": "https://www.health.harvard.edu/healthy-aging-and-longevity/foods-that-fight-inflammation; https://www.health.harvard.edu/diet-and-nutrition/quick-start-guide-to-an-antiinflammation-diet; https://lpi.oregonstate.edu/mic/food-beverages/fruit-vegetables"
     },
     {
@@ -1562,6 +1744,8 @@ window.APP_DATA = {
       "use": "Kurz dämpfen, braten, roh als Salat oder als Beilage.",
       "caution": "Nicht zerkochen; Brokkolisprossen sehr intensiv verwenden.",
       "priority": "sehr hoch",
+      "nutrition": "Energie / Kalorien: ca. 48 kcal; Fett: ca. 0,7 g; davon gesättigte Fettsäuren: ca. 0,1 g; Kohlenhydrate: ca. 11,3 g; davon Zucker: ca. 8,0 g; Eiweiß / Protein: ca. 1,2 g; Salz: ca. 0,0 g; Ballaststoffe: ca. 3,3 g",
+      "portion": "15 g",
       "sources": "https://www.health.harvard.edu/healthy-aging-and-longevity/foods-that-fight-inflammation; https://www.health.harvard.edu/diet-and-nutrition/quick-start-guide-to-an-antiinflammation-diet; https://lpi.oregonstate.edu/mic/food-beverages/fruit-vegetables"
     },
     {
@@ -1579,6 +1763,8 @@ window.APP_DATA = {
       "use": "Kurz dämpfen, braten, roh als Salat oder als Beilage.",
       "caution": "Nicht zerkochen; Brokkolisprossen sehr intensiv verwenden.",
       "priority": "sehr hoch",
+      "nutrition": "Energie / Kalorien: ca. 13 kcal; Fett: ca. 0,2 g; davon gesättigte Fettsäuren: ca. 0,0 g; Kohlenhydrate: ca. 2,2 g; davon Zucker: ca. 1,2 g; Eiweiß / Protein: ca. 1,5 g; Salz: ca. 0,2 g; Ballaststoffe: ca. 1,0 g",
+      "portion": "150 g",
       "sources": "https://www.health.harvard.edu/healthy-aging-and-longevity/foods-that-fight-inflammation; https://www.health.harvard.edu/diet-and-nutrition/quick-start-guide-to-an-antiinflammation-diet; https://lpi.oregonstate.edu/mic/food-beverages/fruit-vegetables"
     },
     {
@@ -1596,6 +1782,8 @@ window.APP_DATA = {
       "use": "Kurz dämpfen, braten, roh als Salat oder als Beilage.",
       "caution": "Nicht zerkochen; Brokkolisprossen sehr intensiv verwenden.",
       "priority": "sehr hoch",
+      "nutrition": "Energie / Kalorien: ca. 16 kcal; Fett: ca. 0,1 g; davon gesättigte Fettsäuren: ca. 0,0 g; Kohlenhydrate: ca. 3,4 g; davon Zucker: ca. 1,9 g; Eiweiß / Protein: ca. 0,7 g; Salz: ca. 0,0 g; Ballaststoffe: ca. 1,6 g",
+      "portion": "150 g",
       "sources": "https://www.health.harvard.edu/healthy-aging-and-longevity/foods-that-fight-inflammation; https://www.health.harvard.edu/diet-and-nutrition/quick-start-guide-to-an-antiinflammation-diet; https://lpi.oregonstate.edu/mic/food-beverages/fruit-vegetables"
     },
     {
@@ -1613,6 +1801,8 @@ window.APP_DATA = {
       "use": "Kurz dämpfen, braten, roh als Salat oder als Beilage.",
       "caution": "Nicht zerkochen; Brokkolisprossen sehr intensiv verwenden.",
       "priority": "sehr hoch",
+      "nutrition": "Energie / Kalorien: ca. 18 kcal; Fett: ca. 0,1 g; davon gesättigte Fettsäuren: ca. 0,0 g; Kohlenhydrate: ca. 4,1 g; davon Zucker: ca. 2,5 g; Eiweiß / Protein: ca. 0,6 g; Salz: ca. 0,0 g; Ballaststoffe: ca. 1,6 g",
+      "portion": "150 g",
       "sources": "https://www.health.harvard.edu/healthy-aging-and-longevity/foods-that-fight-inflammation; https://www.health.harvard.edu/diet-and-nutrition/quick-start-guide-to-an-antiinflammation-diet; https://lpi.oregonstate.edu/mic/food-beverages/fruit-vegetables"
     },
     {
@@ -1630,6 +1820,8 @@ window.APP_DATA = {
       "use": "Kurz dämpfen, braten, roh als Salat oder als Beilage.",
       "caution": "Nicht zerkochen; Brokkolisprossen sehr intensiv verwenden.",
       "priority": "sehr hoch",
+      "nutrition": "Energie / Kalorien: ca. 43 kcal; Fett: ca. 0,3 g; davon gesättigte Fettsäuren: ca. 0,1 g; Kohlenhydrate: ca. 9,0 g; davon Zucker: ca. 2,2 g; Eiweiß / Protein: ca. 3,4 g; Salz: ca. 0,1 g; Ballaststoffe: ca. 3,8 g",
+      "portion": "150 g",
       "sources": "https://www.health.harvard.edu/healthy-aging-and-longevity/foods-that-fight-inflammation; https://www.health.harvard.edu/diet-and-nutrition/quick-start-guide-to-an-antiinflammation-diet; https://lpi.oregonstate.edu/mic/food-beverages/fruit-vegetables"
     },
     {
@@ -1647,6 +1839,8 @@ window.APP_DATA = {
       "use": "Kurz dämpfen, braten, roh als Salat oder als Beilage.",
       "caution": "Nicht zerkochen; Brokkolisprossen sehr intensiv verwenden.",
       "priority": "sehr hoch",
+      "nutrition": "Energie / Kalorien: ca. 31 kcal; Fett: ca. 0,2 g; davon gesättigte Fettsäuren: ca. 0,0 g; Kohlenhydrate: ca. 7,4 g; davon Zucker: ca. 3,8 g; Eiweiß / Protein: ca. 1,4 g; Salz: ca. 0,1 g; Ballaststoffe: ca. 2,1 g",
+      "portion": "150 g",
       "sources": "https://www.health.harvard.edu/healthy-aging-and-longevity/foods-that-fight-inflammation; https://www.health.harvard.edu/diet-and-nutrition/quick-start-guide-to-an-antiinflammation-diet; https://lpi.oregonstate.edu/mic/food-beverages/fruit-vegetables"
     },
     {
@@ -1664,6 +1858,8 @@ window.APP_DATA = {
       "use": "Kurz dämpfen, braten, roh als Salat oder als Beilage.",
       "caution": "Nicht zerkochen; Brokkolisprossen sehr intensiv verwenden.",
       "priority": "sehr hoch",
+      "nutrition": "Energie / Kalorien: ca. 25 kcal; Fett: ca. 0,1 g; davon gesättigte Fettsäuren: ca. 0,0 g; Kohlenhydrate: ca. 5,8 g; davon Zucker: ca. 3,2 g; Eiweiß / Protein: ca. 1,3 g; Salz: ca. 0,0 g; Ballaststoffe: ca. 2,5 g",
+      "portion": "150 g",
       "sources": "https://www.health.harvard.edu/healthy-aging-and-longevity/foods-that-fight-inflammation; https://www.health.harvard.edu/diet-and-nutrition/quick-start-guide-to-an-antiinflammation-diet; https://lpi.oregonstate.edu/mic/food-beverages/fruit-vegetables"
     },
     {
@@ -1681,6 +1877,8 @@ window.APP_DATA = {
       "use": "Kurz dämpfen, braten, roh als Salat oder als Beilage.",
       "caution": "Nicht zerkochen; Brokkolisprossen sehr intensiv verwenden.",
       "priority": "sehr hoch",
+      "nutrition": "Energie / Kalorien: ca. 27 kcal; Fett: ca. 0,2 g; davon gesättigte Fettsäuren: ca. 0,0 g; Kohlenhydrate: ca. 6,1 g; davon Zucker: ca. 2,3 g; Eiweiß / Protein: ca. 2,0 g; Salz: ca. 0,1 g; Ballaststoffe: ca. 3,1 g",
+      "portion": "150 g",
       "sources": "https://www.health.harvard.edu/healthy-aging-and-longevity/foods-that-fight-inflammation; https://www.health.harvard.edu/diet-and-nutrition/quick-start-guide-to-an-antiinflammation-diet; https://lpi.oregonstate.edu/mic/food-beverages/fruit-vegetables"
     },
     {
@@ -1698,6 +1896,8 @@ window.APP_DATA = {
       "use": "Mit Knoblauch, Petersilie und Olivenöl anbraten.",
       "caution": "Reishi eher als Spezial-/Heilpilz, nicht Standard-Lebensmittel.",
       "priority": "hoch",
+      "nutrition": "Energie / Kalorien: ca. 33 kcal; Fett: ca. 0,4 g; davon gesättigte Fettsäuren: ca. 0,1 g; Kohlenhydrate: ca. 6,1 g; davon Zucker: ca. 1,1 g; Eiweiß / Protein: ca. 3,3 g; Salz: ca. 0,1 g; Ballaststoffe: ca. 2,3 g",
+      "portion": "150 g",
       "sources": "https://www.health.harvard.edu/diet-and-nutrition/quick-start-guide-to-an-antiinflammation-diet; https://health.clevelandclinic.org/anti-inflammatory-diet"
     },
     {
@@ -1715,6 +1915,8 @@ window.APP_DATA = {
       "use": "Mit Knoblauch, Petersilie und Olivenöl anbraten.",
       "caution": "Reishi eher als Spezial-/Heilpilz, nicht Standard-Lebensmittel.",
       "priority": "hoch",
+      "nutrition": "Energie / Kalorien: ca. 22 kcal; Fett: ca. 0,3 g; davon gesättigte Fettsäuren: ca. 0,1 g; Kohlenhydrate: ca. 3,3 g; davon Zucker: ca. 2,0 g; Eiweiß / Protein: ca. 3,1 g; Salz: ca. 0,0 g; Ballaststoffe: ca. 1,0 g",
+      "portion": "150 g",
       "sources": "https://www.health.harvard.edu/diet-and-nutrition/quick-start-guide-to-an-antiinflammation-diet; https://health.clevelandclinic.org/anti-inflammatory-diet"
     },
     {
@@ -1732,6 +1934,8 @@ window.APP_DATA = {
       "use": "Mit Knoblauch, Petersilie und Olivenöl anbraten.",
       "caution": "Reishi eher als Spezial-/Heilpilz, nicht Standard-Lebensmittel.",
       "priority": "hoch",
+      "nutrition": "Energie / Kalorien: ca. 37 kcal; Fett: ca. 0,3 g; davon gesättigte Fettsäuren: ca. 0,1 g; Kohlenhydrate: ca. 7,8 g; davon Zucker: ca. 0,2 g; Eiweiß / Protein: ca. 2,7 g; Salz: ca. 0,0 g; Ballaststoffe: ca. 2,7 g",
+      "portion": "150 g",
       "sources": "https://www.health.harvard.edu/diet-and-nutrition/quick-start-guide-to-an-antiinflammation-diet; https://health.clevelandclinic.org/anti-inflammatory-diet"
     },
     {
@@ -1749,6 +1953,8 @@ window.APP_DATA = {
       "use": "Mit Knoblauch, Petersilie und Olivenöl anbraten.",
       "caution": "Reishi eher als Spezial-/Heilpilz, nicht Standard-Lebensmittel.",
       "priority": "hoch",
+      "nutrition": "Energie / Kalorien: ca. 35 kcal; Fett: ca. 0,5 g; davon gesättigte Fettsäuren: ca. 0,1 g; Kohlenhydrate: ca. 6,0 g; davon Zucker: ca. 1,0 g; Eiweiß / Protein: ca. 3,0 g; Salz: ca. 0,0 g; Ballaststoffe: ca. 3,0 g",
+      "portion": "150 g",
       "sources": "https://www.health.harvard.edu/diet-and-nutrition/quick-start-guide-to-an-antiinflammation-diet; https://health.clevelandclinic.org/anti-inflammatory-diet"
     },
     {
@@ -1766,6 +1972,8 @@ window.APP_DATA = {
       "use": "Mit Knoblauch, Petersilie und Olivenöl anbraten.",
       "caution": "Reishi eher als Spezial-/Heilpilz, nicht Standard-Lebensmittel.",
       "priority": "hoch",
+      "nutrition": "Energie / Kalorien: ca. 31 kcal; Fett: ca. 0,2 g; davon gesättigte Fettsäuren: ca. 0,0 g; Kohlenhydrate: ca. 7,0 g; davon Zucker: ca. 2,0 g; Eiweiß / Protein: ca. 1,9 g; Salz: ca. 0,0 g; Ballaststoffe: ca. 2,7 g",
+      "portion": "150 g",
       "sources": "https://www.health.harvard.edu/diet-and-nutrition/quick-start-guide-to-an-antiinflammation-diet; https://health.clevelandclinic.org/anti-inflammatory-diet"
     },
     {
@@ -1783,6 +1991,8 @@ window.APP_DATA = {
       "use": "Mit Knoblauch, Petersilie und Olivenöl anbraten.",
       "caution": "Reishi eher als Spezial-/Heilpilz, nicht Standard-Lebensmittel.",
       "priority": "hoch",
+      "nutrition": "Energie / Kalorien: ca. 38 kcal; Fett: ca. 0,5 g; davon gesättigte Fettsäuren: ca. 0,1 g; Kohlenhydrate: ca. 7,0 g; davon Zucker: ca. 1,0 g; Eiweiß / Protein: ca. 1,5 g; Salz: ca. 0,0 g; Ballaststoffe: ca. 3,8 g",
+      "portion": "150 g",
       "sources": "https://www.health.harvard.edu/diet-and-nutrition/quick-start-guide-to-an-antiinflammation-diet; https://health.clevelandclinic.org/anti-inflammatory-diet"
     },
     {
@@ -1800,6 +2010,8 @@ window.APP_DATA = {
       "use": "Mit Knoblauch, Petersilie und Olivenöl anbraten.",
       "caution": "Reishi eher als Spezial-/Heilpilz, nicht Standard-Lebensmittel.",
       "priority": "hoch",
+      "nutrition": "Energie / Kalorien: ca. 220 kcal; Fett: ca. 2,0 g; davon gesättigte Fettsäuren: ca. 0,4 g; Kohlenhydrate: ca. 70,0 g; davon Zucker: ca. 2,0 g; Eiweiß / Protein: ca. 10,0 g; Salz: ca. 0,1 g; Ballaststoffe: ca. 70,0 g",
+      "portion": "150 g",
       "sources": "https://www.health.harvard.edu/diet-and-nutrition/quick-start-guide-to-an-antiinflammation-diet; https://health.clevelandclinic.org/anti-inflammatory-diet"
     },
     {
@@ -1817,6 +2029,8 @@ window.APP_DATA = {
       "use": "Mit Knoblauch, Petersilie und Olivenöl anbraten.",
       "caution": "Reishi eher als Spezial-/Heilpilz, nicht Standard-Lebensmittel.",
       "priority": "hoch",
+      "nutrition": "Energie / Kalorien: ca. 34 kcal; Fett: ca. 0,5 g; davon gesättigte Fettsäuren: ca. 0,1 g; Kohlenhydrate: ca. 6,8 g; davon Zucker: ca. 2,4 g; Eiweiß / Protein: ca. 2,2 g; Salz: ca. 0,0 g; Ballaststoffe: ca. 2,5 g",
+      "portion": "150 g",
       "sources": "https://www.health.harvard.edu/diet-and-nutrition/quick-start-guide-to-an-antiinflammation-diet; https://health.clevelandclinic.org/anti-inflammatory-diet"
     },
     {
@@ -1834,6 +2048,8 @@ window.APP_DATA = {
       "use": "Mit Knoblauch, Petersilie und Olivenöl anbraten.",
       "caution": "Reishi eher als Spezial-/Heilpilz, nicht Standard-Lebensmittel.",
       "priority": "hoch",
+      "nutrition": "Energie / Kalorien: ca. 34 kcal; Fett: ca. 0,4 g; davon gesättigte Fettsäuren: ca. 0,1 g; Kohlenhydrate: ca. 3,3 g; davon Zucker: ca. 1,0 g; Eiweiß / Protein: ca. 5,4 g; Salz: ca. 0,0 g; Ballaststoffe: ca. 3,0 g",
+      "portion": "150 g",
       "sources": "https://www.health.harvard.edu/diet-and-nutrition/quick-start-guide-to-an-antiinflammation-diet; https://health.clevelandclinic.org/anti-inflammatory-diet"
     },
     {
@@ -1851,6 +2067,8 @@ window.APP_DATA = {
       "use": "Große Salate, gedünstet oder in Omelett/Gemüsepfannen.",
       "caution": "Mit gutem Fett kombinieren, damit Carotinoide besser aufgenommen werden.",
       "priority": "sehr hoch",
+      "nutrition": "Energie / Kalorien: ca. 11 kcal; Fett: ca. 0,1 g; davon gesättigte Fettsäuren: ca. 0,0 g; Kohlenhydrate: ca. 1,3 g; davon Zucker: ca. 0,2 g; Eiweiß / Protein: ca. 2,3 g; Salz: ca. 0,1 g; Ballaststoffe: ca. 0,5 g",
+      "portion": "100 g",
       "sources": "https://www.health.harvard.edu/healthy-aging-and-longevity/foods-that-fight-inflammation; https://lpi.oregonstate.edu/mic/dietary-factors/phytochemicals/carotenoids; https://lpi.oregonstate.edu/mic/food-beverages/fruit-vegetables"
     },
     {
@@ -1868,6 +2086,8 @@ window.APP_DATA = {
       "use": "Große Salate, gedünstet oder in Omelett/Gemüsepfannen.",
       "caution": "Mit gutem Fett kombinieren, damit Carotinoide besser aufgenommen werden.",
       "priority": "sehr hoch",
+      "nutrition": "Energie / Kalorien: ca. 17 kcal; Fett: ca. 0,2 g; davon gesättigte Fettsäuren: ca. 0,0 g; Kohlenhydrate: ca. 4,0 g; davon Zucker: ca. 0,7 g; Eiweiß / Protein: ca. 1,0 g; Salz: ca. 0,1 g; Ballaststoffe: ca. 3,1 g",
+      "portion": "100 g",
       "sources": "https://www.health.harvard.edu/healthy-aging-and-longevity/foods-that-fight-inflammation; https://lpi.oregonstate.edu/mic/dietary-factors/phytochemicals/carotenoids; https://lpi.oregonstate.edu/mic/food-beverages/fruit-vegetables"
     },
     {
@@ -1885,6 +2105,8 @@ window.APP_DATA = {
       "use": "Große Salate, gedünstet oder in Omelett/Gemüsepfannen.",
       "caution": "Mit gutem Fett kombinieren, damit Carotinoide besser aufgenommen werden.",
       "priority": "sehr hoch",
+      "nutrition": "Energie / Kalorien: ca. 17 kcal; Fett: ca. 0,2 g; davon gesättigte Fettsäuren: ca. 0,0 g; Kohlenhydrate: ca. 3,4 g; davon Zucker: ca. 0,3 g; Eiweiß / Protein: ca. 1,3 g; Salz: ca. 0,1 g; Ballaststoffe: ca. 3,1 g",
+      "portion": "100 g",
       "sources": "https://www.health.harvard.edu/healthy-aging-and-longevity/foods-that-fight-inflammation; https://lpi.oregonstate.edu/mic/dietary-factors/phytochemicals/carotenoids; https://lpi.oregonstate.edu/mic/food-beverages/fruit-vegetables"
     },
     {
@@ -1902,6 +2124,8 @@ window.APP_DATA = {
       "use": "Große Salate, gedünstet oder in Omelett/Gemüsepfannen.",
       "caution": "Mit gutem Fett kombinieren, damit Carotinoide besser aufgenommen werden.",
       "priority": "sehr hoch",
+      "nutrition": "Energie / Kalorien: ca. 21 kcal; Fett: ca. 0,4 g; davon gesättigte Fettsäuren: ca. 0,1 g; Kohlenhydrate: ca. 3,6 g; davon Zucker: ca. 0,3 g; Eiweiß / Protein: ca. 2,0 g; Salz: ca. 0,0 g; Ballaststoffe: ca. 2,0 g",
+      "portion": "100 g",
       "sources": "https://www.health.harvard.edu/healthy-aging-and-longevity/foods-that-fight-inflammation; https://lpi.oregonstate.edu/mic/dietary-factors/phytochemicals/carotenoids; https://lpi.oregonstate.edu/mic/food-beverages/fruit-vegetables"
     },
     {
@@ -1919,6 +2143,8 @@ window.APP_DATA = {
       "use": "Große Salate, gedünstet oder in Omelett/Gemüsepfannen.",
       "caution": "Mit gutem Fett kombinieren, damit Carotinoide besser aufgenommen werden.",
       "priority": "sehr hoch",
+      "nutrition": "Energie / Kalorien: ca. 49 kcal; Fett: ca. 0,9 g; davon gesättigte Fettsäuren: ca. 0,1 g; Kohlenhydrate: ca. 8,8 g; davon Zucker: ca. 2,3 g; Eiweiß / Protein: ca. 4,3 g; Salz: ca. 0,1 g; Ballaststoffe: ca. 3,6 g",
+      "portion": "100 g",
       "sources": "https://www.health.harvard.edu/healthy-aging-and-longevity/foods-that-fight-inflammation; https://lpi.oregonstate.edu/mic/dietary-factors/phytochemicals/carotenoids; https://lpi.oregonstate.edu/mic/food-beverages/fruit-vegetables"
     },
     {
@@ -1936,6 +2162,8 @@ window.APP_DATA = {
       "use": "Große Salate, gedünstet oder in Omelett/Gemüsepfannen.",
       "caution": "Mit gutem Fett kombinieren, damit Carotinoide besser aufgenommen werden.",
       "priority": "sehr hoch",
+      "nutrition": "Energie / Kalorien: ca. 14 kcal; Fett: ca. 0,2 g; davon gesättigte Fettsäuren: ca. 0,0 g; Kohlenhydrate: ca. 2,9 g; davon Zucker: ca. 0,8 g; Eiweiß / Protein: ca. 1,4 g; Salz: ca. 0,0 g; Ballaststoffe: ca. 1,3 g",
+      "portion": "100 g",
       "sources": "https://www.health.harvard.edu/healthy-aging-and-longevity/foods-that-fight-inflammation; https://lpi.oregonstate.edu/mic/dietary-factors/phytochemicals/carotenoids; https://lpi.oregonstate.edu/mic/food-beverages/fruit-vegetables"
     },
     {
@@ -1953,6 +2181,8 @@ window.APP_DATA = {
       "use": "Große Salate, gedünstet oder in Omelett/Gemüsepfannen.",
       "caution": "Mit gutem Fett kombinieren, damit Carotinoide besser aufgenommen werden.",
       "priority": "sehr hoch",
+      "nutrition": "Energie / Kalorien: ca. 19 kcal; Fett: ca. 0,2 g; davon gesättigte Fettsäuren: ca. 0,0 g; Kohlenhydrate: ca. 3,7 g; davon Zucker: ca. 1,1 g; Eiweiß / Protein: ca. 1,8 g; Salz: ca. 0,2 g; Ballaststoffe: ca. 2,1 g",
+      "portion": "100 g",
       "sources": "https://www.health.harvard.edu/healthy-aging-and-longevity/foods-that-fight-inflammation; https://lpi.oregonstate.edu/mic/dietary-factors/phytochemicals/carotenoids; https://lpi.oregonstate.edu/mic/food-beverages/fruit-vegetables"
     },
     {
@@ -1970,6 +2200,8 @@ window.APP_DATA = {
       "use": "Große Salate, gedünstet oder in Omelett/Gemüsepfannen.",
       "caution": "Mit gutem Fett kombinieren, damit Carotinoide besser aufgenommen werden.",
       "priority": "sehr hoch",
+      "nutrition": "Energie / Kalorien: ca. 23 kcal; Fett: ca. 0,3 g; davon gesättigte Fettsäuren: ca. 0,0 g; Kohlenhydrate: ca. 4,5 g; davon Zucker: ca. 0,6 g; Eiweiß / Protein: ca. 1,4 g; Salz: ca. 0,1 g; Ballaststoffe: ca. 0,9 g",
+      "portion": "100 g",
       "sources": "https://www.health.harvard.edu/healthy-aging-and-longevity/foods-that-fight-inflammation; https://lpi.oregonstate.edu/mic/dietary-factors/phytochemicals/carotenoids; https://lpi.oregonstate.edu/mic/food-beverages/fruit-vegetables"
     },
     {
@@ -1987,6 +2219,8 @@ window.APP_DATA = {
       "use": "Große Salate, gedünstet oder in Omelett/Gemüsepfannen.",
       "caution": "Mit gutem Fett kombinieren, damit Carotinoide besser aufgenommen werden.",
       "priority": "sehr hoch",
+      "nutrition": "Energie / Kalorien: ca. 17 kcal; Fett: ca. 0,3 g; davon gesättigte Fettsäuren: ca. 0,0 g; Kohlenhydrate: ca. 3,3 g; davon Zucker: ca. 1,2 g; Eiweiß / Protein: ca. 1,2 g; Salz: ca. 0,0 g; Ballaststoffe: ca. 2,1 g",
+      "portion": "100 g",
       "sources": "https://www.health.harvard.edu/healthy-aging-and-longevity/foods-that-fight-inflammation; https://lpi.oregonstate.edu/mic/dietary-factors/phytochemicals/carotenoids; https://lpi.oregonstate.edu/mic/food-beverages/fruit-vegetables"
     },
     {
@@ -2004,6 +2238,8 @@ window.APP_DATA = {
       "use": "Große Salate, gedünstet oder in Omelett/Gemüsepfannen.",
       "caution": "Mit gutem Fett kombinieren, damit Carotinoide besser aufgenommen werden.",
       "priority": "sehr hoch",
+      "nutrition": "Energie / Kalorien: ca. 25 kcal; Fett: ca. 0,7 g; davon gesättigte Fettsäuren: ca. 0,1 g; Kohlenhydrate: ca. 3,7 g; davon Zucker: ca. 2,1 g; Eiweiß / Protein: ca. 2,6 g; Salz: ca. 0,1 g; Ballaststoffe: ca. 1,6 g",
+      "portion": "100 g",
       "sources": "https://www.health.harvard.edu/healthy-aging-and-longevity/foods-that-fight-inflammation; https://lpi.oregonstate.edu/mic/dietary-factors/phytochemicals/carotenoids; https://lpi.oregonstate.edu/mic/food-beverages/fruit-vegetables"
     },
     {
@@ -2021,6 +2257,8 @@ window.APP_DATA = {
       "use": "Große Salate, gedünstet oder in Omelett/Gemüsepfannen.",
       "caution": "Mit gutem Fett kombinieren, damit Carotinoide besser aufgenommen werden.",
       "priority": "sehr hoch",
+      "nutrition": "Energie / Kalorien: ca. 23 kcal; Fett: ca. 0,4 g; davon gesättigte Fettsäuren: ca. 0,1 g; Kohlenhydrate: ca. 3,6 g; davon Zucker: ca. 0,4 g; Eiweiß / Protein: ca. 2,9 g; Salz: ca. 0,2 g; Ballaststoffe: ca. 2,2 g",
+      "portion": "100 g",
       "sources": "https://www.health.harvard.edu/healthy-aging-and-longevity/foods-that-fight-inflammation; https://lpi.oregonstate.edu/mic/dietary-factors/phytochemicals/carotenoids; https://lpi.oregonstate.edu/mic/food-beverages/fruit-vegetables"
     },
     {
@@ -2038,6 +2276,8 @@ window.APP_DATA = {
       "use": "Mit Olivenöl kombinieren; Tomatenmark in Saucen/Suppen.",
       "caution": "Mais/Süßkartoffel haben mehr Kohlenhydrate als Paprika/Tomaten.",
       "priority": "hoch",
+      "nutrition": "Energie / Kalorien: ca. 40 kcal; Fett: ca. 0,4 g; davon gesättigte Fettsäuren: ca. 0,0 g; Kohlenhydrate: ca. 8,8 g; davon Zucker: ca. 5,3 g; Eiweiß / Protein: ca. 1,9 g; Salz: ca. 0,0 g; Ballaststoffe: ca. 1,5 g",
+      "portion": "150 g",
       "sources": "https://www.health.harvard.edu/healthy-aging-and-longevity/foods-that-fight-inflammation; https://lpi.oregonstate.edu/mic/dietary-factors/phytochemicals/carotenoids; https://lpi.oregonstate.edu/mic/food-beverages/fruit-vegetables"
     },
     {
@@ -2055,6 +2295,8 @@ window.APP_DATA = {
       "use": "Mit Olivenöl kombinieren; Tomatenmark in Saucen/Suppen.",
       "caution": "Mais/Süßkartoffel haben mehr Kohlenhydrate als Paprika/Tomaten.",
       "priority": "hoch",
+      "nutrition": "Energie / Kalorien: ca. 17 kcal; Fett: ca. 0,3 g; davon gesättigte Fettsäuren: ca. 0,1 g; Kohlenhydrate: ca. 3,1 g; davon Zucker: ca. 2,5 g; Eiweiß / Protein: ca. 1,2 g; Salz: ca. 0,0 g; Ballaststoffe: ca. 1,0 g",
+      "portion": "150 g",
       "sources": "https://www.health.harvard.edu/healthy-aging-and-longevity/foods-that-fight-inflammation; https://lpi.oregonstate.edu/mic/dietary-factors/phytochemicals/carotenoids; https://lpi.oregonstate.edu/mic/food-beverages/fruit-vegetables"
     },
     {
@@ -2072,6 +2314,8 @@ window.APP_DATA = {
       "use": "Mit Olivenöl kombinieren; Tomatenmark in Saucen/Suppen.",
       "caution": "Mais/Süßkartoffel haben mehr Kohlenhydrate als Paprika/Tomaten.",
       "priority": "hoch",
+      "nutrition": "Energie / Kalorien: ca. 41 kcal; Fett: ca. 0,2 g; davon gesättigte Fettsäuren: ca. 0,0 g; Kohlenhydrate: ca. 10,0 g; davon Zucker: ca. 4,7 g; Eiweiß / Protein: ca. 0,9 g; Salz: ca. 0,2 g; Ballaststoffe: ca. 2,8 g",
+      "portion": "150 g",
       "sources": "https://www.health.harvard.edu/healthy-aging-and-longevity/foods-that-fight-inflammation; https://lpi.oregonstate.edu/mic/dietary-factors/phytochemicals/carotenoids; https://lpi.oregonstate.edu/mic/food-beverages/fruit-vegetables"
     },
     {
@@ -2089,6 +2333,8 @@ window.APP_DATA = {
       "use": "Mit Olivenöl kombinieren; Tomatenmark in Saucen/Suppen.",
       "caution": "Mais/Süßkartoffel haben mehr Kohlenhydrate als Paprika/Tomaten.",
       "priority": "hoch",
+      "nutrition": "Energie / Kalorien: ca. 26 kcal; Fett: ca. 0,1 g; davon gesättigte Fettsäuren: ca. 0,0 g; Kohlenhydrate: ca. 6,5 g; davon Zucker: ca. 2,8 g; Eiweiß / Protein: ca. 1,0 g; Salz: ca. 0,0 g; Ballaststoffe: ca. 0,5 g",
+      "portion": "150 g",
       "sources": "https://www.health.harvard.edu/healthy-aging-and-longevity/foods-that-fight-inflammation; https://lpi.oregonstate.edu/mic/dietary-factors/phytochemicals/carotenoids; https://lpi.oregonstate.edu/mic/food-beverages/fruit-vegetables"
     },
     {
@@ -2106,6 +2352,8 @@ window.APP_DATA = {
       "use": "Mit Olivenöl kombinieren; Tomatenmark in Saucen/Suppen.",
       "caution": "Mais/Süßkartoffel haben mehr Kohlenhydrate als Paprika/Tomaten.",
       "priority": "hoch",
+      "nutrition": "Energie / Kalorien: ca. 86 kcal; Fett: ca. 1,2 g; davon gesättigte Fettsäuren: ca. 0,2 g; Kohlenhydrate: ca. 19,0 g; davon Zucker: ca. 6,3 g; Eiweiß / Protein: ca. 3,2 g; Salz: ca. 0,0 g; Ballaststoffe: ca. 2,7 g",
+      "portion": "150 g",
       "sources": "https://www.health.harvard.edu/healthy-aging-and-longevity/foods-that-fight-inflammation; https://lpi.oregonstate.edu/mic/dietary-factors/phytochemicals/carotenoids; https://lpi.oregonstate.edu/mic/food-beverages/fruit-vegetables"
     },
     {
@@ -2123,6 +2371,8 @@ window.APP_DATA = {
       "use": "Mit Olivenöl kombinieren; Tomatenmark in Saucen/Suppen.",
       "caution": "Mais/Süßkartoffel haben mehr Kohlenhydrate als Paprika/Tomaten.",
       "priority": "hoch",
+      "nutrition": "Energie / Kalorien: ca. 27 kcal; Fett: ca. 0,2 g; davon gesättigte Fettsäuren: ca. 0,0 g; Kohlenhydrate: ca. 6,3 g; davon Zucker: ca. 4,2 g; Eiweiß / Protein: ca. 1,0 g; Salz: ca. 0,0 g; Ballaststoffe: ca. 1,7 g",
+      "portion": "150 g",
       "sources": "https://www.health.harvard.edu/healthy-aging-and-longevity/foods-that-fight-inflammation; https://lpi.oregonstate.edu/mic/dietary-factors/phytochemicals/carotenoids; https://lpi.oregonstate.edu/mic/food-beverages/fruit-vegetables"
     },
     {
@@ -2140,6 +2390,8 @@ window.APP_DATA = {
       "use": "Mit Olivenöl kombinieren; Tomatenmark in Saucen/Suppen.",
       "caution": "Mais/Süßkartoffel haben mehr Kohlenhydrate als Paprika/Tomaten.",
       "priority": "hoch",
+      "nutrition": "Energie / Kalorien: ca. 30 kcal; Fett: ca. 0,2 g; davon gesättigte Fettsäuren: ca. 0,0 g; Kohlenhydrate: ca. 6,9 g; davon Zucker: ca. 4,5 g; Eiweiß / Protein: ca. 1,0 g; Salz: ca. 0,0 g; Ballaststoffe: ca. 1,7 g",
+      "portion": "150 g",
       "sources": "https://www.health.harvard.edu/healthy-aging-and-longevity/foods-that-fight-inflammation; https://lpi.oregonstate.edu/mic/dietary-factors/phytochemicals/carotenoids; https://lpi.oregonstate.edu/mic/food-beverages/fruit-vegetables"
     },
     {
@@ -2157,6 +2409,8 @@ window.APP_DATA = {
       "use": "Mit Olivenöl kombinieren; Tomatenmark in Saucen/Suppen.",
       "caution": "Mais/Süßkartoffel haben mehr Kohlenhydrate als Paprika/Tomaten.",
       "priority": "hoch",
+      "nutrition": "Energie / Kalorien: ca. 31 kcal; Fett: ca. 0,3 g; davon gesättigte Fettsäuren: ca. 0,0 g; Kohlenhydrate: ca. 6,0 g; davon Zucker: ca. 4,2 g; Eiweiß / Protein: ca. 1,0 g; Salz: ca. 0,0 g; Ballaststoffe: ca. 2,1 g",
+      "portion": "150 g",
       "sources": "https://www.health.harvard.edu/healthy-aging-and-longevity/foods-that-fight-inflammation; https://lpi.oregonstate.edu/mic/dietary-factors/phytochemicals/carotenoids; https://lpi.oregonstate.edu/mic/food-beverages/fruit-vegetables"
     },
     {
@@ -2174,6 +2428,8 @@ window.APP_DATA = {
       "use": "Mit Olivenöl kombinieren; Tomatenmark in Saucen/Suppen.",
       "caution": "Mais/Süßkartoffel haben mehr Kohlenhydrate als Paprika/Tomaten.",
       "priority": "hoch",
+      "nutrition": "Energie / Kalorien: ca. 40 kcal; Fett: ca. 0,4 g; davon gesättigte Fettsäuren: ca. 0,0 g; Kohlenhydrate: ca. 8,8 g; davon Zucker: ca. 5,3 g; Eiweiß / Protein: ca. 1,9 g; Salz: ca. 0,0 g; Ballaststoffe: ca. 1,5 g",
+      "portion": "150 g",
       "sources": "https://www.health.harvard.edu/healthy-aging-and-longevity/foods-that-fight-inflammation; https://lpi.oregonstate.edu/mic/dietary-factors/phytochemicals/carotenoids; https://lpi.oregonstate.edu/mic/food-beverages/fruit-vegetables"
     },
     {
@@ -2191,6 +2447,8 @@ window.APP_DATA = {
       "use": "Mit Olivenöl kombinieren; Tomatenmark in Saucen/Suppen.",
       "caution": "Mais/Süßkartoffel haben mehr Kohlenhydrate als Paprika/Tomaten.",
       "priority": "hoch",
+      "nutrition": "Energie / Kalorien: ca. 43 kcal; Fett: ca. 0,2 g; davon gesättigte Fettsäuren: ca. 0,0 g; Kohlenhydrate: ca. 10,0 g; davon Zucker: ca. 6,8 g; Eiweiß / Protein: ca. 1,6 g; Salz: ca. 0,1 g; Ballaststoffe: ca. 2,8 g",
+      "portion": "150 g",
       "sources": "https://www.health.harvard.edu/healthy-aging-and-longevity/foods-that-fight-inflammation; https://lpi.oregonstate.edu/mic/dietary-factors/phytochemicals/carotenoids; https://lpi.oregonstate.edu/mic/food-beverages/fruit-vegetables"
     },
     {
@@ -2208,6 +2466,8 @@ window.APP_DATA = {
       "use": "Mit Olivenöl kombinieren; Tomatenmark in Saucen/Suppen.",
       "caution": "Mais/Süßkartoffel haben mehr Kohlenhydrate als Paprika/Tomaten.",
       "priority": "hoch",
+      "nutrition": "Energie / Kalorien: ca. 86 kcal; Fett: ca. 0,1 g; davon gesättigte Fettsäuren: ca. 0,0 g; Kohlenhydrate: ca. 20,1 g; davon Zucker: ca. 4,2 g; Eiweiß / Protein: ca. 1,6 g; Salz: ca. 0,1 g; Ballaststoffe: ca. 3,0 g",
+      "portion": "150 g",
       "sources": "https://www.health.harvard.edu/healthy-aging-and-longevity/foods-that-fight-inflammation; https://lpi.oregonstate.edu/mic/dietary-factors/phytochemicals/carotenoids; https://lpi.oregonstate.edu/mic/food-beverages/fruit-vegetables"
     },
     {
@@ -2225,6 +2485,8 @@ window.APP_DATA = {
       "use": "Mit Olivenöl kombinieren; Tomatenmark in Saucen/Suppen.",
       "caution": "Mais/Süßkartoffel haben mehr Kohlenhydrate als Paprika/Tomaten.",
       "priority": "hoch",
+      "nutrition": "Energie / Kalorien: ca. 18 kcal; Fett: ca. 0,2 g; davon gesättigte Fettsäuren: ca. 0,0 g; Kohlenhydrate: ca. 3,9 g; davon Zucker: ca. 2,6 g; Eiweiß / Protein: ca. 0,9 g; Salz: ca. 0,0 g; Ballaststoffe: ca. 1,2 g",
+      "portion": "150 g",
       "sources": "https://www.health.harvard.edu/healthy-aging-and-longevity/foods-that-fight-inflammation; https://lpi.oregonstate.edu/mic/dietary-factors/phytochemicals/carotenoids; https://lpi.oregonstate.edu/mic/food-beverages/fruit-vegetables"
     },
     {
@@ -2242,6 +2504,8 @@ window.APP_DATA = {
       "use": "Mit Olivenöl kombinieren; Tomatenmark in Saucen/Suppen.",
       "caution": "Mais/Süßkartoffel haben mehr Kohlenhydrate als Paprika/Tomaten.",
       "priority": "hoch",
+      "nutrition": "Energie / Kalorien: ca. 82 kcal; Fett: ca. 0,5 g; davon gesättigte Fettsäuren: ca. 0,1 g; Kohlenhydrate: ca. 18,9 g; davon Zucker: ca. 12,2 g; Eiweiß / Protein: ca. 4,3 g; Salz: ca. 0,1 g; Ballaststoffe: ca. 4,1 g",
+      "portion": "30 g",
       "sources": "https://www.health.harvard.edu/healthy-aging-and-longevity/foods-that-fight-inflammation; https://lpi.oregonstate.edu/mic/dietary-factors/phytochemicals/carotenoids; https://lpi.oregonstate.edu/mic/food-beverages/fruit-vegetables"
     },
     {
@@ -2259,6 +2523,8 @@ window.APP_DATA = {
       "use": "Täglich als Würzgemüse, roh oder gegart.",
       "caution": "Bei Reflux/empfindlichem Magen individuell testen.",
       "priority": "hoch",
+      "nutrition": "Energie / Kalorien: ca. 19 kcal; Fett: ca. 0,3 g; davon gesättigte Fettsäuren: ca. 0,0 g; Kohlenhydrate: ca. 2,9 g; davon Zucker: ca. 1,0 g; Eiweiß / Protein: ca. 0,9 g; Salz: ca. 0,0 g; Ballaststoffe: ca. 2,2 g",
+      "portion": "30 g",
       "sources": "https://lpi.oregonstate.edu/mic/dietary-factors/phytochemicals/flavonoids; https://www.health.harvard.edu/diet-and-nutrition/quick-start-guide-to-an-antiinflammation-diet"
     },
     {
@@ -2276,6 +2542,8 @@ window.APP_DATA = {
       "use": "Täglich als Würzgemüse, roh oder gegart.",
       "caution": "Bei Reflux/empfindlichem Magen individuell testen.",
       "priority": "hoch",
+      "nutrition": "Energie / Kalorien: ca. 32 kcal; Fett: ca. 0,2 g; davon gesättigte Fettsäuren: ca. 0,0 g; Kohlenhydrate: ca. 7,3 g; davon Zucker: ca. 2,3 g; Eiweiß / Protein: ca. 1,8 g; Salz: ca. 0,0 g; Ballaststoffe: ca. 2,6 g",
+      "portion": "30 g",
       "sources": "https://lpi.oregonstate.edu/mic/dietary-factors/phytochemicals/flavonoids; https://www.health.harvard.edu/diet-and-nutrition/quick-start-guide-to-an-antiinflammation-diet"
     },
     {
@@ -2293,6 +2561,8 @@ window.APP_DATA = {
       "use": "Täglich als Würzgemüse, roh oder gegart.",
       "caution": "Bei Reflux/empfindlichem Magen individuell testen.",
       "priority": "hoch",
+      "nutrition": "Energie / Kalorien: ca. 40 kcal; Fett: ca. 0,1 g; davon gesättigte Fettsäuren: ca. 0,0 g; Kohlenhydrate: ca. 9,3 g; davon Zucker: ca. 4,2 g; Eiweiß / Protein: ca. 1,1 g; Salz: ca. 0,0 g; Ballaststoffe: ca. 1,7 g",
+      "portion": "30 g",
       "sources": "https://lpi.oregonstate.edu/mic/dietary-factors/phytochemicals/flavonoids; https://www.health.harvard.edu/diet-and-nutrition/quick-start-guide-to-an-antiinflammation-diet"
     },
     {
@@ -2310,6 +2580,8 @@ window.APP_DATA = {
       "use": "Täglich als Würzgemüse, roh oder gegart.",
       "caution": "Bei Reflux/empfindlichem Magen individuell testen.",
       "priority": "hoch",
+      "nutrition": "Energie / Kalorien: ca. 149 kcal; Fett: ca. 0,5 g; davon gesättigte Fettsäuren: ca. 0,1 g; Kohlenhydrate: ca. 33,0 g; davon Zucker: ca. 1,0 g; Eiweiß / Protein: ca. 6,4 g; Salz: ca. 0,0 g; Ballaststoffe: ca. 2,1 g",
+      "portion": "5 g",
       "sources": "https://lpi.oregonstate.edu/mic/dietary-factors/phytochemicals/flavonoids; https://www.health.harvard.edu/diet-and-nutrition/quick-start-guide-to-an-antiinflammation-diet"
     },
     {
@@ -2327,6 +2599,8 @@ window.APP_DATA = {
       "use": "Täglich als Würzgemüse, roh oder gegart.",
       "caution": "Bei Reflux/empfindlichem Magen individuell testen.",
       "priority": "hoch",
+      "nutrition": "Energie / Kalorien: ca. 61 kcal; Fett: ca. 0,3 g; davon gesättigte Fettsäuren: ca. 0,0 g; Kohlenhydrate: ca. 14,0 g; davon Zucker: ca. 3,9 g; Eiweiß / Protein: ca. 1,5 g; Salz: ca. 0,1 g; Ballaststoffe: ca. 1,8 g",
+      "portion": "30 g",
       "sources": "https://lpi.oregonstate.edu/mic/dietary-factors/phytochemicals/flavonoids; https://www.health.harvard.edu/diet-and-nutrition/quick-start-guide-to-an-antiinflammation-diet"
     },
     {
@@ -2344,6 +2618,8 @@ window.APP_DATA = {
       "use": "Täglich als Würzgemüse, roh oder gegart.",
       "caution": "Bei Reflux/empfindlichem Magen individuell testen.",
       "priority": "hoch",
+      "nutrition": "Energie / Kalorien: ca. 40 kcal; Fett: ca. 0,1 g; davon gesättigte Fettsäuren: ca. 0,0 g; Kohlenhydrate: ca. 9,3 g; davon Zucker: ca. 4,2 g; Eiweiß / Protein: ca. 1,1 g; Salz: ca. 0,0 g; Ballaststoffe: ca. 1,7 g",
+      "portion": "30 g",
       "sources": "https://lpi.oregonstate.edu/mic/dietary-factors/phytochemicals/flavonoids; https://www.health.harvard.edu/diet-and-nutrition/quick-start-guide-to-an-antiinflammation-diet"
     },
     {
@@ -2361,6 +2637,8 @@ window.APP_DATA = {
       "use": "Täglich als Würzgemüse, roh oder gegart.",
       "caution": "Bei Reflux/empfindlichem Magen individuell testen.",
       "priority": "hoch",
+      "nutrition": "Energie / Kalorien: ca. 72 kcal; Fett: ca. 0,1 g; davon gesättigte Fettsäuren: ca. 0,0 g; Kohlenhydrate: ca. 16,8 g; davon Zucker: ca. 7,9 g; Eiweiß / Protein: ca. 2,5 g; Salz: ca. 0,0 g; Ballaststoffe: ca. 3,2 g",
+      "portion": "30 g",
       "sources": "https://lpi.oregonstate.edu/mic/dietary-factors/phytochemicals/flavonoids; https://www.health.harvard.edu/diet-and-nutrition/quick-start-guide-to-an-antiinflammation-diet"
     },
     {
@@ -2378,6 +2656,8 @@ window.APP_DATA = {
       "use": "Täglich als Würzgemüse, roh oder gegart.",
       "caution": "Bei Reflux/empfindlichem Magen individuell testen.",
       "priority": "hoch",
+      "nutrition": "Energie / Kalorien: ca. 30 kcal; Fett: ca. 0,7 g; davon gesättigte Fettsäuren: ca. 0,1 g; Kohlenhydrate: ca. 4,4 g; davon Zucker: ca. 1,9 g; Eiweiß / Protein: ca. 3,3 g; Salz: ca. 0,0 g; Ballaststoffe: ca. 2,5 g",
+      "portion": "30 g",
       "sources": "https://lpi.oregonstate.edu/mic/dietary-factors/phytochemicals/flavonoids; https://www.health.harvard.edu/diet-and-nutrition/quick-start-guide-to-an-antiinflammation-diet"
     },
     {
@@ -2395,6 +2675,8 @@ window.APP_DATA = {
       "use": "Kleine Mengen in Suppen, Bowls oder als Nori-Blätter.",
       "caution": "Bei Schilddrüsenerkrankungen wegen Jod vorsichtig.",
       "priority": "mittel",
+      "nutrition": "Energie / Kalorien: ca. 410 kcal; Fett: ca. 10,0 g; davon gesättigte Fettsäuren: ca. 2,5 g; Kohlenhydrate: ca. 17,0 g; davon Zucker: ca. 1,0 g; Eiweiß / Protein: ca. 58,0 g; Salz: ca. 0,1 g; Ballaststoffe: ca. 12,0 g",
+      "portion": "5 g",
       "sources": "https://lpi.oregonstate.edu/mic/dietary-factors/phytochemicals/carotenoids; https://www.health.harvard.edu/diet-and-nutrition/quick-start-guide-to-an-antiinflammation-diet"
     },
     {
@@ -2412,6 +2694,8 @@ window.APP_DATA = {
       "use": "Kleine Mengen in Suppen, Bowls oder als Nori-Blätter.",
       "caution": "Bei Schilddrüsenerkrankungen wegen Jod vorsichtig.",
       "priority": "mittel",
+      "nutrition": "Energie / Kalorien: ca. 230 kcal; Fett: ca. 2,0 g; davon gesättigte Fettsäuren: ca. 0,5 g; Kohlenhydrate: ca. 45,0 g; davon Zucker: ca. 0,0 g; Eiweiß / Protein: ca. 16,0 g; Salz: ca. 4,0 g; Ballaststoffe: ca. 33,0 g",
+      "portion": "5 g",
       "sources": "https://lpi.oregonstate.edu/mic/dietary-factors/phytochemicals/carotenoids; https://www.health.harvard.edu/diet-and-nutrition/quick-start-guide-to-an-antiinflammation-diet"
     },
     {
@@ -2429,6 +2713,8 @@ window.APP_DATA = {
       "use": "Kleine Mengen in Suppen, Bowls oder als Nori-Blätter.",
       "caution": "Bei Schilddrüsenerkrankungen wegen Jod vorsichtig.",
       "priority": "mittel",
+      "nutrition": "Energie / Kalorien: ca. 240 kcal; Fett: ca. 2,0 g; davon gesättigte Fettsäuren: ca. 0,4 g; Kohlenhydrate: ca. 60,0 g; davon Zucker: ca. 0,0 g; Eiweiß / Protein: ca. 8,0 g; Salz: ca. 7,0 g; Ballaststoffe: ca. 27,0 g",
+      "portion": "5 g",
       "sources": "https://lpi.oregonstate.edu/mic/dietary-factors/phytochemicals/carotenoids; https://www.health.harvard.edu/diet-and-nutrition/quick-start-guide-to-an-antiinflammation-diet"
     },
     {
@@ -2446,6 +2732,8 @@ window.APP_DATA = {
       "use": "Kleine Mengen in Suppen, Bowls oder als Nori-Blätter.",
       "caution": "Bei Schilddrüsenerkrankungen wegen Jod vorsichtig.",
       "priority": "mittel",
+      "nutrition": "Energie / Kalorien: ca. 292 kcal; Fett: ca. 4,0 g; davon gesättigte Fettsäuren: ca. 1,0 g; Kohlenhydrate: ca. 41,0 g; davon Zucker: ca. 0,0 g; Eiweiß / Protein: ca. 42,0 g; Salz: ca. 1,2 g; Ballaststoffe: ca. 31,0 g",
+      "portion": "5 g",
       "sources": "https://lpi.oregonstate.edu/mic/dietary-factors/phytochemicals/carotenoids; https://www.health.harvard.edu/diet-and-nutrition/quick-start-guide-to-an-antiinflammation-diet"
     },
     {
@@ -2463,6 +2751,8 @@ window.APP_DATA = {
       "use": "Kleine Mengen in Suppen, Bowls oder als Nori-Blätter.",
       "caution": "Bei Schilddrüsenerkrankungen wegen Jod vorsichtig.",
       "priority": "mittel",
+      "nutrition": "Energie / Kalorien: ca. 290 kcal; Fett: ca. 7,7 g; davon gesättigte Fettsäuren: ca. 2,7 g; Kohlenhydrate: ca. 24,0 g; davon Zucker: ca. 3,1 g; Eiweiß / Protein: ca. 57,0 g; Salz: ca. 1,0 g; Ballaststoffe: ca. 3,6 g",
+      "portion": "5 g",
       "sources": "https://lpi.oregonstate.edu/mic/dietary-factors/phytochemicals/carotenoids; https://www.health.harvard.edu/diet-and-nutrition/quick-start-guide-to-an-antiinflammation-diet"
     },
     {
@@ -2480,6 +2770,8 @@ window.APP_DATA = {
       "use": "Kleine Mengen in Suppen, Bowls oder als Nori-Blätter.",
       "caution": "Bei Schilddrüsenerkrankungen wegen Jod vorsichtig.",
       "priority": "mittel",
+      "nutrition": "Energie / Kalorien: ca. 184 kcal; Fett: ca. 4,0 g; davon gesättigte Fettsäuren: ca. 1,0 g; Kohlenhydrate: ca. 41,0 g; davon Zucker: ca. 0,5 g; Eiweiß / Protein: ca. 18,0 g; Salz: ca. 6,0 g; Ballaststoffe: ca. 14,0 g",
+      "portion": "10 g",
       "sources": "https://lpi.oregonstate.edu/mic/dietary-factors/phytochemicals/carotenoids; https://www.health.harvard.edu/diet-and-nutrition/quick-start-guide-to-an-antiinflammation-diet"
     },
     {
@@ -2497,6 +2789,8 @@ window.APP_DATA = {
       "use": "In Joghurt/Quark, als Dessert oder tiefgekühlt.",
       "caution": "Getrocknete Beeren sind konzentrierter an Zucker; kleine Mengen.",
       "priority": "sehr hoch",
+      "nutrition": "Energie / Kalorien: ca. 47 kcal; Fett: ca. 0,5 g; davon gesättigte Fettsäuren: ca. 0,0 g; Kohlenhydrate: ca. 10,0 g; davon Zucker: ca. 5,6 g; Eiweiß / Protein: ca. 1,4 g; Salz: ca. 0,0 g; Ballaststoffe: ca. 5,3 g",
+      "portion": "100 g",
       "sources": "https://www.health.harvard.edu/healthy-aging-and-longevity/foods-that-fight-inflammation; https://lpi.oregonstate.edu/mic/dietary-factors/phytochemicals/flavonoids; https://lpi.oregonstate.edu/mic/food-beverages/fruit-vegetables"
     },
     {
@@ -2514,6 +2808,8 @@ window.APP_DATA = {
       "use": "In Joghurt/Quark, als Dessert oder tiefgekühlt.",
       "caution": "Getrocknete Beeren sind konzentrierter an Zucker; kleine Mengen.",
       "priority": "sehr hoch",
+      "nutrition": "Energie / Kalorien: ca. 43 kcal; Fett: ca. 0,5 g; davon gesättigte Fettsäuren: ca. 0,0 g; Kohlenhydrate: ca. 10,2 g; davon Zucker: ca. 4,9 g; Eiweiß / Protein: ca. 1,4 g; Salz: ca. 0,0 g; Ballaststoffe: ca. 5,3 g",
+      "portion": "100 g",
       "sources": "https://www.health.harvard.edu/healthy-aging-and-longevity/foods-that-fight-inflammation; https://lpi.oregonstate.edu/mic/dietary-factors/phytochemicals/flavonoids; https://lpi.oregonstate.edu/mic/food-beverages/fruit-vegetables"
     },
     {
@@ -2531,6 +2827,8 @@ window.APP_DATA = {
       "use": "In Joghurt/Quark, als Dessert oder tiefgekühlt.",
       "caution": "Getrocknete Beeren sind konzentrierter an Zucker; kleine Mengen.",
       "priority": "sehr hoch",
+      "nutrition": "Energie / Kalorien: ca. 46 kcal; Fett: ca. 0,1 g; davon gesättigte Fettsäuren: ca. 0,0 g; Kohlenhydrate: ca. 12,2 g; davon Zucker: ca. 4,0 g; Eiweiß / Protein: ca. 0,4 g; Salz: ca. 0,0 g; Ballaststoffe: ca. 4,6 g",
+      "portion": "100 g",
       "sources": "https://www.health.harvard.edu/healthy-aging-and-longevity/foods-that-fight-inflammation; https://lpi.oregonstate.edu/mic/dietary-factors/phytochemicals/flavonoids; https://lpi.oregonstate.edu/mic/food-beverages/fruit-vegetables"
     },
     {
@@ -2548,6 +2846,8 @@ window.APP_DATA = {
       "use": "In Joghurt/Quark, als Dessert oder tiefgekühlt.",
       "caution": "Getrocknete Beeren sind konzentrierter an Zucker; kleine Mengen.",
       "priority": "sehr hoch",
+      "nutrition": "Energie / Kalorien: ca. 32 kcal; Fett: ca. 0,3 g; davon gesättigte Fettsäuren: ca. 0,0 g; Kohlenhydrate: ca. 7,7 g; davon Zucker: ca. 4,9 g; Eiweiß / Protein: ca. 0,7 g; Salz: ca. 0,0 g; Ballaststoffe: ca. 2,0 g",
+      "portion": "100 g",
       "sources": "https://www.health.harvard.edu/healthy-aging-and-longevity/foods-that-fight-inflammation; https://lpi.oregonstate.edu/mic/dietary-factors/phytochemicals/flavonoids; https://lpi.oregonstate.edu/mic/food-beverages/fruit-vegetables"
     },
     {
@@ -2565,6 +2865,8 @@ window.APP_DATA = {
       "use": "In Joghurt/Quark, als Dessert oder tiefgekühlt.",
       "caution": "Getrocknete Beeren sind konzentrierter an Zucker; kleine Mengen.",
       "priority": "sehr hoch",
+      "nutrition": "Energie / Kalorien: ca. 349 kcal; Fett: ca. 0,4 g; davon gesättigte Fettsäuren: ca. 0,0 g; Kohlenhydrate: ca. 77,0 g; davon Zucker: ca. 45,0 g; Eiweiß / Protein: ca. 14,0 g; Salz: ca. 0,7 g; Ballaststoffe: ca. 13,0 g",
+      "portion": "20 g",
       "sources": "https://www.health.harvard.edu/healthy-aging-and-longevity/foods-that-fight-inflammation; https://lpi.oregonstate.edu/mic/dietary-factors/phytochemicals/flavonoids; https://lpi.oregonstate.edu/mic/food-beverages/fruit-vegetables"
     },
     {
@@ -2582,6 +2884,8 @@ window.APP_DATA = {
       "use": "In Joghurt/Quark, als Dessert oder tiefgekühlt.",
       "caution": "Getrocknete Beeren sind konzentrierter an Zucker; kleine Mengen.",
       "priority": "sehr hoch",
+      "nutrition": "Energie / Kalorien: ca. 57 kcal; Fett: ca. 0,3 g; davon gesättigte Fettsäuren: ca. 0,0 g; Kohlenhydrate: ca. 14,5 g; davon Zucker: ca. 10,0 g; Eiweiß / Protein: ca. 0,7 g; Salz: ca. 0,0 g; Ballaststoffe: ca. 2,4 g",
+      "portion": "100 g",
       "sources": "https://www.health.harvard.edu/healthy-aging-and-longevity/foods-that-fight-inflammation; https://lpi.oregonstate.edu/mic/dietary-factors/phytochemicals/flavonoids; https://lpi.oregonstate.edu/mic/food-beverages/fruit-vegetables"
     },
     {
@@ -2599,6 +2903,8 @@ window.APP_DATA = {
       "use": "In Joghurt/Quark, als Dessert oder tiefgekühlt.",
       "caution": "Getrocknete Beeren sind konzentrierter an Zucker; kleine Mengen.",
       "priority": "sehr hoch",
+      "nutrition": "Energie / Kalorien: ca. 52 kcal; Fett: ca. 0,7 g; davon gesättigte Fettsäuren: ca. 0,0 g; Kohlenhydrate: ca. 11,9 g; davon Zucker: ca. 4,4 g; Eiweiß / Protein: ca. 1,2 g; Salz: ca. 0,0 g; Ballaststoffe: ca. 6,5 g",
+      "portion": "100 g",
       "sources": "https://www.health.harvard.edu/healthy-aging-and-longevity/foods-that-fight-inflammation; https://lpi.oregonstate.edu/mic/dietary-factors/phytochemicals/flavonoids; https://lpi.oregonstate.edu/mic/food-beverages/fruit-vegetables"
     },
     {
@@ -2616,6 +2922,8 @@ window.APP_DATA = {
       "use": "In Joghurt/Quark, als Dessert oder tiefgekühlt.",
       "caution": "Getrocknete Beeren sind konzentrierter an Zucker; kleine Mengen.",
       "priority": "sehr hoch",
+      "nutrition": "Energie / Kalorien: ca. 73 kcal; Fett: ca. 0,5 g; davon gesättigte Fettsäuren: ca. 0,0 g; Kohlenhydrate: ca. 18,4 g; davon Zucker: ca. 7,0 g; Eiweiß / Protein: ca. 0,7 g; Salz: ca. 0,0 g; Ballaststoffe: ca. 7,0 g",
+      "portion": "100 g",
       "sources": "https://www.health.harvard.edu/healthy-aging-and-longevity/foods-that-fight-inflammation; https://lpi.oregonstate.edu/mic/dietary-factors/phytochemicals/flavonoids; https://lpi.oregonstate.edu/mic/food-beverages/fruit-vegetables"
     },
     {
@@ -2633,6 +2941,8 @@ window.APP_DATA = {
       "use": "In Joghurt/Quark, als Dessert oder tiefgekühlt.",
       "caution": "Getrocknete Beeren sind konzentrierter an Zucker; kleine Mengen.",
       "priority": "sehr hoch",
+      "nutrition": "Energie / Kalorien: ca. 43 kcal; Fett: ca. 0,4 g; davon gesättigte Fettsäuren: ca. 0,0 g; Kohlenhydrate: ca. 9,8 g; davon Zucker: ca. 8,1 g; Eiweiß / Protein: ca. 1,4 g; Salz: ca. 0,0 g; Ballaststoffe: ca. 1,7 g",
+      "portion": "100 g",
       "sources": "https://www.health.harvard.edu/healthy-aging-and-longevity/foods-that-fight-inflammation; https://lpi.oregonstate.edu/mic/dietary-factors/phytochemicals/flavonoids; https://lpi.oregonstate.edu/mic/food-beverages/fruit-vegetables"
     },
     {
@@ -2650,6 +2960,8 @@ window.APP_DATA = {
       "use": "In Joghurt/Quark, als Dessert oder tiefgekühlt.",
       "caution": "Getrocknete Beeren sind konzentrierter an Zucker; kleine Mengen.",
       "priority": "sehr hoch",
+      "nutrition": "Energie / Kalorien: ca. 46 kcal; Fett: ca. 0,1 g; davon gesättigte Fettsäuren: ca. 0,0 g; Kohlenhydrate: ca. 12,2 g; davon Zucker: ca. 4,0 g; Eiweiß / Protein: ca. 0,4 g; Salz: ca. 0,0 g; Ballaststoffe: ca. 4,6 g",
+      "portion": "100 g",
       "sources": "https://www.health.harvard.edu/healthy-aging-and-longevity/foods-that-fight-inflammation; https://lpi.oregonstate.edu/mic/dietary-factors/phytochemicals/flavonoids; https://lpi.oregonstate.edu/mic/food-beverages/fruit-vegetables"
     },
     {
@@ -2667,6 +2979,8 @@ window.APP_DATA = {
       "use": "In Joghurt/Quark, als Dessert oder tiefgekühlt.",
       "caution": "Getrocknete Beeren sind konzentrierter an Zucker; kleine Mengen.",
       "priority": "sehr hoch",
+      "nutrition": "Energie / Kalorien: ca. 56 kcal; Fett: ca. 0,2 g; davon gesättigte Fettsäuren: ca. 0,0 g; Kohlenhydrate: ca. 13,8 g; davon Zucker: ca. 7,4 g; Eiweiß / Protein: ca. 1,4 g; Salz: ca. 0,0 g; Ballaststoffe: ca. 4,3 g",
+      "portion": "100 g",
       "sources": "https://www.health.harvard.edu/healthy-aging-and-longevity/foods-that-fight-inflammation; https://lpi.oregonstate.edu/mic/dietary-factors/phytochemicals/flavonoids; https://lpi.oregonstate.edu/mic/food-beverages/fruit-vegetables"
     },
     {
@@ -2684,6 +2998,8 @@ window.APP_DATA = {
       "use": "In Joghurt/Quark, als Dessert oder tiefgekühlt.",
       "caution": "Getrocknete Beeren sind konzentrierter an Zucker; kleine Mengen.",
       "priority": "sehr hoch",
+      "nutrition": "Energie / Kalorien: ca. 63 kcal; Fett: ca. 0,4 g; davon gesättigte Fettsäuren: ca. 0,0 g; Kohlenhydrate: ca. 15,4 g; davon Zucker: ca. 8,0 g; Eiweiß / Protein: ca. 1,4 g; Salz: ca. 0,0 g; Ballaststoffe: ca. 4,3 g",
+      "portion": "100 g",
       "sources": "https://www.health.harvard.edu/healthy-aging-and-longevity/foods-that-fight-inflammation; https://lpi.oregonstate.edu/mic/dietary-factors/phytochemicals/flavonoids; https://lpi.oregonstate.edu/mic/food-beverages/fruit-vegetables"
     },
     {
@@ -2701,6 +3017,8 @@ window.APP_DATA = {
       "use": "Ganz essen, nicht als Saft; gut mit Nüssen/Quark.",
       "caution": "Schale möglichst mitessen, wenn verträglich und gut gewaschen.",
       "priority": "hoch",
+      "nutrition": "Energie / Kalorien: ca. 52 kcal; Fett: ca. 0,2 g; davon gesättigte Fettsäuren: ca. 0,0 g; Kohlenhydrate: ca. 13,8 g; davon Zucker: ca. 10,4 g; Eiweiß / Protein: ca. 0,3 g; Salz: ca. 0,0 g; Ballaststoffe: ca. 2,4 g",
+      "portion": "150 g",
       "sources": "https://www.health.harvard.edu/healthy-aging-and-longevity/foods-that-fight-inflammation; https://lpi.oregonstate.edu/mic/dietary-factors/phytochemicals/flavonoids; https://lpi.oregonstate.edu/mic/food-beverages/fruit-vegetables"
     },
     {
@@ -2718,6 +3036,8 @@ window.APP_DATA = {
       "use": "Ganz essen, nicht als Saft; gut mit Nüssen/Quark.",
       "caution": "Schale möglichst mitessen, wenn verträglich und gut gewaschen.",
       "priority": "hoch",
+      "nutrition": "Energie / Kalorien: ca. 57 kcal; Fett: ca. 0,1 g; davon gesättigte Fettsäuren: ca. 0,0 g; Kohlenhydrate: ca. 15,2 g; davon Zucker: ca. 9,8 g; Eiweiß / Protein: ca. 0,4 g; Salz: ca. 0,0 g; Ballaststoffe: ca. 3,1 g",
+      "portion": "150 g",
       "sources": "https://www.health.harvard.edu/healthy-aging-and-longevity/foods-that-fight-inflammation; https://lpi.oregonstate.edu/mic/dietary-factors/phytochemicals/flavonoids; https://lpi.oregonstate.edu/mic/food-beverages/fruit-vegetables"
     },
     {
@@ -2735,6 +3055,8 @@ window.APP_DATA = {
       "use": "Ganz essen, nicht als Saft; gut mit Nüssen/Quark.",
       "caution": "Schale möglichst mitessen, wenn verträglich und gut gewaschen.",
       "priority": "hoch",
+      "nutrition": "Energie / Kalorien: ca. 57 kcal; Fett: ca. 0,1 g; davon gesättigte Fettsäuren: ca. 0,0 g; Kohlenhydrate: ca. 15,3 g; davon Zucker: ca. 12,0 g; Eiweiß / Protein: ca. 0,4 g; Salz: ca. 0,0 g; Ballaststoffe: ca. 1,9 g",
+      "portion": "150 g",
       "sources": "https://www.health.harvard.edu/healthy-aging-and-longevity/foods-that-fight-inflammation; https://lpi.oregonstate.edu/mic/dietary-factors/phytochemicals/flavonoids; https://lpi.oregonstate.edu/mic/food-beverages/fruit-vegetables"
     },
     {
@@ -2752,6 +3074,8 @@ window.APP_DATA = {
       "use": "Als Dessert oder zu Joghurt/Quark.",
       "caution": "Menge an Süße/Kohlenhydraten anpassen.",
       "priority": "hoch",
+      "nutrition": "Energie / Kalorien: ca. 48 kcal; Fett: ca. 0,4 g; davon gesättigte Fettsäuren: ca. 0,0 g; Kohlenhydrate: ca. 11,1 g; davon Zucker: ca. 9,2 g; Eiweiß / Protein: ca. 1,4 g; Salz: ca. 0,0 g; Ballaststoffe: ca. 2,0 g",
+      "portion": "150 g",
       "sources": "https://www.health.harvard.edu/healthy-aging-and-longevity/foods-that-fight-inflammation; https://lpi.oregonstate.edu/mic/food-beverages/fruit-vegetables"
     },
     {
@@ -2769,6 +3093,8 @@ window.APP_DATA = {
       "use": "Als Dessert oder zu Joghurt/Quark.",
       "caution": "Menge an Süße/Kohlenhydraten anpassen.",
       "priority": "hoch",
+      "nutrition": "Energie / Kalorien: ca. 63 kcal; Fett: ca. 0,2 g; davon gesättigte Fettsäuren: ca. 0,0 g; Kohlenhydrate: ca. 16,0 g; davon Zucker: ca. 12,8 g; Eiweiß / Protein: ca. 1,1 g; Salz: ca. 0,0 g; Ballaststoffe: ca. 2,1 g",
+      "portion": "150 g",
       "sources": "https://www.health.harvard.edu/healthy-aging-and-longevity/foods-that-fight-inflammation; https://lpi.oregonstate.edu/mic/food-beverages/fruit-vegetables"
     },
     {
@@ -2786,6 +3112,8 @@ window.APP_DATA = {
       "use": "Als Dessert oder zu Joghurt/Quark.",
       "caution": "Menge an Süße/Kohlenhydraten anpassen.",
       "priority": "hoch",
+      "nutrition": "Energie / Kalorien: ca. 63 kcal; Fett: ca. 0,2 g; davon gesättigte Fettsäuren: ca. 0,0 g; Kohlenhydrate: ca. 15,0 g; davon Zucker: ca. 13,0 g; Eiweiß / Protein: ca. 0,7 g; Salz: ca. 0,0 g; Ballaststoffe: ca. 1,4 g",
+      "portion": "150 g",
       "sources": "https://www.health.harvard.edu/healthy-aging-and-longevity/foods-that-fight-inflammation; https://lpi.oregonstate.edu/mic/food-beverages/fruit-vegetables"
     },
     {
@@ -2803,6 +3131,8 @@ window.APP_DATA = {
       "use": "Als Dessert oder zu Joghurt/Quark.",
       "caution": "Menge an Süße/Kohlenhydraten anpassen.",
       "priority": "hoch",
+      "nutrition": "Energie / Kalorien: ca. 44 kcal; Fett: ca. 0,3 g; davon gesättigte Fettsäuren: ca. 0,0 g; Kohlenhydrate: ca. 10,6 g; davon Zucker: ca. 7,9 g; Eiweiß / Protein: ca. 1,1 g; Salz: ca. 0,0 g; Ballaststoffe: ca. 1,7 g",
+      "portion": "150 g",
       "sources": "https://www.health.harvard.edu/healthy-aging-and-longevity/foods-that-fight-inflammation; https://lpi.oregonstate.edu/mic/food-beverages/fruit-vegetables"
     },
     {
@@ -2820,6 +3150,8 @@ window.APP_DATA = {
       "use": "Als Dessert oder zu Joghurt/Quark.",
       "caution": "Menge an Süße/Kohlenhydraten anpassen.",
       "priority": "hoch",
+      "nutrition": "Energie / Kalorien: ca. 39 kcal; Fett: ca. 0,3 g; davon gesättigte Fettsäuren: ca. 0,0 g; Kohlenhydrate: ca. 9,5 g; davon Zucker: ca. 8,4 g; Eiweiß / Protein: ca. 0,9 g; Salz: ca. 0,0 g; Ballaststoffe: ca. 1,5 g",
+      "portion": "150 g",
       "sources": "https://www.health.harvard.edu/healthy-aging-and-longevity/foods-that-fight-inflammation; https://lpi.oregonstate.edu/mic/food-beverages/fruit-vegetables"
     },
     {
@@ -2837,6 +3169,8 @@ window.APP_DATA = {
       "use": "Als Dessert oder zu Joghurt/Quark.",
       "caution": "Menge an Süße/Kohlenhydraten anpassen.",
       "priority": "hoch",
+      "nutrition": "Energie / Kalorien: ca. 46 kcal; Fett: ca. 0,3 g; davon gesättigte Fettsäuren: ca. 0,0 g; Kohlenhydrate: ca. 11,4 g; davon Zucker: ca. 9,9 g; Eiweiß / Protein: ca. 0,7 g; Salz: ca. 0,0 g; Ballaststoffe: ca. 1,4 g",
+      "portion": "150 g",
       "sources": "https://www.health.harvard.edu/healthy-aging-and-longevity/foods-that-fight-inflammation; https://lpi.oregonstate.edu/mic/food-beverages/fruit-vegetables"
     },
     {
@@ -2854,6 +3188,8 @@ window.APP_DATA = {
       "use": "Als Dessert oder zu Joghurt/Quark.",
       "caution": "Menge an Süße/Kohlenhydraten anpassen.",
       "priority": "hoch",
+      "nutrition": "Energie / Kalorien: ca. 50 kcal; Fett: ca. 0,3 g; davon gesättigte Fettsäuren: ca. 0,0 g; Kohlenhydrate: ca. 12,2 g; davon Zucker: ca. 8,5 g; Eiweiß / Protein: ca. 1,0 g; Salz: ca. 0,0 g; Ballaststoffe: ca. 1,6 g",
+      "portion": "150 g",
       "sources": "https://www.health.harvard.edu/healthy-aging-and-longevity/foods-that-fight-inflammation; https://lpi.oregonstate.edu/mic/food-beverages/fruit-vegetables"
     },
     {
@@ -2871,6 +3207,8 @@ window.APP_DATA = {
       "use": "Als Dessert oder zu Joghurt/Quark.",
       "caution": "Menge an Süße/Kohlenhydraten anpassen.",
       "priority": "hoch",
+      "nutrition": "Energie / Kalorien: ca. 46 kcal; Fett: ca. 0,3 g; davon gesättigte Fettsäuren: ca. 0,0 g; Kohlenhydrate: ca. 11,0 g; davon Zucker: ca. 10,0 g; Eiweiß / Protein: ca. 0,7 g; Salz: ca. 0,0 g; Ballaststoffe: ca. 1,4 g",
+      "portion": "150 g",
       "sources": "https://www.health.harvard.edu/healthy-aging-and-longevity/foods-that-fight-inflammation; https://lpi.oregonstate.edu/mic/food-beverages/fruit-vegetables"
     },
     {
@@ -2888,6 +3226,8 @@ window.APP_DATA = {
       "use": "Ganz essen oder als Zitronensaft im Dressing.",
       "caution": "Grapefruit kann mit Medikamenten wechselwirken.",
       "priority": "hoch",
+      "nutrition": "Energie / Kalorien: ca. 47 kcal; Fett: ca. 0,1 g; davon gesättigte Fettsäuren: ca. 0,0 g; Kohlenhydrate: ca. 11,8 g; davon Zucker: ca. 9,4 g; Eiweiß / Protein: ca. 0,9 g; Salz: ca. 0,0 g; Ballaststoffe: ca. 2,4 g",
+      "portion": "150 g",
       "sources": "https://www.health.harvard.edu/healthy-aging-and-longevity/foods-that-fight-inflammation; https://lpi.oregonstate.edu/mic/dietary-factors/phytochemicals/flavonoids; https://lpi.oregonstate.edu/mic/food-beverages/fruit-vegetables"
     },
     {
@@ -2905,6 +3245,8 @@ window.APP_DATA = {
       "use": "Ganz essen oder als Zitronensaft im Dressing.",
       "caution": "Grapefruit kann mit Medikamenten wechselwirken.",
       "priority": "hoch",
+      "nutrition": "Energie / Kalorien: ca. 42 kcal; Fett: ca. 0,1 g; davon gesättigte Fettsäuren: ca. 0,0 g; Kohlenhydrate: ca. 10,7 g; davon Zucker: ca. 7,0 g; Eiweiß / Protein: ca. 0,8 g; Salz: ca. 0,0 g; Ballaststoffe: ca. 1,6 g",
+      "portion": "150 g",
       "sources": "https://www.health.harvard.edu/healthy-aging-and-longevity/foods-that-fight-inflammation; https://lpi.oregonstate.edu/mic/dietary-factors/phytochemicals/flavonoids; https://lpi.oregonstate.edu/mic/food-beverages/fruit-vegetables"
     },
     {
@@ -2922,6 +3264,8 @@ window.APP_DATA = {
       "use": "Ganz essen oder als Zitronensaft im Dressing.",
       "caution": "Grapefruit kann mit Medikamenten wechselwirken.",
       "priority": "hoch",
+      "nutrition": "Energie / Kalorien: ca. 30 kcal; Fett: ca. 0,2 g; davon gesättigte Fettsäuren: ca. 0,0 g; Kohlenhydrate: ca. 10,5 g; davon Zucker: ca. 1,7 g; Eiweiß / Protein: ca. 0,7 g; Salz: ca. 0,0 g; Ballaststoffe: ca. 2,8 g",
+      "portion": "150 g",
       "sources": "https://www.health.harvard.edu/healthy-aging-and-longevity/foods-that-fight-inflammation; https://lpi.oregonstate.edu/mic/dietary-factors/phytochemicals/flavonoids; https://lpi.oregonstate.edu/mic/food-beverages/fruit-vegetables"
     },
     {
@@ -2939,6 +3283,8 @@ window.APP_DATA = {
       "use": "Ganz essen oder als Zitronensaft im Dressing.",
       "caution": "Grapefruit kann mit Medikamenten wechselwirken.",
       "priority": "hoch",
+      "nutrition": "Energie / Kalorien: ca. 53 kcal; Fett: ca. 0,3 g; davon gesättigte Fettsäuren: ca. 0,0 g; Kohlenhydrate: ca. 13,3 g; davon Zucker: ca. 10,6 g; Eiweiß / Protein: ca. 0,8 g; Salz: ca. 0,0 g; Ballaststoffe: ca. 1,8 g",
+      "portion": "150 g",
       "sources": "https://www.health.harvard.edu/healthy-aging-and-longevity/foods-that-fight-inflammation; https://lpi.oregonstate.edu/mic/dietary-factors/phytochemicals/flavonoids; https://lpi.oregonstate.edu/mic/food-beverages/fruit-vegetables"
     },
     {
@@ -2956,6 +3302,8 @@ window.APP_DATA = {
       "use": "Ganz essen oder als Zitronensaft im Dressing.",
       "caution": "Grapefruit kann mit Medikamenten wechselwirken.",
       "priority": "hoch",
+      "nutrition": "Energie / Kalorien: ca. 47 kcal; Fett: ca. 0,1 g; davon gesättigte Fettsäuren: ca. 0,0 g; Kohlenhydrate: ca. 11,8 g; davon Zucker: ca. 9,4 g; Eiweiß / Protein: ca. 0,9 g; Salz: ca. 0,0 g; Ballaststoffe: ca. 2,4 g",
+      "portion": "150 g",
       "sources": "https://www.health.harvard.edu/healthy-aging-and-longevity/foods-that-fight-inflammation; https://lpi.oregonstate.edu/mic/dietary-factors/phytochemicals/flavonoids; https://lpi.oregonstate.edu/mic/food-beverages/fruit-vegetables"
     },
     {
@@ -2973,6 +3321,8 @@ window.APP_DATA = {
       "use": "Ganz essen oder als Zitronensaft im Dressing.",
       "caution": "Grapefruit kann mit Medikamenten wechselwirken.",
       "priority": "hoch",
+      "nutrition": "Energie / Kalorien: ca. 38 kcal; Fett: ca. 0,0 g; davon gesättigte Fettsäuren: ca. 0,0 g; Kohlenhydrate: ca. 9,6 g; davon Zucker: ca. 8,6 g; Eiweiß / Protein: ca. 0,8 g; Salz: ca. 0,0 g; Ballaststoffe: ca. 1,0 g",
+      "portion": "150 g",
       "sources": "https://www.health.harvard.edu/healthy-aging-and-longevity/foods-that-fight-inflammation; https://lpi.oregonstate.edu/mic/dietary-factors/phytochemicals/flavonoids; https://lpi.oregonstate.edu/mic/food-beverages/fruit-vegetables"
     },
     {
@@ -2990,6 +3340,8 @@ window.APP_DATA = {
       "use": "Ganz essen oder als Zitronensaft im Dressing.",
       "caution": "Grapefruit kann mit Medikamenten wechselwirken.",
       "priority": "hoch",
+      "nutrition": "Energie / Kalorien: ca. 29 kcal; Fett: ca. 0,3 g; davon gesättigte Fettsäuren: ca. 0,0 g; Kohlenhydrate: ca. 9,3 g; davon Zucker: ca. 2,5 g; Eiweiß / Protein: ca. 1,1 g; Salz: ca. 0,0 g; Ballaststoffe: ca. 2,8 g",
+      "portion": "150 g",
       "sources": "https://www.health.harvard.edu/healthy-aging-and-longevity/foods-that-fight-inflammation; https://lpi.oregonstate.edu/mic/dietary-factors/phytochemicals/flavonoids; https://lpi.oregonstate.edu/mic/food-beverages/fruit-vegetables"
     },
     {
@@ -3007,6 +3359,8 @@ window.APP_DATA = {
       "use": "Kleine Portionen als Kontrast zu Joghurt, Quark oder Salat.",
       "caution": "Saft vermeiden; ganze Früchte bevorzugen.",
       "priority": "mittel bis hoch",
+      "nutrition": "Energie / Kalorien: ca. 50 kcal; Fett: ca. 0,1 g; davon gesättigte Fettsäuren: ca. 0,0 g; Kohlenhydrate: ca. 13,1 g; davon Zucker: ca. 9,9 g; Eiweiß / Protein: ca. 0,5 g; Salz: ca. 0,0 g; Ballaststoffe: ca. 1,4 g",
+      "portion": "150 g",
       "sources": "https://lpi.oregonstate.edu/mic/dietary-factors/phytochemicals/flavonoids; https://lpi.oregonstate.edu/mic/dietary-factors/phytochemicals/carotenoids; https://lpi.oregonstate.edu/mic/food-beverages/fruit-vegetables"
     },
     {
@@ -3024,6 +3378,8 @@ window.APP_DATA = {
       "use": "Kleine Portionen als Kontrast zu Joghurt, Quark oder Salat.",
       "caution": "Saft vermeiden; ganze Früchte bevorzugen.",
       "priority": "mittel bis hoch",
+      "nutrition": "Energie / Kalorien: ca. 34 kcal; Fett: ca. 0,2 g; davon gesättigte Fettsäuren: ca. 0,0 g; Kohlenhydrate: ca. 8,2 g; davon Zucker: ca. 7,9 g; Eiweiß / Protein: ca. 0,8 g; Salz: ca. 0,0 g; Ballaststoffe: ca. 0,9 g",
+      "portion": "150 g",
       "sources": "https://lpi.oregonstate.edu/mic/dietary-factors/phytochemicals/flavonoids; https://lpi.oregonstate.edu/mic/dietary-factors/phytochemicals/carotenoids; https://lpi.oregonstate.edu/mic/food-beverages/fruit-vegetables"
     },
     {
@@ -3041,6 +3397,8 @@ window.APP_DATA = {
       "use": "Kleine Portionen als Kontrast zu Joghurt, Quark oder Salat.",
       "caution": "Saft vermeiden; ganze Früchte bevorzugen.",
       "priority": "mittel bis hoch",
+      "nutrition": "Energie / Kalorien: ca. 69 kcal; Fett: ca. 0,2 g; davon gesättigte Fettsäuren: ca. 0,0 g; Kohlenhydrate: ca. 18,1 g; davon Zucker: ca. 15,5 g; Eiweiß / Protein: ca. 0,7 g; Salz: ca. 0,0 g; Ballaststoffe: ca. 0,9 g",
+      "portion": "150 g",
       "sources": "https://lpi.oregonstate.edu/mic/dietary-factors/phytochemicals/flavonoids; https://lpi.oregonstate.edu/mic/dietary-factors/phytochemicals/carotenoids; https://lpi.oregonstate.edu/mic/food-beverages/fruit-vegetables"
     },
     {
@@ -3058,6 +3416,8 @@ window.APP_DATA = {
       "use": "Kleine Portionen als Kontrast zu Joghurt, Quark oder Salat.",
       "caution": "Saft vermeiden; ganze Früchte bevorzugen.",
       "priority": "mittel bis hoch",
+      "nutrition": "Energie / Kalorien: ca. 83 kcal; Fett: ca. 1,2 g; davon gesättigte Fettsäuren: ca. 0,1 g; Kohlenhydrate: ca. 18,7 g; davon Zucker: ca. 13,7 g; Eiweiß / Protein: ca. 1,7 g; Salz: ca. 0,0 g; Ballaststoffe: ca. 4,0 g",
+      "portion": "150 g",
       "sources": "https://lpi.oregonstate.edu/mic/dietary-factors/phytochemicals/flavonoids; https://lpi.oregonstate.edu/mic/dietary-factors/phytochemicals/carotenoids; https://lpi.oregonstate.edu/mic/food-beverages/fruit-vegetables"
     },
     {
@@ -3075,6 +3435,8 @@ window.APP_DATA = {
       "use": "Kleine Portionen als Kontrast zu Joghurt, Quark oder Salat.",
       "caution": "Saft vermeiden; ganze Früchte bevorzugen.",
       "priority": "mittel bis hoch",
+      "nutrition": "Energie / Kalorien: ca. 68 kcal; Fett: ca. 1,0 g; davon gesättigte Fettsäuren: ca. 0,3 g; Kohlenhydrate: ca. 14,3 g; davon Zucker: ca. 8,9 g; Eiweiß / Protein: ca. 2,6 g; Salz: ca. 0,0 g; Ballaststoffe: ca. 5,4 g",
+      "portion": "150 g",
       "sources": "https://lpi.oregonstate.edu/mic/dietary-factors/phytochemicals/flavonoids; https://lpi.oregonstate.edu/mic/dietary-factors/phytochemicals/carotenoids; https://lpi.oregonstate.edu/mic/food-beverages/fruit-vegetables"
     },
     {
@@ -3092,6 +3454,8 @@ window.APP_DATA = {
       "use": "Kleine Portionen als Kontrast zu Joghurt, Quark oder Salat.",
       "caution": "Saft vermeiden; ganze Früchte bevorzugen.",
       "priority": "mittel bis hoch",
+      "nutrition": "Energie / Kalorien: ca. 61 kcal; Fett: ca. 0,5 g; davon gesättigte Fettsäuren: ca. 0,0 g; Kohlenhydrate: ca. 14,7 g; davon Zucker: ca. 9,0 g; Eiweiß / Protein: ca. 1,1 g; Salz: ca. 0,0 g; Ballaststoffe: ca. 3,0 g",
+      "portion": "150 g",
       "sources": "https://lpi.oregonstate.edu/mic/dietary-factors/phytochemicals/flavonoids; https://lpi.oregonstate.edu/mic/dietary-factors/phytochemicals/carotenoids; https://lpi.oregonstate.edu/mic/food-beverages/fruit-vegetables"
     },
     {
@@ -3109,6 +3473,8 @@ window.APP_DATA = {
       "use": "Kleine Portionen als Kontrast zu Joghurt, Quark oder Salat.",
       "caution": "Saft vermeiden; ganze Früchte bevorzugen.",
       "priority": "mittel bis hoch",
+      "nutrition": "Energie / Kalorien: ca. 60 kcal; Fett: ca. 0,4 g; davon gesättigte Fettsäuren: ca. 0,1 g; Kohlenhydrate: ca. 15,0 g; davon Zucker: ca. 13,7 g; Eiweiß / Protein: ca. 0,8 g; Salz: ca. 0,0 g; Ballaststoffe: ca. 1,6 g",
+      "portion": "150 g",
       "sources": "https://lpi.oregonstate.edu/mic/dietary-factors/phytochemicals/flavonoids; https://lpi.oregonstate.edu/mic/dietary-factors/phytochemicals/carotenoids; https://lpi.oregonstate.edu/mic/food-beverages/fruit-vegetables"
     },
     {
@@ -3126,6 +3492,8 @@ window.APP_DATA = {
       "use": "Kleine Portionen als Kontrast zu Joghurt, Quark oder Salat.",
       "caution": "Saft vermeiden; ganze Früchte bevorzugen.",
       "priority": "mittel bis hoch",
+      "nutrition": "Energie / Kalorien: ca. 43 kcal; Fett: ca. 0,3 g; davon gesättigte Fettsäuren: ca. 0,1 g; Kohlenhydrate: ca. 10,8 g; davon Zucker: ca. 7,8 g; Eiweiß / Protein: ca. 0,5 g; Salz: ca. 0,0 g; Ballaststoffe: ca. 1,7 g",
+      "portion": "150 g",
       "sources": "https://lpi.oregonstate.edu/mic/dietary-factors/phytochemicals/flavonoids; https://lpi.oregonstate.edu/mic/dietary-factors/phytochemicals/carotenoids; https://lpi.oregonstate.edu/mic/food-beverages/fruit-vegetables"
     },
     {
@@ -3143,6 +3511,8 @@ window.APP_DATA = {
       "use": "Kleine Portionen als Kontrast zu Joghurt, Quark oder Salat.",
       "caution": "Saft vermeiden; ganze Früchte bevorzugen.",
       "priority": "mittel bis hoch",
+      "nutrition": "Energie / Kalorien: ca. 97 kcal; Fett: ca. 0,7 g; davon gesättigte Fettsäuren: ca. 0,1 g; Kohlenhydrate: ca. 23,4 g; davon Zucker: ca. 11,2 g; Eiweiß / Protein: ca. 2,2 g; Salz: ca. 0,0 g; Ballaststoffe: ca. 10,4 g",
+      "portion": "150 g",
       "sources": "https://lpi.oregonstate.edu/mic/dietary-factors/phytochemicals/flavonoids; https://lpi.oregonstate.edu/mic/dietary-factors/phytochemicals/carotenoids; https://lpi.oregonstate.edu/mic/food-beverages/fruit-vegetables"
     },
     {
@@ -3160,6 +3530,8 @@ window.APP_DATA = {
       "use": "Kleine Portionen als Kontrast zu Joghurt, Quark oder Salat.",
       "caution": "Saft vermeiden; ganze Früchte bevorzugen.",
       "priority": "mittel bis hoch",
+      "nutrition": "Energie / Kalorien: ca. 30 kcal; Fett: ca. 0,2 g; davon gesättigte Fettsäuren: ca. 0,0 g; Kohlenhydrate: ca. 7,6 g; davon Zucker: ca. 6,2 g; Eiweiß / Protein: ca. 0,6 g; Salz: ca. 0,0 g; Ballaststoffe: ca. 0,4 g",
+      "portion": "150 g",
       "sources": "https://lpi.oregonstate.edu/mic/dietary-factors/phytochemicals/flavonoids; https://lpi.oregonstate.edu/mic/dietary-factors/phytochemicals/carotenoids; https://lpi.oregonstate.edu/mic/food-beverages/fruit-vegetables"
     },
     {
@@ -3177,6 +3549,8 @@ window.APP_DATA = {
       "use": "In Joghurt/Quark, Salat, Müsli oder Gemüse.",
       "caution": "Leinsamen besser geschrotet; ausreichend trinken.",
       "priority": "hoch",
+      "nutrition": "Energie / Kalorien: ca. 486 kcal; Fett: ca. 30,7 g; davon gesättigte Fettsäuren: ca. 3,3 g; Kohlenhydrate: ca. 42,1 g; davon Zucker: ca. 0,0 g; Eiweiß / Protein: ca. 16,5 g; Salz: ca. 0,0 g; Ballaststoffe: ca. 34,4 g",
+      "portion": "15 g",
       "sources": "https://www.health.harvard.edu/diet-and-nutrition/quick-start-guide-to-an-antiinflammation-diet; https://www.hopkinsmedicine.org/health/wellness-and-prevention/anti-inflammatory-diet; https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/in-depth/mediterranean-diet/art-20047801"
     },
     {
@@ -3194,6 +3568,8 @@ window.APP_DATA = {
       "use": "In Joghurt/Quark, Salat, Müsli oder Gemüse.",
       "caution": "Leinsamen besser geschrotet; ausreichend trinken.",
       "priority": "hoch",
+      "nutrition": "Energie / Kalorien: ca. 553 kcal; Fett: ca. 48,8 g; davon gesättigte Fettsäuren: ca. 4,6 g; Kohlenhydrate: ca. 8,7 g; davon Zucker: ca. 1,5 g; Eiweiß / Protein: ca. 31,6 g; Salz: ca. 0,0 g; Ballaststoffe: ca. 4,0 g",
+      "portion": "20 g",
       "sources": "https://www.health.harvard.edu/diet-and-nutrition/quick-start-guide-to-an-antiinflammation-diet; https://www.hopkinsmedicine.org/health/wellness-and-prevention/anti-inflammatory-diet; https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/in-depth/mediterranean-diet/art-20047801"
     },
     {
@@ -3211,6 +3587,8 @@ window.APP_DATA = {
       "use": "In Joghurt/Quark, Salat, Müsli oder Gemüse.",
       "caution": "Leinsamen besser geschrotet; ausreichend trinken.",
       "priority": "hoch",
+      "nutrition": "Energie / Kalorien: ca. 559 kcal; Fett: ca. 49,0 g; davon gesättigte Fettsäuren: ca. 8,7 g; Kohlenhydrate: ca. 10,7 g; davon Zucker: ca. 1,4 g; Eiweiß / Protein: ca. 30,2 g; Salz: ca. 0,0 g; Ballaststoffe: ca. 6,0 g",
+      "portion": "25 g",
       "sources": "https://www.health.harvard.edu/diet-and-nutrition/quick-start-guide-to-an-antiinflammation-diet; https://www.hopkinsmedicine.org/health/wellness-and-prevention/anti-inflammatory-diet; https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/in-depth/mediterranean-diet/art-20047801"
     },
     {
@@ -3228,6 +3606,8 @@ window.APP_DATA = {
       "use": "In Joghurt/Quark, Salat, Müsli oder Gemüse.",
       "caution": "Leinsamen besser geschrotet; ausreichend trinken.",
       "priority": "hoch",
+      "nutrition": "Energie / Kalorien: ca. 534 kcal; Fett: ca. 42,2 g; davon gesättigte Fettsäuren: ca. 3,7 g; Kohlenhydrate: ca. 28,9 g; davon Zucker: ca. 1,6 g; Eiweiß / Protein: ca. 18,3 g; Salz: ca. 0,1 g; Ballaststoffe: ca. 27,3 g",
+      "portion": "15 g",
       "sources": "https://www.health.harvard.edu/diet-and-nutrition/quick-start-guide-to-an-antiinflammation-diet; https://www.hopkinsmedicine.org/health/wellness-and-prevention/anti-inflammatory-diet; https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/in-depth/mediterranean-diet/art-20047801"
     },
     {
@@ -3245,6 +3625,8 @@ window.APP_DATA = {
       "use": "In Joghurt/Quark, Salat, Müsli oder Gemüse.",
       "caution": "Leinsamen besser geschrotet; ausreichend trinken.",
       "priority": "hoch",
+      "nutrition": "Energie / Kalorien: ca. 525 kcal; Fett: ca. 41,6 g; davon gesättigte Fettsäuren: ca. 4,5 g; Kohlenhydrate: ca. 28,1 g; davon Zucker: ca. 3,0 g; Eiweiß / Protein: ca. 18,0 g; Salz: ca. 0,1 g; Ballaststoffe: ca. 19,5 g",
+      "portion": "10 g",
       "sources": "https://www.health.harvard.edu/diet-and-nutrition/quick-start-guide-to-an-antiinflammation-diet; https://www.hopkinsmedicine.org/health/wellness-and-prevention/anti-inflammatory-diet; https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/in-depth/mediterranean-diet/art-20047801"
     },
     {
@@ -3262,6 +3644,8 @@ window.APP_DATA = {
       "use": "In Joghurt/Quark, Salat, Müsli oder Gemüse.",
       "caution": "Leinsamen besser geschrotet; ausreichend trinken.",
       "priority": "hoch",
+      "nutrition": "Energie / Kalorien: ca. 345 kcal; Fett: ca. 15,0 g; davon gesättigte Fettsäuren: ca. 1,5 g; Kohlenhydrate: ca. 44,0 g; davon Zucker: ca. 2,0 g; Eiweiß / Protein: ca. 16,0 g; Salz: ca. 0,2 g; Ballaststoffe: ca. 11,0 g",
+      "portion": "5 g",
       "sources": "https://www.health.harvard.edu/diet-and-nutrition/quick-start-guide-to-an-antiinflammation-diet; https://www.hopkinsmedicine.org/health/wellness-and-prevention/anti-inflammatory-diet; https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/in-depth/mediterranean-diet/art-20047801"
     },
     {
@@ -3279,6 +3663,8 @@ window.APP_DATA = {
       "use": "In Joghurt/Quark, Salat, Müsli oder Gemüse.",
       "caution": "Leinsamen besser geschrotet; ausreichend trinken.",
       "priority": "hoch",
+      "nutrition": "Energie / Kalorien: ca. 573 kcal; Fett: ca. 49,7 g; davon gesättigte Fettsäuren: ca. 7,0 g; Kohlenhydrate: ca. 23,4 g; davon Zucker: ca. 0,3 g; Eiweiß / Protein: ca. 17,7 g; Salz: ca. 0,0 g; Ballaststoffe: ca. 11,8 g",
+      "portion": "15 g",
       "sources": "https://www.health.harvard.edu/diet-and-nutrition/quick-start-guide-to-an-antiinflammation-diet; https://www.hopkinsmedicine.org/health/wellness-and-prevention/anti-inflammatory-diet; https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/in-depth/mediterranean-diet/art-20047801"
     },
     {
@@ -3296,6 +3682,8 @@ window.APP_DATA = {
       "use": "In Joghurt/Quark, Salat, Müsli oder Gemüse.",
       "caution": "Leinsamen besser geschrotet; ausreichend trinken.",
       "priority": "hoch",
+      "nutrition": "Energie / Kalorien: ca. 584 kcal; Fett: ca. 51,5 g; davon gesättigte Fettsäuren: ca. 4,5 g; Kohlenhydrate: ca. 20,0 g; davon Zucker: ca. 2,6 g; Eiweiß / Protein: ca. 20,8 g; Salz: ca. 0,0 g; Ballaststoffe: ca. 8,6 g",
+      "portion": "25 g",
       "sources": "https://www.health.harvard.edu/diet-and-nutrition/quick-start-guide-to-an-antiinflammation-diet; https://www.hopkinsmedicine.org/health/wellness-and-prevention/anti-inflammatory-diet; https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/in-depth/mediterranean-diet/art-20047801"
     },
     {
@@ -3313,6 +3701,8 @@ window.APP_DATA = {
       "use": "Kleine Handvoll; mit Joghurt, Beeren oder Salat.",
       "caution": "Paranüsse wegen Selen meist nur 1–2 Stück.",
       "priority": "hoch",
+      "nutrition": "Energie / Kalorien: ca. 553 kcal; Fett: ca. 43,9 g; davon gesättigte Fettsäuren: ca. 7,8 g; Kohlenhydrate: ca. 30,2 g; davon Zucker: ca. 5,9 g; Eiweiß / Protein: ca. 18,2 g; Salz: ca. 0,0 g; Ballaststoffe: ca. 3,3 g",
+      "portion": "30 g",
       "sources": "https://www.health.harvard.edu/healthy-aging-and-longevity/foods-that-fight-inflammation; https://www.hopkinsmedicine.org/health/wellness-and-prevention/anti-inflammatory-diet; https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/in-depth/mediterranean-diet/art-20047801"
     },
     {
@@ -3330,6 +3720,8 @@ window.APP_DATA = {
       "use": "Kleine Handvoll; mit Joghurt, Beeren oder Salat.",
       "caution": "Paranüsse wegen Selen meist nur 1–2 Stück.",
       "priority": "hoch",
+      "nutrition": "Energie / Kalorien: ca. 567 kcal; Fett: ca. 49,2 g; davon gesättigte Fettsäuren: ca. 6,8 g; Kohlenhydrate: ca. 16,1 g; davon Zucker: ca. 4,7 g; Eiweiß / Protein: ca. 25,8 g; Salz: ca. 0,0 g; Ballaststoffe: ca. 8,5 g",
+      "portion": "30 g",
       "sources": "https://www.health.harvard.edu/healthy-aging-and-longevity/foods-that-fight-inflammation; https://www.hopkinsmedicine.org/health/wellness-and-prevention/anti-inflammatory-diet; https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/in-depth/mediterranean-diet/art-20047801"
     },
     {
@@ -3347,6 +3739,8 @@ window.APP_DATA = {
       "use": "Kleine Handvoll; mit Joghurt, Beeren oder Salat.",
       "caution": "Paranüsse wegen Selen meist nur 1–2 Stück.",
       "priority": "hoch",
+      "nutrition": "Energie / Kalorien: ca. 628 kcal; Fett: ca. 60,8 g; davon gesättigte Fettsäuren: ca. 4,5 g; Kohlenhydrate: ca. 16,7 g; davon Zucker: ca. 4,3 g; Eiweiß / Protein: ca. 15,0 g; Salz: ca. 0,0 g; Ballaststoffe: ca. 9,7 g",
+      "portion": "30 g",
       "sources": "https://www.health.harvard.edu/healthy-aging-and-longevity/foods-that-fight-inflammation; https://www.hopkinsmedicine.org/health/wellness-and-prevention/anti-inflammatory-diet; https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/in-depth/mediterranean-diet/art-20047801"
     },
     {
@@ -3364,6 +3758,8 @@ window.APP_DATA = {
       "use": "Kleine Handvoll; mit Joghurt, Beeren oder Salat.",
       "caution": "Paranüsse wegen Selen meist nur 1–2 Stück.",
       "priority": "hoch",
+      "nutrition": "Energie / Kalorien: ca. 718 kcal; Fett: ca. 75,8 g; davon gesättigte Fettsäuren: ca. 12,1 g; Kohlenhydrate: ca. 13,8 g; davon Zucker: ca. 4,6 g; Eiweiß / Protein: ca. 7,9 g; Salz: ca. 0,0 g; Ballaststoffe: ca. 8,6 g",
+      "portion": "30 g",
       "sources": "https://www.health.harvard.edu/healthy-aging-and-longevity/foods-that-fight-inflammation; https://www.hopkinsmedicine.org/health/wellness-and-prevention/anti-inflammatory-diet; https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/in-depth/mediterranean-diet/art-20047801"
     },
     {
@@ -3381,6 +3777,8 @@ window.APP_DATA = {
       "use": "Kleine Handvoll; mit Joghurt, Beeren oder Salat.",
       "caution": "Paranüsse wegen Selen meist nur 1–2 Stück.",
       "priority": "hoch",
+      "nutrition": "Energie / Kalorien: ca. 579 kcal; Fett: ca. 49,9 g; davon gesättigte Fettsäuren: ca. 3,8 g; Kohlenhydrate: ca. 21,6 g; davon Zucker: ca. 4,4 g; Eiweiß / Protein: ca. 21,2 g; Salz: ca. 0,0 g; Ballaststoffe: ca. 12,5 g",
+      "portion": "30 g",
       "sources": "https://www.health.harvard.edu/healthy-aging-and-longevity/foods-that-fight-inflammation; https://www.hopkinsmedicine.org/health/wellness-and-prevention/anti-inflammatory-diet; https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/in-depth/mediterranean-diet/art-20047801"
     },
     {
@@ -3398,6 +3796,8 @@ window.APP_DATA = {
       "use": "Kleine Handvoll; mit Joghurt, Beeren oder Salat.",
       "caution": "Paranüsse wegen Selen meist nur 1–2 Stück.",
       "priority": "hoch",
+      "nutrition": "Energie / Kalorien: ca. 659 kcal; Fett: ca. 67,1 g; davon gesättigte Fettsäuren: ca. 16,1 g; Kohlenhydrate: ca. 11,7 g; davon Zucker: ca. 2,3 g; Eiweiß / Protein: ca. 14,3 g; Salz: ca. 0,0 g; Ballaststoffe: ca. 7,5 g",
+      "portion": "10 g",
       "sources": "https://www.health.harvard.edu/healthy-aging-and-longevity/foods-that-fight-inflammation; https://www.hopkinsmedicine.org/health/wellness-and-prevention/anti-inflammatory-diet; https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/in-depth/mediterranean-diet/art-20047801"
     },
     {
@@ -3415,6 +3815,8 @@ window.APP_DATA = {
       "use": "Kleine Handvoll; mit Joghurt, Beeren oder Salat.",
       "caution": "Paranüsse wegen Selen meist nur 1–2 Stück.",
       "priority": "hoch",
+      "nutrition": "Energie / Kalorien: ca. 691 kcal; Fett: ca. 72,0 g; davon gesättigte Fettsäuren: ca. 6,2 g; Kohlenhydrate: ca. 13,9 g; davon Zucker: ca. 4,0 g; Eiweiß / Protein: ca. 9,2 g; Salz: ca. 0,0 g; Ballaststoffe: ca. 9,6 g",
+      "portion": "30 g",
       "sources": "https://www.health.harvard.edu/healthy-aging-and-longevity/foods-that-fight-inflammation; https://www.hopkinsmedicine.org/health/wellness-and-prevention/anti-inflammatory-diet; https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/in-depth/mediterranean-diet/art-20047801"
     },
     {
@@ -3432,6 +3834,8 @@ window.APP_DATA = {
       "use": "Kleine Handvoll; mit Joghurt, Beeren oder Salat.",
       "caution": "Paranüsse wegen Selen meist nur 1–2 Stück.",
       "priority": "hoch",
+      "nutrition": "Energie / Kalorien: ca. 562 kcal; Fett: ca. 45,3 g; davon gesättigte Fettsäuren: ca. 5,6 g; Kohlenhydrate: ca. 27,5 g; davon Zucker: ca. 7,7 g; Eiweiß / Protein: ca. 20,3 g; Salz: ca. 0,0 g; Ballaststoffe: ca. 10,3 g",
+      "portion": "30 g",
       "sources": "https://www.health.harvard.edu/healthy-aging-and-longevity/foods-that-fight-inflammation; https://www.hopkinsmedicine.org/health/wellness-and-prevention/anti-inflammatory-diet; https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/in-depth/mediterranean-diet/art-20047801"
     },
     {
@@ -3449,6 +3853,8 @@ window.APP_DATA = {
       "use": "Kleine Handvoll; mit Joghurt, Beeren oder Salat.",
       "caution": "Paranüsse wegen Selen meist nur 1–2 Stück.",
       "priority": "hoch",
+      "nutrition": "Energie / Kalorien: ca. 654 kcal; Fett: ca. 65,2 g; davon gesättigte Fettsäuren: ca. 6,1 g; Kohlenhydrate: ca. 13,7 g; davon Zucker: ca. 2,6 g; Eiweiß / Protein: ca. 15,2 g; Salz: ca. 0,0 g; Ballaststoffe: ca. 6,7 g",
+      "portion": "30 g",
       "sources": "https://www.health.harvard.edu/healthy-aging-and-longevity/foods-that-fight-inflammation; https://www.hopkinsmedicine.org/health/wellness-and-prevention/anti-inflammatory-diet; https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/in-depth/mediterranean-diet/art-20047801"
     },
     {
@@ -3466,6 +3872,8 @@ window.APP_DATA = {
       "use": "Olivenöl zu Gemüse/Salat; Leinöl kalt verwenden.",
       "caution": "Öle sparsam dosieren; Leinöl nicht stark erhitzen.",
       "priority": "hoch",
+      "nutrition": "Energie / Kalorien: ca. 160 kcal; Fett: ca. 14,7 g; davon gesättigte Fettsäuren: ca. 2,1 g; Kohlenhydrate: ca. 8,5 g; davon Zucker: ca. 0,7 g; Eiweiß / Protein: ca. 2,0 g; Salz: ca. 0,0 g; Ballaststoffe: ca. 6,7 g",
+      "portion": "100 g",
       "sources": "https://www.health.harvard.edu/healthy-aging-and-longevity/foods-that-fight-inflammation; https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/in-depth/mediterranean-diet/art-20047801; https://www.hopkinsmedicine.org/health/wellness-and-prevention/anti-inflammatory-diet"
     },
     {
@@ -3483,6 +3891,8 @@ window.APP_DATA = {
       "use": "Olivenöl zu Gemüse/Salat; Leinöl kalt verwenden.",
       "caution": "Öle sparsam dosieren; Leinöl nicht stark erhitzen.",
       "priority": "hoch",
+      "nutrition": "Energie / Kalorien: ca. 884 kcal; Fett: ca. 100,0 g; davon gesättigte Fettsäuren: ca. 10,0 g; Kohlenhydrate: ca. 0,0 g; davon Zucker: ca. 0,0 g; Eiweiß / Protein: ca. 0,0 g; Salz: ca. 0,0 g; Ballaststoffe: ca. 0,0 g",
+      "portion": "10 g",
       "sources": "https://www.health.harvard.edu/healthy-aging-and-longevity/foods-that-fight-inflammation; https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/in-depth/mediterranean-diet/art-20047801; https://www.hopkinsmedicine.org/health/wellness-and-prevention/anti-inflammatory-diet"
     },
     {
@@ -3500,6 +3910,8 @@ window.APP_DATA = {
       "use": "Olivenöl zu Gemüse/Salat; Leinöl kalt verwenden.",
       "caution": "Öle sparsam dosieren; Leinöl nicht stark erhitzen.",
       "priority": "hoch",
+      "nutrition": "Energie / Kalorien: ca. 884 kcal; Fett: ca. 100,0 g; davon gesättigte Fettsäuren: ca. 18,0 g; Kohlenhydrate: ca. 0,0 g; davon Zucker: ca. 0,0 g; Eiweiß / Protein: ca. 0,0 g; Salz: ca. 0,0 g; Ballaststoffe: ca. 0,0 g",
+      "portion": "10 g",
       "sources": "https://www.health.harvard.edu/healthy-aging-and-longevity/foods-that-fight-inflammation; https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/in-depth/mediterranean-diet/art-20047801; https://www.hopkinsmedicine.org/health/wellness-and-prevention/anti-inflammatory-diet"
     },
     {
@@ -3517,6 +3929,8 @@ window.APP_DATA = {
       "use": "Olivenöl zu Gemüse/Salat; Leinöl kalt verwenden.",
       "caution": "Öle sparsam dosieren; Leinöl nicht stark erhitzen.",
       "priority": "hoch",
+      "nutrition": "Energie / Kalorien: ca. 884 kcal; Fett: ca. 100,0 g; davon gesättigte Fettsäuren: ca. 9,0 g; Kohlenhydrate: ca. 0,0 g; davon Zucker: ca. 0,0 g; Eiweiß / Protein: ca. 0,0 g; Salz: ca. 0,0 g; Ballaststoffe: ca. 0,0 g",
+      "portion": "10 g",
       "sources": "https://www.health.harvard.edu/healthy-aging-and-longevity/foods-that-fight-inflammation; https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/in-depth/mediterranean-diet/art-20047801; https://www.hopkinsmedicine.org/health/wellness-and-prevention/anti-inflammatory-diet"
     },
     {
@@ -3534,6 +3948,8 @@ window.APP_DATA = {
       "use": "Olivenöl zu Gemüse/Salat; Leinöl kalt verwenden.",
       "caution": "Öle sparsam dosieren; Leinöl nicht stark erhitzen.",
       "priority": "hoch",
+      "nutrition": "Energie / Kalorien: ca. 145 kcal; Fett: ca. 15,3 g; davon gesättigte Fettsäuren: ca. 2,0 g; Kohlenhydrate: ca. 3,8 g; davon Zucker: ca. 0,5 g; Eiweiß / Protein: ca. 1,0 g; Salz: ca. 1,6 g; Ballaststoffe: ca. 3,3 g",
+      "portion": "30 g",
       "sources": "https://www.health.harvard.edu/healthy-aging-and-longevity/foods-that-fight-inflammation; https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/in-depth/mediterranean-diet/art-20047801; https://www.hopkinsmedicine.org/health/wellness-and-prevention/anti-inflammatory-diet"
     },
     {
@@ -3551,6 +3967,8 @@ window.APP_DATA = {
       "use": "Olivenöl zu Gemüse/Salat; Leinöl kalt verwenden.",
       "caution": "Öle sparsam dosieren; Leinöl nicht stark erhitzen.",
       "priority": "hoch",
+      "nutrition": "Energie / Kalorien: ca. 884 kcal; Fett: ca. 100,0 g; davon gesättigte Fettsäuren: ca. 14,0 g; Kohlenhydrate: ca. 0,0 g; davon Zucker: ca. 0,0 g; Eiweiß / Protein: ca. 0,0 g; Salz: ca. 0,0 g; Ballaststoffe: ca. 0,0 g",
+      "portion": "10 g",
       "sources": "https://www.health.harvard.edu/healthy-aging-and-longevity/foods-that-fight-inflammation; https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/in-depth/mediterranean-diet/art-20047801; https://www.hopkinsmedicine.org/health/wellness-and-prevention/anti-inflammatory-diet"
     },
     {
@@ -3568,6 +3986,8 @@ window.APP_DATA = {
       "use": "Olivenöl zu Gemüse/Salat; Leinöl kalt verwenden.",
       "caution": "Öle sparsam dosieren; Leinöl nicht stark erhitzen.",
       "priority": "hoch",
+      "nutrition": "Energie / Kalorien: ca. 884 kcal; Fett: ca. 100,0 g; davon gesättigte Fettsäuren: ca. 7,0 g; Kohlenhydrate: ca. 0,0 g; davon Zucker: ca. 0,0 g; Eiweiß / Protein: ca. 0,0 g; Salz: ca. 0,0 g; Ballaststoffe: ca. 0,0 g",
+      "portion": "10 g",
       "sources": "https://www.health.harvard.edu/healthy-aging-and-longevity/foods-that-fight-inflammation; https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/in-depth/mediterranean-diet/art-20047801; https://www.hopkinsmedicine.org/health/wellness-and-prevention/anti-inflammatory-diet"
     },
     {
@@ -3585,6 +4005,8 @@ window.APP_DATA = {
       "use": "Olivenöl zu Gemüse/Salat; Leinöl kalt verwenden.",
       "caution": "Öle sparsam dosieren; Leinöl nicht stark erhitzen.",
       "priority": "hoch",
+      "nutrition": "Energie / Kalorien: ca. 884 kcal; Fett: ca. 100,0 g; davon gesättigte Fettsäuren: ca. 9,0 g; Kohlenhydrate: ca. 0,0 g; davon Zucker: ca. 0,0 g; Eiweiß / Protein: ca. 0,0 g; Salz: ca. 0,0 g; Ballaststoffe: ca. 0,0 g",
+      "portion": "10 g",
       "sources": "https://www.health.harvard.edu/healthy-aging-and-longevity/foods-that-fight-inflammation; https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/in-depth/mediterranean-diet/art-20047801; https://www.hopkinsmedicine.org/health/wellness-and-prevention/anti-inflammatory-diet"
     },
     {
@@ -3602,6 +4024,8 @@ window.APP_DATA = {
       "use": "Als Porridge, Joghurt-Topping oder Vollkornbeilage.",
       "caution": "Bei Low-Carb-Mahlzeiten Menge begrenzen.",
       "priority": "hoch",
+      "nutrition": "Energie / Kalorien: ca. 123 kcal; Fett: ca. 0,4 g; davon gesättigte Fettsäuren: ca. 0,1 g; Kohlenhydrate: ca. 28,2 g; davon Zucker: ca. 0,3 g; Eiweiß / Protein: ca. 2,3 g; Salz: ca. 0,0 g; Ballaststoffe: ca. 3,8 g",
+      "portion": "150 g",
       "sources": "https://www.health.harvard.edu/diet-and-nutrition/quick-start-guide-to-an-antiinflammation-diet; https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/in-depth/mediterranean-diet/art-20047801; https://www.health.harvard.edu/diet-and-nutrition/fighting-inflammation-with-food"
     },
     {
@@ -3619,6 +4043,8 @@ window.APP_DATA = {
       "use": "Als Porridge, Joghurt-Topping oder Vollkornbeilage.",
       "caution": "Bei Low-Carb-Mahlzeiten Menge begrenzen.",
       "priority": "hoch",
+      "nutrition": "Energie / Kalorien: ca. 354 kcal; Fett: ca. 2,3 g; davon gesättigte Fettsäuren: ca. 0,5 g; Kohlenhydrate: ca. 73,0 g; davon Zucker: ca. 1,0 g; Eiweiß / Protein: ca. 10,0 g; Salz: ca. 0,0 g; Ballaststoffe: ca. 11,0 g",
+      "portion": "50 g",
       "sources": "https://www.health.harvard.edu/diet-and-nutrition/quick-start-guide-to-an-antiinflammation-diet; https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/in-depth/mediterranean-diet/art-20047801; https://www.health.harvard.edu/diet-and-nutrition/fighting-inflammation-with-food"
     },
     {
@@ -3636,6 +4062,8 @@ window.APP_DATA = {
       "use": "Als Porridge, Joghurt-Topping oder Vollkornbeilage.",
       "caution": "Bei Low-Carb-Mahlzeiten Menge begrenzen.",
       "priority": "hoch",
+      "nutrition": "Energie / Kalorien: ca. 372 kcal; Fett: ca. 7,0 g; davon gesättigte Fettsäuren: ca. 1,3 g; Kohlenhydrate: ca. 59,0 g; davon Zucker: ca. 0,7 g; Eiweiß / Protein: ca. 13,5 g; Salz: ca. 0,0 g; Ballaststoffe: ca. 10,0 g",
+      "portion": "50 g",
       "sources": "https://www.health.harvard.edu/diet-and-nutrition/quick-start-guide-to-an-antiinflammation-diet; https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/in-depth/mediterranean-diet/art-20047801; https://www.health.harvard.edu/diet-and-nutrition/fighting-inflammation-with-food"
     },
     {
@@ -3653,6 +4081,8 @@ window.APP_DATA = {
       "use": "Als Porridge, Joghurt-Topping oder Vollkornbeilage.",
       "caution": "Bei Low-Carb-Mahlzeiten Menge begrenzen.",
       "priority": "hoch",
+      "nutrition": "Energie / Kalorien: ca. 246 kcal; Fett: ca. 7,0 g; davon gesättigte Fettsäuren: ca. 1,3 g; Kohlenhydrate: ca. 66,0 g; davon Zucker: ca. 1,5 g; Eiweiß / Protein: ca. 17,0 g; Salz: ca. 0,0 g; Ballaststoffe: ca. 15,4 g",
+      "portion": "30 g",
       "sources": "https://www.health.harvard.edu/diet-and-nutrition/quick-start-guide-to-an-antiinflammation-diet; https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/in-depth/mediterranean-diet/art-20047801; https://www.health.harvard.edu/diet-and-nutrition/fighting-inflammation-with-food"
     },
     {
@@ -3670,6 +4100,8 @@ window.APP_DATA = {
       "use": "Als Porridge, Joghurt-Topping oder Vollkornbeilage.",
       "caution": "Bei Low-Carb-Mahlzeiten Menge begrenzen.",
       "priority": "hoch",
+      "nutrition": "Energie / Kalorien: ca. 335 kcal; Fett: ca. 1,6 g; davon gesättigte Fettsäuren: ca. 0,2 g; Kohlenhydrate: ca. 69,0 g; davon Zucker: ca. 1,0 g; Eiweiß / Protein: ca. 10,0 g; Salz: ca. 0,0 g; Ballaststoffe: ca. 15,0 g",
+      "portion": "50 g",
       "sources": "https://www.health.harvard.edu/diet-and-nutrition/quick-start-guide-to-an-antiinflammation-diet; https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/in-depth/mediterranean-diet/art-20047801; https://www.health.harvard.edu/diet-and-nutrition/fighting-inflammation-with-food"
     },
     {
@@ -3687,6 +4119,8 @@ window.APP_DATA = {
       "use": "Als Beilage mit Gemüse und Eiweißquelle.",
       "caution": "Portion bewusst wählen, wenn Blutzucker/Kohlenhydrate wichtig sind.",
       "priority": "mittel bis hoch",
+      "nutrition": "Energie / Kalorien: ca. 102 kcal; Fett: ca. 1,6 g; davon gesättigte Fettsäuren: ca. 0,3 g; Kohlenhydrate: ca. 19,0 g; davon Zucker: ca. 0,0 g; Eiweiß / Protein: ca. 3,8 g; Salz: ca. 0,0 g; Ballaststoffe: ca. 2,1 g",
+      "portion": "150 g",
       "sources": "https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/in-depth/mediterranean-diet/art-20047801; https://www.health.harvard.edu/diet-and-nutrition/quick-start-guide-to-an-antiinflammation-diet"
     },
     {
@@ -3704,6 +4138,8 @@ window.APP_DATA = {
       "use": "Als Beilage mit Gemüse und Eiweißquelle.",
       "caution": "Portion bewusst wählen, wenn Blutzucker/Kohlenhydrate wichtig sind.",
       "priority": "mittel bis hoch",
+      "nutrition": "Energie / Kalorien: ca. 92 kcal; Fett: ca. 0,6 g; davon gesättigte Fettsäuren: ca. 0,1 g; Kohlenhydrate: ca. 19,9 g; davon Zucker: ca. 0,9 g; Eiweiß / Protein: ca. 3,4 g; Salz: ca. 0,0 g; Ballaststoffe: ca. 2,7 g",
+      "portion": "150 g",
       "sources": "https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/in-depth/mediterranean-diet/art-20047801; https://www.health.harvard.edu/diet-and-nutrition/quick-start-guide-to-an-antiinflammation-diet"
     },
     {
@@ -3721,6 +4157,8 @@ window.APP_DATA = {
       "use": "Als Beilage mit Gemüse und Eiweißquelle.",
       "caution": "Portion bewusst wählen, wenn Blutzucker/Kohlenhydrate wichtig sind.",
       "priority": "mittel bis hoch",
+      "nutrition": "Energie / Kalorien: ca. 119 kcal; Fett: ca. 1,0 g; davon gesättigte Fettsäuren: ca. 0,2 g; Kohlenhydrate: ca. 23,7 g; davon Zucker: ca. 0,1 g; Eiweiß / Protein: ca. 3,5 g; Salz: ca. 0,0 g; Ballaststoffe: ca. 1,3 g",
+      "portion": "150 g",
       "sources": "https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/in-depth/mediterranean-diet/art-20047801; https://www.health.harvard.edu/diet-and-nutrition/quick-start-guide-to-an-antiinflammation-diet"
     },
     {
@@ -3738,6 +4176,8 @@ window.APP_DATA = {
       "use": "Als Beilage mit Gemüse und Eiweißquelle.",
       "caution": "Portion bewusst wählen, wenn Blutzucker/Kohlenhydrate wichtig sind.",
       "priority": "mittel bis hoch",
+      "nutrition": "Energie / Kalorien: ca. 120 kcal; Fett: ca. 1,9 g; davon gesättigte Fettsäuren: ca. 0,2 g; Kohlenhydrate: ca. 21,3 g; davon Zucker: ca. 0,9 g; Eiweiß / Protein: ca. 4,4 g; Salz: ca. 0,0 g; Ballaststoffe: ca. 2,8 g",
+      "portion": "150 g",
       "sources": "https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/in-depth/mediterranean-diet/art-20047801; https://www.health.harvard.edu/diet-and-nutrition/quick-start-guide-to-an-antiinflammation-diet"
     },
     {
@@ -3755,6 +4195,8 @@ window.APP_DATA = {
       "use": "Als Beilage mit Gemüse und Eiweißquelle.",
       "caution": "Portion bewusst wählen, wenn Blutzucker/Kohlenhydrate wichtig sind.",
       "priority": "mittel bis hoch",
+      "nutrition": "Energie / Kalorien: ca. 101 kcal; Fett: ca. 0,7 g; davon gesättigte Fettsäuren: ca. 0,2 g; Kohlenhydrate: ca. 19,9 g; davon Zucker: ca. 0,3 g; Eiweiß / Protein: ca. 3,9 g; Salz: ca. 0,0 g; Ballaststoffe: ca. 2,8 g",
+      "portion": "150 g",
       "sources": "https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/in-depth/mediterranean-diet/art-20047801; https://www.health.harvard.edu/diet-and-nutrition/quick-start-guide-to-an-antiinflammation-diet"
     },
     {
@@ -3772,6 +4214,8 @@ window.APP_DATA = {
       "use": "Mit Hülsenfrüchten, Fisch/Ei und Gemüse kombinieren.",
       "caution": "Vollkorn ist nicht automatisch kohlenhydratarm.",
       "priority": "mittel",
+      "nutrition": "Energie / Kalorien: ca. 338 kcal; Fett: ca. 2,4 g; davon gesättigte Fettsäuren: ca. 0,4 g; Kohlenhydrate: ca. 64,0 g; davon Zucker: ca. 1,0 g; Eiweiß / Protein: ca. 14,6 g; Salz: ca. 0,0 g; Ballaststoffe: ca. 10,7 g",
+      "portion": "50 g",
       "sources": "https://www.health.harvard.edu/diet-and-nutrition/quick-start-guide-to-an-antiinflammation-diet; https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/in-depth/mediterranean-diet/art-20047801; https://www.health.harvard.edu/diet-and-nutrition/fighting-inflammation-with-food"
     },
     {
@@ -3789,6 +4233,8 @@ window.APP_DATA = {
       "use": "Mit Hülsenfrüchten, Fisch/Ei und Gemüse kombinieren.",
       "caution": "Vollkorn ist nicht automatisch kohlenhydratarm.",
       "priority": "mittel",
+      "nutrition": "Energie / Kalorien: ca. 111 kcal; Fett: ca. 0,9 g; davon gesättigte Fettsäuren: ca. 0,2 g; Kohlenhydrate: ca. 23,0 g; davon Zucker: ca. 0,4 g; Eiweiß / Protein: ca. 2,6 g; Salz: ca. 0,0 g; Ballaststoffe: ca. 1,8 g",
+      "portion": "150 g",
       "sources": "https://www.health.harvard.edu/diet-and-nutrition/quick-start-guide-to-an-antiinflammation-diet; https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/in-depth/mediterranean-diet/art-20047801; https://www.health.harvard.edu/diet-and-nutrition/fighting-inflammation-with-food"
     },
     {
@@ -3806,6 +4252,8 @@ window.APP_DATA = {
       "use": "Mit Hülsenfrüchten, Fisch/Ei und Gemüse kombinieren.",
       "caution": "Vollkorn ist nicht automatisch kohlenhydratarm.",
       "priority": "mittel",
+      "nutrition": "Energie / Kalorien: ca. 250 kcal; Fett: ca. 1,4 g; davon gesättigte Fettsäuren: ca. 0,3 g; Kohlenhydrate: ca. 47,0 g; davon Zucker: ca. 6,0 g; Eiweiß / Protein: ca. 8,2 g; Salz: ca. 1,2 g; Ballaststoffe: ca. 6,5 g",
+      "portion": "80 g",
       "sources": "https://www.health.harvard.edu/diet-and-nutrition/quick-start-guide-to-an-antiinflammation-diet; https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/in-depth/mediterranean-diet/art-20047801; https://www.health.harvard.edu/diet-and-nutrition/fighting-inflammation-with-food"
     },
     {
@@ -3823,6 +4271,8 @@ window.APP_DATA = {
       "use": "Mit Hülsenfrüchten, Fisch/Ei und Gemüse kombinieren.",
       "caution": "Vollkorn ist nicht automatisch kohlenhydratarm.",
       "priority": "mittel",
+      "nutrition": "Energie / Kalorien: ca. 247 kcal; Fett: ca. 3,4 g; davon gesättigte Fettsäuren: ca. 0,6 g; Kohlenhydrate: ca. 41,0 g; davon Zucker: ca. 3,5 g; Eiweiß / Protein: ca. 9,0 g; Salz: ca. 1,2 g; Ballaststoffe: ca. 7,0 g",
+      "portion": "80 g",
       "sources": "https://www.health.harvard.edu/diet-and-nutrition/quick-start-guide-to-an-antiinflammation-diet; https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/in-depth/mediterranean-diet/art-20047801; https://www.health.harvard.edu/diet-and-nutrition/fighting-inflammation-with-food"
     },
     {
@@ -3840,6 +4290,8 @@ window.APP_DATA = {
       "use": "Mit Hülsenfrüchten, Fisch/Ei und Gemüse kombinieren.",
       "caution": "Vollkorn ist nicht automatisch kohlenhydratarm.",
       "priority": "mittel",
+      "nutrition": "Energie / Kalorien: ca. 124 kcal; Fett: ca. 0,8 g; davon gesättigte Fettsäuren: ca. 0,2 g; Kohlenhydrate: ca. 26,0 g; davon Zucker: ca. 0,8 g; Eiweiß / Protein: ca. 5,3 g; Salz: ca. 0,0 g; Ballaststoffe: ca. 3,9 g",
+      "portion": "180 g",
       "sources": "https://www.health.harvard.edu/diet-and-nutrition/quick-start-guide-to-an-antiinflammation-diet; https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/in-depth/mediterranean-diet/art-20047801; https://www.health.harvard.edu/diet-and-nutrition/fighting-inflammation-with-food"
     },
     {
@@ -3857,6 +4309,8 @@ window.APP_DATA = {
       "use": "Mit Hülsenfrüchten, Fisch/Ei und Gemüse kombinieren.",
       "caution": "Vollkorn ist nicht automatisch kohlenhydratarm.",
       "priority": "mittel",
+      "nutrition": "Energie / Kalorien: ca. 340 kcal; Fett: ca. 2,5 g; davon gesättigte Fettsäuren: ca. 0,4 g; Kohlenhydrate: ca. 72,0 g; davon Zucker: ca. 0,4 g; Eiweiß / Protein: ca. 13,2 g; Salz: ca. 0,0 g; Ballaststoffe: ca. 12,2 g",
+      "portion": "50 g",
       "sources": "https://www.health.harvard.edu/diet-and-nutrition/quick-start-guide-to-an-antiinflammation-diet; https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/in-depth/mediterranean-diet/art-20047801; https://www.health.harvard.edu/diet-and-nutrition/fighting-inflammation-with-food"
     },
     {
@@ -3874,6 +4328,8 @@ window.APP_DATA = {
       "use": "Mit Hülsenfrüchten, Fisch/Ei und Gemüse kombinieren.",
       "caution": "Vollkorn ist nicht automatisch kohlenhydratarm.",
       "priority": "mittel",
+      "nutrition": "Energie / Kalorien: ca. 101 kcal; Fett: ca. 0,3 g; davon gesättigte Fettsäuren: ca. 0,1 g; Kohlenhydrate: ca. 21,3 g; davon Zucker: ca. 0,7 g; Eiweiß / Protein: ca. 4,0 g; Salz: ca. 0,0 g; Ballaststoffe: ca. 1,8 g",
+      "portion": "150 g",
       "sources": "https://www.health.harvard.edu/diet-and-nutrition/quick-start-guide-to-an-antiinflammation-diet; https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/in-depth/mediterranean-diet/art-20047801; https://www.health.harvard.edu/diet-and-nutrition/fighting-inflammation-with-food"
     },
     {
@@ -3891,6 +4347,8 @@ window.APP_DATA = {
       "use": "Großzügig über Gemüse, Fisch, Salat, Quark oder Hülsenfrüchte.",
       "caution": "Frische und getrocknete Kräuter kombinieren.",
       "priority": "hoch",
+      "nutrition": "Energie / Kalorien: ca. 23 kcal; Fett: ca. 0,6 g; davon gesättigte Fettsäuren: ca. 0,0 g; Kohlenhydrate: ca. 2,7 g; davon Zucker: ca. 0,3 g; Eiweiß / Protein: ca. 3,2 g; Salz: ca. 0,0 g; Ballaststoffe: ca. 1,6 g",
+      "portion": "5 g",
       "sources": "https://www.health.harvard.edu/diet-and-nutrition/quick-start-guide-to-an-antiinflammation-diet; https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/in-depth/mediterranean-diet/art-20047801"
     },
     {
@@ -3908,6 +4366,8 @@ window.APP_DATA = {
       "use": "Großzügig über Gemüse, Fisch, Salat, Quark oder Hülsenfrüchte.",
       "caution": "Frische und getrocknete Kräuter kombinieren.",
       "priority": "hoch",
+      "nutrition": "Energie / Kalorien: ca. 43 kcal; Fett: ca. 1,1 g; davon gesättigte Fettsäuren: ca. 0,1 g; Kohlenhydrate: ca. 7,0 g; davon Zucker: ca. 0,0 g; Eiweiß / Protein: ca. 3,5 g; Salz: ca. 0,1 g; Ballaststoffe: ca. 2,1 g",
+      "portion": "5 g",
       "sources": "https://www.health.harvard.edu/diet-and-nutrition/quick-start-guide-to-an-antiinflammation-diet; https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/in-depth/mediterranean-diet/art-20047801"
     },
     {
@@ -3925,6 +4385,8 @@ window.APP_DATA = {
       "use": "Großzügig über Gemüse, Fisch, Salat, Quark oder Hülsenfrüchte.",
       "caution": "Frische und getrocknete Kräuter kombinieren.",
       "priority": "hoch",
+      "nutrition": "Energie / Kalorien: ca. 45 kcal; Fett: ca. 0,7 g; davon gesättigte Fettsäuren: ca. 0,1 g; Kohlenhydrate: ca. 7,0 g; davon Zucker: ca. 0,0 g; Eiweiß / Protein: ca. 3,0 g; Salz: ca. 0,1 g; Ballaststoffe: ca. 2,5 g",
+      "portion": "5 g",
       "sources": "https://www.health.harvard.edu/diet-and-nutrition/quick-start-guide-to-an-antiinflammation-diet; https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/in-depth/mediterranean-diet/art-20047801"
     },
     {
@@ -3942,6 +4404,8 @@ window.APP_DATA = {
       "use": "Großzügig über Gemüse, Fisch, Salat, Quark oder Hülsenfrüchte.",
       "caution": "Frische und getrocknete Kräuter kombinieren.",
       "priority": "hoch",
+      "nutrition": "Energie / Kalorien: ca. 23 kcal; Fett: ca. 0,5 g; davon gesättigte Fettsäuren: ca. 0,0 g; Kohlenhydrate: ca. 3,7 g; davon Zucker: ca. 0,9 g; Eiweiß / Protein: ca. 2,1 g; Salz: ca. 0,1 g; Ballaststoffe: ca. 2,8 g",
+      "portion": "5 g",
       "sources": "https://www.health.harvard.edu/diet-and-nutrition/quick-start-guide-to-an-antiinflammation-diet; https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/in-depth/mediterranean-diet/art-20047801"
     },
     {
@@ -3959,6 +4423,8 @@ window.APP_DATA = {
       "use": "Großzügig über Gemüse, Fisch, Salat, Quark oder Hülsenfrüchte.",
       "caution": "Frische und getrocknete Kräuter kombinieren.",
       "priority": "hoch",
+      "nutrition": "Energie / Kalorien: ca. 313 kcal; Fett: ca. 8,4 g; davon gesättigte Fettsäuren: ca. 2,3 g; Kohlenhydrate: ca. 75,0 g; davon Zucker: ca. 0,0 g; Eiweiß / Protein: ca. 7,6 g; Salz: ca. 0,1 g; Ballaststoffe: ca. 26,3 g",
+      "portion": "1 g",
       "sources": "https://www.health.harvard.edu/diet-and-nutrition/quick-start-guide-to-an-antiinflammation-diet; https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/in-depth/mediterranean-diet/art-20047801"
     },
     {
@@ -3976,6 +4442,8 @@ window.APP_DATA = {
       "use": "Großzügig über Gemüse, Fisch, Salat, Quark oder Hülsenfrüchte.",
       "caution": "Frische und getrocknete Kräuter kombinieren.",
       "priority": "hoch",
+      "nutrition": "Energie / Kalorien: ca. 271 kcal; Fett: ca. 7,0 g; davon gesättigte Fettsäuren: ca. 0,5 g; Kohlenhydrate: ca. 60,6 g; davon Zucker: ca. 4,1 g; Eiweiß / Protein: ca. 12,7 g; Salz: ca. 0,2 g; Ballaststoffe: ca. 40,3 g",
+      "portion": "2 g",
       "sources": "https://www.health.harvard.edu/diet-and-nutrition/quick-start-guide-to-an-antiinflammation-diet; https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/in-depth/mediterranean-diet/art-20047801"
     },
     {
@@ -3993,6 +4461,8 @@ window.APP_DATA = {
       "use": "Großzügig über Gemüse, Fisch, Salat, Quark oder Hülsenfrüchte.",
       "caution": "Frische und getrocknete Kräuter kombinieren.",
       "priority": "hoch",
+      "nutrition": "Energie / Kalorien: ca. 44 kcal; Fett: ca. 0,7 g; davon gesättigte Fettsäuren: ca. 0,2 g; Kohlenhydrate: ca. 8,4 g; davon Zucker: ca. 0,0 g; Eiweiß / Protein: ca. 3,3 g; Salz: ca. 0,1 g; Ballaststoffe: ca. 6,8 g",
+      "portion": "5 g",
       "sources": "https://www.health.harvard.edu/diet-and-nutrition/quick-start-guide-to-an-antiinflammation-diet; https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/in-depth/mediterranean-diet/art-20047801"
     },
     {
@@ -4010,6 +4480,8 @@ window.APP_DATA = {
       "use": "Großzügig über Gemüse, Fisch, Salat, Quark oder Hülsenfrüchte.",
       "caution": "Frische und getrocknete Kräuter kombinieren.",
       "priority": "hoch",
+      "nutrition": "Energie / Kalorien: ca. 265 kcal; Fett: ca. 4,3 g; davon gesättigte Fettsäuren: ca. 1,6 g; Kohlenhydrate: ca. 69,0 g; davon Zucker: ca. 4,1 g; Eiweiß / Protein: ca. 9,0 g; Salz: ca. 0,1 g; Ballaststoffe: ca. 42,5 g",
+      "portion": "2 g",
       "sources": "https://www.health.harvard.edu/diet-and-nutrition/quick-start-guide-to-an-antiinflammation-diet; https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/in-depth/mediterranean-diet/art-20047801"
     },
     {
@@ -4027,6 +4499,8 @@ window.APP_DATA = {
       "use": "Großzügig über Gemüse, Fisch, Salat, Quark oder Hülsenfrüchte.",
       "caution": "Frische und getrocknete Kräuter kombinieren.",
       "priority": "hoch",
+      "nutrition": "Energie / Kalorien: ca. 36 kcal; Fett: ca. 0,8 g; davon gesättigte Fettsäuren: ca. 0,1 g; Kohlenhydrate: ca. 6,3 g; davon Zucker: ca. 0,9 g; Eiweiß / Protein: ca. 3,0 g; Salz: ca. 0,1 g; Ballaststoffe: ca. 3,3 g",
+      "portion": "5 g",
       "sources": "https://www.health.harvard.edu/diet-and-nutrition/quick-start-guide-to-an-antiinflammation-diet; https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/in-depth/mediterranean-diet/art-20047801"
     },
     {
@@ -4044,6 +4518,8 @@ window.APP_DATA = {
       "use": "Großzügig über Gemüse, Fisch, Salat, Quark oder Hülsenfrüchte.",
       "caution": "Frische und getrocknete Kräuter kombinieren.",
       "priority": "hoch",
+      "nutrition": "Energie / Kalorien: ca. 131 kcal; Fett: ca. 5,9 g; davon gesättigte Fettsäuren: ca. 2,8 g; Kohlenhydrate: ca. 20,7 g; davon Zucker: ca. 0,0 g; Eiweiß / Protein: ca. 3,3 g; Salz: ca. 0,1 g; Ballaststoffe: ca. 14,1 g",
+      "portion": "5 g",
       "sources": "https://www.health.harvard.edu/diet-and-nutrition/quick-start-guide-to-an-antiinflammation-diet; https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/in-depth/mediterranean-diet/art-20047801"
     },
     {
@@ -4061,6 +4537,8 @@ window.APP_DATA = {
       "use": "Großzügig über Gemüse, Fisch, Salat, Quark oder Hülsenfrüchte.",
       "caution": "Frische und getrocknete Kräuter kombinieren.",
       "priority": "hoch",
+      "nutrition": "Energie / Kalorien: ca. 315 kcal; Fett: ca. 12,8 g; davon gesättigte Fettsäuren: ca. 7,0 g; Kohlenhydrate: ca. 60,7 g; davon Zucker: ca. 1,7 g; Eiweiß / Protein: ca. 10,6 g; Salz: ca. 0,0 g; Ballaststoffe: ca. 40,3 g",
+      "portion": "2 g",
       "sources": "https://www.health.harvard.edu/diet-and-nutrition/quick-start-guide-to-an-antiinflammation-diet; https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/in-depth/mediterranean-diet/art-20047801"
     },
     {
@@ -4078,6 +4556,8 @@ window.APP_DATA = {
       "use": "Großzügig über Gemüse, Fisch, Salat, Quark oder Hülsenfrüchte.",
       "caution": "Frische und getrocknete Kräuter kombinieren.",
       "priority": "hoch",
+      "nutrition": "Energie / Kalorien: ca. 101 kcal; Fett: ca. 1,7 g; davon gesättigte Fettsäuren: ca. 0,5 g; Kohlenhydrate: ca. 24,5 g; davon Zucker: ca. 0,0 g; Eiweiß / Protein: ca. 5,6 g; Salz: ca. 0,0 g; Ballaststoffe: ca. 14,0 g",
+      "portion": "5 g",
       "sources": "https://www.health.harvard.edu/diet-and-nutrition/quick-start-guide-to-an-antiinflammation-diet; https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/in-depth/mediterranean-diet/art-20047801"
     },
     {
@@ -4095,6 +4575,8 @@ window.APP_DATA = {
       "use": "Täglich kleine Mengen in Gemüse, Suppen, Tee oder Joghurt.",
       "caution": "Hochdosierte Präparate sind etwas anderes als Küchenmengen.",
       "priority": "hoch",
+      "nutrition": "Energie / Kalorien: ca. 337 kcal; Fett: ca. 15,9 g; davon gesättigte Fettsäuren: ca. 0,6 g; Kohlenhydrate: ca. 50,0 g; davon Zucker: ca. 0,0 g; Eiweiß / Protein: ca. 17,6 g; Salz: ca. 0,0 g; Ballaststoffe: ca. 14,6 g",
+      "portion": "2 g",
       "sources": "https://www.health.harvard.edu/diet-and-nutrition/quick-start-guide-to-an-antiinflammation-diet; https://health.clevelandclinic.org/anti-inflammatory-diet"
     },
     {
@@ -4112,6 +4594,8 @@ window.APP_DATA = {
       "use": "Täglich kleine Mengen in Gemüse, Suppen, Tee oder Joghurt.",
       "caution": "Hochdosierte Präparate sind etwas anderes als Küchenmengen.",
       "priority": "hoch",
+      "nutrition": "Energie / Kalorien: ca. 318 kcal; Fett: ca. 17,3 g; davon gesättigte Fettsäuren: ca. 3,3 g; Kohlenhydrate: ca. 56,6 g; davon Zucker: ca. 10,3 g; Eiweiß / Protein: ca. 12,0 g; Salz: ca. 0,1 g; Ballaststoffe: ca. 27,2 g",
+      "portion": "2 g",
       "sources": "https://www.health.harvard.edu/diet-and-nutrition/quick-start-guide-to-an-antiinflammation-diet; https://health.clevelandclinic.org/anti-inflammatory-diet"
     },
     {
@@ -4129,6 +4613,8 @@ window.APP_DATA = {
       "use": "Täglich kleine Mengen in Gemüse, Suppen, Tee oder Joghurt.",
       "caution": "Hochdosierte Präparate sind etwas anderes als Küchenmengen.",
       "priority": "hoch",
+      "nutrition": "Energie / Kalorien: ca. 282 kcal; Fett: ca. 14,0 g; davon gesättigte Fettsäuren: ca. 2,5 g; Kohlenhydrate: ca. 50,0 g; davon Zucker: ca. 7,0 g; Eiweiß / Protein: ca. 12,0 g; Salz: ca. 0,1 g; Ballaststoffe: ca. 35,0 g",
+      "portion": "2 g",
       "sources": "https://www.health.harvard.edu/diet-and-nutrition/quick-start-guide-to-an-antiinflammation-diet; https://health.clevelandclinic.org/anti-inflammatory-diet"
     },
     {
@@ -4146,6 +4632,8 @@ window.APP_DATA = {
       "use": "Täglich kleine Mengen in Gemüse, Suppen, Tee oder Joghurt.",
       "caution": "Hochdosierte Präparate sind etwas anderes als Küchenmengen.",
       "priority": "hoch",
+      "nutrition": "Energie / Kalorien: ca. 345 kcal; Fett: ca. 14,9 g; davon gesättigte Fettsäuren: ca. 0,5 g; Kohlenhydrate: ca. 52,3 g; davon Zucker: ca. 0,0 g; Eiweiß / Protein: ca. 15,8 g; Salz: ca. 0,2 g; Ballaststoffe: ca. 39,8 g",
+      "portion": "2 g",
       "sources": "https://www.health.harvard.edu/diet-and-nutrition/quick-start-guide-to-an-antiinflammation-diet; https://health.clevelandclinic.org/anti-inflammatory-diet"
     },
     {
@@ -4163,6 +4651,8 @@ window.APP_DATA = {
       "use": "Täglich kleine Mengen in Gemüse, Suppen, Tee oder Joghurt.",
       "caution": "Hochdosierte Präparate sind etwas anderes als Küchenmengen.",
       "priority": "hoch",
+      "nutrition": "Energie / Kalorien: ca. 80 kcal; Fett: ca. 0,8 g; davon gesättigte Fettsäuren: ca. 0,2 g; Kohlenhydrate: ca. 17,8 g; davon Zucker: ca. 1,7 g; Eiweiß / Protein: ca. 1,8 g; Salz: ca. 0,0 g; Ballaststoffe: ca. 2,0 g",
+      "portion": "2 g",
       "sources": "https://www.health.harvard.edu/diet-and-nutrition/quick-start-guide-to-an-antiinflammation-diet; https://health.clevelandclinic.org/anti-inflammatory-diet"
     },
     {
@@ -4180,6 +4670,8 @@ window.APP_DATA = {
       "use": "Täglich kleine Mengen in Gemüse, Suppen, Tee oder Joghurt.",
       "caution": "Hochdosierte Präparate sind etwas anderes als Küchenmengen.",
       "priority": "hoch",
+      "nutrition": "Energie / Kalorien: ca. 311 kcal; Fett: ca. 6,7 g; davon gesättigte Fettsäuren: ca. 0,7 g; Kohlenhydrate: ca. 68,5 g; davon Zucker: ca. 0,0 g; Eiweiß / Protein: ca. 10,8 g; Salz: ca. 0,0 g; Ballaststoffe: ca. 28,0 g",
+      "portion": "2 g",
       "sources": "https://www.health.harvard.edu/diet-and-nutrition/quick-start-guide-to-an-antiinflammation-diet; https://health.clevelandclinic.org/anti-inflammatory-diet"
     },
     {
@@ -4197,6 +4689,8 @@ window.APP_DATA = {
       "use": "Täglich kleine Mengen in Gemüse, Suppen, Tee oder Joghurt.",
       "caution": "Hochdosierte Präparate sind etwas anderes als Küchenmengen.",
       "priority": "hoch",
+      "nutrition": "Energie / Kalorien: ca. 298 kcal; Fett: ca. 17,8 g; davon gesättigte Fettsäuren: ca. 1,0 g; Kohlenhydrate: ca. 55,0 g; davon Zucker: ca. 0,0 g; Eiweiß / Protein: ca. 12,4 g; Salz: ca. 0,1 g; Ballaststoffe: ca. 41,9 g",
+      "portion": "2 g",
       "sources": "https://www.health.harvard.edu/diet-and-nutrition/quick-start-guide-to-an-antiinflammation-diet; https://health.clevelandclinic.org/anti-inflammatory-diet"
     },
     {
@@ -4214,6 +4708,8 @@ window.APP_DATA = {
       "use": "Täglich kleine Mengen in Gemüse, Suppen, Tee oder Joghurt.",
       "caution": "Hochdosierte Präparate sind etwas anderes als Küchenmengen.",
       "priority": "hoch",
+      "nutrition": "Energie / Kalorien: ca. 375 kcal; Fett: ca. 22,3 g; davon gesättigte Fettsäuren: ca. 1,5 g; Kohlenhydrate: ca. 44,2 g; davon Zucker: ca. 2,3 g; Eiweiß / Protein: ca. 17,8 g; Salz: ca. 0,4 g; Ballaststoffe: ca. 10,5 g",
+      "portion": "2 g",
       "sources": "https://www.health.harvard.edu/diet-and-nutrition/quick-start-guide-to-an-antiinflammation-diet; https://health.clevelandclinic.org/anti-inflammatory-diet"
     },
     {
@@ -4231,6 +4727,8 @@ window.APP_DATA = {
       "use": "Täglich kleine Mengen in Gemüse, Suppen, Tee oder Joghurt.",
       "caution": "Hochdosierte Präparate sind etwas anderes als Küchenmengen.",
       "priority": "hoch",
+      "nutrition": "Energie / Kalorien: ca. 312 kcal; Fett: ca. 3,3 g; davon gesättigte Fettsäuren: ca. 1,8 g; Kohlenhydrate: ca. 67,0 g; davon Zucker: ca. 3,2 g; Eiweiß / Protein: ca. 9,7 g; Salz: ca. 0,1 g; Ballaststoffe: ca. 22,7 g",
+      "portion": "3 g",
       "sources": "https://www.health.harvard.edu/diet-and-nutrition/quick-start-guide-to-an-antiinflammation-diet; https://health.clevelandclinic.org/anti-inflammatory-diet"
     },
     {
@@ -4248,6 +4746,8 @@ window.APP_DATA = {
       "use": "Täglich kleine Mengen in Gemüse, Suppen, Tee oder Joghurt.",
       "caution": "Hochdosierte Präparate sind etwas anderes als Küchenmengen.",
       "priority": "hoch",
+      "nutrition": "Energie / Kalorien: ca. 525 kcal; Fett: ca. 36,3 g; davon gesättigte Fettsäuren: ca. 25,9 g; Kohlenhydrate: ca. 49,3 g; davon Zucker: ca. 3,0 g; Eiweiß / Protein: ca. 5,8 g; Salz: ca. 0,0 g; Ballaststoffe: ca. 20,8 g",
+      "portion": "1 g",
       "sources": "https://www.health.harvard.edu/diet-and-nutrition/quick-start-guide-to-an-antiinflammation-diet; https://health.clevelandclinic.org/anti-inflammatory-diet"
     },
     {
@@ -4265,6 +4765,8 @@ window.APP_DATA = {
       "use": "Täglich kleine Mengen in Gemüse, Suppen, Tee oder Joghurt.",
       "caution": "Hochdosierte Präparate sind etwas anderes als Küchenmengen.",
       "priority": "hoch",
+      "nutrition": "Energie / Kalorien: ca. 274 kcal; Fett: ca. 13,0 g; davon gesättigte Fettsäuren: ca. 4,0 g; Kohlenhydrate: ca. 65,5 g; davon Zucker: ca. 2,4 g; Eiweiß / Protein: ca. 6,0 g; Salz: ca. 0,6 g; Ballaststoffe: ca. 33,9 g",
+      "portion": "1 g",
       "sources": "https://www.health.harvard.edu/diet-and-nutrition/quick-start-guide-to-an-antiinflammation-diet; https://health.clevelandclinic.org/anti-inflammatory-diet"
     },
     {
@@ -4282,6 +4784,8 @@ window.APP_DATA = {
       "use": "Täglich kleine Mengen in Gemüse, Suppen, Tee oder Joghurt.",
       "caution": "Hochdosierte Präparate sind etwas anderes als Küchenmengen.",
       "priority": "hoch",
+      "nutrition": "Energie / Kalorien: ca. 282 kcal; Fett: ca. 12,9 g; davon gesättigte Fettsäuren: ca. 2,1 g; Kohlenhydrate: ca. 54,0 g; davon Zucker: ca. 10,3 g; Eiweiß / Protein: ca. 14,1 g; Salz: ca. 0,2 g; Ballaststoffe: ca. 34,9 g",
+      "portion": "3 g",
       "sources": "https://www.health.harvard.edu/diet-and-nutrition/quick-start-guide-to-an-antiinflammation-diet; https://health.clevelandclinic.org/anti-inflammatory-diet"
     },
     {
@@ -4299,6 +4803,8 @@ window.APP_DATA = {
       "use": "Täglich kleine Mengen in Gemüse, Suppen, Tee oder Joghurt.",
       "caution": "Hochdosierte Präparate sind etwas anderes als Küchenmengen.",
       "priority": "hoch",
+      "nutrition": "Energie / Kalorien: ca. 310 kcal; Fett: ca. 5,9 g; davon gesättigte Fettsäuren: ca. 1,6 g; Kohlenhydrate: ca. 65,4 g; davon Zucker: ca. 0,0 g; Eiweiß / Protein: ca. 11,4 g; Salz: ca. 0,4 g; Ballaststoffe: ca. 3,9 g",
+      "portion": "0,1 g",
       "sources": "https://www.health.harvard.edu/diet-and-nutrition/quick-start-guide-to-an-antiinflammation-diet; https://health.clevelandclinic.org/anti-inflammatory-diet"
     },
     {
@@ -4316,6 +4822,8 @@ window.APP_DATA = {
       "use": "Täglich kleine Mengen in Gemüse, Suppen, Tee oder Joghurt.",
       "caution": "Hochdosierte Präparate sind etwas anderes als Küchenmengen.",
       "priority": "hoch",
+      "nutrition": "Energie / Kalorien: ca. 251 kcal; Fett: ca. 3,3 g; davon gesättigte Fettsäuren: ca. 1,4 g; Kohlenhydrate: ca. 64,0 g; davon Zucker: ca. 0,6 g; Eiweiß / Protein: ca. 10,4 g; Salz: ca. 0,1 g; Ballaststoffe: ca. 25,3 g",
+      "portion": "1 g",
       "sources": "https://www.health.harvard.edu/diet-and-nutrition/quick-start-guide-to-an-antiinflammation-diet; https://health.clevelandclinic.org/anti-inflammatory-diet"
     },
     {
@@ -4333,6 +4841,8 @@ window.APP_DATA = {
       "use": "Täglich kleine Mengen in Gemüse, Suppen, Tee oder Joghurt.",
       "caution": "Hochdosierte Präparate sind etwas anderes als Küchenmengen.",
       "priority": "hoch",
+      "nutrition": "Energie / Kalorien: ca. 247 kcal; Fett: ca. 1,2 g; davon gesättigte Fettsäuren: ca. 0,3 g; Kohlenhydrate: ca. 80,6 g; davon Zucker: ca. 2,2 g; Eiweiß / Protein: ca. 4,0 g; Salz: ca. 0,0 g; Ballaststoffe: ca. 53,1 g",
+      "portion": "2 g",
       "sources": "https://www.health.harvard.edu/diet-and-nutrition/quick-start-guide-to-an-antiinflammation-diet; https://health.clevelandclinic.org/anti-inflammatory-diet"
     },
     {
@@ -4350,6 +4860,8 @@ window.APP_DATA = {
       "use": "Kakao ungesüßt in Joghurt/Quark; dunkle Schokolade kleine Menge.",
       "caution": "Zuckerarme Varianten bevorzugen.",
       "priority": "mittel",
+      "nutrition": "Energie / Kalorien: ca. 598 kcal; Fett: ca. 42,6 g; davon gesättigte Fettsäuren: ca. 24,5 g; Kohlenhydrate: ca. 45,9 g; davon Zucker: ca. 24,0 g; Eiweiß / Protein: ca. 7,8 g; Salz: ca. 0,0 g; Ballaststoffe: ca. 10,9 g",
+      "portion": "20 g",
       "sources": "https://lpi.oregonstate.edu/mic/dietary-factors/phytochemicals/flavonoids; https://www.health.harvard.edu/diet-and-nutrition/quick-start-guide-to-an-antiinflammation-diet"
     },
     {
@@ -4367,6 +4879,8 @@ window.APP_DATA = {
       "use": "Kakao ungesüßt in Joghurt/Quark; dunkle Schokolade kleine Menge.",
       "caution": "Zuckerarme Varianten bevorzugen.",
       "priority": "mittel",
+      "nutrition": "Energie / Kalorien: ca. 228 kcal; Fett: ca. 13,7 g; davon gesättigte Fettsäuren: ca. 8,1 g; Kohlenhydrate: ca. 57,9 g; davon Zucker: ca. 1,8 g; Eiweiß / Protein: ca. 19,6 g; Salz: ca. 0,1 g; Ballaststoffe: ca. 37,0 g",
+      "portion": "10 g",
       "sources": "https://lpi.oregonstate.edu/mic/dietary-factors/phytochemicals/flavonoids; https://www.health.harvard.edu/diet-and-nutrition/quick-start-guide-to-an-antiinflammation-diet"
     },
     {
@@ -4384,6 +4898,8 @@ window.APP_DATA = {
       "use": "Kakao ungesüßt in Joghurt/Quark; dunkle Schokolade kleine Menge.",
       "caution": "Zuckerarme Varianten bevorzugen.",
       "priority": "mittel",
+      "nutrition": "Energie / Kalorien: ca. 600 kcal; Fett: ca. 50,0 g; davon gesättigte Fettsäuren: ca. 30,0 g; Kohlenhydrate: ca. 33,0 g; davon Zucker: ca. 1,0 g; Eiweiß / Protein: ca. 12,0 g; Salz: ca. 0,0 g; Ballaststoffe: ca. 17,0 g",
+      "portion": "15 g",
       "sources": "https://lpi.oregonstate.edu/mic/dietary-factors/phytochemicals/flavonoids; https://www.health.harvard.edu/diet-and-nutrition/quick-start-guide-to-an-antiinflammation-diet"
     },
     {
@@ -4401,6 +4917,8 @@ window.APP_DATA = {
       "use": "Ungesüßt trinken; grüner Tee oder Kaffee als Routine.",
       "caution": "Koffeinmenge individuell verträglich halten.",
       "priority": "mittel bis hoch",
+      "nutrition": "Energie / Kalorien: ca. 2 kcal; Fett: ca. 0,0 g; davon gesättigte Fettsäuren: ca. 0,0 g; Kohlenhydrate: ca. 0,3 g; davon Zucker: ca. 0,0 g; Eiweiß / Protein: ca. 0,1 g; Salz: ca. 0,0 g; Ballaststoffe: ca. 0,0 g",
+      "portion": "30 g",
       "sources": "https://lpi.oregonstate.edu/mic/dietary-factors/phytochemicals/flavonoids; https://www.health.harvard.edu/diet-and-nutrition/quick-start-guide-to-an-antiinflammation-diet"
     },
     {
@@ -4418,6 +4936,8 @@ window.APP_DATA = {
       "use": "Ungesüßt trinken; grüner Tee oder Kaffee als Routine.",
       "caution": "Koffeinmenge individuell verträglich halten.",
       "priority": "mittel bis hoch",
+      "nutrition": "Energie / Kalorien: ca. 1 kcal; Fett: ca. 0,0 g; davon gesättigte Fettsäuren: ca. 0,0 g; Kohlenhydrate: ca. 0,2 g; davon Zucker: ca. 0,0 g; Eiweiß / Protein: ca. 0,1 g; Salz: ca. 0,0 g; Ballaststoffe: ca. 0,0 g",
+      "portion": "250 g",
       "sources": "https://lpi.oregonstate.edu/mic/dietary-factors/phytochemicals/flavonoids; https://www.health.harvard.edu/diet-and-nutrition/quick-start-guide-to-an-antiinflammation-diet"
     },
     {
@@ -4435,6 +4955,8 @@ window.APP_DATA = {
       "use": "Ungesüßt trinken; grüner Tee oder Kaffee als Routine.",
       "caution": "Koffeinmenge individuell verträglich halten.",
       "priority": "mittel bis hoch",
+      "nutrition": "Energie / Kalorien: ca. 1 kcal; Fett: ca. 0,0 g; davon gesättigte Fettsäuren: ca. 0,0 g; Kohlenhydrate: ca. 0,2 g; davon Zucker: ca. 0,0 g; Eiweiß / Protein: ca. 0,0 g; Salz: ca. 0,0 g; Ballaststoffe: ca. 0,0 g",
+      "portion": "250 g",
       "sources": "https://lpi.oregonstate.edu/mic/dietary-factors/phytochemicals/flavonoids; https://www.health.harvard.edu/diet-and-nutrition/quick-start-guide-to-an-antiinflammation-diet"
     },
     {
@@ -4452,6 +4974,8 @@ window.APP_DATA = {
       "use": "Ungesüßt trinken; grüner Tee oder Kaffee als Routine.",
       "caution": "Koffeinmenge individuell verträglich halten.",
       "priority": "mittel bis hoch",
+      "nutrition": "Energie / Kalorien: ca. 1 kcal; Fett: ca. 0,0 g; davon gesättigte Fettsäuren: ca. 0,0 g; Kohlenhydrate: ca. 0,2 g; davon Zucker: ca. 0,0 g; Eiweiß / Protein: ca. 0,0 g; Salz: ca. 0,0 g; Ballaststoffe: ca. 0,0 g",
+      "portion": "250 g",
       "sources": "https://lpi.oregonstate.edu/mic/dietary-factors/phytochemicals/flavonoids; https://www.health.harvard.edu/diet-and-nutrition/quick-start-guide-to-an-antiinflammation-diet"
     },
     {
@@ -4469,6 +4993,8 @@ window.APP_DATA = {
       "use": "Ungesüßt trinken; grüner Tee oder Kaffee als Routine.",
       "caution": "Koffeinmenge individuell verträglich halten.",
       "priority": "mittel bis hoch",
+      "nutrition": "Energie / Kalorien: ca. 2 kcal; Fett: ca. 0,0 g; davon gesättigte Fettsäuren: ca. 0,0 g; Kohlenhydrate: ca. 0,3 g; davon Zucker: ca. 0,0 g; Eiweiß / Protein: ca. 0,1 g; Salz: ca. 0,0 g; Ballaststoffe: ca. 0,0 g",
+      "portion": "250 g",
       "sources": "https://lpi.oregonstate.edu/mic/dietary-factors/phytochemicals/flavonoids; https://www.health.harvard.edu/diet-and-nutrition/quick-start-guide-to-an-antiinflammation-diet"
     },
     {
@@ -4486,6 +5012,8 @@ window.APP_DATA = {
       "use": "Ungesüßt trinken; grüner Tee oder Kaffee als Routine.",
       "caution": "Koffeinmenge individuell verträglich halten.",
       "priority": "mittel bis hoch",
+      "nutrition": "Energie / Kalorien: ca. 3 kcal; Fett: ca. 0,0 g; davon gesättigte Fettsäuren: ca. 0,0 g; Kohlenhydrate: ca. 0,5 g; davon Zucker: ca. 0,0 g; Eiweiß / Protein: ca. 0,2 g; Salz: ca. 0,0 g; Ballaststoffe: ca. 0,1 g",
+      "portion": "250 g",
       "sources": "https://lpi.oregonstate.edu/mic/dietary-factors/phytochemicals/flavonoids; https://www.health.harvard.edu/diet-and-nutrition/quick-start-guide-to-an-antiinflammation-diet"
     },
     {
@@ -4503,6 +5031,8 @@ window.APP_DATA = {
       "use": "Ungesüßt trinken; grüner Tee oder Kaffee als Routine.",
       "caution": "Koffeinmenge individuell verträglich halten.",
       "priority": "mittel bis hoch",
+      "nutrition": "Energie / Kalorien: ca. 2 kcal; Fett: ca. 0,0 g; davon gesättigte Fettsäuren: ca. 0,0 g; Kohlenhydrate: ca. 0,3 g; davon Zucker: ca. 0,0 g; Eiweiß / Protein: ca. 0,1 g; Salz: ca. 0,0 g; Ballaststoffe: ca. 0,0 g",
+      "portion": "250 g",
       "sources": "https://lpi.oregonstate.edu/mic/dietary-factors/phytochemicals/flavonoids; https://www.health.harvard.edu/diet-and-nutrition/quick-start-guide-to-an-antiinflammation-diet"
     },
     {
@@ -4520,6 +5050,8 @@ window.APP_DATA = {
       "use": "Ungesüßt trinken; grüner Tee oder Kaffee als Routine.",
       "caution": "Koffeinmenge individuell verträglich halten.",
       "priority": "mittel bis hoch",
+      "nutrition": "Energie / Kalorien: ca. 1 kcal; Fett: ca. 0,0 g; davon gesättigte Fettsäuren: ca. 0,0 g; Kohlenhydrate: ca. 0,2 g; davon Zucker: ca. 0,0 g; Eiweiß / Protein: ca. 0,1 g; Salz: ca. 0,0 g; Ballaststoffe: ca. 0,0 g",
+      "portion": "250 g",
       "sources": "https://lpi.oregonstate.edu/mic/dietary-factors/phytochemicals/flavonoids; https://www.health.harvard.edu/diet-and-nutrition/quick-start-guide-to-an-antiinflammation-diet"
     },
     {
@@ -4537,6 +5069,8 @@ window.APP_DATA = {
       "use": "Ungesüßt trinken; grüner Tee oder Kaffee als Routine.",
       "caution": "Koffeinmenge individuell verträglich halten.",
       "priority": "mittel bis hoch",
+      "nutrition": "Energie / Kalorien: ca. 1 kcal; Fett: ca. 0,0 g; davon gesättigte Fettsäuren: ca. 0,0 g; Kohlenhydrate: ca. 0,2 g; davon Zucker: ca. 0,0 g; Eiweiß / Protein: ca. 0,0 g; Salz: ca. 0,0 g; Ballaststoffe: ca. 0,0 g",
+      "portion": "250 g",
       "sources": "https://lpi.oregonstate.edu/mic/dietary-factors/phytochemicals/flavonoids; https://www.health.harvard.edu/diet-and-nutrition/quick-start-guide-to-an-antiinflammation-diet"
     },
     {
@@ -4554,6 +5088,8 @@ window.APP_DATA = {
       "use": "Ungesüßt trinken; grüner Tee oder Kaffee als Routine.",
       "caution": "Koffeinmenge individuell verträglich halten.",
       "priority": "mittel bis hoch",
+      "nutrition": "Energie / Kalorien: ca. 1 kcal; Fett: ca. 0,0 g; davon gesättigte Fettsäuren: ca. 0,0 g; Kohlenhydrate: ca. 0,2 g; davon Zucker: ca. 0,0 g; Eiweiß / Protein: ca. 0,1 g; Salz: ca. 0,0 g; Ballaststoffe: ca. 0,0 g",
+      "portion": "250 g",
       "sources": "https://lpi.oregonstate.edu/mic/dietary-factors/phytochemicals/flavonoids; https://www.health.harvard.edu/diet-and-nutrition/quick-start-guide-to-an-antiinflammation-diet"
     },
     {
@@ -4571,6 +5107,8 @@ window.APP_DATA = {
       "use": "Ungesüßt trinken; grüner Tee oder Kaffee als Routine.",
       "caution": "Koffeinmenge individuell verträglich halten.",
       "priority": "mittel bis hoch",
+      "nutrition": "Energie / Kalorien: ca. 1 kcal; Fett: ca. 0,0 g; davon gesättigte Fettsäuren: ca. 0,0 g; Kohlenhydrate: ca. 0,2 g; davon Zucker: ca. 0,0 g; Eiweiß / Protein: ca. 0,1 g; Salz: ca. 0,0 g; Ballaststoffe: ca. 0,0 g",
+      "portion": "250 g",
       "sources": "https://lpi.oregonstate.edu/mic/dietary-factors/phytochemicals/flavonoids; https://www.health.harvard.edu/diet-and-nutrition/quick-start-guide-to-an-antiinflammation-diet"
     }
   ],
