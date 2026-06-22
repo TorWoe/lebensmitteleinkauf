@@ -1115,6 +1115,7 @@ dialog::backdrop { background: rgba(6, 31, 20, 0.52); backdrop-filter: blur(4px)
 .detail-section { padding: 17px 0; border-top: 1px solid var(--line); }
 .detail-section h3 { margin: 0 0 7px; color: var(--forest-700); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; }
 .detail-section p { margin: 0; color: #4d5b53; font-size: 14px; line-height: 1.6; }
+.detail-section .detail-note { margin: -2px 0 8px; color: var(--muted); font-size: 10px; line-height: 1.45; }
 .detail-sources { display: flex; flex-wrap: wrap; gap: 7px; }
 .detail-sources a { color: var(--blue-800); font-size: 11px; }
 
