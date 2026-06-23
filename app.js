@@ -381,6 +381,11 @@
     window.scrollTo({ top: 0, behavior: "smooth" });
   }
 
+  function viewFromHash() {
+    const viewByHash = { "#lebensmittel": "foods", "#tagesbaukasten": "meals", "#auswertung": "insights" };
+    return viewByHash[window.location.hash] || "foods";
+  }
+
   function syncShoppingPanelPlacement() {
     const target = window.innerWidth <= 900 ? document.body : shoppingPanelHome;
     if (dom.shoppingPanel.parentElement !== target) target.append(dom.shoppingPanel);
@@ -485,6 +490,7 @@
       const viewButton = event.target.closest("[data-view]");
       if (viewButton) setView(viewButton.dataset.view);
     });
+    window.addEventListener("hashchange", () => setView(viewFromHash(), false));
     dom.foodGrid.addEventListener("click", (event) => {
       const card = event.target.closest(".food-card");
       if (!card) return;
@@ -578,8 +584,7 @@
     renderMeals();
     renderInsights();
     bindEvents();
-    const viewByHash = { "#lebensmittel": "foods", "#tagesbaukasten": "meals", "#auswertung": "insights" };
-    setView(viewByHash[window.location.hash] || "foods", false);
+    setView(viewFromHash(), false);
   }
 
   initialize();
