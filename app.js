@@ -330,6 +330,7 @@
           <div><span>Varianten</span><p>${escapeHtml(meal.variants)}</p></div>
         </div>
         <div class="meal-card-footer">
+          <button class="meal-recipe-button" type="button" data-recipe-meal-id="${meal.id}" aria-label="Rezeptsuchtext für ${escapeHtml(meal.situation)} kopieren">für Rezeptsuche</button>
           <button class="meal-list-button${allIngredientsSelected ? " is-added" : ""}" type="button" data-meal-id="${meal.id}" aria-pressed="${allIngredientsSelected}">${allIngredientsSelected ? "Auf der Liste ✓" : "Auf die Liste →"}</button>
         </div>
       </article>`;
@@ -425,19 +426,31 @@
     });
   }
 
-  async function copyList() {
-    if (!state.selected.size) return;
+  async function copyText(text) {
     try {
-      await navigator.clipboard.writeText(listText());
+      await navigator.clipboard.writeText(text);
     } catch {
       const textArea = document.createElement("textarea");
-      textArea.value = listText();
+      textArea.value = text;
       document.body.append(textArea);
       textArea.select();
       document.execCommand("copy");
       textArea.remove();
     }
+  }
+
+  async function copyList() {
+    if (!state.selected.size) return;
+    await copyText(listText());
     showToast("Einkaufsliste kopiert.");
+  }
+
+  async function copyMealRecipeSearch(mealId) {
+    const meal = meals.find((item) => item.id === mealId);
+    if (!meal || !meal.ingredients?.length) return;
+    const recipeSearchText = `Suche mir Rezepte mit genau diesen Zutaten: ${meal.ingredients.join(", ")}`;
+    await copyText(recipeSearchText);
+    showToast("Text für die Rezeptsuche wurde kopiert.");
   }
 
   function openConfirm({ title, text, cancel = "Abbrechen", accept = "Liste leeren", action }) {
@@ -480,6 +493,11 @@
       if (event.target.closest(".details-button")) openDetails(id);
     });
     dom.mealGrid.addEventListener("click", (event) => {
+      const recipeButton = event.target.closest("[data-recipe-meal-id]");
+      if (recipeButton) {
+        copyMealRecipeSearch(Number(recipeButton.dataset.recipeMealId));
+        return;
+      }
       const button = event.target.closest("[data-meal-id]");
       if (button) addMealIngredients(Number(button.dataset.mealId));
     });
