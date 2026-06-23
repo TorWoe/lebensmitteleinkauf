@@ -973,6 +973,26 @@ main {
   font-variant-numeric: tabular-nums;
   text-align: right;
 }
+.meal-guide-step-content { min-width: 0; }
+.meal-guide-image-button {
+  display: inline-flex;
+  gap: 4px;
+  align-items: center;
+  margin-left: 8px;
+  padding: 3px 7px;
+  border: 1px solid rgba(20, 92, 56, 0.17);
+  border-radius: 8px;
+  color: var(--forest-700);
+  background: rgba(255, 255, 255, 0.72);
+  font-size: 11px;
+  font-weight: 800;
+  line-height: 1.2;
+  vertical-align: middle;
+  white-space: nowrap;
+  transition: 150ms ease;
+}
+.meal-guide-image-button:hover { border-color: rgba(20, 92, 56, 0.3); background: white; transform: translateY(-1px); }
+.meal-guide-image-button .button-icon { width: 13px; height: 13px; }
 .meal-guide-closing {
   margin: 18px 0 0;
   padding-top: 16px;
@@ -1129,6 +1149,16 @@ dialog::backdrop { background: rgba(6, 31, 20, 0.52); backdrop-filter: blur(4px)
   color: var(--ink);
   background: var(--paper);
   box-shadow: var(--shadow-lg);
+}
+.detail-dialog.is-image-dialog { width: min(920px, calc(100vw - 32px)); background: #f7faf7; }
+.meal-guide-image-content { padding: 22px; }
+.meal-guide-dialog-image {
+  display: block;
+  clear: both;
+  width: 100%;
+  height: auto;
+  border-radius: 18px;
+  background: white;
 }
 
 .dialog-close {
@@ -1302,6 +1332,7 @@ dialog::backdrop { background: rgba(6, 31, 20, 0.52); backdrop-filter: blur(4px)
   .meal-guide { margin-top: 24px; padding: 19px 17px; border-radius: 18px; }
   .meal-guide-list { gap: 11px; }
   .meal-guide-list li { grid-template-columns: 20px minmax(0, 1fr); gap: 8px; font-size: 14px; line-height: 1.55; }
+  .meal-guide-image-button { margin-left: 5px; padding: 3px 6px; }
   .meal-guide-closing { margin-top: 16px; padding-top: 14px; font-size: 14px; }
   .meal-search-field { margin-top: 24px; }
   .meal-grid { gap: 12px; }
@@ -1319,6 +1350,9 @@ dialog::backdrop { background: rgba(6, 31, 20, 0.52); backdrop-filter: blur(4px)
   .donut-legend { width: 100%; }
   .source-list { grid-template-columns: 1fr; }
   .detail-content { padding: 28px 23px; }
+  .detail-dialog.is-image-dialog { width: calc(100vw - 16px); max-height: calc(100vh - 20px); border-radius: 20px; }
+  .meal-guide-image-content { padding: 10px; }
+  .meal-guide-dialog-image { border-radius: 13px; }
   .detail-content h2 { font-size: 29px; }
 }
 
