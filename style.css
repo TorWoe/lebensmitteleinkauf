@@ -940,7 +940,49 @@ main {
 
 .page-intro h1 span { color: var(--forest-700); }
 .page-intro > p:last-child { max-width: 620px; margin: 22px 0 0; color: var(--muted); font-size: 17px; line-height: 1.6; }
-.meal-search-field { margin-top: 28px; }
+.meal-guide {
+  max-width: 780px;
+  margin-top: 30px;
+  padding: 24px 26px;
+  border: 1px solid rgba(20, 92, 56, 0.12);
+  border-radius: 22px;
+  background: rgba(244, 250, 246, 0.78);
+}
+.meal-guide-list {
+  display: grid;
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: meal-guide-step;
+}
+.meal-guide-list li {
+  display: grid;
+  grid-template-columns: 22px minmax(0, 1fr);
+  gap: 10px;
+  align-items: start;
+  color: #35443b;
+  font-size: 15px;
+  line-height: 1.6;
+  counter-increment: meal-guide-step;
+}
+.meal-guide-list li::before {
+  content: counter(meal-guide-step) ".";
+  color: var(--forest-700);
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+}
+.meal-guide-closing {
+  margin: 18px 0 0;
+  padding-top: 16px;
+  border-top: 1px solid rgba(20, 92, 56, 0.1);
+  color: var(--forest-800);
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.55;
+}
+.meal-search-field { margin-top: 24px; }
 
 .meal-grid {
   display: grid;
@@ -1257,6 +1299,10 @@ dialog::backdrop { background: rgba(6, 31, 20, 0.52); backdrop-filter: blur(4px)
   .food-benefit { -webkit-line-clamp: 2; }
   .page-intro { padding: 50px 4px 36px; }
   .page-intro > p:last-child { margin-top: 18px; font-size: 15px; }
+  .meal-guide { margin-top: 24px; padding: 19px 17px; border-radius: 18px; }
+  .meal-guide-list { gap: 11px; }
+  .meal-guide-list li { grid-template-columns: 20px minmax(0, 1fr); gap: 8px; font-size: 14px; line-height: 1.55; }
+  .meal-guide-closing { margin-top: 16px; padding-top: 14px; font-size: 14px; }
   .meal-search-field { margin-top: 24px; }
   .meal-grid { gap: 12px; }
   .meal-card { min-height: 0; padding: 22px; border-radius: 20px; }
