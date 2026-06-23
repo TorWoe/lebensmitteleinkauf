@@ -760,6 +760,7 @@ main {
 }
 
 .details-button,
+.meal-recipe-button,
 .meal-list-button {
   flex: 0 0 auto;
   padding: 5px 0;
@@ -1000,7 +1001,7 @@ main {
 .meal-details { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 24px; padding-top: 18px; border-top: 1px solid rgba(20, 92, 56, 0.12); }
 .meal-details span { display: block; margin-bottom: 5px; color: var(--forest-700); font-size: 10px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; }
 .meal-details p { margin: 0; color: var(--muted); font-size: 12px; line-height: 1.5; }
-.meal-card-footer { display: flex; justify-content: flex-end; margin-top: auto; padding-top: 18px; }
+.meal-card-footer { display: flex; align-items: center; justify-content: space-between; gap: 14px; margin-top: auto; padding-top: 18px; }
 .meal-list-button.is-added { color: var(--muted); }
 
 .metric-grid {
