@@ -4,6 +4,12 @@
   const { foods, meals, sources } = window.APP_DATA;
   const storageKey = "lebensmitteleinkauf:selected:v1";
   const foodByName = new Map(foods.map((food) => [normalizeFoodName(food.name), food]));
+  const mealGuideImages = {
+    1: { src: "assets/meal-guide/step-1.png", alt: "Bildanleitung zu Schritt 1: Eine Mahlzeit auswählen" },
+    2: { src: "assets/meal-guide/step-2.png", alt: "Bildanleitung zu Schritt 2: Text für die Rezeptsuche kopieren" },
+    3: { src: "assets/meal-guide/step-3.png", alt: "Bildanleitung zu Schritt 3: Den kopierten Text in eine KI einfügen" },
+    4: { src: "assets/meal-guide/step-4.png", alt: "Bildanleitung zu Schritt 4: Zutaten auf die Einkaufsliste setzen" },
+  };
 
   const iconPaths = {
     basket: '<path d="M7 10 10 4M17 10l-3-6M4 10h16l-1.4 9H5.4L4 10Z"/><path d="M9 13v3M15 13v3"/>',
@@ -12,6 +18,7 @@
     leaf: '<path d="M19 4C11 4 6 8 6 15c0 3 2 5 5 5 7 0 9-8 8-16Z"/><path d="M5 21c2-5 6-9 11-12"/>',
     meal: '<path d="M7 3v8M4.5 3v5c0 2 1 3 2.5 3s2.5-1 2.5-3V3M7 11v10"/><path d="M16 3c2 2 3 5 3 8v2h-5V9c0-3 1-5 2-6Zm0 10v8"/>',
     chart: '<path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/>',
+    imageOpen: '<rect x="3" y="5" width="13" height="14" rx="2"/><path d="m5.5 16 3.2-3.2 2.5 2.5 1.8-1.8 3 3"/><path d="M14 3h7v7M21 3l-8 8"/>',
   };
 
   const categoryIcons = {
@@ -270,6 +277,7 @@
     const food = foods.find((item) => item.id === id);
     if (!food) return;
     const links = String(food.sources).split(";").map((url) => url.trim()).filter(Boolean);
+    dom.detailDialog.classList.remove("is-image-dialog");
     dom.detailContent.innerHTML = `
       <div class="detail-content">
         <div class="detail-icon">${categoryIcon(food.category)}</div>
@@ -288,6 +296,18 @@
         ${detailSection("Nährwerte", food.nutrition, "ohne Gewähr")}
         ${detailSection("Menge pro Portion", food.portion, "Durchschnittswerte - individueller Bedarf oder Kombinationen mit weiteren Lebensmitteln können zu anderen Mengen führen.")}
         ${links.length ? `<section class="detail-section"><h3>Quellen</h3><div class="detail-sources">${links.map((url, index) => `<a href="${escapeHtml(url)}" target="_blank" rel="noreferrer">Quelle ${index + 1} ↗</a>`).join("")}</div></section>` : ""}
+      </div>`;
+    dom.detailDialog.showModal();
+  }
+
+  function openMealGuideImage(step) {
+    const guideImage = mealGuideImages[step];
+    if (!guideImage) return;
+    dom.detailDialog.classList.add("is-image-dialog");
+    dom.detailContent.innerHTML = `
+      <div class="meal-guide-image-content">
+        <h2 class="sr-only">Bildanleitung zu Schritt ${step}</h2>
+        <img class="meal-guide-dialog-image" src="${escapeHtml(guideImage.src)}" alt="${escapeHtml(guideImage.alt)}" />
       </div>`;
     dom.detailDialog.showModal();
   }
@@ -330,7 +350,7 @@
           <div><span>Varianten</span><p>${escapeHtml(meal.variants)}</p></div>
         </div>
         <div class="meal-card-footer">
-          <button class="meal-recipe-button" type="button" data-recipe-meal-id="${meal.id}" aria-label="Rezeptsuchtext für ${escapeHtml(meal.situation)} kopieren">für Rezeptsuche</button>
+          <button class="meal-recipe-button" type="button" data-recipe-meal-id="${meal.id}" aria-label="Rezeptsuchtext für ${escapeHtml(meal.situation)} kopieren">für Rezeptsuche →</button>
           <button class="meal-list-button${allIngredientsSelected ? " is-added" : ""}" type="button" data-meal-id="${meal.id}" aria-pressed="${allIngredientsSelected}">${allIngredientsSelected ? "Auf der Liste ✓" : "Auf die Liste →"}</button>
         </div>
       </article>`;
@@ -377,13 +397,17 @@
     state.view = view;
     document.querySelectorAll("[data-view-panel]").forEach((panel) => panel.classList.toggle("is-active", panel.dataset.viewPanel === view));
     document.querySelectorAll("[data-view]").forEach((button) => button.classList.toggle("is-active", button.dataset.view === view));
-    if (updateHash) history.replaceState(null, "", `#${view === "foods" ? "lebensmittel" : view === "meals" ? "tagesbaukasten" : "auswertung"}`);
+    if (updateHash) history.replaceState(null, "", `#${view === "foods" ? "lebensmittel" : view === "meals" ? "mahlzeiten" : "auswertung"}`);
     window.scrollTo({ top: 0, behavior: "smooth" });
   }
 
   function viewFromHash() {
-    const viewByHash = { "#lebensmittel": "foods", "#tagesbaukasten": "meals", "#auswertung": "insights" };
+    const viewByHash = { "#lebensmittel": "foods", "#mahlzeiten": "meals", "#tagesbaukasten": "meals", "#auswertung": "insights" };
     return viewByHash[window.location.hash] || "foods";
+  }
+
+  function syncViewFromHash() {
+    setView(viewFromHash(), window.location.hash === "#tagesbaukasten");
   }
 
   function syncShoppingPanelPlacement() {
@@ -489,8 +513,10 @@
     document.addEventListener("click", (event) => {
       const viewButton = event.target.closest("[data-view]");
       if (viewButton) setView(viewButton.dataset.view);
+      const guideImageButton = event.target.closest("[data-meal-guide-step]");
+      if (guideImageButton) openMealGuideImage(Number(guideImageButton.dataset.mealGuideStep));
     });
-    window.addEventListener("hashchange", () => setView(viewFromHash(), false));
+    window.addEventListener("hashchange", syncViewFromHash);
     dom.foodGrid.addEventListener("click", (event) => {
       const card = event.target.closest(".food-card");
       if (!card) return;
@@ -584,7 +610,7 @@
     renderMeals();
     renderInsights();
     bindEvents();
-    setView(viewFromHash(), false);
+    syncViewFromHash();
   }
 
   initialize();

@@ -9,7 +9,7 @@
       content="Antientzündliche Lebensmittel entdecken, filtern und als Einkaufsliste speichern."
     />
     <title>Lebensmitteleinkauf</title>
-    <link rel="stylesheet" href="style.css?v=20260623-2" />
+    <link rel="stylesheet" href="style.css?v=20260623-3" />
   </head>
   <body>
     <div class="app-shell">
@@ -176,10 +176,10 @@
             <h1>Aus guten Zutaten<br /><span>wird ein guter Tag.</span></h1>
             <div class="meal-guide">
               <ol class="meal-guide-list">
-                <li>Suche dir hier eine Mahlzeit mit Lebensmitteln die du gerne essen möchtest.</li>
-                <li>Klicke hier bei einer Mahlzeit auf "für Rezeptsuche". Der Text für die Rezeptsuche ist jetzt automatisch in der Zwischenablage gespeichert.</li>
-                <li>Öffne eine KI wie z.B. Copilot von Microsoft oder Gemini von Google und füge den in der Zwischenablage gespeicherten Text ein.<br />Mit einer KI bekommst du schnell gute Rezepte die zu deiner Suche passen.</li>
-                <li>Klicke wieder hier bei einer Mahlzeit auf "Auf die Liste →". Die Zutaten für dein Rezept stehen jetzt automatisch auf Deiner Einkaufsliste.</li>
+                <li><span class="meal-guide-step-content">Suche dir hier eine Mahlzeit mit Lebensmitteln die du gerne essen möchtest. <button class="meal-guide-image-button" type="button" data-meal-guide-step="1" aria-label="Bild zu Schritt 1 öffnen"><span class="button-icon" data-icon="imageOpen" aria-hidden="true"></span><span>Bild</span></button></span></li>
+                <li><span class="meal-guide-step-content">Klicke hier bei einer Mahlzeit auf "für Rezeptsuche". Der Text für die Rezeptsuche ist jetzt automatisch in der Zwischenablage gespeichert. <button class="meal-guide-image-button" type="button" data-meal-guide-step="2" aria-label="Bild zu Schritt 2 öffnen"><span class="button-icon" data-icon="imageOpen" aria-hidden="true"></span><span>Bild</span></button></span></li>
+                <li><span class="meal-guide-step-content">Öffne eine KI wie z.B. Copilot von Microsoft oder Gemini von Google und füge den in der Zwischenablage gespeicherten Text ein.<br />Mit einer KI bekommst du schnell gute Rezepte die zu deiner Suche passen. <button class="meal-guide-image-button" type="button" data-meal-guide-step="3" aria-label="Bild zu Schritt 3 öffnen"><span class="button-icon" data-icon="imageOpen" aria-hidden="true"></span><span>Bild</span></button></span></li>
+                <li><span class="meal-guide-step-content">Klicke wieder hier bei einer Mahlzeit auf "Auf die Liste →". Die Zutaten für dein Rezept stehen jetzt automatisch auf Deiner Einkaufsliste. <button class="meal-guide-image-button" type="button" data-meal-guide-step="4" aria-label="Bild zu Schritt 4 öffnen"><span class="button-icon" data-icon="imageOpen" aria-hidden="true"></span><span>Bild</span></button></span></li>
               </ol>
               <p class="meal-guide-closing">Lass es dir schmecken. Du isst jetzt etwas gesundes dass dir gut tut.</p>
             </div>
@@ -253,7 +253,7 @@
     <div class="scrim" id="scrim"></div>
 
     <dialog class="detail-dialog" id="detailDialog">
-      <button class="dialog-close" type="button" aria-label="Details schließen">×</button>
+      <button class="dialog-close" type="button" aria-label="Dialog schließen">×</button>
       <div id="detailContent"></div>
     </dialog>
 
@@ -270,6 +270,6 @@
     <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
     <script src="data.js?v=20260623-1"></script>
-    <script src="app.js?v=20260623-3"></script>
+    <script src="app.js?v=20260623-4"></script>
   </body>
 </html>
