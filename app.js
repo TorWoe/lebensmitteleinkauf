@@ -313,13 +313,14 @@
 
     dom.mealGrid.innerHTML = visibleMeals.length ? visibleMeals.map(({ meal, index }) => {
       const mealDate = formatMealDate(meal.date);
+      const mealNumber = meals.length - index;
       const ingredientFoods = mealIngredientFoods(meal);
       const allIngredientsSelected = ingredientFoods.length > 0 && ingredientFoods.every((food) => state.selected.has(food.id));
       return `
       <article class="meal-card">
         <div class="meal-meta">
           ${mealDate ? `<time class="meal-date" datetime="${escapeHtml(meal.date)}">${escapeHtml(mealDate)}</time>` : ""}
-          <span class="meal-number">${String(index + 1).padStart(2, "0")}</span>
+          <span class="meal-number">${String(mealNumber).padStart(2, "0")}</span>
         </div>
         <p class="eyebrow">${escapeHtml(meal.satiety)} sättigend</p>
         <h2>${escapeHtml(meal.situation)}</h2>
