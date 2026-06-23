@@ -307,7 +307,7 @@
     const visibleMeals = meals
       .map((meal, index) => ({ meal, index }))
       .filter(({ meal }) => {
-        const searchable = `${meal.situation} ${meal.satiety} ${meal.combination} ${(meal.ingredients || []).join(" ")} ${meal.reason} ${meal.variants} ${formatMealDate(meal.date)}`.toLocaleLowerCase("de");
+        const searchable = `${meal.situation} ${meal.satiety} ${(meal.ingredients || []).join(" ")} ${meal.reason} ${meal.variants} ${formatMealDate(meal.date)}`.toLocaleLowerCase("de");
         return !term || searchable.includes(term);
       });
 
@@ -323,7 +323,6 @@
         </div>
         <p class="eyebrow">${escapeHtml(meal.satiety)} sättigend</p>
         <h2>${escapeHtml(meal.situation)}</h2>
-        <p class="meal-combination">${escapeHtml(meal.combination)}</p>
         <p class="meal-ingredients"><strong>Zutaten:</strong> ${(meal.ingredients || []).map(escapeHtml).join(", ")}</p>
         <div class="meal-details">
           <div><span>Warum sinnvoll</span><p>${escapeHtml(meal.reason)}</p></div>

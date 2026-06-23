@@ -995,7 +995,6 @@ main {
 }
 
 .meal-card h2 { max-width: 70%; margin: 3px 0 14px; color: var(--forest-950); font-size: 24px; letter-spacing: -0.04em; }
-.meal-combination { margin: 0; color: #35443b; font-size: 16px; font-weight: 650; line-height: 1.55; }
 .meal-ingredients { margin: 18px 0 0; color: var(--muted); font-size: 13px; line-height: 1.55; }
 .meal-ingredients strong { color: var(--forest-800); }
 .meal-details { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 24px; padding-top: 18px; border-top: 1px solid rgba(20, 92, 56, 0.12); }
