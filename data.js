@@ -5119,7 +5119,6 @@ window.APP_DATA = {
       "ingredients": ["Skyr", "Quark", "Heidelbeeren", "Leinsamen geschrotet", "Walnüsse", "Zimt"],
       "situation": "Skyr-Quark-Bowl mit Heidelbeeren, Walnüssen und Zimt",
       "satiety": "hoch",
-      "combination": "Skyr oder Quark + Heidelbeeren + geschrotete Leinsamen + Walnüsse + Zimt",
       "reason": "Eiweiß + Ballaststoffe + Polyphenole + gute Fette",
       "variants": "Joghurt/Kefir statt Skyr; Himbeeren statt Heidelbeeren"
     },
@@ -5129,7 +5128,6 @@ window.APP_DATA = {
       "ingredients": ["Hühnerei", "Spinat", "Champignons", "Rote Zwiebel", "Petersilie"],
       "situation": "Omelett mit Spinat, Champignons, roter Zwiebel und Petersilie",
       "satiety": "sehr hoch",
-      "combination": "Omelett mit Spinat, Pilzen, roten Zwiebeln und Kräutern",
       "reason": "Eiweiß + Blattgemüse + Pilze + Polyphenole",
       "variants": "Mit Feta oder Hüttenkäse ergänzen"
     },
@@ -5139,7 +5137,6 @@ window.APP_DATA = {
       "ingredients": ["Belugalinsen", "Rucola", "Paprika rot", "Tomaten", "Petersilie", "Olivenöl extra vergine"],
       "situation": "Mediterraner Belugalinsen-Rucola-Salat",
       "satiety": "sehr hoch",
-      "combination": "Linsensalat mit Rucola, Paprika, Tomaten, Petersilie und Olivenöl",
       "reason": "Hülsenfrüchte + Gemüsevolumen + Polyphenole",
       "variants": "Belugalinsen, Kichererbsen oder Bohnen"
     },
@@ -5149,7 +5146,6 @@ window.APP_DATA = {
       "ingredients": ["Lachs", "Brokkoli", "Champignons", "Feldsalat"],
       "situation": "Lachs-Brokkoli-Salat mit Champignons und Feldsalat",
       "satiety": "sehr hoch",
-      "combination": "Lachs mit Brokkoli, Pilzen und grünem Salat",
       "reason": "Omega-3 + Eiweiß + Kreuzblütler + Volumen",
       "variants": "Hering, Makrele, Forelle oder Garnelen"
     },
@@ -5159,7 +5155,6 @@ window.APP_DATA = {
       "ingredients": ["Kabeljau", "Garnelen", "Pak Choi", "Gelbe Zucchini", "Ingwer", "Knoblauch"],
       "situation": "Kabeljau-Garnelen-Päckchen aus dem Ofen",
       "satiety": "hoch",
-      "combination": "Kabeljau oder Garnelen mit Pak Choi, Zucchini, Ingwer und Knoblauch",
       "reason": "Eiweißreich, leicht, viele sekundäre Pflanzenstoffe",
       "variants": "Tofu oder Tempeh vegetarisch"
     },
@@ -5169,7 +5164,6 @@ window.APP_DATA = {
       "ingredients": ["Naturjoghurt", "Brombeeren", "Chiasamen"],
       "situation": "Brombeer-Chia-Joghurt zum Vorbereiten",
       "satiety": "mittel bis hoch",
-      "combination": "Naturjoghurt mit Brombeeren und Chiasamen",
       "reason": "Eiweiß + Anthocyane + Ballaststoffe",
       "variants": "Kefir oder Quark verwenden"
     },
@@ -5179,7 +5173,6 @@ window.APP_DATA = {
       "ingredients": ["Hummus", "Paprika rot", "Radieschen", "fermentierte Gurken", "Kresse"],
       "situation": "Gefüllte Paprika mit Hummus, Radieschen, Gurke und Kresse",
       "satiety": "hoch",
-      "combination": "Hummus mit Paprika, Radieschen, Gurke und Kresse",
       "reason": "Hülsenfrüchte + Rohkost + Senfölglykoside",
       "variants": "Edamame statt Hummus"
     }
