@@ -416,6 +416,13 @@
     showToast(message);
   }
 
+  function remoteShouldReplaceLocal(remoteData, localData) {
+    if (!remoteData) return false;
+    if (!localData.selected.length) return true;
+    if (remoteIsNewer(remoteData.updatedAt, localData.updatedAt)) return true;
+    return Boolean(remoteData.updatedAt && !localData.updatedAt);
+  }
+
   async function saveSelectionToOneDrive() {
     if (!state.sync.account || state.sync.busy) return;
     state.sync.busy = true;
@@ -442,6 +449,49 @@
       completeRemoteSave(payload, metadata);
     } catch (error) {
       handleOneDriveError(error, "Speichern fehlgeschlagen");
+    } finally {
+      state.sync.busy = false;
+      renderSyncStatus();
+    }
+  }
+
+  async function manualSyncOneDrive() {
+    if (!state.sync.account || state.sync.busy) return;
+    state.sync.busy = true;
+    setSyncStatus("loading", "Prüfe OneDrive", "Aktuelle Einkaufsliste wird aus OneDrive abgeglichen.");
+    try {
+      const remote = await loadRemoteSelection();
+      const local = loadSelectionData();
+
+      if (remote.exists && remoteShouldReplaceLocal(remote.data, local)) {
+        applyRemoteSelection(remote.data, remote.etag);
+        setSyncStatus("synced", "Mit OneDrive synchronisiert", "Neuere OneDrive-Liste wurde übernommen.");
+        showToast("Neuere OneDrive-Liste wurde übernommen.");
+        return;
+      }
+
+      if (remote.exists && sameSelection(remote.data.selectedIds, state.selected)) {
+        state.sync.lastRemoteUpdatedAt = remote.data.updatedAt || state.sync.lastRemoteUpdatedAt;
+        state.sync.lastRemoteEtag = remote.etag || state.sync.lastRemoteEtag;
+        setSyncStatus("synced", "Mit OneDrive synchronisiert", "Deine Einkaufsliste ist aktuell.");
+        return;
+      }
+
+      if (!remote.exists || remoteIsNewer(local.updatedAt, remote.data?.updatedAt)) {
+        const payload = selectionPayload(nowIso());
+        saveSelectionLocally(payload.updatedAt);
+        const metadata = await uploadRemoteSelection(payload);
+        completeRemoteSave(payload, metadata);
+        showToast("Einkaufsliste wurde nach OneDrive gespeichert.");
+        return;
+      }
+
+      if (remote.exists) {
+        applyRemoteSelection(remote.data, remote.etag);
+        setSyncStatus("synced", "Mit OneDrive synchronisiert", "OneDrive-Liste wurde übernommen.");
+      }
+    } catch (error) {
+      handleOneDriveError(error, "Synchronisieren fehlgeschlagen");
     } finally {
       state.sync.busy = false;
       renderSyncStatus();
@@ -1016,21 +1066,12 @@
     });
     [dom.basketButton, dom.mobileBasket].forEach((button) => button.addEventListener("click", openShopping));
     dom.syncButton.addEventListener("click", () => {
-      if (state.sync.status === "conflict") {
-        openConfirm({
-          title: "OneDrive überschreiben?",
-          text: "Die lokale Liste ersetzt dann die abweichende OneDrive-Liste.",
-          cancel: "Abbrechen",
-          accept: "Überschreiben",
-          action: () => { void saveSelectionToOneDrive(); },
-        });
-      } else if (state.sync.account) saveSelectionToOneDrive();
+      if (state.sync.account) manualSyncOneDrive();
       else if (state.sync.status === "loading" && hasRecentPendingLogin()) closeThisLoginWindowOrReload();
       else loginToOneDrive();
     });
     dom.syncSecondary.addEventListener("click", () => {
-      if (state.sync.status === "conflict") syncFromOneDrive({ forceRemote: true });
-      else if (state.sync.account) saveSelectionToOneDrive();
+      if (state.sync.account) manualSyncOneDrive();
       else if (state.sync.status === "loading" && hasRecentPendingLogin()) closeThisLoginWindowOrReload();
       else loginToOneDrive();
     });
