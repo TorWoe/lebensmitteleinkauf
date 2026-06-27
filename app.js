@@ -109,6 +109,7 @@
     syncStatusTitle: document.querySelector("#syncStatusTitle"),
     syncStatusText: document.querySelector("#syncStatusText"),
     syncSecondary: document.querySelector("#syncSecondary"),
+    syncLogout: document.querySelector("#syncLogout"),
     closeShopping: document.querySelector("#closeShopping"),
     scrim: document.querySelector("#scrim"),
     detailDialog: document.querySelector("#detailDialog"),
@@ -236,6 +237,8 @@
     dom.syncStatusText.textContent = state.sync.message;
     dom.syncButton.disabled = state.sync.busy;
     dom.syncSecondary.disabled = state.sync.busy;
+    dom.syncLogout.disabled = state.sync.busy;
+    dom.syncLogout.hidden = !state.sync.account;
     dom.syncButtonLabel.textContent = state.sync.account ? "OneDrive" : "Anmelden";
 
     if (state.sync.status === "conflict") {
@@ -249,23 +252,12 @@
 
   function explainAuthError(error) {
     const text = `${error?.errorCode || ""} ${error?.message || ""}`.toLowerCase();
-    if (text.includes("popup") || text.includes("block")) return "Das Anmeldefenster wurde vom Browser blockiert. Bitte versuche die Anmeldung erneut.";
+    if (text.includes("redirect-started")) return "Du wirst zu Microsoft weitergeleitet.";
+    if (text.includes("popup") || text.includes("block")) return "Das Anmeldefenster wurde vom Browser blockiert. Die Anmeldung wird per Weiterleitung versucht.";
     if (text.includes("user_cancelled") || text.includes("cancel")) return "Anmeldung oder Zustimmung wurde abgebrochen.";
     if (text.includes("consent") || text.includes("access_denied")) return "Zustimmung verweigert. OneDrive-Sync bleibt ausgeschaltet.";
     if (text.includes("interaction_required")) return "Bitte melde dich erneut an, damit OneDrive verwendet werden darf.";
     return "Microsoft-Anmeldung fehlgeschlagen. Deine Liste bleibt lokal gespeichert.";
-  }
-
-  function shouldUseRedirectLogin() {
-    const userAgent = navigator.userAgent || "";
-    const isMobileBrowser = /android|iphone|ipad|ipod|mobile/i.test(userAgent);
-    const isSmallTouchScreen = window.matchMedia?.("(pointer: coarse)")?.matches && window.innerWidth <= 900;
-    return Boolean(isMobileBrowser || isSmallTouchScreen);
-  }
-
-  function shouldRetryWithRedirect(error) {
-    const text = `${error?.errorCode || ""} ${error?.message || ""}`.toLowerCase();
-    return text.includes("popup") || text.includes("block") || text.includes("empty_window") || text.includes("monitor_window");
   }
 
   async function getGraphToken() {
@@ -275,17 +267,9 @@
       const response = await state.sync.msal.acquireTokenSilent(request);
       return response.accessToken;
     } catch (error) {
-      if (shouldUseRedirectLogin()) {
-        setSyncStatus("loading", "Microsoft-Anmeldung", "Du wirst zu Microsoft weitergeleitet.");
-        await state.sync.msal.acquireTokenRedirect({ ...request, redirectStartPage: window.location.href });
-        return "";
-      }
-      const response = await state.sync.msal.acquireTokenPopup(request);
-      if (response.account) {
-        state.sync.account = response.account;
-        state.sync.msal.setActiveAccount(response.account);
-      }
-      return response.accessToken;
+      setSyncStatus("loading", "Microsoft-Anmeldung", "Du wirst zu Microsoft weitergeleitet.");
+      await state.sync.msal.acquireTokenRedirect({ ...request, redirectStartPage: window.location.href });
+      throw new Error("redirect-started");
     }
   }
 
@@ -352,6 +336,7 @@
   }
 
   function handleOneDriveError(error, fallbackTitle = "OneDrive nicht verfügbar") {
+    if (error?.message === "redirect-started") return;
     if (error?.message === "not-signed-in") {
       setSyncStatus("local", "Nicht angemeldet", "Deine Liste wird lokal auf diesem Gerät gespeichert.");
       return;
@@ -449,33 +434,40 @@
   async function loginToOneDrive() {
     if (!state.sync.msal || state.sync.busy) return;
     state.sync.busy = true;
-    const useRedirect = shouldUseRedirectLogin();
-    setSyncStatus("loading", "Microsoft-Anmeldung", useRedirect ? "Du wirst zu Microsoft weitergeleitet." : "Das Anmeldefenster wird geöffnet.");
+    setSyncStatus("loading", "Microsoft-Anmeldung", "Du wirst zu Microsoft weitergeleitet.");
     try {
-      if (useRedirect) {
-        await state.sync.msal.loginRedirect({ ...loginRequest, redirectStartPage: window.location.href });
-        return;
-      }
-
-      const response = await state.sync.msal.loginPopup(loginRequest);
-      state.sync.account = response.account;
-      state.sync.msal.setActiveAccount(response.account);
-      state.sync.busy = false;
-      await syncFromOneDrive();
+      await state.sync.msal.loginRedirect({ ...loginRequest, redirectStartPage: window.location.href });
     } catch (error) {
-      if (!useRedirect && shouldRetryWithRedirect(error)) {
-        setSyncStatus("loading", "Microsoft-Anmeldung", "Das Popup wurde blockiert. Du wirst zu Microsoft weitergeleitet.");
-        try {
-          await state.sync.msal.loginRedirect({ ...loginRequest, redirectStartPage: window.location.href });
-          return;
-        } catch (redirectError) {
-          setSyncStatus("error", "Anmeldung fehlgeschlagen", explainAuthError(redirectError));
-          showToast(explainAuthError(redirectError));
-          return;
-        }
-      }
       setSyncStatus("error", "Anmeldung fehlgeschlagen", explainAuthError(error));
       showToast(explainAuthError(error));
+    } finally {
+      state.sync.busy = false;
+      renderSyncStatus();
+    }
+  }
+
+  async function logoutFromOneDrive() {
+    if (!state.sync.msal || state.sync.busy) return;
+    state.sync.busy = true;
+    setSyncStatus("loading", "Microsoft-Abmeldung", "Du wirst von OneDrive abgemeldet.");
+    try {
+      const account = state.sync.account || state.sync.msal.getActiveAccount?.();
+      state.sync.account = null;
+      state.sync.lastRemoteUpdatedAt = "";
+      state.sync.lastRemoteEtag = "";
+      state.sync.hasRemoteData = false;
+      state.sync.conflictData = null;
+      if (account) {
+        await state.sync.msal.logoutRedirect({
+          account,
+          postLogoutRedirectUri: msalConfig.auth.redirectUri,
+        });
+      } else {
+        setSyncStatus("local", "Nicht angemeldet", "Deine Liste wird lokal auf diesem Gerät gespeichert.");
+      }
+    } catch (error) {
+      setSyncStatus("error", "Abmeldung fehlgeschlagen", "Microsoft-Abmeldung konnte nicht abgeschlossen werden.");
+      showToast("Microsoft-Abmeldung konnte nicht abgeschlossen werden.");
     } finally {
       state.sync.busy = false;
       renderSyncStatus();
@@ -500,7 +492,15 @@
         setSyncStatus("local", "Nicht angemeldet", "Deine Liste wird lokal auf diesem Gerät gespeichert.");
       }
     } catch (error) {
-      setSyncStatus("error", "Anmeldung fehlgeschlagen", explainAuthError(error));
+      const accounts = state.sync.msal?.getAllAccounts?.() || [];
+      state.sync.account = accounts[0] || null;
+      if (state.sync.account) {
+        state.sync.msal.setActiveAccount(state.sync.account);
+        setSyncStatus("loading", "Microsoft-Anmeldung erkannt", "OneDrive wird erneut geprüft.");
+        await syncFromOneDrive();
+      } else {
+        setSyncStatus("error", "Anmeldung fehlgeschlagen", explainAuthError(error));
+      }
     } finally {
       state.sync.initialized = true;
       renderSyncStatus();
@@ -959,6 +959,7 @@
       else if (state.sync.account) saveSelectionToOneDrive();
       else loginToOneDrive();
     });
+    dom.syncLogout.addEventListener("click", logoutFromOneDrive);
     [dom.closeShopping, dom.scrim].forEach((element) => element.addEventListener("click", closeShopping));
     document.querySelector("#downloadList").addEventListener("click", downloadList);
     document.querySelector("#copyList").addEventListener("click", copyList);

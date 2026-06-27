@@ -203,7 +203,8 @@ a {
 }
 
 .sync-button:disabled,
-.sync-secondary:disabled {
+.sync-secondary:disabled,
+.sync-logout:disabled {
   cursor: wait;
   opacity: 0.72;
 }
@@ -910,10 +911,21 @@ main {
   background: #fbefed;
 }
 
-.sync-secondary {
+.sync-actions {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 8px;
+}
+
+.sync-secondary,
+.sync-logout {
   width: 100%;
   min-height: 36px;
   font-size: 12px;
+}
+
+.sync-logout[hidden] {
+  display: none;
 }
 
 .shopping-items {

@@ -167,7 +167,10 @@
                   <strong id="syncStatusTitle">Nicht angemeldet</strong>
                   <span id="syncStatusText">Deine Liste wird lokal auf diesem Gerät gespeichert.</span>
                 </div>
-                <button class="secondary-button sync-secondary" id="syncSecondary" type="button">Mit OneDrive anmelden</button>
+                <div class="sync-actions">
+                  <button class="secondary-button sync-secondary" id="syncSecondary" type="button">Mit OneDrive anmelden</button>
+                  <button class="danger-button sync-logout" id="syncLogout" type="button" hidden>Abmelden</button>
+                </div>
               </div>
               <div class="shopping-items" id="shoppingItems"></div>
               <div class="shopping-actions" id="shoppingActions">
@@ -285,6 +288,6 @@
 
     <script src="data.js?v=20260623-1"></script>
     <script src="vendor/msal-browser.min.js?v=2.38.3"></script>
-    <script src="app.js?v=20260627-3"></script>
+    <script src="app.js?v=20260627-4"></script>
   </body>
 </html>
