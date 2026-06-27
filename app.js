@@ -3,6 +3,26 @@
 
   const { foods, meals, sources } = window.APP_DATA;
   const storageKey = "lebensmitteleinkauf:selected:v1";
+  const storageMetaKey = "lebensmitteleinkauf:selected:meta:v1";
+  const appDataFileName = "lebensmitteleinkauf-data.json";
+  const graphBaseUrl = "https://graph.microsoft.com/v1.0";
+  const graphFilePath = `/me/drive/special/approot:/${appDataFileName}`;
+  const graphContentPath = `${graphFilePath}:/content`;
+  const msalConfig = {
+    auth: {
+      clientId: "3c4004e7-9323-440c-8977-96699d8d8e6f",
+      authority: "https://login.microsoftonline.com/common",
+      redirectUri: window.location.origin + window.location.pathname,
+    },
+    cache: {
+      cacheLocation: "localStorage",
+      storeAuthStateInCookie: false,
+    },
+  };
+  const graphScopes = ["User.Read", "Files.ReadWrite.AppFolder"];
+  const loginRequest = { scopes: graphScopes };
+  const validFoodIds = new Set(foods.map((food) => food.id));
+  const localSnapshot = loadSelectionData();
   const foodByName = new Map(foods.map((food) => [normalizeFoodName(food.name), food]));
   const mealGuideImages = {
     1: { src: "assets/meal-guide/step-1.png", alt: "Bildanleitung zu Schritt 1: Eine Mahlzeit auswählen" },
@@ -19,6 +39,7 @@
     meal: '<path d="M7 3v8M4.5 3v5c0 2 1 3 2.5 3s2.5-1 2.5-3V3M7 11v10"/><path d="M16 3c2 2 3 5 3 8v2h-5V9c0-3 1-5 2-6Zm0 10v8"/>',
     chart: '<path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/>',
     imageOpen: '<rect x="3" y="5" width="13" height="14" rx="2"/><path d="m5.5 16 3.2-3.2 2.5 2.5 1.8-1.8 3 3"/><path d="M14 3h7v7M21 3l-8 8"/>',
+    cloud: '<path d="M17.5 18H8a5 5 0 1 1 1.2-9.85A6.5 6.5 0 0 1 21 12a3 3 0 0 1-3.5 6Z"/><path d="M12 13v7M9 16l3-3 3 3"/>',
   };
 
   const categoryIcons = {
@@ -42,7 +63,21 @@
     score: "",
     priority: "",
     limit: window.innerWidth < 680 ? 18 : 28,
-    selected: loadSelection(),
+    selected: new Set(localSnapshot.selected),
+    localUpdatedAt: localSnapshot.updatedAt,
+    sync: {
+      msal: null,
+      account: null,
+      initialized: false,
+      busy: false,
+      status: "local",
+      title: "Nicht angemeldet",
+      message: "Deine Liste wird lokal auf diesem Gerät gespeichert.",
+      lastRemoteUpdatedAt: "",
+      lastRemoteEtag: "",
+      hasRemoteData: false,
+      conflictData: null,
+    },
     confirmAction: null,
   };
 
@@ -67,6 +102,13 @@
     mobileCount: document.querySelector("#mobileCount"),
     basketButton: document.querySelector("#basketButton"),
     mobileBasket: document.querySelector("#mobileBasket"),
+    syncButton: document.querySelector("#syncButton"),
+    syncButtonLabel: document.querySelector("#syncButtonLabel"),
+    syncDot: document.querySelector("#syncDot"),
+    syncPanel: document.querySelector("#syncPanel"),
+    syncStatusTitle: document.querySelector("#syncStatusTitle"),
+    syncStatusText: document.querySelector("#syncStatusText"),
+    syncSecondary: document.querySelector("#syncSecondary"),
     closeShopping: document.querySelector("#closeShopping"),
     scrim: document.querySelector("#scrim"),
     detailDialog: document.querySelector("#detailDialog"),
@@ -118,16 +160,316 @@
       .trim();
   }
 
-  function loadSelection() {
+  function cleanSelectedIds(value) {
+    return [...new Set((Array.isArray(value) ? value : []).map(Number).filter((id) => validFoodIds.has(id)))];
+  }
+
+  function nowIso() {
+    return new Date().toISOString();
+  }
+
+  function loadSelectionData() {
     try {
-      return new Set(JSON.parse(localStorage.getItem(storageKey) || "[]").map(Number));
+      const selected = cleanSelectedIds(JSON.parse(localStorage.getItem(storageKey) || "[]"));
+      const meta = JSON.parse(localStorage.getItem(storageMetaKey) || "{}");
+      const updatedAt = typeof meta.updatedAt === "string" ? meta.updatedAt : selected.length ? nowIso() : "";
+      return { selected, updatedAt };
     } catch {
-      return new Set();
+      return { selected: [], updatedAt: "" };
     }
   }
 
+  function saveSelectionLocally(updatedAt = nowIso()) {
+    const selected = cleanSelectedIds([...state.selected]);
+    localStorage.setItem(storageKey, JSON.stringify(selected));
+    localStorage.setItem(storageMetaKey, JSON.stringify({ updatedAt }));
+    state.localUpdatedAt = updatedAt;
+    return { selected, updatedAt };
+  }
+
   function persistSelection() {
-    localStorage.setItem(storageKey, JSON.stringify([...state.selected]));
+    saveSelectionLocally();
+    queueOneDriveSave();
+  }
+
+  function selectionPayload(updatedAt = state.localUpdatedAt || nowIso()) {
+    return {
+      app: "lebensmitteleinkauf",
+      version: 1,
+      updatedAt,
+      selectedIds: cleanSelectedIds([...state.selected]),
+    };
+  }
+
+  function parseRemoteData(data) {
+    if (!data || typeof data !== "object") return null;
+    const selectedIds = cleanSelectedIds(data.selectedIds || data.selected || []);
+    return {
+      app: "lebensmitteleinkauf",
+      version: Number(data.version) || 1,
+      updatedAt: typeof data.updatedAt === "string" ? data.updatedAt : "",
+      selectedIds,
+    };
+  }
+
+  function sameSelection(left, right) {
+    return cleanSelectedIds(left).join(",") === cleanSelectedIds(right).join(",");
+  }
+
+  function remoteIsNewer(remoteUpdatedAt, knownUpdatedAt) {
+    if (!remoteUpdatedAt || !knownUpdatedAt) return false;
+    return Date.parse(remoteUpdatedAt) > Date.parse(knownUpdatedAt);
+  }
+
+  function setSyncStatus(status, title, message) {
+    state.sync.status = status;
+    state.sync.title = title;
+    state.sync.message = message;
+    renderSyncStatus();
+  }
+
+  function renderSyncStatus() {
+    if (!dom.syncButton) return;
+    dom.syncButton.dataset.syncStatus = state.sync.status;
+    dom.syncPanel.dataset.syncStatus = state.sync.status;
+    dom.syncStatusTitle.textContent = state.sync.title;
+    dom.syncStatusText.textContent = state.sync.message;
+    dom.syncButton.disabled = state.sync.busy;
+    dom.syncSecondary.disabled = state.sync.busy;
+    dom.syncButtonLabel.textContent = state.sync.account ? "OneDrive" : "Anmelden";
+
+    if (state.sync.status === "conflict") {
+      dom.syncSecondary.textContent = "OneDrive laden";
+    } else if (state.sync.account) {
+      dom.syncSecondary.textContent = state.sync.busy ? "Synchronisiert ..." : "Jetzt synchronisieren";
+    } else {
+      dom.syncSecondary.textContent = state.sync.busy ? "Anmeldung ..." : "Mit OneDrive anmelden";
+    }
+  }
+
+  function explainAuthError(error) {
+    const text = `${error?.errorCode || ""} ${error?.message || ""}`.toLowerCase();
+    if (text.includes("user_cancelled") || text.includes("cancel")) return "Anmeldung oder Zustimmung wurde abgebrochen.";
+    if (text.includes("consent") || text.includes("access_denied")) return "Zustimmung verweigert. OneDrive-Sync bleibt ausgeschaltet.";
+    if (text.includes("interaction_required")) return "Bitte melde dich erneut an, damit OneDrive verwendet werden darf.";
+    return "Microsoft-Anmeldung fehlgeschlagen. Deine Liste bleibt lokal gespeichert.";
+  }
+
+  async function getGraphToken() {
+    if (!state.sync.account) throw new Error("not-signed-in");
+    const request = { ...loginRequest, account: state.sync.account };
+    try {
+      const response = await state.sync.msal.acquireTokenSilent(request);
+      return response.accessToken;
+    } catch (error) {
+      const response = await state.sync.msal.acquireTokenPopup(request);
+      if (response.account) {
+        state.sync.account = response.account;
+        state.sync.msal.setActiveAccount(response.account);
+      }
+      return response.accessToken;
+    }
+  }
+
+  async function graphFetch(path, options = {}) {
+    const token = await getGraphToken();
+    const response = await fetch(`${graphBaseUrl}${path}`, {
+      ...options,
+      headers: {
+        Authorization: `Bearer ${token}`,
+        ...(options.headers || {}),
+      },
+    });
+    if (response.status === 404) return null;
+    if (!response.ok) {
+      const detail = await response.text().catch(() => "");
+      const error = new Error(detail || `Graph request failed: ${response.status}`);
+      error.status = response.status;
+      throw error;
+    }
+    return response;
+  }
+
+  async function loadRemoteSelection() {
+    const metadataResponse = await graphFetch(graphFilePath);
+    if (!metadataResponse) return { exists: false, data: null, etag: "" };
+    const metadata = await metadataResponse.json();
+    const contentResponse = await graphFetch(graphContentPath, { cache: "no-store" });
+    if (!contentResponse) return { exists: false, data: null, etag: metadata.eTag || "" };
+    const data = parseRemoteData(await contentResponse.json());
+    return {
+      exists: Boolean(data),
+      data,
+      etag: metadata.eTag || "",
+    };
+  }
+
+  async function uploadRemoteSelection(payload) {
+    const response = await graphFetch(graphContentPath, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json;charset=utf-8" },
+      body: JSON.stringify(payload, null, 2),
+    });
+    return response ? response.json() : null;
+  }
+
+  function applyRemoteSelection(remoteData, remoteEtag = "") {
+    state.selected = new Set(remoteData.selectedIds);
+    saveSelectionLocally(remoteData.updatedAt || nowIso());
+    state.sync.lastRemoteUpdatedAt = remoteData.updatedAt || state.localUpdatedAt;
+    state.sync.lastRemoteEtag = remoteEtag;
+    state.sync.hasRemoteData = true;
+    state.sync.conflictData = null;
+    renderFoods();
+    renderShoppingList();
+    renderMeals();
+  }
+
+  function completeRemoteSave(payload, metadata) {
+    state.sync.lastRemoteUpdatedAt = payload.updatedAt;
+    state.sync.lastRemoteEtag = metadata?.eTag || state.sync.lastRemoteEtag;
+    state.sync.hasRemoteData = true;
+    state.sync.conflictData = null;
+    setSyncStatus("synced", "Mit OneDrive synchronisiert", "Deine Einkaufsliste ist im OneDrive-App-Ordner gespeichert.");
+  }
+
+  function handleOneDriveError(error, fallbackTitle = "OneDrive nicht verfügbar") {
+    if (error?.message === "not-signed-in") {
+      setSyncStatus("local", "Nicht angemeldet", "Deine Liste wird lokal auf diesem Gerät gespeichert.");
+      return;
+    }
+    const message = error?.status === 401 || error?.status === 403
+      ? "Zugriff auf OneDrive wurde nicht erlaubt. Bitte erneut anmelden."
+      : "OneDrive konnte nicht erreicht werden. Lokale Daten bleiben erhalten.";
+    setSyncStatus("error", fallbackTitle, message);
+    showToast(message);
+  }
+
+  async function saveSelectionToOneDrive() {
+    if (!state.sync.account || state.sync.busy) return;
+    state.sync.busy = true;
+    setSyncStatus("saving", "Speichere in OneDrive", "Prüfe zuerst, ob dort neuere Daten liegen.");
+    try {
+      const latest = await loadRemoteSelection();
+      if (
+        latest.exists
+        && state.sync.lastRemoteUpdatedAt
+        && remoteIsNewer(latest.data.updatedAt, state.sync.lastRemoteUpdatedAt)
+        && !sameSelection(latest.data.selectedIds, state.selected)
+      ) {
+        state.sync.conflictData = latest;
+        state.sync.lastRemoteUpdatedAt = latest.data.updatedAt || state.sync.lastRemoteUpdatedAt;
+        state.sync.lastRemoteEtag = latest.etag || state.sync.lastRemoteEtag;
+        setSyncStatus("conflict", "Konflikt erkannt", "OneDrive enthält neuere Daten. Es wurde nichts überschrieben.");
+        showToast("Konflikt erkannt: OneDrive wurde nicht überschrieben.");
+        return;
+      }
+
+      const payload = selectionPayload(nowIso());
+      saveSelectionLocally(payload.updatedAt);
+      const metadata = await uploadRemoteSelection(payload);
+      completeRemoteSave(payload, metadata);
+    } catch (error) {
+      handleOneDriveError(error, "Speichern fehlgeschlagen");
+    } finally {
+      state.sync.busy = false;
+      renderSyncStatus();
+    }
+  }
+
+  let oneDriveSaveTimer;
+  function queueOneDriveSave() {
+    if (!state.sync.account) {
+      setSyncStatus("local", "Nicht angemeldet", "Deine Liste wird lokal auf diesem Gerät gespeichert.");
+      return;
+    }
+    clearTimeout(oneDriveSaveTimer);
+    setSyncStatus("saving", "Speichern vorbereitet", "Die Änderung wird gleich mit OneDrive synchronisiert.");
+    oneDriveSaveTimer = setTimeout(() => { void saveSelectionToOneDrive(); }, 650);
+  }
+
+  async function syncFromOneDrive({ forceRemote = false } = {}) {
+    if (!state.sync.account || state.sync.busy) return;
+    state.sync.busy = true;
+    setSyncStatus("loading", "Prüfe OneDrive", "Deine Einkaufsliste wird geladen.");
+    try {
+      const remote = forceRemote && state.sync.conflictData ? state.sync.conflictData : await loadRemoteSelection();
+      const local = loadSelectionData();
+
+      if (!remote.exists) {
+        if (local.selected.length) {
+          const payload = selectionPayload(local.updatedAt || nowIso());
+          const metadata = await uploadRemoteSelection(payload);
+          completeRemoteSave(payload, metadata);
+          showToast("Lokale Einkaufsliste wurde nach OneDrive übernommen.");
+        } else {
+          state.sync.hasRemoteData = false;
+          setSyncStatus("synced", "Mit OneDrive verbunden", "Noch keine Einkaufsliste im OneDrive-App-Ordner.");
+        }
+        return;
+      }
+
+      if (forceRemote || !local.selected.length || remoteIsNewer(remote.data.updatedAt, local.updatedAt) || sameSelection(remote.data.selectedIds, local.selected)) {
+        applyRemoteSelection(remote.data, remote.etag);
+        setSyncStatus("synced", "Mit OneDrive synchronisiert", "Deine Einkaufsliste wurde aus OneDrive geladen.");
+        return;
+      }
+
+      state.sync.lastRemoteUpdatedAt = remote.data.updatedAt || "";
+      state.sync.lastRemoteEtag = remote.etag || "";
+      state.sync.hasRemoteData = true;
+      state.sync.conflictData = remote;
+      setSyncStatus("conflict", "Unterschiedliche Listen", "Lokale und OneDrive-Liste unterscheiden sich. Es wurde nichts überschrieben.");
+    } catch (error) {
+      handleOneDriveError(error);
+    } finally {
+      state.sync.busy = false;
+      renderSyncStatus();
+    }
+  }
+
+  async function loginToOneDrive() {
+    if (!state.sync.msal || state.sync.busy) return;
+    state.sync.busy = true;
+    setSyncStatus("loading", "Microsoft-Anmeldung", "Das Anmeldefenster wird geöffnet.");
+    try {
+      const response = await state.sync.msal.loginPopup(loginRequest);
+      state.sync.account = response.account;
+      state.sync.msal.setActiveAccount(response.account);
+      state.sync.busy = false;
+      await syncFromOneDrive();
+    } catch (error) {
+      setSyncStatus("error", "Anmeldung fehlgeschlagen", explainAuthError(error));
+      showToast(explainAuthError(error));
+    } finally {
+      state.sync.busy = false;
+      renderSyncStatus();
+    }
+  }
+
+  async function initializeOneDrive() {
+    if (!window.msal?.PublicClientApplication) {
+      setSyncStatus("error", "OneDrive nicht verfügbar", "MSAL.js konnte nicht geladen werden. Lokale Speicherung bleibt aktiv.");
+      return;
+    }
+
+    try {
+      state.sync.msal = new window.msal.PublicClientApplication(msalConfig);
+      const redirectResponse = await state.sync.msal.handleRedirectPromise();
+      const accounts = state.sync.msal.getAllAccounts();
+      state.sync.account = redirectResponse?.account || accounts[0] || null;
+      if (state.sync.account) {
+        state.sync.msal.setActiveAccount(state.sync.account);
+        await syncFromOneDrive();
+      } else {
+        setSyncStatus("local", "Nicht angemeldet", "Deine Liste wird lokal auf diesem Gerät gespeichert.");
+      }
+    } catch (error) {
+      setSyncStatus("error", "Anmeldung fehlgeschlagen", explainAuthError(error));
+    } finally {
+      state.sync.initialized = true;
+      renderSyncStatus();
+    }
   }
 
   function populateFilters() {
@@ -231,7 +573,7 @@
         <div class="empty-list">
           <span class="empty-list-icon"><span class="button-icon">${icon("basket")}</span></span>
           <strong>Noch nichts ausgewählt</strong>
-          <p>Tippe bei einem Lebensmittel auf das Kästchen. Deine Auswahl bleibt auf diesem Gerät gespeichert.</p>
+          <p>Tippe bei einem Lebensmittel auf das Kästchen. Mit OneDrive-Anmeldung bleibt deine Auswahl geräteübergreifend synchron.</p>
         </div>`;
       return;
     }
@@ -565,6 +907,23 @@
       document.querySelector("#catalogTitle").scrollIntoView({ behavior: "smooth", block: "start" });
     });
     [dom.basketButton, dom.mobileBasket].forEach((button) => button.addEventListener("click", openShopping));
+    dom.syncButton.addEventListener("click", () => {
+      if (state.sync.status === "conflict") {
+        openConfirm({
+          title: "OneDrive überschreiben?",
+          text: "Die lokale Liste ersetzt dann die abweichende OneDrive-Liste.",
+          cancel: "Abbrechen",
+          accept: "Überschreiben",
+          action: () => { void saveSelectionToOneDrive(); },
+        });
+      } else if (state.sync.account) saveSelectionToOneDrive();
+      else loginToOneDrive();
+    });
+    dom.syncSecondary.addEventListener("click", () => {
+      if (state.sync.status === "conflict") syncFromOneDrive({ forceRemote: true });
+      else if (state.sync.account) saveSelectionToOneDrive();
+      else loginToOneDrive();
+    });
     [dom.closeShopping, dom.scrim].forEach((element) => element.addEventListener("click", closeShopping));
     document.querySelector("#downloadList").addEventListener("click", downloadList);
     document.querySelector("#copyList").addEventListener("click", copyList);
@@ -607,10 +966,12 @@
     populateFilters();
     renderFoods();
     renderShoppingList();
+    renderSyncStatus();
     renderMeals();
     renderInsights();
     bindEvents();
     syncViewFromHash();
+    void initializeOneDrive();
   }
 
   initialize();

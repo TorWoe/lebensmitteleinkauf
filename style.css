@@ -168,7 +168,6 @@ a {
 .basket-button {
   display: inline-flex;
   align-items: center;
-  justify-self: end;
   gap: 9px;
   min-height: 44px;
   padding: 8px 9px 8px 14px;
@@ -180,6 +179,51 @@ a {
   font-weight: 700;
   box-shadow: var(--shadow-sm);
 }
+
+.topbar-actions {
+  display: inline-flex;
+  align-items: center;
+  justify-self: end;
+  gap: 8px;
+}
+
+.sync-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 8px 12px;
+  border: 1px solid rgba(32, 95, 134, 0.16);
+  border-radius: 14px;
+  color: var(--blue-800);
+  background: var(--white);
+  font-size: 13px;
+  font-weight: 750;
+  box-shadow: var(--shadow-sm);
+}
+
+.sync-button:disabled,
+.sync-secondary:disabled {
+  cursor: wait;
+  opacity: 0.72;
+}
+
+.sync-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #a8b5ad;
+}
+
+.sync-button[data-sync-status="synced"] .sync-dot { background: #2c8a57; }
+.sync-button[data-sync-status="saving"],
+.sync-button[data-sync-status="loading"] {
+  color: var(--forest-800);
+}
+.sync-button[data-sync-status="saving"] .sync-dot,
+.sync-button[data-sync-status="loading"] .sync-dot { background: #d7a62f; }
+.sync-button[data-sync-status="conflict"] .sync-dot,
+.sync-button[data-sync-status="error"] .sync-dot { background: var(--danger); }
 
 .count-badge {
   display: grid;
@@ -828,6 +872,50 @@ main {
 
 .shopping-summary strong { color: var(--forest-800); font-size: 17px; }
 
+.sync-panel {
+  display: grid;
+  gap: 10px;
+  margin: 0 0 14px;
+  padding: 12px;
+  border: 1px solid rgba(32, 95, 134, 0.14);
+  border-radius: 14px;
+  background: var(--blue-50);
+}
+
+.sync-panel strong,
+.sync-panel span {
+  display: block;
+}
+
+.sync-panel strong {
+  color: var(--forest-950);
+  font-size: 13px;
+}
+
+.sync-panel span {
+  margin-top: 3px;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.sync-panel[data-sync-status="synced"] {
+  border-color: rgba(44, 138, 87, 0.18);
+  background: var(--forest-50);
+}
+
+.sync-panel[data-sync-status="conflict"],
+.sync-panel[data-sync-status="error"] {
+  border-color: rgba(160, 68, 56, 0.2);
+  background: #fbefed;
+}
+
+.sync-secondary {
+  width: 100%;
+  min-height: 36px;
+  font-size: 12px;
+}
+
 .shopping-items {
   min-height: 220px;
   overflow-y: auto;
@@ -1290,6 +1378,9 @@ dialog::backdrop { background: rgba(6, 31, 20, 0.52); backdrop-filter: blur(4px)
 @media (max-width: 680px) {
   .brand small { display: none; }
   .brand-mark { width: 38px; height: 38px; border-radius: 12px; }
+  .topbar-actions { gap: 6px; }
+  .sync-button { min-height: 40px; padding: 6px 8px; }
+  #syncButtonLabel { display: none; }
   .basket-button { min-height: 40px; padding: 6px 7px 6px 10px; }
   main { width: calc(100% - 24px); }
   .hero { margin: 12px 0 38px; border-radius: 24px; }
