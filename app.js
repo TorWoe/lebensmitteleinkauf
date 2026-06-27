@@ -5,6 +5,7 @@
   const storageKey = "lebensmitteleinkauf:selected:v1";
   const storageMetaKey = "lebensmitteleinkauf:selected:meta:v1";
   const pendingLoginKey = "lebensmitteleinkauf:onedrive-login-pending:v1";
+  const loginReloadKey = "lebensmitteleinkauf:onedrive-login-reload:v1";
   const appDataFileName = "lebensmitteleinkauf-data.json";
   const graphBaseUrl = "https://graph.microsoft.com/v1.0";
   const graphFilePath = `/me/drive/special/approot:/${appDataFileName}`;
@@ -272,9 +273,28 @@
     localStorage.removeItem(pendingLoginKey);
   }
 
+  function signalLoginReload() {
+    localStorage.setItem(loginReloadKey, String(Date.now()));
+  }
+
   function hasRecentPendingLogin() {
     const startedAt = Number(localStorage.getItem(pendingLoginKey) || 0);
     return startedAt > 0 && Date.now() - startedAt < 10 * 60 * 1000;
+  }
+
+  function closeThisLoginWindowOrReload() {
+    signalLoginReload();
+    if (window.opener && window.opener !== window) {
+      try {
+        window.opener.location.reload();
+      } catch {
+        // Cross-window access can be blocked by the browser; the storage signal still reaches same-origin tabs.
+      }
+    }
+    setTimeout(() => window.close(), 80);
+    setTimeout(() => {
+      if (!document.hidden) window.location.reload();
+    }, 700);
   }
 
   async function resumeOneDriveSession() {
@@ -1005,13 +1025,13 @@
           action: () => { void saveSelectionToOneDrive(); },
         });
       } else if (state.sync.account) saveSelectionToOneDrive();
-      else if (state.sync.status === "loading" && hasRecentPendingLogin()) resumeOneDriveSession();
+      else if (state.sync.status === "loading" && hasRecentPendingLogin()) closeThisLoginWindowOrReload();
       else loginToOneDrive();
     });
     dom.syncSecondary.addEventListener("click", () => {
       if (state.sync.status === "conflict") syncFromOneDrive({ forceRemote: true });
       else if (state.sync.account) saveSelectionToOneDrive();
-      else if (state.sync.status === "loading" && hasRecentPendingLogin()) resumeOneDriveSession();
+      else if (state.sync.status === "loading" && hasRecentPendingLogin()) closeThisLoginWindowOrReload();
       else loginToOneDrive();
     });
     dom.syncLogout.addEventListener("click", logoutFromOneDrive);
@@ -1053,6 +1073,9 @@
     window.addEventListener("pageshow", () => { void resumeOneDriveSession(); });
     document.addEventListener("visibilitychange", () => {
       if (document.visibilityState === "visible") void resumeOneDriveSession();
+    });
+    window.addEventListener("storage", (event) => {
+      if (event.key === loginReloadKey && event.newValue) window.location.reload();
     });
   }
 
