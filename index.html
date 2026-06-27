@@ -35,11 +35,18 @@
           <button class="nav-button" data-view="insights" type="button">Auswertung</button>
         </nav>
 
-        <button class="basket-button" id="basketButton" type="button" aria-controls="shoppingPanel">
-          <span class="button-icon" data-icon="basket" aria-hidden="true"></span>
-          <span class="basket-button-label">Einkaufsliste</span>
-          <span class="count-badge" id="headerCount">0</span>
-        </button>
+        <div class="topbar-actions">
+          <button class="sync-button" id="syncButton" type="button">
+            <span class="button-icon" data-icon="cloud" aria-hidden="true"></span>
+            <span id="syncButtonLabel">OneDrive</span>
+            <span class="sync-dot" id="syncDot" aria-hidden="true"></span>
+          </button>
+          <button class="basket-button" id="basketButton" type="button" aria-controls="shoppingPanel">
+            <span class="button-icon" data-icon="basket" aria-hidden="true"></span>
+            <span class="basket-button-label">Einkaufsliste</span>
+            <span class="count-badge" id="headerCount">0</span>
+          </button>
+        </div>
       </header>
 
       <main>
@@ -154,6 +161,13 @@
               <div class="shopping-summary">
                 <span><strong id="shoppingCount">0</strong> ausgewählt</span>
                 <span id="categoryCount">0 Kategorien</span>
+              </div>
+              <div class="sync-panel" id="syncPanel">
+                <div>
+                  <strong id="syncStatusTitle">Nicht angemeldet</strong>
+                  <span id="syncStatusText">Deine Liste wird lokal auf diesem Gerät gespeichert.</span>
+                </div>
+                <button class="secondary-button sync-secondary" id="syncSecondary" type="button">Mit OneDrive anmelden</button>
               </div>
               <div class="shopping-items" id="shoppingItems"></div>
               <div class="shopping-actions" id="shoppingActions">
@@ -270,6 +284,7 @@
     <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
     <script src="data.js?v=20260623-1"></script>
-    <script src="app.js?v=20260623-4"></script>
+    <script src="https://alcdn.msauth.net/browser/2.38.3/js/msal-browser.min.js"></script>
+    <script src="app.js?v=20260627-1"></script>
   </body>
 </html>
