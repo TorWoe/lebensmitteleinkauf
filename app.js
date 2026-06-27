@@ -863,13 +863,13 @@
     const average = foods.reduce((sum, food) => sum + food.score, 0) / foods.length;
     const topRated = scoreCounts[0].count + scoreCounts[1].count;
     const metrics = [
-      [foods.length, "Lebensmittel gesamt", "vollständige Excel-Liste"],
+      [foods.length, "Lebensmittel gesamt", ""],
       [topRated, "Score 4 oder 5", `${Math.round(topRated / foods.length * 100)} % der Auswahl`],
       [categoryCounts.length, "Oberkategorien", "klar gegliedert"],
       [average.toLocaleString("de-DE", { maximumFractionDigits: 1 }), "Ø Sättigungs-Score", "von maximal 5"],
     ];
     document.querySelector("#metricGrid").innerHTML = metrics.map(([value, label, note]) => `
-      <article class="metric-card"><span>${label}</span><strong>${value}</strong><small>${note}</small></article>`).join("");
+      <article class="metric-card"><span>${label}</span><strong>${value}</strong>${note ? `<small>${note}</small>` : ""}</article>`).join("");
     const maxCount = Math.max(...categoryCounts.map(([, count]) => count));
     document.querySelector("#categoryChart").innerHTML = categoryCounts.map(([category, count]) => `
       <div class="bar-row" title="${escapeHtml(category)}: ${count}">
