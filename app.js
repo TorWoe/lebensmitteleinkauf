@@ -892,15 +892,16 @@
       <a class="source-link" href="${escapeHtml(source.url)}" target="_blank" rel="noreferrer"><span>${escapeHtml(source.name.replace(/ – .*/, ""))}</span><span>↗</span></a>`).join("");
   }
 
-  function setView(view, updateHash = true) {
+  function clearUrlHash() {
+    if (!window.history?.replaceState) return;
+    window.history.replaceState(null, "", window.location.pathname + window.location.search);
+  }
+
+  function setView(view) {
     if (!document.querySelector(`[data-view-panel="${view}"]`)) view = "foods";
     state.view = view;
     document.querySelectorAll("[data-view-panel]").forEach((panel) => panel.classList.toggle("is-active", panel.dataset.viewPanel === view));
     document.querySelectorAll("[data-view]").forEach((button) => button.classList.toggle("is-active", button.dataset.view === view));
-    if (updateHash) {
-      const hash = view === "foods" ? "#lebensmittel" : view === "meals" ? "#mahlzeiten" : "#auswertung";
-      history.replaceState(null, "", window.location.pathname + window.location.search + hash);
-    }
     window.scrollTo({ top: 0, behavior: "smooth" });
   }
 
@@ -910,7 +911,9 @@
   }
 
   function syncViewFromHash() {
-    setView(viewFromHash(), window.location.hash === "#tagesbaukasten");
+    const view = viewFromHash();
+    clearUrlHash();
+    setView(view);
   }
 
   function syncShoppingPanelPlacement() {
@@ -1015,7 +1018,10 @@
   function bindEvents() {
     document.addEventListener("click", (event) => {
       const viewButton = event.target.closest("[data-view]");
-      if (viewButton) setView(viewButton.dataset.view);
+      if (viewButton) {
+        event.preventDefault();
+        setView(viewButton.dataset.view);
+      }
       const guideImageButton = event.target.closest("[data-meal-guide-step]");
       if (guideImageButton) openMealGuideImage(Number(guideImageButton.dataset.mealGuideStep));
     });
