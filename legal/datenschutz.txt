@@ -1,7 +1,5 @@
 Datenschutzerklärung
 
-# Datenschutzerklärung für die Web-App „Lebensmitteleinkauf“
-
 ## 1. Verantwortlicher
 Verantwortlich für diese Web-App ist:
 Torsten Schiffner
