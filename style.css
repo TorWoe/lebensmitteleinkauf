@@ -1328,6 +1328,32 @@ dialog::backdrop { background: rgba(6, 31, 20, 0.52); backdrop-filter: blur(4px)
 .toast.is-visible { opacity: 1; transform: translate(-50%, 0); }
 .scrim { display: none; }
 
+.app-footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px 10px;
+  padding: 26px 16px 2px;
+  color: var(--muted);
+  font-size: 0.9rem;
+  font-weight: 600;
+  line-height: 1.5;
+  text-align: center;
+}
+
+.app-footer a {
+  color: var(--muted);
+  text-decoration: none;
+  transition: color 0.18s ease;
+}
+
+.app-footer a:hover,
+.app-footer a:focus-visible {
+  color: var(--forest-800);
+  outline: none;
+}
+
 @media (max-width: 1180px) {
   .hero { grid-template-columns: minmax(0, 1fr) minmax(410px, 0.8fr); }
   .food-grid { grid-template-columns: 1fr; }
