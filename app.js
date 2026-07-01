@@ -897,7 +897,10 @@
     state.view = view;
     document.querySelectorAll("[data-view-panel]").forEach((panel) => panel.classList.toggle("is-active", panel.dataset.viewPanel === view));
     document.querySelectorAll("[data-view]").forEach((button) => button.classList.toggle("is-active", button.dataset.view === view));
-    if (updateHash) history.replaceState(null, "", `#${view === "foods" ? "lebensmittel" : view === "meals" ? "mahlzeiten" : "auswertung"}`);
+    if (updateHash) {
+      const hash = view === "foods" ? "#lebensmittel" : view === "meals" ? "#mahlzeiten" : "#auswertung";
+      history.replaceState(null, "", window.location.pathname + window.location.search + hash);
+    }
     window.scrollTo({ top: 0, behavior: "smooth" });
   }
 
