@@ -892,9 +892,14 @@
       <a class="source-link" href="${escapeHtml(source.url)}" target="_blank" rel="noreferrer"><span>${escapeHtml(source.name.replace(/ – .*/, ""))}</span><span>↗</span></a>`).join("");
   }
 
-  function clearUrlHash() {
-    if (!window.history?.replaceState) return;
-    window.history.replaceState(null, "", window.location.pathname + window.location.search);
+  function clearAppUrlHash() {
+    if (!window.location.hash) return;
+    const cleanUrl = `${window.location.pathname}${window.location.search}`;
+    if (window.history?.replaceState) {
+      window.history.replaceState(null, document.title, cleanUrl);
+    } else {
+      window.location.hash = "";
+    }
   }
 
   function setView(view) {
@@ -910,9 +915,10 @@
     return viewByHash[window.location.hash] || "foods";
   }
 
-  function syncViewFromHash() {
+  function initializeViewFromUrl() {
+    if (!window.location.hash) return;
     const view = viewFromHash();
-    clearUrlHash();
+    clearAppUrlHash();
     setView(view);
   }
 
@@ -1020,12 +1026,12 @@
       const viewButton = event.target.closest("[data-view]");
       if (viewButton) {
         event.preventDefault();
+        clearAppUrlHash();
         setView(viewButton.dataset.view);
       }
       const guideImageButton = event.target.closest("[data-meal-guide-step]");
       if (guideImageButton) openMealGuideImage(Number(guideImageButton.dataset.mealGuideStep));
     });
-    window.addEventListener("hashchange", syncViewFromHash);
     dom.foodGrid.addEventListener("click", (event) => {
       const card = event.target.closest(".food-card");
       if (!card) return;
@@ -1139,7 +1145,7 @@
     renderMeals();
     renderInsights();
     bindEvents();
-    syncViewFromHash();
+    initializeViewFromUrl();
     void initializeOneDrive();
   }
 
