@@ -300,6 +300,13 @@
     return startedAt > 0 && Date.now() - startedAt < 10 * 60 * 1000;
   }
 
+  function hasOneDriveRedirectResponse() {
+    const queryParams = new URLSearchParams(window.location.search);
+    const hashText = window.location.hash.startsWith("#") ? window.location.hash.slice(1) : window.location.hash;
+    const hashParams = new URLSearchParams(hashText);
+    return ["code", "error", "state", "client_info"].some((key) => queryParams.has(key) || hashParams.has(key));
+  }
+
   function rememberRedirectToken(response) {
     if (!response?.accessToken) return;
     state.sync.redirectAccessToken = response.accessToken;
@@ -347,7 +354,9 @@
 
   function scheduleOneDriveResumeChecks() {
     [2500, 7000, 14000].forEach((delay) => {
-      setTimeout(() => { void resumeOneDriveSession(); }, delay);
+      setTimeout(() => {
+        if (hasOneDriveRedirectResponse()) void resumeOneDriveSession();
+      }, delay);
     });
   }
 
@@ -1273,10 +1282,14 @@
       syncShoppingPanelPlacement();
       if (wasMobile && window.innerWidth > 900) closeShopping();
     });
-    window.addEventListener("focus", () => { void resumeOneDriveSession(); });
-    window.addEventListener("pageshow", () => { void resumeOneDriveSession(); });
+    window.addEventListener("focus", () => {
+      if (hasOneDriveRedirectResponse()) void resumeOneDriveSession();
+    });
+    window.addEventListener("pageshow", () => {
+      if (hasOneDriveRedirectResponse()) void resumeOneDriveSession();
+    });
     document.addEventListener("visibilitychange", () => {
-      if (document.visibilityState === "visible") void resumeOneDriveSession();
+      if (document.visibilityState === "visible" && hasOneDriveRedirectResponse()) void resumeOneDriveSession();
     });
   }
 
