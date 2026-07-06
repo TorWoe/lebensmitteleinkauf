@@ -365,6 +365,24 @@
     return state.sync.redirectAccessToken;
   }
 
+  function getCachedOneDriveAccount() {
+    const activeAccount = state.sync.msal?.getActiveAccount?.();
+    if (activeAccount) return activeAccount;
+    const accounts = state.sync.msal?.getAllAccounts?.() || [];
+    return accounts[0] || null;
+  }
+
+  async function adoptCachedOneDriveAccount() {
+    const account = getCachedOneDriveAccount();
+    if (!account) return false;
+    stopOneDriveAuthPolling();
+    clearLoginPending();
+    state.sync.account = account;
+    state.sync.msal.setActiveAccount(account);
+    await syncFromOneDrive();
+    return true;
+  }
+
   async function resumeOneDriveSession({ force = false } = {}) {
     if (!state.sync.msal || state.sync.resuming) return;
     const pendingLogin = hasRecentPendingLogin();
@@ -374,6 +392,7 @@
     state.sync.resuming = true;
     state.sync.busy = false;
     try {
+      if (!hasOneDriveRedirectResponse() && await adoptCachedOneDriveAccount()) return true;
       const redirectResponse = await state.sync.msal.handleRedirectPromise().catch(() => null);
       state.sync.redirectHandled = true;
       rememberRedirectToken(redirectResponse);
@@ -397,6 +416,7 @@
 
   async function finishOneDriveInteractionBeforeRedirect() {
     if (!state.sync.msal) return false;
+    if (await adoptCachedOneDriveAccount()) return true;
     if (hasStalePendingLogin()) {
       clearLoginPending();
       clearStaleMsalInteractionStatus();
@@ -655,12 +675,13 @@
   }
 
   async function pollOneDriveAuthCompletion() {
-    if (!state.sync.msal || state.sync.account || state.sync.resuming || !shouldFinishOneDriveInteraction()) {
+    if (!state.sync.msal || state.sync.account || state.sync.resuming || (!hasRecentPendingLogin() && !shouldFinishOneDriveInteraction())) {
       stopOneDriveAuthPolling();
       return;
     }
+    if (await adoptCachedOneDriveAccount()) return;
     await resumeOneDriveSession({ force: true });
-    if (state.sync.account || !shouldFinishOneDriveInteraction()) stopOneDriveAuthPolling();
+    if (state.sync.account || (!hasRecentPendingLogin() && !shouldFinishOneDriveInteraction())) stopOneDriveAuthPolling();
   }
 
   function startOneDriveAuthPolling() {
