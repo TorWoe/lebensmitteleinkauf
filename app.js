@@ -73,6 +73,7 @@
       busy: false,
       resuming: false,
       allowInteractiveTokenRedirect: false,
+      needsInteractiveToken: false,
       status: "local",
       title: "Nicht angemeldet",
       message: "Deine Liste wird lokal auf diesem Gerät gespeichert.",
@@ -246,6 +247,8 @@
 
     if (state.sync.status === "conflict") {
       dom.syncSecondary.textContent = "OneDrive laden";
+    } else if (state.sync.needsInteractiveToken) {
+      dom.syncSecondary.textContent = state.sync.busy ? "Bestätigung ..." : "OneDrive bestätigen";
     } else if (state.sync.account) {
       dom.syncSecondary.textContent = state.sync.busy ? "Synchronisiert ..." : "Jetzt synchronisieren";
     } else if (state.sync.status === "loading" && hasRecentPendingLogin()) {
@@ -388,17 +391,20 @@
     state.sync.lastRemoteEtag = metadata?.eTag || state.sync.lastRemoteEtag;
     state.sync.hasRemoteData = true;
     state.sync.conflictData = null;
+    state.sync.needsInteractiveToken = false;
     setSyncStatus("synced", "Mit OneDrive synchronisiert", "Deine Einkaufsliste ist im OneDrive-App-Ordner gespeichert.");
   }
 
   function handleOneDriveError(error, fallbackTitle = "OneDrive nicht verfügbar") {
     if (error?.message === "redirect-started") return;
     if (error?.message === "not-signed-in") {
+      state.sync.needsInteractiveToken = false;
       setSyncStatus("local", "Nicht angemeldet", "Deine Liste wird lokal auf diesem Gerät gespeichert.");
       return;
     }
     if (error?.message === "interactive-token-required") {
-      const message = "OneDrive ist angemeldet, braucht aber noch eine aktive Bestätigung. Tippe auf \"Jetzt synchronisieren\", um die Berechtigung zu erteilen.";
+      state.sync.needsInteractiveToken = true;
+      const message = "OneDrive ist angemeldet, braucht aber noch eine aktive Bestätigung. Tippe auf \"OneDrive bestätigen\", um die Berechtigung zu erteilen.";
       setSyncStatus("error", "OneDrive-Bestätigung nötig", message);
       showToast("OneDrive-Bestätigung nötig.");
       return;
@@ -408,6 +414,29 @@
       : "OneDrive konnte nicht erreicht werden. Lokale Daten bleiben erhalten.";
     setSyncStatus("error", fallbackTitle, message);
     showToast(message);
+  }
+
+  async function confirmOneDriveAccess() {
+    if (!state.sync.msal || !state.sync.account || state.sync.busy) return;
+    state.sync.busy = true;
+    state.sync.needsInteractiveToken = false;
+    markLoginPending();
+    scheduleOneDriveResumeChecks();
+    setSyncStatus("loading", "Microsoft-Anmeldung", "Du wirst zu Microsoft weitergeleitet, um OneDrive zu bestätigen.");
+    try {
+      await state.sync.msal.acquireTokenRedirect({
+        ...loginRequest,
+        account: state.sync.account,
+        redirectStartPage: window.location.href,
+      });
+    } catch (error) {
+      state.sync.needsInteractiveToken = true;
+      setSyncStatus("error", "Bestätigung fehlgeschlagen", explainAuthError(error));
+      showToast(explainAuthError(error));
+    } finally {
+      state.sync.busy = false;
+      renderSyncStatus();
+    }
   }
 
   function remoteShouldReplaceLocal(remoteData, localData) {
@@ -461,6 +490,7 @@
 
       if (remote.exists && remoteShouldReplaceLocal(remote.data, local)) {
         applyRemoteSelection(remote.data, remote.etag);
+        state.sync.needsInteractiveToken = false;
         setSyncStatus("synced", "Mit OneDrive synchronisiert", "Neuere OneDrive-Liste wurde übernommen.");
         showToast("Neuere OneDrive-Liste wurde übernommen.");
         return;
@@ -469,6 +499,7 @@
       if (remote.exists && sameSelection(remote.data.selectedIds, state.selected)) {
         state.sync.lastRemoteUpdatedAt = remote.data.updatedAt || state.sync.lastRemoteUpdatedAt;
         state.sync.lastRemoteEtag = remote.etag || state.sync.lastRemoteEtag;
+        state.sync.needsInteractiveToken = false;
         setSyncStatus("synced", "Mit OneDrive synchronisiert", "Deine Einkaufsliste ist aktuell.");
         return;
       }
@@ -484,6 +515,7 @@
 
       if (remote.exists) {
         applyRemoteSelection(remote.data, remote.etag);
+        state.sync.needsInteractiveToken = false;
         setSyncStatus("synced", "Mit OneDrive synchronisiert", "OneDrive-Liste wurde übernommen.");
       }
     } catch (error) {
@@ -524,6 +556,7 @@
           showToast("Lokale Einkaufsliste wurde nach OneDrive übernommen.");
         } else {
           state.sync.hasRemoteData = false;
+          state.sync.needsInteractiveToken = false;
           setSyncStatus("synced", "Mit OneDrive verbunden", "Noch keine Einkaufsliste im OneDrive-App-Ordner.");
         }
         return;
@@ -531,6 +564,7 @@
 
       if (forceRemote || !local.selected.length || remoteIsNewer(remote.data.updatedAt, local.updatedAt) || sameSelection(remote.data.selectedIds, local.selected)) {
         applyRemoteSelection(remote.data, remote.etag);
+        state.sync.needsInteractiveToken = false;
         setSyncStatus("synced", "Mit OneDrive synchronisiert", "Deine Einkaufsliste wurde aus OneDrive geladen.");
         return;
       }
@@ -539,6 +573,7 @@
       state.sync.lastRemoteEtag = remote.etag || "";
       state.sync.hasRemoteData = true;
       state.sync.conflictData = remote;
+      state.sync.needsInteractiveToken = false;
       setSyncStatus("conflict", "Unterschiedliche Listen", "Lokale und OneDrive-Liste unterscheiden sich. Es wurde nichts überschrieben.");
     } catch (error) {
       handleOneDriveError(error);
@@ -582,6 +617,7 @@
       state.sync.lastRemoteEtag = "";
       state.sync.hasRemoteData = false;
       state.sync.conflictData = null;
+      state.sync.needsInteractiveToken = false;
       if (account) {
         await state.sync.msal.logoutRedirect({
           account,
@@ -1114,11 +1150,13 @@
     });
     [dom.basketButton, dom.mobileBasket].forEach((button) => button.addEventListener("click", openShopping));
     dom.syncButton.addEventListener("click", () => {
-      if (state.sync.account) manualSyncOneDrive();
+      if (state.sync.needsInteractiveToken) confirmOneDriveAccess();
+      else if (state.sync.account) manualSyncOneDrive();
       else loginToOneDrive();
     });
     dom.syncSecondary.addEventListener("click", () => {
-      if (state.sync.account) manualSyncOneDrive();
+      if (state.sync.needsInteractiveToken) confirmOneDriveAccess();
+      else if (state.sync.account) manualSyncOneDrive();
       else loginToOneDrive();
     });
     dom.syncLogout.addEventListener("click", logoutFromOneDrive);
