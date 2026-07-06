@@ -36,11 +36,22 @@
         </nav>
 
         <div class="topbar-actions">
-          <button class="sync-button" id="syncButton" type="button">
-            <span class="button-icon" data-icon="cloud" aria-hidden="true"></span>
-            <span id="syncButtonLabel">OneDrive</span>
-            <span class="sync-dot" id="syncDot" aria-hidden="true"></span>
-          </button>
+          <div class="sync-menu">
+            <button class="sync-button" id="syncButton" type="button" aria-controls="syncMenu" aria-expanded="false">
+              <span class="button-icon" data-icon="cloud" aria-hidden="true"></span>
+              <span id="syncButtonLabel">OneDrive</span>
+              <span class="sync-dot" id="syncDot" aria-hidden="true"></span>
+              <span class="sync-caret" aria-hidden="true"></span>
+            </button>
+            <div class="sync-menu-panel" id="syncMenu" hidden>
+              <strong id="syncMenuTitle">Nicht angemeldet</strong>
+              <span id="syncMenuText">Deine Liste wird lokal auf diesem Ger&auml;t gespeichert.</span>
+              <div class="sync-menu-actions">
+                <button class="secondary-button sync-menu-primary" id="syncMenuPrimary" type="button">Mit OneDrive anmelden</button>
+                <button class="danger-button sync-menu-logout" id="syncMenuLogout" type="button" hidden>Abmelden</button>
+              </div>
+            </div>
+          </div>
           <button class="basket-button" id="basketButton" type="button" aria-controls="shoppingPanel">
             <span class="button-icon" data-icon="basket" aria-hidden="true"></span>
             <span class="basket-button-label">Einkaufsliste</span>
