@@ -2,13 +2,14 @@
   "use strict";
 
   const { foods, meals, sources } = window.APP_DATA;
-  const appVersion = "minimal-onedrive-auth-20260706-2";
+  const appVersion = "login-reload-loop-20260706-1";
   const appVersionFile = "app-version.json";
   const appRefreshParam = "appRefresh";
   const appRefreshSessionKey = "lebensmitteleinkauf:app-refresh-version:v1";
   const storageKey = "lebensmitteleinkauf:selected:v1";
   const storageMetaKey = "lebensmitteleinkauf:selected:meta:v1";
   const pendingLoginKey = "lebensmitteleinkauf:onedrive-login-pending:v1";
+  const loginReloadUntilKey = "lebensmitteleinkauf:onedrive-login-reload-until:v1";
   const manualLogoutKey = "lebensmitteleinkauf:onedrive-manual-logout:v1";
   const authReloadKey = "lebensmitteleinkauf:onedrive-auth-reload:v1";
   const authConfirmAfterReloadKey = "lebensmitteleinkauf:onedrive-confirm-after-reload:v1";
@@ -309,8 +310,44 @@
 
   function clearLoginPending() {
     localStorage.removeItem(pendingLoginKey);
+    localStorage.removeItem(loginReloadUntilKey);
     sessionStorage.removeItem(authReloadKey);
     sessionStorage.removeItem(authConfirmAfterReloadKey);
+  }
+
+  const loginReloadIntervalMs = 1000;
+  const loginReloadTimeoutMs = 2 * 60 * 1000;
+  let loginReloadTimer = null;
+
+  function stopOneDriveLoginReloadLoop() {
+    if (loginReloadTimer) clearInterval(loginReloadTimer);
+    loginReloadTimer = null;
+  }
+
+  function clearOneDriveLoginReloadWindow() {
+    localStorage.removeItem(loginReloadUntilKey);
+    stopOneDriveLoginReloadLoop();
+  }
+
+  function markOneDriveLoginReloadWindow() {
+    localStorage.setItem(loginReloadUntilKey, String(Date.now() + loginReloadTimeoutMs));
+  }
+
+  function shouldReloadDuringOneDriveLogin() {
+    const reloadUntil = Number(localStorage.getItem(loginReloadUntilKey) || 0);
+    if (!reloadUntil || Date.now() >= reloadUntil) {
+      clearOneDriveLoginReloadWindow();
+      return false;
+    }
+    return Boolean(!hasOneDriveManualLogout() && !state.sync.account && !hasOneDriveRedirectResponse());
+  }
+
+  function startOneDriveLoginReloadLoop() {
+    if (loginReloadTimer || !shouldReloadDuringOneDriveLogin()) return;
+    loginReloadTimer = setInterval(() => {
+      if (!shouldReloadDuringOneDriveLogin()) return;
+      window.location.reload();
+    }, loginReloadIntervalMs);
   }
 
   function markOneDriveManualLogout() {
@@ -779,11 +816,14 @@
     clearOneDriveManualLogout();
     clearLoginPending();
     clearStaleMsalInteractionStatus();
+    markOneDriveLoginReloadWindow();
+    startOneDriveLoginReloadLoop();
     state.sync.busy = true;
     setSyncStatus("loading", "Microsoft-Anmeldung", "Du wirst zu Microsoft weitergeleitet.");
     try {
       await redirectWithFreshInteraction(() => state.sync.msal.loginRedirect({ ...loginRequest, redirectStartPage: window.location.href }));
     } catch (error) {
+      clearOneDriveLoginReloadWindow();
       setSyncStatus("error", "Anmeldung fehlgeschlagen", explainAuthError(error));
       showToast(explainAuthError(error));
     } finally {
@@ -797,6 +837,7 @@
     event?.stopPropagation();
     markOneDriveManualLogout();
     clearLoginPending();
+    clearOneDriveLoginReloadWindow();
     clearTimeout(oneDriveSaveTimer);
     if (state.sync.busy) state.sync.busy = false;
     state.sync.busy = true;
@@ -873,6 +914,7 @@
         await state.sync.msal.initialize();
       }
       if (hasOneDriveManualLogout()) {
+        clearOneDriveLoginReloadWindow();
         clearLoginPending();
         clearStaleMsalInteractionStatus();
         clearOneDriveMsalCache();
@@ -889,6 +931,7 @@
       const accounts = state.sync.msal.getAllAccounts();
       state.sync.account = redirectResponse?.account || accounts[0] || null;
       if (state.sync.account) {
+        clearOneDriveLoginReloadWindow();
         clearLoginPending();
         state.sync.msal.setActiveAccount(state.sync.account);
         await syncFromOneDrive();
@@ -897,6 +940,7 @@
       }
     } catch (error) {
       if (hasOneDriveManualLogout()) {
+        clearOneDriveLoginReloadWindow();
         clearOneDriveRedirectResponseUrl();
         clearOneDriveMsalCache();
         clearOneDriveMsalCookies();
@@ -907,6 +951,7 @@
       const accounts = state.sync.msal?.getAllAccounts?.() || [];
       state.sync.account = accounts[0] || null;
       if (state.sync.account) {
+        clearOneDriveLoginReloadWindow();
         clearLoginPending();
         state.sync.msal.setActiveAccount(state.sync.account);
         setSyncStatus("loading", "Microsoft-Anmeldung erkannt", "OneDrive wird erneut geprüft.");
@@ -914,6 +959,7 @@
       } else {
         clearOneDriveRedirectResponseUrl();
         clearLoginPending();
+        clearOneDriveLoginReloadWindow();
         setSyncStatus("error", "Anmeldung fehlgeschlagen", explainAuthError(error));
       }
     } finally {
@@ -1480,8 +1526,9 @@
 
     if (!hasAuthRedirect) {
       initializeViewFromUrl();
-      void initializeOneDrive();
+      await initializeOneDrive();
     }
+    startOneDriveLoginReloadLoop();
   }
 
   void initialize();
