@@ -629,7 +629,8 @@
     if (!state.sync.msal || state.sync.busy) return;
     if (state.sync.status === "loading" && hasRecentPendingLogin()) {
       await resumeOneDriveSession();
-      return;
+      if (state.sync.account) return;
+      clearLoginPending();
     }
     state.sync.busy = true;
     markLoginPending();
