@@ -14,10 +14,11 @@
       clientId: "3c4004e7-9323-440c-8977-96699d8d8e6f",
       authority: "https://login.microsoftonline.com/common",
       redirectUri: window.location.origin + window.location.pathname,
+      navigateToLoginRequestUrl: false,
     },
     cache: {
       cacheLocation: "localStorage",
-      storeAuthStateInCookie: false,
+      storeAuthStateInCookie: true,
     },
   };
   const graphScopes = ["User.Read", "Files.ReadWrite.AppFolder"];
@@ -74,6 +75,8 @@
       resuming: false,
       allowInteractiveTokenRedirect: false,
       needsInteractiveToken: false,
+      redirectAccessToken: "",
+      redirectAccessTokenExpiresAt: 0,
       status: "local",
       title: "Nicht angemeldet",
       message: "Deine Liste wird lokal auf diesem Gerät gespeichert.",
@@ -297,15 +300,35 @@
     return startedAt > 0 && Date.now() - startedAt < 10 * 60 * 1000;
   }
 
+  function rememberRedirectToken(response) {
+    if (!response?.accessToken) return;
+    state.sync.redirectAccessToken = response.accessToken;
+    state.sync.redirectAccessTokenExpiresAt = response.expiresOn instanceof Date
+      ? response.expiresOn.getTime()
+      : Date.now() + 45 * 60 * 1000;
+  }
+
+  function getRememberedRedirectToken() {
+    if (!state.sync.redirectAccessToken) return "";
+    if (Date.now() > state.sync.redirectAccessTokenExpiresAt - 60 * 1000) {
+      state.sync.redirectAccessToken = "";
+      state.sync.redirectAccessTokenExpiresAt = 0;
+      return "";
+    }
+    return state.sync.redirectAccessToken;
+  }
+
   async function resumeOneDriveSession() {
     if (!state.sync.msal || state.sync.resuming) return;
-    if (state.sync.account && state.sync.status !== "loading") return;
-    if (!hasRecentPendingLogin() && state.sync.status !== "loading") return;
+    const pendingLogin = hasRecentPendingLogin();
+    if (!pendingLogin && state.sync.account && state.sync.status !== "loading") return;
+    if (!pendingLogin && state.sync.status !== "loading") return;
 
     state.sync.resuming = true;
     state.sync.busy = false;
     try {
       const redirectResponse = await state.sync.msal.handleRedirectPromise().catch(() => null);
+      rememberRedirectToken(redirectResponse);
       const accounts = state.sync.msal.getAllAccounts();
       state.sync.account = redirectResponse?.account || accounts[0] || null;
       if (state.sync.account) {
@@ -331,6 +354,8 @@
   async function getGraphToken() {
     if (!state.sync.account) throw new Error("not-signed-in");
     const request = { ...loginRequest, account: state.sync.account };
+    const redirectToken = getRememberedRedirectToken();
+    if (redirectToken) return redirectToken;
     try {
       const response = await state.sync.msal.acquireTokenSilent(request);
       return response.accessToken;
@@ -634,6 +659,8 @@
       state.sync.hasRemoteData = false;
       state.sync.conflictData = null;
       state.sync.needsInteractiveToken = false;
+      state.sync.redirectAccessToken = "";
+      state.sync.redirectAccessTokenExpiresAt = 0;
       if (account) {
         await state.sync.msal.logoutRedirect({
           account,
@@ -684,6 +711,7 @@
         await state.sync.msal.initialize();
       }
       const redirectResponse = await state.sync.msal.handleRedirectPromise();
+      rememberRedirectToken(redirectResponse);
       const accounts = state.sync.msal.getAllAccounts();
       state.sync.account = redirectResponse?.account || accounts[0] || null;
       if (state.sync.account) {
