@@ -323,12 +323,46 @@
 
   function clearOneDriveMsalCache() {
     const clientId = msalConfig.auth.clientId.toLowerCase();
+    const looksLikeMsalValue = (value) => {
+      if (!value || value[0] !== "{") return false;
+      try {
+        const parsed = JSON.parse(value);
+        return Boolean(
+          parsed.clientId === msalConfig.auth.clientId
+          || parsed.homeAccountId
+          || parsed.localAccountId
+          || parsed.credentialType
+          || parsed.authorityType
+          || parsed.environment === "login.windows.net"
+          || parsed.environment === "login.microsoftonline.com"
+        );
+      } catch (error) {
+        return false;
+      }
+    };
     [localStorage, sessionStorage].forEach((storage) => {
       for (let index = storage.length - 1; index >= 0; index -= 1) {
         const key = storage.key(index) || "";
         const normalizedKey = key.toLowerCase();
-        if (normalizedKey.startsWith("msal.") || normalizedKey.includes(clientId)) storage.removeItem(key);
+        const value = storage.getItem(key) || "";
+        const isMsalKey = normalizedKey.startsWith("msal.")
+          || normalizedKey.includes(clientId)
+          || normalizedKey.includes("login.microsoftonline.com")
+          || normalizedKey.includes("login.windows.net");
+        if (isMsalKey || looksLikeMsalValue(value)) storage.removeItem(key);
       }
+    });
+  }
+
+  function clearOneDriveMsalCookies() {
+    const clientId = msalConfig.auth.clientId.toLowerCase();
+    document.cookie.split(";").forEach((cookie) => {
+      const name = cookie.split("=")[0]?.trim();
+      if (!name) return;
+      const normalizedName = name.toLowerCase();
+      if (!normalizedName.startsWith("msal.") && !normalizedName.includes(clientId)) return;
+      document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/; SameSite=Lax`;
+      document.cookie = `${name}=; max-age=0; path=/; SameSite=Lax`;
     });
   }
 
@@ -853,6 +887,7 @@
       clearLoginPending();
       clearStaleMsalInteractionStatus();
       clearOneDriveMsalCache();
+      clearOneDriveMsalCookies();
       stopOneDriveAuthPolling();
       state.sync.account = null;
       state.sync.lastRemoteUpdatedAt = "";
@@ -877,6 +912,7 @@
     } catch (error) {
       clearLoginPending();
       clearOneDriveMsalCache();
+      clearOneDriveMsalCookies();
       stopOneDriveAuthPolling();
       state.sync.account = null;
       state.sync.resuming = false;
