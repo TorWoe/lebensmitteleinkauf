@@ -7,6 +7,7 @@
   const pendingLoginKey = "lebensmitteleinkauf:onedrive-login-pending:v1";
   const authReloadKey = "lebensmitteleinkauf:onedrive-auth-reload:v1";
   const authReloadParam = "onedriveAuthRefresh";
+  const authLogoutParam = "onedriveLogout";
   const appDataFileName = "lebensmitteleinkauf-data.json";
   const graphBaseUrl = "https://graph.microsoft.com/v1.0";
   const graphFilePath = `/me/drive/special/approot:/${appDataFileName}`;
@@ -320,6 +321,17 @@
     });
   }
 
+  function clearOneDriveMsalCache() {
+    const clientId = msalConfig.auth.clientId.toLowerCase();
+    [localStorage, sessionStorage].forEach((storage) => {
+      for (let index = storage.length - 1; index >= 0; index -= 1) {
+        const key = storage.key(index) || "";
+        const normalizedKey = key.toLowerCase();
+        if (normalizedKey.startsWith("msal.") || normalizedKey.includes(clientId)) storage.removeItem(key);
+      }
+    });
+  }
+
   function hasRecentPendingLogin() {
     const startedAt = Number(localStorage.getItem(pendingLoginKey) || 0);
     return startedAt > 0 && Date.now() - startedAt < 10 * 60 * 1000;
@@ -358,10 +370,23 @@
 
   function clearAuthReloadParam() {
     const url = new URL(window.location.href);
-    if (!url.searchParams.has(authReloadParam)) return;
+    const hasAuthParam = url.searchParams.has(authReloadParam) || url.searchParams.has(authLogoutParam);
+    if (!hasAuthParam) return;
     url.searchParams.delete(authReloadParam);
+    url.searchParams.delete(authLogoutParam);
     const cleanUrl = `${url.pathname}${url.search}${url.hash}`;
     if (window.history?.replaceState) window.history.replaceState(null, document.title, cleanUrl);
+  }
+
+  function forceOneDriveLogoutReload() {
+    const refreshUrl = new URL(window.location.href);
+    refreshUrl.hash = "";
+    refreshUrl.searchParams.delete(authReloadParam);
+    refreshUrl.searchParams.set(authLogoutParam, String(Date.now()));
+    window.location.replace(refreshUrl.toString());
+    setTimeout(() => {
+      if (window.location.href !== refreshUrl.toString()) window.location.href = refreshUrl.toString();
+    }, 250);
   }
 
   function reloadOnceForFinishedOneDriveLogin() {
@@ -816,15 +841,19 @@
     }
   }
 
-  async function logoutFromOneDrive() {
+  function logoutFromOneDrive(event) {
+    event?.preventDefault();
+    event?.stopPropagation();
     if (state.sync.busy) state.sync.busy = false;
     state.sync.busy = true;
-    clearLoginPending();
-    clearStaleMsalInteractionStatus();
-    stopOneDriveAuthPolling();
-    setSyncStatus("loading", "Microsoft-Abmeldung", "Du wirst von OneDrive abgemeldet.");
+    setSyncStatus("loading", "OneDrive-Abmeldung", "Die Verbindung zu OneDrive wird lokal getrennt.");
+
     try {
       const account = state.sync.account || state.sync.msal?.getActiveAccount?.() || state.sync.msal?.getAllAccounts?.()?.[0];
+      clearLoginPending();
+      clearStaleMsalInteractionStatus();
+      clearOneDriveMsalCache();
+      stopOneDriveAuthPolling();
       state.sync.account = null;
       state.sync.lastRemoteUpdatedAt = "";
       state.sync.lastRemoteEtag = "";
@@ -833,21 +862,29 @@
       state.sync.needsInteractiveToken = false;
       state.sync.redirectAccessToken = "";
       state.sync.redirectAccessTokenExpiresAt = 0;
+      state.sync.resuming = false;
+      state.sync.redirectHandled = true;
+      state.sync.allowInteractiveTokenRedirect = false;
       state.sync.msal?.setActiveAccount?.(null);
-      if (state.sync.msal && account) {
-        await state.sync.msal.logoutRedirect({
-          account,
-          postLogoutRedirectUri: msalConfig.auth.redirectUri,
-        });
-      } else {
-        setSyncStatus("local", "Nicht angemeldet", "Deine Liste wird lokal auf diesem Gerät gespeichert.");
+      if (state.sync.msal?.clearCache) {
+        Promise.resolve(state.sync.msal.clearCache(account ? { account } : {})).catch(() => {});
       }
-    } catch (error) {
-      setSyncStatus("error", "Abmeldung fehlgeschlagen", "Microsoft-Abmeldung konnte nicht abgeschlossen werden.");
-      showToast("Microsoft-Abmeldung konnte nicht abgeschlossen werden.");
-    } finally {
+      setSyncStatus("local", "Nicht angemeldet", "Deine Liste wird lokal auf diesem Gerät gespeichert.");
       state.sync.busy = false;
       renderSyncStatus();
+      showToast("OneDrive wurde abgemeldet.");
+      forceOneDriveLogoutReload();
+    } catch (error) {
+      clearLoginPending();
+      clearOneDriveMsalCache();
+      stopOneDriveAuthPolling();
+      state.sync.account = null;
+      state.sync.resuming = false;
+      state.sync.redirectHandled = true;
+      state.sync.busy = false;
+      setSyncStatus("local", "Nicht angemeldet", "Deine Liste wird lokal auf diesem Gerät gespeichert.");
+      showToast("OneDrive wurde lokal getrennt.");
+      forceOneDriveLogoutReload();
     }
   }
 
