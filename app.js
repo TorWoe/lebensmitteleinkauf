@@ -6,6 +6,7 @@
   const storageMetaKey = "lebensmitteleinkauf:selected:meta:v1";
   const pendingLoginKey = "lebensmitteleinkauf:onedrive-login-pending:v1";
   const authReloadKey = "lebensmitteleinkauf:onedrive-auth-reload:v1";
+  const authReloadParam = "onedriveAuthRefresh";
   const appDataFileName = "lebensmitteleinkauf-data.json";
   const graphBaseUrl = "https://graph.microsoft.com/v1.0";
   const graphFilePath = `/me/drive/special/approot:/${appDataFileName}`;
@@ -334,8 +335,9 @@
     return startedAt > 0 && Date.now() - startedAt >= 2 * 60 * 1000;
   }
 
-  function hasUsedAuthReloadFallback() {
-    return sessionStorage.getItem(authReloadKey) === "1";
+  function hasRecentAuthReloadAttempt() {
+    const lastAttemptAt = Number(sessionStorage.getItem(authReloadKey) || 0);
+    return lastAttemptAt > 0 && Date.now() - lastAttemptAt < 2500;
   }
 
   function shouldFinishOneDriveInteraction() {
@@ -354,14 +356,28 @@
     return ["code", "error", "state", "client_info"].some((key) => queryParams.has(key) || hashParams.has(key));
   }
 
+  function clearAuthReloadParam() {
+    const url = new URL(window.location.href);
+    if (!url.searchParams.has(authReloadParam)) return;
+    url.searchParams.delete(authReloadParam);
+    const cleanUrl = `${url.pathname}${url.search}${url.hash}`;
+    if (window.history?.replaceState) window.history.replaceState(null, document.title, cleanUrl);
+  }
+
   function reloadOnceForFinishedOneDriveLogin() {
-    if (!state.sync.msal || state.sync.account || hasOneDriveRedirectResponse() || !hasRecentPendingLogin() || hasUsedAuthReloadFallback()) return false;
-    sessionStorage.setItem(authReloadKey, "1");
+    if (!state.sync.msal || state.sync.account || hasOneDriveRedirectResponse() || !hasRecentPendingLogin() || hasRecentAuthReloadAttempt()) return false;
+    sessionStorage.setItem(authReloadKey, String(Date.now()));
     stopOneDriveAuthPolling();
     setSyncStatus("loading", "Microsoft-Anmeldung", "Anmeldung wird erneut geprüft.");
+    const refreshUrl = new URL(window.location.href);
+    refreshUrl.hash = "";
+    refreshUrl.searchParams.set(authReloadParam, String(Date.now()));
     setTimeout(() => {
-      window.location.replace(window.location.href);
+      window.location.href = refreshUrl.toString();
     }, 50);
+    setTimeout(() => {
+      if (window.location.href !== refreshUrl.toString()) window.location.assign(refreshUrl.toString());
+    }, 600);
     return true;
   }
 
@@ -1433,6 +1449,7 @@
   }
 
   async function initialize() {
+    clearAuthReloadParam();
     const hasAuthRedirect = hasOneDriveRedirectResponse();
     if (hasAuthRedirect) {
       setSyncStatus("loading", "Microsoft-Anmeldung", "Microsoft-Rückkehr wird verarbeitet.");
