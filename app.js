@@ -637,8 +637,10 @@
   async function loginToOneDrive() {
     if (!state.sync.msal || state.sync.busy) return;
     if (state.sync.status === "loading" && hasRecentPendingLogin()) {
-      await resumeOneDriveSession();
-      if (state.sync.account) return;
+      if (hasOneDriveRedirectResponse()) {
+        await resumeOneDriveSession();
+        if (state.sync.account) return;
+      }
       clearLoginPending();
     }
     state.sync.busy = true;
