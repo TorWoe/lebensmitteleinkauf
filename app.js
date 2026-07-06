@@ -109,6 +109,11 @@
     syncButton: document.querySelector("#syncButton"),
     syncButtonLabel: document.querySelector("#syncButtonLabel"),
     syncDot: document.querySelector("#syncDot"),
+    syncMenu: document.querySelector("#syncMenu"),
+    syncMenuTitle: document.querySelector("#syncMenuTitle"),
+    syncMenuText: document.querySelector("#syncMenuText"),
+    syncMenuPrimary: document.querySelector("#syncMenuPrimary"),
+    syncMenuLogout: document.querySelector("#syncMenuLogout"),
     syncPanel: document.querySelector("#syncPanel"),
     syncStatusTitle: document.querySelector("#syncStatusTitle"),
     syncStatusText: document.querySelector("#syncStatusText"),
@@ -237,25 +242,36 @@
     if (!dom.syncButton) return;
     dom.syncButton.dataset.syncStatus = state.sync.status;
     dom.syncPanel.dataset.syncStatus = state.sync.status;
+    if (dom.syncMenu) dom.syncMenu.dataset.syncStatus = state.sync.status;
     dom.syncStatusTitle.textContent = state.sync.title;
     dom.syncStatusText.textContent = state.sync.message;
-    dom.syncButton.disabled = state.sync.busy;
+    if (dom.syncMenuTitle) dom.syncMenuTitle.textContent = state.sync.title;
+    if (dom.syncMenuText) dom.syncMenuText.textContent = state.sync.message;
+    dom.syncButton.disabled = false;
     dom.syncSecondary.disabled = state.sync.busy;
     dom.syncLogout.disabled = state.sync.busy;
     dom.syncLogout.hidden = !state.sync.account;
+    if (dom.syncMenuPrimary) dom.syncMenuPrimary.disabled = state.sync.busy;
+    if (dom.syncMenuLogout) {
+      dom.syncMenuLogout.disabled = state.sync.busy;
+      dom.syncMenuLogout.hidden = !state.sync.account;
+    }
     dom.syncButtonLabel.textContent = state.sync.account ? "OneDrive" : "Anmelden";
 
+    let actionText;
     if (state.sync.status === "conflict") {
-      dom.syncSecondary.textContent = "OneDrive laden";
+      actionText = "OneDrive laden";
     } else if (state.sync.needsInteractiveToken) {
-      dom.syncSecondary.textContent = state.sync.busy ? "Bestätigung ..." : "OneDrive bestätigen";
+      actionText = state.sync.busy ? "Bestätigung ..." : "OneDrive bestätigen";
     } else if (state.sync.account) {
-      dom.syncSecondary.textContent = state.sync.busy ? "Synchronisiert ..." : "Jetzt synchronisieren";
+      actionText = state.sync.busy ? "Synchronisiert ..." : "Jetzt synchronisieren";
     } else if (state.sync.status === "loading" && hasRecentPendingLogin()) {
-      dom.syncSecondary.textContent = state.sync.busy ? "Anmeldung ..." : "Anmeldung prüfen";
+      actionText = state.sync.busy ? "Anmeldung ..." : "Anmeldung prüfen";
     } else {
-      dom.syncSecondary.textContent = state.sync.busy ? "Anmeldung ..." : "Mit OneDrive anmelden";
+      actionText = state.sync.busy ? "Anmeldung ..." : "Mit OneDrive anmelden";
     }
+    dom.syncSecondary.textContent = actionText;
+    if (dom.syncMenuPrimary) dom.syncMenuPrimary.textContent = actionText;
   }
 
   function explainAuthError(error) {
@@ -633,6 +649,26 @@
       state.sync.busy = false;
       renderSyncStatus();
     }
+  }
+
+  function closeSyncMenu() {
+    if (!dom.syncMenu || !dom.syncButton) return;
+    dom.syncMenu.hidden = true;
+    dom.syncButton.setAttribute("aria-expanded", "false");
+  }
+
+  function toggleSyncMenu() {
+    if (!dom.syncMenu || !dom.syncButton) return;
+    const open = dom.syncMenu.hidden;
+    dom.syncMenu.hidden = !open;
+    dom.syncButton.setAttribute("aria-expanded", open ? "true" : "false");
+  }
+
+  function runOneDrivePrimaryAction() {
+    if (state.sync.needsInteractiveToken) confirmOneDriveAccess();
+    else if (state.sync.conflictData) syncFromOneDrive({ forceRemote: true });
+    else if (state.sync.account) manualSyncOneDrive();
+    else loginToOneDrive();
   }
 
   async function initializeOneDrive() {
@@ -1149,17 +1185,18 @@
       document.querySelector("#catalogTitle").scrollIntoView({ behavior: "smooth", block: "start" });
     });
     [dom.basketButton, dom.mobileBasket].forEach((button) => button.addEventListener("click", openShopping));
-    dom.syncButton.addEventListener("click", () => {
-      if (state.sync.needsInteractiveToken) confirmOneDriveAccess();
-      else if (state.sync.account) manualSyncOneDrive();
-      else loginToOneDrive();
+    dom.syncButton.addEventListener("click", (event) => {
+      event.stopPropagation();
+      toggleSyncMenu();
     });
-    dom.syncSecondary.addEventListener("click", () => {
-      if (state.sync.needsInteractiveToken) confirmOneDriveAccess();
-      else if (state.sync.account) manualSyncOneDrive();
-      else loginToOneDrive();
+    dom.syncMenu?.addEventListener("click", (event) => {
+      event.stopPropagation();
     });
+    dom.syncMenuPrimary?.addEventListener("click", runOneDrivePrimaryAction);
+    dom.syncMenuLogout?.addEventListener("click", logoutFromOneDrive);
+    dom.syncSecondary.addEventListener("click", runOneDrivePrimaryAction);
     dom.syncLogout.addEventListener("click", logoutFromOneDrive);
+    document.addEventListener("click", closeSyncMenu);
     [dom.closeShopping, dom.scrim].forEach((element) => element.addEventListener("click", closeShopping));
     document.querySelector("#downloadList").addEventListener("click", downloadList);
     document.querySelector("#copyList").addEventListener("click", copyList);
@@ -1197,7 +1234,10 @@
           dom.searchInput.focus();
         }
       }
-      if (event.key === "Escape") closeShopping();
+      if (event.key === "Escape") {
+        closeShopping();
+        closeSyncMenu();
+      }
     });
     window.addEventListener("resize", () => {
       const wasMobile = dom.shoppingPanel.parentElement === document.body;
