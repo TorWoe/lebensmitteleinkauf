@@ -2,7 +2,7 @@
   "use strict";
 
   const { foods, meals, sources } = window.APP_DATA;
-  const appVersion = "manual-login-renew-20260706-1";
+  const appVersion = "sync-buttons-stacked-20260706-1";
   const appVersionFile = "app-version.json";
   const appRefreshParam = "appRefresh";
   const appRefreshSessionKey = "lebensmitteleinkauf:app-refresh-version:v1";

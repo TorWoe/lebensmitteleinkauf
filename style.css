@@ -284,11 +284,12 @@ a {
 
 .sync-menu-actions {
   display: grid;
-  grid-template-columns: 1fr auto;
+  grid-template-columns: 1fr;
   gap: 8px;
 }
 
 .sync-menu-primary,
+.sync-menu-renew,
 .sync-menu-logout {
   width: 100%;
   min-height: 38px;
@@ -986,11 +987,12 @@ main {
 
 .sync-actions {
   display: grid;
-  grid-template-columns: 1fr auto;
+  grid-template-columns: 1fr;
   gap: 8px;
 }
 
 .sync-secondary,
+.sync-renew,
 .sync-logout {
   width: 100%;
   min-height: 36px;
