@@ -922,6 +922,31 @@
     setView(view);
   }
 
+  function closeLegalModal() {
+    const modal = document.querySelector("#legal-modal");
+    if (modal) modal.hidden = true;
+  }
+
+  async function openLegalModal(path, title) {
+    const modal = document.querySelector("#legal-modal");
+    const titleEl = document.querySelector("#legal-modal-title");
+    const bodyEl = document.querySelector("#legal-modal-body");
+    if (!modal || !titleEl || !bodyEl || !path) return;
+
+    titleEl.textContent = title || "Rechtliches";
+    bodyEl.textContent = "Wird geladen...";
+    modal.hidden = false;
+    clearAppUrlHash();
+
+    try {
+      const response = await fetch(path, { cache: "no-cache" });
+      if (!response.ok) throw new Error(`HTTP ${response.status}`);
+      bodyEl.textContent = await response.text();
+    } catch {
+      bodyEl.textContent = "Der rechtliche Text konnte nicht geladen werden.";
+    }
+  }
+
   function syncShoppingPanelPlacement() {
     const target = window.innerWidth <= 900 ? document.body : shoppingPanelHome;
     if (dom.shoppingPanel.parentElement !== target) target.append(dom.shoppingPanel);
@@ -1108,6 +1133,16 @@
       dom.confirmDialog.close();
       if (state.confirmAction) state.confirmAction();
       state.confirmAction = null;
+    });
+    document.querySelector("#legal-modal-close")?.addEventListener("click", closeLegalModal);
+    document.querySelector("#legal-modal")?.addEventListener("click", (event) => {
+      if (event.target === document.querySelector("#legal-modal")) closeLegalModal();
+    });
+    document.querySelectorAll(".app-footer a[data-legal-path]").forEach((link) => {
+      link.addEventListener("click", (event) => {
+        event.preventDefault();
+        void openLegalModal(link.dataset.legalPath, link.dataset.legalTitle);
+      });
     });
     document.addEventListener("keydown", (event) => {
       if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === "k") {
