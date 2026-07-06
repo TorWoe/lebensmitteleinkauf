@@ -381,6 +381,16 @@
     return true;
   }
 
+  function hardRefreshFinishedOneDriveLogin() {
+    if (!state.sync.msal || state.sync.account || !hasRecentPendingLogin()) return false;
+    sessionStorage.setItem(authReloadKey, String(Date.now()));
+    stopOneDriveAuthPolling();
+    const refreshUrl = new URL(window.location.href);
+    refreshUrl.searchParams.set(authReloadParam, String(Date.now()));
+    window.location.href = refreshUrl.toString();
+    return true;
+  }
+
   function rememberRedirectToken(response) {
     if (!response?.accessToken) return;
     state.sync.redirectAccessToken = response.accessToken;
@@ -852,7 +862,12 @@
     dom.syncButton.setAttribute("aria-expanded", open ? "true" : "false");
   }
 
-  function runOneDrivePrimaryAction() {
+  function runOneDrivePrimaryAction(event) {
+    if (hardRefreshFinishedOneDriveLogin()) {
+      event?.preventDefault();
+      event?.stopPropagation();
+      return;
+    }
     if (state.sync.needsInteractiveToken) confirmOneDriveAccess();
     else if (state.sync.conflictData) syncFromOneDrive({ forceRemote: true });
     else if (state.sync.account) manualSyncOneDrive();
