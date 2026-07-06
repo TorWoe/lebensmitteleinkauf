@@ -280,12 +280,14 @@
 
   function explainAuthError(error) {
     const text = `${error?.errorCode || ""} ${error?.message || ""}`.toLowerCase();
+    const code = error?.errorCode || error?.error || error?.name || "";
+    const suffix = code ? ` (${code})` : "";
     if (text.includes("redirect-started")) return "Du wirst zu Microsoft weitergeleitet.";
     if (text.includes("popup") || text.includes("block")) return "Die Microsoft-Anmeldung wurde vom Browser blockiert. Starte die Anmeldung bitte erneut.";
     if (text.includes("user_cancelled") || text.includes("cancel")) return "Anmeldung oder Zustimmung wurde abgebrochen.";
     if (text.includes("consent") || text.includes("access_denied")) return "Zustimmung verweigert. OneDrive-Sync bleibt ausgeschaltet.";
     if (text.includes("interaction_required")) return "Bitte melde dich erneut an, damit OneDrive verwendet werden darf.";
-    return "Microsoft-Anmeldung fehlgeschlagen. Deine Liste bleibt lokal gespeichert.";
+    return `Microsoft-Anmeldung fehlgeschlagen${suffix}. Deine Liste bleibt lokal gespeichert.`;
   }
 
   function markLoginPending() {
@@ -1293,7 +1295,13 @@
     });
   }
 
-  function initialize() {
+  async function initialize() {
+    const hasAuthRedirect = hasOneDriveRedirectResponse();
+    if (hasAuthRedirect) {
+      setSyncStatus("loading", "Microsoft-Anmeldung", "Microsoft-Rückkehr wird verarbeitet.");
+      await initializeOneDrive();
+    }
+
     syncShoppingPanelPlacement();
     document.querySelectorAll("[data-icon]").forEach((slot) => { slot.innerHTML = icon(slot.dataset.icon); });
     populateFilters();
@@ -1303,9 +1311,12 @@
     renderMeals();
     renderInsights();
     bindEvents();
-    initializeViewFromUrl();
-    void initializeOneDrive();
+
+    if (!hasAuthRedirect) {
+      initializeViewFromUrl();
+      void initializeOneDrive();
+    }
   }
 
-  initialize();
+  void initialize();
 })();
