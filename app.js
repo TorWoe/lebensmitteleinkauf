@@ -2,7 +2,7 @@
   "use strict";
 
   const { foods, meals, sources } = window.APP_DATA;
-  const appVersion = "sync-buttons-stacked-20260706-1";
+  const appVersion = "sync-login-help-all-20260706-1";
   const appVersionFile = "app-version.json";
   const appRefreshParam = "appRefresh";
   const appRefreshSessionKey = "lebensmitteleinkauf:app-refresh-version:v1";
@@ -259,6 +259,17 @@
     renderSyncStatus();
   }
 
+  function getSyncMenuText() {
+    if (!state.sync.account) {
+      const helpText = "Zuerst auf OneDrive anmelden klicken.\nNur bei zu langer Anmeldedauer auf Anmeldung erneuern klicken.";
+      if (state.sync.title === "Nicht angemeldet") {
+        return `Deine Liste wird lokal auf diesem Gerät gespeichert.\n${helpText}`;
+      }
+      return `${state.sync.message}\n${helpText}`;
+    }
+    return state.sync.message;
+  }
+
   function renderSyncStatus() {
     if (!dom.syncButton) return;
     const manuallyLoggedOut = hasOneDriveManualLogout();
@@ -268,7 +279,7 @@
     dom.syncStatusTitle.textContent = state.sync.title;
     dom.syncStatusText.textContent = state.sync.message;
     if (dom.syncMenuTitle) dom.syncMenuTitle.textContent = state.sync.title;
-    if (dom.syncMenuText) dom.syncMenuText.textContent = state.sync.message;
+    if (dom.syncMenuText) dom.syncMenuText.textContent = getSyncMenuText();
     dom.syncButton.disabled = false;
     dom.syncSecondary.disabled = state.sync.busy;
     if (dom.syncRenew) dom.syncRenew.disabled = false;
