@@ -74,6 +74,7 @@
       initialized: false,
       busy: false,
       resuming: false,
+      redirectHandled: false,
       allowInteractiveTokenRedirect: false,
       needsInteractiveToken: false,
       redirectAccessToken: "",
@@ -244,6 +245,8 @@
 
   function renderSyncStatus() {
     if (!dom.syncButton) return;
+    const waitingForAuth = Boolean(state.sync.msal && !state.sync.redirectHandled);
+    const finishingLogin = shouldFinishOneDriveInteraction();
     dom.syncButton.dataset.syncStatus = state.sync.status;
     dom.syncPanel.dataset.syncStatus = state.sync.status;
     if (dom.syncMenu) dom.syncMenu.dataset.syncStatus = state.sync.status;
@@ -252,10 +255,10 @@
     if (dom.syncMenuTitle) dom.syncMenuTitle.textContent = state.sync.title;
     if (dom.syncMenuText) dom.syncMenuText.textContent = state.sync.message;
     dom.syncButton.disabled = false;
-    dom.syncSecondary.disabled = state.sync.busy;
+    dom.syncSecondary.disabled = state.sync.busy || waitingForAuth;
     dom.syncLogout.disabled = state.sync.busy;
     dom.syncLogout.hidden = !state.sync.account;
-    if (dom.syncMenuPrimary) dom.syncMenuPrimary.disabled = state.sync.busy;
+    if (dom.syncMenuPrimary) dom.syncMenuPrimary.disabled = state.sync.busy || waitingForAuth;
     if (dom.syncMenuLogout) {
       dom.syncMenuLogout.disabled = state.sync.busy;
       dom.syncMenuLogout.hidden = !state.sync.account;
@@ -269,6 +272,8 @@
       actionText = state.sync.busy ? "Bestätigung ..." : "OneDrive bestätigen";
     } else if (state.sync.account) {
       actionText = state.sync.busy ? "Synchronisiert ..." : "Jetzt synchronisieren";
+    } else if (finishingLogin) {
+      actionText = state.sync.busy || waitingForAuth ? "Anmeldung ..." : "Anmeldung abschließen";
     } else if (state.sync.status === "loading" && hasRecentPendingLogin()) {
       actionText = state.sync.busy ? "Anmeldung ..." : "Anmeldung prüfen";
     } else {
@@ -283,6 +288,7 @@
     const code = error?.errorCode || error?.error || error?.name || "";
     const suffix = code ? ` (${code})` : "";
     if (text.includes("redirect-started")) return "Du wirst zu Microsoft weitergeleitet.";
+    if (text.includes("interaction_in_progress")) return "Die Microsoft-Anmeldung wird noch abgeschlossen. Tippe auf \"Anmeldung abschließen\", bevor du eine neue Anmeldung startest.";
     if (text.includes("popup") || text.includes("block")) return "Die Microsoft-Anmeldung wurde vom Browser blockiert. Starte die Anmeldung bitte erneut.";
     if (text.includes("user_cancelled") || text.includes("cancel")) return "Anmeldung oder Zustimmung wurde abgebrochen.";
     if (text.includes("consent") || text.includes("access_denied")) return "Zustimmung verweigert. OneDrive-Sync bleibt ausgeschaltet.";
@@ -298,9 +304,38 @@
     localStorage.removeItem(pendingLoginKey);
   }
 
+  function clearStaleMsalInteractionStatus() {
+    [localStorage, sessionStorage].forEach((storage) => {
+      for (let index = storage.length - 1; index >= 0; index -= 1) {
+        const key = storage.key(index) || "";
+        const isMsalInteractionKey = key.includes("interaction.status") && (key.includes(msalConfig.auth.clientId) || key.startsWith("msal."));
+        if (isMsalInteractionKey) storage.removeItem(key);
+      }
+    });
+  }
+
   function hasRecentPendingLogin() {
     const startedAt = Number(localStorage.getItem(pendingLoginKey) || 0);
     return startedAt > 0 && Date.now() - startedAt < 10 * 60 * 1000;
+  }
+
+  function hasFreshPendingLogin() {
+    const startedAt = Number(localStorage.getItem(pendingLoginKey) || 0);
+    return startedAt > 0 && Date.now() - startedAt < 2 * 60 * 1000;
+  }
+
+  function hasStalePendingLogin() {
+    const startedAt = Number(localStorage.getItem(pendingLoginKey) || 0);
+    return startedAt > 0 && Date.now() - startedAt >= 2 * 60 * 1000;
+  }
+
+  function shouldFinishOneDriveInteraction() {
+    return Boolean(state.sync.msal && (!state.sync.redirectHandled || state.sync.resuming || hasFreshPendingLogin() || hasOneDriveRedirectResponse()));
+  }
+
+  function isInteractionInProgressError(error) {
+    const text = `${error?.errorCode || ""} ${error?.message || ""}`.toLowerCase();
+    return text.includes("interaction_in_progress");
   }
 
   function hasOneDriveRedirectResponse() {
@@ -328,16 +363,17 @@
     return state.sync.redirectAccessToken;
   }
 
-  async function resumeOneDriveSession() {
+  async function resumeOneDriveSession({ force = false } = {}) {
     if (!state.sync.msal || state.sync.resuming) return;
     const pendingLogin = hasRecentPendingLogin();
-    if (!pendingLogin && state.sync.account && state.sync.status !== "loading") return;
-    if (!pendingLogin && state.sync.status !== "loading") return;
+    if (!force && !pendingLogin && state.sync.account && state.sync.status !== "loading") return;
+    if (!force && !pendingLogin && state.sync.status !== "loading") return;
 
     state.sync.resuming = true;
     state.sync.busy = false;
     try {
       const redirectResponse = await state.sync.msal.handleRedirectPromise().catch(() => null);
+      state.sync.redirectHandled = true;
       rememberRedirectToken(redirectResponse);
       const accounts = state.sync.msal.getAllAccounts();
       state.sync.account = redirectResponse?.account || accounts[0] || null;
@@ -348,11 +384,31 @@
       } else if (hasRecentPendingLogin()) {
         setSyncStatus("loading", "Microsoft-Anmeldung", "Schließe das Microsoft-Fenster, falls es noch offen ist. Danach wird OneDrive automatisch erneut geprüft.");
       }
+      return Boolean(state.sync.account);
     } finally {
       state.sync.busy = false;
       state.sync.resuming = false;
       renderSyncStatus();
     }
+  }
+
+  async function finishOneDriveInteractionBeforeRedirect() {
+    if (!state.sync.msal) return false;
+    if (hasStalePendingLogin()) {
+      clearLoginPending();
+      clearStaleMsalInteractionStatus();
+      return false;
+    }
+    if (!shouldFinishOneDriveInteraction()) return false;
+
+    setSyncStatus("loading", "Microsoft-Anmeldung", "Anmeldung wird noch abgeschlossen.");
+    const foundAccount = await resumeOneDriveSession({ force: true });
+    if (foundAccount) return true;
+    if (hasFreshPendingLogin() || !state.sync.redirectHandled) {
+      setSyncStatus("loading", "Microsoft-Anmeldung", "Anmeldung wird noch abgeschlossen. Tippe danach erneut auf \"Anmeldung abschließen\".");
+      return true;
+    }
+    return false;
   }
 
   function scheduleOneDriveResumeChecks() {
@@ -376,6 +432,9 @@
         const tokenError = new Error("interactive-token-required");
         tokenError.cause = error;
         throw tokenError;
+      }
+      if (await finishOneDriveInteractionBeforeRedirect()) {
+        throw new Error("redirect-started");
       }
       markLoginPending();
       setSyncStatus("loading", "Microsoft-Anmeldung", "Du wirst zu Microsoft weitergeleitet.");
@@ -470,6 +529,7 @@
 
   async function confirmOneDriveAccess() {
     if (!state.sync.msal || !state.sync.account || state.sync.busy) return;
+    if (await finishOneDriveInteractionBeforeRedirect()) return;
     state.sync.busy = true;
     state.sync.needsInteractiveToken = false;
     markLoginPending();
@@ -481,6 +541,10 @@
         redirectStartPage: window.location.href,
       });
     } catch (error) {
+      if (isInteractionInProgressError(error)) {
+        setSyncStatus("loading", "Microsoft-Anmeldung", "Anmeldung wird noch abgeschlossen. Tippe auf \"Anmeldung abschließen\", bevor du eine neue Anmeldung startest.");
+        return;
+      }
       state.sync.needsInteractiveToken = true;
       setSyncStatus("error", "Bestätigung fehlgeschlagen", explainAuthError(error));
       showToast(explainAuthError(error));
@@ -637,19 +701,18 @@
 
   async function loginToOneDrive() {
     if (!state.sync.msal || state.sync.busy) return;
-    if (state.sync.status === "loading" && hasRecentPendingLogin()) {
-      if (hasOneDriveRedirectResponse()) {
-        await resumeOneDriveSession();
-        if (state.sync.account) return;
-      }
-      clearLoginPending();
-    }
+    if (await finishOneDriveInteractionBeforeRedirect()) return;
+    if (hasStalePendingLogin()) clearLoginPending();
     state.sync.busy = true;
     markLoginPending();
     setSyncStatus("loading", "Microsoft-Anmeldung", "Du wirst zu Microsoft weitergeleitet.");
     try {
       await state.sync.msal.loginRedirect({ ...loginRequest, redirectStartPage: window.location.href });
     } catch (error) {
+      if (isInteractionInProgressError(error)) {
+        setSyncStatus("loading", "Microsoft-Anmeldung", "Anmeldung wird noch abgeschlossen. Tippe auf \"Anmeldung abschließen\", bevor du eine neue Anmeldung startest.");
+        return;
+      }
       setSyncStatus("error", "Anmeldung fehlgeschlagen", explainAuthError(error));
       showToast(explainAuthError(error));
     } finally {
@@ -723,6 +786,7 @@
         await state.sync.msal.initialize();
       }
       const redirectResponse = await state.sync.msal.handleRedirectPromise();
+      state.sync.redirectHandled = true;
       rememberRedirectToken(redirectResponse);
       const accounts = state.sync.msal.getAllAccounts();
       state.sync.account = redirectResponse?.account || accounts[0] || null;
@@ -734,6 +798,7 @@
         setSyncStatus("local", "Nicht angemeldet", "Deine Liste wird lokal auf diesem Gerät gespeichert. Melde dich an, um OneDrive zu nutzen.");
       }
     } catch (error) {
+      state.sync.redirectHandled = true;
       const accounts = state.sync.msal?.getAllAccounts?.() || [];
       state.sync.account = accounts[0] || null;
       if (state.sync.account) {
