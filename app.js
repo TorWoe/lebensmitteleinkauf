@@ -262,8 +262,8 @@
     dom.syncLogout.hidden = !state.sync.account;
     if (dom.syncMenuPrimary) dom.syncMenuPrimary.disabled = state.sync.busy || waitingForAuth;
     if (dom.syncMenuLogout) {
-      dom.syncMenuLogout.disabled = state.sync.busy;
-      dom.syncMenuLogout.hidden = !state.sync.account;
+      dom.syncMenuLogout.disabled = false;
+      dom.syncMenuLogout.hidden = false;
     }
     dom.syncButtonLabel.textContent = state.sync.account ? "OneDrive" : "Anmelden";
 
@@ -817,22 +817,24 @@
   }
 
   async function logoutFromOneDrive() {
-    if (!state.sync.msal || state.sync.busy) return;
+    if (state.sync.busy) state.sync.busy = false;
     state.sync.busy = true;
     clearLoginPending();
+    clearStaleMsalInteractionStatus();
+    stopOneDriveAuthPolling();
     setSyncStatus("loading", "Microsoft-Abmeldung", "Du wirst von OneDrive abgemeldet.");
     try {
-      const account = state.sync.account || state.sync.msal.getActiveAccount?.();
+      const account = state.sync.account || state.sync.msal?.getActiveAccount?.() || state.sync.msal?.getAllAccounts?.()?.[0];
       state.sync.account = null;
       state.sync.lastRemoteUpdatedAt = "";
       state.sync.lastRemoteEtag = "";
       state.sync.hasRemoteData = false;
       state.sync.conflictData = null;
       state.sync.needsInteractiveToken = false;
-      stopOneDriveAuthPolling();
       state.sync.redirectAccessToken = "";
       state.sync.redirectAccessTokenExpiresAt = 0;
-      if (account) {
+      state.sync.msal?.setActiveAccount?.(null);
+      if (state.sync.msal && account) {
         await state.sync.msal.logoutRedirect({
           account,
           postLogoutRedirectUri: msalConfig.auth.redirectUri,
