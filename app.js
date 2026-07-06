@@ -5,6 +5,7 @@
   const storageKey = "lebensmitteleinkauf:selected:v1";
   const storageMetaKey = "lebensmitteleinkauf:selected:meta:v1";
   const pendingLoginKey = "lebensmitteleinkauf:onedrive-login-pending:v1";
+  const authReloadKey = "lebensmitteleinkauf:onedrive-auth-reload:v1";
   const appDataFileName = "lebensmitteleinkauf-data.json";
   const graphBaseUrl = "https://graph.microsoft.com/v1.0";
   const graphFilePath = `/me/drive/special/approot:/${appDataFileName}`;
@@ -299,11 +300,13 @@
   }
 
   function markLoginPending() {
+    sessionStorage.removeItem(authReloadKey);
     localStorage.setItem(pendingLoginKey, String(Date.now()));
   }
 
   function clearLoginPending() {
     localStorage.removeItem(pendingLoginKey);
+    sessionStorage.removeItem(authReloadKey);
   }
 
   function clearStaleMsalInteractionStatus() {
@@ -331,6 +334,10 @@
     return startedAt > 0 && Date.now() - startedAt >= 2 * 60 * 1000;
   }
 
+  function hasUsedAuthReloadFallback() {
+    return sessionStorage.getItem(authReloadKey) === "1";
+  }
+
   function shouldFinishOneDriveInteraction() {
     return Boolean(state.sync.msal && (!state.sync.redirectHandled || state.sync.resuming || hasFreshPendingLogin() || hasOneDriveRedirectResponse()));
   }
@@ -345,6 +352,15 @@
     const hashText = window.location.hash.startsWith("#") ? window.location.hash.slice(1) : window.location.hash;
     const hashParams = new URLSearchParams(hashText);
     return ["code", "error", "state", "client_info"].some((key) => queryParams.has(key) || hashParams.has(key));
+  }
+
+  function reloadOnceForFinishedOneDriveLogin() {
+    if (!state.sync.msal || state.sync.account || hasOneDriveRedirectResponse() || !hasRecentPendingLogin() || hasUsedAuthReloadFallback()) return false;
+    sessionStorage.setItem(authReloadKey, "1");
+    stopOneDriveAuthPolling();
+    setSyncStatus("loading", "Microsoft-Anmeldung", "Anmeldung wird erneut geprüft.");
+    window.location.reload();
+    return true;
   }
 
   function rememberRedirectToken(response) {
@@ -418,6 +434,7 @@
     if (!state.sync.msal) return false;
     if (await adoptCachedOneDriveAccount()) return true;
     if (hasStalePendingLogin()) {
+      if (reloadOnceForFinishedOneDriveLogin()) return true;
       clearLoginPending();
       clearStaleMsalInteractionStatus();
       return false;
@@ -427,6 +444,7 @@
     setSyncStatus("loading", "Microsoft-Anmeldung", "Anmeldung wird noch abgeschlossen.");
     const foundAccount = await resumeOneDriveSession({ force: true });
     if (foundAccount) return true;
+    if (reloadOnceForFinishedOneDriveLogin()) return true;
     if (hasFreshPendingLogin() || !state.sync.redirectHandled) {
       setSyncStatus("loading", "Microsoft-Anmeldung", "Anmeldung wird noch abgeschlossen. Tippe danach erneut auf \"Anmeldung abschließen\".");
       startOneDriveAuthPolling();
