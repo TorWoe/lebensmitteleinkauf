@@ -339,7 +339,7 @@
   }
 
   function shouldFinishOneDriveInteraction() {
-    return Boolean(state.sync.msal && (!state.sync.redirectHandled || state.sync.resuming || hasFreshPendingLogin() || hasOneDriveRedirectResponse()));
+    return Boolean(state.sync.msal && (!state.sync.redirectHandled || state.sync.resuming || hasRecentPendingLogin() || hasOneDriveRedirectResponse()));
   }
 
   function isInteractionInProgressError(error) {
@@ -359,7 +359,9 @@
     sessionStorage.setItem(authReloadKey, "1");
     stopOneDriveAuthPolling();
     setSyncStatus("loading", "Microsoft-Anmeldung", "Anmeldung wird erneut geprüft.");
-    window.location.reload();
+    setTimeout(() => {
+      window.location.replace(window.location.href);
+    }, 50);
     return true;
   }
 
@@ -433,6 +435,7 @@
   async function finishOneDriveInteractionBeforeRedirect() {
     if (!state.sync.msal) return false;
     if (await adoptCachedOneDriveAccount()) return true;
+    if (!hasOneDriveRedirectResponse() && reloadOnceForFinishedOneDriveLogin()) return true;
     if (hasStalePendingLogin()) {
       if (reloadOnceForFinishedOneDriveLogin()) return true;
       clearLoginPending();
