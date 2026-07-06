@@ -274,8 +274,10 @@
       actionText = state.sync.busy ? "Synchronisiert ..." : "Jetzt synchronisieren";
     } else if (finishingLogin) {
       actionText = state.sync.busy || waitingForAuth ? "Anmeldung ..." : "Anmeldung abschließen";
+      if (!state.sync.account) startOneDriveAuthPolling();
     } else if (state.sync.status === "loading" && hasRecentPendingLogin()) {
       actionText = state.sync.busy ? "Anmeldung ..." : "Anmeldung prüfen";
+      if (!state.sync.account) startOneDriveAuthPolling();
     } else {
       actionText = state.sync.busy ? "Anmeldung ..." : "Mit OneDrive anmelden";
     }
@@ -378,6 +380,7 @@
       const accounts = state.sync.msal.getAllAccounts();
       state.sync.account = redirectResponse?.account || accounts[0] || null;
       if (state.sync.account) {
+        stopOneDriveAuthPolling();
         clearLoginPending();
         state.sync.msal.setActiveAccount(state.sync.account);
         await syncFromOneDrive();
@@ -406,6 +409,7 @@
     if (foundAccount) return true;
     if (hasFreshPendingLogin() || !state.sync.redirectHandled) {
       setSyncStatus("loading", "Microsoft-Anmeldung", "Anmeldung wird noch abgeschlossen. Tippe danach erneut auf \"Anmeldung abschließen\".");
+      startOneDriveAuthPolling();
       return true;
     }
     return false;
@@ -643,6 +647,29 @@
   }
 
   let oneDriveSaveTimer;
+  let oneDriveAuthPollTimer;
+
+  function stopOneDriveAuthPolling() {
+    clearInterval(oneDriveAuthPollTimer);
+    oneDriveAuthPollTimer = null;
+  }
+
+  async function pollOneDriveAuthCompletion() {
+    if (!state.sync.msal || state.sync.account || state.sync.resuming || !shouldFinishOneDriveInteraction()) {
+      stopOneDriveAuthPolling();
+      return;
+    }
+    await resumeOneDriveSession({ force: true });
+    if (state.sync.account || !shouldFinishOneDriveInteraction()) stopOneDriveAuthPolling();
+  }
+
+  function startOneDriveAuthPolling() {
+    if (oneDriveAuthPollTimer) return;
+    oneDriveAuthPollTimer = setInterval(() => { void pollOneDriveAuthCompletion(); }, 2500);
+    setTimeout(() => { void pollOneDriveAuthCompletion(); }, 800);
+    setTimeout(stopOneDriveAuthPolling, 2 * 60 * 1000);
+  }
+
   function queueOneDriveSave() {
     if (!state.sync.account) {
       setSyncStatus("local", "Nicht angemeldet", "Deine Liste wird lokal auf diesem Gerät gespeichert.");
@@ -734,6 +761,7 @@
       state.sync.hasRemoteData = false;
       state.sync.conflictData = null;
       state.sync.needsInteractiveToken = false;
+      stopOneDriveAuthPolling();
       state.sync.redirectAccessToken = "";
       state.sync.redirectAccessTokenExpiresAt = 0;
       if (account) {
@@ -791,6 +819,7 @@
       const accounts = state.sync.msal.getAllAccounts();
       state.sync.account = redirectResponse?.account || accounts[0] || null;
       if (state.sync.account) {
+        stopOneDriveAuthPolling();
         clearLoginPending();
         state.sync.msal.setActiveAccount(state.sync.account);
         await syncFromOneDrive();
@@ -802,6 +831,7 @@
       const accounts = state.sync.msal?.getAllAccounts?.() || [];
       state.sync.account = accounts[0] || null;
       if (state.sync.account) {
+        stopOneDriveAuthPolling();
         clearLoginPending();
         state.sync.msal.setActiveAccount(state.sync.account);
         setSyncStatus("loading", "Microsoft-Anmeldung erkannt", "OneDrive wird erneut geprüft.");
