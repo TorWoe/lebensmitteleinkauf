@@ -280,7 +280,7 @@
   function explainAuthError(error) {
     const text = `${error?.errorCode || ""} ${error?.message || ""}`.toLowerCase();
     if (text.includes("redirect-started")) return "Du wirst zu Microsoft weitergeleitet.";
-    if (text.includes("popup") || text.includes("block")) return "Das Anmeldefenster wurde vom Browser blockiert. Die Anmeldung wird per Weiterleitung versucht.";
+    if (text.includes("popup") || text.includes("block")) return "Das separate Microsoft-Fenster wurde vom Browser blockiert. Erlaube Popups für diese Seite und versuche es erneut.";
     if (text.includes("user_cancelled") || text.includes("cancel")) return "Anmeldung oder Zustimmung wurde abgebrochen.";
     if (text.includes("consent") || text.includes("access_denied")) return "Zustimmung verweigert. OneDrive-Sync bleibt ausgeschaltet.";
     if (text.includes("interaction_required")) return "Bitte melde dich erneut an, damit OneDrive verwendet werden darf.";
@@ -374,11 +374,10 @@
         tokenError.cause = error;
         throw tokenError;
       }
-      markLoginPending();
-      scheduleOneDriveResumeChecks();
-      setSyncStatus("loading", "Microsoft-Anmeldung", "Du wirst zu Microsoft weitergeleitet.");
-      await state.sync.msal.acquireTokenRedirect({ ...request, redirectStartPage: window.location.href });
-      throw new Error("redirect-started");
+      setSyncStatus("loading", "Microsoft-Anmeldung", "Microsoft wird in einem separaten Fenster geöffnet.");
+      const response = await state.sync.msal.acquireTokenPopup(request);
+      rememberRedirectToken(response);
+      return response.accessToken;
     }
   }
 
@@ -470,15 +469,17 @@
     if (!state.sync.msal || !state.sync.account || state.sync.busy) return;
     state.sync.busy = true;
     state.sync.needsInteractiveToken = false;
-    markLoginPending();
-    scheduleOneDriveResumeChecks();
-    setSyncStatus("loading", "Microsoft-Anmeldung", "Du wirst zu Microsoft weitergeleitet, um OneDrive zu bestätigen.");
+    clearLoginPending();
+    setSyncStatus("loading", "Microsoft-Anmeldung", "Microsoft wird in einem separaten Fenster geöffnet, um OneDrive zu bestätigen.");
     try {
-      await state.sync.msal.acquireTokenRedirect({
+      const response = await state.sync.msal.acquireTokenPopup({
         ...loginRequest,
         account: state.sync.account,
-        redirectStartPage: window.location.href,
       });
+      rememberRedirectToken(response);
+      state.sync.msal.setActiveAccount(response?.account || state.sync.account);
+      state.sync.busy = false;
+      await manualSyncOneDrive();
     } catch (error) {
       state.sync.needsInteractiveToken = true;
       setSyncStatus("error", "Bestätigung fehlgeschlagen", explainAuthError(error));
@@ -644,11 +645,17 @@
       clearLoginPending();
     }
     state.sync.busy = true;
-    markLoginPending();
-    scheduleOneDriveResumeChecks();
-    setSyncStatus("loading", "Microsoft-Anmeldung", "Du wirst zu Microsoft weitergeleitet.");
+    clearLoginPending();
+    setSyncStatus("loading", "Microsoft-Anmeldung", "Microsoft wird in einem separaten Fenster geöffnet.");
     try {
-      await state.sync.msal.loginRedirect({ ...loginRequest, redirectStartPage: window.location.href });
+      const response = await state.sync.msal.loginPopup(loginRequest);
+      rememberRedirectToken(response);
+      const accounts = state.sync.msal.getAllAccounts();
+      state.sync.account = response?.account || accounts[0] || null;
+      if (!state.sync.account) throw new Error("not-signed-in");
+      state.sync.msal.setActiveAccount(state.sync.account);
+      state.sync.busy = false;
+      await syncFromOneDrive();
     } catch (error) {
       setSyncStatus("error", "Anmeldung fehlgeschlagen", explainAuthError(error));
       showToast(explainAuthError(error));
