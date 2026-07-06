@@ -2,8 +2,7 @@
   "use strict";
 
   const { foods, meals, sources } = window.APP_DATA;
-  const appVersion = "cache-guard-20260706-1";
-  const appScriptFile = "app.js";
+  const appVersion = "edge-auth-safe-20260706-1";
   const appVersionFile = "app-version.json";
   const appRefreshParam = "appRefresh";
   const appRefreshSessionKey = "lebensmitteleinkauf:app-refresh-version:v1";
@@ -471,25 +470,6 @@
     if (window.history?.replaceState) window.history.replaceState(null, document.title, cleanUrl);
   }
 
-  function loadFreshAppScript(latestVersion) {
-    return new Promise((resolve) => {
-      if (!document.body) {
-        resolve(false);
-        return;
-      }
-      const scriptUrl = new URL(appScriptFile, window.location.href);
-      scriptUrl.searchParams.set("v", latestVersion);
-      scriptUrl.searchParams.set("ts", String(Date.now()));
-      const script = document.createElement("script");
-      script.src = scriptUrl.toString();
-      script.async = false;
-      script.dataset.appVersion = latestVersion;
-      script.onload = () => resolve(true);
-      script.onerror = () => resolve(false);
-      document.body.appendChild(script);
-    });
-  }
-
   function reloadForFreshAppVersion(latestVersion) {
     const refreshUrl = new URL(window.location.href);
     refreshUrl.hash = "";
@@ -500,9 +480,23 @@
     }, 250);
   }
 
-  async function ensureLatestAppVersion() {
+  async function fetchLatestAppVersion() {
+    const controller = typeof AbortController === "function" ? new AbortController() : null;
+    const timeoutId = controller ? setTimeout(() => controller.abort(), 1200) : null;
     try {
-      const response = await fetch(`${appVersionFile}?ts=${Date.now()}`, { cache: "no-store" });
+      return await fetch(`${appVersionFile}?ts=${Date.now()}`, {
+        cache: "no-store",
+        ...(controller ? { signal: controller.signal } : {}),
+      });
+    } finally {
+      if (timeoutId) clearTimeout(timeoutId);
+    }
+  }
+
+  async function ensureLatestAppVersion() {
+    if (hasOneDriveRedirectResponse() || hasRecentPendingLogin()) return false;
+    try {
+      const response = await fetchLatestAppVersion();
       if (!response.ok) return false;
       const data = await response.json();
       const latestVersion = String(data?.appVersion || "").trim();
@@ -512,7 +506,6 @@
         }
         return false;
       }
-      if (await loadFreshAppScript(latestVersion)) return true;
       if (sessionStorage.getItem(appRefreshSessionKey) === latestVersion) return false;
       sessionStorage.setItem(appRefreshSessionKey, latestVersion);
       reloadForFreshAppVersion(latestVersion);
