@@ -72,6 +72,7 @@
       initialized: false,
       busy: false,
       resuming: false,
+      allowInteractiveTokenRedirect: false,
       status: "local",
       title: "Nicht angemeldet",
       message: "Deine Liste wird lokal auf diesem Gerät gespeichert.",
@@ -315,6 +316,13 @@
       const response = await state.sync.msal.acquireTokenSilent(request);
       return response.accessToken;
     } catch (error) {
+      if (!state.sync.allowInteractiveTokenRedirect) {
+        const tokenError = new Error("interactive-token-required");
+        tokenError.cause = error;
+        throw tokenError;
+      }
+      markLoginPending();
+      scheduleOneDriveResumeChecks();
       setSyncStatus("loading", "Microsoft-Anmeldung", "Du wirst zu Microsoft weitergeleitet.");
       await state.sync.msal.acquireTokenRedirect({ ...request, redirectStartPage: window.location.href });
       throw new Error("redirect-started");
@@ -389,6 +397,12 @@
       setSyncStatus("local", "Nicht angemeldet", "Deine Liste wird lokal auf diesem Gerät gespeichert.");
       return;
     }
+    if (error?.message === "interactive-token-required") {
+      const message = "OneDrive ist angemeldet, braucht aber noch eine aktive Bestätigung. Tippe auf \"Jetzt synchronisieren\", um die Berechtigung zu erteilen.";
+      setSyncStatus("error", "OneDrive-Bestätigung nötig", message);
+      showToast("OneDrive-Bestätigung nötig.");
+      return;
+    }
     const message = error?.status === 401 || error?.status === 403
       ? "Zugriff auf OneDrive wurde nicht erlaubt. Bitte erneut anmelden."
       : "OneDrive konnte nicht erreicht werden. Lokale Daten bleiben erhalten.";
@@ -438,6 +452,8 @@
   async function manualSyncOneDrive() {
     if (!state.sync.account || state.sync.busy) return;
     state.sync.busy = true;
+    const previousInteractiveTokenRedirect = state.sync.allowInteractiveTokenRedirect;
+    state.sync.allowInteractiveTokenRedirect = true;
     setSyncStatus("loading", "Prüfe OneDrive", "Aktuelle Einkaufsliste wird aus OneDrive abgeglichen.");
     try {
       const remote = await loadRemoteSelection();
@@ -473,6 +489,7 @@
     } catch (error) {
       handleOneDriveError(error, "Synchronisieren fehlgeschlagen");
     } finally {
+      state.sync.allowInteractiveTokenRedirect = previousInteractiveTokenRedirect;
       state.sync.busy = false;
       renderSyncStatus();
     }
@@ -489,9 +506,11 @@
     oneDriveSaveTimer = setTimeout(() => { void saveSelectionToOneDrive(); }, 650);
   }
 
-  async function syncFromOneDrive({ forceRemote = false } = {}) {
+  async function syncFromOneDrive({ forceRemote = false, allowInteractiveTokenRedirect = false } = {}) {
     if (!state.sync.account || state.sync.busy) return;
     state.sync.busy = true;
+    const previousInteractiveTokenRedirect = state.sync.allowInteractiveTokenRedirect;
+    state.sync.allowInteractiveTokenRedirect = allowInteractiveTokenRedirect;
     setSyncStatus("loading", "Prüfe OneDrive", "Deine Einkaufsliste wird geladen.");
     try {
       const remote = forceRemote && state.sync.conflictData ? state.sync.conflictData : await loadRemoteSelection();
@@ -524,6 +543,7 @@
     } catch (error) {
       handleOneDriveError(error);
     } finally {
+      state.sync.allowInteractiveTokenRedirect = previousInteractiveTokenRedirect;
       state.sync.busy = false;
       renderSyncStatus();
     }
