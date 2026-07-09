@@ -185,10 +185,16 @@ a {
   align-items: center;
   justify-self: end;
   gap: 8px;
+  padding-right: 154px;
 }
 
 .sync-menu {
-  position: relative;
+  position: fixed;
+  top: max(24px, env(safe-area-inset-top));
+  right: max(24px, env(safe-area-inset-right));
+  z-index: 50;
+  display: inline-flex;
+  justify-content: flex-end;
 }
 
 .sync-button {
@@ -1514,6 +1520,11 @@ dialog::backdrop { background: rgba(6, 31, 20, 0.52); backdrop-filter: blur(4px)
   body { padding-bottom: 82px; }
   .view { animation: none; }
   .topbar { grid-template-columns: 1fr auto; min-height: 68px; padding: 10px 20px; }
+  .topbar-actions { padding-right: 150px; }
+  .sync-menu {
+    top: max(16px, env(safe-area-inset-top));
+    right: max(16px, env(safe-area-inset-right));
+  }
   .desktop-nav { display: none; }
   .basket-button-label { display: none; }
   main { width: min(100% - 32px, 760px); }
@@ -1563,10 +1574,10 @@ dialog::backdrop { background: rgba(6, 31, 20, 0.52); backdrop-filter: blur(4px)
 @media (max-width: 680px) {
   .brand small { display: none; }
   .brand-mark { width: 38px; height: 38px; border-radius: 12px; }
-  .topbar-actions { gap: 6px; }
+  .topbar-actions { gap: 6px; padding-right: 72px; }
   .sync-button { min-height: 40px; padding: 6px 8px; }
   .sync-menu-panel {
-    right: -48px;
+    right: 0;
     width: min(320px, calc(100vw - 24px));
   }
   .sync-menu-actions { grid-template-columns: 1fr; }
