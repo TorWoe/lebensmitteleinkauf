@@ -655,14 +655,6 @@ main {
   box-shadow: none;
 }
 
-.food-search-row {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(132px, 190px);
-  align-items: center;
-  gap: 10px;
-}
-
-.food-search-field,
 .meal-type-control {
   min-width: 0;
 }
@@ -1633,7 +1625,6 @@ dialog::backdrop { background: rgba(6, 31, 20, 0.52); backdrop-filter: blur(4px)
   .filter-panel { margin-top: 18px; padding: 11px; border-radius: 17px; }
   .search-field { height: 47px; }
   .search-field kbd { display: none; }
-  .food-search-row { grid-template-columns: minmax(0, 1fr) minmax(124px, 38%); gap: 8px; }
   .filter-row { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 9px; margin-top: 9px; overflow: visible; }
   .filter-row label { min-width: 0; }
   .filter-row select { width: 100%; max-width: none; }

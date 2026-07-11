@@ -2,10 +2,12 @@
   "use strict";
 
   const { foods, meals, sources } = window.APP_DATA;
-  const appVersion = "meal-type-filter-20260711-1";
+  const appVersion = "preserve-current-view-20260711-2";
   const appVersionFile = "app-version.json";
   const appRefreshParam = "appRefresh";
   const appRefreshSessionKey = "lebensmitteleinkauf:app-refresh-version:v1";
+  const currentViewStorageKey = "lebensmitteleinkauf:current-view:v1";
+  const currentViewScrollStorageKey = "lebensmitteleinkauf:current-view-scroll:v1";
   const storageKey = "lebensmitteleinkauf:selected:v1";
   const storageMetaKey = "lebensmitteleinkauf:selected:meta:v1";
   const pendingLoginKey = "lebensmitteleinkauf:onedrive-login-pending:v1";
@@ -36,17 +38,6 @@
   const validFoodIds = new Set(foods.map((food) => food.id));
   const localSnapshot = loadSelectionData();
   const foodByName = new Map(foods.map((food) => [normalizeFoodName(food.name), food]));
-  const foodMealTypes = meals.reduce((map, meal) => {
-    const mealType = normalizeMealType(meal.mealType);
-    if (!mealType) return map;
-    (meal.ingredients || []).forEach((ingredient) => {
-      const food = foodByName.get(normalizeFoodName(ingredient));
-      if (!food) return;
-      if (!map.has(food.id)) map.set(food.id, new Set());
-      map.get(food.id).add(mealType);
-    });
-    return map;
-  }, new Map());
   const mealGuideImages = {
     1: { src: "assets/meal-guide/step-1.png", alt: "Bildanleitung zu Schritt 1: Eine Mahlzeit auswählen" },
     2: { src: "assets/meal-guide/step-2.png", alt: "Bildanleitung zu Schritt 2: Text für die Rezeptsuche kopieren" },
@@ -82,7 +73,6 @@
     view: "foods",
     search: "",
     mealSearch: "",
-    foodMealType: "",
     mealType: "",
     category: "",
     score: "",
@@ -116,7 +106,6 @@
     resultCount: document.querySelector("#resultCount"),
     searchInput: document.querySelector("#searchInput"),
     mealSearchInput: document.querySelector("#mealSearchInput"),
-    foodMealTypeFilter: document.querySelector("#foodMealTypeFilter"),
     mealTypeFilter: document.querySelector("#mealTypeFilter"),
     categoryFilter: document.querySelector("#categoryFilter"),
     scoreFilter: document.querySelector("#scoreFilter"),
@@ -202,12 +191,6 @@
   function normalizeMealType(value) {
     const mealType = String(value || "").toLocaleLowerCase("de");
     return mealType === "warm" || mealType === "kalt" ? mealType : "";
-  }
-
-  function mealTypeLabel(value) {
-    if (value === "warm") return "Warme Gerichte";
-    if (value === "kalt") return "Kalte Gerichte";
-    return "";
   }
 
   function cleanSelectedIds(value) {
@@ -982,7 +965,6 @@
     return foods.filter((food) => {
       const searchable = `${food.name} ${food.category} ${food.subcategory} ${food.compounds} ${food.benefit}`.toLocaleLowerCase("de");
       return (!term || searchable.includes(term))
-        && (!state.foodMealType || foodMealTypes.get(food.id)?.has(state.foodMealType))
         && (!state.category || food.category === state.category)
         && (!state.score || food.score === Number(state.score))
         && (!state.priority || food.priority.toLocaleLowerCase("de") === state.priority);
@@ -1029,7 +1011,6 @@
   function renderActiveFilters() {
     const chips = [];
     if (state.search) chips.push(`Suche: ${state.search}`);
-    if (state.foodMealType) chips.push(mealTypeLabel(state.foodMealType));
     if (state.category) chips.push(state.category);
     if (state.score) chips.push(`Score ${state.score}`);
     if (state.priority) chips.push(`Priorität: ${state.priority}`);
@@ -1038,14 +1019,12 @@
 
   function resetFoodFilters() {
     state.search = "";
-    state.foodMealType = "";
     state.category = "";
     state.score = "";
     state.priority = "";
     state.limit = window.innerWidth < 680 ? 18 : 28;
 
     dom.searchInput.value = "";
-    dom.foodMealTypeFilter.selectedIndex = 0;
     dom.categoryFilter.selectedIndex = 0;
     dom.scoreFilter.selectedIndex = 0;
     dom.priorityFilter.selectedIndex = 0;
@@ -1247,12 +1226,63 @@
     }
   }
 
-  function setView(view) {
-    if (!document.querySelector(`[data-view-panel="${view}"]`)) view = "foods";
+  function isValidView(view) {
+    return Boolean(view && document.querySelector(`[data-view-panel="${view}"]`));
+  }
+
+  function loadSavedView() {
+    try {
+      const view = sessionStorage.getItem(currentViewStorageKey);
+      return isValidView(view) ? view : "";
+    } catch {
+      return "";
+    }
+  }
+
+  function saveCurrentView() {
+    try {
+      sessionStorage.setItem(currentViewStorageKey, state.view);
+    } catch {
+      // Session storage can be unavailable in strict privacy modes.
+    }
+  }
+
+  function saveCurrentViewPosition() {
+    saveCurrentView();
+    try {
+      sessionStorage.setItem(currentViewScrollStorageKey, JSON.stringify({
+        view: state.view,
+        scrollY: Math.max(0, Math.round(window.scrollY || 0)),
+      }));
+    } catch {
+      // Session storage can be unavailable in strict privacy modes.
+    }
+  }
+
+  function restoreSavedViewPosition(view) {
+    let scrollY = 0;
+    try {
+      const payload = JSON.parse(sessionStorage.getItem(currentViewScrollStorageKey) || "{}");
+      if (payload.view !== view || !Number.isFinite(payload.scrollY)) return;
+      scrollY = Math.max(0, Math.round(payload.scrollY));
+    } catch {
+      return;
+    }
+
+    const restore = () => window.scrollTo({ top: scrollY, left: 0, behavior: "auto" });
+    requestAnimationFrame(() => {
+      restore();
+      setTimeout(restore, 120);
+    });
+  }
+
+  function setView(view, options = {}) {
+    if (!isValidView(view)) view = "foods";
     state.view = view;
+    saveCurrentView();
     document.querySelectorAll("[data-view-panel]").forEach((panel) => panel.classList.toggle("is-active", panel.dataset.viewPanel === view));
     document.querySelectorAll("[data-view]").forEach((button) => button.classList.toggle("is-active", button.dataset.view === view));
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    if (options.scroll !== false) window.scrollTo({ top: 0, behavior: "smooth" });
   }
 
   function viewFromHash() {
@@ -1261,10 +1291,19 @@
   }
 
   function initializeViewFromUrl() {
-    if (!window.location.hash) return;
-    const view = viewFromHash();
-    clearAppUrlHash();
-    setView(view);
+    if (window.location.hash) {
+      const view = viewFromHash();
+      clearAppUrlHash();
+      setView(view, { scroll: false });
+      restoreSavedViewPosition(view);
+      return;
+    }
+
+    const savedView = loadSavedView();
+    if (savedView) {
+      setView(savedView, { scroll: false });
+      restoreSavedViewPosition(savedView);
+    }
   }
 
   function closeLegalModal() {
@@ -1393,6 +1432,14 @@
 
   function bindEvents() {
     document.addEventListener("click", (event) => {
+      const brandReload = event.target.closest("[data-brand-reload]");
+      if (brandReload) {
+        event.preventDefault();
+        saveCurrentViewPosition();
+        window.location.reload();
+        return;
+      }
+
       const viewButton = event.target.closest("[data-view]");
       if (viewButton) {
         event.preventDefault();
@@ -1435,13 +1482,14 @@
       state.mealType = dom.mealTypeFilter.value;
       renderMeals();
     });
-    [[dom.foodMealTypeFilter, "foodMealType"], [dom.categoryFilter, "category"], [dom.scoreFilter, "score"], [dom.priorityFilter, "priority"]].forEach(([element, key]) => {
+    [[dom.categoryFilter, "category"], [dom.scoreFilter, "score"], [dom.priorityFilter, "priority"]].forEach(([element, key]) => {
       element.addEventListener("change", () => {
         state[key] = element.value;
         state.limit = window.innerWidth < 680 ? 18 : 28;
         renderFoods();
       });
     });
+    window.addEventListener("beforeunload", saveCurrentViewPosition);
     dom.resetFilters.addEventListener("click", resetFoodFilters);
     dom.loadMore.addEventListener("click", () => {
       state.limit += window.innerWidth < 680 ? 18 : 28;

@@ -9,12 +9,12 @@
       content="Antientzündliche Lebensmittel entdecken, filtern und als Einkaufsliste speichern."
     />
     <title>Lebensmitteleinkauf</title>
-    <link rel="stylesheet" href="style.css?v=meal-type-filter-20260711-1" />
+    <link rel="stylesheet" href="style.css?v=preserve-current-view-20260711-2" />
   </head>
   <body>
     <div class="app-shell">
       <header class="topbar">
-        <a class="brand" href="./" data-view="foods" aria-label="Lebensmitteleinkauf – Startseite">
+        <a class="brand" href="./" data-brand-reload aria-label="Lebensmitteleinkauf neu laden">
           <span class="brand-mark" aria-hidden="true">
             <svg viewBox="0 0 40 40" role="img">
               <path d="M20 30V17" />
@@ -120,22 +120,12 @@ Nur bei zu langer Anmeldedauer auf Anmeldung erneuern klicken.</span>
               </div>
 
               <div class="filter-panel">
-                <div class="food-search-row">
-                  <label class="search-field food-search-field" for="searchInput">
-                    <span class="button-icon" data-icon="search" aria-hidden="true"></span>
-                    <span class="sr-only">Lebensmittel suchen</span>
-                    <input id="searchInput" type="search" placeholder="Lebensmittel oder Wirkstoff suchen …" autocomplete="off" />
-                    <kbd>⌘ K</kbd>
-                  </label>
-                  <label class="meal-type-control" for="foodMealTypeFilter">
-                    <span class="sr-only">Gerichtart für Lebensmittel</span>
-                    <select id="foodMealTypeFilter">
-                      <option value="">Alle Gerichte</option>
-                      <option value="warm">Warm</option>
-                      <option value="kalt">Kalt</option>
-                    </select>
-                  </label>
-                </div>
+                <label class="search-field" for="searchInput">
+                  <span class="button-icon" data-icon="search" aria-hidden="true"></span>
+                  <span class="sr-only">Lebensmittel suchen</span>
+                  <input id="searchInput" type="search" placeholder="Lebensmittel oder Wirkstoff suchen …" autocomplete="off" />
+                  <kbd>⌘ K</kbd>
+                </label>
                 <div class="filter-row">
                   <label>
                     <span>Kategorie</span>
@@ -345,6 +335,6 @@ Nur bei zu langer Anmeldedauer auf Anmeldung erneuern klicken.</span>
       document.write('<script src="data.js?v=' + Date.now() + '"><\/script>');
     </script>
     <script src="vendor/msal-browser.min.js?v=2.38.3"></script>
-    <script src="app.js?v=meal-type-filter-20260711-1"></script>
+    <script src="app.js?v=preserve-current-view-20260711-2"></script>
   </body>
 </html>
