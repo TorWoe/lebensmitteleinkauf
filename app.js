@@ -2,7 +2,7 @@
   "use strict";
 
   const { foods, meals, sources, foodNames = [] } = window.APP_DATA;
-  const appVersion = "meal-reset-link-20260711-1";
+  const appVersion = "meal-reset-align-20260711-1";
   const appVersionFile = "app-version.json";
   const appRefreshParam = "appRefresh";
   const appRefreshSessionKey = "lebensmitteleinkauf:app-refresh-version:v1";

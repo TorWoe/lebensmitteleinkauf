@@ -690,7 +690,9 @@ main {
 
 .meal-filter-row {
   display: grid;
-  grid-template-columns: minmax(0, 190px) minmax(0, 190px) auto;
+  width: fit-content;
+  max-width: 100%;
+  grid-template-columns: minmax(0, 240px) minmax(0, 240px) max-content;
   gap: 10px;
   align-items: center;
   margin-top: 10px;
@@ -698,7 +700,7 @@ main {
 
 .meal-filter-row .meal-type-control,
 .meal-filter-row .meal-category-control {
-  width: min(100%, 190px);
+  width: 100%;
 }
 
 .meal-reset-button {
@@ -1664,7 +1666,7 @@ dialog::backdrop { background: rgba(6, 31, 20, 0.52); backdrop-filter: blur(4px)
   .meal-guide-image-button { margin-left: 5px; padding: 3px 6px; }
   .meal-guide-closing { margin-top: 16px; padding-top: 14px; font-size: 14px; }
   .meal-search-field { margin-top: 24px; }
-  .meal-filter-row { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 9px; }
+  .meal-filter-row { display: grid; width: 100%; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 9px; }
   .meal-filter-row .meal-type-control,
   .meal-filter-row .meal-category-control { width: 100%; }
   .meal-reset-button { width: 100%; }
