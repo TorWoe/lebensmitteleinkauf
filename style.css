@@ -702,11 +702,7 @@ main {
 }
 
 .meal-reset-button {
-  min-height: 42px;
-  padding: 0 12px;
-  border: 1px solid #d7e5dc;
-  border-radius: 11px;
-  background: var(--forest-50);
+  width: auto;
 }
 
 .filter-row {
