@@ -5133,7 +5133,7 @@ window.APP_DATA = {
   ],
   "meals": [
     {
-      "id": 1,
+      "id": 12,
       "date": "2026-06-21",
       "mealType": "kalt",
       "ingredients": ["Skyr", "Quark", "Heidelbeeren", "Leinsamen geschrotet", "Walnüsse", "Zimt"],
@@ -5143,7 +5143,7 @@ window.APP_DATA = {
       "variants": "Joghurt/Kefir statt Skyr; Himbeeren statt Heidelbeeren"
     },
     {
-      "id": 2,
+      "id": 11,
       "date": "2026-06-21",
       "mealType": "warm",
       "ingredients": ["Hühnerei", "Spinat", "Champignons", "Rote Zwiebel", "Petersilie"],
@@ -5153,7 +5153,7 @@ window.APP_DATA = {
       "variants": "Mit Feta oder Hüttenkäse ergänzen"
     },
     {
-      "id": 3,
+      "id": 10,
       "date": "2026-06-21",
       "mealType": "warm",
       "ingredients": ["Belugalinsen", "Rucola", "Paprika rot", "Tomaten", "Petersilie", "Olivenöl extra vergine"],
@@ -5163,7 +5163,7 @@ window.APP_DATA = {
       "variants": "Belugalinsen, Kichererbsen oder Bohnen"
     },
     {
-      "id": 4,
+      "id": 9,
       "date": "2026-06-21",
       "mealType": "warm",
       "ingredients": ["Lachs", "Brokkoli", "Champignons", "Feldsalat"],
@@ -5173,7 +5173,7 @@ window.APP_DATA = {
       "variants": "Hering, Makrele, Forelle oder Garnelen"
     },
     {
-      "id": 5,
+      "id": 8,
       "date": "2026-06-21",
       "mealType": "warm",
       "ingredients": ["Kabeljau", "Garnelen", "Pak Choi", "Gelbe Zucchini", "Ingwer", "Knoblauch"],
@@ -5183,7 +5183,7 @@ window.APP_DATA = {
       "variants": "Tofu oder Tempeh vegetarisch"
     },
     {
-      "id": 6,
+      "id": 7,
       "date": "2026-06-21",
       "mealType": "kalt",
       "ingredients": ["Naturjoghurt", "Brombeeren", "Chiasamen"],
@@ -5193,7 +5193,7 @@ window.APP_DATA = {
       "variants": "Kefir oder Quark verwenden"
     },
     {
-      "id": 7,
+      "id": 6,
       "date": "2026-06-21",
       "mealType": "kalt",
       "ingredients": ["Hummus", "Paprika rot", "Radieschen", "fermentierte Gurken", "Kresse"],
@@ -5203,7 +5203,7 @@ window.APP_DATA = {
       "variants": "Edamame statt Hummus"
     },
     {
-      "id": 8,
+      "id": 5,
       "date": "2026-07-11",
       "mealType": "warm",
       "ingredients": ["Lachs", "Brokkoli", "Blumenkohl", "Belugalinsen", "Olivenöl extra vergine", "Knoblauch", "Petersilie"],
@@ -5213,7 +5213,7 @@ window.APP_DATA = {
       "variants": "Schwarze Bohnen statt Belugalinsen"
     },
     {
-      "id": 9,
+      "id": 4,
       "date": "2026-07-11",
       "mealType": "warm",
       "ingredients": ["Lachs", "Kichererbsen", "Brokkoli", "Paprika", "Knoblauch", "Olivenöl extra vergine"],
@@ -5223,7 +5223,7 @@ window.APP_DATA = {
       "variants": "Blumenkohl statt Brokkoli"
     },
     {
-      "id": 10,
+      "id": 3,
       "date": "2026-07-11",
       "mealType": "warm",
       "ingredients": ["Lachs", "Schwarze Bohnen", "Kidneybohnen", "Petersilie", "Tomaten", "Olivenöl extra vergine"],
@@ -5233,7 +5233,7 @@ window.APP_DATA = {
       "variants": "Belugalinsen statt Kidneybohnen"
     },
     {
-      "id": 11,
+      "id": 2,
       "date": "2026-07-11",
       "mealType": "warm",
       "ingredients": ["Lachs", "Belugalinsen", "Avocado", "Rucola", "Brokkoli", "Petersilie", "Walnüsse"],
@@ -5243,7 +5243,7 @@ window.APP_DATA = {
       "variants": "Feldsalat statt Rucola"
     },
     {
-      "id": 12,
+      "id": 1,
       "date": "2026-07-11",
       "mealType": "warm",
       "ingredients": ["Lachs", "Brokkoli", "Blumenkohl", "Schwarze Bohnen", "Olivenöl extra vergine", "Knoblauch", "Petersilie"],
