@@ -9,7 +9,7 @@
       content="Antientzündliche Lebensmittel entdecken, filtern und als Einkaufsliste speichern."
     />
     <title>Lebensmitteleinkauf</title>
-    <link rel="stylesheet" href="style.css?v=fixed-sync-button-20260709-1" />
+    <link rel="stylesheet" href="style.css?v=meal-type-filter-20260711-1" />
   </head>
   <body>
     <div class="app-shell">
@@ -120,12 +120,22 @@ Nur bei zu langer Anmeldedauer auf Anmeldung erneuern klicken.</span>
               </div>
 
               <div class="filter-panel">
-                <label class="search-field" for="searchInput">
-                  <span class="button-icon" data-icon="search" aria-hidden="true"></span>
-                  <span class="sr-only">Lebensmittel suchen</span>
-                  <input id="searchInput" type="search" placeholder="Lebensmittel oder Wirkstoff suchen …" autocomplete="off" />
-                  <kbd>⌘ K</kbd>
-                </label>
+                <div class="food-search-row">
+                  <label class="search-field food-search-field" for="searchInput">
+                    <span class="button-icon" data-icon="search" aria-hidden="true"></span>
+                    <span class="sr-only">Lebensmittel suchen</span>
+                    <input id="searchInput" type="search" placeholder="Lebensmittel oder Wirkstoff suchen …" autocomplete="off" />
+                    <kbd>⌘ K</kbd>
+                  </label>
+                  <label class="meal-type-control" for="foodMealTypeFilter">
+                    <span class="sr-only">Gerichtart für Lebensmittel</span>
+                    <select id="foodMealTypeFilter">
+                      <option value="">Alle Gerichte</option>
+                      <option value="warm">Warm</option>
+                      <option value="kalt">Kalt</option>
+                    </select>
+                  </label>
+                </div>
                 <div class="filter-row">
                   <label>
                     <span>Kategorie</span>
@@ -221,6 +231,16 @@ Nur bei zu langer Anmeldedauer auf Anmeldung erneuern klicken.</span>
               <input id="mealSearchInput" type="search" placeholder="Zutat oder Mahlzeit suchen …" autocomplete="off" />
               <kbd>⌘ K</kbd>
             </label>
+            <div class="meal-filter-row">
+              <label class="meal-type-control" for="mealTypeFilter">
+                <span class="sr-only">Gerichtart für Mahlzeiten</span>
+                <select id="mealTypeFilter">
+                  <option value="">Alle Gerichte</option>
+                  <option value="warm">Warm</option>
+                  <option value="kalt">Kalt</option>
+                </select>
+              </label>
+            </div>
           </div>
           <div class="meal-grid" id="mealGrid" aria-live="polite"></div>
         </section>
@@ -321,8 +341,10 @@ Nur bei zu langer Anmeldedauer auf Anmeldung erneuern klicken.</span>
       </div>
     </div>
 
-    <script src="data.js"></script>
+    <script>
+      document.write('<script src="data.js?v=' + Date.now() + '"><\/script>');
+    </script>
     <script src="vendor/msal-browser.min.js?v=2.38.3"></script>
-    <script src="app.js?v=fixed-sync-button-20260709-1"></script>
+    <script src="app.js?v=meal-type-filter-20260711-1"></script>
   </body>
 </html>
