@@ -5310,3 +5310,6 @@ window.APP_DATA = {
     }
   ]
 };
+
+window.APP_DATA.foodNames = [...new Set(window.APP_DATA.foods.map((food) => food.name).filter(Boolean))]
+  .sort((a, b) => a.localeCompare(b, "de", { sensitivity: "base" }));

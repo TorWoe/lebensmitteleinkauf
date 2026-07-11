@@ -655,6 +655,36 @@ main {
   box-shadow: none;
 }
 
+.food-search-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 10px;
+  align-items: center;
+}
+
+.food-search-field {
+  min-width: 0;
+}
+
+.all-foods-button {
+  height: 50px;
+  padding: 0 15px;
+  border: 1px solid var(--line);
+  border-radius: 11px;
+  color: #435148;
+  background: #f8faf8;
+  font-size: 13px;
+  font-weight: 750;
+  white-space: nowrap;
+}
+
+.all-foods-button:hover,
+.all-foods-button:focus-visible {
+  border-color: #a9cbb6;
+  color: var(--forest-800);
+  background: var(--forest-50);
+}
+
 .meal-type-control {
   min-width: 0;
 }
@@ -1457,6 +1487,20 @@ dialog::backdrop { background: rgba(6, 31, 20, 0.52); backdrop-filter: blur(4px)
 .detail-section .detail-note { margin: -2px 0 8px; color: var(--muted); font-size: 10px; line-height: 1.45; }
 .detail-sources { display: flex; flex-wrap: wrap; gap: 7px; }
 .detail-sources a { color: var(--blue-800); font-size: 11px; }
+.all-foods-section { padding-bottom: 0; }
+.all-foods-list {
+  columns: 2;
+  column-gap: 34px;
+  margin: 0;
+  padding-left: 18px;
+  color: #4d5b53;
+  font-size: 14px;
+  line-height: 1.8;
+}
+.all-foods-list li {
+  break-inside: avoid;
+  padding-right: 8px;
+}
 
 .confirm-dialog {
   width: min(420px, calc(100vw - 32px));
@@ -1624,6 +1668,8 @@ dialog::backdrop { background: rgba(6, 31, 20, 0.52); backdrop-filter: blur(4px)
   .section-heading h2 { font-size: 25px; }
   .filter-panel { margin-top: 18px; padding: 11px; border-radius: 17px; }
   .search-field { height: 47px; }
+  .food-search-row { gap: 9px; }
+  .all-foods-button { height: 47px; padding: 0 11px; font-size: 12px; }
   .search-field kbd { display: none; }
   .filter-row { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 9px; margin-top: 9px; overflow: visible; }
   .filter-row label { min-width: 0; }
@@ -1656,11 +1702,17 @@ dialog::backdrop { background: rgba(6, 31, 20, 0.52); backdrop-filter: blur(4px)
   .donut-layout { grid-template-columns: 1fr; justify-items: center; }
   .donut-legend { width: 100%; }
   .source-list { grid-template-columns: 1fr; }
+  .all-foods-list { columns: 1; line-height: 1.75; }
   .detail-content { padding: 28px 23px; }
   .detail-dialog.is-image-dialog { width: calc(100vw - 16px); max-height: calc(100vh - 20px); border-radius: 20px; }
   .meal-guide-image-content { padding: 10px; }
   .meal-guide-dialog-image { border-radius: 13px; }
   .detail-content h2 { font-size: 29px; }
+}
+
+@media (max-width: 420px) {
+  .food-search-row { grid-template-columns: 1fr; }
+  .all-foods-button { width: 100%; }
 }
 
 @media (prefers-reduced-motion: reduce) {

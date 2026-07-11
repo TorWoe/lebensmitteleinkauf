@@ -1,8 +1,8 @@
 (() => {
   "use strict";
 
-  const { foods, meals, sources } = window.APP_DATA;
-  const appVersion = "preserve-current-view-20260711-2";
+  const { foods, meals, sources, foodNames = [] } = window.APP_DATA;
+  const appVersion = "all-foods-list-20260711-1";
   const appVersionFile = "app-version.json";
   const appRefreshParam = "appRefresh";
   const appRefreshSessionKey = "lebensmitteleinkauf:app-refresh-version:v1";
@@ -105,6 +105,7 @@
     mealGrid: document.querySelector("#mealGrid"),
     resultCount: document.querySelector("#resultCount"),
     searchInput: document.querySelector("#searchInput"),
+    allFoodsButton: document.querySelector("#allFoodsButton"),
     mealSearchInput: document.querySelector("#mealSearchInput"),
     mealTypeFilter: document.querySelector("#mealTypeFilter"),
     categoryFilter: document.querySelector("#categoryFilter"),
@@ -1122,6 +1123,26 @@
     dom.detailDialog.showModal();
   }
 
+  function openAllFoods() {
+    const names = Array.isArray(foodNames) && foodNames.length
+      ? foodNames
+      : [...new Set(foods.map((food) => food.name).filter(Boolean))]
+        .sort((a, b) => a.localeCompare(b, "de", { sensitivity: "base" }));
+    dom.detailDialog.classList.remove("is-image-dialog");
+    dom.detailContent.innerHTML = `
+      <div class="detail-content">
+        <div class="detail-icon">${icon("leaf")}</div>
+        <p class="eyebrow">Alle Lebensmittel</p>
+        <h2>Alle Lebensmittel</h2>
+        <p class="detail-subtitle">${names.length} Lebensmittel alphabetisch sortiert.</p>
+        <section class="detail-section all-foods-section">
+          <h3>Alphabetische Liste</h3>
+          <ul class="all-foods-list">${names.map((name) => `<li>${escapeHtml(name)}</li>`).join("")}</ul>
+        </section>
+      </div>`;
+    dom.detailDialog.showModal();
+  }
+
   function openMealGuideImage(step) {
     const guideImage = mealGuideImages[step];
     if (!guideImage) return;
@@ -1474,6 +1495,7 @@
       state.limit = window.innerWidth < 680 ? 18 : 28;
       renderFoods();
     });
+    dom.allFoodsButton.addEventListener("click", openAllFoods);
     dom.mealSearchInput.addEventListener("input", () => {
       state.mealSearch = dom.mealSearchInput.value;
       renderMeals();

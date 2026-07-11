@@ -9,7 +9,7 @@
       content="Antientzündliche Lebensmittel entdecken, filtern und als Einkaufsliste speichern."
     />
     <title>Lebensmitteleinkauf</title>
-    <link rel="stylesheet" href="style.css?v=preserve-current-view-20260711-2" />
+    <link rel="stylesheet" href="style.css?v=all-foods-list-20260711-1" />
   </head>
   <body>
     <div class="app-shell">
@@ -120,12 +120,15 @@ Nur bei zu langer Anmeldedauer auf Anmeldung erneuern klicken.</span>
               </div>
 
               <div class="filter-panel">
-                <label class="search-field" for="searchInput">
-                  <span class="button-icon" data-icon="search" aria-hidden="true"></span>
-                  <span class="sr-only">Lebensmittel suchen</span>
-                  <input id="searchInput" type="search" placeholder="Lebensmittel oder Wirkstoff suchen …" autocomplete="off" />
-                  <kbd>⌘ K</kbd>
-                </label>
+                <div class="food-search-row">
+                  <label class="search-field food-search-field" for="searchInput">
+                    <span class="button-icon" data-icon="search" aria-hidden="true"></span>
+                    <span class="sr-only">Lebensmittel suchen</span>
+                    <input id="searchInput" type="search" placeholder="Lebensmittel oder Wirkstoff suchen …" autocomplete="off" />
+                    <kbd>⌘ K</kbd>
+                  </label>
+                  <button class="all-foods-button" id="allFoodsButton" type="button">Alle Lebensmittel</button>
+                </div>
                 <div class="filter-row">
                   <label>
                     <span>Kategorie</span>
@@ -335,6 +338,6 @@ Nur bei zu langer Anmeldedauer auf Anmeldung erneuern klicken.</span>
       document.write('<script src="data.js?v=' + Date.now() + '"><\/script>');
     </script>
     <script src="vendor/msal-browser.min.js?v=2.38.3"></script>
-    <script src="app.js?v=preserve-current-view-20260711-2"></script>
+    <script src="app.js?v=all-foods-list-20260711-1"></script>
   </body>
 </html>
