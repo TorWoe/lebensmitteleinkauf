@@ -5146,8 +5146,8 @@ window.APP_DATA = {
       ],
       "situation": "Skyr-Quark-Bowl mit Heidelbeeren, Walnüssen und Zimt",
       "satiety": "hoch",
-      "reason": "Eiweiß + Ballaststoffe + Polyphenole + gute Fette",
-      "variants": "Joghurt/Kefir statt Skyr; Himbeeren statt Heidelbeeren"
+      "variants": "Joghurt/Kefir statt Skyr; Himbeeren statt Heidelbeeren",
+      "reason": "Eiweiß + Ballaststoffe + Polyphenole + gute Fette"
     },
     {
       "id": 11,
@@ -5162,8 +5162,8 @@ window.APP_DATA = {
       ],
       "situation": "Omelett mit Spinat, Champignons, roter Zwiebel und Petersilie",
       "satiety": "sehr hoch",
-      "reason": "Eiweiß + Blattgemüse + Pilze + Polyphenole",
-      "variants": "Mit Feta oder Hüttenkäse ergänzen"
+      "variants": "Mit Feta oder Hüttenkäse ergänzen",
+      "reason": "Eiweiß + Blattgemüse + Pilze + Polyphenole"
     },
     {
       "id": 10,
@@ -5179,8 +5179,8 @@ window.APP_DATA = {
       ],
       "situation": "Mediterraner Belugalinsen-Rucola-Salat",
       "satiety": "sehr hoch",
-      "reason": "Hülsenfrüchte + Gemüsevolumen + Polyphenole",
-      "variants": "Belugalinsen, Kichererbsen oder Bohnen"
+      "variants": "Belugalinsen, Kichererbsen oder Bohnen",
+      "reason": "Hülsenfrüchte + Gemüsevolumen + Polyphenole"
     },
     {
       "id": 9,
@@ -5194,8 +5194,8 @@ window.APP_DATA = {
       ],
       "situation": "Lachs-Brokkoli-Salat mit Champignons und Feldsalat",
       "satiety": "sehr hoch",
-      "reason": "Omega-3 + Eiweiß + Kreuzblütler + Volumen",
-      "variants": "Hering, Makrele, Forelle oder Garnelen"
+      "variants": "Hering, Makrele, Forelle oder Garnelen",
+      "reason": "Omega-3 + Eiweiß + Kreuzblütler + Volumen"
     },
     {
       "id": 8,
@@ -5211,8 +5211,8 @@ window.APP_DATA = {
       ],
       "situation": "Kabeljau-Garnelen-Päckchen aus dem Ofen",
       "satiety": "hoch",
-      "reason": "Eiweißreich, leicht, viele sekundäre Pflanzenstoffe",
-      "variants": "Tofu oder Tempeh vegetarisch"
+      "variants": "Tofu oder Tempeh vegetarisch",
+      "reason": "Eiweißreich, leicht, viele sekundäre Pflanzenstoffe"
     },
     {
       "id": 7,
@@ -5225,8 +5225,8 @@ window.APP_DATA = {
       ],
       "situation": "Brombeer-Chia-Joghurt zum Vorbereiten",
       "satiety": "mittel bis hoch",
-      "reason": "Eiweiß + Anthocyane + Ballaststoffe",
-      "variants": "Kefir oder Quark verwenden"
+      "variants": "Kefir oder Quark verwenden",
+      "reason": "Eiweiß + Anthocyane + Ballaststoffe"
     },
     {
       "id": 6,
@@ -5241,8 +5241,8 @@ window.APP_DATA = {
       ],
       "situation": "Gefüllte Paprika mit Hummus, Radieschen, Gurke und Kresse",
       "satiety": "hoch",
-      "reason": "Hülsenfrüchte + Rohkost + Senfölglykoside",
-      "variants": "Edamame statt Hummus"
+      "variants": "Edamame statt Hummus",
+      "reason": "Hülsenfrüchte + Rohkost + Senfölglykoside"
     },
     {
       "id": 5,
@@ -5259,8 +5259,8 @@ window.APP_DATA = {
       ],
       "situation": "Ofenlachs mit Brokkoli, Blumenkohl und Belugalinsen",
       "satiety": "sehr hoch",
-      "reason": "Omega-3 + Kreuzblütler + Ballaststoffe + Polyphenole",
-      "variants": "Schwarze Bohnen statt Belugalinsen"
+      "variants": "Schwarze Bohnen statt Belugalinsen",
+      "reason": "Omega-3 + Kreuzblütler + Ballaststoffe + Polyphenole"
     },
     {
       "id": 4,
@@ -5276,8 +5276,8 @@ window.APP_DATA = {
       ],
       "situation": "Lachs mit Brokkoli, Paprika und Kichererbsen",
       "satiety": "sehr hoch",
-      "reason": "Omega-3 + Hülsenfrüchte + Ballaststoffe + Antioxidantien",
-      "variants": "Blumenkohl statt Brokkoli"
+      "variants": "Blumenkohl statt Brokkoli",
+      "reason": "Omega-3 + Hülsenfrüchte + Ballaststoffe + Antioxidantien"
     },
     {
       "id": 3,
@@ -5293,8 +5293,8 @@ window.APP_DATA = {
       ],
       "situation": "Lachs auf warmem Bohnen-Tomaten-Salat",
       "satiety": "sehr hoch",
-      "reason": "Omega-3 + Hülsenfrüchte + Polyphenole + Ballaststoffe",
-      "variants": "Belugalinsen statt Kidneybohnen"
+      "variants": "Belugalinsen statt Kidneybohnen",
+      "reason": "Omega-3 + Hülsenfrüchte + Polyphenole + Ballaststoffe"
     },
     {
       "id": 2,
@@ -5311,8 +5311,8 @@ window.APP_DATA = {
       ],
       "situation": "Lachs-Bowl mit Belugalinsen, Brokkoli und Avocado",
       "satiety": "sehr hoch",
-      "reason": "Omega-3 + Ballaststoffe + gute Fette + Antioxidantien",
-      "variants": "Feldsalat statt Rucola"
+      "variants": "Feldsalat statt Rucola",
+      "reason": "Omega-3 + Ballaststoffe + gute Fette + Antioxidantien"
     },
     {
       "id": 1,
@@ -5329,8 +5329,8 @@ window.APP_DATA = {
       ],
       "situation": "Ofenlachs mit Brokkoli, Blumenkohl und schwarzen Bohnen",
       "satiety": "sehr hoch",
-      "reason": "Omega-3 + Kreuzblütler + Hülsenfrüchte + Polyphenole",
-      "variants": "Belugalinsen statt schwarze Bohnen"
+      "variants": "Belugalinsen statt schwarze Bohnen",
+      "reason": "Omega-3 + Kreuzblütler + Hülsenfrüchte + Polyphenole"
     }
   ],
   "sources": [
@@ -5390,3 +5390,6 @@ window.APP_DATA = {
     }
   ]
 };
+
+window.APP_DATA.foodNames = [...new Set(window.APP_DATA.foods.map((food) => food.name).filter(Boolean))]
+  .sort((a, b) => a.localeCompare(b, "de", { sensitivity: "base" }));
