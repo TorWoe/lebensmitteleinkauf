@@ -5111,11 +5111,31 @@ window.APP_DATA = {
       "portion": "250 g",
       "sources": "https://lpi.oregonstate.edu/mic/dietary-factors/phytochemicals/flavonoids; https://www.health.harvard.edu/diet-and-nutrition/quick-start-guide-to-an-antiinflammation-diet"
     }
+    ,{
+      "id": 270,
+      "category": "Gemüse",
+      "subcategory": "Rotes, oranges und gelbes Gemüse",
+      "sort": 4,
+      "satiety": "mittel",
+      "score": 3,
+      "name": "Paprika",
+      "selected": false,
+      "compounds": "Carotinoide, Beta-Carotin, Vitamin C und Polyphenole",
+      "benefit": "Antioxidativ wertvoll und vielseitig einsetzbar; die verschiedenen Farben liefern unterschiedliche Pflanzenstoffe.",
+      "carbs": "niedrig bis mittel",
+      "use": "Roh im Salat, kurz gebraten, gedünstet oder im Ofen; mit Olivenöl kombinieren.",
+      "caution": "Bei empfindlichem Magen kann rohe Paprika schwerer verträglich sein; dann gegart verwenden.",
+      "priority": "hoch",
+      "nutrition": "Energie / Kalorien: ca. 29 kcal; Fett: ca. 0,3 g; davon gesättigte Fettsäuren: ca. 0,0 g; Kohlenhydrate: ca. 6,4 g; davon Zucker: ca. 4,3 g; Eiweiß / Protein: ca. 1,0 g; Salz: ca. 0,0 g; Ballaststoffe: ca. 1,9 g",
+      "portion": "150 g",
+      "sources": "https://www.health.harvard.edu/healthy-aging-and-longevity/foods-that-fight-inflammation; https://lpi.oregonstate.edu/mic/dietary-factors/phytochemicals/carotenoids; https://lpi.oregonstate.edu/mic/food-beverages/fruit-vegetables"
+    }
   ],
   "meals": [
     {
       "id": 1,
       "date": "2026-06-21",
+      "mealType": "kalt",
       "ingredients": ["Skyr", "Quark", "Heidelbeeren", "Leinsamen geschrotet", "Walnüsse", "Zimt"],
       "situation": "Skyr-Quark-Bowl mit Heidelbeeren, Walnüssen und Zimt",
       "satiety": "hoch",
@@ -5125,6 +5145,7 @@ window.APP_DATA = {
     {
       "id": 2,
       "date": "2026-06-21",
+      "mealType": "warm",
       "ingredients": ["Hühnerei", "Spinat", "Champignons", "Rote Zwiebel", "Petersilie"],
       "situation": "Omelett mit Spinat, Champignons, roter Zwiebel und Petersilie",
       "satiety": "sehr hoch",
@@ -5134,6 +5155,7 @@ window.APP_DATA = {
     {
       "id": 3,
       "date": "2026-06-21",
+      "mealType": "warm",
       "ingredients": ["Belugalinsen", "Rucola", "Paprika rot", "Tomaten", "Petersilie", "Olivenöl extra vergine"],
       "situation": "Mediterraner Belugalinsen-Rucola-Salat",
       "satiety": "sehr hoch",
@@ -5143,6 +5165,7 @@ window.APP_DATA = {
     {
       "id": 4,
       "date": "2026-06-21",
+      "mealType": "warm",
       "ingredients": ["Lachs", "Brokkoli", "Champignons", "Feldsalat"],
       "situation": "Lachs-Brokkoli-Salat mit Champignons und Feldsalat",
       "satiety": "sehr hoch",
@@ -5152,6 +5175,7 @@ window.APP_DATA = {
     {
       "id": 5,
       "date": "2026-06-21",
+      "mealType": "warm",
       "ingredients": ["Kabeljau", "Garnelen", "Pak Choi", "Gelbe Zucchini", "Ingwer", "Knoblauch"],
       "situation": "Kabeljau-Garnelen-Päckchen aus dem Ofen",
       "satiety": "hoch",
@@ -5161,6 +5185,7 @@ window.APP_DATA = {
     {
       "id": 6,
       "date": "2026-06-21",
+      "mealType": "kalt",
       "ingredients": ["Naturjoghurt", "Brombeeren", "Chiasamen"],
       "situation": "Brombeer-Chia-Joghurt zum Vorbereiten",
       "satiety": "mittel bis hoch",
@@ -5170,11 +5195,62 @@ window.APP_DATA = {
     {
       "id": 7,
       "date": "2026-06-21",
+      "mealType": "kalt",
       "ingredients": ["Hummus", "Paprika rot", "Radieschen", "fermentierte Gurken", "Kresse"],
       "situation": "Gefüllte Paprika mit Hummus, Radieschen, Gurke und Kresse",
       "satiety": "hoch",
       "reason": "Hülsenfrüchte + Rohkost + Senfölglykoside",
       "variants": "Edamame statt Hummus"
+    },
+    {
+      "id": 8,
+      "date": "2026-07-11",
+      "mealType": "warm",
+      "ingredients": ["Lachs", "Brokkoli", "Blumenkohl", "Belugalinsen", "Olivenöl extra vergine", "Knoblauch", "Petersilie"],
+      "situation": "Ofenlachs mit Brokkoli, Blumenkohl und Belugalinsen",
+      "satiety": "sehr hoch",
+      "reason": "Omega-3 + Kreuzblütler + Ballaststoffe + Polyphenole",
+      "variants": "Schwarze Bohnen statt Belugalinsen"
+    },
+    {
+      "id": 9,
+      "date": "2026-07-11",
+      "mealType": "warm",
+      "ingredients": ["Lachs", "Kichererbsen", "Brokkoli", "Paprika", "Knoblauch", "Olivenöl extra vergine"],
+      "situation": "Lachs mit Brokkoli, Paprika und Kichererbsen",
+      "satiety": "sehr hoch",
+      "reason": "Omega-3 + Hülsenfrüchte + Ballaststoffe + Antioxidantien",
+      "variants": "Blumenkohl statt Brokkoli"
+    },
+    {
+      "id": 10,
+      "date": "2026-07-11",
+      "mealType": "warm",
+      "ingredients": ["Lachs", "Schwarze Bohnen", "Kidneybohnen", "Petersilie", "Tomaten", "Olivenöl extra vergine"],
+      "situation": "Lachs auf warmem Bohnen-Tomaten-Salat",
+      "satiety": "sehr hoch",
+      "reason": "Omega-3 + Hülsenfrüchte + Polyphenole + Ballaststoffe",
+      "variants": "Belugalinsen statt Kidneybohnen"
+    },
+    {
+      "id": 11,
+      "date": "2026-07-11",
+      "mealType": "warm",
+      "ingredients": ["Lachs", "Belugalinsen", "Avocado", "Rucola", "Brokkoli", "Petersilie", "Walnüsse"],
+      "situation": "Lachs-Bowl mit Belugalinsen, Brokkoli und Avocado",
+      "satiety": "sehr hoch",
+      "reason": "Omega-3 + Ballaststoffe + gute Fette + Antioxidantien",
+      "variants": "Feldsalat statt Rucola"
+    },
+    {
+      "id": 12,
+      "date": "2026-07-11",
+      "mealType": "warm",
+      "ingredients": ["Lachs", "Brokkoli", "Blumenkohl", "Schwarze Bohnen", "Olivenöl extra vergine", "Knoblauch", "Petersilie"],
+      "situation": "Ofenlachs mit Brokkoli, Blumenkohl und schwarzen Bohnen",
+      "satiety": "sehr hoch",
+      "reason": "Omega-3 + Kreuzblütler + Hülsenfrüchte + Polyphenole",
+      "variants": "Belugalinsen statt schwarze Bohnen"
     }
   ],
   "sources": [
