@@ -685,16 +685,20 @@ main {
   background: var(--forest-50);
 }
 
-.meal-type-control {
+.meal-type-control,
+.meal-category-control {
   min-width: 0;
 }
 
 .meal-filter-row {
   display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
   margin-top: 10px;
 }
 
-.meal-filter-row .meal-type-control {
+.meal-filter-row .meal-type-control,
+.meal-filter-row .meal-category-control {
   width: min(100%, 190px);
 }
 
@@ -710,7 +714,8 @@ main {
 }
 
 .filter-row select,
-.meal-type-control select {
+.meal-type-control select,
+.meal-category-control select {
   width: 100%;
   height: 42px;
   padding: 0 34px 0 12px;
@@ -1703,7 +1708,9 @@ dialog::backdrop { background: rgba(6, 31, 20, 0.52); backdrop-filter: blur(4px)
   .meal-guide-image-button { margin-left: 5px; padding: 3px 6px; }
   .meal-guide-closing { margin-top: 16px; padding-top: 14px; font-size: 14px; }
   .meal-search-field { margin-top: 24px; }
-  .meal-filter-row .meal-type-control { width: 100%; }
+  .meal-filter-row { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 9px; }
+  .meal-filter-row .meal-type-control,
+  .meal-filter-row .meal-category-control { width: 100%; }
   .meal-grid { gap: 12px; }
   .meal-card { min-height: 0; padding: 22px; border-radius: 20px; }
   .meal-card h2 { font-size: 22px; }
@@ -1729,6 +1736,7 @@ dialog::backdrop { background: rgba(6, 31, 20, 0.52); backdrop-filter: blur(4px)
 @media (max-width: 420px) {
   .food-search-row { grid-template-columns: 1fr; }
   .all-foods-button { width: 100%; }
+  .meal-filter-row { grid-template-columns: 1fr; }
 }
 
 @media (prefers-reduced-motion: reduce) {

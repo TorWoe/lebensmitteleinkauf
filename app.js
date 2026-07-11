@@ -2,7 +2,7 @@
   "use strict";
 
   const { foods, meals, sources, foodNames = [] } = window.APP_DATA;
-  const appVersion = "all-foods-click-search-20260711-1";
+  const appVersion = "meal-category-filter-20260711-1";
   const appVersionFile = "app-version.json";
   const appRefreshParam = "appRefresh";
   const appRefreshSessionKey = "lebensmitteleinkauf:app-refresh-version:v1";
@@ -74,6 +74,7 @@
     search: "",
     mealSearch: "",
     mealType: "",
+    mealCategory: "",
     category: "",
     score: "",
     priority: "",
@@ -108,6 +109,7 @@
     allFoodsButton: document.querySelector("#allFoodsButton"),
     mealSearchInput: document.querySelector("#mealSearchInput"),
     mealTypeFilter: document.querySelector("#mealTypeFilter"),
+    mealCategoryFilter: document.querySelector("#mealCategoryFilter"),
     categoryFilter: document.querySelector("#categoryFilter"),
     scoreFilter: document.querySelector("#scoreFilter"),
     priorityFilter: document.querySelector("#priorityFilter"),
@@ -955,10 +957,9 @@
 
   function populateFilters() {
     const categories = [...new Set(foods.map((food) => food.category))];
-    dom.categoryFilter.insertAdjacentHTML(
-      "beforeend",
-      categories.map((category) => `<option value="${escapeHtml(category)}">${escapeHtml(category)}</option>`).join(""),
-    );
+    const categoryOptions = categories.map((category) => `<option value="${escapeHtml(category)}">${escapeHtml(category)}</option>`).join("");
+    dom.categoryFilter.insertAdjacentHTML("beforeend", categoryOptions);
+    dom.mealCategoryFilter.insertAdjacentHTML("beforeend", categoryOptions);
   }
 
   function filteredFoods() {
@@ -1153,6 +1154,7 @@
     state.score = "";
     state.priority = "";
     state.mealType = "";
+    state.mealCategory = "";
     state.limit = window.innerWidth < 680 ? 18 : 28;
 
     dom.searchInput.value = term;
@@ -1161,6 +1163,7 @@
     dom.scoreFilter.selectedIndex = 0;
     dom.priorityFilter.selectedIndex = 0;
     dom.mealTypeFilter.selectedIndex = 0;
+    dom.mealCategoryFilter.selectedIndex = 0;
 
     renderFoods();
     renderMeals();
@@ -1197,8 +1200,10 @@
       .filter(({ meal }) => {
         const searchable = `${meal.situation} ${meal.satiety} ${(meal.ingredients || []).join(" ")} ${meal.reason} ${meal.variants} ${formatMealDate(meal.date)}`.toLocaleLowerCase("de");
         const mealType = normalizeMealType(meal.mealType);
+        const ingredientFoods = mealIngredientFoods(meal);
         return (!term || searchable.includes(term))
-          && (!state.mealType || mealType === state.mealType);
+          && (!state.mealType || mealType === state.mealType)
+          && (!state.mealCategory || ingredientFoods.some((food) => food.category === state.mealCategory));
       });
 
     dom.mealGrid.innerHTML = visibleMeals.length ? visibleMeals.map(({ meal, index }) => {
@@ -1527,6 +1532,10 @@
     });
     dom.mealTypeFilter.addEventListener("change", () => {
       state.mealType = dom.mealTypeFilter.value;
+      renderMeals();
+    });
+    dom.mealCategoryFilter.addEventListener("change", () => {
+      state.mealCategory = dom.mealCategoryFilter.value;
       renderMeals();
     });
     [[dom.categoryFilter, "category"], [dom.scoreFilter, "score"], [dom.priorityFilter, "priority"]].forEach(([element, key]) => {
