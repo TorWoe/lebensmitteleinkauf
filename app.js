@@ -2,7 +2,7 @@
   "use strict";
 
   const { foods, meals, sources, foodNames = [] } = window.APP_DATA;
-  const appVersion = "all-foods-list-20260711-1";
+  const appVersion = "all-foods-click-search-20260711-1";
   const appVersionFile = "app-version.json";
   const appRefreshParam = "appRefresh";
   const appRefreshSessionKey = "lebensmitteleinkauf:app-refresh-version:v1";
@@ -1137,10 +1137,35 @@
         <p class="detail-subtitle">${names.length} Lebensmittel alphabetisch sortiert.</p>
         <section class="detail-section all-foods-section">
           <h3>Alphabetische Liste</h3>
-          <ul class="all-foods-list">${names.map((name) => `<li>${escapeHtml(name)}</li>`).join("")}</ul>
+          <ul class="all-foods-list">${names.map((name) => `<li><button class="all-foods-list-button" type="button" data-food-search="${escapeHtml(name)}">${escapeHtml(name)}</button></li>`).join("")}</ul>
         </section>
       </div>`;
     dom.detailDialog.showModal();
+  }
+
+  function applyFoodSearchFromList(name) {
+    const term = String(name || "").trim();
+    if (!term) return;
+
+    state.search = term;
+    state.mealSearch = term;
+    state.category = "";
+    state.score = "";
+    state.priority = "";
+    state.mealType = "";
+    state.limit = window.innerWidth < 680 ? 18 : 28;
+
+    dom.searchInput.value = term;
+    dom.mealSearchInput.value = term;
+    dom.categoryFilter.selectedIndex = 0;
+    dom.scoreFilter.selectedIndex = 0;
+    dom.priorityFilter.selectedIndex = 0;
+    dom.mealTypeFilter.selectedIndex = 0;
+
+    renderFoods();
+    renderMeals();
+    dom.detailDialog.close();
+    dom.searchInput.focus({ preventScroll: true });
   }
 
   function openMealGuideImage(step) {
@@ -1548,6 +1573,11 @@
     }));
     document.querySelector(".dialog-close").addEventListener("click", () => dom.detailDialog.close());
     dom.detailDialog.addEventListener("click", (event) => {
+      const foodSearchButton = event.target.closest("[data-food-search]");
+      if (foodSearchButton) {
+        applyFoodSearchFromList(foodSearchButton.dataset.foodSearch);
+        return;
+      }
       if (event.target === dom.detailDialog) dom.detailDialog.close();
     });
     dom.cancelConfirm.addEventListener("click", () => dom.confirmDialog.close());

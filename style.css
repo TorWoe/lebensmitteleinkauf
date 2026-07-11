@@ -1501,6 +1501,22 @@ dialog::backdrop { background: rgba(6, 31, 20, 0.52); backdrop-filter: blur(4px)
   break-inside: avoid;
   padding-right: 8px;
 }
+.all-foods-list-button {
+  width: 100%;
+  padding: 4px 0;
+  border: 0;
+  color: var(--forest-800);
+  background: transparent;
+  font: inherit;
+  font-weight: 650;
+  text-align: left;
+}
+.all-foods-list-button:hover,
+.all-foods-list-button:focus-visible {
+  color: var(--forest-950);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
 
 .confirm-dialog {
   width: min(420px, calc(100vw - 32px));
