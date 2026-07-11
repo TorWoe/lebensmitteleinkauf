@@ -2,7 +2,7 @@
   "use strict";
 
   const { foods, meals, sources, foodNames = [] } = window.APP_DATA;
-  const appVersion = "meal-data-order-20260711-1";
+  const appVersion = "meal-variants-size-20260711-1";
   const appVersionFile = "app-version.json";
   const appRefreshParam = "appRefresh";
   const appRefreshSessionKey = "lebensmitteleinkauf:app-refresh-version:v1";
@@ -1256,9 +1256,9 @@
         <p class="eyebrow">${escapeHtml(meal.satiety)} sättigend</p>
         <h2>${escapeHtml(meal.situation)}</h2>
         <p class="meal-ingredients"><strong>Zutaten:</strong> ${(meal.ingredients || []).map(escapeHtml).join(", ")}</p>
+        ${meal.variants ? `<div class="meal-variants"><span>Varianten</span><p>${escapeHtml(meal.variants)}</p></div>` : ""}
         <div class="meal-details">
           <div><span>Warum sinnvoll</span><p>${escapeHtml(meal.reason)}</p></div>
-          <div><span>Varianten</span><p>${escapeHtml(meal.variants)}</p></div>
         </div>
         <div class="meal-card-footer">
           <button class="meal-recipe-button" type="button" data-recipe-meal-id="${meal.id}" aria-label="Rezeptsuchtext für ${escapeHtml(meal.situation)} kopieren">für Rezeptsuche →</button>

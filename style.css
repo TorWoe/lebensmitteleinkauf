@@ -1248,7 +1248,10 @@ main {
 .meal-card h2 { max-width: 70%; margin: 3px 0 14px; color: var(--forest-950); font-size: 24px; letter-spacing: -0.04em; }
 .meal-ingredients { margin: 18px 0 0; color: var(--muted); font-size: 12px; line-height: 1.55; }
 .meal-ingredients strong { color: var(--forest-800); }
-.meal-details { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 24px; padding-top: 18px; border-top: 1px solid rgba(20, 92, 56, 0.12); }
+.meal-variants { margin: 10px 0 0; color: var(--muted); font-size: 12px; line-height: 1.5; }
+.meal-variants span { display: block; margin-bottom: 5px; color: var(--forest-700); font-size: 12px; font-weight: 800; letter-spacing: 0.13em; text-transform: uppercase; }
+.meal-variants p { margin: 0; }
+.meal-details { display: grid; grid-template-columns: 1fr; gap: 16px; margin-top: 24px; padding-top: 18px; border-top: 1px solid rgba(20, 92, 56, 0.12); }
 .meal-details span { display: block; margin-bottom: 5px; color: var(--forest-700); font-size: 10px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; }
 .meal-details p { margin: 0; color: var(--muted); font-size: 12px; line-height: 1.5; }
 .meal-card-footer { display: flex; align-items: center; justify-content: space-between; gap: 14px; margin-top: auto; padding-top: 18px; }
