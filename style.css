@@ -227,8 +227,6 @@ a {
 }
 
 .sync-button:disabled,
-.sync-secondary:disabled,
-.sync-logout:disabled,
 .sync-menu-primary:disabled,
 .sync-menu-logout:disabled {
   cursor: wait;
@@ -691,15 +689,24 @@ main {
 }
 
 .meal-filter-row {
-  display: flex;
+  display: grid;
+  grid-template-columns: minmax(0, 190px) minmax(0, 190px) auto;
   gap: 10px;
-  flex-wrap: wrap;
+  align-items: center;
   margin-top: 10px;
 }
 
 .meal-filter-row .meal-type-control,
 .meal-filter-row .meal-category-control {
   width: min(100%, 190px);
+}
+
+.meal-reset-button {
+  min-height: 42px;
+  padding: 0 12px;
+  border: 1px solid #d7e5dc;
+  border-radius: 11px;
+  background: var(--forest-50);
 }
 
 .filter-row {
@@ -925,7 +932,7 @@ main {
 
 .compound {
   display: -webkit-box;
-  max-width: 72%;
+  max-width: 68%;
   overflow: hidden;
   color: var(--blue-800);
   font-size: 11px;
@@ -934,7 +941,15 @@ main {
   -webkit-line-clamp: 1;
 }
 
+.food-card-actions {
+  display: grid;
+  justify-items: end;
+  flex: 0 0 auto;
+  gap: 2px;
+}
+
 .details-button,
+.food-meals-button,
 .meal-recipe-button,
 .meal-list-button {
   flex: 0 0 auto;
@@ -1003,62 +1018,6 @@ main {
 
 .shopping-summary strong { color: var(--forest-800); font-size: 17px; }
 
-.sync-panel {
-  display: grid;
-  gap: 10px;
-  margin: 0 0 14px;
-  padding: 12px;
-  border: 1px solid rgba(32, 95, 134, 0.14);
-  border-radius: 14px;
-  background: var(--blue-50);
-}
-
-.sync-panel strong,
-.sync-panel span {
-  display: block;
-}
-
-.sync-panel strong {
-  color: var(--forest-950);
-  font-size: 13px;
-}
-
-.sync-panel span {
-  margin-top: 3px;
-  color: var(--muted);
-  font-size: 12px;
-  line-height: 1.45;
-}
-
-.sync-panel[data-sync-status="synced"] {
-  border-color: rgba(44, 138, 87, 0.18);
-  background: var(--forest-50);
-}
-
-.sync-panel[data-sync-status="conflict"],
-.sync-panel[data-sync-status="error"] {
-  border-color: rgba(160, 68, 56, 0.2);
-  background: #fbefed;
-}
-
-.sync-actions {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 8px;
-}
-
-.sync-secondary,
-.sync-renew,
-.sync-logout {
-  width: 100%;
-  min-height: 36px;
-  font-size: 12px;
-}
-
-.sync-logout[hidden] {
-  display: none;
-}
-
 .shopping-items {
   min-height: 220px;
   overflow-y: auto;
@@ -1122,6 +1081,7 @@ main {
 
 .shopping-actions {
   margin-top: auto;
+  margin-bottom: 8px;
   padding-top: 18px;
   border-top: 1px solid var(--line);
 }
@@ -1298,7 +1258,7 @@ main {
 
 .metric-grid {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(5, minmax(0, 1fr));
   gap: 15px;
   margin-bottom: 18px;
 }
@@ -1625,7 +1585,7 @@ dialog::backdrop { background: rgba(6, 31, 20, 0.52); backdrop-filter: blur(4px)
     min-height: 0;
     max-height: 88vh;
     max-height: 88dvh;
-    padding: 15px 22px calc(24px + env(safe-area-inset-bottom));
+    padding: 15px 22px calc(38px + env(safe-area-inset-bottom));
     border: 0;
     border-radius: 26px 26px 0 0;
     box-shadow: var(--shadow-lg);
@@ -1711,6 +1671,7 @@ dialog::backdrop { background: rgba(6, 31, 20, 0.52); backdrop-filter: blur(4px)
   .meal-filter-row { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 9px; }
   .meal-filter-row .meal-type-control,
   .meal-filter-row .meal-category-control { width: 100%; }
+  .meal-reset-button { width: 100%; }
   .meal-grid { gap: 12px; }
   .meal-card { min-height: 0; padding: 22px; border-radius: 20px; }
   .meal-card h2 { font-size: 22px; }

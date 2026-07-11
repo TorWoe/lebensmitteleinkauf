@@ -2,7 +2,7 @@
   "use strict";
 
   const { foods, meals, sources, foodNames = [] } = window.APP_DATA;
-  const appVersion = "meal-category-filter-20260711-1";
+  const appVersion = "meal-search-actions-20260711-1";
   const appVersionFile = "app-version.json";
   const appRefreshParam = "appRefresh";
   const appRefreshSessionKey = "lebensmitteleinkauf:app-refresh-version:v1";
@@ -110,6 +110,7 @@
     mealSearchInput: document.querySelector("#mealSearchInput"),
     mealTypeFilter: document.querySelector("#mealTypeFilter"),
     mealCategoryFilter: document.querySelector("#mealCategoryFilter"),
+    resetMealFilters: document.querySelector("#resetMealFilters"),
     categoryFilter: document.querySelector("#categoryFilter"),
     scoreFilter: document.querySelector("#scoreFilter"),
     priorityFilter: document.querySelector("#priorityFilter"),
@@ -286,17 +287,19 @@
     if (!dom.syncButton) return;
     const manuallyLoggedOut = hasOneDriveManualLogout();
     dom.syncButton.dataset.syncStatus = state.sync.status;
-    dom.syncPanel.dataset.syncStatus = state.sync.status;
+    if (dom.syncPanel) dom.syncPanel.dataset.syncStatus = state.sync.status;
     if (dom.syncMenu) dom.syncMenu.dataset.syncStatus = state.sync.status;
-    dom.syncStatusTitle.textContent = state.sync.title;
-    dom.syncStatusText.textContent = state.sync.message;
+    if (dom.syncStatusTitle) dom.syncStatusTitle.textContent = state.sync.title;
+    if (dom.syncStatusText) dom.syncStatusText.textContent = state.sync.message;
     if (dom.syncMenuTitle) dom.syncMenuTitle.textContent = state.sync.title;
     if (dom.syncMenuText) dom.syncMenuText.textContent = getSyncMenuText();
     dom.syncButton.disabled = false;
-    dom.syncSecondary.disabled = state.sync.busy;
+    if (dom.syncSecondary) dom.syncSecondary.disabled = state.sync.busy;
     if (dom.syncRenew) dom.syncRenew.disabled = false;
-    dom.syncLogout.disabled = false;
-    dom.syncLogout.hidden = !state.sync.account;
+    if (dom.syncLogout) {
+      dom.syncLogout.disabled = false;
+      dom.syncLogout.hidden = !state.sync.account;
+    }
     if (dom.syncMenuPrimary) dom.syncMenuPrimary.disabled = state.sync.busy;
     if (dom.syncMenuRenew) dom.syncMenuRenew.disabled = false;
     if (dom.syncMenuLogout) {
@@ -317,7 +320,7 @@
     } else {
       actionText = state.sync.busy ? "Anmeldung ..." : "Mit OneDrive anmelden";
     }
-    dom.syncSecondary.textContent = actionText;
+    if (dom.syncSecondary) dom.syncSecondary.textContent = actionText;
     if (dom.syncMenuPrimary) dom.syncMenuPrimary.textContent = actionText;
   }
 
@@ -956,7 +959,8 @@
   }
 
   function populateFilters() {
-    const categories = [...new Set(foods.map((food) => food.category))];
+    const categories = [...new Set(foods.map((food) => food.category))]
+      .sort((a, b) => a.localeCompare(b, "de", { sensitivity: "base" }));
     const categoryOptions = categories.map((category) => `<option value="${escapeHtml(category)}">${escapeHtml(category)}</option>`).join("");
     dom.categoryFilter.insertAdjacentHTML("beforeend", categoryOptions);
     dom.mealCategoryFilter.insertAdjacentHTML("beforeend", categoryOptions);
@@ -993,7 +997,10 @@
           <p class="food-benefit">${escapeHtml(food.benefit)}</p>
           <div class="food-card-footer">
             <span class="compound">${escapeHtml(food.compounds)}</span>
-            <button class="details-button" type="button">Details →</button>
+            <div class="food-card-actions">
+              <button class="details-button" type="button">Details →</button>
+              <button class="food-meals-button" type="button" aria-label="Mahlzeiten mit ${escapeHtml(food.name)} anzeigen">Mahlzeiten →</button>
+            </div>
           </div>
         </div>
       </article>`;
@@ -1032,6 +1039,18 @@
     dom.priorityFilter.selectedIndex = 0;
 
     renderFoods();
+  }
+
+  function resetMealFilters() {
+    state.mealSearch = "";
+    state.mealType = "";
+    state.mealCategory = "";
+
+    dom.mealSearchInput.value = "";
+    dom.mealTypeFilter.selectedIndex = 0;
+    dom.mealCategoryFilter.selectedIndex = 0;
+
+    renderMeals();
   }
 
   function selectedFoods() {
@@ -1171,6 +1190,23 @@
     dom.searchInput.focus({ preventScroll: true });
   }
 
+  function applyMealSearchFromFood(name) {
+    const term = String(name || "").trim();
+    if (!term) return;
+
+    state.mealSearch = term;
+    state.mealType = "";
+    state.mealCategory = "";
+
+    dom.mealSearchInput.value = term;
+    dom.mealTypeFilter.selectedIndex = 0;
+    dom.mealCategoryFilter.selectedIndex = 0;
+
+    renderMeals();
+    setView("meals");
+    dom.mealSearchInput.focus({ preventScroll: true });
+  }
+
   function openMealGuideImage(step) {
     const guideImage = mealGuideImages[step];
     if (!guideImage) return;
@@ -1239,6 +1275,7 @@
     const topRated = scoreCounts[0].count + scoreCounts[1].count;
     const metrics = [
       [foods.length, "Lebensmittel gesamt", ""],
+      [meals.length, "Rezepte gesamt", ""],
       [topRated, "Score 4 oder 5", `${Math.round(topRated / foods.length * 100)} % der Auswahl`],
       [categoryCounts.length, "Oberkategorien", "klar gegliedert"],
       [average.toLocaleString("de-DE", { maximumFractionDigits: 1 }), "Ø Sättigungs-Score", "von maximal 5"],
@@ -1449,7 +1486,7 @@
   async function copyMealRecipeSearch(mealId) {
     const meal = meals.find((item) => item.id === mealId);
     if (!meal || !meal.ingredients?.length) return;
-    const recipeSearchText = `Suche mir Rezepte mit genau diesen Zutaten: ${meal.ingredients.join(", ")}`;
+    const recipeSearchText = `Suche mir Rezepte mit genau diesen Zutaten und füge keine weiteren Zutaten hinzu: ${meal.ingredients.join(", ")}`;
     await copyText(recipeSearchText);
     showToast("Text für die Rezeptsuche wurde kopiert.");
   }
@@ -1506,6 +1543,7 @@
       const id = Number(card.dataset.id);
       if (event.target.closest(".select-food")) toggleFood(id);
       if (event.target.closest(".details-button")) openDetails(id);
+      if (event.target.closest(".food-meals-button")) applyMealSearchFromFood(foods.find((food) => food.id === id)?.name);
     });
     dom.mealGrid.addEventListener("click", (event) => {
       const recipeButton = event.target.closest("[data-recipe-meal-id]");
@@ -1538,6 +1576,7 @@
       state.mealCategory = dom.mealCategoryFilter.value;
       renderMeals();
     });
+    dom.resetMealFilters.addEventListener("click", resetMealFilters);
     [[dom.categoryFilter, "category"], [dom.scoreFilter, "score"], [dom.priorityFilter, "priority"]].forEach(([element, key]) => {
       element.addEventListener("change", () => {
         state[key] = element.value;
@@ -1568,9 +1607,9 @@
     dom.syncMenuPrimary?.addEventListener("click", runOneDrivePrimaryAction);
     dom.syncMenuRenew?.addEventListener("click", renewOneDriveLogin);
     dom.syncMenuLogout?.addEventListener("click", logoutFromOneDrive);
-    dom.syncSecondary.addEventListener("click", runOneDrivePrimaryAction);
+    dom.syncSecondary?.addEventListener("click", runOneDrivePrimaryAction);
     dom.syncRenew?.addEventListener("click", renewOneDriveLogin);
-    dom.syncLogout.addEventListener("click", logoutFromOneDrive);
+    dom.syncLogout?.addEventListener("click", logoutFromOneDrive);
     document.addEventListener("click", closeSyncMenu);
     [dom.closeShopping, dom.scrim].forEach((element) => element.addEventListener("click", closeShopping));
     document.querySelector("#downloadList").addEventListener("click", downloadList);

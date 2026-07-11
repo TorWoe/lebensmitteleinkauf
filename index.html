@@ -9,7 +9,7 @@
       content="Antientzündliche Lebensmittel entdecken, filtern und als Einkaufsliste speichern."
     />
     <title>Lebensmitteleinkauf</title>
-    <link rel="stylesheet" href="style.css?v=meal-category-filter-20260711-1" />
+    <link rel="stylesheet" href="style.css?v=meal-search-actions-20260711-1" />
   </head>
   <body>
     <div class="app-shell">
@@ -179,17 +179,6 @@ Nur bei zu langer Anmeldedauer auf Anmeldung erneuern klicken.</span>
                 <span><strong id="shoppingCount">0</strong> ausgewählt</span>
                 <span id="categoryCount">0 Kategorien</span>
               </div>
-              <div class="sync-panel" id="syncPanel">
-                <div>
-                  <strong id="syncStatusTitle">Nicht angemeldet</strong>
-                  <span id="syncStatusText">Deine Liste wird lokal auf diesem Gerät gespeichert.</span>
-                </div>
-                <div class="sync-actions">
-                  <button class="secondary-button sync-secondary" id="syncSecondary" type="button">Mit OneDrive anmelden</button>
-                  <button class="secondary-button sync-renew" id="syncRenew" type="button">Anmeldung erneuern</button>
-                  <button class="danger-button sync-logout" id="syncLogout" type="button" hidden>Abmelden</button>
-                </div>
-              </div>
               <div class="shopping-items" id="shoppingItems"></div>
               <div class="shopping-actions" id="shoppingActions">
                 <button class="primary-button" id="downloadList" type="button">
@@ -234,11 +223,12 @@ Nur bei zu langer Anmeldedauer auf Anmeldung erneuern klicken.</span>
                 </select>
               </label>
               <label class="meal-category-control" for="mealCategoryFilter">
-                <span class="sr-only">Kategorie fÃ¼r Mahlzeiten</span>
+                <span class="sr-only">Kategorie für Mahlzeiten</span>
                 <select id="mealCategoryFilter">
                   <option value="">Alle Kategorien</option>
                 </select>
               </label>
+              <button class="reset-button meal-reset-button" id="resetMealFilters" type="button">Zurücksetzen</button>
             </div>
           </div>
           <div class="meal-grid" id="mealGrid" aria-live="polite"></div>
@@ -344,6 +334,6 @@ Nur bei zu langer Anmeldedauer auf Anmeldung erneuern klicken.</span>
       document.write('<script src="data.js?v=' + Date.now() + '"><\/script>');
     </script>
     <script src="vendor/msal-browser.min.js?v=2.38.3"></script>
-    <script src="app.js?v=meal-category-filter-20260711-1"></script>
+    <script src="app.js?v=meal-search-actions-20260711-1"></script>
   </body>
 </html>
