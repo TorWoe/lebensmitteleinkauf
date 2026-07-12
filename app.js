@@ -2,7 +2,7 @@
   "use strict";
 
   const { foods, meals, sources, foodNames = [] } = window.APP_DATA;
-  const appVersion = "meal-variants-accent-20260711-1";
+  const appVersion = "meal-numbering-20260712-1";
   const appVersionFile = "app-version.json";
   const appRefreshParam = "appRefresh";
   const appRefreshSessionKey = "lebensmitteleinkauf:app-refresh-version:v1";
@@ -1244,7 +1244,7 @@
 
     dom.mealGrid.innerHTML = visibleMeals.length ? visibleMeals.map(({ meal, index }) => {
       const mealDate = formatMealDate(meal.date);
-      const mealNumber = meals.length - index;
+      const mealNumber = index + 1;
       const ingredientFoods = mealIngredientFoods(meal);
       const allIngredientsSelected = ingredientFoods.length > 0 && ingredientFoods.every((food) => state.selected.has(food.id));
       return `
