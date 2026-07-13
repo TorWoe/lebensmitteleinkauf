@@ -2,7 +2,7 @@
   "use strict";
 
   const { foods, meals, sources, foodNames = [] } = window.APP_DATA;
-  const appVersion = "meal-numbering-20260712-1";
+  const appVersion = "meal-order-desc-20260713-1";
   const appVersionFile = "app-version.json";
   const appRefreshParam = "appRefresh";
   const appRefreshSessionKey = "lebensmitteleinkauf:app-refresh-version:v1";
@@ -1240,7 +1240,8 @@
         return (!term || searchable.includes(term))
           && (!state.mealType || mealType === state.mealType)
           && (!state.mealCategory || ingredientFoods.some((food) => food.category === state.mealCategory));
-      });
+      })
+      .reverse();
 
     dom.mealGrid.innerHTML = visibleMeals.length ? visibleMeals.map(({ meal, index }) => {
       const mealDate = formatMealDate(meal.date);
