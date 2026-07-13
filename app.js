@@ -2,7 +2,7 @@
   "use strict";
 
   const { foods, meals, sources, foodNames = [] } = window.APP_DATA;
-  const appVersion = "insights-meals-label-20260713-1";
+  const appVersion = "filter-result-count-20260713-1";
   const appVersionFile = "app-version.json";
   const appRefreshParam = "appRefresh";
   const appRefreshSessionKey = "lebensmitteleinkauf:app-refresh-version:v1";
@@ -104,7 +104,6 @@
   const dom = {
     foodGrid: document.querySelector("#foodGrid"),
     mealGrid: document.querySelector("#mealGrid"),
-    resultCount: document.querySelector("#resultCount"),
     searchInput: document.querySelector("#searchInput"),
     allFoodsButton: document.querySelector("#allFoodsButton"),
     mealSearchInput: document.querySelector("#mealSearchInput"),
@@ -116,6 +115,7 @@
     priorityFilter: document.querySelector("#priorityFilter"),
     resetFilters: document.querySelector("#resetFilters"),
     activeFilters: document.querySelector("#activeFilters"),
+    mealResultCount: document.querySelector("#mealResultCount"),
     loadMore: document.querySelector("#loadMore"),
     shoppingPanel: document.querySelector("#shoppingPanel"),
     shoppingItems: document.querySelector("#shoppingItems"),
@@ -1012,18 +1012,19 @@
     dom.foodGrid.innerHTML = visible.length
       ? visible.map(renderFoodCard).join("")
       : '<div class="empty-results"><strong>Keine Treffer.</strong><br />Versuche eine andere Suche oder setze die Filter zurück.</div>';
-    dom.resultCount.textContent = `${result.length} ${result.length === 1 ? "Eintrag" : "Einträge"}`;
     dom.loadMore.hidden = visible.length >= result.length;
-    renderActiveFilters();
+    renderActiveFilters(result.length);
   }
 
-  function renderActiveFilters() {
+  function renderActiveFilters(resultCount) {
     const chips = [];
     if (state.search) chips.push(`Suche: ${state.search}`);
     if (state.category) chips.push(state.category);
     if (state.score) chips.push(`Score ${state.score}`);
     if (state.priority) chips.push(`Priorität: ${state.priority}`);
-    dom.activeFilters.innerHTML = chips.map((chip) => `<span class="filter-chip">${escapeHtml(chip)}</span>`).join("");
+    dom.activeFilters.innerHTML = chips.length
+      ? `${chips.map((chip) => `<span class="filter-chip">${escapeHtml(chip)}</span>`).join("")}<span class="filter-result-count">${resultCount} ${resultCount === 1 ? "Eintrag" : "Einträge"}</span>`
+      : "";
   }
 
   function resetFoodFilters() {
@@ -1242,6 +1243,12 @@
           && (!state.mealCategory || ingredientFoods.some((food) => food.category === state.mealCategory));
       })
       .reverse();
+
+    const hasActiveMealFilter = Boolean(state.mealSearch || state.mealType || state.mealCategory);
+    dom.mealResultCount.hidden = !hasActiveMealFilter;
+    dom.mealResultCount.textContent = hasActiveMealFilter
+      ? `${visibleMeals.length} ${visibleMeals.length === 1 ? "Mahlzeit" : "Mahlzeiten"}`
+      : "";
 
     dom.mealGrid.innerHTML = visibleMeals.length ? visibleMeals.map(({ meal, index }) => {
       const mealDate = formatMealDate(meal.date);

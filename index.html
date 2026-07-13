@@ -9,7 +9,7 @@
       content="Antientzündliche Lebensmittel entdecken, filtern und als Einkaufsliste speichern."
     />
     <title>Lebensmitteleinkauf</title>
-    <link rel="stylesheet" href="style.css?v=insights-meals-label-20260713-1" />
+    <link rel="stylesheet" href="style.css?v=filter-result-count-20260713-1" />
   </head>
   <body>
     <div class="app-shell">
@@ -116,7 +116,6 @@ Nur bei zu langer Anmeldedauer auf Anmeldung erneuern klicken.</span>
                   <p class="eyebrow">Lebensmittel-Liste</p>
                   <h2 id="catalogTitle">Was darf mit in meinen nächsten Einkauf?</h2>
                 </div>
-                <span class="result-count" id="resultCount">269 Einträge</span>
               </div>
 
               <div class="filter-panel">
@@ -230,6 +229,7 @@ Nur bei zu langer Anmeldedauer auf Anmeldung erneuern klicken.</span>
               </label>
               <button class="reset-button meal-reset-button" id="resetMealFilters" type="button">Zurücksetzen</button>
             </div>
+            <div class="meal-result-count" id="mealResultCount" aria-live="polite" hidden></div>
           </div>
           <div class="meal-grid" id="mealGrid" aria-live="polite"></div>
         </section>
@@ -334,6 +334,6 @@ Nur bei zu langer Anmeldedauer auf Anmeldung erneuern klicken.</span>
       document.write('<script src="data.js?v=' + Date.now() + '"><\/script>');
     </script>
     <script src="vendor/msal-browser.min.js?v=2.38.3"></script>
-    <script src="app.js?v=insights-meals-label-20260713-1"></script>
+    <script src="app.js?v=filter-result-count-20260713-1"></script>
   </body>
 </html>

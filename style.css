@@ -602,12 +602,6 @@ main {
   letter-spacing: -0.04em;
 }
 
-.result-count {
-  color: var(--muted);
-  font-size: 13px;
-  font-weight: 650;
-}
-
 .filter-panel {
   margin: 24px 0 16px;
   padding: 16px;
@@ -756,6 +750,23 @@ main {
   background: var(--forest-50);
   font-size: 12px;
   font-weight: 700;
+}
+
+.filter-result-count,
+.meal-result-count {
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.filter-result-count {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 2px;
+}
+
+.meal-result-count {
+  margin-top: 14px;
 }
 
 .food-grid {
