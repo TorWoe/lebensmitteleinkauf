@@ -2,7 +2,7 @@
   "use strict";
 
   const { foods, meals, sources, foodNames = [] } = window.APP_DATA;
-  const appVersion = "meal-order-desc-20260713-1";
+  const appVersion = "insights-meals-label-20260713-1";
   const appVersionFile = "app-version.json";
   const appRefreshParam = "appRefresh";
   const appRefreshSessionKey = "lebensmitteleinkauf:app-refresh-version:v1";
@@ -1276,7 +1276,7 @@
     const topRated = scoreCounts[0].count + scoreCounts[1].count;
     const metrics = [
       [foods.length, "Lebensmittel gesamt", ""],
-      [meals.length, "Rezepte gesamt", ""],
+      [meals.length, "Mahlzeiten gesamt", ""],
       [topRated, "Score 4 oder 5", `${Math.round(topRated / foods.length * 100)} % der Auswahl`],
       [categoryCounts.length, "Oberkategorien", "klar gegliedert"],
       [average.toLocaleString("de-DE", { maximumFractionDigits: 1 }), "Ø Sättigungs-Score", "von maximal 5"],
