@@ -2,7 +2,7 @@
   "use strict";
 
   const { foods, meals, sources, foodNames = [] } = window.APP_DATA;
-  const appVersion = "meal-variation-20260714-1";
+  const appVersion = "meal-variation-default-no-20260714-1";
   const appVersionFile = "app-version.json";
   const appRefreshParam = "appRefresh";
   const appRefreshSessionKey = "lebensmitteleinkauf:app-refresh-version:v1";
@@ -1187,7 +1187,7 @@
       text: "Möchtest du die Lebensmittel für diese Aktion selbst auswählen?",
       cancel: "Nein",
       accept: "Ja",
-      tone: "primary",
+      tone: "cancel-primary",
       cancelAction: () => runMealAction(mealId, action, meal.ingredients || []),
       action: () => openMealVariation(mealId, action),
     });
@@ -1586,7 +1586,10 @@
     dom.confirmText.textContent = text;
     dom.cancelConfirm.textContent = cancel;
     dom.acceptConfirm.textContent = accept;
-    dom.acceptConfirm.className = tone === "primary" ? "primary-button" : "danger-button solid";
+    dom.cancelConfirm.className = tone === "cancel-primary" ? "primary-button" : "secondary-button";
+    dom.acceptConfirm.className = tone === "cancel-primary"
+      ? "secondary-button"
+      : tone === "primary" ? "primary-button" : "danger-button solid";
     dom.confirmDialog.showModal();
   }
 
