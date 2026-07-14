@@ -2,7 +2,7 @@
   "use strict";
 
   const { foods, meals, sources, foodNames = [] } = window.APP_DATA;
-  const appVersion = "filter-result-count-20260713-1";
+  const appVersion = "meal-variation-20260714-1";
   const appVersionFile = "app-version.json";
   const appRefreshParam = "appRefresh";
   const appRefreshSessionKey = "lebensmitteleinkauf:app-refresh-version:v1";
@@ -99,6 +99,7 @@
       conflictData: null,
     },
     confirmAction: null,
+    confirmCancelAction: null,
   };
 
   const dom = {
@@ -1103,10 +1104,24 @@
     return (meal.ingredients || []).map((ingredient) => foodByName.get(normalizeFoodName(ingredient))).filter(Boolean);
   }
 
-  function addMealIngredients(mealId) {
+  function mealVariantFoods(meal) {
+    const variantText = ` ${normalizeFoodName(meal.variants)} `;
+    const ingredientNames = new Set((meal.ingredients || []).map(normalizeFoodName));
+    return foods
+      .map((food) => ({
+        food,
+        position: variantText.indexOf(` ${normalizeFoodName(food.name)} `),
+      }))
+      .filter(({ food, position }) => position >= 0 && !ingredientNames.has(normalizeFoodName(food.name)))
+      .sort((left, right) => left.position - right.position)
+      .map(({ food }) => food);
+  }
+
+  function addMealIngredients(mealId, ingredientNames) {
     const meal = meals.find((item) => item.id === mealId);
     if (!meal) return;
-    const ingredients = mealIngredientFoods(meal);
+    const names = ingredientNames || meal.ingredients || [];
+    const ingredients = names.map((name) => foodByName.get(normalizeFoodName(name))).filter(Boolean);
     const previousSize = state.selected.size;
     ingredients.forEach((food) => state.selected.add(food.id));
     const addedCount = state.selected.size - previousSize;
@@ -1117,11 +1132,73 @@
     showToast(addedCount ? `${addedCount} Zutaten wurden auf die Liste gesetzt.` : "Alle Zutaten sind bereits auf der Liste.");
   }
 
+  function mealChoice(name, checked) {
+    return `
+      <label class="meal-choice">
+        <input type="checkbox" name="meal-food" value="${escapeHtml(name)}"${checked ? " checked" : ""} />
+        <span>${escapeHtml(name)}</span>
+      </label>`;
+  }
+
+  function openMealVariation(mealId, action) {
+    const meal = meals.find((item) => item.id === mealId);
+    if (!meal) return;
+    const ingredients = meal.ingredients || [];
+    const variants = mealVariantFoods(meal).map((food) => food.name);
+    const actionLabel = action === "recipe" ? "für Rezeptsuche →" : "Auf die Liste →";
+    dom.detailDialog.classList.remove("is-image-dialog");
+    dom.detailDialog.classList.add("is-meal-variation-dialog");
+    dom.detailContent.innerHTML = `
+      <div class="detail-content meal-variation-content">
+        <div class="detail-icon">${icon("meal")}</div>
+        <p class="eyebrow">Mahlzeit variieren</p>
+        <h2>${escapeHtml(meal.situation)}</h2>
+        <p class="detail-subtitle">Wähle die Lebensmittel aus, die berücksichtigt werden sollen.</p>
+        <form class="meal-variation-form" data-meal-variation-form data-meal-id="${meal.id}" data-meal-action="${action}">
+          <section class="detail-section meal-choice-section">
+            <h3>Zutaten</h3>
+            <div class="meal-choice-list">${ingredients.map((name) => mealChoice(name, true)).join("")}</div>
+          </section>
+          <section class="detail-section meal-choice-section">
+            <h3>Varianten</h3>
+            ${variants.length
+              ? `<div class="meal-choice-list">${variants.map((name) => mealChoice(name, false)).join("")}</div>`
+              : '<p class="meal-choice-empty">Für diese Mahlzeit sind keine konkreten Lebensmittel als Varianten hinterlegt.</p>'}
+          </section>
+          <div class="meal-variation-footer">
+            <p class="meal-selection-count" aria-live="polite">${ingredients.length} Lebensmittel ausgewählt</p>
+            <button class="primary-button meal-variation-action" type="submit">${actionLabel}</button>
+          </div>
+        </form>
+      </div>`;
+    dom.detailDialog.showModal();
+  }
+
+  function runMealAction(mealId, action, ingredientNames) {
+    if (action === "recipe") void copyMealRecipeSearch(mealId, ingredientNames);
+    else addMealIngredients(mealId, ingredientNames);
+  }
+
+  function requestMealAction(mealId, action) {
+    const meal = meals.find((item) => item.id === mealId);
+    if (!meal) return;
+    openConfirm({
+      title: "Mahlzeit variieren?",
+      text: "Möchtest du die Lebensmittel für diese Aktion selbst auswählen?",
+      cancel: "Nein",
+      accept: "Ja",
+      tone: "primary",
+      cancelAction: () => runMealAction(mealId, action, meal.ingredients || []),
+      action: () => openMealVariation(mealId, action),
+    });
+  }
+
   function openDetails(id) {
     const food = foods.find((item) => item.id === id);
     if (!food) return;
     const links = String(food.sources).split(";").map((url) => url.trim()).filter(Boolean);
     dom.detailDialog.classList.remove("is-image-dialog");
+    dom.detailDialog.classList.remove("is-meal-variation-dialog");
     dom.detailContent.innerHTML = `
       <div class="detail-content">
         <div class="detail-icon">${categoryIcon(food.category)}</div>
@@ -1150,6 +1227,7 @@
       : [...new Set(foods.map((food) => food.name).filter(Boolean))]
         .sort((a, b) => a.localeCompare(b, "de", { sensitivity: "base" }));
     dom.detailDialog.classList.remove("is-image-dialog");
+    dom.detailDialog.classList.remove("is-meal-variation-dialog");
     dom.detailContent.innerHTML = `
       <div class="detail-content">
         <div class="detail-icon">${icon("leaf")}</div>
@@ -1212,6 +1290,7 @@
     const guideImage = mealGuideImages[step];
     if (!guideImage) return;
     dom.detailDialog.classList.add("is-image-dialog");
+    dom.detailDialog.classList.remove("is-meal-variation-dialog");
     dom.detailContent.innerHTML = `
       <div class="meal-guide-image-content">
         <h2 class="sr-only">Bildanleitung zu Schritt ${step}</h2>
@@ -1491,20 +1570,23 @@
     showToast("Einkaufsliste kopiert.");
   }
 
-  async function copyMealRecipeSearch(mealId) {
+  async function copyMealRecipeSearch(mealId, ingredientNames) {
     const meal = meals.find((item) => item.id === mealId);
-    if (!meal || !meal.ingredients?.length) return;
-    const recipeSearchText = `Suche mir Rezepte mit genau diesen Zutaten und füge keine weiteren Zutaten hinzu: ${meal.ingredients.join(", ")}`;
+    const names = ingredientNames || meal?.ingredients || [];
+    if (!meal || !names.length) return;
+    const recipeSearchText = `Suche mir Rezepte mit genau diesen Zutaten und füge keine weiteren Zutaten hinzu: ${names.join(", ")}`;
     await copyText(recipeSearchText);
     showToast("Text für die Rezeptsuche wurde kopiert.");
   }
 
-  function openConfirm({ title, text, cancel = "Abbrechen", accept = "Liste leeren", action }) {
+  function openConfirm({ title, text, cancel = "Abbrechen", accept = "Liste leeren", tone = "danger", cancelAction = null, action }) {
     state.confirmAction = action;
+    state.confirmCancelAction = cancelAction;
     dom.confirmTitle.textContent = title;
     dom.confirmText.textContent = text;
     dom.cancelConfirm.textContent = cancel;
     dom.acceptConfirm.textContent = accept;
+    dom.acceptConfirm.className = tone === "primary" ? "primary-button" : "danger-button solid";
     dom.confirmDialog.showModal();
   }
 
@@ -1556,11 +1638,11 @@
     dom.mealGrid.addEventListener("click", (event) => {
       const recipeButton = event.target.closest("[data-recipe-meal-id]");
       if (recipeButton) {
-        copyMealRecipeSearch(Number(recipeButton.dataset.recipeMealId));
+        requestMealAction(Number(recipeButton.dataset.recipeMealId), "recipe");
         return;
       }
       const button = event.target.closest("[data-meal-id]");
-      if (button) addMealIngredients(Number(button.dataset.mealId));
+      if (button) requestMealAction(Number(button.dataset.mealId), "list");
     });
     dom.shoppingItems.addEventListener("click", (event) => {
       const remove = event.target.closest("[data-remove-id]");
@@ -1636,11 +1718,35 @@
       }
       if (event.target === dom.detailDialog) dom.detailDialog.close();
     });
-    dom.cancelConfirm.addEventListener("click", () => dom.confirmDialog.close());
-    dom.acceptConfirm.addEventListener("click", () => {
+    dom.detailDialog.addEventListener("change", (event) => {
+      const form = event.target.closest("[data-meal-variation-form]");
+      if (!form || !event.target.matches('input[name="meal-food"]')) return;
+      const count = form.querySelectorAll('input[name="meal-food"]:checked').length;
+      form.querySelector(".meal-selection-count").textContent = `${count} Lebensmittel ausgewählt`;
+      form.querySelector(".meal-variation-action").disabled = count === 0;
+    });
+    dom.detailDialog.addEventListener("submit", (event) => {
+      const form = event.target.closest("[data-meal-variation-form]");
+      if (!form) return;
+      event.preventDefault();
+      const names = [...form.querySelectorAll('input[name="meal-food"]:checked')].map((input) => input.value);
+      if (!names.length) return;
+      dom.detailDialog.close();
+      runMealAction(Number(form.dataset.mealId), form.dataset.mealAction, names);
+    });
+    dom.cancelConfirm.addEventListener("click", () => {
+      const cancelAction = state.confirmCancelAction;
       dom.confirmDialog.close();
-      if (state.confirmAction) state.confirmAction();
       state.confirmAction = null;
+      state.confirmCancelAction = null;
+      if (cancelAction) cancelAction();
+    });
+    dom.acceptConfirm.addEventListener("click", () => {
+      const action = state.confirmAction;
+      dom.confirmDialog.close();
+      state.confirmAction = null;
+      state.confirmCancelAction = null;
+      if (action) action();
     });
     document.querySelector("#legal-modal-close")?.addEventListener("click", closeLegalModal);
     document.querySelector("#legal-modal")?.addEventListener("click", (event) => {
