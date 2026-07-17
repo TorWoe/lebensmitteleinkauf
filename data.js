@@ -5133,7 +5133,7 @@ window.APP_DATA = {
   ],
   "meals": [
     {
-      "id": 12,
+      "id": 1,
       "date": "2026-06-21",
       "mealType": "kalt",
       "ingredients": [
@@ -5150,7 +5150,7 @@ window.APP_DATA = {
       "reason": "Eiweiß + Ballaststoffe + Polyphenole + gute Fette"
     },
     {
-      "id": 11,
+      "id": 2,
       "date": "2026-06-21",
       "mealType": "warm",
       "ingredients": [
@@ -5166,7 +5166,7 @@ window.APP_DATA = {
       "reason": "Eiweiß + Blattgemüse + Pilze + Polyphenole"
     },
     {
-      "id": 10,
+      "id": 3,
       "date": "2026-06-21",
       "mealType": "warm",
       "ingredients": [
@@ -5183,7 +5183,7 @@ window.APP_DATA = {
       "reason": "Hülsenfrüchte + Gemüsevolumen + Polyphenole"
     },
     {
-      "id": 9,
+      "id": 4,
       "date": "2026-06-21",
       "mealType": "warm",
       "ingredients": [
@@ -5198,7 +5198,7 @@ window.APP_DATA = {
       "reason": "Omega-3 + Eiweiß + Kreuzblütler + Volumen"
     },
     {
-      "id": 8,
+      "id": 5,
       "date": "2026-06-21",
       "mealType": "warm",
       "ingredients": [
@@ -5215,7 +5215,7 @@ window.APP_DATA = {
       "reason": "Eiweißreich, leicht, viele sekundäre Pflanzenstoffe"
     },
     {
-      "id": 7,
+      "id": 6,
       "date": "2026-06-21",
       "mealType": "kalt",
       "ingredients": [
@@ -5229,7 +5229,7 @@ window.APP_DATA = {
       "reason": "Eiweiß + Anthocyane + Ballaststoffe"
     },
     {
-      "id": 6,
+      "id": 7,
       "date": "2026-06-21",
       "mealType": "kalt",
       "ingredients": [
@@ -5245,7 +5245,7 @@ window.APP_DATA = {
       "reason": "Hülsenfrüchte + Rohkost + Senfölglykoside"
     },
     {
-      "id": 5,
+      "id": 8,
       "date": "2026-07-11",
       "mealType": "warm",
       "ingredients": [
@@ -5263,7 +5263,7 @@ window.APP_DATA = {
       "reason": "Omega-3 + Kreuzblütler + Ballaststoffe + Polyphenole"
     },
     {
-      "id": 4,
+      "id": 9,
       "date": "2026-07-11",
       "mealType": "warm",
       "ingredients": [
@@ -5280,7 +5280,7 @@ window.APP_DATA = {
       "reason": "Omega-3 + Hülsenfrüchte + Ballaststoffe + Antioxidantien"
     },
     {
-      "id": 3,
+      "id": 10,
       "date": "2026-07-11",
       "mealType": "warm",
       "ingredients": [
@@ -5297,7 +5297,7 @@ window.APP_DATA = {
       "reason": "Omega-3 + Hülsenfrüchte + Polyphenole + Ballaststoffe"
     },
     {
-      "id": 2,
+      "id": 11,
       "date": "2026-07-11",
       "mealType": "warm",
       "ingredients": [
@@ -5315,7 +5315,7 @@ window.APP_DATA = {
       "reason": "Omega-3 + Ballaststoffe + gute Fette + Antioxidantien"
     },
     {
-      "id": 1,
+      "id": 12,
       "date": "2026-07-11",
       "mealType": "warm",
       "ingredients": [
@@ -5481,22 +5481,6 @@ window.APP_DATA = {
     "date": "2026-07-13",
     "mealType": "warm",
     "ingredients": [
-      "Omega-3-Ei",
-      "Spinat",
-      "Champignons",
-      "Rote Zwiebel",
-      "Petersilie"
-    ],
-    "situation": "Omega-3-Ei-Omelett mit Spinat und Champignons",
-    "satiety": "hoch",
-    "variants": "Als Variante eignet sich Wachtelei",
-    "reason": "Eiweiß + Cholin + Blattgemüse + Pilze"
-  },
-  {
-    "id": 23,
-    "date": "2026-07-13",
-    "mealType": "warm",
-    "ingredients": [
       "Wachtelei",
       "Brokkoli",
       "Tomaten",
@@ -5509,7 +5493,7 @@ window.APP_DATA = {
     "reason": "Eiweiß + Gemüse + Ballaststoffe + Polyphenole"
   },
   {
-    "id": 24,
+    "id": 23,
     "date": "2026-07-13",
     "mealType": "kalt",
     "ingredients": [
@@ -5525,7 +5509,7 @@ window.APP_DATA = {
     "reason": "Eiweiß + ungesättigte Fettsäuren + Blattgemüse"
   },
   {
-    "id": 25,
+    "id": 24,
     "date": "2026-07-13",
     "mealType": "warm",
     "ingredients": [
@@ -5541,7 +5525,7 @@ window.APP_DATA = {
     "reason": "Mageres Eiweiß + Gemüse + Kreuzblütler"
   },
   {
-    "id": 26,
+    "id": 25,
     "date": "2026-07-13",
     "mealType": "warm",
     "ingredients": [
@@ -5557,7 +5541,7 @@ window.APP_DATA = {
     "reason": "Eiweiß + Gemüsevolumen + Polyphenole"
   },
   {
-    "id": 27,
+    "id": 26,
     "date": "2026-07-13",
     "mealType": "warm",
     "ingredients": [
@@ -5573,7 +5557,7 @@ window.APP_DATA = {
     "reason": "Eiweiß + Hülsenfrüchte + Blattgemüse + Ballaststoffe"
   },
   {
-    "id": 28,
+    "id": 27,
     "date": "2026-07-13",
     "mealType": "warm",
     "ingredients": [
@@ -5589,7 +5573,7 @@ window.APP_DATA = {
     "reason": "Eiweiß + Eisen + B-Vitamine + Gemüse"
   },
   {
-    "id": 29,
+    "id": 28,
     "date": "2026-07-13",
     "mealType": "warm",
     "ingredients": [
@@ -5605,7 +5589,7 @@ window.APP_DATA = {
     "reason": "Nährstoffreiches Eiweiß + Kreuzblütler + Polyphenole"
   },
   {
-    "id": 30,
+    "id": 29,
     "date": "2026-07-13",
     "mealType": "warm",
     "ingredients": [
@@ -5621,7 +5605,7 @@ window.APP_DATA = {
     "reason": "Eiweiß + Hülsenfrüchte + Blattgemüse"
   },
   {
-    "id": 31,
+    "id": 30,
     "date": "2026-07-13",
     "mealType": "warm",
     "ingredients": [
@@ -5637,7 +5621,7 @@ window.APP_DATA = {
     "reason": "Eiweiß + Eisen + Kreuzblütler + Pilze"
   },
   {
-    "id": 32,
+    "id": 31,
     "date": "2026-07-13",
     "mealType": "warm",
     "ingredients": [
@@ -5653,7 +5637,7 @@ window.APP_DATA = {
     "reason": "Eiweiß + Hülsenfrüchte + Ballaststoffe + Polyphenole"
   },
   {
-    "id": 33,
+    "id": 32,
     "date": "2026-07-13",
     "mealType": "warm",
     "ingredients": [
@@ -5669,7 +5653,7 @@ window.APP_DATA = {
     "reason": "Eiweiß + Blattgemüse + ungesättigte Fettsäuren"
   },
   {
-    "id": 34,
+    "id": 33,
     "date": "2026-07-13",
     "mealType": "warm",
     "ingredients": [
@@ -5685,7 +5669,7 @@ window.APP_DATA = {
     "reason": "Meeresgemüse + Gemüse + aromatische Pflanzenstoffe"
   },
   {
-    "id": 35,
+    "id": 34,
     "date": "2026-07-13",
     "mealType": "kalt",
     "ingredients": [
@@ -5701,7 +5685,7 @@ window.APP_DATA = {
     "reason": "Meeresgemüse + Blattgemüse + ungesättigte Fettsäuren"
   },
   {
-    "id": 36,
+    "id": 35,
     "date": "2026-07-13",
     "mealType": "warm",
     "ingredients": [
@@ -5717,7 +5701,7 @@ window.APP_DATA = {
     "reason": "Hülsenfrüchte + Kreuzblütler + Meeresgemüse"
   },
   {
-    "id": 37,
+    "id": 36,
     "date": "2026-07-13",
     "mealType": "kalt",
     "ingredients": [
@@ -5733,7 +5717,7 @@ window.APP_DATA = {
     "reason": "Fermentiertes Milchprodukt + Pflanzenpigmente + Ballaststoffe"
   },
   {
-    "id": 38,
+    "id": 37,
     "date": "2026-07-13",
     "mealType": "kalt",
     "ingredients": [
@@ -5749,7 +5733,7 @@ window.APP_DATA = {
     "reason": "Eiweiß + Beeren-Polyphenole + Omega-3-Fettsäuren"
   },
   {
-    "id": 39,
+    "id": 38,
     "date": "2026-07-13",
     "mealType": "kalt",
     "ingredients": [
@@ -5765,7 +5749,7 @@ window.APP_DATA = {
     "reason": "Eiweiß + Pflanzenpigmente + frisches Gemüse"
   },
   {
-    "id": 40,
+    "id": 39,
     "date": "2026-07-13",
     "mealType": "kalt",
     "ingredients": [
@@ -5781,7 +5765,7 @@ window.APP_DATA = {
     "reason": "Ungesättigte Fettsäuren + Blattgemüse + Polyphenole"
   },
   {
-    "id": 41,
+    "id": 40,
     "date": "2026-07-13",
     "mealType": "kalt",
     "ingredients": [
@@ -5797,7 +5781,7 @@ window.APP_DATA = {
     "reason": "Hülsenfrüchte + Gemüse + ungesättigte Fettsäuren"
   },
   {
-    "id": 42,
+    "id": 41,
     "date": "2026-07-13",
     "mealType": "warm",
     "ingredients": [
@@ -5813,7 +5797,7 @@ window.APP_DATA = {
     "reason": "Gemüsevielfalt + Kreuzblütler + ungesättigte Fettsäuren"
   },
   {
-    "id": 43,
+    "id": 42,
     "date": "2026-07-13",
     "mealType": "warm",
     "ingredients": [
@@ -5829,7 +5813,7 @@ window.APP_DATA = {
     "reason": "Pflanzliches Eiweiß + Ballaststoffe + Blattgemüse"
   },
   {
-    "id": 44,
+    "id": 43,
     "date": "2026-07-13",
     "mealType": "kalt",
     "ingredients": [
@@ -5845,7 +5829,7 @@ window.APP_DATA = {
     "reason": "Hülsenfrüchte + fermentiertes Gemüse + Polyphenole"
   },
   {
-    "id": 45,
+    "id": 44,
     "date": "2026-07-13",
     "mealType": "warm",
     "ingredients": [
@@ -5861,7 +5845,7 @@ window.APP_DATA = {
     "reason": "Ballaststoffe + Kreuzblütler + ungesättigte Fettsäuren"
   },
   {
-    "id": 46,
+    "id": 45,
     "date": "2026-07-13",
     "mealType": "kalt",
     "ingredients": [
@@ -5877,7 +5861,7 @@ window.APP_DATA = {
     "reason": "Fermentierte Komponente + Hülsenfrüchte + Blattgemüse"
   },
   {
-    "id": 47,
+    "id": 46,
     "date": "2026-07-13",
     "mealType": "warm",
     "ingredients": [
@@ -5893,7 +5877,7 @@ window.APP_DATA = {
     "reason": "Fermentierte Aromen + Gemüse + Gewürzpflanzen"
   },
   {
-    "id": 48,
+    "id": 47,
     "date": "2026-07-13",
     "mealType": "kalt",
     "ingredients": [
@@ -5909,7 +5893,7 @@ window.APP_DATA = {
     "reason": "Hülsenfrüchte + fermentierte Komponente + Polyphenole"
   },
   {
-    "id": 49,
+    "id": 48,
     "date": "2026-07-13",
     "mealType": "warm",
     "ingredients": [
@@ -5925,7 +5909,7 @@ window.APP_DATA = {
     "reason": "Hülsenfrüchte + Kreuzblütler + aromatische Pflanzenstoffe"
   },
   {
-    "id": 50,
+    "id": 49,
     "date": "2026-07-13",
     "mealType": "warm",
     "ingredients": [
@@ -5941,7 +5925,7 @@ window.APP_DATA = {
     "reason": "Pflanzliches Eiweiß + Gemüse + Gewürz-Polyphenole"
   },
   {
-    "id": 51,
+    "id": 50,
     "date": "2026-07-13",
     "mealType": "warm",
     "ingredients": [
@@ -5957,7 +5941,7 @@ window.APP_DATA = {
     "reason": "Kreuzblütler + aromatische Pflanzenstoffe + Gemüse"
   },
   {
-    "id": 52,
+    "id": 51,
     "date": "2026-07-13",
     "mealType": "kalt",
     "ingredients": [
@@ -5973,7 +5957,7 @@ window.APP_DATA = {
     "reason": "Blattgemüse + ungesättigte Fettsäuren + Polyphenole"
   },
   {
-    "id": 53,
+    "id": 52,
     "date": "2026-07-13",
     "mealType": "warm",
     "ingredients": [
@@ -5989,7 +5973,7 @@ window.APP_DATA = {
     "reason": "Blattgemüse + Eiweiß + Pilze"
   },
   {
-    "id": 54,
+    "id": 53,
     "date": "2026-07-13",
     "mealType": "warm",
     "ingredients": [
@@ -6005,7 +5989,7 @@ window.APP_DATA = {
     "reason": "Blattgemüse + Hülsenfrüchte + Kreuzblütler"
   },
   {
-    "id": 55,
+    "id": 54,
     "date": "2026-07-13",
     "mealType": "warm",
     "ingredients": [
@@ -6021,7 +6005,7 @@ window.APP_DATA = {
     "reason": "Pflanzliches Eiweiß + Ballaststoffe + Blattgemüse"
   },
   {
-    "id": 56,
+    "id": 55,
     "date": "2026-07-13",
     "mealType": "warm",
     "ingredients": [
@@ -6037,7 +6021,7 @@ window.APP_DATA = {
     "reason": "Hülsenfrüchte + Gemüse + fermentiertes Milchprodukt"
   },
   {
-    "id": 57,
+    "id": 56,
     "date": "2026-07-13",
     "mealType": "kalt",
     "ingredients": [
@@ -6053,7 +6037,7 @@ window.APP_DATA = {
     "reason": "Pflanzliches Eiweiß + Gemüse + ungesättigte Fettsäuren"
   },
   {
-    "id": 58,
+    "id": 57,
     "date": "2026-07-13",
     "mealType": "warm",
     "ingredients": [
@@ -6069,7 +6053,7 @@ window.APP_DATA = {
     "reason": "Pflanzliches Eiweiß + Ei + Blattgemüse"
   },
   {
-    "id": 59,
+    "id": 58,
     "date": "2026-07-13",
     "mealType": "warm",
     "ingredients": [
@@ -6085,7 +6069,7 @@ window.APP_DATA = {
     "reason": "Eiweiß + Kreuzblütler + sättigende Teigbasis"
   },
   {
-    "id": 60,
+    "id": 59,
     "date": "2026-07-13",
     "mealType": "warm",
     "ingredients": [
@@ -6101,7 +6085,7 @@ window.APP_DATA = {
     "reason": "Pflanzliches Eiweiß + Hülsenfrüchte + Gemüse"
   },
   {
-    "id": 61,
+    "id": 60,
     "date": "2026-07-13",
     "mealType": "warm",
     "ingredients": [
@@ -6117,7 +6101,7 @@ window.APP_DATA = {
     "reason": "Kreuzblütler + Ballaststoffe + Polyphenole"
   },
   {
-    "id": 62,
+    "id": 61,
     "date": "2026-07-13",
     "mealType": "warm",
     "ingredients": [
@@ -6133,7 +6117,7 @@ window.APP_DATA = {
     "reason": "Kreuzblütler + Hülsenfrüchte + Ballaststoffe"
   },
   {
-    "id": 63,
+    "id": 62,
     "date": "2026-07-13",
     "mealType": "warm",
     "ingredients": [
@@ -6149,7 +6133,7 @@ window.APP_DATA = {
     "reason": "Kreuzblütler + Eiweiß + Pilze"
   },
   {
-    "id": 64,
+    "id": 63,
     "date": "2026-07-13",
     "mealType": "kalt",
     "ingredients": [
@@ -6165,23 +6149,7 @@ window.APP_DATA = {
     "reason": "Hülsenfrüchte + Blattgemüse + Kräuter-Polyphenole"
   },
   {
-    "id": 65,
-    "date": "2026-07-13",
-    "mealType": "warm",
-    "ingredients": [
-      "Dill",
-      "Hühnerei",
-      "Spinat",
-      "Champignons",
-      "Rote Zwiebel"
-    ],
-    "situation": "Omelett mit Dill, Spinat und Champignons",
-    "satiety": "hoch",
-    "variants": "Weitere passende Varianten: Basilikum, Estragon, Koriandergrün, Lorbeer, Majoran, Minze, Oregano, Rosmarin, Salbei oder Thymian",
-    "reason": "Eiweiß + Blattgemüse + aromatische Kräuter"
-  },
-  {
-    "id": 66,
+    "id": 64,
     "date": "2026-07-13",
     "mealType": "warm",
     "ingredients": [
@@ -6197,7 +6165,7 @@ window.APP_DATA = {
     "reason": "Kreuzblütler + Kräuter + Tomaten-Polyphenole"
   },
   {
-    "id": 67,
+    "id": 65,
     "date": "2026-07-13",
     "mealType": "warm",
     "ingredients": [
@@ -6213,7 +6181,7 @@ window.APP_DATA = {
     "reason": "Pflanzliches Eiweiß + Ballaststoffe + Blattgemüse"
   },
   {
-    "id": 68,
+    "id": 66,
     "date": "2026-07-13",
     "mealType": "kalt",
     "ingredients": [
@@ -6229,7 +6197,7 @@ window.APP_DATA = {
     "reason": "Hülsenfrüchte + Gemüse + Polyphenole"
   },
   {
-    "id": 69,
+    "id": 67,
     "date": "2026-07-13",
     "mealType": "warm",
     "ingredients": [
@@ -6245,7 +6213,7 @@ window.APP_DATA = {
     "reason": "Hülsenfrüchte + Kreuzblütler + ungesättigte Fettsäuren"
   },
   {
-    "id": 70,
+    "id": 68,
     "date": "2026-07-13",
     "mealType": "kalt",
     "ingredients": [
@@ -6261,7 +6229,7 @@ window.APP_DATA = {
     "reason": "Eiweiß + Nüsse + Beeren-Polyphenole + Omega-3-Fettsäuren"
   },
   {
-    "id": 71,
+    "id": 69,
     "date": "2026-07-13",
     "mealType": "kalt",
     "ingredients": [
@@ -6277,7 +6245,7 @@ window.APP_DATA = {
     "reason": "Nüsse + Blattgemüse + ungesättigte Fettsäuren"
   },
   {
-    "id": 72,
+    "id": 70,
     "date": "2026-07-13",
     "mealType": "warm",
     "ingredients": [
@@ -6293,7 +6261,7 @@ window.APP_DATA = {
     "reason": "Nüsse + Hülsenfrüchte + Kreuzblütler"
   },
   {
-    "id": 73,
+    "id": 71,
     "date": "2026-07-13",
     "mealType": "warm",
     "ingredients": [
@@ -6309,7 +6277,7 @@ window.APP_DATA = {
     "reason": "Pilze + Blattgemüse + aromatische Pflanzenstoffe"
   },
   {
-    "id": 74,
+    "id": 72,
     "date": "2026-07-13",
     "mealType": "warm",
     "ingredients": [
@@ -6325,7 +6293,7 @@ window.APP_DATA = {
     "reason": "Pilze + Hülsenfrüchte + Kreuzblütler"
   },
   {
-    "id": 75,
+    "id": 73,
     "date": "2026-07-13",
     "mealType": "warm",
     "ingredients": [
@@ -6341,7 +6309,7 @@ window.APP_DATA = {
     "reason": "Pilze + Hülsenfrüchte + Blattgemüse"
   },
   {
-    "id": 76,
+    "id": 74,
     "date": "2026-07-13",
     "mealType": "warm",
     "ingredients": [
@@ -6355,7 +6323,7 @@ window.APP_DATA = {
     "reason": "Warmer Aufguss + aromatische Pflanzenstoffe"
   },
   {
-    "id": 77,
+    "id": 75,
     "date": "2026-07-13",
     "mealType": "warm",
     "ingredients": [
@@ -6369,7 +6337,7 @@ window.APP_DATA = {
     "reason": "Kakao-Polyphenole + aromatischer Pilzaufguss"
   },
   {
-    "id": 78,
+    "id": 76,
     "date": "2026-07-13",
     "mealType": "warm",
     "ingredients": [
@@ -6385,7 +6353,7 @@ window.APP_DATA = {
     "reason": "Warme Gemüsebrühe + Gewürzpflanzen"
   },
   {
-    "id": 79,
+    "id": 77,
     "date": "2026-07-13",
     "mealType": "warm",
     "ingredients": [
@@ -6401,7 +6369,7 @@ window.APP_DATA = {
     "reason": "Farbiges Gemüse + Hülsenfrüchte + Kreuzblütler"
   },
   {
-    "id": 80,
+    "id": 78,
     "date": "2026-07-13",
     "mealType": "warm",
     "ingredients": [
@@ -6417,7 +6385,7 @@ window.APP_DATA = {
     "reason": "Carotinoide + Blattgemüse + Polyphenole"
   },
   {
-    "id": 81,
+    "id": 79,
     "date": "2026-07-13",
     "mealType": "warm",
     "ingredients": [
@@ -6433,7 +6401,7 @@ window.APP_DATA = {
     "reason": "Farbiges Gemüse + Hülsenfrüchte + Blattgemüse"
   },
   {
-    "id": 82,
+    "id": 80,
     "date": "2026-07-13",
     "mealType": "warm",
     "ingredients": [
@@ -6449,7 +6417,7 @@ window.APP_DATA = {
     "reason": "Pflanzliches Eiweiß + Kreuzblütler + ungesättigte Fettsäuren"
   },
   {
-    "id": 83,
+    "id": 81,
     "date": "2026-07-13",
     "mealType": "warm",
     "ingredients": [
@@ -6465,7 +6433,7 @@ window.APP_DATA = {
     "reason": "Pflanzliches Eiweiß + Gemüse + Gewürzpflanzen"
   },
   {
-    "id": 84,
+    "id": 82,
     "date": "2026-07-13",
     "mealType": "kalt",
     "ingredients": [
@@ -6481,7 +6449,7 @@ window.APP_DATA = {
     "reason": "Pflanzliches Eiweiß + Blattgemüse + fermentiertes Gemüse"
   },
   {
-    "id": 85,
+    "id": 83,
     "date": "2026-07-13",
     "mealType": "kalt",
     "ingredients": [
@@ -6497,7 +6465,7 @@ window.APP_DATA = {
     "reason": "Fermentiertes Soja + Blattgemüse + ungesättigte Fettsäuren"
   },
   {
-    "id": 86,
+    "id": 84,
     "date": "2026-07-13",
     "mealType": "kalt",
     "ingredients": [
@@ -6513,7 +6481,7 @@ window.APP_DATA = {
     "reason": "Fermentiertes Soja + Eiweiß + Blattgemüse"
   },
   {
-    "id": 87,
+    "id": 85,
     "date": "2026-07-13",
     "mealType": "kalt",
     "ingredients": [
@@ -6529,7 +6497,7 @@ window.APP_DATA = {
     "reason": "Fermentiertes Soja + Hülsenfrüchte + fermentiertes Gemüse"
   },
   {
-    "id": 88,
+    "id": 86,
     "date": "2026-07-13",
     "mealType": "kalt",
     "ingredients": [
@@ -6545,7 +6513,7 @@ window.APP_DATA = {
     "reason": "Eiweiß + Beeren + Nüsse + ungesüßtes Getränk"
   },
   {
-    "id": 89,
+    "id": 87,
     "date": "2026-07-13",
     "mealType": "kalt",
     "ingredients": [
@@ -6561,23 +6529,7 @@ window.APP_DATA = {
     "reason": "Eiweiß + Ballaststoffe + Beeren-Polyphenole"
   },
   {
-    "id": 90,
-    "date": "2026-07-13",
-    "mealType": "warm",
-    "ingredients": [
-      "Rooibos",
-      "Hühnerei",
-      "Spinat",
-      "Champignons",
-      "Petersilie"
-    ],
-    "situation": "Omelett mit Spinat und Rooibos als Getränk",
-    "satiety": "hoch",
-    "variants": "Weitere passende Varianten: Espresso, Grüner Tee, Hagebuttentee, Hibiskustee, Kaffee, Matcha, Mate, Oolong Tee, Schwarzer Tee oder Weißer Tee",
-    "reason": "Eiweiß + Blattgemüse + ungesüßtes Getränk"
-  },
-  {
-    "id": 91,
+    "id": 88,
     "date": "2026-07-13",
     "mealType": "warm",
     "ingredients": [
@@ -6593,23 +6545,7 @@ window.APP_DATA = {
     "reason": "Schwefelverbindungen + Kreuzblütler + Polyphenole"
   },
   {
-    "id": 92,
-    "date": "2026-07-13",
-    "mealType": "warm",
-    "ingredients": [
-      "Schalotte",
-      "Hühnerei",
-      "Spinat",
-      "Champignons",
-      "Petersilie"
-    ],
-    "situation": "Omelett mit Schalotte, Spinat und Champignons",
-    "satiety": "hoch",
-    "variants": "Weitere passende Varianten: Bärlauch, Frühlingszwiebel, Gelbe Zwiebel, Lauch oder Schnittlauch",
-    "reason": "Eiweiß + Zwiebelgewächse + Blattgemüse"
-  },
-  {
-    "id": 93,
+    "id": 89,
     "date": "2026-07-13",
     "mealType": "kalt",
     "ingredients": [
@@ -6625,7 +6561,7 @@ window.APP_DATA = {
     "reason": "Hülsenfrüchte + Zwiebelgewächse + Blattgemüse"
   },
   {
-    "id": 94,
+    "id": 90,
     "date": "2026-07-13",
     "mealType": "kalt",
     "ingredients": [
@@ -6641,7 +6577,7 @@ window.APP_DATA = {
     "reason": "Eiweiß + Calcium + Beeren-Polyphenole + Omega-3-Fettsäuren"
   },
   {
-    "id": 95,
+    "id": 91,
     "date": "2026-07-13",
     "mealType": "kalt",
     "ingredients": [
@@ -6657,7 +6593,7 @@ window.APP_DATA = {
     "reason": "Eiweiß + fermentiertes Milchprodukt + frisches Gemüse"
   },
   {
-    "id": 96,
+    "id": 92,
     "date": "2026-07-13",
     "mealType": "kalt",
     "ingredients": [
@@ -6673,7 +6609,7 @@ window.APP_DATA = {
     "reason": "Eiweiß + Blattgemüse + Nüsse + Polyphenole"
   },
   {
-    "id": 97,
+    "id": 93,
     "date": "2026-07-13",
     "mealType": "kalt",
     "ingredients": [
@@ -6689,7 +6625,7 @@ window.APP_DATA = {
     "reason": "Eiweiß + Calcium + Blattgemüse + ungesättigte Fettsäuren"
   },
   {
-    "id": 98,
+    "id": 94,
     "date": "2026-07-13",
     "mealType": "warm",
     "ingredients": [
@@ -6705,7 +6641,7 @@ window.APP_DATA = {
     "reason": "Eiweiß + Calcium + Blattgemüse + Pilze"
   },
   {
-    "id": 99,
+    "id": 95,
     "date": "2026-07-13",
     "mealType": "warm",
     "ingredients": [
@@ -6721,7 +6657,7 @@ window.APP_DATA = {
     "reason": "Käse-Eiweiß + Kreuzblütler + Tomaten-Polyphenole"
   },
   {
-    "id": 100,
+    "id": 96,
     "date": "2026-07-13",
     "mealType": "warm",
     "ingredients": [
@@ -6736,7 +6672,7 @@ window.APP_DATA = {
     "reason": "Beeren-Polyphenole + fermentiertes Milchprodukt + Ballaststoffe"
   },
   {
-    "id": 101,
+    "id": 97,
     "date": "2026-07-13",
     "mealType": "warm",
     "ingredients": [
@@ -6752,7 +6688,7 @@ window.APP_DATA = {
     "reason": "Beeren + Vollkorn + Nüsse + Ballaststoffe"
   },
   {
-    "id": 102,
+    "id": 98,
     "date": "2026-07-13",
     "mealType": "kalt",
     "ingredients": [
@@ -6767,7 +6703,7 @@ window.APP_DATA = {
     "reason": "Eiweiß + Beeren-Polyphenole + Omega-3-Fettsäuren"
   },
   {
-    "id": 103,
+    "id": 99,
     "date": "2026-07-13",
     "mealType": "warm",
     "ingredients": [
@@ -6782,7 +6718,7 @@ window.APP_DATA = {
     "reason": "Obst-Ballaststoffe + fermentiertes Milchprodukt + Nüsse"
   },
   {
-    "id": 104,
+    "id": 100,
     "date": "2026-07-13",
     "mealType": "warm",
     "ingredients": [
@@ -6797,7 +6733,7 @@ window.APP_DATA = {
     "reason": "Eiweiß + Kernobst + Nüsse + Ballaststoffe"
   },
   {
-    "id": 105,
+    "id": 101,
     "date": "2026-07-13",
     "mealType": "warm",
     "ingredients": [
@@ -6813,7 +6749,7 @@ window.APP_DATA = {
     "reason": "Vollkorn + Eiweiß + Obst-Ballaststoffe"
   },
   {
-    "id": 106,
+    "id": 102,
     "date": "2026-07-13",
     "mealType": "kalt",
     "ingredients": [
@@ -6829,7 +6765,7 @@ window.APP_DATA = {
     "reason": "Eiweiß + Steinobst + Ballaststoffe + Nüsse"
   },
   {
-    "id": 107,
+    "id": 103,
     "date": "2026-07-13",
     "mealType": "warm",
     "ingredients": [
@@ -6845,7 +6781,7 @@ window.APP_DATA = {
     "reason": "Vollkorn + Steinobst + Nüsse + fermentiertes Milchprodukt"
   },
   {
-    "id": 108,
+    "id": 104,
     "date": "2026-07-13",
     "mealType": "kalt",
     "ingredients": [
@@ -6861,7 +6797,7 @@ window.APP_DATA = {
     "reason": "Fermentiertes Milchprodukt + Obst + Omega-3-Fettsäuren"
   },
   {
-    "id": 109,
+    "id": 105,
     "date": "2026-07-13",
     "mealType": "kalt",
     "ingredients": [
@@ -6877,7 +6813,7 @@ window.APP_DATA = {
     "reason": "Eiweiß + Obst + Ballaststoffe + Nüsse"
   },
   {
-    "id": 110,
+    "id": 106,
     "date": "2026-07-13",
     "mealType": "kalt",
     "ingredients": [
@@ -6893,7 +6829,7 @@ window.APP_DATA = {
     "reason": "Obst-Polyphenole + Blattgemüse + ungesättigte Fettsäuren"
   },
   {
-    "id": 111,
+    "id": 107,
     "date": "2026-07-13",
     "mealType": "kalt",
     "ingredients": [
@@ -6908,7 +6844,7 @@ window.APP_DATA = {
     "reason": "Fermentiertes Milchprodukt + Obst + Omega-3-Fettsäuren"
   },
   {
-    "id": 112,
+    "id": 108,
     "date": "2026-07-13",
     "mealType": "kalt",
     "ingredients": [
@@ -6924,7 +6860,7 @@ window.APP_DATA = {
     "reason": "Vitamin-C-reiches Obst + Eiweiß + Ballaststoffe"
   },
   {
-    "id": 113,
+    "id": 109,
     "date": "2026-07-13",
     "mealType": "kalt",
     "ingredients": [
@@ -6940,7 +6876,7 @@ window.APP_DATA = {
     "reason": "Zitrus-Polyphenole + Blattgemüse + ungesättigte Fettsäuren"
   },
   {
-    "id": 114,
+    "id": 110,
     "date": "2026-07-13",
     "mealType": "warm",
     "ingredients": [
