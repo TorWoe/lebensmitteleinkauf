@@ -970,6 +970,25 @@ window.APP_DATA = {
       "sources": "https://www.health.harvard.edu/healthy-aging-and-longevity/foods-that-fight-inflammation; https://lpi.oregonstate.edu/mic/dietary-factors/phytochemicals/carotenoids; https://lpi.oregonstate.edu/mic/food-beverages/fruit-vegetables"
     },
     {
+      "id": 271,
+      "category": "Gemüse, Pilze, Hülsenfrüchte & Nüsse",
+      "subcategory": "Wurzel-, Knollen- & Stängelgemüse",
+      "sort": 4,
+      "satiety": "mittel",
+      "score": 3,
+      "name": "Fenchelknolle",
+      "selected": false,
+      "compounds": "Ballaststoffe, Vitamin C, Kalium, Folat und verschiedene Polyphenole.",
+      "benefit": "Kalorienarmes, aromatisches Gemüse, das durch Volumen und Ballaststoffe zu einer sättigenden Mahlzeit beitragen kann.",
+      "carbs": "niedrig",
+      "use": "Gut gewaschen roh in Salaten oder gegart in Suppen, Gemüsepfannen und Ofengerichten verwenden.",
+      "caution": "Bei empfindlicher Verdauung zunächst gegart und in kleineren Portionen verwenden; bei bekannter Fenchel- oder Gewürzallergie meiden.",
+      "priority": "hoch",
+      "nutrition": "Energie / Kalorien: ca. 31 kcal; Fett: ca. 0,2 g; davon gesättigte Fettsäuren: ca. 0,1 g; Kohlenhydrate: ca. 7,3 g; davon Zucker: ca. 3,9 g; Eiweiß / Protein: ca. 1,2 g; Salz: ca. 0,1 g; Ballaststoffe: ca. 3,1 g",
+      "portion": "150 g",
+      "sources": "https://fdc.nal.usda.gov/; https://www.health.harvard.edu/diet-and-nutrition/quick-start-guide-to-an-antiinflammation-diet; https://lpi.oregonstate.edu/mic/food-beverages/fruit-vegetables"
+    },
+    {
       "id": 244,
       "category": "Getreide & Samen",
       "subcategory": "Gewürze",
@@ -3402,6 +3421,25 @@ window.APP_DATA = {
       "sources": "https://lpi.oregonstate.edu/mic/dietary-factors/phytochemicals/flavonoids; https://lpi.oregonstate.edu/mic/dietary-factors/phytochemicals/carotenoids; https://lpi.oregonstate.edu/mic/food-beverages/fruit-vegetables"
     },
     {
+      "id": 272,
+      "category": "Gemüse, Pilze, Hülsenfrüchte & Nüsse",
+      "subcategory": "Wurzel-, Knollen- & Stängelgemüse",
+      "sort": 4,
+      "satiety": "mittel",
+      "score": 3,
+      "name": "Pastinake",
+      "selected": false,
+      "compounds": "Ballaststoffe, Folat, Vitamin C, Kalium und verschiedene Polyphenole.",
+      "benefit": "Ballaststoffreiches Wurzelgemüse, das Suppen und Ofengerichten eine natürliche Süße und gute Sättigung verleiht.",
+      "carbs": "mittel",
+      "use": "Geschält oder gründlich gebürstet in Suppen, Eintöpfen, Pürees und Ofengerichten verwenden.",
+      "caution": "Enthält mehr Kohlenhydrate als viele Blatt- und Kohlgemüse; Portionsgröße an den persönlichen Bedarf anpassen.",
+      "priority": "hoch",
+      "nutrition": "Energie / Kalorien: ca. 75 kcal; Fett: ca. 0,3 g; davon gesättigte Fettsäuren: ca. 0,1 g; Kohlenhydrate: ca. 18,0 g; davon Zucker: ca. 4,8 g; Eiweiß / Protein: ca. 1,2 g; Salz: ca. 0,0 g; Ballaststoffe: ca. 4,9 g",
+      "portion": "150 g",
+      "sources": "https://fdc.nal.usda.gov/; https://www.health.harvard.edu/diet-and-nutrition/quick-start-guide-to-an-antiinflammation-diet; https://lpi.oregonstate.edu/mic/food-beverages/fruit-vegetables"
+    },
+    {
       "id": 201,
       "category": "Gemüse, Pilze, Hülsenfrüchte & Nüsse",
       "subcategory": "Nüsse",
@@ -4542,6 +4580,25 @@ window.APP_DATA = {
       "sources": "https://lpi.oregonstate.edu/mic/dietary-factors/phytochemicals/carotenoids; https://www.health.harvard.edu/diet-and-nutrition/quick-start-guide-to-an-antiinflammation-diet"
     },
     {
+      "id": 273,
+      "category": "Gemüse, Pilze, Hülsenfrüchte & Nüsse",
+      "subcategory": "Wurzel-, Knollen- & Stängelgemüse",
+      "sort": 4,
+      "satiety": "niedrig bis mittel",
+      "score": 2,
+      "name": "Staudensellerie",
+      "selected": false,
+      "compounds": "Ballaststoffe, Vitamin K, Folat, Kalium und Flavonoide wie Apigenin und Luteolin.",
+      "benefit": "Sehr kalorienarmes und wasserreiches Gemüse, das Suppen, Salaten und Gemüsegerichten Aroma und Volumen gibt.",
+      "carbs": "niedrig",
+      "use": "Gründlich waschen und roh in Salaten oder gegart in Suppen, Eintöpfen und Gemüsepfannen verwenden.",
+      "caution": "Sellerie kann starke allergische Reaktionen auslösen und gehört in der EU zu den kennzeichnungspflichtigen Allergenen; bei Sellerieallergie vollständig meiden.",
+      "priority": "hoch",
+      "nutrition": "Energie / Kalorien: ca. 14 kcal; Fett: ca. 0,2 g; davon gesättigte Fettsäuren: ca. 0,0 g; Kohlenhydrate: ca. 3,0 g; davon Zucker: ca. 1,3 g; Eiweiß / Protein: ca. 0,7 g; Salz: ca. 0,2 g; Ballaststoffe: ca. 1,6 g",
+      "portion": "150 g",
+      "sources": "https://fdc.nal.usda.gov/; https://food.ec.europa.eu/document/download/e7ebc668-fa20-4b48-b0e5-c5992614986d_en?filename=campaign-26_factsheet_allergens.pdf; https://www.health.harvard.edu/diet-and-nutrition/quick-start-guide-to-an-antiinflammation-diet"
+    },
+    {
       "id": 108,
       "category": "Gemüse, Pilze, Hülsenfrüchte & Nüsse",
       "subcategory": "Pilze",
@@ -5332,1566 +5389,1619 @@ window.APP_DATA = {
       "variants": "Belugalinsen statt schwarze Bohnen",
       "reason": "Omega-3 + Kreuzblütler + Hülsenfrüchte + Polyphenole"
     },
-  {
-    "id": 13,
-    "date": "2026-07-13",
-    "mealType": "warm",
-    "ingredients": [
-      "Sardinen",
-      "Brokkoli",
-      "Tomaten",
-      "Olivenöl extra vergine",
-      "Knoblauch"
-    ],
-    "situation": "Sardinen aus dem Ofen mit Brokkoli und Tomaten",
-    "satiety": "sehr hoch",
-    "variants": "Weitere passende Varianten: Anchovis, Forelle, Heilbutt, Makrele, Saibling oder Thunfisch",
-    "reason": "Eiweiß + Omega-3-Fettsäuren + Gemüse + Olivenöl"
-  },
-  {
-    "id": 14,
-    "date": "2026-07-13",
-    "mealType": "warm",
-    "ingredients": [
-      "Heilbutt",
-      "Belugalinsen",
-      "Rucola",
-      "Petersilie",
-      "Olivenöl extra vergine"
-    ],
-    "situation": "Heilbutt auf Belugalinsen mit Rucola",
-    "satiety": "sehr hoch",
-    "variants": "Weitere passende Varianten: Anchovis, Forelle, Hering, Saibling, Sardinen oder Thunfisch",
-    "reason": "Eiweiß + Hülsenfrüchte + Blattgemüse + ungesättigte Fettsäuren"
-  },
-  {
-    "id": 15,
-    "date": "2026-07-13",
-    "mealType": "kalt",
-    "ingredients": [
-      "Saibling",
-      "Feldsalat",
-      "Avocado",
-      "Tomaten",
-      "Petersilie"
-    ],
-    "situation": "Salat mit Saibling, Feldsalat und Avocado",
-    "satiety": "hoch",
-    "variants": "Weitere passende Varianten: Anchovis, Heilbutt, Hering, Makrele, Sardinen oder Thunfisch",
-    "reason": "Eiweiß + Omega-3-Fettsäuren + Ballaststoffe + Polyphenole"
-  },
-  {
-    "id": 16,
-    "date": "2026-07-13",
-    "mealType": "warm",
-    "ingredients": [
-      "Zander",
-      "Pak Choi",
-      "Ingwer",
-      "Knoblauch",
-      "Olivenöl extra vergine"
-    ],
-    "situation": "Zander mit Pak Choi, Ingwer und Knoblauch",
-    "satiety": "sehr hoch",
-    "variants": "Weitere passende Varianten: Dorade, Rotbarsch, Schellfisch, Scholle, Seelachs oder Wolfsbarsch",
-    "reason": "Mageres Eiweiß + Gemüse + aromatische Pflanzenstoffe"
-  },
-  {
-    "id": 17,
-    "date": "2026-07-13",
-    "mealType": "warm",
-    "ingredients": [
-      "Dorade",
-      "Blumenkohl",
-      "Tomaten",
-      "Olivenöl extra vergine",
-      "Petersilie"
-    ],
-    "situation": "Ofen-Dorade mit Blumenkohl und Tomaten",
-    "satiety": "sehr hoch",
-    "variants": "Weitere passende Varianten: Rotbarsch, Schellfisch, Scholle, Seelachs, Wolfsbarsch oder Zander",
-    "reason": "Eiweiß + Kreuzblütler + Tomaten-Polyphenole"
-  },
-  {
-    "id": 18,
-    "date": "2026-07-13",
-    "mealType": "warm",
-    "ingredients": [
-      "Wolfsbarsch",
-      "Belugalinsen",
-      "Spinat",
-      "Rote Zwiebel",
-      "Olivenöl extra vergine"
-    ],
-    "situation": "Wolfsbarsch auf warmem Belugalinsen-Spinat-Salat",
-    "satiety": "sehr hoch",
-    "variants": "Weitere passende Varianten: Dorade, Rotbarsch, Schellfisch, Scholle, Seelachs oder Zander",
-    "reason": "Eiweiß + Hülsenfrüchte + Blattgemüse + Ballaststoffe"
-  },
-  {
-    "id": 19,
-    "date": "2026-07-13",
-    "mealType": "warm",
-    "ingredients": [
-      "Jakobsmuscheln",
-      "Pak Choi",
-      "Gelbe Zucchini",
-      "Ingwer",
-      "Knoblauch"
-    ],
-    "situation": "Jakobsmuscheln-Pfanne mit Pak Choi und gelber Zucchini",
-    "satiety": "hoch",
-    "variants": "Weitere passende Varianten: Austern, Hummer, Krabben, Muscheln, Sepia oder Tintenfisch",
-    "reason": "Eiweiß + Gemüse + Mineralstoffe + Gewürzpflanzen"
-  },
-  {
-    "id": 20,
-    "date": "2026-07-13",
-    "mealType": "warm",
-    "ingredients": [
-      "Muscheln",
-      "Tomaten",
-      "Feldsalat",
-      "Olivenöl extra vergine",
-      "Petersilie"
-    ],
-    "situation": "Warmer Salat mit Muscheln, Tomaten und Feldsalat",
-    "satiety": "hoch",
-    "variants": "Weitere passende Varianten: Austern, Hummer, Jakobsmuscheln, Krabben, Sepia oder Tintenfisch",
-    "reason": "Eiweiß + Blattgemüse + Tomaten-Polyphenole"
-  },
-  {
-    "id": 21,
-    "date": "2026-07-13",
-    "mealType": "warm",
-    "ingredients": [
-      "Tintenfisch",
-      "Brokkoli",
-      "Ingwer",
-      "Knoblauch",
-      "Petersilie"
-    ],
-    "situation": "Gemüsesuppe mit Tintenfisch, Brokkoli und Ingwer",
-    "satiety": "hoch",
-    "variants": "Weitere passende Varianten: Austern, Hummer, Jakobsmuscheln, Krabben, Muscheln oder Sepia",
-    "reason": "Eiweiß + Kreuzblütler + Flüssigkeit + Gewürzpflanzen"
-  },
-  {
-    "id": 22,
-    "date": "2026-07-13",
-    "mealType": "warm",
-    "ingredients": [
-      "Wachtelei",
-      "Brokkoli",
-      "Tomaten",
-      "Knoblauch",
-      "Olivenöl extra vergine"
-    ],
-    "situation": "Gemüsepfanne mit Wachtelei, Brokkoli und Tomaten",
-    "satiety": "hoch",
-    "variants": "Als Variante eignet sich Omega-3-Ei",
-    "reason": "Eiweiß + Gemüse + Ballaststoffe + Polyphenole"
-  },
-  {
-    "id": 23,
-    "date": "2026-07-13",
-    "mealType": "kalt",
-    "ingredients": [
-      "Omega-3-Ei",
-      "Avocado",
-      "Rucola",
-      "Tomaten",
-      "Kresse"
-    ],
-    "situation": "Salat mit Omega-3-Ei, Avocado und Rucola",
-    "satiety": "hoch",
-    "variants": "Als Variante eignet sich Wachtelei",
-    "reason": "Eiweiß + ungesättigte Fettsäuren + Blattgemüse"
-  },
-  {
-    "id": 24,
-    "date": "2026-07-13",
-    "mealType": "warm",
-    "ingredients": [
-      "Hähnchenbrust",
-      "Brokkoli",
-      "Paprika",
-      "Knoblauch",
-      "Olivenöl extra vergine"
-    ],
-    "situation": "Hähnchenbrust mit Brokkoli, Paprika und Knoblauch",
-    "satiety": "sehr hoch",
-    "variants": "Weitere passende Varianten: Hähnchenschenkel ohne Haut, Putenbrust, Putenoberkeule oder Suppenhuhn",
-    "reason": "Mageres Eiweiß + Gemüse + Kreuzblütler"
-  },
-  {
-    "id": 25,
-    "date": "2026-07-13",
-    "mealType": "warm",
-    "ingredients": [
-      "Putenbrust",
-      "Blumenkohl",
-      "Tomaten",
-      "Petersilie",
-      "Olivenöl extra vergine"
-    ],
-    "situation": "Ofen-Putenbrust mit Blumenkohl und Tomaten",
-    "satiety": "sehr hoch",
-    "variants": "Weitere passende Varianten: Hähnchenbrust, Hähnchenschenkel ohne Haut, Putenoberkeule oder Suppenhuhn",
-    "reason": "Eiweiß + Gemüsevolumen + Polyphenole"
-  },
-  {
-    "id": 26,
-    "date": "2026-07-13",
-    "mealType": "warm",
-    "ingredients": [
-      "Suppenhuhn",
-      "Schwarze Bohnen",
-      "Spinat",
-      "Rote Zwiebel",
-      "Petersilie"
-    ],
-    "situation": "Suppenhuhn-Bowl mit schwarzen Bohnen und Spinat",
-    "satiety": "sehr hoch",
-    "variants": "Weitere passende Varianten: Hähnchenbrust, Hähnchenschenkel ohne Haut, Putenbrust oder Putenoberkeule",
-    "reason": "Eiweiß + Hülsenfrüchte + Blattgemüse + Ballaststoffe"
-  },
-  {
-    "id": 27,
-    "date": "2026-07-13",
-    "mealType": "warm",
-    "ingredients": [
-      "Herz",
-      "Spinat",
-      "Champignons",
-      "Rote Zwiebel",
-      "Petersilie"
-    ],
-    "situation": "Herz mit Spinat, Champignons und roter Zwiebel",
-    "satiety": "sehr hoch",
-    "variants": "Weitere passende Varianten: Leber oder Niere",
-    "reason": "Eiweiß + Eisen + B-Vitamine + Gemüse"
-  },
-  {
-    "id": 28,
-    "date": "2026-07-13",
-    "mealType": "warm",
-    "ingredients": [
-      "Leber",
-      "Brokkoli",
-      "Tomaten",
-      "Knoblauch",
-      "Olivenöl extra vergine"
-    ],
-    "situation": "Geschmorte Leber mit Brokkoli und Tomaten",
-    "satiety": "sehr hoch",
-    "variants": "Weitere passende Varianten: Herz oder Niere",
-    "reason": "Nährstoffreiches Eiweiß + Kreuzblütler + Polyphenole"
-  },
-  {
-    "id": 29,
-    "date": "2026-07-13",
-    "mealType": "warm",
-    "ingredients": [
-      "Niere",
-      "Belugalinsen",
-      "Feldsalat",
-      "Petersilie",
-      "Olivenöl extra vergine"
-    ],
-    "situation": "Niere auf Belugalinsen mit Feldsalat",
-    "satiety": "sehr hoch",
-    "variants": "Weitere passende Varianten: Herz oder Leber",
-    "reason": "Eiweiß + Hülsenfrüchte + Blattgemüse"
-  },
-  {
-    "id": 30,
-    "date": "2026-07-13",
-    "mealType": "warm",
-    "ingredients": [
-      "Hirsch",
-      "Brokkoli",
-      "Champignons",
-      "Knoblauch",
-      "Olivenöl extra vergine"
-    ],
-    "situation": "Hirsch mit Brokkoli und Champignons",
-    "satiety": "sehr hoch",
-    "variants": "Weitere passende Varianten: Kalbfleisch, Kaninchen, Mageres Rindergulasch, Reh, Rinderfilet oder Wildfleisch",
-    "reason": "Eiweiß + Eisen + Kreuzblütler + Pilze"
-  },
-  {
-    "id": 31,
-    "date": "2026-07-13",
-    "mealType": "warm",
-    "ingredients": [
-      "Rinderfilet",
-      "Tomaten",
-      "Schwarze Bohnen",
-      "Rote Zwiebel",
-      "Petersilie"
-    ],
-    "situation": "Geschmortes Rinderfilet mit Tomaten und schwarzen Bohnen",
-    "satiety": "sehr hoch",
-    "variants": "Weitere passende Varianten: Hirsch, Kalbfleisch, Kaninchen, Mageres Rindergulasch, Reh oder Wildfleisch",
-    "reason": "Eiweiß + Hülsenfrüchte + Ballaststoffe + Polyphenole"
-  },
-  {
-    "id": 32,
-    "date": "2026-07-13",
-    "mealType": "warm",
-    "ingredients": [
-      "Kaninchen",
-      "Rucola",
-      "Avocado",
-      "Tomaten",
-      "Olivenöl extra vergine"
-    ],
-    "situation": "Kaninchen-Salat mit Rucola, Avocado und Tomaten",
-    "satiety": "sehr hoch",
-    "variants": "Weitere passende Varianten: Hirsch, Kalbfleisch, Mageres Rindergulasch, Reh, Rinderfilet oder Wildfleisch",
-    "reason": "Eiweiß + Blattgemüse + ungesättigte Fettsäuren"
-  },
-  {
-    "id": 33,
-    "date": "2026-07-13",
-    "mealType": "warm",
-    "ingredients": [
-      "Wakame",
-      "Pak Choi",
-      "Ingwer",
-      "Knoblauch",
-      "Petersilie"
-    ],
-    "situation": "Wakame-Suppe mit Pak Choi und Ingwer",
-    "satiety": "mittel bis hoch",
-    "variants": "Weitere passende Varianten: Dulse, Kombu oder Nori",
-    "reason": "Meeresgemüse + Gemüse + aromatische Pflanzenstoffe"
-  },
-  {
-    "id": 34,
-    "date": "2026-07-13",
-    "mealType": "kalt",
-    "ingredients": [
-      "Nori",
-      "Feldsalat",
-      "Avocado",
-      "Radieschen",
-      "Olivenöl extra vergine"
-    ],
-    "situation": "Feldsalat mit Nori, Avocado und Radieschen",
-    "satiety": "mittel",
-    "variants": "Weitere passende Varianten: Dulse, Kombu oder Wakame",
-    "reason": "Meeresgemüse + Blattgemüse + ungesättigte Fettsäuren"
-  },
-  {
-    "id": 35,
-    "date": "2026-07-13",
-    "mealType": "warm",
-    "ingredients": [
-      "Dulse",
-      "Belugalinsen",
-      "Brokkoli",
-      "Tomaten",
-      "Petersilie"
-    ],
-    "situation": "Belugalinsen-Bowl mit Dulse und Brokkoli",
-    "satiety": "hoch",
-    "variants": "Weitere passende Varianten: Kombu, Nori oder Wakame",
-    "reason": "Hülsenfrüchte + Kreuzblütler + Meeresgemüse"
-  },
-  {
-    "id": 36,
-    "date": "2026-07-13",
-    "mealType": "kalt",
-    "ingredients": [
-      "Chlorella",
-      "Naturjoghurt",
-      "Avocado",
-      "Kresse",
-      "Chiasamen"
-    ],
-    "situation": "Grüne Joghurt-Bowl mit Chlorella, Avocado und Kresse",
-    "satiety": "mittel bis hoch",
-    "variants": "Als Variante eignet sich Spirulina",
-    "reason": "Fermentiertes Milchprodukt + Pflanzenpigmente + Ballaststoffe"
-  },
-  {
-    "id": 37,
-    "date": "2026-07-13",
-    "mealType": "kalt",
-    "ingredients": [
-      "Spirulina",
-      "Skyr",
-      "Heidelbeeren",
-      "Leinsamen geschrotet",
-      "Walnüsse"
-    ],
-    "situation": "Heidelbeer-Skyr mit Spirulina und Leinsamen",
-    "satiety": "hoch",
-    "variants": "Als Variante eignet sich Chlorella",
-    "reason": "Eiweiß + Beeren-Polyphenole + Omega-3-Fettsäuren"
-  },
-  {
-    "id": 38,
-    "date": "2026-07-13",
-    "mealType": "kalt",
-    "ingredients": [
-      "Chlorella",
-      "Quark",
-      "Radieschen",
-      "Kresse",
-      "Petersilie"
-    ],
-    "situation": "Quark-Kräuter-Dip mit Chlorella und Radieschen",
-    "satiety": "hoch",
-    "variants": "Als Variante eignet sich Spirulina",
-    "reason": "Eiweiß + Pflanzenpigmente + frisches Gemüse"
-  },
-  {
-    "id": 39,
-    "date": "2026-07-13",
-    "mealType": "kalt",
-    "ingredients": [
-      "Oliven",
-      "Tomaten",
-      "Feldsalat",
-      "Walnüsse",
-      "Petersilie"
-    ],
-    "situation": "Tomaten-Feldsalat mit Oliven und Walnüssen",
-    "satiety": "hoch",
-    "variants": "Gewürze und Gemüsebeilagen nach persönlichem Geschmack variieren",
-    "reason": "Ungesättigte Fettsäuren + Blattgemüse + Polyphenole"
-  },
-  {
-    "id": 40,
-    "date": "2026-07-13",
-    "mealType": "kalt",
-    "ingredients": [
-      "Oliven",
-      "Hummus",
-      "Paprika rot",
-      "Radieschen",
-      "Rucola"
-    ],
-    "situation": "Hummus-Gemüse-Bowl mit Oliven",
-    "satiety": "hoch",
-    "variants": "Gewürze und Gemüsebeilagen nach persönlichem Geschmack variieren",
-    "reason": "Hülsenfrüchte + Gemüse + ungesättigte Fettsäuren"
-  },
-  {
-    "id": 41,
-    "date": "2026-07-13",
-    "mealType": "warm",
-    "ingredients": [
-      "Oliven",
-      "Brokkoli",
-      "Blumenkohl",
-      "Knoblauch",
-      "Olivenöl extra vergine"
-    ],
-    "situation": "Ofengemüse mit Oliven, Brokkoli und Knoblauch",
-    "satiety": "hoch",
-    "variants": "Gewürze und Gemüsebeilagen nach persönlichem Geschmack variieren",
-    "reason": "Gemüsevielfalt + Kreuzblütler + ungesättigte Fettsäuren"
-  },
-  {
-    "id": 42,
-    "date": "2026-07-13",
-    "mealType": "warm",
-    "ingredients": [
-      "Weiße Bohnen",
-      "Tomaten",
-      "Spinat",
-      "Rote Zwiebel",
-      "Knoblauch"
-    ],
-    "situation": "Weiße Bohnen-Eintopf mit Tomaten und Spinat",
-    "satiety": "sehr hoch",
-    "variants": "Weitere passende Varianten: Adzukibohnen, Augenbohnen, Mungbohnen oder Pintobohnen",
-    "reason": "Pflanzliches Eiweiß + Ballaststoffe + Blattgemüse"
-  },
-  {
-    "id": 43,
-    "date": "2026-07-13",
-    "mealType": "kalt",
-    "ingredients": [
-      "Adzukibohnen",
-      "fermentierte Gurken",
-      "Rucola",
-      "Tomaten",
-      "Petersilie"
-    ],
-    "situation": "Adzukibohnen-Salat mit fermentierten Gurken und Rucola",
-    "satiety": "sehr hoch",
-    "variants": "Weitere passende Varianten: Augenbohnen, Mungbohnen, Pintobohnen oder Weiße Bohnen",
-    "reason": "Hülsenfrüchte + fermentiertes Gemüse + Polyphenole"
-  },
-  {
-    "id": 44,
-    "date": "2026-07-13",
-    "mealType": "warm",
-    "ingredients": [
-      "Pintobohnen",
-      "Brokkoli",
-      "Avocado",
-      "Tomaten",
-      "Olivenöl extra vergine"
-    ],
-    "situation": "Brokkoli-Bowl mit Pintobohnen und Avocado",
-    "satiety": "sehr hoch",
-    "variants": "Weitere passende Varianten: Adzukibohnen, Augenbohnen, Mungbohnen oder Weiße Bohnen",
-    "reason": "Ballaststoffe + Kreuzblütler + ungesättigte Fettsäuren"
-  },
-  {
-    "id": 45,
-    "date": "2026-07-13",
-    "mealType": "kalt",
-    "ingredients": [
-      "Kimchi",
-      "Avocado",
-      "Rucola",
-      "Hummus",
-      "Kresse"
-    ],
-    "situation": "Fermentierte Bowl mit Kimchi, Avocado und Rucola",
-    "satiety": "hoch",
-    "variants": "Weitere passende Varianten: fermentierte Karotten, Miso oder Sauerkraut roh",
-    "reason": "Fermentierte Komponente + Hülsenfrüchte + Blattgemüse"
-  },
-  {
-    "id": 46,
-    "date": "2026-07-13",
-    "mealType": "warm",
-    "ingredients": [
-      "Miso",
-      "Pak Choi",
-      "Ingwer",
-      "Knoblauch",
-      "Petersilie"
-    ],
-    "situation": "Gemüsesuppe mit Miso, Pak Choi und Ingwer",
-    "satiety": "mittel bis hoch",
-    "variants": "Weitere passende Varianten: fermentierte Karotten, Kimchi oder Sauerkraut roh",
-    "reason": "Fermentierte Aromen + Gemüse + Gewürzpflanzen"
-  },
-  {
-    "id": 47,
-    "date": "2026-07-13",
-    "mealType": "kalt",
-    "ingredients": [
-      "Sauerkraut roh",
-      "Belugalinsen",
-      "Tomaten",
-      "Rucola",
-      "Olivenöl extra vergine"
-    ],
-    "situation": "Belugalinsen-Salat mit Sauerkraut roh und Tomaten",
-    "satiety": "sehr hoch",
-    "variants": "Weitere passende Varianten: fermentierte Karotten, Kimchi oder Miso",
-    "reason": "Hülsenfrüchte + fermentierte Komponente + Polyphenole"
-  },
-  {
-    "id": 48,
-    "date": "2026-07-13",
-    "mealType": "warm",
-    "ingredients": [
-      "Kurkuma",
-      "Blumenkohl",
-      "Belugalinsen",
-      "Knoblauch",
-      "Olivenöl extra vergine"
-    ],
-    "situation": "Blumenkohl-Belugalinsen-Blech mit Kurkuma",
-    "satiety": "sehr hoch",
-    "variants": "Weitere passende Varianten: Anis, Cayennepfeffer, Kardamom, Kreuzkümmel, Muskat, Nelken, Paprikapulver, Safran oder Schwarzer Pfeffer",
-    "reason": "Hülsenfrüchte + Kreuzblütler + aromatische Pflanzenstoffe"
-  },
-  {
-    "id": 49,
-    "date": "2026-07-13",
-    "mealType": "warm",
-    "ingredients": [
-      "Kreuzkümmel",
-      "Kichererbsen",
-      "Tomaten",
-      "Spinat",
-      "Knoblauch"
-    ],
-    "situation": "Kichererbsen-Tomaten-Pfanne mit Kreuzkümmel",
-    "satiety": "sehr hoch",
-    "variants": "Weitere passende Varianten: Anis, Cayennepfeffer, Kardamom, Kurkuma, Muskat, Nelken, Paprikapulver, Safran oder Schwarzer Pfeffer",
-    "reason": "Pflanzliches Eiweiß + Gemüse + Gewürz-Polyphenole"
-  },
-  {
-    "id": 50,
-    "date": "2026-07-13",
-    "mealType": "warm",
-    "ingredients": [
-      "Safran",
-      "Brokkoli",
-      "Ingwer",
-      "Knoblauch",
-      "Petersilie"
-    ],
-    "situation": "Brokkoli-Suppe mit Safran und Ingwer",
-    "satiety": "hoch",
-    "variants": "Weitere passende Varianten: Anis, Cayennepfeffer, Kardamom, Kreuzkümmel, Kurkuma, Muskat, Nelken, Paprikapulver oder Schwarzer Pfeffer",
-    "reason": "Kreuzblütler + aromatische Pflanzenstoffe + Gemüse"
-  },
-  {
-    "id": 51,
-    "date": "2026-07-13",
-    "mealType": "kalt",
-    "ingredients": [
-      "Mangold",
-      "Tomaten",
-      "Avocado",
-      "Walnüsse",
-      "Olivenöl extra vergine"
-    ],
-    "situation": "Mangold-Salat mit Tomaten, Avocado und Walnüssen",
-    "satiety": "hoch",
-    "variants": "Weitere passende Varianten: Brunnenkresse, Chicorée, Endivie, Grünkohl, Kopfsalat, Radicchio oder Romanasalat",
-    "reason": "Blattgemüse + ungesättigte Fettsäuren + Polyphenole"
-  },
-  {
-    "id": 52,
-    "date": "2026-07-13",
-    "mealType": "warm",
-    "ingredients": [
-      "Grünkohl",
-      "Hühnerei",
-      "Champignons",
-      "Rote Zwiebel",
-      "Petersilie"
-    ],
-    "situation": "Grünkohl mit Hühnerei und Champignons",
-    "satiety": "hoch",
-    "variants": "Weitere passende Varianten: Brunnenkresse, Chicorée, Endivie, Kopfsalat, Mangold, Radicchio oder Romanasalat",
-    "reason": "Blattgemüse + Eiweiß + Pilze"
-  },
-  {
-    "id": 53,
-    "date": "2026-07-13",
-    "mealType": "warm",
-    "ingredients": [
-      "Chicorée",
-      "Belugalinsen",
-      "Brokkoli",
-      "Tomaten",
-      "Petersilie"
-    ],
-    "situation": "Belugalinsen-Bowl mit Chicorée und Brokkoli",
-    "satiety": "sehr hoch",
-    "variants": "Weitere passende Varianten: Brunnenkresse, Endivie, Grünkohl, Kopfsalat, Mangold, Radicchio oder Romanasalat",
-    "reason": "Blattgemüse + Hülsenfrüchte + Kreuzblütler"
-  },
-  {
-    "id": 54,
-    "date": "2026-07-13",
-    "mealType": "warm",
-    "ingredients": [
-      "Grüne Erbsen",
-      "Tomaten",
-      "Spinat",
-      "Rote Zwiebel",
-      "Knoblauch"
-    ],
-    "situation": "Grüne Erbsen-Eintopf mit Tomaten und Spinat",
-    "satiety": "sehr hoch",
-    "variants": "Weitere passende Varianten: Lupinen oder Schälerbsen",
-    "reason": "Pflanzliches Eiweiß + Ballaststoffe + Blattgemüse"
-  },
-  {
-    "id": 55,
-    "date": "2026-07-13",
-    "mealType": "warm",
-    "ingredients": [
-      "Lupinen",
-      "Brokkoli",
-      "Naturjoghurt",
-      "Petersilie",
-      "Knoblauch"
-    ],
-    "situation": "Lupinen-Bratlinge mit Brokkoli und Joghurt-Dip",
-    "satiety": "sehr hoch",
-    "variants": "Weitere passende Varianten: Grüne Erbsen oder Schälerbsen",
-    "reason": "Hülsenfrüchte + Gemüse + fermentiertes Milchprodukt"
-  },
-  {
-    "id": 56,
-    "date": "2026-07-13",
-    "mealType": "kalt",
-    "ingredients": [
-      "Schälerbsen",
-      "Rucola",
-      "Paprika",
-      "Avocado",
-      "Olivenöl extra vergine"
-    ],
-    "situation": "Schälerbsen-Salat mit Rucola, Paprika und Avocado",
-    "satiety": "hoch",
-    "variants": "Weitere passende Varianten: Grüne Erbsen oder Lupinen",
-    "reason": "Pflanzliches Eiweiß + Gemüse + ungesättigte Fettsäuren"
-  },
-  {
-    "id": 57,
-    "date": "2026-07-13",
-    "mealType": "warm",
-    "ingredients": [
-      "Lupinenmehl",
-      "Hühnerei",
-      "Spinat",
-      "Naturjoghurt",
-      "Petersilie"
-    ],
-    "situation": "Lupinenmehl-Pfannkuchen mit Spinat und Joghurt",
-    "satiety": "sehr hoch",
-    "variants": "Gewürze und Gemüsebeilagen nach persönlichem Geschmack variieren",
-    "reason": "Pflanzliches Eiweiß + Ei + Blattgemüse"
-  },
-  {
-    "id": 58,
-    "date": "2026-07-13",
-    "mealType": "warm",
-    "ingredients": [
-      "Lupinenmehl",
-      "Brokkoli",
-      "Quark",
-      "Hühnerei",
-      "Knoblauch"
-    ],
-    "situation": "Herzhafte Lupinenmehl-Waffeln mit Brokkoli und Quark",
-    "satiety": "sehr hoch",
-    "variants": "Gewürze und Gemüsebeilagen nach persönlichem Geschmack variieren",
-    "reason": "Eiweiß + Kreuzblütler + sättigende Teigbasis"
-  },
-  {
-    "id": 59,
-    "date": "2026-07-13",
-    "mealType": "warm",
-    "ingredients": [
-      "Lupinenmehl",
-      "Schwarze Bohnen",
-      "Paprika",
-      "Knoblauch",
-      "Petersilie"
-    ],
-    "situation": "Gemüsebratlinge mit Lupinenmehl, schwarzen Bohnen und Paprika",
-    "satiety": "sehr hoch",
-    "variants": "Gewürze und Gemüsebeilagen nach persönlichem Geschmack variieren",
-    "reason": "Pflanzliches Eiweiß + Hülsenfrüchte + Gemüse"
-  },
-  {
-    "id": 60,
-    "date": "2026-07-13",
-    "mealType": "warm",
-    "ingredients": [
-      "Rosenkohl",
-      "Tomaten",
-      "Knoblauch",
-      "Olivenöl extra vergine",
-      "Petersilie"
-    ],
-    "situation": "Rosenkohl aus dem Ofen mit Tomaten und Knoblauch",
-    "satiety": "hoch",
-    "variants": "Weitere passende Varianten: Brokkolisprossen, Chinakohl, Kohlrabi, Meerrettich, Rettich, Rotkohl, Weißkohl oder Wirsing",
-    "reason": "Kreuzblütler + Ballaststoffe + Polyphenole"
-  },
-  {
-    "id": 61,
-    "date": "2026-07-13",
-    "mealType": "warm",
-    "ingredients": [
-      "Rotkohl",
-      "Kichererbsen",
-      "Knoblauch",
-      "Petersilie",
-      "Olivenöl extra vergine"
-    ],
-    "situation": "Cremige Rotkohl-Suppe mit Kichererbsen",
-    "satiety": "sehr hoch",
-    "variants": "Weitere passende Varianten: Brokkolisprossen, Chinakohl, Kohlrabi, Meerrettich, Rettich, Rosenkohl, Weißkohl oder Wirsing",
-    "reason": "Kreuzblütler + Hülsenfrüchte + Ballaststoffe"
-  },
-  {
-    "id": 62,
-    "date": "2026-07-13",
-    "mealType": "warm",
-    "ingredients": [
-      "Wirsing",
-      "Hühnerei",
-      "Champignons",
-      "Rote Zwiebel",
-      "Petersilie"
-    ],
-    "situation": "Wirsing-Pfanne mit Hühnerei und Champignons",
-    "satiety": "hoch",
-    "variants": "Weitere passende Varianten: Brokkolisprossen, Chinakohl, Kohlrabi, Meerrettich, Rettich, Rosenkohl, Rotkohl oder Weißkohl",
-    "reason": "Kreuzblütler + Eiweiß + Pilze"
-  },
-  {
-    "id": 63,
-    "date": "2026-07-13",
-    "mealType": "kalt",
-    "ingredients": [
-      "Basilikum",
-      "Belugalinsen",
-      "Tomaten",
-      "Rucola",
-      "Olivenöl extra vergine"
-    ],
-    "situation": "Belugalinsen-Salat mit Basilikum, Tomaten und Rucola",
-    "satiety": "sehr hoch",
-    "variants": "Weitere passende Varianten: Dill, Estragon, Koriandergrün, Lorbeer, Majoran, Minze, Oregano, Rosmarin, Salbei oder Thymian",
-    "reason": "Hülsenfrüchte + Blattgemüse + Kräuter-Polyphenole"
-  },
-  {
-    "id": 64,
-    "date": "2026-07-13",
-    "mealType": "warm",
-    "ingredients": [
-      "Thymian",
-      "Brokkoli",
-      "Tomaten",
-      "Knoblauch",
-      "Olivenöl extra vergine"
-    ],
-    "situation": "Ofenbrokkoli mit Thymian, Tomaten und Knoblauch",
-    "satiety": "hoch",
-    "variants": "Weitere passende Varianten: Basilikum, Dill, Estragon, Koriandergrün, Lorbeer, Majoran, Minze, Oregano, Rosmarin oder Salbei",
-    "reason": "Kreuzblütler + Kräuter + Tomaten-Polyphenole"
-  },
-  {
-    "id": 65,
-    "date": "2026-07-13",
-    "mealType": "warm",
-    "ingredients": [
-      "Rote Linsen",
-      "Spinat",
-      "Tomaten",
-      "Ingwer",
-      "Knoblauch"
-    ],
-    "situation": "Rote Linsen-Dal mit Spinat und Tomaten",
-    "satiety": "sehr hoch",
-    "variants": "Weitere passende Varianten: Berglinsen, Braune Linsen, Gelbe Linsen oder Grüne Linsen",
-    "reason": "Pflanzliches Eiweiß + Ballaststoffe + Blattgemüse"
-  },
-  {
-    "id": 66,
-    "date": "2026-07-13",
-    "mealType": "kalt",
-    "ingredients": [
-      "Grüne Linsen",
-      "Rucola",
-      "Paprika",
-      "Petersilie",
-      "Olivenöl extra vergine"
-    ],
-    "situation": "Grüne Linsen-Salat mit Rucola, Paprika und Petersilie",
-    "satiety": "sehr hoch",
-    "variants": "Weitere passende Varianten: Berglinsen, Braune Linsen, Gelbe Linsen oder Rote Linsen",
-    "reason": "Hülsenfrüchte + Gemüse + Polyphenole"
-  },
-  {
-    "id": 67,
-    "date": "2026-07-13",
-    "mealType": "warm",
-    "ingredients": [
-      "Berglinsen",
-      "Brokkoli",
-      "Avocado",
-      "Tomaten",
-      "Knoblauch"
-    ],
-    "situation": "Brokkoli-Bowl mit Berglinsen, Avocado und Tomaten",
-    "satiety": "sehr hoch",
-    "variants": "Weitere passende Varianten: Braune Linsen, Gelbe Linsen, Grüne Linsen oder Rote Linsen",
-    "reason": "Hülsenfrüchte + Kreuzblütler + ungesättigte Fettsäuren"
-  },
-  {
-    "id": 68,
-    "date": "2026-07-13",
-    "mealType": "kalt",
-    "ingredients": [
-      "Mandeln",
-      "Skyr",
-      "Heidelbeeren",
-      "Leinsamen geschrotet",
-      "Zimt"
-    ],
-    "situation": "Skyr-Bowl mit Mandeln, Heidelbeeren und Leinsamen",
-    "satiety": "hoch",
-    "variants": "Weitere passende Varianten: Cashews, Erdnüsse, Haselnüsse, Macadamia, Paranüsse, Pekannüsse oder Pistazien",
-    "reason": "Eiweiß + Nüsse + Beeren-Polyphenole + Omega-3-Fettsäuren"
-  },
-  {
-    "id": 69,
-    "date": "2026-07-13",
-    "mealType": "kalt",
-    "ingredients": [
-      "Pistazien",
-      "Rucola",
-      "Tomaten",
-      "Avocado",
-      "Olivenöl extra vergine"
-    ],
-    "situation": "Rucola-Tomaten-Salat mit Pistazien und Avocado",
-    "satiety": "hoch",
-    "variants": "Weitere passende Varianten: Cashews, Erdnüsse, Haselnüsse, Macadamia, Mandeln, Paranüsse oder Pekannüsse",
-    "reason": "Nüsse + Blattgemüse + ungesättigte Fettsäuren"
-  },
-  {
-    "id": 70,
-    "date": "2026-07-13",
-    "mealType": "warm",
-    "ingredients": [
-      "Cashews",
-      "Brokkoli",
-      "Belugalinsen",
-      "Tomaten",
-      "Petersilie"
-    ],
-    "situation": "Brokkoli-Belugalinsen-Bowl mit Cashews",
-    "satiety": "sehr hoch",
-    "variants": "Weitere passende Varianten: Erdnüsse, Haselnüsse, Macadamia, Mandeln, Paranüsse, Pekannüsse oder Pistazien",
-    "reason": "Nüsse + Hülsenfrüchte + Kreuzblütler"
-  },
-  {
-    "id": 71,
-    "date": "2026-07-13",
-    "mealType": "warm",
-    "ingredients": [
-      "Shiitake",
-      "Spinat",
-      "Rote Zwiebel",
-      "Knoblauch",
-      "Petersilie"
-    ],
-    "situation": "Shiitake-Pfanne mit Spinat und roter Zwiebel",
-    "satiety": "hoch",
-    "variants": "Weitere passende Varianten: Austernpilze, Enoki, Kräuterseitlinge, Maitake, Pfifferlinge oder Steinpilze",
-    "reason": "Pilze + Blattgemüse + aromatische Pflanzenstoffe"
-  },
-  {
-    "id": 72,
-    "date": "2026-07-13",
-    "mealType": "warm",
-    "ingredients": [
-      "Austernpilze",
-      "Kichererbsen",
-      "Brokkoli",
-      "Knoblauch",
-      "Petersilie"
-    ],
-    "situation": "Austernpilze-Suppe mit Kichererbsen und Brokkoli",
-    "satiety": "sehr hoch",
-    "variants": "Weitere passende Varianten: Enoki, Kräuterseitlinge, Maitake, Pfifferlinge, Shiitake oder Steinpilze",
-    "reason": "Pilze + Hülsenfrüchte + Kreuzblütler"
-  },
-  {
-    "id": 73,
-    "date": "2026-07-13",
-    "mealType": "warm",
-    "ingredients": [
-      "Pfifferlinge",
-      "Belugalinsen",
-      "Tomaten",
-      "Rucola",
-      "Olivenöl extra vergine"
-    ],
-    "situation": "Belugalinsen-Bowl mit Pfifferlinge, Tomaten und Rucola",
-    "satiety": "sehr hoch",
-    "variants": "Weitere passende Varianten: Austernpilze, Enoki, Kräuterseitlinge, Maitake, Shiitake oder Steinpilze",
-    "reason": "Pilze + Hülsenfrüchte + Blattgemüse"
-  },
-  {
-    "id": 74,
-    "date": "2026-07-13",
-    "mealType": "warm",
-    "ingredients": [
-      "Reishi",
-      "Ingwer",
-      "Zimt"
-    ],
-    "situation": "Reishi-Ingwer-Aufguss mit Zimt",
-    "satiety": "niedrig",
-    "variants": "Gewürze und Gemüsebeilagen nach persönlichem Geschmack variieren",
-    "reason": "Warmer Aufguss + aromatische Pflanzenstoffe"
-  },
-  {
-    "id": 75,
-    "date": "2026-07-13",
-    "mealType": "warm",
-    "ingredients": [
-      "Reishi",
-      "Kakao ungesüßt",
-      "Zimt"
-    ],
-    "situation": "Warmer Kakao mit Reishi und Zimt",
-    "satiety": "niedrig bis mittel",
-    "variants": "Gewürze und Gemüsebeilagen nach persönlichem Geschmack variieren",
-    "reason": "Kakao-Polyphenole + aromatischer Pilzaufguss"
-  },
-  {
-    "id": 76,
-    "date": "2026-07-13",
-    "mealType": "warm",
-    "ingredients": [
-      "Reishi",
-      "Pak Choi",
-      "Ingwer",
-      "Knoblauch",
-      "Petersilie"
-    ],
-    "situation": "Reishi-Gemüsebrühe mit Pak Choi und Ingwer",
-    "satiety": "mittel",
-    "variants": "Gewürze und Gemüsebeilagen nach persönlichem Geschmack variieren",
-    "reason": "Warme Gemüsebrühe + Gewürzpflanzen"
-  },
-  {
-    "id": 77,
-    "date": "2026-07-13",
-    "mealType": "warm",
-    "ingredients": [
-      "Kürbis",
-      "Brokkoli",
-      "Schwarze Bohnen",
-      "Knoblauch",
-      "Olivenöl extra vergine"
-    ],
-    "situation": "Ofengemüse mit Kürbis, Brokkoli und schwarzen Bohnen",
-    "satiety": "sehr hoch",
-    "variants": "Weitere passende Varianten: Chili, Karotten, Mais, Paprika gelb, Paprika orange, Peperoni, Rote Bete, Süßkartoffeln oder Tomatenmark",
-    "reason": "Farbiges Gemüse + Hülsenfrüchte + Kreuzblütler"
-  },
-  {
-    "id": 78,
-    "date": "2026-07-13",
-    "mealType": "warm",
-    "ingredients": [
-      "Rote Bete",
-      "Tomaten",
-      "Spinat",
-      "Rote Zwiebel",
-      "Petersilie"
-    ],
-    "situation": "Rote Bete-Gemüsesuppe mit Tomaten und Spinat",
-    "satiety": "hoch",
-    "variants": "Weitere passende Varianten: Chili, Karotten, Kürbis, Mais, Paprika gelb, Paprika orange, Peperoni, Süßkartoffeln oder Tomatenmark",
-    "reason": "Carotinoide + Blattgemüse + Polyphenole"
-  },
-  {
-    "id": 79,
-    "date": "2026-07-13",
-    "mealType": "warm",
-    "ingredients": [
-      "Süßkartoffeln",
-      "Belugalinsen",
-      "Rucola",
-      "Knoblauch",
-      "Olivenöl extra vergine"
-    ],
-    "situation": "Belugalinsen-Pfanne mit Süßkartoffeln und Rucola",
-    "satiety": "sehr hoch",
-    "variants": "Weitere passende Varianten: Chili, Karotten, Kürbis, Mais, Paprika gelb, Paprika orange, Peperoni, Rote Bete oder Tomatenmark",
-    "reason": "Farbiges Gemüse + Hülsenfrüchte + Blattgemüse"
-  },
-  {
-    "id": 80,
-    "date": "2026-07-13",
-    "mealType": "warm",
-    "ingredients": [
-      "Tofu",
-      "Brokkoli",
-      "Paprika",
-      "Avocado",
-      "Petersilie"
-    ],
-    "situation": "Tofu-Bowl mit Brokkoli, Paprika und Avocado",
-    "satiety": "sehr hoch",
-    "variants": "Weitere passende Varianten: Edamame oder Sojabohnen",
-    "reason": "Pflanzliches Eiweiß + Kreuzblütler + ungesättigte Fettsäuren"
-  },
-  {
-    "id": 81,
-    "date": "2026-07-13",
-    "mealType": "warm",
-    "ingredients": [
-      "Tempeh",
-      "Pak Choi",
-      "Ingwer",
-      "Knoblauch",
-      "Olivenöl extra vergine"
-    ],
-    "situation": "Tempeh-Pfanne mit Pak Choi, Ingwer und Knoblauch",
-    "satiety": "sehr hoch",
-    "variants": "Weitere passende Varianten: Edamame oder Sojabohnen",
-    "reason": "Pflanzliches Eiweiß + Gemüse + Gewürzpflanzen"
-  },
-  {
-    "id": 82,
-    "date": "2026-07-13",
-    "mealType": "kalt",
-    "ingredients": [
-      "Sojabohnen",
-      "Rucola",
-      "Tomaten",
-      "fermentierte Gurken",
-      "Kresse"
-    ],
-    "situation": "Sojabohnen-Salat mit Rucola, Tomaten und fermentierten Gurken",
-    "satiety": "hoch",
-    "variants": "Weitere passende Varianten: Tempeh oder Tofu",
-    "reason": "Pflanzliches Eiweiß + Blattgemüse + fermentiertes Gemüse"
-  },
-  {
-    "id": 83,
-    "date": "2026-07-13",
-    "mealType": "kalt",
-    "ingredients": [
-      "Natto",
-      "Avocado",
-      "Rucola",
-      "Tomaten",
-      "Kresse"
-    ],
-    "situation": "Natto-Bowl mit Avocado, Rucola und Tomaten",
-    "satiety": "hoch",
-    "variants": "Gewürze und Gemüsebeilagen nach persönlichem Geschmack variieren",
-    "reason": "Fermentiertes Soja + Blattgemüse + ungesättigte Fettsäuren"
-  },
-  {
-    "id": 84,
-    "date": "2026-07-13",
-    "mealType": "kalt",
-    "ingredients": [
-      "Natto",
-      "Hühnerei",
-      "Spinat",
-      "Rote Zwiebel",
-      "Petersilie"
-    ],
-    "situation": "Natto mit Hühnerei, Spinat und roter Zwiebel",
-    "satiety": "sehr hoch",
-    "variants": "Gewürze und Gemüsebeilagen nach persönlichem Geschmack variieren",
-    "reason": "Fermentiertes Soja + Eiweiß + Blattgemüse"
-  },
-  {
-    "id": 85,
-    "date": "2026-07-13",
-    "mealType": "kalt",
-    "ingredients": [
-      "Natto",
-      "Belugalinsen",
-      "fermentierte Gurken",
-      "Tomaten",
-      "Kresse"
-    ],
-    "situation": "Belugalinsen-Bowl mit Natto und fermentierten Gurken",
-    "satiety": "sehr hoch",
-    "variants": "Gewürze und Gemüsebeilagen nach persönlichem Geschmack variieren",
-    "reason": "Fermentiertes Soja + Hülsenfrüchte + fermentiertes Gemüse"
-  },
-  {
-    "id": 86,
-    "date": "2026-07-13",
-    "mealType": "kalt",
-    "ingredients": [
-      "Grüner Tee",
-      "Skyr",
-      "Heidelbeeren",
-      "Walnüsse",
-      "Zimt"
-    ],
-    "situation": "Skyr-Bowl mit Heidelbeeren und Grüner Tee als Getränk",
-    "satiety": "hoch",
-    "variants": "Weitere passende Varianten: Espresso, Hagebuttentee, Hibiskustee, Kaffee, Matcha, Mate, Oolong Tee, Rooibos, Schwarzer Tee oder Weißer Tee",
-    "reason": "Eiweiß + Beeren + Nüsse + ungesüßtes Getränk"
-  },
-  {
-    "id": 87,
-    "date": "2026-07-13",
-    "mealType": "kalt",
-    "ingredients": [
-      "Kaffee",
-      "Quark",
-      "Chiasamen",
-      "Brombeeren",
-      "Zimt"
-    ],
-    "situation": "Quark-Frühstück mit Chiasamen und Kaffee",
-    "satiety": "hoch",
-    "variants": "Weitere passende Varianten: Espresso, Grüner Tee, Hagebuttentee, Hibiskustee, Matcha, Mate, Oolong Tee, Rooibos, Schwarzer Tee oder Weißer Tee",
-    "reason": "Eiweiß + Ballaststoffe + Beeren-Polyphenole"
-  },
-  {
-    "id": 88,
-    "date": "2026-07-13",
-    "mealType": "warm",
-    "ingredients": [
-      "Lauch",
-      "Brokkoli",
-      "Tomaten",
-      "Petersilie",
-      "Olivenöl extra vergine"
-    ],
-    "situation": "Lauch-Gemüsesuppe mit Brokkoli und Tomaten",
-    "satiety": "hoch",
-    "variants": "Weitere passende Varianten: Bärlauch, Frühlingszwiebel, Gelbe Zwiebel, Schalotte oder Schnittlauch",
-    "reason": "Schwefelverbindungen + Kreuzblütler + Polyphenole"
-  },
-  {
-    "id": 89,
-    "date": "2026-07-13",
-    "mealType": "kalt",
-    "ingredients": [
-      "Bärlauch",
-      "Belugalinsen",
-      "Rucola",
-      "Tomaten",
-      "Olivenöl extra vergine"
-    ],
-    "situation": "Belugalinsen-Salat mit Bärlauch, Rucola und Tomaten",
-    "satiety": "sehr hoch",
-    "variants": "Weitere passende Varianten: Frühlingszwiebel, Gelbe Zwiebel, Lauch, Schalotte oder Schnittlauch",
-    "reason": "Hülsenfrüchte + Zwiebelgewächse + Blattgemüse"
-  },
-  {
-    "id": 90,
-    "date": "2026-07-13",
-    "mealType": "kalt",
-    "ingredients": [
-      "Griechischer Joghurt",
-      "Heidelbeeren",
-      "Leinsamen geschrotet",
-      "Walnüsse",
-      "Zimt"
-    ],
-    "situation": "Griechischer Joghurt-Bowl mit Heidelbeeren, Leinsamen und Walnüssen",
-    "satiety": "hoch",
-    "variants": "Weitere passende Varianten: Buttermilch, Hüttenkäse oder Kefir",
-    "reason": "Eiweiß + Calcium + Beeren-Polyphenole + Omega-3-Fettsäuren"
-  },
-  {
-    "id": 91,
-    "date": "2026-07-13",
-    "mealType": "kalt",
-    "ingredients": [
-      "Buttermilch",
-      "Radieschen",
-      "Kresse",
-      "Petersilie",
-      "fermentierte Gurken"
-    ],
-    "situation": "Kräuter-Dip mit Buttermilch, Radieschen und Kresse",
-    "satiety": "hoch",
-    "variants": "Weitere passende Varianten: Griechischer Joghurt oder Hüttenkäse",
-    "reason": "Eiweiß + fermentiertes Milchprodukt + frisches Gemüse"
-  },
-  {
-    "id": 92,
-    "date": "2026-07-13",
-    "mealType": "kalt",
-    "ingredients": [
-      "Griechischer Joghurt",
-      "Rucola",
-      "Tomaten",
-      "Walnüsse",
-      "Petersilie"
-    ],
-    "situation": "Rucola-Tomaten-Salat mit Griechischer Joghurt-Dressing",
-    "satiety": "hoch",
-    "variants": "Als Variante eignet sich Buttermilch",
-    "reason": "Eiweiß + Blattgemüse + Nüsse + Polyphenole"
-  },
-  {
-    "id": 93,
-    "date": "2026-07-13",
-    "mealType": "kalt",
-    "ingredients": [
-      "Mozzarella",
-      "Rucola",
-      "Tomaten",
-      "Walnüsse",
-      "Olivenöl extra vergine"
-    ],
-    "situation": "Rucola-Tomaten-Salat mit Mozzarella und Walnüssen",
-    "satiety": "hoch",
-    "variants": "Weitere passende Varianten: Feta, Frischkäse natur, Harzer Käse, Parmesan oder Ziegenkäse",
-    "reason": "Eiweiß + Calcium + Blattgemüse + ungesättigte Fettsäuren"
-  },
-  {
-    "id": 94,
-    "date": "2026-07-13",
-    "mealType": "warm",
-    "ingredients": [
-      "Parmesan",
-      "Hühnerei",
-      "Spinat",
-      "Champignons",
-      "Rote Zwiebel"
-    ],
-    "situation": "Omelett mit Parmesan, Spinat und Champignons",
-    "satiety": "sehr hoch",
-    "variants": "Weitere passende Varianten: Feta, Frischkäse natur, Harzer Käse, Mozzarella oder Ziegenkäse",
-    "reason": "Eiweiß + Calcium + Blattgemüse + Pilze"
-  },
-  {
-    "id": 95,
-    "date": "2026-07-13",
-    "mealType": "warm",
-    "ingredients": [
-      "Ziegenkäse",
-      "Brokkoli",
-      "Tomaten",
-      "Knoblauch",
-      "Olivenöl extra vergine"
-    ],
-    "situation": "Ofenbrokkoli mit Ziegenkäse, Tomaten und Knoblauch",
-    "satiety": "hoch",
-    "variants": "Weitere passende Varianten: Frischkäse natur, Harzer Käse, Mozzarella oder Parmesan",
-    "reason": "Käse-Eiweiß + Kreuzblütler + Tomaten-Polyphenole"
-  },
-  {
-    "id": 96,
-    "date": "2026-07-13",
-    "mealType": "warm",
-    "ingredients": [
-      "Erdbeeren",
-      "Naturjoghurt",
-      "Zimt",
-      "Chiasamen"
-    ],
-    "situation": "Warmes Erdbeeren-Kompott mit Naturjoghurt und Zimt",
-    "satiety": "mittel bis hoch",
-    "variants": "Weitere passende Varianten: Aroniabeeren, Cranberries, Goji-Beeren, Himbeeren, Holunderbeeren, Maulbeeren, Preiselbeeren, Rote Johannisbeeren oder Schwarze Johannisbeeren",
-    "reason": "Beeren-Polyphenole + fermentiertes Milchprodukt + Ballaststoffe"
-  },
-  {
-    "id": 97,
-    "date": "2026-07-13",
-    "mealType": "warm",
-    "ingredients": [
-      "Aroniabeeren",
-      "Haferflocken",
-      "Walnüsse",
-      "Zimt",
-      "Naturjoghurt"
-    ],
-    "situation": "Ofen-Haferflocken mit Aroniabeeren, Walnüssen und Zimt",
-    "satiety": "hoch",
-    "variants": "Weitere passende Varianten: Cranberries, Erdbeeren, Goji-Beeren, Himbeeren, Holunderbeeren, Maulbeeren, Preiselbeeren, Rote Johannisbeeren oder Schwarze Johannisbeeren",
-    "reason": "Beeren + Vollkorn + Nüsse + Ballaststoffe"
-  },
-  {
-    "id": 98,
-    "date": "2026-07-13",
-    "mealType": "kalt",
-    "ingredients": [
-      "Schwarze Johannisbeeren",
-      "Quark",
-      "Leinsamen geschrotet",
-      "Zimt"
-    ],
-    "situation": "Quark mit gekochter Schwarze Johannisbeeren-Sauce und Leinsamen",
-    "satiety": "hoch",
-    "variants": "Weitere passende Varianten: Aroniabeeren, Cranberries, Erdbeeren, Goji-Beeren, Holunderbeeren, Maulbeeren, Preiselbeeren oder Rote Johannisbeeren",
-    "reason": "Eiweiß + Beeren-Polyphenole + Omega-3-Fettsäuren"
-  },
-  {
-    "id": 99,
-    "date": "2026-07-13",
-    "mealType": "warm",
-    "ingredients": [
-      "Apfel mit Schale",
-      "Naturjoghurt",
-      "Zimt",
-      "Walnüsse"
-    ],
-    "situation": "Warmes Apfel mit Schale-Kompott mit Naturjoghurt und Zimt",
-    "satiety": "mittel bis hoch",
-    "variants": "Weitere passende Varianten: Birne mit Schale oder Quitte",
-    "reason": "Obst-Ballaststoffe + fermentiertes Milchprodukt + Nüsse"
-  },
-  {
-    "id": 100,
-    "date": "2026-07-13",
-    "mealType": "warm",
-    "ingredients": [
-      "Birne mit Schale",
-      "Quark",
-      "Walnüsse",
-      "Zimt"
-    ],
-    "situation": "Ofen-Birne mit Schale mit Quark, Walnüssen und Zimt",
-    "satiety": "hoch",
-    "variants": "Weitere passende Varianten: Apfel mit Schale oder Quitte",
-    "reason": "Eiweiß + Kernobst + Nüsse + Ballaststoffe"
-  },
-  {
-    "id": 101,
-    "date": "2026-07-13",
-    "mealType": "warm",
-    "ingredients": [
-      "Quitte",
-      "Haferflocken",
-      "Skyr",
-      "Chiasamen",
-      "Zimt"
-    ],
-    "situation": "Hafer-Bowl mit gegartem Quitte, Skyr und Chiasamen",
-    "satiety": "hoch",
-    "variants": "Weitere passende Varianten: Apfel mit Schale oder Birne mit Schale",
-    "reason": "Vollkorn + Eiweiß + Obst-Ballaststoffe"
-  },
-  {
-    "id": 102,
-    "date": "2026-07-13",
-    "mealType": "kalt",
-    "ingredients": [
-      "Pfirsiche",
-      "Quark",
-      "Chiasamen",
-      "Zimt",
-      "Walnüsse"
-    ],
-    "situation": "Quark-Bowl mit Pfirsiche, Chiasamen und Zimt",
-    "satiety": "hoch",
-    "variants": "Weitere passende Varianten: Aprikosen, Kirschen, Mirabellen, Nektarinen, Pflaumen, Sauerkirschen oder Zwetschgen",
-    "reason": "Eiweiß + Steinobst + Ballaststoffe + Nüsse"
-  },
-  {
-    "id": 103,
-    "date": "2026-07-13",
-    "mealType": "warm",
-    "ingredients": [
-      "Kirschen",
-      "Haferflocken",
-      "Walnüsse",
-      "Zimt",
-      "Naturjoghurt"
-    ],
-    "situation": "Ofen-Haferflocken mit Kirschen und Walnüssen",
-    "satiety": "hoch",
-    "variants": "Weitere passende Varianten: Aprikosen, Mirabellen, Nektarinen, Pfirsiche, Pflaumen, Sauerkirschen oder Zwetschgen",
-    "reason": "Vollkorn + Steinobst + Nüsse + fermentiertes Milchprodukt"
-  },
-  {
-    "id": 104,
-    "date": "2026-07-13",
-    "mealType": "kalt",
-    "ingredients": [
-      "Aprikosen",
-      "Naturjoghurt",
-      "Leinsamen geschrotet",
-      "Kakaonibs",
-      "Zimt"
-    ],
-    "situation": "Naturjoghurt mit Aprikosen, Leinsamen und Kakaonibs",
-    "satiety": "hoch",
-    "variants": "Weitere passende Varianten: Kirschen, Mirabellen, Nektarinen, Pfirsiche, Pflaumen, Sauerkirschen oder Zwetschgen",
-    "reason": "Fermentiertes Milchprodukt + Obst + Omega-3-Fettsäuren"
-  },
-  {
-    "id": 105,
-    "date": "2026-07-13",
-    "mealType": "kalt",
-    "ingredients": [
-      "Mango",
-      "Skyr",
-      "Chiasamen",
-      "Walnüsse",
-      "Zimt"
-    ],
-    "situation": "Skyr-Bowl mit Mango, Chiasamen und Walnüssen",
-    "satiety": "hoch",
-    "variants": "Weitere passende Varianten: Ananas, Cantaloupe-Melone, Dunkle Trauben, Granatapfel, Guave, Kiwi, Papaya, Passionsfrucht oder Wassermelone",
-    "reason": "Eiweiß + Obst + Ballaststoffe + Nüsse"
-  },
-  {
-    "id": 106,
-    "date": "2026-07-13",
-    "mealType": "kalt",
-    "ingredients": [
-      "Ananas",
-      "Rucola",
-      "Avocado",
-      "Walnüsse",
-      "Kresse"
-    ],
-    "situation": "Frischer Salat mit Ananas, Rucola und Avocado",
-    "satiety": "mittel bis hoch",
-    "variants": "Weitere passende Varianten: Cantaloupe-Melone, Dunkle Trauben, Granatapfel, Guave, Kiwi, Mango, Papaya, Passionsfrucht oder Wassermelone",
-    "reason": "Obst-Polyphenole + Blattgemüse + ungesättigte Fettsäuren"
-  },
-  {
-    "id": 107,
-    "date": "2026-07-13",
-    "mealType": "kalt",
-    "ingredients": [
-      "Papaya",
-      "Naturjoghurt",
-      "Leinsamen geschrotet",
-      "Zimt"
-    ],
-    "situation": "Joghurt-Smoothie mit Papaya, Leinsamen und Zimt",
-    "satiety": "mittel bis hoch",
-    "variants": "Weitere passende Varianten: Ananas, Cantaloupe-Melone, Dunkle Trauben, Granatapfel, Guave, Kiwi, Mango, Passionsfrucht oder Wassermelone",
-    "reason": "Fermentiertes Milchprodukt + Obst + Omega-3-Fettsäuren"
-  },
-  {
-    "id": 108,
-    "date": "2026-07-13",
-    "mealType": "kalt",
-    "ingredients": [
-      "Orange",
-      "Naturjoghurt",
-      "Chiasamen",
-      "Walnüsse",
-      "Zimt"
-    ],
-    "situation": "Joghurt-Bowl mit Orange, Chiasamen und Walnüssen",
-    "satiety": "hoch",
-    "variants": "Weitere passende Varianten: Blutorange, Grapefruit, Limette, Mandarine, Pomelo oder Zitrone",
-    "reason": "Vitamin-C-reiches Obst + Eiweiß + Ballaststoffe"
-  },
-  {
-    "id": 109,
-    "date": "2026-07-13",
-    "mealType": "kalt",
-    "ingredients": [
-      "Zitrone",
-      "Feldsalat",
-      "Avocado",
-      "Walnüsse",
-      "Olivenöl extra vergine"
-    ],
-    "situation": "Feldsalat mit Zitrone, Avocado und Walnüssen",
-    "satiety": "hoch",
-    "variants": "Weitere passende Varianten: Blutorange, Grapefruit, Limette, Mandarine, Orange oder Pomelo",
-    "reason": "Zitrus-Polyphenole + Blattgemüse + ungesättigte Fettsäuren"
-  },
-  {
-    "id": 110,
-    "date": "2026-07-13",
-    "mealType": "warm",
-    "ingredients": [
-      "Grapefruit",
-      "Lachs",
-      "Brokkoli",
-      "Knoblauch",
-      "Olivenöl extra vergine"
-    ],
-    "situation": "Ofenlachs mit Grapefruit, Brokkoli und Knoblauch",
-    "satiety": "sehr hoch",
-    "variants": "Weitere passende Varianten: Blutorange, Limette, Mandarine, Orange, Pomelo oder Zitrone",
-    "reason": "Omega-3-Fettsäuren + Zitrusaromen + Kreuzblütler"
-  }
-
+    {
+      "id": 13,
+      "date": "2026-07-13",
+      "mealType": "warm",
+      "ingredients": [
+        "Sardinen",
+        "Brokkoli",
+        "Tomaten",
+        "Olivenöl extra vergine",
+        "Knoblauch"
+      ],
+      "situation": "Sardinen aus dem Ofen mit Brokkoli und Tomaten",
+      "satiety": "sehr hoch",
+      "variants": "Weitere passende Varianten: Anchovis, Forelle, Heilbutt, Makrele, Saibling oder Thunfisch",
+      "reason": "Eiweiß + Omega-3-Fettsäuren + Gemüse + Olivenöl"
+    },
+    {
+      "id": 14,
+      "date": "2026-07-13",
+      "mealType": "warm",
+      "ingredients": [
+        "Heilbutt",
+        "Belugalinsen",
+        "Rucola",
+        "Petersilie",
+        "Olivenöl extra vergine"
+      ],
+      "situation": "Heilbutt auf Belugalinsen mit Rucola",
+      "satiety": "sehr hoch",
+      "variants": "Weitere passende Varianten: Anchovis, Forelle, Hering, Saibling, Sardinen oder Thunfisch",
+      "reason": "Eiweiß + Hülsenfrüchte + Blattgemüse + ungesättigte Fettsäuren"
+    },
+    {
+      "id": 15,
+      "date": "2026-07-13",
+      "mealType": "kalt",
+      "ingredients": [
+        "Saibling",
+        "Feldsalat",
+        "Avocado",
+        "Tomaten",
+        "Petersilie"
+      ],
+      "situation": "Salat mit Saibling, Feldsalat und Avocado",
+      "satiety": "hoch",
+      "variants": "Weitere passende Varianten: Anchovis, Heilbutt, Hering, Makrele, Sardinen oder Thunfisch",
+      "reason": "Eiweiß + Omega-3-Fettsäuren + Ballaststoffe + Polyphenole"
+    },
+    {
+      "id": 16,
+      "date": "2026-07-13",
+      "mealType": "warm",
+      "ingredients": [
+        "Zander",
+        "Pak Choi",
+        "Ingwer",
+        "Knoblauch",
+        "Olivenöl extra vergine"
+      ],
+      "situation": "Zander mit Pak Choi, Ingwer und Knoblauch",
+      "satiety": "sehr hoch",
+      "variants": "Weitere passende Varianten: Dorade, Rotbarsch, Schellfisch, Scholle, Seelachs oder Wolfsbarsch",
+      "reason": "Mageres Eiweiß + Gemüse + aromatische Pflanzenstoffe"
+    },
+    {
+      "id": 17,
+      "date": "2026-07-13",
+      "mealType": "warm",
+      "ingredients": [
+        "Dorade",
+        "Blumenkohl",
+        "Tomaten",
+        "Olivenöl extra vergine",
+        "Petersilie"
+      ],
+      "situation": "Ofen-Dorade mit Blumenkohl und Tomaten",
+      "satiety": "sehr hoch",
+      "variants": "Weitere passende Varianten: Rotbarsch, Schellfisch, Scholle, Seelachs, Wolfsbarsch oder Zander",
+      "reason": "Eiweiß + Kreuzblütler + Tomaten-Polyphenole"
+    },
+    {
+      "id": 18,
+      "date": "2026-07-13",
+      "mealType": "warm",
+      "ingredients": [
+        "Wolfsbarsch",
+        "Belugalinsen",
+        "Spinat",
+        "Rote Zwiebel",
+        "Olivenöl extra vergine"
+      ],
+      "situation": "Wolfsbarsch auf warmem Belugalinsen-Spinat-Salat",
+      "satiety": "sehr hoch",
+      "variants": "Weitere passende Varianten: Dorade, Rotbarsch, Schellfisch, Scholle, Seelachs oder Zander",
+      "reason": "Eiweiß + Hülsenfrüchte + Blattgemüse + Ballaststoffe"
+    },
+    {
+      "id": 19,
+      "date": "2026-07-13",
+      "mealType": "warm",
+      "ingredients": [
+        "Jakobsmuscheln",
+        "Pak Choi",
+        "Gelbe Zucchini",
+        "Ingwer",
+        "Knoblauch"
+      ],
+      "situation": "Jakobsmuscheln-Pfanne mit Pak Choi und gelber Zucchini",
+      "satiety": "hoch",
+      "variants": "Weitere passende Varianten: Austern, Hummer, Krabben, Muscheln, Sepia oder Tintenfisch",
+      "reason": "Eiweiß + Gemüse + Mineralstoffe + Gewürzpflanzen"
+    },
+    {
+      "id": 20,
+      "date": "2026-07-13",
+      "mealType": "warm",
+      "ingredients": [
+        "Muscheln",
+        "Tomaten",
+        "Feldsalat",
+        "Olivenöl extra vergine",
+        "Petersilie"
+      ],
+      "situation": "Warmer Salat mit Muscheln, Tomaten und Feldsalat",
+      "satiety": "hoch",
+      "variants": "Weitere passende Varianten: Austern, Hummer, Jakobsmuscheln, Krabben, Sepia oder Tintenfisch",
+      "reason": "Eiweiß + Blattgemüse + Tomaten-Polyphenole"
+    },
+    {
+      "id": 21,
+      "date": "2026-07-13",
+      "mealType": "warm",
+      "ingredients": [
+        "Tintenfisch",
+        "Brokkoli",
+        "Ingwer",
+        "Knoblauch",
+        "Petersilie"
+      ],
+      "situation": "Gemüsesuppe mit Tintenfisch, Brokkoli und Ingwer",
+      "satiety": "hoch",
+      "variants": "Weitere passende Varianten: Austern, Hummer, Jakobsmuscheln, Krabben, Muscheln oder Sepia",
+      "reason": "Eiweiß + Kreuzblütler + Flüssigkeit + Gewürzpflanzen"
+    },
+    {
+      "id": 22,
+      "date": "2026-07-13",
+      "mealType": "warm",
+      "ingredients": [
+        "Wachtelei",
+        "Brokkoli",
+        "Tomaten",
+        "Knoblauch",
+        "Olivenöl extra vergine"
+      ],
+      "situation": "Gemüsepfanne mit Wachtelei, Brokkoli und Tomaten",
+      "satiety": "hoch",
+      "variants": "Als Variante eignet sich Omega-3-Ei",
+      "reason": "Eiweiß + Gemüse + Ballaststoffe + Polyphenole"
+    },
+    {
+      "id": 23,
+      "date": "2026-07-13",
+      "mealType": "kalt",
+      "ingredients": [
+        "Omega-3-Ei",
+        "Avocado",
+        "Rucola",
+        "Tomaten",
+        "Kresse"
+      ],
+      "situation": "Salat mit Omega-3-Ei, Avocado und Rucola",
+      "satiety": "hoch",
+      "variants": "Als Variante eignet sich Wachtelei",
+      "reason": "Eiweiß + ungesättigte Fettsäuren + Blattgemüse"
+    },
+    {
+      "id": 24,
+      "date": "2026-07-13",
+      "mealType": "warm",
+      "ingredients": [
+        "Hähnchenbrust",
+        "Brokkoli",
+        "Paprika",
+        "Knoblauch",
+        "Olivenöl extra vergine"
+      ],
+      "situation": "Hähnchenbrust mit Brokkoli, Paprika und Knoblauch",
+      "satiety": "sehr hoch",
+      "variants": "Weitere passende Varianten: Hähnchenschenkel ohne Haut, Putenbrust, Putenoberkeule oder Suppenhuhn",
+      "reason": "Mageres Eiweiß + Gemüse + Kreuzblütler"
+    },
+    {
+      "id": 25,
+      "date": "2026-07-13",
+      "mealType": "warm",
+      "ingredients": [
+        "Putenbrust",
+        "Blumenkohl",
+        "Tomaten",
+        "Petersilie",
+        "Olivenöl extra vergine"
+      ],
+      "situation": "Ofen-Putenbrust mit Blumenkohl und Tomaten",
+      "satiety": "sehr hoch",
+      "variants": "Weitere passende Varianten: Hähnchenbrust, Hähnchenschenkel ohne Haut, Putenoberkeule oder Suppenhuhn",
+      "reason": "Eiweiß + Gemüsevolumen + Polyphenole"
+    },
+    {
+      "id": 26,
+      "date": "2026-07-13",
+      "mealType": "warm",
+      "ingredients": [
+        "Suppenhuhn",
+        "Schwarze Bohnen",
+        "Spinat",
+        "Rote Zwiebel",
+        "Petersilie"
+      ],
+      "situation": "Suppenhuhn-Bowl mit schwarzen Bohnen und Spinat",
+      "satiety": "sehr hoch",
+      "variants": "Weitere passende Varianten: Hähnchenbrust, Hähnchenschenkel ohne Haut, Putenbrust oder Putenoberkeule",
+      "reason": "Eiweiß + Hülsenfrüchte + Blattgemüse + Ballaststoffe"
+    },
+    {
+      "id": 27,
+      "date": "2026-07-13",
+      "mealType": "warm",
+      "ingredients": [
+        "Herz",
+        "Spinat",
+        "Champignons",
+        "Rote Zwiebel",
+        "Petersilie"
+      ],
+      "situation": "Herz mit Spinat, Champignons und roter Zwiebel",
+      "satiety": "sehr hoch",
+      "variants": "Weitere passende Varianten: Leber oder Niere",
+      "reason": "Eiweiß + Eisen + B-Vitamine + Gemüse"
+    },
+    {
+      "id": 28,
+      "date": "2026-07-13",
+      "mealType": "warm",
+      "ingredients": [
+        "Leber",
+        "Brokkoli",
+        "Tomaten",
+        "Knoblauch",
+        "Olivenöl extra vergine"
+      ],
+      "situation": "Geschmorte Leber mit Brokkoli und Tomaten",
+      "satiety": "sehr hoch",
+      "variants": "Weitere passende Varianten: Herz oder Niere",
+      "reason": "Nährstoffreiches Eiweiß + Kreuzblütler + Polyphenole"
+    },
+    {
+      "id": 29,
+      "date": "2026-07-13",
+      "mealType": "warm",
+      "ingredients": [
+        "Niere",
+        "Belugalinsen",
+        "Feldsalat",
+        "Petersilie",
+        "Olivenöl extra vergine"
+      ],
+      "situation": "Niere auf Belugalinsen mit Feldsalat",
+      "satiety": "sehr hoch",
+      "variants": "Weitere passende Varianten: Herz oder Leber",
+      "reason": "Eiweiß + Hülsenfrüchte + Blattgemüse"
+    },
+    {
+      "id": 30,
+      "date": "2026-07-13",
+      "mealType": "warm",
+      "ingredients": [
+        "Hirsch",
+        "Brokkoli",
+        "Champignons",
+        "Knoblauch",
+        "Olivenöl extra vergine"
+      ],
+      "situation": "Hirsch mit Brokkoli und Champignons",
+      "satiety": "sehr hoch",
+      "variants": "Weitere passende Varianten: Kalbfleisch, Kaninchen, Mageres Rindergulasch, Reh, Rinderfilet oder Wildfleisch",
+      "reason": "Eiweiß + Eisen + Kreuzblütler + Pilze"
+    },
+    {
+      "id": 31,
+      "date": "2026-07-13",
+      "mealType": "warm",
+      "ingredients": [
+        "Rinderfilet",
+        "Tomaten",
+        "Schwarze Bohnen",
+        "Rote Zwiebel",
+        "Petersilie"
+      ],
+      "situation": "Geschmortes Rinderfilet mit Tomaten und schwarzen Bohnen",
+      "satiety": "sehr hoch",
+      "variants": "Weitere passende Varianten: Hirsch, Kalbfleisch, Kaninchen, Mageres Rindergulasch, Reh oder Wildfleisch",
+      "reason": "Eiweiß + Hülsenfrüchte + Ballaststoffe + Polyphenole"
+    },
+    {
+      "id": 32,
+      "date": "2026-07-13",
+      "mealType": "warm",
+      "ingredients": [
+        "Kaninchen",
+        "Rucola",
+        "Avocado",
+        "Tomaten",
+        "Olivenöl extra vergine"
+      ],
+      "situation": "Kaninchen-Salat mit Rucola, Avocado und Tomaten",
+      "satiety": "sehr hoch",
+      "variants": "Weitere passende Varianten: Hirsch, Kalbfleisch, Mageres Rindergulasch, Reh, Rinderfilet oder Wildfleisch",
+      "reason": "Eiweiß + Blattgemüse + ungesättigte Fettsäuren"
+    },
+    {
+      "id": 33,
+      "date": "2026-07-13",
+      "mealType": "warm",
+      "ingredients": [
+        "Wakame",
+        "Pak Choi",
+        "Ingwer",
+        "Knoblauch",
+        "Petersilie"
+      ],
+      "situation": "Wakame-Suppe mit Pak Choi und Ingwer",
+      "satiety": "mittel bis hoch",
+      "variants": "Weitere passende Varianten: Dulse, Kombu oder Nori",
+      "reason": "Meeresgemüse + Gemüse + aromatische Pflanzenstoffe"
+    },
+    {
+      "id": 34,
+      "date": "2026-07-13",
+      "mealType": "kalt",
+      "ingredients": [
+        "Nori",
+        "Feldsalat",
+        "Avocado",
+        "Radieschen",
+        "Olivenöl extra vergine"
+      ],
+      "situation": "Feldsalat mit Nori, Avocado und Radieschen",
+      "satiety": "mittel",
+      "variants": "Weitere passende Varianten: Dulse, Kombu oder Wakame",
+      "reason": "Meeresgemüse + Blattgemüse + ungesättigte Fettsäuren"
+    },
+    {
+      "id": 35,
+      "date": "2026-07-13",
+      "mealType": "warm",
+      "ingredients": [
+        "Dulse",
+        "Belugalinsen",
+        "Brokkoli",
+        "Tomaten",
+        "Petersilie"
+      ],
+      "situation": "Belugalinsen-Bowl mit Dulse und Brokkoli",
+      "satiety": "hoch",
+      "variants": "Weitere passende Varianten: Kombu, Nori oder Wakame",
+      "reason": "Hülsenfrüchte + Kreuzblütler + Meeresgemüse"
+    },
+    {
+      "id": 36,
+      "date": "2026-07-13",
+      "mealType": "kalt",
+      "ingredients": [
+        "Chlorella",
+        "Naturjoghurt",
+        "Avocado",
+        "Kresse",
+        "Chiasamen"
+      ],
+      "situation": "Grüne Joghurt-Bowl mit Chlorella, Avocado und Kresse",
+      "satiety": "mittel bis hoch",
+      "variants": "Als Variante eignet sich Spirulina",
+      "reason": "Fermentiertes Milchprodukt + Pflanzenpigmente + Ballaststoffe"
+    },
+    {
+      "id": 37,
+      "date": "2026-07-13",
+      "mealType": "kalt",
+      "ingredients": [
+        "Spirulina",
+        "Skyr",
+        "Heidelbeeren",
+        "Leinsamen geschrotet",
+        "Walnüsse"
+      ],
+      "situation": "Heidelbeer-Skyr mit Spirulina und Leinsamen",
+      "satiety": "hoch",
+      "variants": "Als Variante eignet sich Chlorella",
+      "reason": "Eiweiß + Beeren-Polyphenole + Omega-3-Fettsäuren"
+    },
+    {
+      "id": 38,
+      "date": "2026-07-13",
+      "mealType": "kalt",
+      "ingredients": [
+        "Chlorella",
+        "Quark",
+        "Radieschen",
+        "Kresse",
+        "Petersilie"
+      ],
+      "situation": "Quark-Kräuter-Dip mit Chlorella und Radieschen",
+      "satiety": "hoch",
+      "variants": "Als Variante eignet sich Spirulina",
+      "reason": "Eiweiß + Pflanzenpigmente + frisches Gemüse"
+    },
+    {
+      "id": 39,
+      "date": "2026-07-13",
+      "mealType": "kalt",
+      "ingredients": [
+        "Oliven",
+        "Tomaten",
+        "Feldsalat",
+        "Walnüsse",
+        "Petersilie"
+      ],
+      "situation": "Tomaten-Feldsalat mit Oliven und Walnüssen",
+      "satiety": "hoch",
+      "variants": "Gewürze und Gemüsebeilagen nach persönlichem Geschmack variieren",
+      "reason": "Ungesättigte Fettsäuren + Blattgemüse + Polyphenole"
+    },
+    {
+      "id": 40,
+      "date": "2026-07-13",
+      "mealType": "kalt",
+      "ingredients": [
+        "Oliven",
+        "Hummus",
+        "Paprika rot",
+        "Radieschen",
+        "Rucola"
+      ],
+      "situation": "Hummus-Gemüse-Bowl mit Oliven",
+      "satiety": "hoch",
+      "variants": "Gewürze und Gemüsebeilagen nach persönlichem Geschmack variieren",
+      "reason": "Hülsenfrüchte + Gemüse + ungesättigte Fettsäuren"
+    },
+    {
+      "id": 41,
+      "date": "2026-07-13",
+      "mealType": "warm",
+      "ingredients": [
+        "Oliven",
+        "Brokkoli",
+        "Blumenkohl",
+        "Knoblauch",
+        "Olivenöl extra vergine"
+      ],
+      "situation": "Ofengemüse mit Oliven, Brokkoli und Knoblauch",
+      "satiety": "hoch",
+      "variants": "Gewürze und Gemüsebeilagen nach persönlichem Geschmack variieren",
+      "reason": "Gemüsevielfalt + Kreuzblütler + ungesättigte Fettsäuren"
+    },
+    {
+      "id": 42,
+      "date": "2026-07-13",
+      "mealType": "warm",
+      "ingredients": [
+        "Weiße Bohnen",
+        "Tomaten",
+        "Spinat",
+        "Rote Zwiebel",
+        "Knoblauch"
+      ],
+      "situation": "Weiße Bohnen-Eintopf mit Tomaten und Spinat",
+      "satiety": "sehr hoch",
+      "variants": "Weitere passende Varianten: Adzukibohnen, Augenbohnen, Mungbohnen oder Pintobohnen",
+      "reason": "Pflanzliches Eiweiß + Ballaststoffe + Blattgemüse"
+    },
+    {
+      "id": 43,
+      "date": "2026-07-13",
+      "mealType": "kalt",
+      "ingredients": [
+        "Adzukibohnen",
+        "fermentierte Gurken",
+        "Rucola",
+        "Tomaten",
+        "Petersilie"
+      ],
+      "situation": "Adzukibohnen-Salat mit fermentierten Gurken und Rucola",
+      "satiety": "sehr hoch",
+      "variants": "Weitere passende Varianten: Augenbohnen, Mungbohnen, Pintobohnen oder Weiße Bohnen",
+      "reason": "Hülsenfrüchte + fermentiertes Gemüse + Polyphenole"
+    },
+    {
+      "id": 44,
+      "date": "2026-07-13",
+      "mealType": "warm",
+      "ingredients": [
+        "Pintobohnen",
+        "Brokkoli",
+        "Avocado",
+        "Tomaten",
+        "Olivenöl extra vergine"
+      ],
+      "situation": "Brokkoli-Bowl mit Pintobohnen und Avocado",
+      "satiety": "sehr hoch",
+      "variants": "Weitere passende Varianten: Adzukibohnen, Augenbohnen, Mungbohnen oder Weiße Bohnen",
+      "reason": "Ballaststoffe + Kreuzblütler + ungesättigte Fettsäuren"
+    },
+    {
+      "id": 45,
+      "date": "2026-07-13",
+      "mealType": "kalt",
+      "ingredients": [
+        "Kimchi",
+        "Avocado",
+        "Rucola",
+        "Hummus",
+        "Kresse"
+      ],
+      "situation": "Fermentierte Bowl mit Kimchi, Avocado und Rucola",
+      "satiety": "hoch",
+      "variants": "Weitere passende Varianten: fermentierte Karotten, Miso oder Sauerkraut roh",
+      "reason": "Fermentierte Komponente + Hülsenfrüchte + Blattgemüse"
+    },
+    {
+      "id": 46,
+      "date": "2026-07-13",
+      "mealType": "warm",
+      "ingredients": [
+        "Miso",
+        "Pak Choi",
+        "Ingwer",
+        "Knoblauch",
+        "Petersilie"
+      ],
+      "situation": "Gemüsesuppe mit Miso, Pak Choi und Ingwer",
+      "satiety": "mittel bis hoch",
+      "variants": "Weitere passende Varianten: fermentierte Karotten, Kimchi oder Sauerkraut roh",
+      "reason": "Fermentierte Aromen + Gemüse + Gewürzpflanzen"
+    },
+    {
+      "id": 47,
+      "date": "2026-07-13",
+      "mealType": "kalt",
+      "ingredients": [
+        "Sauerkraut roh",
+        "Belugalinsen",
+        "Tomaten",
+        "Rucola",
+        "Olivenöl extra vergine"
+      ],
+      "situation": "Belugalinsen-Salat mit Sauerkraut roh und Tomaten",
+      "satiety": "sehr hoch",
+      "variants": "Weitere passende Varianten: fermentierte Karotten, Kimchi oder Miso",
+      "reason": "Hülsenfrüchte + fermentierte Komponente + Polyphenole"
+    },
+    {
+      "id": 48,
+      "date": "2026-07-13",
+      "mealType": "warm",
+      "ingredients": [
+        "Kurkuma",
+        "Blumenkohl",
+        "Belugalinsen",
+        "Knoblauch",
+        "Olivenöl extra vergine"
+      ],
+      "situation": "Blumenkohl-Belugalinsen-Blech mit Kurkuma",
+      "satiety": "sehr hoch",
+      "variants": "Weitere passende Varianten: Anis, Cayennepfeffer, Kardamom, Kreuzkümmel, Muskat, Nelken, Paprikapulver, Safran oder Schwarzer Pfeffer",
+      "reason": "Hülsenfrüchte + Kreuzblütler + aromatische Pflanzenstoffe"
+    },
+    {
+      "id": 49,
+      "date": "2026-07-13",
+      "mealType": "warm",
+      "ingredients": [
+        "Kreuzkümmel",
+        "Kichererbsen",
+        "Tomaten",
+        "Spinat",
+        "Knoblauch"
+      ],
+      "situation": "Kichererbsen-Tomaten-Pfanne mit Kreuzkümmel",
+      "satiety": "sehr hoch",
+      "variants": "Weitere passende Varianten: Anis, Cayennepfeffer, Kardamom, Kurkuma, Muskat, Nelken, Paprikapulver, Safran oder Schwarzer Pfeffer",
+      "reason": "Pflanzliches Eiweiß + Gemüse + Gewürz-Polyphenole"
+    },
+    {
+      "id": 50,
+      "date": "2026-07-13",
+      "mealType": "warm",
+      "ingredients": [
+        "Safran",
+        "Brokkoli",
+        "Ingwer",
+        "Knoblauch",
+        "Petersilie"
+      ],
+      "situation": "Brokkoli-Suppe mit Safran und Ingwer",
+      "satiety": "hoch",
+      "variants": "Weitere passende Varianten: Anis, Cayennepfeffer, Kardamom, Kreuzkümmel, Kurkuma, Muskat, Nelken, Paprikapulver oder Schwarzer Pfeffer",
+      "reason": "Kreuzblütler + aromatische Pflanzenstoffe + Gemüse"
+    },
+    {
+      "id": 51,
+      "date": "2026-07-13",
+      "mealType": "kalt",
+      "ingredients": [
+        "Mangold",
+        "Tomaten",
+        "Avocado",
+        "Walnüsse",
+        "Olivenöl extra vergine"
+      ],
+      "situation": "Mangold-Salat mit Tomaten, Avocado und Walnüssen",
+      "satiety": "hoch",
+      "variants": "Weitere passende Varianten: Brunnenkresse, Chicorée, Endivie, Grünkohl, Kopfsalat, Radicchio oder Romanasalat",
+      "reason": "Blattgemüse + ungesättigte Fettsäuren + Polyphenole"
+    },
+    {
+      "id": 52,
+      "date": "2026-07-13",
+      "mealType": "warm",
+      "ingredients": [
+        "Grünkohl",
+        "Hühnerei",
+        "Champignons",
+        "Rote Zwiebel",
+        "Petersilie"
+      ],
+      "situation": "Grünkohl mit Hühnerei und Champignons",
+      "satiety": "hoch",
+      "variants": "Weitere passende Varianten: Brunnenkresse, Chicorée, Endivie, Kopfsalat, Mangold, Radicchio oder Romanasalat",
+      "reason": "Blattgemüse + Eiweiß + Pilze"
+    },
+    {
+      "id": 53,
+      "date": "2026-07-13",
+      "mealType": "warm",
+      "ingredients": [
+        "Chicorée",
+        "Belugalinsen",
+        "Brokkoli",
+        "Tomaten",
+        "Petersilie"
+      ],
+      "situation": "Belugalinsen-Bowl mit Chicorée und Brokkoli",
+      "satiety": "sehr hoch",
+      "variants": "Weitere passende Varianten: Brunnenkresse, Endivie, Grünkohl, Kopfsalat, Mangold, Radicchio oder Romanasalat",
+      "reason": "Blattgemüse + Hülsenfrüchte + Kreuzblütler"
+    },
+    {
+      "id": 54,
+      "date": "2026-07-13",
+      "mealType": "warm",
+      "ingredients": [
+        "Grüne Erbsen",
+        "Tomaten",
+        "Spinat",
+        "Rote Zwiebel",
+        "Knoblauch"
+      ],
+      "situation": "Grüne Erbsen-Eintopf mit Tomaten und Spinat",
+      "satiety": "sehr hoch",
+      "variants": "Weitere passende Varianten: Lupinen oder Schälerbsen",
+      "reason": "Pflanzliches Eiweiß + Ballaststoffe + Blattgemüse"
+    },
+    {
+      "id": 55,
+      "date": "2026-07-13",
+      "mealType": "warm",
+      "ingredients": [
+        "Lupinen",
+        "Brokkoli",
+        "Naturjoghurt",
+        "Petersilie",
+        "Knoblauch"
+      ],
+      "situation": "Lupinen-Bratlinge mit Brokkoli und Joghurt-Dip",
+      "satiety": "sehr hoch",
+      "variants": "Weitere passende Varianten: Grüne Erbsen oder Schälerbsen",
+      "reason": "Hülsenfrüchte + Gemüse + fermentiertes Milchprodukt"
+    },
+    {
+      "id": 56,
+      "date": "2026-07-13",
+      "mealType": "kalt",
+      "ingredients": [
+        "Schälerbsen",
+        "Rucola",
+        "Paprika",
+        "Avocado",
+        "Olivenöl extra vergine"
+      ],
+      "situation": "Schälerbsen-Salat mit Rucola, Paprika und Avocado",
+      "satiety": "hoch",
+      "variants": "Weitere passende Varianten: Grüne Erbsen oder Lupinen",
+      "reason": "Pflanzliches Eiweiß + Gemüse + ungesättigte Fettsäuren"
+    },
+    {
+      "id": 57,
+      "date": "2026-07-13",
+      "mealType": "warm",
+      "ingredients": [
+        "Lupinenmehl",
+        "Hühnerei",
+        "Spinat",
+        "Naturjoghurt",
+        "Petersilie"
+      ],
+      "situation": "Lupinenmehl-Pfannkuchen mit Spinat und Joghurt",
+      "satiety": "sehr hoch",
+      "variants": "Gewürze und Gemüsebeilagen nach persönlichem Geschmack variieren",
+      "reason": "Pflanzliches Eiweiß + Ei + Blattgemüse"
+    },
+    {
+      "id": 58,
+      "date": "2026-07-13",
+      "mealType": "warm",
+      "ingredients": [
+        "Lupinenmehl",
+        "Brokkoli",
+        "Quark",
+        "Hühnerei",
+        "Knoblauch"
+      ],
+      "situation": "Herzhafte Lupinenmehl-Waffeln mit Brokkoli und Quark",
+      "satiety": "sehr hoch",
+      "variants": "Gewürze und Gemüsebeilagen nach persönlichem Geschmack variieren",
+      "reason": "Eiweiß + Kreuzblütler + sättigende Teigbasis"
+    },
+    {
+      "id": 59,
+      "date": "2026-07-13",
+      "mealType": "warm",
+      "ingredients": [
+        "Lupinenmehl",
+        "Schwarze Bohnen",
+        "Paprika",
+        "Knoblauch",
+        "Petersilie"
+      ],
+      "situation": "Gemüsebratlinge mit Lupinenmehl, schwarzen Bohnen und Paprika",
+      "satiety": "sehr hoch",
+      "variants": "Gewürze und Gemüsebeilagen nach persönlichem Geschmack variieren",
+      "reason": "Pflanzliches Eiweiß + Hülsenfrüchte + Gemüse"
+    },
+    {
+      "id": 60,
+      "date": "2026-07-13",
+      "mealType": "warm",
+      "ingredients": [
+        "Rosenkohl",
+        "Tomaten",
+        "Knoblauch",
+        "Olivenöl extra vergine",
+        "Petersilie"
+      ],
+      "situation": "Rosenkohl aus dem Ofen mit Tomaten und Knoblauch",
+      "satiety": "hoch",
+      "variants": "Weitere passende Varianten: Brokkolisprossen, Chinakohl, Kohlrabi, Meerrettich, Rettich, Rotkohl, Weißkohl oder Wirsing",
+      "reason": "Kreuzblütler + Ballaststoffe + Polyphenole"
+    },
+    {
+      "id": 61,
+      "date": "2026-07-13",
+      "mealType": "warm",
+      "ingredients": [
+        "Rotkohl",
+        "Kichererbsen",
+        "Knoblauch",
+        "Petersilie",
+        "Olivenöl extra vergine"
+      ],
+      "situation": "Cremige Rotkohl-Suppe mit Kichererbsen",
+      "satiety": "sehr hoch",
+      "variants": "Weitere passende Varianten: Brokkolisprossen, Chinakohl, Kohlrabi, Meerrettich, Rettich, Rosenkohl, Weißkohl oder Wirsing",
+      "reason": "Kreuzblütler + Hülsenfrüchte + Ballaststoffe"
+    },
+    {
+      "id": 62,
+      "date": "2026-07-13",
+      "mealType": "warm",
+      "ingredients": [
+        "Wirsing",
+        "Hühnerei",
+        "Champignons",
+        "Rote Zwiebel",
+        "Petersilie"
+      ],
+      "situation": "Wirsing-Pfanne mit Hühnerei und Champignons",
+      "satiety": "hoch",
+      "variants": "Weitere passende Varianten: Brokkolisprossen, Chinakohl, Kohlrabi, Meerrettich, Rettich, Rosenkohl, Rotkohl oder Weißkohl",
+      "reason": "Kreuzblütler + Eiweiß + Pilze"
+    },
+    {
+      "id": 63,
+      "date": "2026-07-13",
+      "mealType": "kalt",
+      "ingredients": [
+        "Basilikum",
+        "Belugalinsen",
+        "Tomaten",
+        "Rucola",
+        "Olivenöl extra vergine"
+      ],
+      "situation": "Belugalinsen-Salat mit Basilikum, Tomaten und Rucola",
+      "satiety": "sehr hoch",
+      "variants": "Weitere passende Varianten: Dill, Estragon, Koriandergrün, Lorbeer, Majoran, Minze, Oregano, Rosmarin, Salbei oder Thymian",
+      "reason": "Hülsenfrüchte + Blattgemüse + Kräuter-Polyphenole"
+    },
+    {
+      "id": 64,
+      "date": "2026-07-13",
+      "mealType": "warm",
+      "ingredients": [
+        "Thymian",
+        "Brokkoli",
+        "Tomaten",
+        "Knoblauch",
+        "Olivenöl extra vergine"
+      ],
+      "situation": "Ofenbrokkoli mit Thymian, Tomaten und Knoblauch",
+      "satiety": "hoch",
+      "variants": "Weitere passende Varianten: Basilikum, Dill, Estragon, Koriandergrün, Lorbeer, Majoran, Minze, Oregano, Rosmarin oder Salbei",
+      "reason": "Kreuzblütler + Kräuter + Tomaten-Polyphenole"
+    },
+    {
+      "id": 65,
+      "date": "2026-07-13",
+      "mealType": "warm",
+      "ingredients": [
+        "Rote Linsen",
+        "Spinat",
+        "Tomaten",
+        "Ingwer",
+        "Knoblauch"
+      ],
+      "situation": "Rote Linsen-Dal mit Spinat und Tomaten",
+      "satiety": "sehr hoch",
+      "variants": "Weitere passende Varianten: Berglinsen, Braune Linsen, Gelbe Linsen oder Grüne Linsen",
+      "reason": "Pflanzliches Eiweiß + Ballaststoffe + Blattgemüse"
+    },
+    {
+      "id": 66,
+      "date": "2026-07-13",
+      "mealType": "kalt",
+      "ingredients": [
+        "Grüne Linsen",
+        "Rucola",
+        "Paprika",
+        "Petersilie",
+        "Olivenöl extra vergine"
+      ],
+      "situation": "Grüne Linsen-Salat mit Rucola, Paprika und Petersilie",
+      "satiety": "sehr hoch",
+      "variants": "Weitere passende Varianten: Berglinsen, Braune Linsen, Gelbe Linsen oder Rote Linsen",
+      "reason": "Hülsenfrüchte + Gemüse + Polyphenole"
+    },
+    {
+      "id": 67,
+      "date": "2026-07-13",
+      "mealType": "warm",
+      "ingredients": [
+        "Berglinsen",
+        "Brokkoli",
+        "Avocado",
+        "Tomaten",
+        "Knoblauch"
+      ],
+      "situation": "Brokkoli-Bowl mit Berglinsen, Avocado und Tomaten",
+      "satiety": "sehr hoch",
+      "variants": "Weitere passende Varianten: Braune Linsen, Gelbe Linsen, Grüne Linsen oder Rote Linsen",
+      "reason": "Hülsenfrüchte + Kreuzblütler + ungesättigte Fettsäuren"
+    },
+    {
+      "id": 68,
+      "date": "2026-07-13",
+      "mealType": "kalt",
+      "ingredients": [
+        "Mandeln",
+        "Skyr",
+        "Heidelbeeren",
+        "Leinsamen geschrotet",
+        "Zimt"
+      ],
+      "situation": "Skyr-Bowl mit Mandeln, Heidelbeeren und Leinsamen",
+      "satiety": "hoch",
+      "variants": "Weitere passende Varianten: Cashews, Erdnüsse, Haselnüsse, Macadamia, Paranüsse, Pekannüsse oder Pistazien",
+      "reason": "Eiweiß + Nüsse + Beeren-Polyphenole + Omega-3-Fettsäuren"
+    },
+    {
+      "id": 69,
+      "date": "2026-07-13",
+      "mealType": "kalt",
+      "ingredients": [
+        "Pistazien",
+        "Rucola",
+        "Tomaten",
+        "Avocado",
+        "Olivenöl extra vergine"
+      ],
+      "situation": "Rucola-Tomaten-Salat mit Pistazien und Avocado",
+      "satiety": "hoch",
+      "variants": "Weitere passende Varianten: Cashews, Erdnüsse, Haselnüsse, Macadamia, Mandeln, Paranüsse oder Pekannüsse",
+      "reason": "Nüsse + Blattgemüse + ungesättigte Fettsäuren"
+    },
+    {
+      "id": 70,
+      "date": "2026-07-13",
+      "mealType": "warm",
+      "ingredients": [
+        "Cashews",
+        "Brokkoli",
+        "Belugalinsen",
+        "Tomaten",
+        "Petersilie"
+      ],
+      "situation": "Brokkoli-Belugalinsen-Bowl mit Cashews",
+      "satiety": "sehr hoch",
+      "variants": "Weitere passende Varianten: Erdnüsse, Haselnüsse, Macadamia, Mandeln, Paranüsse, Pekannüsse oder Pistazien",
+      "reason": "Nüsse + Hülsenfrüchte + Kreuzblütler"
+    },
+    {
+      "id": 71,
+      "date": "2026-07-13",
+      "mealType": "warm",
+      "ingredients": [
+        "Shiitake",
+        "Spinat",
+        "Rote Zwiebel",
+        "Knoblauch",
+        "Petersilie"
+      ],
+      "situation": "Shiitake-Pfanne mit Spinat und roter Zwiebel",
+      "satiety": "hoch",
+      "variants": "Weitere passende Varianten: Austernpilze, Enoki, Kräuterseitlinge, Maitake, Pfifferlinge oder Steinpilze",
+      "reason": "Pilze + Blattgemüse + aromatische Pflanzenstoffe"
+    },
+    {
+      "id": 72,
+      "date": "2026-07-13",
+      "mealType": "warm",
+      "ingredients": [
+        "Austernpilze",
+        "Kichererbsen",
+        "Brokkoli",
+        "Knoblauch",
+        "Petersilie"
+      ],
+      "situation": "Austernpilze-Suppe mit Kichererbsen und Brokkoli",
+      "satiety": "sehr hoch",
+      "variants": "Weitere passende Varianten: Enoki, Kräuterseitlinge, Maitake, Pfifferlinge, Shiitake oder Steinpilze",
+      "reason": "Pilze + Hülsenfrüchte + Kreuzblütler"
+    },
+    {
+      "id": 73,
+      "date": "2026-07-13",
+      "mealType": "warm",
+      "ingredients": [
+        "Pfifferlinge",
+        "Belugalinsen",
+        "Tomaten",
+        "Rucola",
+        "Olivenöl extra vergine"
+      ],
+      "situation": "Belugalinsen-Bowl mit Pfifferlinge, Tomaten und Rucola",
+      "satiety": "sehr hoch",
+      "variants": "Weitere passende Varianten: Austernpilze, Enoki, Kräuterseitlinge, Maitake, Shiitake oder Steinpilze",
+      "reason": "Pilze + Hülsenfrüchte + Blattgemüse"
+    },
+    {
+      "id": 74,
+      "date": "2026-07-13",
+      "mealType": "warm",
+      "ingredients": [
+        "Reishi",
+        "Ingwer",
+        "Zimt"
+      ],
+      "situation": "Reishi-Ingwer-Aufguss mit Zimt",
+      "satiety": "niedrig",
+      "variants": "Gewürze und Gemüsebeilagen nach persönlichem Geschmack variieren",
+      "reason": "Warmer Aufguss + aromatische Pflanzenstoffe"
+    },
+    {
+      "id": 75,
+      "date": "2026-07-13",
+      "mealType": "warm",
+      "ingredients": [
+        "Reishi",
+        "Kakao ungesüßt",
+        "Zimt"
+      ],
+      "situation": "Warmer Kakao mit Reishi und Zimt",
+      "satiety": "niedrig bis mittel",
+      "variants": "Gewürze und Gemüsebeilagen nach persönlichem Geschmack variieren",
+      "reason": "Kakao-Polyphenole + aromatischer Pilzaufguss"
+    },
+    {
+      "id": 76,
+      "date": "2026-07-13",
+      "mealType": "warm",
+      "ingredients": [
+        "Reishi",
+        "Pak Choi",
+        "Ingwer",
+        "Knoblauch",
+        "Petersilie"
+      ],
+      "situation": "Reishi-Gemüsebrühe mit Pak Choi und Ingwer",
+      "satiety": "mittel",
+      "variants": "Gewürze und Gemüsebeilagen nach persönlichem Geschmack variieren",
+      "reason": "Warme Gemüsebrühe + Gewürzpflanzen"
+    },
+    {
+      "id": 77,
+      "date": "2026-07-13",
+      "mealType": "warm",
+      "ingredients": [
+        "Kürbis",
+        "Brokkoli",
+        "Schwarze Bohnen",
+        "Knoblauch",
+        "Olivenöl extra vergine"
+      ],
+      "situation": "Ofengemüse mit Kürbis, Brokkoli und schwarzen Bohnen",
+      "satiety": "sehr hoch",
+      "variants": "Weitere passende Varianten: Chili, Karotten, Mais, Paprika gelb, Paprika orange, Peperoni, Rote Bete, Süßkartoffeln oder Tomatenmark",
+      "reason": "Farbiges Gemüse + Hülsenfrüchte + Kreuzblütler"
+    },
+    {
+      "id": 78,
+      "date": "2026-07-13",
+      "mealType": "warm",
+      "ingredients": [
+        "Rote Bete",
+        "Tomaten",
+        "Spinat",
+        "Rote Zwiebel",
+        "Petersilie"
+      ],
+      "situation": "Rote Bete-Gemüsesuppe mit Tomaten und Spinat",
+      "satiety": "hoch",
+      "variants": "Weitere passende Varianten: Chili, Karotten, Kürbis, Mais, Paprika gelb, Paprika orange, Peperoni, Süßkartoffeln oder Tomatenmark",
+      "reason": "Carotinoide + Blattgemüse + Polyphenole"
+    },
+    {
+      "id": 79,
+      "date": "2026-07-13",
+      "mealType": "warm",
+      "ingredients": [
+        "Süßkartoffeln",
+        "Belugalinsen",
+        "Rucola",
+        "Knoblauch",
+        "Olivenöl extra vergine"
+      ],
+      "situation": "Belugalinsen-Pfanne mit Süßkartoffeln und Rucola",
+      "satiety": "sehr hoch",
+      "variants": "Weitere passende Varianten: Chili, Karotten, Kürbis, Mais, Paprika gelb, Paprika orange, Peperoni, Rote Bete oder Tomatenmark",
+      "reason": "Farbiges Gemüse + Hülsenfrüchte + Blattgemüse"
+    },
+    {
+      "id": 80,
+      "date": "2026-07-13",
+      "mealType": "warm",
+      "ingredients": [
+        "Tofu",
+        "Brokkoli",
+        "Paprika",
+        "Avocado",
+        "Petersilie"
+      ],
+      "situation": "Tofu-Bowl mit Brokkoli, Paprika und Avocado",
+      "satiety": "sehr hoch",
+      "variants": "Weitere passende Varianten: Edamame oder Sojabohnen",
+      "reason": "Pflanzliches Eiweiß + Kreuzblütler + ungesättigte Fettsäuren"
+    },
+    {
+      "id": 81,
+      "date": "2026-07-13",
+      "mealType": "warm",
+      "ingredients": [
+        "Tempeh",
+        "Pak Choi",
+        "Ingwer",
+        "Knoblauch",
+        "Olivenöl extra vergine"
+      ],
+      "situation": "Tempeh-Pfanne mit Pak Choi, Ingwer und Knoblauch",
+      "satiety": "sehr hoch",
+      "variants": "Weitere passende Varianten: Edamame oder Sojabohnen",
+      "reason": "Pflanzliches Eiweiß + Gemüse + Gewürzpflanzen"
+    },
+    {
+      "id": 82,
+      "date": "2026-07-13",
+      "mealType": "kalt",
+      "ingredients": [
+        "Sojabohnen",
+        "Rucola",
+        "Tomaten",
+        "fermentierte Gurken",
+        "Kresse"
+      ],
+      "situation": "Sojabohnen-Salat mit Rucola, Tomaten und fermentierten Gurken",
+      "satiety": "hoch",
+      "variants": "Weitere passende Varianten: Tempeh oder Tofu",
+      "reason": "Pflanzliches Eiweiß + Blattgemüse + fermentiertes Gemüse"
+    },
+    {
+      "id": 83,
+      "date": "2026-07-13",
+      "mealType": "kalt",
+      "ingredients": [
+        "Natto",
+        "Avocado",
+        "Rucola",
+        "Tomaten",
+        "Kresse"
+      ],
+      "situation": "Natto-Bowl mit Avocado, Rucola und Tomaten",
+      "satiety": "hoch",
+      "variants": "Gewürze und Gemüsebeilagen nach persönlichem Geschmack variieren",
+      "reason": "Fermentiertes Soja + Blattgemüse + ungesättigte Fettsäuren"
+    },
+    {
+      "id": 84,
+      "date": "2026-07-13",
+      "mealType": "kalt",
+      "ingredients": [
+        "Natto",
+        "Hühnerei",
+        "Spinat",
+        "Rote Zwiebel",
+        "Petersilie"
+      ],
+      "situation": "Natto mit Hühnerei, Spinat und roter Zwiebel",
+      "satiety": "sehr hoch",
+      "variants": "Gewürze und Gemüsebeilagen nach persönlichem Geschmack variieren",
+      "reason": "Fermentiertes Soja + Eiweiß + Blattgemüse"
+    },
+    {
+      "id": 85,
+      "date": "2026-07-13",
+      "mealType": "kalt",
+      "ingredients": [
+        "Natto",
+        "Belugalinsen",
+        "fermentierte Gurken",
+        "Tomaten",
+        "Kresse"
+      ],
+      "situation": "Belugalinsen-Bowl mit Natto und fermentierten Gurken",
+      "satiety": "sehr hoch",
+      "variants": "Gewürze und Gemüsebeilagen nach persönlichem Geschmack variieren",
+      "reason": "Fermentiertes Soja + Hülsenfrüchte + fermentiertes Gemüse"
+    },
+    {
+      "id": 86,
+      "date": "2026-07-13",
+      "mealType": "kalt",
+      "ingredients": [
+        "Grüner Tee",
+        "Skyr",
+        "Heidelbeeren",
+        "Walnüsse",
+        "Zimt"
+      ],
+      "situation": "Skyr-Bowl mit Heidelbeeren und Grüner Tee als Getränk",
+      "satiety": "hoch",
+      "variants": "Weitere passende Varianten: Espresso, Hagebuttentee, Hibiskustee, Kaffee, Matcha, Mate, Oolong Tee, Rooibos, Schwarzer Tee oder Weißer Tee",
+      "reason": "Eiweiß + Beeren + Nüsse + ungesüßtes Getränk"
+    },
+    {
+      "id": 87,
+      "date": "2026-07-13",
+      "mealType": "kalt",
+      "ingredients": [
+        "Kaffee",
+        "Quark",
+        "Chiasamen",
+        "Brombeeren",
+        "Zimt"
+      ],
+      "situation": "Quark-Frühstück mit Chiasamen und Kaffee",
+      "satiety": "hoch",
+      "variants": "Weitere passende Varianten: Espresso, Grüner Tee, Hagebuttentee, Hibiskustee, Matcha, Mate, Oolong Tee, Rooibos, Schwarzer Tee oder Weißer Tee",
+      "reason": "Eiweiß + Ballaststoffe + Beeren-Polyphenole"
+    },
+    {
+      "id": 88,
+      "date": "2026-07-13",
+      "mealType": "warm",
+      "ingredients": [
+        "Lauch",
+        "Brokkoli",
+        "Tomaten",
+        "Petersilie",
+        "Olivenöl extra vergine"
+      ],
+      "situation": "Lauch-Gemüsesuppe mit Brokkoli und Tomaten",
+      "satiety": "hoch",
+      "variants": "Weitere passende Varianten: Bärlauch, Frühlingszwiebel, Gelbe Zwiebel, Schalotte oder Schnittlauch",
+      "reason": "Schwefelverbindungen + Kreuzblütler + Polyphenole"
+    },
+    {
+      "id": 89,
+      "date": "2026-07-13",
+      "mealType": "kalt",
+      "ingredients": [
+        "Bärlauch",
+        "Belugalinsen",
+        "Rucola",
+        "Tomaten",
+        "Olivenöl extra vergine"
+      ],
+      "situation": "Belugalinsen-Salat mit Bärlauch, Rucola und Tomaten",
+      "satiety": "sehr hoch",
+      "variants": "Weitere passende Varianten: Frühlingszwiebel, Gelbe Zwiebel, Lauch, Schalotte oder Schnittlauch",
+      "reason": "Hülsenfrüchte + Zwiebelgewächse + Blattgemüse"
+    },
+    {
+      "id": 90,
+      "date": "2026-07-13",
+      "mealType": "kalt",
+      "ingredients": [
+        "Griechischer Joghurt",
+        "Heidelbeeren",
+        "Leinsamen geschrotet",
+        "Walnüsse",
+        "Zimt"
+      ],
+      "situation": "Griechischer Joghurt-Bowl mit Heidelbeeren, Leinsamen und Walnüssen",
+      "satiety": "hoch",
+      "variants": "Weitere passende Varianten: Buttermilch, Hüttenkäse oder Kefir",
+      "reason": "Eiweiß + Calcium + Beeren-Polyphenole + Omega-3-Fettsäuren"
+    },
+    {
+      "id": 91,
+      "date": "2026-07-13",
+      "mealType": "kalt",
+      "ingredients": [
+        "Buttermilch",
+        "Radieschen",
+        "Kresse",
+        "Petersilie",
+        "fermentierte Gurken"
+      ],
+      "situation": "Kräuter-Dip mit Buttermilch, Radieschen und Kresse",
+      "satiety": "hoch",
+      "variants": "Weitere passende Varianten: Griechischer Joghurt oder Hüttenkäse",
+      "reason": "Eiweiß + fermentiertes Milchprodukt + frisches Gemüse"
+    },
+    {
+      "id": 92,
+      "date": "2026-07-13",
+      "mealType": "kalt",
+      "ingredients": [
+        "Griechischer Joghurt",
+        "Rucola",
+        "Tomaten",
+        "Walnüsse",
+        "Petersilie"
+      ],
+      "situation": "Rucola-Tomaten-Salat mit Griechischer Joghurt-Dressing",
+      "satiety": "hoch",
+      "variants": "Als Variante eignet sich Buttermilch",
+      "reason": "Eiweiß + Blattgemüse + Nüsse + Polyphenole"
+    },
+    {
+      "id": 93,
+      "date": "2026-07-13",
+      "mealType": "kalt",
+      "ingredients": [
+        "Mozzarella",
+        "Rucola",
+        "Tomaten",
+        "Walnüsse",
+        "Olivenöl extra vergine"
+      ],
+      "situation": "Rucola-Tomaten-Salat mit Mozzarella und Walnüssen",
+      "satiety": "hoch",
+      "variants": "Weitere passende Varianten: Feta, Frischkäse natur, Harzer Käse, Parmesan oder Ziegenkäse",
+      "reason": "Eiweiß + Calcium + Blattgemüse + ungesättigte Fettsäuren"
+    },
+    {
+      "id": 94,
+      "date": "2026-07-13",
+      "mealType": "warm",
+      "ingredients": [
+        "Parmesan",
+        "Hühnerei",
+        "Spinat",
+        "Champignons",
+        "Rote Zwiebel"
+      ],
+      "situation": "Omelett mit Parmesan, Spinat und Champignons",
+      "satiety": "sehr hoch",
+      "variants": "Weitere passende Varianten: Feta, Frischkäse natur, Harzer Käse, Mozzarella oder Ziegenkäse",
+      "reason": "Eiweiß + Calcium + Blattgemüse + Pilze"
+    },
+    {
+      "id": 95,
+      "date": "2026-07-13",
+      "mealType": "warm",
+      "ingredients": [
+        "Ziegenkäse",
+        "Brokkoli",
+        "Tomaten",
+        "Knoblauch",
+        "Olivenöl extra vergine"
+      ],
+      "situation": "Ofenbrokkoli mit Ziegenkäse, Tomaten und Knoblauch",
+      "satiety": "hoch",
+      "variants": "Weitere passende Varianten: Frischkäse natur, Harzer Käse, Mozzarella oder Parmesan",
+      "reason": "Käse-Eiweiß + Kreuzblütler + Tomaten-Polyphenole"
+    },
+    {
+      "id": 96,
+      "date": "2026-07-13",
+      "mealType": "warm",
+      "ingredients": [
+        "Erdbeeren",
+        "Naturjoghurt",
+        "Zimt",
+        "Chiasamen"
+      ],
+      "situation": "Warmes Erdbeeren-Kompott mit Naturjoghurt und Zimt",
+      "satiety": "mittel bis hoch",
+      "variants": "Weitere passende Varianten: Aroniabeeren, Cranberries, Goji-Beeren, Himbeeren, Holunderbeeren, Maulbeeren, Preiselbeeren, Rote Johannisbeeren oder Schwarze Johannisbeeren",
+      "reason": "Beeren-Polyphenole + fermentiertes Milchprodukt + Ballaststoffe"
+    },
+    {
+      "id": 97,
+      "date": "2026-07-13",
+      "mealType": "warm",
+      "ingredients": [
+        "Aroniabeeren",
+        "Haferflocken",
+        "Walnüsse",
+        "Zimt",
+        "Naturjoghurt"
+      ],
+      "situation": "Ofen-Haferflocken mit Aroniabeeren, Walnüssen und Zimt",
+      "satiety": "hoch",
+      "variants": "Weitere passende Varianten: Cranberries, Erdbeeren, Goji-Beeren, Himbeeren, Holunderbeeren, Maulbeeren, Preiselbeeren, Rote Johannisbeeren oder Schwarze Johannisbeeren",
+      "reason": "Beeren + Vollkorn + Nüsse + Ballaststoffe"
+    },
+    {
+      "id": 98,
+      "date": "2026-07-13",
+      "mealType": "kalt",
+      "ingredients": [
+        "Schwarze Johannisbeeren",
+        "Quark",
+        "Leinsamen geschrotet",
+        "Zimt"
+      ],
+      "situation": "Quark mit gekochter Schwarze Johannisbeeren-Sauce und Leinsamen",
+      "satiety": "hoch",
+      "variants": "Weitere passende Varianten: Aroniabeeren, Cranberries, Erdbeeren, Goji-Beeren, Holunderbeeren, Maulbeeren, Preiselbeeren oder Rote Johannisbeeren",
+      "reason": "Eiweiß + Beeren-Polyphenole + Omega-3-Fettsäuren"
+    },
+    {
+      "id": 99,
+      "date": "2026-07-13",
+      "mealType": "warm",
+      "ingredients": [
+        "Apfel mit Schale",
+        "Naturjoghurt",
+        "Zimt",
+        "Walnüsse"
+      ],
+      "situation": "Warmes Apfel mit Schale-Kompott mit Naturjoghurt und Zimt",
+      "satiety": "mittel bis hoch",
+      "variants": "Weitere passende Varianten: Birne mit Schale oder Quitte",
+      "reason": "Obst-Ballaststoffe + fermentiertes Milchprodukt + Nüsse"
+    },
+    {
+      "id": 100,
+      "date": "2026-07-13",
+      "mealType": "warm",
+      "ingredients": [
+        "Birne mit Schale",
+        "Quark",
+        "Walnüsse",
+        "Zimt"
+      ],
+      "situation": "Ofen-Birne mit Schale mit Quark, Walnüssen und Zimt",
+      "satiety": "hoch",
+      "variants": "Weitere passende Varianten: Apfel mit Schale oder Quitte",
+      "reason": "Eiweiß + Kernobst + Nüsse + Ballaststoffe"
+    },
+    {
+      "id": 101,
+      "date": "2026-07-13",
+      "mealType": "warm",
+      "ingredients": [
+        "Quitte",
+        "Haferflocken",
+        "Skyr",
+        "Chiasamen",
+        "Zimt"
+      ],
+      "situation": "Hafer-Bowl mit gegartem Quitte, Skyr und Chiasamen",
+      "satiety": "hoch",
+      "variants": "Weitere passende Varianten: Apfel mit Schale oder Birne mit Schale",
+      "reason": "Vollkorn + Eiweiß + Obst-Ballaststoffe"
+    },
+    {
+      "id": 102,
+      "date": "2026-07-13",
+      "mealType": "kalt",
+      "ingredients": [
+        "Pfirsiche",
+        "Quark",
+        "Chiasamen",
+        "Zimt",
+        "Walnüsse"
+      ],
+      "situation": "Quark-Bowl mit Pfirsiche, Chiasamen und Zimt",
+      "satiety": "hoch",
+      "variants": "Weitere passende Varianten: Aprikosen, Kirschen, Mirabellen, Nektarinen, Pflaumen, Sauerkirschen oder Zwetschgen",
+      "reason": "Eiweiß + Steinobst + Ballaststoffe + Nüsse"
+    },
+    {
+      "id": 103,
+      "date": "2026-07-13",
+      "mealType": "warm",
+      "ingredients": [
+        "Kirschen",
+        "Haferflocken",
+        "Walnüsse",
+        "Zimt",
+        "Naturjoghurt"
+      ],
+      "situation": "Ofen-Haferflocken mit Kirschen und Walnüssen",
+      "satiety": "hoch",
+      "variants": "Weitere passende Varianten: Aprikosen, Mirabellen, Nektarinen, Pfirsiche, Pflaumen, Sauerkirschen oder Zwetschgen",
+      "reason": "Vollkorn + Steinobst + Nüsse + fermentiertes Milchprodukt"
+    },
+    {
+      "id": 104,
+      "date": "2026-07-13",
+      "mealType": "kalt",
+      "ingredients": [
+        "Aprikosen",
+        "Naturjoghurt",
+        "Leinsamen geschrotet",
+        "Kakaonibs",
+        "Zimt"
+      ],
+      "situation": "Naturjoghurt mit Aprikosen, Leinsamen und Kakaonibs",
+      "satiety": "hoch",
+      "variants": "Weitere passende Varianten: Kirschen, Mirabellen, Nektarinen, Pfirsiche, Pflaumen, Sauerkirschen oder Zwetschgen",
+      "reason": "Fermentiertes Milchprodukt + Obst + Omega-3-Fettsäuren"
+    },
+    {
+      "id": 105,
+      "date": "2026-07-13",
+      "mealType": "kalt",
+      "ingredients": [
+        "Mango",
+        "Skyr",
+        "Chiasamen",
+        "Walnüsse",
+        "Zimt"
+      ],
+      "situation": "Skyr-Bowl mit Mango, Chiasamen und Walnüssen",
+      "satiety": "hoch",
+      "variants": "Weitere passende Varianten: Ananas, Cantaloupe-Melone, Dunkle Trauben, Granatapfel, Guave, Kiwi, Papaya, Passionsfrucht oder Wassermelone",
+      "reason": "Eiweiß + Obst + Ballaststoffe + Nüsse"
+    },
+    {
+      "id": 106,
+      "date": "2026-07-13",
+      "mealType": "kalt",
+      "ingredients": [
+        "Ananas",
+        "Rucola",
+        "Avocado",
+        "Walnüsse",
+        "Kresse"
+      ],
+      "situation": "Frischer Salat mit Ananas, Rucola und Avocado",
+      "satiety": "mittel bis hoch",
+      "variants": "Weitere passende Varianten: Cantaloupe-Melone, Dunkle Trauben, Granatapfel, Guave, Kiwi, Mango, Papaya, Passionsfrucht oder Wassermelone",
+      "reason": "Obst-Polyphenole + Blattgemüse + ungesättigte Fettsäuren"
+    },
+    {
+      "id": 107,
+      "date": "2026-07-13",
+      "mealType": "kalt",
+      "ingredients": [
+        "Papaya",
+        "Naturjoghurt",
+        "Leinsamen geschrotet",
+        "Zimt"
+      ],
+      "situation": "Joghurt-Smoothie mit Papaya, Leinsamen und Zimt",
+      "satiety": "mittel bis hoch",
+      "variants": "Weitere passende Varianten: Ananas, Cantaloupe-Melone, Dunkle Trauben, Granatapfel, Guave, Kiwi, Mango, Passionsfrucht oder Wassermelone",
+      "reason": "Fermentiertes Milchprodukt + Obst + Omega-3-Fettsäuren"
+    },
+    {
+      "id": 108,
+      "date": "2026-07-13",
+      "mealType": "kalt",
+      "ingredients": [
+        "Orange",
+        "Naturjoghurt",
+        "Chiasamen",
+        "Walnüsse",
+        "Zimt"
+      ],
+      "situation": "Joghurt-Bowl mit Orange, Chiasamen und Walnüssen",
+      "satiety": "hoch",
+      "variants": "Weitere passende Varianten: Blutorange, Grapefruit, Limette, Mandarine, Pomelo oder Zitrone",
+      "reason": "Vitamin-C-reiches Obst + Eiweiß + Ballaststoffe"
+    },
+    {
+      "id": 109,
+      "date": "2026-07-13",
+      "mealType": "kalt",
+      "ingredients": [
+        "Zitrone",
+        "Feldsalat",
+        "Avocado",
+        "Walnüsse",
+        "Olivenöl extra vergine"
+      ],
+      "situation": "Feldsalat mit Zitrone, Avocado und Walnüssen",
+      "satiety": "hoch",
+      "variants": "Weitere passende Varianten: Blutorange, Grapefruit, Limette, Mandarine, Orange oder Pomelo",
+      "reason": "Zitrus-Polyphenole + Blattgemüse + ungesättigte Fettsäuren"
+    },
+    {
+      "id": 110,
+      "date": "2026-07-13",
+      "mealType": "warm",
+      "ingredients": [
+        "Grapefruit",
+        "Lachs",
+        "Brokkoli",
+        "Knoblauch",
+        "Olivenöl extra vergine"
+      ],
+      "situation": "Ofenlachs mit Grapefruit, Brokkoli und Knoblauch",
+      "satiety": "sehr hoch",
+      "variants": "Weitere passende Varianten: Blutorange, Limette, Mandarine, Orange, Pomelo oder Zitrone",
+      "reason": "Omega-3-Fettsäuren + Zitrusaromen + Kreuzblütler"
+    },
+    {
+      "id": 111,
+      "date": "2026-08-02",
+      "mealType": "warm",
+      "ingredients": [
+        "Garnelen",
+        "Wildreis",
+        "Fenchelknolle",
+        "Lauch",
+        "Dill",
+        "Zitrone"
+      ],
+      "situation": "Wildreis-Garnelen-Fenchel-Suppe",
+      "satiety": "sehr hoch",
+      "variants": "Kabeljau statt Garnelen, Naturreis statt Wildreis oder Petersilie statt Dill",
+      "reason": "Eiweiß + Vollkornreis + Fenchel und Lauch + Kräuter und Zitrusaromen"
+    },
+    {
+      "id": 112,
+      "date": "2026-08-02",
+      "mealType": "warm",
+      "ingredients": [
+        "Rote Linsen",
+        "Karotten",
+        "Staudensellerie",
+        "Gelbe Zwiebel",
+        "Spinat",
+        "Parmesan"
+      ],
+      "situation": "Linsen-Gemüse-Suppe mit Staudensellerie und Spinat",
+      "satiety": "sehr hoch",
+      "variants": "Belugalinsen statt rote Linsen, Mangold statt Spinat oder Feta statt Parmesan",
+      "reason": "Hülsenfrüchte + Wurzel- und Stängelgemüse + Blattgemüse + Eiweiß und Calcium"
+    },
+    {
+      "id": 113,
+      "date": "2026-08-02",
+      "mealType": "warm",
+      "ingredients": [
+        "Rote Linsen",
+        "Hähnchenbrust",
+        "Karotten",
+        "Pastinake",
+        "Staudensellerie",
+        "Ingwer",
+        "Kurkuma",
+        "Koriandergrün",
+        "Naturjoghurt"
+      ],
+      "situation": "Mulligatawny-Suppe mit roten Linsen, Pastinake und Staudensellerie",
+      "satiety": "sehr hoch",
+      "variants": "Putenbrust statt Hähnchenbrust, gelbe Linsen statt rote Linsen oder Petersilie statt Koriandergrün",
+      "reason": "Eiweiß + Hülsenfrüchte + ballaststoffreiches Wurzelgemüse + Ingwer und Kurkuma"
+    }
   ],
   "sources": [
     {
@@ -6947,9 +7057,18 @@ window.APP_DATA = {
       "name": "Cleveland Clinic – Anti-inflammatory diet",
       "url": "https://health.clevelandclinic.org/anti-inflammatory-diet",
       "purpose": "Allgemeine Bestätigung antientzündlicher Lebensmittelgruppen: Obst, Gemüse, fetter Fisch, Vollkorn"
+    },
+    {
+      "id": 10,
+      "name": "USDA FoodData Central",
+      "url": "https://fdc.nal.usda.gov/",
+      "purpose": "Nährwertangaben für Fenchelknolle, Pastinake und Staudensellerie"
+    },
+    {
+      "id": 11,
+      "name": "Europäische Kommission – Allergenkennzeichnung",
+      "url": "https://food.ec.europa.eu/document/download/e7ebc668-fa20-4b48-b0e5-c5992614986d_en?filename=campaign-26_factsheet_allergens.pdf",
+      "purpose": "Hinweis, dass Sellerie zu den kennzeichnungspflichtigen Allergenen gehört"
     }
   ]
 };
-
-window.APP_DATA.foodNames = [...new Set(window.APP_DATA.foods.map((food) => food.name).filter(Boolean))]
-  .sort((a, b) => a.localeCompare(b, "de", { sensitivity: "base" }));
