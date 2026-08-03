@@ -153,6 +153,25 @@ window.APP_DATA = {
       "sources": "https://www.health.harvard.edu/healthy-aging-and-longevity/foods-that-fight-inflammation; https://lpi.oregonstate.edu/mic/dietary-factors/phytochemicals/flavonoids; https://lpi.oregonstate.edu/mic/food-beverages/fruit-vegetables"
     },
     {
+      "id": 274,
+      "category": "Gemüse, Pilze, Hülsenfrüchte & Nüsse",
+      "subcategory": "Fruchtgemüse",
+      "sort": 4,
+      "satiety": "mittel",
+      "score": 3,
+      "name": "Aubergine",
+      "selected": false,
+      "compounds": "Ballaststoffe, Kalium, Folat sowie Polyphenole; die violette Schale enthält Anthocyane.",
+      "benefit": "Kalorienarmes und volumenreiches Gemüse, das gegart eine cremige Grundlage für Dips und Gemüsegerichte bildet.",
+      "carbs": "niedrig",
+      "use": "Vollständig gegart, gebacken oder gegrillt in Dips, Gemüsegerichten, Aufläufen und Suppen verwenden.",
+      "caution": "Nicht roh in größeren Mengen essen; bei bitterem Geschmack nicht verwenden und für eine gute Verträglichkeit vollständig garen.",
+      "priority": "hoch",
+      "nutrition": "Energie / Kalorien: ca. 25 kcal; Fett: ca. 0,2 g; davon gesättigte Fettsäuren: ca. 0,0 g; Kohlenhydrate: ca. 5,9 g; davon Zucker: ca. 3,5 g; Eiweiß / Protein: ca. 1,0 g; Salz: ca. 0,0 g; Ballaststoffe: ca. 3,0 g",
+      "portion": "150 g",
+      "sources": "https://fdc.nal.usda.gov/; https://www.health.harvard.edu/diet-and-nutrition/quick-start-guide-to-an-antiinflammation-diet; https://lpi.oregonstate.edu/mic/dietary-factors/phytochemicals/flavonoids"
+    },
+    {
       "id": 56,
       "category": "Gemüse, Pilze, Hülsenfrüchte & Nüsse",
       "subcategory": "Bohnen",
@@ -702,6 +721,25 @@ window.APP_DATA = {
       "nutrition": "Energie / Kalorien: ca. 46 kcal; Fett: ca. 0,1 g; davon gesättigte Fettsäuren: ca. 0,0 g; Kohlenhydrate: ca. 12,2 g; davon Zucker: ca. 4,0 g; Eiweiß / Protein: ca. 0,4 g; Salz: ca. 0,0 g; Ballaststoffe: ca. 4,6 g",
       "portion": "100 g",
       "sources": "https://www.health.harvard.edu/healthy-aging-and-longevity/foods-that-fight-inflammation; https://lpi.oregonstate.edu/mic/dietary-factors/phytochemicals/flavonoids; https://lpi.oregonstate.edu/mic/food-beverages/fruit-vegetables"
+    },
+    {
+      "id": 275,
+      "category": "Gemüse, Pilze, Hülsenfrüchte & Nüsse",
+      "subcategory": "Bohnen",
+      "sort": 3,
+      "satiety": "sehr hoch",
+      "score": 5,
+      "name": "Dicke Bohnen",
+      "selected": false,
+      "compounds": "Ballaststoffe, pflanzliches Eiweiß, Folat, Eisen, Kalium und verschiedene Polyphenole.",
+      "benefit": "Sättigende Hülsenfrucht mit einer Kombination aus pflanzlichem Eiweiß und Ballaststoffen.",
+      "carbs": "mittel",
+      "use": "Vollständig gegart in Dips, Suppen, Eintöpfen, Salaten oder als Bohnenmus verwenden.",
+      "caution": "Getrocknete Bohnen vollständig garen; bei empfindlicher Verdauung die Menge langsam steigern. Menschen mit Favismus müssen Ackerbohnen meiden.",
+      "priority": "sehr hoch",
+      "nutrition": "Energie / Kalorien: ca. 110 kcal; Fett: ca. 0,4 g; davon gesättigte Fettsäuren: ca. 0,1 g; Kohlenhydrate: ca. 19,7 g; davon Zucker: ca. 1,8 g; Eiweiß / Protein: ca. 7,6 g; Salz: ca. 0,0 g; Ballaststoffe: ca. 5,4 g",
+      "portion": "100 g",
+      "sources": "https://fdc.nal.usda.gov/; https://www.health.harvard.edu/diet-and-nutrition/quick-start-guide-to-an-antiinflammation-diet; https://lpi.oregonstate.edu/mic/dietary-factors/phytochemicals/flavonoids"
     },
     {
       "id": 230,
@@ -7171,6 +7209,166 @@ window.APP_DATA = {
       "satiety": "sehr hoch",
       "variants": "Schellfisch statt Zander, Naturreis statt Wildreis oder Mangold statt Romanasalat",
       "reason": "Mageres Eiweiß + Vollkornreis + Blattgemüse + Kräuter und Zitrusaromen"
+    },
+    {
+      "id": 124,
+      "date": "2026-08-03",
+      "mealType": "kalt",
+      "ingredients": [
+        "Rote Bete",
+        "Walnüsse",
+        "Naturjoghurt",
+        "Zitrone",
+        "Kreuzkümmel"
+      ],
+      "situation": "Rote-Bete-Walnuss-Dip mit Joghurt und Kreuzkümmel",
+      "satiety": "hoch",
+      "variants": "Ziegenkäse statt Naturjoghurt oder Pistazien statt Walnüsse",
+      "reason": "Rote-Bete-Polyphenole + Nüsse + fermentiertes Milchprodukt + Gewürze"
+    },
+    {
+      "id": 125,
+      "date": "2026-08-03",
+      "mealType": "kalt",
+      "ingredients": [
+        "Weiße Bohnen",
+        "Zitrone",
+        "Minze",
+        "Olivenöl extra vergine",
+        "Knoblauch"
+      ],
+      "situation": "Weiße-Bohnen-Zitronen-Dip mit Minze",
+      "satiety": "sehr hoch",
+      "variants": "Kichererbsen statt Weiße Bohnen oder Petersilie statt Minze",
+      "reason": "Pflanzliches Eiweiß + Ballaststoffe + Olivenöl + Kräuter und Zitrusaromen"
+    },
+    {
+      "id": 126,
+      "date": "2026-08-03",
+      "mealType": "kalt",
+      "ingredients": [
+        "Edamame",
+        "Miso",
+        "Ingwer",
+        "Limette",
+        "Sesam"
+      ],
+      "situation": "Edamame-Miso-Dip mit Ingwer, Limette und Sesam",
+      "satiety": "hoch",
+      "variants": "Tofu statt Edamame oder Koriandergrün zusätzlich verwenden",
+      "reason": "Soja-Eiweiß + Isoflavone + fermentiertes Miso + Ingwer und Sesam"
+    },
+    {
+      "id": 127,
+      "date": "2026-08-03",
+      "mealType": "kalt",
+      "ingredients": [
+        "Avocado",
+        "Kichererbsen",
+        "Limette",
+        "Koriandergrün",
+        "Knoblauch"
+      ],
+      "situation": "Avocado-Kichererbsen-Dip mit Limette und Koriander",
+      "satiety": "sehr hoch",
+      "variants": "Weiße Bohnen statt Kichererbsen oder Petersilie statt Koriandergrün",
+      "reason": "Ungesättigte Fettsäuren + Hülsenfrüchte + Ballaststoffe + Kräuter"
+    },
+    {
+      "id": 128,
+      "date": "2026-08-03",
+      "mealType": "kalt",
+      "ingredients": [
+        "Kürbis",
+        "Cashews",
+        "Kurkuma",
+        "Ingwer",
+        "Rapsöl"
+      ],
+      "situation": "Kürbis-Cashew-Dip mit Kurkuma und Ingwer",
+      "satiety": "hoch",
+      "variants": "Süßkartoffeln statt Kürbis oder Mandeln statt Cashews",
+      "reason": "Carotinoide + Nüsse + ungesättigte Fettsäuren + Kurkuma und Ingwer"
+    },
+    {
+      "id": 129,
+      "date": "2026-08-03",
+      "mealType": "kalt",
+      "ingredients": [
+        "Karotten",
+        "Rote Linsen",
+        "Kreuzkümmel",
+        "Koriandersamen",
+        "Olivenöl extra vergine"
+      ],
+      "situation": "Karotten-Linsen-Dip mit Kreuzkümmel und Koriander",
+      "satiety": "sehr hoch",
+      "variants": "Gelbe Linsen statt Rote Linsen oder Fenchelsamen statt Koriandersamen",
+      "reason": "Carotinoide + Hülsenfrüchte + Ballaststoffe + aromatische Gewürze"
+    },
+    {
+      "id": 130,
+      "date": "2026-08-03",
+      "mealType": "kalt",
+      "ingredients": [
+        "Paprika rot",
+        "Walnüsse",
+        "Knoblauch",
+        "Kreuzkümmel",
+        "Olivenöl extra vergine"
+      ],
+      "situation": "Roter-Paprika-Walnuss-Dip mit Knoblauch und Kreuzkümmel",
+      "satiety": "hoch",
+      "variants": "Mandeln statt Walnüsse oder Chili für eine schärfere Variante",
+      "reason": "Vitamin C und Carotinoide + Walnüsse + Olivenöl + Gewürze"
+    },
+    {
+      "id": 131,
+      "date": "2026-08-03",
+      "mealType": "kalt",
+      "ingredients": [
+        "Blumenkohl",
+        "Sonnenblumenkerne",
+        "Zitrone",
+        "Knoblauch",
+        "Rapsöl"
+      ],
+      "situation": "Blumenkohl-Sonnenblumenkern-Dip mit Zitrone",
+      "satiety": "hoch",
+      "variants": "Brokkoli statt Blumenkohl oder Kürbiskerne statt Sonnenblumenkerne",
+      "reason": "Kreuzblütler + Samen + Vitamin E + ungesättigte Fettsäuren"
+    },
+    {
+      "id": 132,
+      "date": "2026-08-03",
+      "mealType": "kalt",
+      "ingredients": [
+        "Aubergine",
+        "Sesam",
+        "Knoblauch",
+        "Zitrone",
+        "Olivenöl extra vergine"
+      ],
+      "situation": "Gerösteter Auberginen-Sesam-Dip mit Zitrone und Knoblauch",
+      "satiety": "hoch",
+      "variants": "Walnüsse statt Sesam oder Limette statt Zitrone",
+      "reason": "Auberginen-Polyphenole + Sesam + Olivenöl + Knoblauch"
+    },
+    {
+      "id": 133,
+      "date": "2026-08-03",
+      "mealType": "kalt",
+      "ingredients": [
+        "Dicke Bohnen",
+        "Koriandergrün",
+        "Knoblauch",
+        "Zitrone",
+        "Olivenöl extra vergine"
+      ],
+      "situation": "Dicke-Bohnen-Dip mit Koriander, Knoblauch und Zitrone",
+      "satiety": "sehr hoch",
+      "variants": "Grüne Erbsen statt Dicke Bohnen oder Petersilie statt Koriandergrün",
+      "reason": "Pflanzliches Eiweiß + Ballaststoffe + Olivenöl + Kräuter"
     }
   ],
   "sources": [
@@ -7232,7 +7430,7 @@ window.APP_DATA = {
       "id": 10,
       "name": "USDA FoodData Central",
       "url": "https://fdc.nal.usda.gov/",
-      "purpose": "Nährwertangaben für Fenchelknolle, Pastinake und Staudensellerie"
+      "purpose": "Nährwertangaben für Fenchelknolle, Pastinake und Staudensellerie; Nährwertangaben für Aubergine und Dicke Bohnen"
     },
     {
       "id": 11,
