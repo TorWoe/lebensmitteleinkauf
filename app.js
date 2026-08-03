@@ -2,7 +2,7 @@
   "use strict";
 
   const { foods, meals, sources, foodNames = [] } = window.APP_DATA;
-  const appVersion = "meal-variation-default-no-20260714-1";
+  const appVersion = "bookmarks-onedrive-20260803-1";
   const appVersionFile = "app-version.json";
   const appRefreshParam = "appRefresh";
   const appRefreshSessionKey = "lebensmitteleinkauf:app-refresh-version:v1";
@@ -10,6 +10,7 @@
   const currentViewScrollStorageKey = "lebensmitteleinkauf:current-view-scroll:v1";
   const storageKey = "lebensmitteleinkauf:selected:v1";
   const storageMetaKey = "lebensmitteleinkauf:selected:meta:v1";
+  const bookmarkStorageKey = "lebensmitteleinkauf:bookmarks:v1";
   const pendingLoginKey = "lebensmitteleinkauf:onedrive-login-pending:v1";
   const manualLogoutKey = "lebensmitteleinkauf:onedrive-manual-logout:v1";
   const authReloadKey = "lebensmitteleinkauf:onedrive-auth-reload:v1";
@@ -36,8 +37,10 @@
   const graphScopes = ["User.Read", "Files.ReadWrite.AppFolder"];
   const loginRequest = { scopes: graphScopes };
   const validFoodIds = new Set(foods.map((food) => food.id));
+  const validMealIds = new Set(meals.map((meal) => meal.id));
   const localSnapshot = loadSelectionData();
   const foodByName = new Map(foods.map((food) => [normalizeFoodName(food.name), food]));
+  const mealIndexById = new Map(meals.map((meal, index) => [meal.id, index]));
   const mealGuideImages = {
     1: { src: "assets/meal-guide/step-1.png", alt: "Bildanleitung zu Schritt 1: Eine Mahlzeit auswählen" },
     2: { src: "assets/meal-guide/step-2.png", alt: "Bildanleitung zu Schritt 2: Text für die Rezeptsuche kopieren" },
@@ -52,6 +55,7 @@
     leaf: '<path d="M19 4C11 4 6 8 6 15c0 3 2 5 5 5 7 0 9-8 8-16Z"/><path d="M5 21c2-5 6-9 11-12"/>',
     meal: '<path d="M7 3v8M4.5 3v5c0 2 1 3 2.5 3s2.5-1 2.5-3V3M7 11v10"/><path d="M16 3c2 2 3 5 3 8v2h-5V9c0-3 1-5 2-6Zm0 10v8"/>',
     chart: '<path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/>',
+    bookmark: '<path d="M6.5 3.5h11v17L12 17l-5.5 3.5v-17Z"/>',
     imageOpen: '<rect x="3" y="5" width="13" height="14" rx="2"/><path d="m5.5 16 3.2-3.2 2.5 2.5 1.8-1.8 3 3"/><path d="M14 3h7v7M21 3l-8 8"/>',
     cloud: '<path d="M17.5 18H8a5 5 0 1 1 1.2-9.85A6.5 6.5 0 0 1 21 12a3 3 0 0 1-3.5 6Z"/><path d="M12 13v7M9 16l3-3 3 3"/>',
   };
@@ -80,6 +84,8 @@
     priority: "",
     limit: window.innerWidth < 680 ? 18 : 28,
     selected: new Set(localSnapshot.selected),
+    bookmarkedFoods: new Set(localSnapshot.bookmarkedFoodIds),
+    bookmarkedMeals: new Set(localSnapshot.bookmarkedMealIds),
     localUpdatedAt: localSnapshot.updatedAt,
     sync: {
       msal: null,
@@ -92,7 +98,7 @@
       redirectAccessTokenExpiresAt: 0,
       status: "local",
       title: "Nicht angemeldet",
-      message: "Deine Liste wird lokal auf diesem Gerät gespeichert.",
+      message: "Deine Einkaufsliste und Lesezeichen werden lokal auf diesem Gerät gespeichert.",
       lastRemoteUpdatedAt: "",
       lastRemoteEtag: "",
       hasRemoteData: false,
@@ -105,6 +111,11 @@
   const dom = {
     foodGrid: document.querySelector("#foodGrid"),
     mealGrid: document.querySelector("#mealGrid"),
+    bookmarkedFoodGrid: document.querySelector("#bookmarkedFoodGrid"),
+    bookmarkedMealGrid: document.querySelector("#bookmarkedMealGrid"),
+    bookmarkedFoodCount: document.querySelector("#bookmarkedFoodCount"),
+    bookmarkedMealCount: document.querySelector("#bookmarkedMealCount"),
+    clearAllBookmarks: document.querySelector("#clearAllBookmarks"),
     searchInput: document.querySelector("#searchInput"),
     allFoodsButton: document.querySelector("#allFoodsButton"),
     mealSearchInput: document.querySelector("#mealSearchInput"),
@@ -198,8 +209,20 @@
     return mealType === "warm" || mealType === "kalt" ? mealType : "";
   }
 
+  function cleanIds(value, validIds) {
+    return [...new Set((Array.isArray(value) ? value : []).map(Number).filter((id) => validIds.has(id)))];
+  }
+
   function cleanSelectedIds(value) {
-    return [...new Set((Array.isArray(value) ? value : []).map(Number).filter((id) => validFoodIds.has(id)))];
+    return cleanIds(value, validFoodIds);
+  }
+
+  function cleanBookmarkedFoodIds(value) {
+    return cleanIds(value, validFoodIds);
+  }
+
+  function cleanBookmarkedMealIds(value) {
+    return cleanIds(value, validMealIds);
   }
 
   function nowIso() {
@@ -209,20 +232,30 @@
   function loadSelectionData() {
     try {
       const selected = cleanSelectedIds(JSON.parse(localStorage.getItem(storageKey) || "[]"));
+      const bookmarks = JSON.parse(localStorage.getItem(bookmarkStorageKey) || "{}");
+      const bookmarkedFoodIds = cleanBookmarkedFoodIds(bookmarks.foodIds || []);
+      const bookmarkedMealIds = cleanBookmarkedMealIds(bookmarks.mealIds || []);
       const meta = JSON.parse(localStorage.getItem(storageMetaKey) || "{}");
-      const updatedAt = typeof meta.updatedAt === "string" ? meta.updatedAt : selected.length ? nowIso() : "";
-      return { selected, updatedAt };
+      const hasLocalData = selected.length || bookmarkedFoodIds.length || bookmarkedMealIds.length;
+      const updatedAt = typeof meta.updatedAt === "string" ? meta.updatedAt : hasLocalData ? nowIso() : "";
+      return { selected, bookmarkedFoodIds, bookmarkedMealIds, updatedAt };
     } catch {
-      return { selected: [], updatedAt: "" };
+      return { selected: [], bookmarkedFoodIds: [], bookmarkedMealIds: [], updatedAt: "" };
     }
   }
 
   function saveSelectionLocally(updatedAt = nowIso()) {
     const selected = cleanSelectedIds([...state.selected]);
+    const bookmarkedFoodIds = cleanBookmarkedFoodIds([...state.bookmarkedFoods]);
+    const bookmarkedMealIds = cleanBookmarkedMealIds([...state.bookmarkedMeals]);
     localStorage.setItem(storageKey, JSON.stringify(selected));
+    localStorage.setItem(bookmarkStorageKey, JSON.stringify({
+      foodIds: bookmarkedFoodIds,
+      mealIds: bookmarkedMealIds,
+    }));
     localStorage.setItem(storageMetaKey, JSON.stringify({ updatedAt }));
     state.localUpdatedAt = updatedAt;
-    return { selected, updatedAt };
+    return { selected, bookmarkedFoodIds, bookmarkedMealIds, updatedAt };
   }
 
   function persistSelection() {
@@ -233,9 +266,11 @@
   function selectionPayload(updatedAt = state.localUpdatedAt || nowIso()) {
     return {
       app: "lebensmitteleinkauf",
-      version: 1,
+      version: 2,
       updatedAt,
       selectedIds: cleanSelectedIds([...state.selected]),
+      bookmarkedFoodIds: cleanBookmarkedFoodIds([...state.bookmarkedFoods]),
+      bookmarkedMealIds: cleanBookmarkedMealIds([...state.bookmarkedMeals]),
     };
   }
 
@@ -247,11 +282,17 @@
       version: Number(data.version) || 1,
       updatedAt: typeof data.updatedAt === "string" ? data.updatedAt : "",
       selectedIds,
+      bookmarkedFoodIds: cleanBookmarkedFoodIds(data.bookmarkedFoodIds || data.bookmarkFoodIds || []),
+      bookmarkedMealIds: cleanBookmarkedMealIds(data.bookmarkedMealIds || data.bookmarkMealIds || []),
     };
   }
 
-  function sameSelection(left, right) {
-    return cleanSelectedIds(left).join(",") === cleanSelectedIds(right).join(",");
+  function sameUserData(left, right) {
+    const leftData = Array.isArray(left) ? { selectedIds: left } : left || {};
+    const rightData = Array.isArray(right) ? { selectedIds: right } : right || {};
+    return cleanSelectedIds(leftData.selectedIds).sort((a, b) => a - b).join(",") === cleanSelectedIds(rightData.selectedIds).sort((a, b) => a - b).join(",")
+      && cleanBookmarkedFoodIds(leftData.bookmarkedFoodIds).sort((a, b) => a - b).join(",") === cleanBookmarkedFoodIds(rightData.bookmarkedFoodIds).sort((a, b) => a - b).join(",")
+      && cleanBookmarkedMealIds(leftData.bookmarkedMealIds).sort((a, b) => a - b).join(",") === cleanBookmarkedMealIds(rightData.bookmarkedMealIds).sort((a, b) => a - b).join(",");
   }
 
   function remoteIsNewer(remoteUpdatedAt, knownUpdatedAt) {
@@ -263,7 +304,7 @@
     if (hasOneDriveManualLogout() && status !== "local" && title !== "OneDrive-Abmeldung") {
       state.sync.status = "local";
       state.sync.title = "Nicht angemeldet";
-      state.sync.message = "Deine Liste wird lokal auf diesem Gerät gespeichert.";
+      state.sync.message = "Deine Einkaufsliste und Lesezeichen werden lokal auf diesem Gerät gespeichert.";
       renderSyncStatus();
       return;
     }
@@ -277,7 +318,7 @@
     if (!state.sync.account) {
       const helpText = "Zuerst auf OneDrive anmelden klicken.\nNur bei zu langer Anmeldedauer auf Anmeldung erneuern klicken.";
       if (state.sync.title === "Nicht angemeldet") {
-        return `Deine Liste wird lokal auf diesem Gerät gespeichert.\n${helpText}`;
+        return `Deine Einkaufsliste und Lesezeichen werden lokal auf diesem Gerät gespeichert.\n${helpText}`;
       }
       return `${state.sync.message}\n${helpText}`;
     }
@@ -335,7 +376,7 @@
     if (text.includes("user_cancelled") || text.includes("cancel")) return "Anmeldung oder Zustimmung wurde abgebrochen.";
     if (text.includes("consent") || text.includes("access_denied")) return "Zustimmung verweigert. OneDrive-Sync bleibt ausgeschaltet.";
     if (text.includes("interaction_required")) return "Bitte melde dich erneut an, damit OneDrive verwendet werden darf.";
-    return `Microsoft-Anmeldung fehlgeschlagen${suffix}. Deine Liste bleibt lokal gespeichert.`;
+    return `Microsoft-Anmeldung fehlgeschlagen${suffix}. Deine Einkaufsliste und Lesezeichen bleiben lokal gespeichert.`;
   }
 
   function clearLoginPending() {
@@ -595,6 +636,8 @@
 
   function applyRemoteSelection(remoteData, remoteEtag = "") {
     state.selected = new Set(remoteData.selectedIds);
+    state.bookmarkedFoods = new Set(remoteData.bookmarkedFoodIds);
+    state.bookmarkedMeals = new Set(remoteData.bookmarkedMealIds);
     saveSelectionLocally(remoteData.updatedAt || nowIso());
     state.sync.lastRemoteUpdatedAt = remoteData.updatedAt || state.localUpdatedAt;
     state.sync.lastRemoteEtag = remoteEtag;
@@ -603,6 +646,7 @@
     renderFoods();
     renderShoppingList();
     renderMeals();
+    renderBookmarks();
   }
 
   function completeRemoteSave(payload, metadata) {
@@ -611,14 +655,14 @@
     state.sync.hasRemoteData = true;
     state.sync.conflictData = null;
     state.sync.needsInteractiveToken = false;
-    setSyncStatus("synced", "Mit OneDrive synchronisiert", "Deine Einkaufsliste ist im OneDrive-App-Ordner gespeichert.");
+    setSyncStatus("synced", "Mit OneDrive synchronisiert", "Deine Einkaufsliste und Lesezeichen sind im OneDrive-App-Ordner gespeichert.");
   }
 
   function handleOneDriveError(error, fallbackTitle = "OneDrive nicht verfügbar") {
     if (error?.message === "redirect-started") return;
     if (error?.message === "not-signed-in") {
       state.sync.needsInteractiveToken = false;
-      setSyncStatus("local", "Nicht angemeldet", "Deine Liste wird lokal auf diesem Gerät gespeichert.");
+      setSyncStatus("local", "Nicht angemeldet", "Deine Einkaufsliste und Lesezeichen werden lokal auf diesem Gerät gespeichert.");
       return;
     }
     if (error?.message === "interactive-token-required") {
@@ -660,7 +704,7 @@
 
   function remoteShouldReplaceLocal(remoteData, localData) {
     if (!remoteData) return false;
-    if (!localData.selected.length) return true;
+    if (!localData.selected.length && !localData.bookmarkedFoodIds.length && !localData.bookmarkedMealIds.length) return true;
     if (remoteIsNewer(remoteData.updatedAt, localData.updatedAt)) return true;
     return Boolean(remoteData.updatedAt && !localData.updatedAt);
   }
@@ -675,7 +719,7 @@
         latest.exists
         && state.sync.lastRemoteUpdatedAt
         && remoteIsNewer(latest.data.updatedAt, state.sync.lastRemoteUpdatedAt)
-        && !sameSelection(latest.data.selectedIds, state.selected)
+        && !sameUserData(latest.data, selectionPayload())
       ) {
         state.sync.conflictData = latest;
         state.sync.lastRemoteUpdatedAt = latest.data.updatedAt || state.sync.lastRemoteUpdatedAt;
@@ -702,7 +746,7 @@
     state.sync.busy = true;
     const previousInteractiveTokenRedirect = state.sync.allowInteractiveTokenRedirect;
     state.sync.allowInteractiveTokenRedirect = true;
-    setSyncStatus("loading", "Prüfe OneDrive", "Aktuelle Einkaufsliste wird aus OneDrive abgeglichen.");
+    setSyncStatus("loading", "Prüfe OneDrive", "Einkaufsliste und Lesezeichen werden mit OneDrive abgeglichen.");
     try {
       const remote = await loadRemoteSelection();
       const local = loadSelectionData();
@@ -710,16 +754,16 @@
       if (remote.exists && remoteShouldReplaceLocal(remote.data, local)) {
         applyRemoteSelection(remote.data, remote.etag);
         state.sync.needsInteractiveToken = false;
-        setSyncStatus("synced", "Mit OneDrive synchronisiert", "Neuere OneDrive-Liste wurde übernommen.");
-        showToast("Neuere OneDrive-Liste wurde übernommen.");
+        setSyncStatus("synced", "Mit OneDrive synchronisiert", "Neuere Daten aus OneDrive wurden übernommen.");
+        showToast("Neuere Daten aus OneDrive wurden übernommen.");
         return;
       }
 
-      if (remote.exists && sameSelection(remote.data.selectedIds, state.selected)) {
+      if (remote.exists && sameUserData(remote.data, selectionPayload())) {
         state.sync.lastRemoteUpdatedAt = remote.data.updatedAt || state.sync.lastRemoteUpdatedAt;
         state.sync.lastRemoteEtag = remote.etag || state.sync.lastRemoteEtag;
         state.sync.needsInteractiveToken = false;
-        setSyncStatus("synced", "Mit OneDrive synchronisiert", "Deine Einkaufsliste ist aktuell.");
+        setSyncStatus("synced", "Mit OneDrive synchronisiert", "Deine Einkaufsliste und Lesezeichen sind aktuell.");
         return;
       }
 
@@ -728,14 +772,14 @@
         saveSelectionLocally(payload.updatedAt);
         const metadata = await uploadRemoteSelection(payload);
         completeRemoteSave(payload, metadata);
-        showToast("Einkaufsliste wurde nach OneDrive gespeichert.");
+        showToast("Einkaufsliste und Lesezeichen wurden nach OneDrive gespeichert.");
         return;
       }
 
       if (remote.exists) {
         applyRemoteSelection(remote.data, remote.etag);
         state.sync.needsInteractiveToken = false;
-        setSyncStatus("synced", "Mit OneDrive synchronisiert", "OneDrive-Liste wurde übernommen.");
+        setSyncStatus("synced", "Mit OneDrive synchronisiert", "OneDrive-Daten wurden übernommen.");
       }
     } catch (error) {
       handleOneDriveError(error, "Synchronisieren fehlgeschlagen");
@@ -750,7 +794,7 @@
 
   function queueOneDriveSave() {
     if (hasOneDriveManualLogout() || !state.sync.account) {
-      setSyncStatus("local", "Nicht angemeldet", "Deine Liste wird lokal auf diesem Gerät gespeichert.");
+      setSyncStatus("local", "Nicht angemeldet", "Deine Einkaufsliste und Lesezeichen werden lokal auf diesem Gerät gespeichert.");
       return;
     }
     clearTimeout(oneDriveSaveTimer);
@@ -764,29 +808,38 @@
     state.sync.busy = true;
     const previousInteractiveTokenRedirect = state.sync.allowInteractiveTokenRedirect;
     state.sync.allowInteractiveTokenRedirect = allowInteractiveTokenRedirect;
-    setSyncStatus("loading", "Prüfe OneDrive", "Deine Einkaufsliste wird geladen.");
+    setSyncStatus("loading", "Prüfe OneDrive", "Deine Einkaufsliste und Lesezeichen werden geladen.");
     try {
       const remote = forceRemote && state.sync.conflictData ? state.sync.conflictData : await loadRemoteSelection();
       const local = loadSelectionData();
 
       if (!remote.exists) {
-        if (local.selected.length) {
+        if (local.selected.length || local.bookmarkedFoodIds.length || local.bookmarkedMealIds.length) {
           const payload = selectionPayload(local.updatedAt || nowIso());
           const metadata = await uploadRemoteSelection(payload);
           completeRemoteSave(payload, metadata);
-          showToast("Lokale Einkaufsliste wurde nach OneDrive übernommen.");
+          showToast("Lokale Einkaufsliste und Lesezeichen wurden nach OneDrive übernommen.");
         } else {
           state.sync.hasRemoteData = false;
           state.sync.needsInteractiveToken = false;
-          setSyncStatus("synced", "Mit OneDrive verbunden", "Noch keine Einkaufsliste im OneDrive-App-Ordner.");
+          setSyncStatus("synced", "Mit OneDrive verbunden", "Noch keine Einkaufsliste oder Lesezeichen im OneDrive-App-Ordner.");
         }
         return;
       }
 
-      if (forceRemote || !local.selected.length || remoteIsNewer(remote.data.updatedAt, local.updatedAt) || sameSelection(remote.data.selectedIds, local.selected)) {
+      if (
+        forceRemote
+        || (!local.selected.length && !local.bookmarkedFoodIds.length && !local.bookmarkedMealIds.length)
+        || remoteIsNewer(remote.data.updatedAt, local.updatedAt)
+        || sameUserData(remote.data, {
+          selectedIds: local.selected,
+          bookmarkedFoodIds: local.bookmarkedFoodIds,
+          bookmarkedMealIds: local.bookmarkedMealIds,
+        })
+      ) {
         applyRemoteSelection(remote.data, remote.etag);
         state.sync.needsInteractiveToken = false;
-        setSyncStatus("synced", "Mit OneDrive synchronisiert", "Deine Einkaufsliste wurde aus OneDrive geladen.");
+        setSyncStatus("synced", "Mit OneDrive synchronisiert", "Deine Einkaufsliste und Lesezeichen wurden aus OneDrive geladen.");
         return;
       }
 
@@ -795,7 +848,7 @@
       state.sync.hasRemoteData = true;
       state.sync.conflictData = remote;
       state.sync.needsInteractiveToken = false;
-      setSyncStatus("conflict", "Unterschiedliche Listen", "Lokale und OneDrive-Liste unterscheiden sich. Es wurde nichts überschrieben.");
+      setSyncStatus("conflict", "Unterschiedliche Daten", "Lokale Daten und OneDrive-Daten unterscheiden sich. Es wurde nichts überschrieben.");
     } catch (error) {
       handleOneDriveError(error);
     } finally {
@@ -852,7 +905,7 @@
       if (state.sync.msal?.clearCache) {
         Promise.resolve(state.sync.msal.clearCache(account ? { account } : {})).catch(() => {});
       }
-      setSyncStatus("local", "Nicht angemeldet", "Deine Liste wird lokal auf diesem Gerät gespeichert.");
+      setSyncStatus("local", "Nicht angemeldet", "Deine Einkaufsliste und Lesezeichen werden lokal auf diesem Gerät gespeichert.");
       state.sync.busy = false;
       renderSyncStatus();
       showToast("OneDrive wurde abgemeldet.");
@@ -863,7 +916,7 @@
       clearOneDriveMsalCookies();
       state.sync.account = null;
       state.sync.busy = false;
-      setSyncStatus("local", "Nicht angemeldet", "Deine Liste wird lokal auf diesem Gerät gespeichert.");
+      setSyncStatus("local", "Nicht angemeldet", "Deine Einkaufsliste und Lesezeichen werden lokal auf diesem Gerät gespeichert.");
       showToast("OneDrive wurde lokal getrennt.");
       forceOneDriveLogoutReload();
     }
@@ -917,7 +970,7 @@
         state.sync.account = null;
         state.sync.allowInteractiveTokenRedirect = false;
         state.sync.msal.setActiveAccount?.(null);
-        setSyncStatus("local", "Nicht angemeldet", "Deine Liste wird lokal auf diesem Gerät gespeichert.");
+        setSyncStatus("local", "Nicht angemeldet", "Deine Einkaufsliste und Lesezeichen werden lokal auf diesem Gerät gespeichert.");
         return;
       }
       const redirectResponse = await state.sync.msal.handleRedirectPromise();
@@ -930,7 +983,7 @@
         state.sync.msal.setActiveAccount(state.sync.account);
         await syncFromOneDrive();
       } else {
-        setSyncStatus("local", "Nicht angemeldet", "Deine Liste wird lokal auf diesem Gerät gespeichert. Melde dich an, um OneDrive zu nutzen.");
+        setSyncStatus("local", "Nicht angemeldet", "Deine Einkaufsliste und Lesezeichen werden lokal auf diesem Gerät gespeichert. Melde dich an, um OneDrive zu nutzen.");
       }
     } catch (error) {
       if (hasOneDriveManualLogout()) {
@@ -938,7 +991,7 @@
         clearOneDriveMsalCache();
         clearOneDriveMsalCookies();
         state.sync.account = null;
-        setSyncStatus("local", "Nicht angemeldet", "Deine Liste wird lokal auf diesem Gerät gespeichert.");
+        setSyncStatus("local", "Nicht angemeldet", "Deine Einkaufsliste und Lesezeichen werden lokal auf diesem Gerät gespeichert.");
         return;
       }
       const accounts = state.sync.msal?.getAllAccounts?.() || [];
@@ -978,6 +1031,21 @@
     });
   }
 
+  function renderBookmarkButton(kind, item) {
+    const isMeal = kind === "meal";
+    const bookmarked = isMeal ? state.bookmarkedMeals.has(item.id) : state.bookmarkedFoods.has(item.id);
+    const itemType = isMeal ? "Mahlzeit" : "Lebensmittel";
+    const itemName = isMeal ? item.situation : item.name;
+    const action = bookmarked ? "Lesezeichen entfernen" : "Lesezeichen setzen";
+    return `
+      <button class="bookmark-button${bookmarked ? " is-bookmarked" : ""}" type="button"
+        data-bookmark-kind="${kind}" data-bookmark-id="${item.id}" aria-pressed="${bookmarked}"
+        aria-label="${escapeHtml(itemType)} ${escapeHtml(itemName)}: ${action}" title="${action}">
+        <span class="button-icon">${icon("bookmark")}</span>
+        <span class="bookmark-button-label">${bookmarked ? "Entfernen" : "Merken"}</span>
+      </button>`;
+  }
+
   function renderFoodCard(food) {
     const selected = state.selected.has(food.id);
     return `
@@ -989,7 +1057,10 @@
               <span class="category-label"><span class="category-symbol">${categoryIcon(food.category)}</span>${escapeHtml(food.subcategory)}</span>
               <h3>${escapeHtml(food.name)}</h3>
             </div>
-            <span class="priority-dot"><i></i>${escapeHtml(food.priority)}</span>
+            <div class="food-card-tools">
+              <span class="priority-dot"><i></i>${escapeHtml(food.priority)}</span>
+              ${renderBookmarkButton("food", food)}
+            </div>
           </div>
           <div class="food-meta">
             <span class="meta-pill score">Sättigung ${food.score}/5 · ${escapeHtml(food.satiety)}</span>
@@ -1098,6 +1169,22 @@
     renderFoods();
     renderShoppingList();
     renderMeals();
+    renderBookmarks();
+  }
+
+  function toggleBookmark(kind, id) {
+    const isMeal = kind === "meal";
+    const target = isMeal ? state.bookmarkedMeals : state.bookmarkedFoods;
+    const validIds = isMeal ? validMealIds : validFoodIds;
+    if (!validIds.has(id)) return;
+    const wasBookmarked = target.has(id);
+    if (wasBookmarked) target.delete(id);
+    else target.add(id);
+    persistSelection();
+    renderFoods();
+    renderMeals();
+    renderBookmarks();
+    showToast(wasBookmarked ? "Lesezeichen wurde entfernt." : "Lesezeichen wurde gesetzt.");
   }
 
   function mealIngredientFoods(meal) {
@@ -1309,34 +1396,15 @@
     return year && month && day ? `${day}.${month}.${year}` : String(value || "");
   }
 
-  function renderMeals() {
-    const term = state.mealSearch.trim().toLocaleLowerCase("de");
-    const visibleMeals = meals
-      .map((meal, index) => ({ meal, index }))
-      .filter(({ meal }) => {
-        const searchable = `${meal.situation} ${meal.satiety} ${(meal.ingredients || []).join(" ")} ${meal.reason} ${meal.variants} ${formatMealDate(meal.date)}`.toLocaleLowerCase("de");
-        const mealType = normalizeMealType(meal.mealType);
-        const ingredientFoods = mealIngredientFoods(meal);
-        return (!term || searchable.includes(term))
-          && (!state.mealType || mealType === state.mealType)
-          && (!state.mealCategory || ingredientFoods.some((food) => food.category === state.mealCategory));
-      })
-      .reverse();
-
-    const hasActiveMealFilter = Boolean(state.mealSearch || state.mealType || state.mealCategory);
-    dom.mealResultCount.hidden = !hasActiveMealFilter;
-    dom.mealResultCount.textContent = hasActiveMealFilter
-      ? `${visibleMeals.length} ${visibleMeals.length === 1 ? "Mahlzeit" : "Mahlzeiten"}`
-      : "";
-
-    dom.mealGrid.innerHTML = visibleMeals.length ? visibleMeals.map(({ meal, index }) => {
-      const mealDate = formatMealDate(meal.date);
-      const mealNumber = index + 1;
-      const ingredientFoods = mealIngredientFoods(meal);
-      const allIngredientsSelected = ingredientFoods.length > 0 && ingredientFoods.every((food) => state.selected.has(food.id));
-      return `
-      <article class="meal-card">
+  function renderMealCard(meal) {
+    const mealDate = formatMealDate(meal.date);
+    const mealNumber = (mealIndexById.get(meal.id) ?? 0) + 1;
+    const ingredientFoods = mealIngredientFoods(meal);
+    const allIngredientsSelected = ingredientFoods.length > 0 && ingredientFoods.every((food) => state.selected.has(food.id));
+    return `
+      <article class="meal-card" data-id="${meal.id}">
         <div class="meal-meta">
+          ${renderBookmarkButton("meal", meal)}
           ${mealDate ? `<time class="meal-date" datetime="${escapeHtml(meal.date)}">${escapeHtml(mealDate)}</time>` : ""}
           <span class="meal-number">${String(mealNumber).padStart(2, "0")}</span>
         </div>
@@ -1352,7 +1420,49 @@
           <button class="meal-list-button${allIngredientsSelected ? " is-added" : ""}" type="button" data-meal-id="${meal.id}" aria-pressed="${allIngredientsSelected}">${allIngredientsSelected ? "Auf der Liste ✓" : "Auf die Liste →"}</button>
         </div>
       </article>`;
-    }).join("") : '<div class="empty-results">Keine passenden Empfehlungen gefunden.</div>';
+  }
+
+  function renderMeals() {
+    const term = state.mealSearch.trim().toLocaleLowerCase("de");
+    const visibleMeals = meals
+      .filter((meal) => {
+        const searchable = `${meal.situation} ${meal.satiety} ${(meal.ingredients || []).join(" ")} ${meal.reason} ${meal.variants} ${formatMealDate(meal.date)}`.toLocaleLowerCase("de");
+        const mealType = normalizeMealType(meal.mealType);
+        const ingredientFoods = mealIngredientFoods(meal);
+        return (!term || searchable.includes(term))
+          && (!state.mealType || mealType === state.mealType)
+          && (!state.mealCategory || ingredientFoods.some((food) => food.category === state.mealCategory));
+      })
+      .reverse();
+
+    const hasActiveMealFilter = Boolean(state.mealSearch || state.mealType || state.mealCategory);
+    dom.mealResultCount.hidden = !hasActiveMealFilter;
+    dom.mealResultCount.textContent = hasActiveMealFilter
+      ? `${visibleMeals.length} ${visibleMeals.length === 1 ? "Mahlzeit" : "Mahlzeiten"}`
+      : "";
+
+    dom.mealGrid.innerHTML = visibleMeals.length
+      ? visibleMeals.map(renderMealCard).join("")
+      : '<div class="empty-results">Keine passenden Empfehlungen gefunden.</div>';
+  }
+
+  function renderBookmarks() {
+    const bookmarkedMeals = meals
+      .filter((meal) => state.bookmarkedMeals.has(meal.id))
+      .sort((left, right) => right.id - left.id);
+    const bookmarkedFoods = foods
+      .filter((food) => state.bookmarkedFoods.has(food.id))
+      .sort((left, right) => right.id - left.id);
+
+    dom.bookmarkedMealCount.textContent = `${bookmarkedMeals.length} ${bookmarkedMeals.length === 1 ? "Lesezeichen" : "Lesezeichen"}`;
+    dom.bookmarkedFoodCount.textContent = `${bookmarkedFoods.length} ${bookmarkedFoods.length === 1 ? "Lesezeichen" : "Lesezeichen"}`;
+    dom.clearAllBookmarks.disabled = !bookmarkedMeals.length && !bookmarkedFoods.length;
+    dom.bookmarkedMealGrid.innerHTML = bookmarkedMeals.length
+      ? bookmarkedMeals.map(renderMealCard).join("")
+      : '<div class="bookmark-empty"><span class="button-icon">' + icon("bookmark") + '</span><strong>Noch keine Mahlzeit gespeichert</strong><p>Setze bei einer Mahlzeit ein Lesezeichen, um sie hier wiederzufinden.</p></div>';
+    dom.bookmarkedFoodGrid.innerHTML = bookmarkedFoods.length
+      ? bookmarkedFoods.map(renderFoodCard).join("")
+      : '<div class="bookmark-empty"><span class="button-icon">' + icon("bookmark") + '</span><strong>Noch kein Lebensmittel gespeichert</strong><p>Setze bei einem Lebensmittel ein Lesezeichen, um es hier wiederzufinden.</p></div>';
   }
 
   function renderInsights() {
@@ -1461,7 +1571,7 @@
   }
 
   function viewFromHash() {
-    const viewByHash = { "#lebensmittel": "foods", "#mahlzeiten": "meals", "#tagesbaukasten": "meals", "#auswertung": "insights" };
+    const viewByHash = { "#lebensmittel": "foods", "#mahlzeiten": "meals", "#tagesbaukasten": "meals", "#lesezeichen": "bookmarks", "#auswertung": "insights" };
     return viewByHash[window.location.hash] || "foods";
   }
 
@@ -1603,6 +1713,16 @@
     showToast("Alle Markierungen wurden gelöscht.");
   }
 
+  function clearBookmarks() {
+    state.bookmarkedMeals.clear();
+    state.bookmarkedFoods.clear();
+    persistSelection();
+    renderFoods();
+    renderMeals();
+    renderBookmarks();
+    showToast("Alle Lesezeichen wurden gelöscht.");
+  }
+
   let toastTimer;
   function showToast(message) {
     clearTimeout(toastTimer);
@@ -1613,6 +1733,13 @@
 
   function bindEvents() {
     document.addEventListener("click", (event) => {
+      const bookmarkButton = event.target.closest("[data-bookmark-kind][data-bookmark-id]");
+      if (bookmarkButton) {
+        event.preventDefault();
+        toggleBookmark(bookmarkButton.dataset.bookmarkKind, Number(bookmarkButton.dataset.bookmarkId));
+        return;
+      }
+
       const brandReload = event.target.closest("[data-brand-reload]");
       if (brandReload) {
         event.preventDefault();
@@ -1630,15 +1757,15 @@
       const guideImageButton = event.target.closest("[data-meal-guide-step]");
       if (guideImageButton) openMealGuideImage(Number(guideImageButton.dataset.mealGuideStep));
     });
-    dom.foodGrid.addEventListener("click", (event) => {
+    [dom.foodGrid, dom.bookmarkedFoodGrid].forEach((grid) => grid.addEventListener("click", (event) => {
       const card = event.target.closest(".food-card");
       if (!card) return;
       const id = Number(card.dataset.id);
       if (event.target.closest(".select-food")) toggleFood(id);
       if (event.target.closest(".details-button")) openDetails(id);
       if (event.target.closest(".food-meals-button")) applyMealSearchFromFood(foods.find((food) => food.id === id)?.name);
-    });
-    dom.mealGrid.addEventListener("click", (event) => {
+    }));
+    [dom.mealGrid, dom.bookmarkedMealGrid].forEach((grid) => grid.addEventListener("click", (event) => {
       const recipeButton = event.target.closest("[data-recipe-meal-id]");
       if (recipeButton) {
         requestMealAction(Number(recipeButton.dataset.recipeMealId), "recipe");
@@ -1646,7 +1773,7 @@
       }
       const button = event.target.closest("[data-meal-id]");
       if (button) requestMealAction(Number(button.dataset.mealId), "list");
-    });
+    }));
     dom.shoppingItems.addEventListener("click", (event) => {
       const remove = event.target.closest("[data-remove-id]");
       if (remove) toggleFood(Number(remove.dataset.removeId));
@@ -1712,6 +1839,16 @@
       text: `Alle ${state.selected.size} Markierungen werden entfernt.`,
       action: clearSelection,
     }));
+    dom.clearAllBookmarks.addEventListener("click", () => {
+      const count = state.bookmarkedMeals.size + state.bookmarkedFoods.size;
+      if (!count) return;
+      openConfirm({
+        title: "Alle Lesezeichen löschen?",
+        text: `Alle ${count} Lesezeichen für Mahlzeiten und Lebensmittel werden entfernt.`,
+        accept: "Alle löschen",
+        action: clearBookmarks,
+      });
+    });
     document.querySelector(".dialog-close").addEventListener("click", () => dom.detailDialog.close());
     dom.detailDialog.addEventListener("click", (event) => {
       const foodSearchButton = event.target.closest("[data-food-search]");
@@ -1799,6 +1936,7 @@
     renderShoppingList();
     renderSyncStatus();
     renderMeals();
+    renderBookmarks();
     renderInsights();
     bindEvents();
 

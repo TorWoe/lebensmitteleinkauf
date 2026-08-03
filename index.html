@@ -9,7 +9,7 @@
       content="Antientzündliche Lebensmittel entdecken, filtern und als Einkaufsliste speichern."
     />
     <title>Lebensmitteleinkauf</title>
-    <link rel="stylesheet" href="style.css?v=meal-variation-default-no-20260714-1" />
+    <link rel="stylesheet" href="style.css?v=bookmarks-onedrive-20260803-1" />
   </head>
   <body>
     <div class="app-shell">
@@ -32,6 +32,7 @@
         <nav class="desktop-nav" aria-label="Hauptnavigation">
           <button class="nav-button is-active" data-view="foods" type="button">Lebensmittel</button>
           <button class="nav-button" data-view="meals" type="button">Mahlzeiten</button>
+          <button class="nav-button" data-view="bookmarks" type="button">Lesezeichen</button>
           <button class="nav-button" data-view="insights" type="button">Auswertung</button>
         </nav>
 
@@ -45,7 +46,7 @@
             </button>
             <div class="sync-menu-panel" id="syncMenu" hidden>
               <strong id="syncMenuTitle">Nicht angemeldet</strong>
-              <span id="syncMenuText">Deine Liste wird lokal auf diesem Ger&auml;t gespeichert.
+              <span id="syncMenuText">Deine Einkaufsliste und Lesezeichen werden lokal auf diesem Ger&auml;t gespeichert.
 Zuerst auf OneDrive anmelden klicken.
 Nur bei zu langer Anmeldedauer auf Anmeldung erneuern klicken.</span>
               <div class="sync-menu-actions">
@@ -234,6 +235,39 @@ Nur bei zu langer Anmeldedauer auf Anmeldung erneuern klicken.</span>
           <div class="meal-grid" id="mealGrid" aria-live="polite"></div>
         </section>
 
+        <section class="view bookmarks-view" id="bookmarksView" data-view-panel="bookmarks">
+          <div class="page-intro compact-intro bookmarks-intro">
+            <div>
+              <p class="eyebrow">Deine Auswahl</p>
+              <h1>Gespeichert.<br /><span>Schnell wiedergefunden.</span></h1>
+              <p>Alle Lesezeichen auf einen Blick. Mit OneDrive-Anmeldung werden sie geräteübergreifend synchronisiert.</p>
+            </div>
+            <button class="danger-button bookmarks-clear-all" id="clearAllBookmarks" type="button">Alle Lesezeichen löschen</button>
+          </div>
+
+          <section class="bookmark-section" aria-labelledby="bookmarkedMealsTitle">
+            <div class="bookmark-section-heading">
+              <div>
+                <p class="eyebrow">Zuerst</p>
+                <h2 id="bookmarkedMealsTitle">Mahlzeiten</h2>
+              </div>
+              <span class="bookmark-count" id="bookmarkedMealCount">0 Lesezeichen</span>
+            </div>
+            <div class="meal-grid bookmark-meal-grid" id="bookmarkedMealGrid" aria-live="polite"></div>
+          </section>
+
+          <section class="bookmark-section" aria-labelledby="bookmarkedFoodsTitle">
+            <div class="bookmark-section-heading">
+              <div>
+                <p class="eyebrow">Danach</p>
+                <h2 id="bookmarkedFoodsTitle">Lebensmittel</h2>
+              </div>
+              <span class="bookmark-count" id="bookmarkedFoodCount">0 Lesezeichen</span>
+            </div>
+            <div class="food-grid bookmark-food-grid" id="bookmarkedFoodGrid" aria-live="polite"></div>
+          </section>
+        </section>
+
         <section class="view" id="insightsView" data-view-panel="insights">
           <div class="page-intro compact-intro">
             <p class="eyebrow">Auswertung</p>
@@ -280,6 +314,9 @@ Nur bei zu langer Anmeldedauer auf Anmeldung erneuern klicken.</span>
         </button>
         <button class="mobile-nav-button" data-view="meals" type="button">
           <span class="button-icon" data-icon="meal" aria-hidden="true"></span><span>Mahlzeiten</span>
+        </button>
+        <button class="mobile-nav-button" data-view="bookmarks" type="button">
+          <span class="button-icon" data-icon="bookmark" aria-hidden="true"></span><span>Lesezeichen</span>
         </button>
         <button class="mobile-nav-button" data-view="insights" type="button">
           <span class="button-icon" data-icon="chart" aria-hidden="true"></span><span>Auswertung</span>
@@ -334,6 +371,6 @@ Nur bei zu langer Anmeldedauer auf Anmeldung erneuern klicken.</span>
       document.write('<script src="data.js?v=' + Date.now() + '"><\/script>');
     </script>
     <script src="vendor/msal-browser.min.js?v=2.38.3"></script>
-    <script src="app.js?v=meal-variation-default-no-20260714-1"></script>
+    <script src="app.js?v=bookmarks-onedrive-20260803-1"></script>
   </body>
 </html>
