@@ -7001,6 +7001,176 @@ window.APP_DATA = {
       "satiety": "sehr hoch",
       "variants": "Putenbrust statt Hähnchenbrust, gelbe Linsen statt rote Linsen oder Petersilie statt Koriandergrün",
       "reason": "Eiweiß + Hülsenfrüchte + ballaststoffreiches Wurzelgemüse + Ingwer und Kurkuma"
+    },
+    {
+      "id": 114,
+      "date": "2026-08-03",
+      "mealType": "warm",
+      "ingredients": [
+        "Grünkohl",
+        "Quinoa",
+        "Kidneybohnen",
+        "Gelbe Zucchini",
+        "Thymian",
+        "Rapsöl"
+      ],
+      "situation": "Grünkohl-Quinoa-Suppe mit Kidneybohnen und gelber Zucchini",
+      "satiety": "sehr hoch",
+      "variants": "Mangold statt Grünkohl, Wildreis statt Quinoa oder Edamame statt Kidneybohnen",
+      "reason": "Blattgemüse + Pseudogetreide + Hülsenfrüchte + ungesättigte Fettsäuren"
+    },
+    {
+      "id": 115,
+      "date": "2026-08-03",
+      "mealType": "warm",
+      "ingredients": [
+        "Kabeljau",
+        "Mangold",
+        "Naturreis",
+        "Dill",
+        "Zitrone",
+        "Rapsöl"
+      ],
+      "situation": "Kabeljau-Mangold-Suppe mit Naturreis, Dill und Zitrone",
+      "satiety": "sehr hoch",
+      "variants": "Zander oder Schellfisch statt Kabeljau, Hirse statt Naturreis oder Estragon statt Dill",
+      "reason": "Mageres Eiweiß + Blattgemüse + Vollkornreis + Kräuter und Zitrusaromen"
+    },
+    {
+      "id": 116,
+      "date": "2026-08-03",
+      "mealType": "warm",
+      "ingredients": [
+        "Tofu",
+        "Edamame",
+        "Champignons",
+        "Mangold",
+        "Koriandergrün",
+        "Sesam"
+      ],
+      "situation": "Tofu-Edamame-Suppe mit Champignons und Mangold",
+      "satiety": "sehr hoch",
+      "variants": "Tempeh statt Tofu, Sojabohnen statt Edamame oder Grünkohl statt Mangold",
+      "reason": "Pflanzliches Eiweiß + Soja-Isoflavone + Pilze + Blattgemüse"
+    },
+    {
+      "id": 117,
+      "date": "2026-08-03",
+      "mealType": "warm",
+      "ingredients": [
+        "Blumenkohl",
+        "Hirse",
+        "Cashews",
+        "Fenchelsamen",
+        "Koriandersamen",
+        "Rapsöl"
+      ],
+      "situation": "Cremige Blumenkohl-Hirse-Suppe mit Cashews und Fenchelsamen",
+      "satiety": "hoch",
+      "variants": "Mandeln statt Cashews, Amaranth statt Hirse oder Koriandergrün statt Koriandersamen",
+      "reason": "Kreuzblütler + Pseudogetreide + Nüsse + aromatische Pflanzenstoffe"
+    },
+    {
+      "id": 118,
+      "date": "2026-08-03",
+      "mealType": "warm",
+      "ingredients": [
+        "Mageres Rindergulasch",
+        "Gerste",
+        "Grünkohl",
+        "Gelbe Zucchini",
+        "Lorbeer",
+        "Majoran"
+      ],
+      "situation": "Rind-Gersten-Suppe mit Grünkohl und gelber Zucchini",
+      "satiety": "sehr hoch",
+      "variants": "Hirsch oder Reh statt Mageres Rindergulasch, Naturreis statt Gerste oder Thymian statt Majoran",
+      "reason": "Eiweiß + Eisen + ballaststoffreiches Getreide + Blattgemüse"
+    },
+    {
+      "id": 119,
+      "date": "2026-08-03",
+      "mealType": "warm",
+      "ingredients": [
+        "Kaninchen",
+        "Belugalinsen",
+        "Endivie",
+        "Estragon",
+        "Zitrone",
+        "Rapsöl"
+      ],
+      "situation": "Kaninchen-Belugalinsen-Suppe mit Endivie und Estragon",
+      "satiety": "sehr hoch",
+      "variants": "Reh statt Kaninchen, Chicorée statt Endivie oder Oregano statt Estragon",
+      "reason": "Mageres Eiweiß + Hülsenfrüchte + Blattgemüse + Kräuter"
+    },
+    {
+      "id": 120,
+      "date": "2026-08-03",
+      "mealType": "warm",
+      "ingredients": [
+        "Garnelen",
+        "Quinoa",
+        "Chicorée",
+        "Paprika rot",
+        "Koriandergrün",
+        "Limette"
+      ],
+      "situation": "Garnelen-Quinoa-Suppe mit Chicorée, roter Paprika und Limette",
+      "satiety": "hoch",
+      "variants": "Kabeljau statt Garnelen, Mangold statt Chicorée oder Hirse statt Quinoa",
+      "reason": "Eiweiß + Pseudogetreide + farbiges Gemüse + Zitrusaromen"
+    },
+    {
+      "id": 121,
+      "date": "2026-08-03",
+      "mealType": "warm",
+      "ingredients": [
+        "Amaranth",
+        "Radicchio",
+        "Feta",
+        "Paprika rot",
+        "Oregano",
+        "Rapsöl"
+      ],
+      "situation": "Mediterrane Amaranth-Radicchio-Suppe mit Feta und roter Paprika",
+      "satiety": "hoch",
+      "variants": "Quinoa statt Amaranth, Ziegenkäse statt Feta oder Rucola statt Radicchio",
+      "reason": "Pseudogetreide + Blattgemüse + Eiweiß und Calcium + Kräuter"
+    },
+    {
+      "id": 122,
+      "date": "2026-08-03",
+      "mealType": "warm",
+      "ingredients": [
+        "Brunnenkresse",
+        "Hüttenkäse",
+        "Walnüsse",
+        "Haferkleie",
+        "Dill",
+        "Rapsöl"
+      ],
+      "situation": "Cremige Brunnenkresse-Suppe mit Hüttenkäse und Walnüssen",
+      "satiety": "hoch",
+      "variants": "Griechischer Joghurt oder Quark statt Hüttenkäse, Mandeln statt Walnüsse",
+      "reason": "Blattgemüse + Eiweiß und Calcium + Nüsse + lösliche Ballaststoffe"
+    },
+    {
+      "id": 123,
+      "date": "2026-08-03",
+      "mealType": "warm",
+      "ingredients": [
+        "Zander",
+        "Wildreis",
+        "Romanasalat",
+        "Gelbe Zucchini",
+        "Dill",
+        "Zitrone"
+      ],
+      "situation": "Zander-Wildreis-Suppe mit Romanasalat und gelber Zucchini",
+      "satiety": "sehr hoch",
+      "variants": "Schellfisch statt Zander, Naturreis statt Wildreis oder Mangold statt Romanasalat",
+      "reason": "Mageres Eiweiß + Vollkornreis + Blattgemüse + Kräuter und Zitrusaromen"
     }
   ],
   "sources": [
