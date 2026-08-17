@@ -256,8 +256,8 @@ window.APP_DATA = {
       "score": 3,
       "name": "Avocadoöl",
       "selected": false,
-      "compounds": "Einfach ungesättigte Fettsäuren, vor allem Ölsäure; die genaue Fettsäurezusammensetzung variiert je nach Sorte und Verarbeitung.",
-      "benefit": "Pflanzenöl mit einem hohen Anteil einfach ungesättigter Fettsäuren.",
+      "compounds": "Einfach ungesättigte Fettsäuren, vor allem Ölsäure, sowie je nach Verarbeitung Vitamin E und weitere Begleitstoffe; die genaue Zusammensetzung variiert.",
+      "benefit": "Für eine pflanzenbetonte Ernährung geeignet; mögliche antioxidative und entzündungsmodulierende Eigenschaften sind speziell beim Menschen weniger gut belegt als für Olivenöl extra vergine.",
       "carbs": "sehr niedrig",
       "use": "Kalt und je nach Raffinationsgrad auch zum Erhitzen verwenden; Herstellerangaben beachten.",
       "caution": "Energiedicht; dunkel und kühl lagern und die Portionsgröße beachten.",
@@ -664,25 +664,6 @@ window.APP_DATA = {
       "nutrition": "Energie / Kalorien: ca. 40 kcal; Fett: ca. 0,4 g; davon gesättigte Fettsäuren: ca. 0,0 g; Kohlenhydrate: ca. 8,8 g; davon Zucker: ca. 5,3 g; Eiweiß / Protein: ca. 1,9 g; Salz: ca. 0,0 g; Ballaststoffe: ca. 1,5 g",
       "portion": "20 g",
       "sources": "https://www.health.harvard.edu/healthy-aging-and-longevity/foods-that-fight-inflammation; https://lpi.oregonstate.edu/mic/dietary-factors/phytochemicals/carotenoids; https://lpi.oregonstate.edu/mic/food-beverages/fruit-vegetables"
-    },
-    {
-      "id": 243,
-      "category": "Gemüse, Pilze, Hülsenfrüchte & Nüsse",
-      "subcategory": "Gewürze",
-      "sort": 2,
-      "satiety": "niedrig",
-      "score": 1,
-      "name": "Chili",
-      "selected": false,
-      "compounds": "Ätherische Öle, Polyphenole und weitere aromatische Pflanzenstoffe; die Zusammensetzung ist gewürzspezifisch.",
-      "benefit": "Verleiht Speisen Geschmack und liefert in kleinen Mengen verschiedene Pflanzenstoffe.",
-      "carbs": "sehr niedrig",
-      "use": "In kleinen Mengen passend zum Gericht verwenden.",
-      "caution": "Küchenübliche Mengen verwenden; hoch dosierte Extrakte oder Präparate sind anders zu bewerten.",
-      "priority": "hoch",
-      "nutrition": "Energie / Kalorien: ca. 282 kcal; Fett: ca. 14,0 g; davon gesättigte Fettsäuren: ca. 2,5 g; Kohlenhydrate: ca. 50,0 g; davon Zucker: ca. 7,0 g; Eiweiß / Protein: ca. 12,0 g; Salz: ca. 0,1 g; Ballaststoffe: ca. 35,0 g",
-      "portion": "1 g",
-      "sources": "https://www.health.harvard.edu/diet-and-nutrition/quick-start-guide-to-an-antiinflammation-diet; https://health.clevelandclinic.org/anti-inflammatory-diet"
     },
     {
       "id": 89,
@@ -1472,8 +1453,8 @@ window.APP_DATA = {
       "score": 3,
       "name": "Gurke",
       "selected": false,
-      "compounds": "Wasser, Vitamin K, Kalium und kleine Mengen Ballaststoffe und weiterer Pflanzenstoffe.",
-      "benefit": "Kalorienarmes und wasserreiches Gemüse, das Salaten, Bowls und kalten Speisen Volumen und Frische gibt.",
+      "compounds": "Wasser, Vitamin K, Kalium und kleine Mengen Ballaststoffe und weiterer sekundärer Pflanzenstoffe.",
+      "benefit": "Naturbelassenes, kalorienarmes und wasserreiches Gemüse für eine pflanzenbetonte Ernährung; nicht als besonders stark antientzündlich einzuordnen.",
       "carbs": "niedrig",
       "use": "Gründlich gewaschen roh in Salaten, Bowls, kalten Suppen und Joghurt-Dips verwenden.",
       "caution": "Ungewöhnlich bitter schmeckende Gurken nicht verzehren, sondern entsorgen.",
@@ -2099,12 +2080,12 @@ window.APP_DATA = {
       "score": 3,
       "name": "Kartoffeln",
       "selected": false,
-      "compounds": "Stärke, Ballaststoffe, Kalium, Vitamin C und B-Vitamine; die Gehalte hängen von Sorte, Lagerung und Zubereitung ab.",
-      "benefit": "Naturbelassenes, sättigendes Grundnahrungsmittel und vielseitige stärkehaltige Beilage.",
-      "carbs": "mittel bis hoch",
+      "compounds": "Stärke, Ballaststoffe, Kalium, Vitamin C und B-Vitamine; gekochte und anschließend abgekühlte Kartoffeln können resistente Stärke enthalten.",
+      "benefit": "Naturbelassenes, sättigendes Grundnahrungsmittel, das als stärkehaltige Beilage in ein ausgewogenes, pflanzenbetontes Ernährungsmuster passt.",
+      "carbs": "hoch",
       "use": "Gegart, gedämpft, gebacken oder als Püree, Suppe und Bestandteil von Ofengerichten verwenden.",
-      "caution": "Dunkel, kühl und trocken lagern; grüne Stellen und Keime großzügig entfernen und bitter schmeckende oder stark ergrünte Kartoffeln nicht verzehren.",
-      "priority": "mittel bis hoch",
+      "caution": "Dunkel, kühl und trocken lagern; grüne Stellen und Keime großzügig entfernen und bitter schmeckende oder stark ergrünte Kartoffeln nicht verzehren. Stark frittierte oder sehr fettreich zubereitete Varianten nur gelegentlich wählen.",
+      "priority": "mittel",
       "nutrition": "Energie / Kalorien: ca. 77 kcal; Fett: ca. 0,1 g; davon gesättigte Fettsäuren: ca. 0,0 g; Kohlenhydrate: ca. 17,5 g; davon Zucker: ca. 0,8 g; Eiweiß / Protein: ca. 2,1 g; Salz: ca. 0,0 g; Ballaststoffe: ca. 2,1 g",
       "portion": "150 g",
       "sources": "https://fdc.nal.usda.gov/; https://www.bzfe.de/kueche-und-alltag/vom-acker-bis-zum-teller/kartoffeln/kartoffeln-gesundheit-und-umwelt; https://www.efsa.europa.eu/en/news/glycoalkaloids-potatoes-public-health-risks-assessed"
@@ -4751,6 +4732,25 @@ window.APP_DATA = {
       "sources": "https://www.health.harvard.edu/diet-and-nutrition/quick-start-guide-to-an-antiinflammation-diet; https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/in-depth/mediterranean-diet/art-20047801"
     },
     {
+      "id": 280,
+      "category": "Getreide & Samen",
+      "subcategory": "Samen & Kerne",
+      "sort": 1,
+      "satiety": "mittel",
+      "score": 3,
+      "name": "Tahini",
+      "selected": false,
+      "compounds": "Fein vermahlene Sesamsamen mit ungesättigten Fettsäuren, Eiweiß, Mineralstoffen sowie Sesamin, Sesamolin und weiteren Lignanen.",
+      "benefit": "Nährstoffreiches Sesammus; Hinweise auf antioxidative und entzündungsmodulierende Wirkungen von Sesam sind vorhanden, die Evidenz ist jedoch begrenzt und nicht tahinispezifisch.",
+      "carbs": "niedrig",
+      "use": "In kleinen Mengen für Dressings, Dips, Hummus, Bowls, Salate und Saucen verwenden.",
+      "caution": "Energiedicht; Portionsgröße beachten und bei Sesamallergie meiden.",
+      "priority": "hoch",
+      "nutrition": "Energie / Kalorien: ca. 595 kcal; Fett: ca. 53,8 g; davon gesättigte Fettsäuren: ca. 7,5 g; Kohlenhydrate: ca. 21,2 g; davon Zucker: ca. 0,5 g; Eiweiß / Protein: ca. 17,0 g; Salz: ca. 0,3 g; Ballaststoffe: ca. 9,3 g",
+      "portion": "15 g",
+      "sources": "https://fdc.nal.usda.gov/; https://pubmed.ncbi.nlm.nih.gov/27074618/; https://pmc.ncbi.nlm.nih.gov/articles/PMC8575626/; https://food.ec.europa.eu/document/download/e7ebc668-fa20-4b48-b0e5-c5992614986d_en?filename=campaign-26_factsheet_allergens.pdf"
+    },
+    {
       "id": 221,
       "category": "Getreide & Samen",
       "subcategory": "Pseudogetreide",
@@ -5273,7 +5273,7 @@ window.APP_DATA = {
       "name": "Zucchini",
       "selected": false,
       "compounds": "Vitamin C, Kalium, Carotinoide, Ballaststoffe und weitere Polyphenole; die Zusammensetzung variiert je nach Sorte.",
-      "benefit": "Kalorienarmes und wasserreiches Gemüse, das durch Volumen zu einer sättigenden Mahlzeit beitragen kann.",
+      "benefit": "Kalorienarmes und wasserreiches Gemüse, das durch Volumen zu einer sättigenden, gemüsereichen und antientzündlich ausgerichteten Ernährung beitragen kann.",
       "carbs": "niedrig",
       "use": "Roh, gedünstet, gebraten, gebacken oder in Suppen, Gemüsepfannen und Ofengerichten verwenden.",
       "caution": "Ungewöhnlich bitter schmeckende Zucchini nicht verzehren, sondern entsorgen.",
@@ -7467,6 +7467,139 @@ window.APP_DATA = {
       "satiety": "hoch",
       "variants": "Naturjoghurt kann durch ungesüßten pflanzlichen Naturjoghurt ersetzt werden.",
       "reason": "Gemüse + Hülsenfrüchte + Ballaststoffe + hochwertige ungesättigte Fette"
+    },
+    {
+      "id": 135,
+      "date": "2026-08-17",
+      "mealType": "kalt",
+      "ingredients": [
+        "Gurke",
+        "Avocado",
+        "Rote Zwiebel",
+        "Grapefruit",
+        "Granatapfel",
+        "Walnüsse",
+        "Dill",
+        "Petersilie",
+        "Tahini",
+        "Knoblauch"
+      ],
+      "situation": "Gurken-Avocado-Salat mit Grapefruit, Granatapfel und Tahini-Dressing",
+      "satiety": "mittel",
+      "variants": "Walnüsse können durch Pekannüsse ersetzt werden.",
+      "reason": "Gemüse + Obst + Nüsse + ungesättigte Fettsäuren + sekundäre Pflanzenstoffe"
+    },
+    {
+      "id": 136,
+      "date": "2026-08-17",
+      "mealType": "warm",
+      "ingredients": [
+        "Zucchini",
+        "Rucola",
+        "Pistazien",
+        "Petersilie",
+        "Zitrone",
+        "Quinoa",
+        "Olivenöl extra vergine",
+        "Paprikapulver",
+        "Tahini",
+        "Knoblauch"
+      ],
+      "situation": "Zucchini-Quinoa-Salat mit Pistazien und Tahini-Dressing",
+      "satiety": "hoch",
+      "variants": "Avocadoöl statt Olivenöl extra vergine; Feta kann optional ergänzt werden.",
+      "reason": "Gemüse + Quinoa + Nüsse + Samen + hochwertige ungesättigte Fette"
+    },
+    {
+      "id": 137,
+      "date": "2026-08-17",
+      "mealType": "warm",
+      "ingredients": [
+        "Zucchini",
+        "Braune Linsen",
+        "Rucola",
+        "Petersilie",
+        "Avocado",
+        "Mandeln",
+        "Granatapfel",
+        "Knoblauch",
+        "Zitrone",
+        "Naturjoghurt",
+        "Schwarzer Pfeffer",
+        "Olivenöl extra vergine"
+      ],
+      "situation": "Zucchini-Linsen-Salat mit Avocado, Mandeln und Joghurt",
+      "satiety": "hoch",
+      "variants": "Naturjoghurt kann durch ungesüßten pflanzlichen Naturjoghurt ersetzt werden.",
+      "reason": "Gemüse + Hülsenfrüchte + Nüsse + Avocado + Kräuter"
+    },
+    {
+      "id": 138,
+      "date": "2026-08-17",
+      "mealType": "kalt",
+      "ingredients": [
+        "Kartoffeln",
+        "Avocado",
+        "Petersilie",
+        "Dill",
+        "Rote Zwiebel",
+        "Gelbe Zwiebel",
+        "Avocadoöl",
+        "Naturjoghurt",
+        "Cashews",
+        "Knoblauch",
+        "Chili"
+      ],
+      "situation": "Kartoffelsalat mit Avocado, Kräutern und karamellisierten Zwiebeln",
+      "satiety": "hoch",
+      "variants": "Naturjoghurt kann durch ungesüßten pflanzlichen Naturjoghurt ersetzt werden.",
+      "reason": "Kartoffeln + Avocado + Kräuter + Nüsse + hochwertige ungesättigte Fette"
+    },
+    {
+      "id": 139,
+      "date": "2026-08-17",
+      "mealType": "kalt",
+      "ingredients": [
+        "Edamame",
+        "Mango",
+        "Gurke",
+        "Paprika",
+        "Avocado",
+        "Frühlingszwiebel",
+        "Koriandergrün",
+        "Avocadoöl",
+        "Limette",
+        "Ingwer",
+        "Knoblauch",
+        "Miso",
+        "Chili",
+        "Tofu"
+      ],
+      "situation": "Edamame-Mango-Salat mit Tofu und Miso-Limetten-Dressing",
+      "satiety": "hoch",
+      "variants": "Petersilie statt Koriandergrün; Naturreis kann optional als Beilage serviert werden.",
+      "reason": "Soja + Gemüse + Obst + pflanzliches Eiweiß + Ingwer + fermentierte Würze"
+    },
+    {
+      "id": 140,
+      "date": "2026-08-17",
+      "mealType": "kalt",
+      "ingredients": [
+        "Quinoa",
+        "Gurke",
+        "Rote Zwiebel",
+        "Nektarinen",
+        "Schwarze Bohnen",
+        "Oliven",
+        "Petersilie",
+        "Olivenöl extra vergine",
+        "Zitrone",
+        "Schwarzer Pfeffer"
+      ],
+      "situation": "Quinoa-Salat mit Nektarinen, schwarzen Bohnen und Oliven",
+      "satiety": "hoch",
+      "variants": "Roter oder schwarzer Quinoa; saisonal können Pfirsiche statt Nektarinen verwendet werden.",
+      "reason": "Quinoa + Hülsenfrüchte + Gemüse + Obst + hochwertige ungesättigte Fette"
     }
   ],
   "sources": [
@@ -7528,13 +7661,13 @@ window.APP_DATA = {
       "id": 10,
       "name": "USDA FoodData Central",
       "url": "https://fdc.nal.usda.gov/",
-      "purpose": "Nährwertangaben für Fenchelknolle, Pastinake, Staudensellerie, Aubergine, Dicke Bohnen, Kartoffeln, Gurke, Zucchini und Avocadoöl"
+      "purpose": "Nährwertangaben für Fenchelknolle, Pastinake, Staudensellerie, Aubergine, Dicke Bohnen, Kartoffeln, Gurke, Zucchini, Avocadoöl und Tahini"
     },
     {
       "id": 11,
       "name": "Europäische Kommission – Allergenkennzeichnung",
       "url": "https://food.ec.europa.eu/document/download/e7ebc668-fa20-4b48-b0e5-c5992614986d_en?filename=campaign-26_factsheet_allergens.pdf",
-      "purpose": "Hinweis, dass Sellerie zu den kennzeichnungspflichtigen Allergenen gehört"
+      "purpose": "Hinweis, dass Sellerie und Sesam zu den kennzeichnungspflichtigen Allergenen gehören"
     },
     {
       "id": 12,
@@ -7577,6 +7710,18 @@ window.APP_DATA = {
       "name": "Bundesinstitut für Risikobewertung – Bittere Zucchini",
       "url": "https://www.bfr.bund.de/veroeffentlichung/vorsicht-beim-verzehr-von-bitteren-zucchini/",
       "purpose": "Sicherheitshinweis zu Cucurbitacinen in bitter schmeckenden Zucchini"
+    },
+    {
+      "id": 19,
+      "name": "PubMed – Sesame and oxidative stress: systematic review",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/27074618/",
+      "purpose": "Systematische Übersicht zu klinischen Studien über Sesamprodukte und oxidativen Stress mit Hinweis auf begrenzte Evidenz"
+    },
+    {
+      "id": 20,
+      "name": "PMC – Sesame consumption and inflammatory biomarkers",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8575626/",
+      "purpose": "Systematische Übersicht und Metaanalyse randomisierter Studien zu Sesam und Entzündungsmarkern"
     }
   ]
 };
