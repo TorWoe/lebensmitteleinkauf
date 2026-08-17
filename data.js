@@ -248,6 +248,25 @@ window.APP_DATA = {
       "sources": "https://www.health.harvard.edu/healthy-aging-and-longevity/foods-that-fight-inflammation; https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/in-depth/mediterranean-diet/art-20047801; https://www.hopkinsmedicine.org/health/wellness-and-prevention/anti-inflammatory-diet"
     },
     {
+      "id": 277,
+      "category": "Öle",
+      "subcategory": "Avocado, Oliven & Öle",
+      "sort": 3,
+      "satiety": "niedrig",
+      "score": 3,
+      "name": "Avocadoöl",
+      "selected": false,
+      "compounds": "Einfach ungesättigte Fettsäuren, vor allem Ölsäure; die genaue Fettsäurezusammensetzung variiert je nach Sorte und Verarbeitung.",
+      "benefit": "Pflanzenöl mit einem hohen Anteil einfach ungesättigter Fettsäuren.",
+      "carbs": "sehr niedrig",
+      "use": "Kalt und je nach Raffinationsgrad auch zum Erhitzen verwenden; Herstellerangaben beachten.",
+      "caution": "Energiedicht; dunkel und kühl lagern und die Portionsgröße beachten.",
+      "priority": "hoch",
+      "nutrition": "Energie / Kalorien: ca. 884 kcal; Fett: ca. 100,0 g; davon gesättigte Fettsäuren: ca. 11,6 g; Kohlenhydrate: ca. 0,0 g; davon Zucker: ca. 0,0 g; Eiweiß / Protein: ca. 0,0 g; Salz: ca. 0,0 g; Ballaststoffe: ca. 0,0 g",
+      "portion": "10 g",
+      "sources": "https://fdc.nal.usda.gov/; https://nutritionsource.hsph.harvard.edu/avocados/; https://pubmed.ncbi.nlm.nih.gov/31185591/"
+    },
+    {
       "id": 133,
       "category": "Gemüse, Pilze, Hülsenfrüchte & Nüsse",
       "subcategory": "Zwiebelgewächse",
@@ -1445,6 +1464,25 @@ window.APP_DATA = {
       "sources": "https://lpi.oregonstate.edu/mic/dietary-factors/phytochemicals/flavonoids; https://lpi.oregonstate.edu/mic/dietary-factors/phytochemicals/carotenoids; https://lpi.oregonstate.edu/mic/food-beverages/fruit-vegetables"
     },
     {
+      "id": 279,
+      "category": "Gemüse, Pilze, Hülsenfrüchte & Nüsse",
+      "subcategory": "Fruchtgemüse",
+      "sort": 4,
+      "satiety": "niedrig",
+      "score": 3,
+      "name": "Gurke",
+      "selected": false,
+      "compounds": "Wasser, Vitamin K, Kalium und kleine Mengen Ballaststoffe und weiterer Pflanzenstoffe.",
+      "benefit": "Kalorienarmes und wasserreiches Gemüse, das Salaten, Bowls und kalten Speisen Volumen und Frische gibt.",
+      "carbs": "niedrig",
+      "use": "Gründlich gewaschen roh in Salaten, Bowls, kalten Suppen und Joghurt-Dips verwenden.",
+      "caution": "Ungewöhnlich bitter schmeckende Gurken nicht verzehren, sondern entsorgen.",
+      "priority": "hoch",
+      "nutrition": "Energie / Kalorien: ca. 15 kcal; Fett: ca. 0,1 g; davon gesättigte Fettsäuren: ca. 0,0 g; Kohlenhydrate: ca. 3,6 g; davon Zucker: ca. 1,7 g; Eiweiß / Protein: ca. 0,7 g; Salz: ca. 0,0 g; Ballaststoffe: ca. 0,5 g",
+      "portion": "150 g",
+      "sources": "https://fdc.nal.usda.gov/; https://www.bzfe.de/presse/pressemeldungen-archiv/vom-snack-bis-ins-einmachglas; https://www.bzfe.de/presse/pressemeldungen-archiv/bittere-kuerbisse-und-zucchini-nicht-essen"
+    },
+    {
       "id": 26,
       "category": "Fleisch & Eier",
       "subcategory": "Geflügel unverarbeitet",
@@ -2051,6 +2089,25 @@ window.APP_DATA = {
       "nutrition": "Energie / Kalorien: ca. 41 kcal; Fett: ca. 0,2 g; davon gesättigte Fettsäuren: ca. 0,0 g; Kohlenhydrate: ca. 10,0 g; davon Zucker: ca. 4,7 g; Eiweiß / Protein: ca. 0,9 g; Salz: ca. 0,2 g; Ballaststoffe: ca. 2,8 g",
       "portion": "150 g",
       "sources": "https://www.health.harvard.edu/healthy-aging-and-longevity/foods-that-fight-inflammation; https://lpi.oregonstate.edu/mic/dietary-factors/phytochemicals/carotenoids; https://lpi.oregonstate.edu/mic/food-beverages/fruit-vegetables"
+    },
+    {
+      "id": 276,
+      "category": "Gemüse, Pilze, Hülsenfrüchte & Nüsse",
+      "subcategory": "Wurzel-, Knollen- & Stängelgemüse",
+      "sort": 4,
+      "satiety": "hoch",
+      "score": 3,
+      "name": "Kartoffeln",
+      "selected": false,
+      "compounds": "Stärke, Ballaststoffe, Kalium, Vitamin C und B-Vitamine; die Gehalte hängen von Sorte, Lagerung und Zubereitung ab.",
+      "benefit": "Naturbelassenes, sättigendes Grundnahrungsmittel und vielseitige stärkehaltige Beilage.",
+      "carbs": "mittel bis hoch",
+      "use": "Gegart, gedämpft, gebacken oder als Püree, Suppe und Bestandteil von Ofengerichten verwenden.",
+      "caution": "Dunkel, kühl und trocken lagern; grüne Stellen und Keime großzügig entfernen und bitter schmeckende oder stark ergrünte Kartoffeln nicht verzehren.",
+      "priority": "mittel bis hoch",
+      "nutrition": "Energie / Kalorien: ca. 77 kcal; Fett: ca. 0,1 g; davon gesättigte Fettsäuren: ca. 0,0 g; Kohlenhydrate: ca. 17,5 g; davon Zucker: ca. 0,8 g; Eiweiß / Protein: ca. 2,1 g; Salz: ca. 0,0 g; Ballaststoffe: ca. 2,1 g",
+      "portion": "150 g",
+      "sources": "https://fdc.nal.usda.gov/; https://www.bzfe.de/kueche-und-alltag/vom-acker-bis-zum-teller/kartoffeln/kartoffeln-gesundheit-und-umwelt; https://www.efsa.europa.eu/en/news/glycoalkaloids-potatoes-public-health-risks-assessed"
     },
     {
       "id": 71,
@@ -5207,6 +5264,25 @@ window.APP_DATA = {
       "sources": "https://www.health.harvard.edu/healthy-aging-and-longevity/foods-that-fight-inflammation; https://lpi.oregonstate.edu/mic/dietary-factors/phytochemicals/flavonoids; https://lpi.oregonstate.edu/mic/food-beverages/fruit-vegetables"
     },
     {
+      "id": 278,
+      "category": "Gemüse, Pilze, Hülsenfrüchte & Nüsse",
+      "subcategory": "Fruchtgemüse",
+      "sort": 4,
+      "satiety": "mittel",
+      "score": 4,
+      "name": "Zucchini",
+      "selected": false,
+      "compounds": "Vitamin C, Kalium, Carotinoide, Ballaststoffe und weitere Polyphenole; die Zusammensetzung variiert je nach Sorte.",
+      "benefit": "Kalorienarmes und wasserreiches Gemüse, das durch Volumen zu einer sättigenden Mahlzeit beitragen kann.",
+      "carbs": "niedrig",
+      "use": "Roh, gedünstet, gebraten, gebacken oder in Suppen, Gemüsepfannen und Ofengerichten verwenden.",
+      "caution": "Ungewöhnlich bitter schmeckende Zucchini nicht verzehren, sondern entsorgen.",
+      "priority": "sehr hoch",
+      "nutrition": "Energie / Kalorien: ca. 17 kcal; Fett: ca. 0,3 g; davon gesättigte Fettsäuren: ca. 0,1 g; Kohlenhydrate: ca. 3,1 g; davon Zucker: ca. 2,5 g; Eiweiß / Protein: ca. 1,2 g; Salz: ca. 0,0 g; Ballaststoffe: ca. 1,0 g",
+      "portion": "150 g",
+      "sources": "https://fdc.nal.usda.gov/; https://lpi.oregonstate.edu/mic/food-beverages/fruit-vegetables; https://www.bfr.bund.de/veroeffentlichung/vorsicht-beim-verzehr-von-bitteren-zucchini/"
+    },
+    {
       "id": 169,
       "category": "Obst & Beeren",
       "subcategory": "Steinobst",
@@ -7369,6 +7445,28 @@ window.APP_DATA = {
       "satiety": "sehr hoch",
       "variants": "Grüne Erbsen statt Dicke Bohnen oder Petersilie statt Koriandergrün",
       "reason": "Pflanzliches Eiweiß + Ballaststoffe + Olivenöl + Kräuter"
+    },
+    {
+      "id": 134,
+      "date": "2026-08-17",
+      "mealType": "warm",
+      "ingredients": [
+        "Kartoffeln",
+        "Zucchini",
+        "Kichererbsen",
+        "Naturjoghurt",
+        "Gurke",
+        "Dill",
+        "Knoblauch",
+        "Paprika",
+        "Oregano",
+        "Avocadoöl",
+        "Olivenöl extra vergine"
+      ],
+      "situation": "Smashed Potatoes mit Zucchini, Kichererbsen und Tzatziki",
+      "satiety": "hoch",
+      "variants": "Naturjoghurt kann durch ungesüßten pflanzlichen Naturjoghurt ersetzt werden.",
+      "reason": "Gemüse + Hülsenfrüchte + Ballaststoffe + hochwertige ungesättigte Fette"
     }
   ],
   "sources": [
@@ -7430,13 +7528,55 @@ window.APP_DATA = {
       "id": 10,
       "name": "USDA FoodData Central",
       "url": "https://fdc.nal.usda.gov/",
-      "purpose": "Nährwertangaben für Fenchelknolle, Pastinake und Staudensellerie; Nährwertangaben für Aubergine und Dicke Bohnen"
+      "purpose": "Nährwertangaben für Fenchelknolle, Pastinake, Staudensellerie, Aubergine, Dicke Bohnen, Kartoffeln, Gurke, Zucchini und Avocadoöl"
     },
     {
       "id": 11,
       "name": "Europäische Kommission – Allergenkennzeichnung",
       "url": "https://food.ec.europa.eu/document/download/e7ebc668-fa20-4b48-b0e5-c5992614986d_en?filename=campaign-26_factsheet_allergens.pdf",
       "purpose": "Hinweis, dass Sellerie zu den kennzeichnungspflichtigen Allergenen gehört"
+    },
+    {
+      "id": 12,
+      "name": "Harvard T.H. Chan School of Public Health – Avocados",
+      "url": "https://nutritionsource.hsph.harvard.edu/avocados/",
+      "purpose": "Einfach ungesättigte Fettsäuren und sachliche Einordnung von Avocadoöl im Vergleich zu Olivenöl"
+    },
+    {
+      "id": 13,
+      "name": "PubMed – Avocado Oil: Characteristics, Properties, and Applications",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/31185591/",
+      "purpose": "Fettsäureprofil und von Herstellung und Verarbeitung abhängige Eigenschaften von Avocadoöl"
+    },
+    {
+      "id": 14,
+      "name": "Bundeszentrum für Ernährung – Gurken",
+      "url": "https://www.bzfe.de/presse/pressemeldungen-archiv/vom-snack-bis-ins-einmachglas",
+      "purpose": "Energiedichte, Verwendung und Hinweis auf bitter schmeckende Gurken"
+    },
+    {
+      "id": 15,
+      "name": "Bundeszentrum für Ernährung – Bittere Kürbisse und Zucchini",
+      "url": "https://www.bzfe.de/presse/pressemeldungen-archiv/bittere-kuerbisse-und-zucchini-nicht-essen",
+      "purpose": "Sicherheitshinweis zu bitter schmeckenden Kürbisgewächsen einschließlich Gurken und Zucchini"
+    },
+    {
+      "id": 16,
+      "name": "Bundeszentrum für Ernährung – Kartoffeln: Gesundheit und Umwelt",
+      "url": "https://www.bzfe.de/kueche-und-alltag/vom-acker-bis-zum-teller/kartoffeln/kartoffeln-gesundheit-und-umwelt",
+      "purpose": "Kartoffeln als Grundnahrungsmittel sowie Hinweise zu Nährstoffen, Lagerung und Glykoalkaloiden"
+    },
+    {
+      "id": 17,
+      "name": "EFSA – Glycoalkaloids in potatoes",
+      "url": "https://www.efsa.europa.eu/en/news/glycoalkaloids-potatoes-public-health-risks-assessed",
+      "purpose": "Risikobewertung und Zubereitungshinweise zu Glykoalkaloiden in Kartoffeln"
+    },
+    {
+      "id": 18,
+      "name": "Bundesinstitut für Risikobewertung – Bittere Zucchini",
+      "url": "https://www.bfr.bund.de/veroeffentlichung/vorsicht-beim-verzehr-von-bitteren-zucchini/",
+      "purpose": "Sicherheitshinweis zu Cucurbitacinen in bitter schmeckenden Zucchini"
     }
   ]
 };
