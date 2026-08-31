@@ -514,6 +514,25 @@ window.APP_DATA = {
       "sources": "https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/in-depth/mediterranean-diet/art-20047801; https://www.health.harvard.edu/diet-and-nutrition/quick-start-guide-to-an-antiinflammation-diet"
     },
     {
+      "id": 281,
+      "category": "Getreide & Samen",
+      "subcategory": "Vollkorngetreide",
+      "sort": 3,
+      "satiety": "mittel bis hoch",
+      "score": 3,
+      "name": "Bulgur",
+      "selected": false,
+      "compounds": "Ballaststoffe, Phenolsäuren, B-Vitamine, Magnesium und weitere Mineralstoffe",
+      "benefit": "Ballaststoffreiches Vollkorngetreide, das zu einer antientzündlich ausgerichteten Ernährung passt und eine gute Sättigung unterstützt.",
+      "carbs": "mittel bis hoch",
+      "use": "Als Beilage, für Salate, Bowls, Suppen oder kombiniert mit Gemüse, Hülsenfrüchten und einer Eiweißquelle.",
+      "caution": "Enthält Gluten. Portion bewusst wählen, wenn Blutzucker oder Kohlenhydratmenge wichtig sind.",
+      "priority": "mittel bis hoch",
+      "nutrition": "Je 100 g gekochtem Bulgur: Energie / Kalorien: ca. 83 kcal; Fett: ca. 0,2 g; davon gesättigte Fettsäuren: ca. 0,0 g; Kohlenhydrate: ca. 18,6 g; davon Zucker: ca. 0,1 g; Eiweiß / Protein: ca. 3,1 g; Salz: ca. 0,0 g; Ballaststoffe: ca. 4,5 g",
+      "portion": "150 g (gekocht)",
+      "sources": "https://nutritionsource.hsph.harvard.edu/what-should-you-eat/whole-grains/; https://www.health.harvard.edu/diet-and-nutrition/anti-inflammatory-diet-foods-that-help-reduce-chronic-inflammation; https://www.ars.usda.gov/ARSUserFiles/80400535/Data/SR/SR28/reports/sr28fg20.pdf#page=36"
+    },
+    {
       "id": 68,
       "category": "Milchprodukte & Käse",
       "subcategory": "Eiweißreiche fermentierte Milchprodukte",
@@ -7600,6 +7619,110 @@ window.APP_DATA = {
       "satiety": "hoch",
       "variants": "Roter oder schwarzer Quinoa; saisonal können Pfirsiche statt Nektarinen verwendet werden.",
       "reason": "Quinoa + Hülsenfrüchte + Gemüse + Obst + hochwertige ungesättigte Fette"
+    },
+    {
+      "id": 141,
+      "date": "2026-08-31",
+      "mealType": "kalt",
+      "ingredients": [
+        "Bulgur",
+        "Kichererbsen",
+        "Tomaten",
+        "Rucola",
+        "Petersilie",
+        "Olivenöl extra vergine"
+      ],
+      "situation": "Mediterraner Bulgur-Kichererbsen-Salat mit Rucola und Tomaten",
+      "satiety": "sehr hoch",
+      "variants": "Belugalinsen statt Kichererbsen oder Feldsalat statt Rucola",
+      "reason": "Vollkorngetreide + Hülsenfrüchte + Blattgemüse + Polyphenole"
+    },
+    {
+      "id": 142,
+      "date": "2026-08-31",
+      "mealType": "warm",
+      "ingredients": [
+        "Bulgur",
+        "Lachs",
+        "Brokkoli",
+        "Paprika rot",
+        "Knoblauch",
+        "Olivenöl extra vergine"
+      ],
+      "situation": "Lachs-Bulgur-Bowl mit Brokkoli und roter Paprika",
+      "satiety": "sehr hoch",
+      "variants": "Forelle statt Lachs oder Blumenkohl statt Brokkoli",
+      "reason": "Omega-3-Fettsäuren + Vollkorngetreide + Kreuzblütler + farbiges Gemüse"
+    },
+    {
+      "id": 143,
+      "date": "2026-08-31",
+      "mealType": "warm",
+      "ingredients": [
+        "Bulgur",
+        "Kichererbsen",
+        "Spinat",
+        "Tomaten",
+        "Rote Zwiebel",
+        "Knoblauch"
+      ],
+      "situation": "Bulgur-Kichererbsen-Pfanne mit Spinat und Tomaten",
+      "satiety": "sehr hoch",
+      "variants": "Weiße Bohnen statt Kichererbsen oder Mangold statt Spinat",
+      "reason": "Vollkorngetreide + pflanzliches Eiweiß + Ballaststoffe + Blattgemüse"
+    },
+    {
+      "id": 144,
+      "date": "2026-08-31",
+      "mealType": "kalt",
+      "ingredients": [
+        "Bulgur",
+        "Feta",
+        "Tomaten",
+        "Paprika rot",
+        "Rucola",
+        "Walnüsse",
+        "Olivenöl extra vergine"
+      ],
+      "situation": "Bulgur-Salat mit Feta, Walnüssen und roter Paprika",
+      "satiety": "hoch",
+      "variants": "Ziegenkäse statt Feta oder Feldsalat statt Rucola",
+      "reason": "Vollkorngetreide + Eiweiß und Calcium + Nüsse + Gemüse"
+    },
+    {
+      "id": 145,
+      "date": "2026-08-31",
+      "mealType": "warm",
+      "ingredients": [
+        "Bulgur",
+        "Tofu",
+        "Brokkoli",
+        "Gelbe Zucchini",
+        "Ingwer",
+        "Knoblauch"
+      ],
+      "situation": "Bulgur-Tofu-Pfanne mit Brokkoli, Zucchini und Ingwer",
+      "satiety": "sehr hoch",
+      "variants": "Tempeh statt Tofu oder Blumenkohl statt Brokkoli",
+      "reason": "Vollkorngetreide + pflanzliches Eiweiß + Kreuzblütler + Gewürzpflanzen"
+    },
+    {
+      "id": 146,
+      "date": "2026-08-31",
+      "mealType": "kalt",
+      "ingredients": [
+        "Bulgur",
+        "Avocado",
+        "Schwarze Bohnen",
+        "Tomaten",
+        "Rucola",
+        "Petersilie",
+        "Olivenöl extra vergine"
+      ],
+      "situation": "Bulgur-Bowl mit schwarzen Bohnen, Avocado und Rucola",
+      "satiety": "sehr hoch",
+      "variants": "Kidneybohnen statt schwarze Bohnen oder Feldsalat statt Rucola",
+      "reason": "Vollkorngetreide + Hülsenfrüchte + ungesättigte Fettsäuren + Blattgemüse"
     }
   ],
   "sources": [
@@ -7722,6 +7845,24 @@ window.APP_DATA = {
       "name": "PMC – Sesame consumption and inflammatory biomarkers",
       "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8575626/",
       "purpose": "Systematische Übersicht und Metaanalyse randomisierter Studien zu Sesam und Entzündungsmarkern"
+    },
+    {
+      "id": 21,
+      "name": "Harvard T.H. Chan School of Public Health – Whole Grains",
+      "url": "https://nutritionsource.hsph.harvard.edu/what-should-you-eat/whole-grains/",
+      "purpose": "Einordnung von Bulgur als Vollkorngetreide sowie Ballaststoffe, B-Vitamine, Mineralstoffe und Pflanzenstoffe in Vollkornprodukten"
+    },
+    {
+      "id": 22,
+      "name": "Harvard Health – Anti-inflammatory diet: Foods that help reduce chronic inflammation",
+      "url": "https://www.health.harvard.edu/diet-and-nutrition/anti-inflammatory-diet-foods-that-help-reduce-chronic-inflammation",
+      "purpose": "Vollkorngetreide als Bestandteil eines antientzündlich ausgerichteten Ernährungsmusters; entscheidend ist die gesamte Ernährung"
+    },
+    {
+      "id": 23,
+      "name": "USDA – Bulgur, cooked (NDB 20013, SR28)",
+      "url": "https://www.ars.usda.gov/ARSUserFiles/80400535/Data/SR/SR28/reports/sr28fg20.pdf#page=36",
+      "purpose": "Nährwerte je 100 g gekochtem Bulgur; USDA-Referenzdaten für Getreide und Teigwaren, PDF-Seiten 36–38"
     }
   ]
 };
