@@ -2,7 +2,7 @@
   "use strict";
 
   const { foods, meals, sources, foodNames = [] } = window.APP_DATA;
-  const appVersion = "meal-sharing-20260903-1";
+  const appVersion = "shared-meal-removal-20260903-1";
   const appVersionFile = "app-version.json";
   const appRefreshParam = "appRefresh";
   const appRefreshSessionKey = "lebensmitteleinkauf:app-refresh-version:v1";
@@ -90,6 +90,7 @@
     bookmarkedFoods: new Set(localSnapshot.bookmarkedFoodIds),
     bookmarkedMeals: new Set(localSnapshot.bookmarkedMealIds),
     sharedMeals: new Set(loadSharedMealIds()),
+    selectedSharedMeals: new Set(),
     sharedTargetMealId: null,
     localUpdatedAt: localSnapshot.updatedAt,
     sync: {
@@ -120,6 +121,8 @@
     bookmarkedMealGrid: document.querySelector("#bookmarkedMealGrid"),
     sharedMealGrid: document.querySelector("#sharedMealGrid"),
     sharedMealCount: document.querySelector("#sharedMealCount"),
+    sharedMealSelectionCount: document.querySelector("#sharedMealSelectionCount"),
+    removeSelectedSharedMeals: document.querySelector("#removeSelectedSharedMeals"),
     bookmarkedFoodCount: document.querySelector("#bookmarkedFoodCount"),
     bookmarkedMealCount: document.querySelector("#bookmarkedMealCount"),
     clearAllBookmarks: document.querySelector("#clearAllBookmarks"),
@@ -1430,6 +1433,11 @@
     const allIngredientsSelected = ingredientFoods.length > 0 && ingredientFoods.every((food) => state.selected.has(food.id));
     return `
       <article class="meal-card${options.isShareTarget ? " is-share-target" : ""}" data-id="${meal.id}"${options.isShareTarget ? ' tabindex="-1"' : ""}>
+        ${options.isShareView ? `
+          <label class="share-select-control">
+            <input type="checkbox" data-shared-meal-select value="${meal.id}"${options.isShareSelected ? " checked" : ""} aria-label="${escapeHtml(meal.situation)} zum Entfernen auswählen" />
+            <span>${options.isShareSelected ? "Ausgewählt" : "Zum Entfernen auswählen"}</span>
+          </label>` : ""}
         <div class="meal-meta">
           ${renderBookmarkButton("meal", meal)}
           ${mealDate ? `<time class="meal-date" datetime="${escapeHtml(meal.date)}">${escapeHtml(mealDate)}</time>` : ""}
@@ -1496,14 +1504,26 @@
   }
 
   function renderSharedMeals() {
+    state.selectedSharedMeals = new Set([...state.selectedSharedMeals].filter((id) => state.sharedMeals.has(id)));
     const sharedMeals = meals
       .filter((meal) => state.sharedMeals.has(meal.id))
       .reverse();
 
     dom.sharedMealCount.textContent = `${sharedMeals.length} ${sharedMeals.length === 1 ? "Mahlzeit" : "Mahlzeiten"}`;
     dom.sharedMealGrid.innerHTML = sharedMeals.length
-      ? sharedMeals.map((meal) => renderMealCard(meal, { isShareTarget: meal.id === state.sharedTargetMealId })).join("")
+      ? sharedMeals.map((meal) => renderMealCard(meal, {
+        isShareView: true,
+        isShareSelected: state.selectedSharedMeals.has(meal.id),
+        isShareTarget: meal.id === state.sharedTargetMealId,
+      })).join("")
       : '<div class="bookmark-empty share-empty"><span class="button-icon">' + icon("share") + '</span><strong>Noch keine Mahlzeit geteilt</strong><p>Klicke bei einer Mahlzeit auf „zum Teilen →“. Der direkte Link wird kopiert und die Mahlzeit erscheint hier.</p></div>';
+    renderSharedMealSelection();
+  }
+
+  function renderSharedMealSelection() {
+    const count = state.selectedSharedMeals.size;
+    dom.sharedMealSelectionCount.textContent = `${count} ausgewählt`;
+    dom.removeSelectedSharedMeals.disabled = count === 0;
   }
 
   function renderInsights() {
@@ -1785,6 +1805,18 @@
     showToast(copied ? "Teilen-Link wurde kopiert." : "Teilen-Link steht jetzt in der Adresszeile.");
   }
 
+  function removeSelectedSharedMealEntries() {
+    const ids = [...state.selectedSharedMeals].filter((id) => state.sharedMeals.has(id));
+    if (!ids.length) return;
+    ids.forEach((id) => state.sharedMeals.delete(id));
+    state.selectedSharedMeals.clear();
+    if (ids.includes(state.sharedTargetMealId)) state.sharedTargetMealId = null;
+    if (ids.includes(sharedMealIdFromUrl())) clearAppUrlHash();
+    saveSharedMealIds();
+    renderSharedMeals();
+    showToast(ids.length === 1 ? "Mahlzeit wurde aus Teilen entfernt." : `${ids.length} Mahlzeiten wurden aus Teilen entfernt.`);
+  }
+
   function openConfirm({ title, text, cancel = "Abbrechen", accept = "Liste leeren", tone = "danger", cancelAction = null, action }) {
     state.confirmAction = action;
     state.confirmCancelAction = cancelAction;
@@ -1950,6 +1982,28 @@
         text: `Alle ${count} Lesezeichen für Mahlzeiten und Lebensmittel werden entfernt.`,
         accept: "Alle löschen",
         action: clearBookmarks,
+      });
+    });
+    dom.sharedMealGrid.addEventListener("change", (event) => {
+      const checkbox = event.target.closest("[data-shared-meal-select]");
+      if (!checkbox) return;
+      const mealId = Number(checkbox.value);
+      if (!state.sharedMeals.has(mealId)) return;
+      if (checkbox.checked) state.selectedSharedMeals.add(mealId);
+      else state.selectedSharedMeals.delete(mealId);
+      checkbox.nextElementSibling.textContent = checkbox.checked ? "Ausgewählt" : "Zum Entfernen auswählen";
+      renderSharedMealSelection();
+    });
+    dom.removeSelectedSharedMeals.addEventListener("click", () => {
+      const count = state.selectedSharedMeals.size;
+      if (!count) return;
+      openConfirm({
+        title: count === 1 ? "Mahlzeit aus Teilen entfernen?" : `${count} Mahlzeiten aus Teilen entfernen?`,
+        text: count === 1
+          ? "Die ausgewählte Mahlzeit wird nur aus dem Bereich Teilen in diesem Browser entfernt. Bereits versendete Links bleiben erreichbar."
+          : "Die ausgewählten Mahlzeiten werden nur aus dem Bereich Teilen in diesem Browser entfernt. Bereits versendete Links bleiben erreichbar.",
+        accept: count === 1 ? "Mahlzeit entfernen" : "Mahlzeiten entfernen",
+        action: removeSelectedSharedMealEntries,
       });
     });
     document.querySelector(".dialog-close").addEventListener("click", () => dom.detailDialog.close());
