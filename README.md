@@ -11,6 +11,7 @@ einen beliebigen lokalen Webserver bereitgestellt werden.
 
 - 269 Lebensmittel aus der Excelvorlage mit Suche und Filtern
 - persönliche Lesezeichen für Mahlzeiten und Lebensmittel mit eigener Übersicht
+- direkte Teilen-Links für einzelne Mahlzeiten mit eigener Übersicht
 - lokal gespeicherte Einkaufsliste mit optionaler OneDrive-Synchronisierung
 - TXT-Export, Kopieren und Zurücksetzen der Markierungen
 - Tagesbaukasten und dynamische Auswertung

@@ -2,7 +2,7 @@
   "use strict";
 
   const { foods, meals, sources, foodNames = [] } = window.APP_DATA;
-  const appVersion = "bookmarks-onedrive-20260803-1";
+  const appVersion = "meal-sharing-20260903-1";
   const appVersionFile = "app-version.json";
   const appRefreshParam = "appRefresh";
   const appRefreshSessionKey = "lebensmitteleinkauf:app-refresh-version:v1";
@@ -11,6 +11,8 @@
   const storageKey = "lebensmitteleinkauf:selected:v1";
   const storageMetaKey = "lebensmitteleinkauf:selected:meta:v1";
   const bookmarkStorageKey = "lebensmitteleinkauf:bookmarks:v1";
+  const sharedMealStorageKey = "lebensmitteleinkauf:shared-meals:v1";
+  const sharedMealUrlParam = "mahlzeit";
   const pendingLoginKey = "lebensmitteleinkauf:onedrive-login-pending:v1";
   const manualLogoutKey = "lebensmitteleinkauf:onedrive-manual-logout:v1";
   const authReloadKey = "lebensmitteleinkauf:onedrive-auth-reload:v1";
@@ -56,6 +58,7 @@
     meal: '<path d="M7 3v8M4.5 3v5c0 2 1 3 2.5 3s2.5-1 2.5-3V3M7 11v10"/><path d="M16 3c2 2 3 5 3 8v2h-5V9c0-3 1-5 2-6Zm0 10v8"/>',
     chart: '<path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/>',
     bookmark: '<path d="M6.5 3.5h11v17L12 17l-5.5 3.5v-17Z"/>',
+    share: '<circle cx="18" cy="5" r="2.5"/><circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="19" r="2.5"/><path d="m8.2 10.8 7.6-4.5M8.2 13.2l7.6 4.5"/>',
     imageOpen: '<rect x="3" y="5" width="13" height="14" rx="2"/><path d="m5.5 16 3.2-3.2 2.5 2.5 1.8-1.8 3 3"/><path d="M14 3h7v7M21 3l-8 8"/>',
     cloud: '<path d="M17.5 18H8a5 5 0 1 1 1.2-9.85A6.5 6.5 0 0 1 21 12a3 3 0 0 1-3.5 6Z"/><path d="M12 13v7M9 16l3-3 3 3"/>',
   };
@@ -86,6 +89,8 @@
     selected: new Set(localSnapshot.selected),
     bookmarkedFoods: new Set(localSnapshot.bookmarkedFoodIds),
     bookmarkedMeals: new Set(localSnapshot.bookmarkedMealIds),
+    sharedMeals: new Set(loadSharedMealIds()),
+    sharedTargetMealId: null,
     localUpdatedAt: localSnapshot.updatedAt,
     sync: {
       msal: null,
@@ -113,6 +118,8 @@
     mealGrid: document.querySelector("#mealGrid"),
     bookmarkedFoodGrid: document.querySelector("#bookmarkedFoodGrid"),
     bookmarkedMealGrid: document.querySelector("#bookmarkedMealGrid"),
+    sharedMealGrid: document.querySelector("#sharedMealGrid"),
+    sharedMealCount: document.querySelector("#sharedMealCount"),
     bookmarkedFoodCount: document.querySelector("#bookmarkedFoodCount"),
     bookmarkedMealCount: document.querySelector("#bookmarkedMealCount"),
     clearAllBookmarks: document.querySelector("#clearAllBookmarks"),
@@ -223,6 +230,22 @@
 
   function cleanBookmarkedMealIds(value) {
     return cleanIds(value, validMealIds);
+  }
+
+  function loadSharedMealIds() {
+    try {
+      return cleanBookmarkedMealIds(JSON.parse(localStorage.getItem(sharedMealStorageKey) || "[]"));
+    } catch {
+      return [];
+    }
+  }
+
+  function saveSharedMealIds() {
+    try {
+      localStorage.setItem(sharedMealStorageKey, JSON.stringify(cleanBookmarkedMealIds([...state.sharedMeals])));
+    } catch {
+      // Local storage can be unavailable in strict privacy modes.
+    }
   }
 
   function nowIso() {
@@ -647,6 +670,7 @@
     renderShoppingList();
     renderMeals();
     renderBookmarks();
+    renderSharedMeals();
   }
 
   function completeRemoteSave(payload, metadata) {
@@ -1170,6 +1194,7 @@
     renderShoppingList();
     renderMeals();
     renderBookmarks();
+    renderSharedMeals();
   }
 
   function toggleBookmark(kind, id) {
@@ -1184,6 +1209,7 @@
     renderFoods();
     renderMeals();
     renderBookmarks();
+    renderSharedMeals();
     showToast(wasBookmarked ? "Lesezeichen wurde entfernt." : "Lesezeichen wurde gesetzt.");
   }
 
@@ -1216,6 +1242,7 @@
     renderFoods();
     renderShoppingList();
     renderMeals();
+    renderSharedMeals();
     showToast(addedCount ? `${addedCount} Zutaten wurden auf die Liste gesetzt.` : "Alle Zutaten sind bereits auf der Liste.");
   }
 
@@ -1396,13 +1423,13 @@
     return year && month && day ? `${day}.${month}.${year}` : String(value || "");
   }
 
-  function renderMealCard(meal) {
+  function renderMealCard(meal, options = {}) {
     const mealDate = formatMealDate(meal.date);
     const mealNumber = (mealIndexById.get(meal.id) ?? 0) + 1;
     const ingredientFoods = mealIngredientFoods(meal);
     const allIngredientsSelected = ingredientFoods.length > 0 && ingredientFoods.every((food) => state.selected.has(food.id));
     return `
-      <article class="meal-card" data-id="${meal.id}">
+      <article class="meal-card${options.isShareTarget ? " is-share-target" : ""}" data-id="${meal.id}"${options.isShareTarget ? ' tabindex="-1"' : ""}>
         <div class="meal-meta">
           ${renderBookmarkButton("meal", meal)}
           ${mealDate ? `<time class="meal-date" datetime="${escapeHtml(meal.date)}">${escapeHtml(mealDate)}</time>` : ""}
@@ -1418,6 +1445,9 @@
         <div class="meal-card-footer">
           <button class="meal-recipe-button" type="button" data-recipe-meal-id="${meal.id}" aria-label="Rezeptsuchtext für ${escapeHtml(meal.situation)} kopieren">für Rezeptsuche →</button>
           <button class="meal-list-button${allIngredientsSelected ? " is-added" : ""}" type="button" data-meal-id="${meal.id}" aria-pressed="${allIngredientsSelected}">${allIngredientsSelected ? "Auf der Liste ✓" : "Auf die Liste →"}</button>
+        </div>
+        <div class="meal-share-row">
+          <button class="meal-share-button" type="button" data-share-meal-id="${meal.id}" aria-label="Teilen-Link für ${escapeHtml(meal.situation)} kopieren">zum Teilen →</button>
         </div>
       </article>`;
   }
@@ -1465,6 +1495,17 @@
       : '<div class="bookmark-empty"><span class="button-icon">' + icon("bookmark") + '</span><strong>Noch kein Lebensmittel gespeichert</strong><p>Setze bei einem Lebensmittel ein Lesezeichen, um es hier wiederzufinden.</p></div>';
   }
 
+  function renderSharedMeals() {
+    const sharedMeals = meals
+      .filter((meal) => state.sharedMeals.has(meal.id))
+      .reverse();
+
+    dom.sharedMealCount.textContent = `${sharedMeals.length} ${sharedMeals.length === 1 ? "Mahlzeit" : "Mahlzeiten"}`;
+    dom.sharedMealGrid.innerHTML = sharedMeals.length
+      ? sharedMeals.map((meal) => renderMealCard(meal, { isShareTarget: meal.id === state.sharedTargetMealId })).join("")
+      : '<div class="bookmark-empty share-empty"><span class="button-icon">' + icon("share") + '</span><strong>Noch keine Mahlzeit geteilt</strong><p>Klicke bei einer Mahlzeit auf „zum Teilen →“. Der direkte Link wird kopiert und die Mahlzeit erscheint hier.</p></div>';
+  }
+
   function renderInsights() {
     const categoryCounts = [...foods.reduce((map, food) => map.set(food.category, (map.get(food.category) || 0) + 1), new Map())];
     const scoreCounts = [5, 4, 3, 2, 1].map((score) => ({ score, count: foods.filter((food) => food.score === score).length }));
@@ -1502,8 +1543,11 @@
   }
 
   function clearAppUrlHash() {
-    if (!window.location.hash) return;
-    const cleanUrl = `${window.location.pathname}${window.location.search}`;
+    const url = new URL(window.location.href);
+    if (!url.hash && !url.searchParams.has(sharedMealUrlParam)) return;
+    url.hash = "";
+    url.searchParams.delete(sharedMealUrlParam);
+    const cleanUrl = `${url.pathname}${url.search}`;
     if (window.history?.replaceState) {
       window.history.replaceState(null, document.title, cleanUrl);
     } else {
@@ -1571,11 +1615,36 @@
   }
 
   function viewFromHash() {
-    const viewByHash = { "#lebensmittel": "foods", "#mahlzeiten": "meals", "#tagesbaukasten": "meals", "#lesezeichen": "bookmarks", "#auswertung": "insights" };
+    const viewByHash = { "#lebensmittel": "foods", "#mahlzeiten": "meals", "#tagesbaukasten": "meals", "#lesezeichen": "bookmarks", "#auswertung": "insights", "#teilen": "shares" };
     return viewByHash[window.location.hash] || "foods";
   }
 
+  function sharedMealIdFromUrl() {
+    const id = Number(new URL(window.location.href).searchParams.get(sharedMealUrlParam));
+    return validMealIds.has(id) ? id : null;
+  }
+
+  function scrollSharedMealIntoView(mealId) {
+    requestAnimationFrame(() => {
+      const target = dom.sharedMealGrid.querySelector(`.meal-card[data-id="${mealId}"]`);
+      if (!target) return;
+      target.scrollIntoView({ behavior: "auto", block: "start" });
+      target.focus({ preventScroll: true });
+    });
+  }
+
   function initializeViewFromUrl() {
+    const sharedMealId = sharedMealIdFromUrl();
+    if (sharedMealId) {
+      state.sharedMeals.add(sharedMealId);
+      state.sharedTargetMealId = sharedMealId;
+      saveSharedMealIds();
+      renderSharedMeals();
+      setView("shares", { scroll: false });
+      scrollSharedMealIntoView(sharedMealId);
+      return;
+    }
+
     if (window.location.hash) {
       const view = viewFromHash();
       clearAppUrlHash();
@@ -1664,13 +1733,19 @@
   async function copyText(text) {
     try {
       await navigator.clipboard.writeText(text);
+      return true;
     } catch {
-      const textArea = document.createElement("textarea");
-      textArea.value = text;
-      document.body.append(textArea);
-      textArea.select();
-      document.execCommand("copy");
-      textArea.remove();
+      try {
+        const textArea = document.createElement("textarea");
+        textArea.value = text;
+        document.body.append(textArea);
+        textArea.select();
+        const copied = document.execCommand("copy");
+        textArea.remove();
+        return copied;
+      } catch {
+        return false;
+      }
     }
   }
 
@@ -1687,6 +1762,27 @@
     const recipeSearchText = `Suche mir Rezepte mit genau diesen Zutaten und füge keine weiteren Zutaten hinzu: ${names.join(", ")}`;
     await copyText(recipeSearchText);
     showToast("Text für die Rezeptsuche wurde kopiert.");
+  }
+
+  function mealShareUrl(mealId) {
+    const url = new URL(window.location.href);
+    url.search = "";
+    url.searchParams.set(sharedMealUrlParam, String(mealId));
+    url.hash = "teilen";
+    return url.toString();
+  }
+
+  async function shareMeal(mealId) {
+    const meal = meals.find((item) => item.id === mealId);
+    if (!meal) return;
+    state.sharedMeals.add(mealId);
+    state.sharedTargetMealId = mealId;
+    saveSharedMealIds();
+    renderSharedMeals();
+    const shareUrl = mealShareUrl(mealId);
+    const copied = await copyText(shareUrl);
+    if (window.history?.replaceState) window.history.replaceState(null, document.title, shareUrl);
+    showToast(copied ? "Teilen-Link wurde kopiert." : "Teilen-Link steht jetzt in der Adresszeile.");
   }
 
   function openConfirm({ title, text, cancel = "Abbrechen", accept = "Liste leeren", tone = "danger", cancelAction = null, action }) {
@@ -1709,6 +1805,7 @@
     renderFoods();
     renderShoppingList();
     renderMeals();
+    renderSharedMeals();
     closeShopping();
     showToast("Alle Markierungen wurden gelöscht.");
   }
@@ -1720,6 +1817,7 @@
     renderFoods();
     renderMeals();
     renderBookmarks();
+    renderSharedMeals();
     showToast("Alle Lesezeichen wurden gelöscht.");
   }
 
@@ -1765,7 +1863,12 @@
       if (event.target.closest(".details-button")) openDetails(id);
       if (event.target.closest(".food-meals-button")) applyMealSearchFromFood(foods.find((food) => food.id === id)?.name);
     }));
-    [dom.mealGrid, dom.bookmarkedMealGrid].forEach((grid) => grid.addEventListener("click", (event) => {
+    [dom.mealGrid, dom.bookmarkedMealGrid, dom.sharedMealGrid].forEach((grid) => grid.addEventListener("click", (event) => {
+      const shareButton = event.target.closest("[data-share-meal-id]");
+      if (shareButton) {
+        void shareMeal(Number(shareButton.dataset.shareMealId));
+        return;
+      }
       const recipeButton = event.target.closest("[data-recipe-meal-id]");
       if (recipeButton) {
         requestMealAction(Number(recipeButton.dataset.recipeMealId), "recipe");
@@ -1937,6 +2040,7 @@
     renderSyncStatus();
     renderMeals();
     renderBookmarks();
+    renderSharedMeals();
     renderInsights();
     bindEvents();
 

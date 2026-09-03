@@ -9,7 +9,7 @@
       content="Antientzündliche Lebensmittel entdecken, filtern und als Einkaufsliste speichern."
     />
     <title>Lebensmitteleinkauf</title>
-    <link rel="stylesheet" href="style.css?v=bookmarks-onedrive-20260803-1" />
+    <link rel="stylesheet" href="style.css?v=meal-sharing-20260903-1" />
   </head>
   <body>
     <div class="app-shell">
@@ -34,6 +34,7 @@
           <button class="nav-button" data-view="meals" type="button">Mahlzeiten</button>
           <button class="nav-button" data-view="bookmarks" type="button">Lesezeichen</button>
           <button class="nav-button" data-view="insights" type="button">Auswertung</button>
+          <button class="nav-button" data-view="shares" type="button">Teilen</button>
         </nav>
 
         <div class="topbar-actions">
@@ -306,6 +307,22 @@ Nur bei zu langer Anmeldedauer auf Anmeldung erneuern klicken.</span>
             <div class="source-list" id="sourceList"></div>
           </article>
         </section>
+
+        <section class="view shares-view" id="sharesView" data-view-panel="shares">
+          <div class="page-intro compact-intro share-intro">
+            <p class="eyebrow">Teilen</p>
+            <h1>Gute Mahlzeiten.<br /><span>Einfach weitergeben.</span></h1>
+            <p>Hier erscheinen Mahlzeiten, deren Teilen-Link du erstellt oder geöffnet hast. Der Link führt direkt zur passenden Mahlzeit.</p>
+          </div>
+          <div class="share-section-heading">
+            <div>
+              <p class="eyebrow">Geteilte Auswahl</p>
+              <h2>Mahlzeiten</h2>
+            </div>
+            <span class="bookmark-count" id="sharedMealCount">0 Mahlzeiten</span>
+          </div>
+          <div class="meal-grid shared-meal-grid" id="sharedMealGrid" aria-live="polite"></div>
+        </section>
       </main>
 
       <nav class="mobile-nav" aria-label="Mobile Navigation">
@@ -320,6 +337,9 @@ Nur bei zu langer Anmeldedauer auf Anmeldung erneuern klicken.</span>
         </button>
         <button class="mobile-nav-button" data-view="insights" type="button">
           <span class="button-icon" data-icon="chart" aria-hidden="true"></span><span>Auswertung</span>
+        </button>
+        <button class="mobile-nav-button" data-view="shares" type="button">
+          <span class="button-icon" data-icon="share" aria-hidden="true"></span><span>Teilen</span>
         </button>
         <button class="mobile-nav-button mobile-basket" id="mobileBasket" type="button">
           <span class="button-icon" data-icon="basket" aria-hidden="true"></span><span>Liste</span>
@@ -371,6 +391,6 @@ Nur bei zu langer Anmeldedauer auf Anmeldung erneuern klicken.</span>
       document.write('<script src="data.js?v=' + Date.now() + '"><\/script>');
     </script>
     <script src="vendor/msal-browser.min.js?v=2.38.3"></script>
-    <script src="app.js?v=bookmarks-onedrive-20260803-1"></script>
+    <script src="app.js?v=meal-sharing-20260903-1"></script>
   </body>
 </html>
