@@ -2,7 +2,7 @@
   "use strict";
 
   const { foods, meals, sources, foodNames = [] } = window.APP_DATA;
-  const appVersion = "shared-meal-removal-20260903-1";
+  const appVersion = "brand-home-link-20260903-1";
   const appVersionFile = "app-version.json";
   const appRefreshParam = "appRefresh";
   const appRefreshSessionKey = "lebensmitteleinkauf:app-refresh-version:v1";
@@ -175,6 +175,7 @@
     toast: document.querySelector("#toast"),
   };
   const shoppingPanelHome = dom.shoppingPanel.parentElement;
+  let isBrandHomeNavigation = false;
 
   function icon(name, viewBox = "0 0 24 24") {
     return `<svg viewBox="${viewBox}" aria-hidden="true">${iconPaths[name] || iconPaths.leaf}</svg>`;
@@ -1639,6 +1640,16 @@
     return viewByHash[window.location.hash] || "foods";
   }
 
+  function prepareBrandHomeNavigation() {
+    isBrandHomeNavigation = true;
+    try {
+      sessionStorage.setItem(currentViewStorageKey, "foods");
+      sessionStorage.removeItem(currentViewScrollStorageKey);
+    } catch {
+      // Session storage can be unavailable in strict privacy modes.
+    }
+  }
+
   function sharedMealIdFromUrl() {
     const id = Number(new URL(window.location.href).searchParams.get(sharedMealUrlParam));
     return validMealIds.has(id) ? id : null;
@@ -1870,11 +1881,11 @@
         return;
       }
 
-      const brandReload = event.target.closest("[data-brand-reload]");
-      if (brandReload) {
+      const brandHome = event.target.closest("[data-brand-home]");
+      if (brandHome) {
         event.preventDefault();
-        saveCurrentViewPosition();
-        window.location.reload();
+        prepareBrandHomeNavigation();
+        window.location.assign(brandHome.href);
         return;
       }
 
@@ -1939,7 +1950,9 @@
         renderFoods();
       });
     });
-    window.addEventListener("beforeunload", saveCurrentViewPosition);
+    window.addEventListener("beforeunload", () => {
+      if (!isBrandHomeNavigation) saveCurrentViewPosition();
+    });
     dom.resetFilters.addEventListener("click", resetFoodFilters);
     dom.loadMore.addEventListener("click", () => {
       state.limit += window.innerWidth < 680 ? 18 : 28;
