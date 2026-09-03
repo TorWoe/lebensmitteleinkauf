@@ -2,7 +2,7 @@
   "use strict";
 
   const { foods, meals, sources, foodNames = [] } = window.APP_DATA;
-  const appVersion = "brand-home-link-20260903-1";
+  const appVersion = "shared-meals-onedrive-20260903-1";
   const appVersionFile = "app-version.json";
   const appRefreshParam = "appRefresh";
   const appRefreshSessionKey = "lebensmitteleinkauf:app-refresh-version:v1";
@@ -89,8 +89,9 @@
     selected: new Set(localSnapshot.selected),
     bookmarkedFoods: new Set(localSnapshot.bookmarkedFoodIds),
     bookmarkedMeals: new Set(localSnapshot.bookmarkedMealIds),
-    sharedMeals: new Set(loadSharedMealIds()),
+    sharedMeals: new Set(localSnapshot.sharedMealIds),
     selectedSharedMeals: new Set(),
+    pendingSharedMeals: new Set(),
     sharedTargetMealId: null,
     localUpdatedAt: localSnapshot.updatedAt,
     sync: {
@@ -104,7 +105,7 @@
       redirectAccessTokenExpiresAt: 0,
       status: "local",
       title: "Nicht angemeldet",
-      message: "Deine Einkaufsliste und Lesezeichen werden lokal auf diesem Gerät gespeichert.",
+      message: "Deine Einkaufsliste, Lesezeichen und geteilten Mahlzeiten werden lokal auf diesem Gerät gespeichert.",
       lastRemoteUpdatedAt: "",
       lastRemoteEtag: "",
       hasRemoteData: false,
@@ -236,19 +237,15 @@
     return cleanIds(value, validMealIds);
   }
 
-  function loadSharedMealIds() {
-    try {
-      return cleanBookmarkedMealIds(JSON.parse(localStorage.getItem(sharedMealStorageKey) || "[]"));
-    } catch {
-      return [];
-    }
+  function cleanSharedMealIds(value) {
+    return cleanIds(value, validMealIds);
   }
 
-  function saveSharedMealIds() {
+  function loadSharedMealIds() {
     try {
-      localStorage.setItem(sharedMealStorageKey, JSON.stringify(cleanBookmarkedMealIds([...state.sharedMeals])));
+      return cleanSharedMealIds(JSON.parse(localStorage.getItem(sharedMealStorageKey) || "[]"));
     } catch {
-      // Local storage can be unavailable in strict privacy modes.
+      return [];
     }
   }
 
@@ -262,12 +259,13 @@
       const bookmarks = JSON.parse(localStorage.getItem(bookmarkStorageKey) || "{}");
       const bookmarkedFoodIds = cleanBookmarkedFoodIds(bookmarks.foodIds || []);
       const bookmarkedMealIds = cleanBookmarkedMealIds(bookmarks.mealIds || []);
+      const sharedMealIds = loadSharedMealIds();
       const meta = JSON.parse(localStorage.getItem(storageMetaKey) || "{}");
-      const hasLocalData = selected.length || bookmarkedFoodIds.length || bookmarkedMealIds.length;
+      const hasLocalData = selected.length || bookmarkedFoodIds.length || bookmarkedMealIds.length || sharedMealIds.length;
       const updatedAt = typeof meta.updatedAt === "string" ? meta.updatedAt : hasLocalData ? nowIso() : "";
-      return { selected, bookmarkedFoodIds, bookmarkedMealIds, updatedAt };
+      return { selected, bookmarkedFoodIds, bookmarkedMealIds, sharedMealIds, updatedAt };
     } catch {
-      return { selected: [], bookmarkedFoodIds: [], bookmarkedMealIds: [], updatedAt: "" };
+      return { selected: [], bookmarkedFoodIds: [], bookmarkedMealIds: [], sharedMealIds: [], updatedAt: "" };
     }
   }
 
@@ -275,14 +273,16 @@
     const selected = cleanSelectedIds([...state.selected]);
     const bookmarkedFoodIds = cleanBookmarkedFoodIds([...state.bookmarkedFoods]);
     const bookmarkedMealIds = cleanBookmarkedMealIds([...state.bookmarkedMeals]);
+    const sharedMealIds = cleanSharedMealIds([...state.sharedMeals]);
     localStorage.setItem(storageKey, JSON.stringify(selected));
     localStorage.setItem(bookmarkStorageKey, JSON.stringify({
       foodIds: bookmarkedFoodIds,
       mealIds: bookmarkedMealIds,
     }));
+    localStorage.setItem(sharedMealStorageKey, JSON.stringify(sharedMealIds));
     localStorage.setItem(storageMetaKey, JSON.stringify({ updatedAt }));
     state.localUpdatedAt = updatedAt;
-    return { selected, bookmarkedFoodIds, bookmarkedMealIds, updatedAt };
+    return { selected, bookmarkedFoodIds, bookmarkedMealIds, sharedMealIds, updatedAt };
   }
 
   function persistSelection() {
@@ -293,11 +293,12 @@
   function selectionPayload(updatedAt = state.localUpdatedAt || nowIso()) {
     return {
       app: "lebensmitteleinkauf",
-      version: 2,
+      version: 3,
       updatedAt,
       selectedIds: cleanSelectedIds([...state.selected]),
       bookmarkedFoodIds: cleanBookmarkedFoodIds([...state.bookmarkedFoods]),
       bookmarkedMealIds: cleanBookmarkedMealIds([...state.bookmarkedMeals]),
+      sharedMealIds: cleanSharedMealIds([...state.sharedMeals]),
     };
   }
 
@@ -311,10 +312,19 @@
       selectedIds,
       bookmarkedFoodIds: cleanBookmarkedFoodIds(data.bookmarkedFoodIds || data.bookmarkFoodIds || []),
       bookmarkedMealIds: cleanBookmarkedMealIds(data.bookmarkedMealIds || data.bookmarkMealIds || []),
+      sharedMealIds: cleanSharedMealIds(data.sharedMealIds || data.sharedMeals || []),
+      hasSharedMealIds: Array.isArray(data.sharedMealIds) || Array.isArray(data.sharedMeals),
     };
   }
 
   function sameUserData(left, right) {
+    const leftData = Array.isArray(left) ? { selectedIds: left } : left || {};
+    const rightData = Array.isArray(right) ? { selectedIds: right } : right || {};
+    return sameCoreUserData(leftData, rightData)
+      && cleanSharedMealIds(leftData.sharedMealIds).sort((a, b) => a - b).join(",") === cleanSharedMealIds(rightData.sharedMealIds).sort((a, b) => a - b).join(",");
+  }
+
+  function sameCoreUserData(left, right) {
     const leftData = Array.isArray(left) ? { selectedIds: left } : left || {};
     const rightData = Array.isArray(right) ? { selectedIds: right } : right || {};
     return cleanSelectedIds(leftData.selectedIds).sort((a, b) => a - b).join(",") === cleanSelectedIds(rightData.selectedIds).sort((a, b) => a - b).join(",")
@@ -331,7 +341,7 @@
     if (hasOneDriveManualLogout() && status !== "local" && title !== "OneDrive-Abmeldung") {
       state.sync.status = "local";
       state.sync.title = "Nicht angemeldet";
-      state.sync.message = "Deine Einkaufsliste und Lesezeichen werden lokal auf diesem Gerät gespeichert.";
+      state.sync.message = "Deine Einkaufsliste, Lesezeichen und geteilten Mahlzeiten werden lokal auf diesem Gerät gespeichert.";
       renderSyncStatus();
       return;
     }
@@ -345,7 +355,7 @@
     if (!state.sync.account) {
       const helpText = "Zuerst auf OneDrive anmelden klicken.\nNur bei zu langer Anmeldedauer auf Anmeldung erneuern klicken.";
       if (state.sync.title === "Nicht angemeldet") {
-        return `Deine Einkaufsliste und Lesezeichen werden lokal auf diesem Gerät gespeichert.\n${helpText}`;
+        return `Deine Einkaufsliste, Lesezeichen und geteilten Mahlzeiten werden lokal auf diesem Gerät gespeichert.\n${helpText}`;
       }
       return `${state.sync.message}\n${helpText}`;
     }
@@ -403,7 +413,7 @@
     if (text.includes("user_cancelled") || text.includes("cancel")) return "Anmeldung oder Zustimmung wurde abgebrochen.";
     if (text.includes("consent") || text.includes("access_denied")) return "Zustimmung verweigert. OneDrive-Sync bleibt ausgeschaltet.";
     if (text.includes("interaction_required")) return "Bitte melde dich erneut an, damit OneDrive verwendet werden darf.";
-    return `Microsoft-Anmeldung fehlgeschlagen${suffix}. Deine Einkaufsliste und Lesezeichen bleiben lokal gespeichert.`;
+    return `Microsoft-Anmeldung fehlgeschlagen${suffix}. Deine Einkaufsliste, Lesezeichen und geteilten Mahlzeiten bleiben lokal gespeichert.`;
   }
 
   function clearLoginPending() {
@@ -665,6 +675,7 @@
     state.selected = new Set(remoteData.selectedIds);
     state.bookmarkedFoods = new Set(remoteData.bookmarkedFoodIds);
     state.bookmarkedMeals = new Set(remoteData.bookmarkedMealIds);
+    state.sharedMeals = new Set(remoteData.sharedMealIds || []);
     saveSelectionLocally(remoteData.updatedAt || nowIso());
     state.sync.lastRemoteUpdatedAt = remoteData.updatedAt || state.localUpdatedAt;
     state.sync.lastRemoteEtag = remoteEtag;
@@ -683,14 +694,15 @@
     state.sync.hasRemoteData = true;
     state.sync.conflictData = null;
     state.sync.needsInteractiveToken = false;
-    setSyncStatus("synced", "Mit OneDrive synchronisiert", "Deine Einkaufsliste und Lesezeichen sind im OneDrive-App-Ordner gespeichert.");
+    state.pendingSharedMeals.clear();
+    setSyncStatus("synced", "Mit OneDrive synchronisiert", "Deine Einkaufsliste, Lesezeichen und geteilten Mahlzeiten sind im OneDrive-App-Ordner gespeichert.");
   }
 
   function handleOneDriveError(error, fallbackTitle = "OneDrive nicht verfügbar") {
     if (error?.message === "redirect-started") return;
     if (error?.message === "not-signed-in") {
       state.sync.needsInteractiveToken = false;
-      setSyncStatus("local", "Nicht angemeldet", "Deine Einkaufsliste und Lesezeichen werden lokal auf diesem Gerät gespeichert.");
+      setSyncStatus("local", "Nicht angemeldet", "Deine Einkaufsliste, Lesezeichen und geteilten Mahlzeiten werden lokal auf diesem Gerät gespeichert.");
       return;
     }
     if (error?.message === "interactive-token-required") {
@@ -732,9 +744,40 @@
 
   function remoteShouldReplaceLocal(remoteData, localData) {
     if (!remoteData) return false;
-    if (!localData.selected.length && !localData.bookmarkedFoodIds.length && !localData.bookmarkedMealIds.length) return true;
+    if (!localData.selected.length && !localData.bookmarkedFoodIds.length && !localData.bookmarkedMealIds.length && !localData.sharedMealIds.length) return true;
     if (remoteIsNewer(remoteData.updatedAt, localData.updatedAt)) return true;
     return Boolean(remoteData.updatedAt && !localData.updatedAt);
+  }
+
+  async function migrateLegacyRemoteSharedMeals(remote, local, preferRemoteData) {
+    const mergedRemoteData = preferRemoteData
+      ? { ...remote.data }
+      : {
+          ...remote.data,
+          updatedAt: local.updatedAt,
+          selectedIds: local.selected,
+          bookmarkedFoodIds: local.bookmarkedFoodIds,
+          bookmarkedMealIds: local.bookmarkedMealIds,
+        };
+    mergedRemoteData.sharedMealIds = cleanSharedMealIds(local.sharedMealIds);
+    mergedRemoteData.hasSharedMealIds = true;
+    applyRemoteSelection(mergedRemoteData, remote.etag);
+    const payload = selectionPayload(nowIso());
+    saveSelectionLocally(payload.updatedAt);
+    const metadata = await uploadRemoteSelection(payload);
+    completeRemoteSave(payload, metadata);
+  }
+
+  async function addPendingSharedMealsToRemote(remote) {
+    const sharedMealIds = cleanSharedMealIds([
+      ...(remote.data.sharedMealIds || []),
+      ...state.pendingSharedMeals,
+    ]);
+    applyRemoteSelection({ ...remote.data, sharedMealIds, hasSharedMealIds: true }, remote.etag);
+    const payload = selectionPayload(nowIso());
+    saveSelectionLocally(payload.updatedAt);
+    const metadata = await uploadRemoteSelection(payload);
+    completeRemoteSave(payload, metadata);
   }
 
   async function saveSelectionToOneDrive() {
@@ -774,10 +817,28 @@
     state.sync.busy = true;
     const previousInteractiveTokenRedirect = state.sync.allowInteractiveTokenRedirect;
     state.sync.allowInteractiveTokenRedirect = true;
-    setSyncStatus("loading", "Prüfe OneDrive", "Einkaufsliste und Lesezeichen werden mit OneDrive abgeglichen.");
+    setSyncStatus("loading", "Prüfe OneDrive", "Einkaufsliste, Lesezeichen und geteilte Mahlzeiten werden mit OneDrive abgeglichen.");
     try {
       const remote = await loadRemoteSelection();
       const local = loadSelectionData();
+
+      if (remote.exists && !remote.data.hasSharedMealIds && local.sharedMealIds.length) {
+        const preferRemoteData = remoteShouldReplaceLocal(remote.data, local)
+          || (!remoteIsNewer(local.updatedAt, remote.data.updatedAt) && !sameCoreUserData(remote.data, {
+            selectedIds: local.selected,
+            bookmarkedFoodIds: local.bookmarkedFoodIds,
+            bookmarkedMealIds: local.bookmarkedMealIds,
+          }));
+        await migrateLegacyRemoteSharedMeals(remote, local, preferRemoteData);
+        showToast("Geteilte Mahlzeiten wurden nach OneDrive übernommen.");
+        return;
+      }
+
+      if (remote.exists && state.pendingSharedMeals.size) {
+        await addPendingSharedMealsToRemote(remote);
+        showToast("Geöffnete Mahlzeit wurde nach OneDrive übernommen.");
+        return;
+      }
 
       if (remote.exists && remoteShouldReplaceLocal(remote.data, local)) {
         applyRemoteSelection(remote.data, remote.etag);
@@ -791,7 +852,7 @@
         state.sync.lastRemoteUpdatedAt = remote.data.updatedAt || state.sync.lastRemoteUpdatedAt;
         state.sync.lastRemoteEtag = remote.etag || state.sync.lastRemoteEtag;
         state.sync.needsInteractiveToken = false;
-        setSyncStatus("synced", "Mit OneDrive synchronisiert", "Deine Einkaufsliste und Lesezeichen sind aktuell.");
+        setSyncStatus("synced", "Mit OneDrive synchronisiert", "Deine Einkaufsliste, Lesezeichen und geteilten Mahlzeiten sind aktuell.");
         return;
       }
 
@@ -800,7 +861,7 @@
         saveSelectionLocally(payload.updatedAt);
         const metadata = await uploadRemoteSelection(payload);
         completeRemoteSave(payload, metadata);
-        showToast("Einkaufsliste und Lesezeichen wurden nach OneDrive gespeichert.");
+        showToast("Einkaufsliste, Lesezeichen und geteilte Mahlzeiten wurden nach OneDrive gespeichert.");
         return;
       }
 
@@ -822,7 +883,7 @@
 
   function queueOneDriveSave() {
     if (hasOneDriveManualLogout() || !state.sync.account) {
-      setSyncStatus("local", "Nicht angemeldet", "Deine Einkaufsliste und Lesezeichen werden lokal auf diesem Gerät gespeichert.");
+      setSyncStatus("local", "Nicht angemeldet", "Deine Einkaufsliste, Lesezeichen und geteilten Mahlzeiten werden lokal auf diesem Gerät gespeichert.");
       return;
     }
     clearTimeout(oneDriveSaveTimer);
@@ -836,38 +897,60 @@
     state.sync.busy = true;
     const previousInteractiveTokenRedirect = state.sync.allowInteractiveTokenRedirect;
     state.sync.allowInteractiveTokenRedirect = allowInteractiveTokenRedirect;
-    setSyncStatus("loading", "Prüfe OneDrive", "Deine Einkaufsliste und Lesezeichen werden geladen.");
+    setSyncStatus("loading", "Prüfe OneDrive", "Deine Einkaufsliste, Lesezeichen und geteilten Mahlzeiten werden geladen.");
     try {
       const remote = forceRemote && state.sync.conflictData ? state.sync.conflictData : await loadRemoteSelection();
       const local = loadSelectionData();
 
       if (!remote.exists) {
-        if (local.selected.length || local.bookmarkedFoodIds.length || local.bookmarkedMealIds.length) {
+        if (local.selected.length || local.bookmarkedFoodIds.length || local.bookmarkedMealIds.length || local.sharedMealIds.length) {
           const payload = selectionPayload(local.updatedAt || nowIso());
           const metadata = await uploadRemoteSelection(payload);
           completeRemoteSave(payload, metadata);
-          showToast("Lokale Einkaufsliste und Lesezeichen wurden nach OneDrive übernommen.");
+          showToast("Lokale Einkaufsliste, Lesezeichen und geteilte Mahlzeiten wurden nach OneDrive übernommen.");
         } else {
           state.sync.hasRemoteData = false;
           state.sync.needsInteractiveToken = false;
-          setSyncStatus("synced", "Mit OneDrive verbunden", "Noch keine Einkaufsliste oder Lesezeichen im OneDrive-App-Ordner.");
+          setSyncStatus("synced", "Mit OneDrive verbunden", "Noch keine Einkaufsliste, Lesezeichen oder geteilten Mahlzeiten im OneDrive-App-Ordner.");
         }
+        return;
+      }
+
+      const remoteMatchesLocalCore = sameCoreUserData(remote.data, {
+        selectedIds: local.selected,
+        bookmarkedFoodIds: local.bookmarkedFoodIds,
+        bookmarkedMealIds: local.bookmarkedMealIds,
+      });
+      if (
+        !remote.data.hasSharedMealIds
+        && local.sharedMealIds.length
+        && (forceRemote || remoteShouldReplaceLocal(remote.data, local) || remoteMatchesLocalCore)
+      ) {
+        await migrateLegacyRemoteSharedMeals(remote, local, forceRemote || remoteShouldReplaceLocal(remote.data, local));
+        showToast("Geteilte Mahlzeiten wurden nach OneDrive übernommen.");
+        return;
+      }
+
+      if (state.pendingSharedMeals.size) {
+        await addPendingSharedMealsToRemote(remote);
+        showToast("Geöffnete Mahlzeit wurde nach OneDrive übernommen.");
         return;
       }
 
       if (
         forceRemote
-        || (!local.selected.length && !local.bookmarkedFoodIds.length && !local.bookmarkedMealIds.length)
+        || (!local.selected.length && !local.bookmarkedFoodIds.length && !local.bookmarkedMealIds.length && !local.sharedMealIds.length)
         || remoteIsNewer(remote.data.updatedAt, local.updatedAt)
         || sameUserData(remote.data, {
           selectedIds: local.selected,
           bookmarkedFoodIds: local.bookmarkedFoodIds,
           bookmarkedMealIds: local.bookmarkedMealIds,
+          sharedMealIds: local.sharedMealIds,
         })
       ) {
         applyRemoteSelection(remote.data, remote.etag);
         state.sync.needsInteractiveToken = false;
-        setSyncStatus("synced", "Mit OneDrive synchronisiert", "Deine Einkaufsliste und Lesezeichen wurden aus OneDrive geladen.");
+        setSyncStatus("synced", "Mit OneDrive synchronisiert", "Deine Einkaufsliste, Lesezeichen und geteilten Mahlzeiten wurden aus OneDrive geladen.");
         return;
       }
 
@@ -933,7 +1016,7 @@
       if (state.sync.msal?.clearCache) {
         Promise.resolve(state.sync.msal.clearCache(account ? { account } : {})).catch(() => {});
       }
-      setSyncStatus("local", "Nicht angemeldet", "Deine Einkaufsliste und Lesezeichen werden lokal auf diesem Gerät gespeichert.");
+      setSyncStatus("local", "Nicht angemeldet", "Deine Einkaufsliste, Lesezeichen und geteilten Mahlzeiten werden lokal auf diesem Gerät gespeichert.");
       state.sync.busy = false;
       renderSyncStatus();
       showToast("OneDrive wurde abgemeldet.");
@@ -944,7 +1027,7 @@
       clearOneDriveMsalCookies();
       state.sync.account = null;
       state.sync.busy = false;
-      setSyncStatus("local", "Nicht angemeldet", "Deine Einkaufsliste und Lesezeichen werden lokal auf diesem Gerät gespeichert.");
+      setSyncStatus("local", "Nicht angemeldet", "Deine Einkaufsliste, Lesezeichen und geteilten Mahlzeiten werden lokal auf diesem Gerät gespeichert.");
       showToast("OneDrive wurde lokal getrennt.");
       forceOneDriveLogoutReload();
     }
@@ -998,7 +1081,7 @@
         state.sync.account = null;
         state.sync.allowInteractiveTokenRedirect = false;
         state.sync.msal.setActiveAccount?.(null);
-        setSyncStatus("local", "Nicht angemeldet", "Deine Einkaufsliste und Lesezeichen werden lokal auf diesem Gerät gespeichert.");
+        setSyncStatus("local", "Nicht angemeldet", "Deine Einkaufsliste, Lesezeichen und geteilten Mahlzeiten werden lokal auf diesem Gerät gespeichert.");
         return;
       }
       const redirectResponse = await state.sync.msal.handleRedirectPromise();
@@ -1011,7 +1094,7 @@
         state.sync.msal.setActiveAccount(state.sync.account);
         await syncFromOneDrive();
       } else {
-        setSyncStatus("local", "Nicht angemeldet", "Deine Einkaufsliste und Lesezeichen werden lokal auf diesem Gerät gespeichert. Melde dich an, um OneDrive zu nutzen.");
+        setSyncStatus("local", "Nicht angemeldet", "Deine Einkaufsliste, Lesezeichen und geteilten Mahlzeiten werden lokal auf diesem Gerät gespeichert. Melde dich an, um OneDrive zu nutzen.");
       }
     } catch (error) {
       if (hasOneDriveManualLogout()) {
@@ -1019,7 +1102,7 @@
         clearOneDriveMsalCache();
         clearOneDriveMsalCookies();
         state.sync.account = null;
-        setSyncStatus("local", "Nicht angemeldet", "Deine Einkaufsliste und Lesezeichen werden lokal auf diesem Gerät gespeichert.");
+        setSyncStatus("local", "Nicht angemeldet", "Deine Einkaufsliste, Lesezeichen und geteilten Mahlzeiten werden lokal auf diesem Gerät gespeichert.");
         return;
       }
       const accounts = state.sync.msal?.getAllAccounts?.() || [];
@@ -1668,8 +1751,9 @@
     const sharedMealId = sharedMealIdFromUrl();
     if (sharedMealId) {
       state.sharedMeals.add(sharedMealId);
+      state.pendingSharedMeals.add(sharedMealId);
       state.sharedTargetMealId = sharedMealId;
-      saveSharedMealIds();
+      persistSelection();
       renderSharedMeals();
       setView("shares", { scroll: false });
       scrollSharedMealIntoView(sharedMealId);
@@ -1808,7 +1892,7 @@
     if (!meal) return;
     state.sharedMeals.add(mealId);
     state.sharedTargetMealId = mealId;
-    saveSharedMealIds();
+    persistSelection();
     renderSharedMeals();
     const shareUrl = mealShareUrl(mealId);
     const copied = await copyText(shareUrl);
@@ -1823,7 +1907,7 @@
     state.selectedSharedMeals.clear();
     if (ids.includes(state.sharedTargetMealId)) state.sharedTargetMealId = null;
     if (ids.includes(sharedMealIdFromUrl())) clearAppUrlHash();
-    saveSharedMealIds();
+    persistSelection();
     renderSharedMeals();
     showToast(ids.length === 1 ? "Mahlzeit wurde aus Teilen entfernt." : `${ids.length} Mahlzeiten wurden aus Teilen entfernt.`);
   }
@@ -2013,8 +2097,8 @@
       openConfirm({
         title: count === 1 ? "Mahlzeit aus Teilen entfernen?" : `${count} Mahlzeiten aus Teilen entfernen?`,
         text: count === 1
-          ? "Die ausgewählte Mahlzeit wird nur aus dem Bereich Teilen in diesem Browser entfernt. Bereits versendete Links bleiben erreichbar."
-          : "Die ausgewählten Mahlzeiten werden nur aus dem Bereich Teilen in diesem Browser entfernt. Bereits versendete Links bleiben erreichbar.",
+          ? "Die ausgewählte Mahlzeit wird aus deinem Bereich Teilen entfernt und bei OneDrive-Anmeldung auf deinen Geräten synchronisiert. Bereits versendete Links bleiben erreichbar."
+          : "Die ausgewählten Mahlzeiten werden aus deinem Bereich Teilen entfernt und bei OneDrive-Anmeldung auf deinen Geräten synchronisiert. Bereits versendete Links bleiben erreichbar.",
         accept: count === 1 ? "Mahlzeit entfernen" : "Mahlzeiten entfernen",
         action: removeSelectedSharedMealEntries,
       });
