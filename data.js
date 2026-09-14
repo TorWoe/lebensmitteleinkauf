@@ -5583,7 +5583,7 @@ window.APP_DATA = {
       ],
       "situation": "Zander mit Pak Choi, Ingwer und Knoblauch",
       "satiety": "sehr hoch",
-      "variants": "Weitere passende Varianten: Dorade, Rotbarsch, Schellfisch, Scholle, Seelachs oder Wolfsbarsch",
+      "variants": "Weitere passende Varianten: Dorade, Kabeljau, Rotbarsch, Schellfisch, Scholle, Seelachs oder Wolfsbarsch",
       "reason": "Mageres Eiweiß + Gemüse + aromatische Pflanzenstoffe"
     },
     {
@@ -5599,7 +5599,7 @@ window.APP_DATA = {
       ],
       "situation": "Ofen-Dorade mit Blumenkohl und Tomaten",
       "satiety": "sehr hoch",
-      "variants": "Weitere passende Varianten: Rotbarsch, Schellfisch, Scholle, Seelachs, Wolfsbarsch oder Zander",
+      "variants": "Weitere passende Varianten: Kabeljau, Rotbarsch, Schellfisch, Scholle, Seelachs, Wolfsbarsch oder Zander",
       "reason": "Eiweiß + Kreuzblütler + Tomaten-Polyphenole"
     },
     {
@@ -5615,7 +5615,7 @@ window.APP_DATA = {
       ],
       "situation": "Wolfsbarsch auf warmem Belugalinsen-Spinat-Salat",
       "satiety": "sehr hoch",
-      "variants": "Weitere passende Varianten: Dorade, Rotbarsch, Schellfisch, Scholle, Seelachs oder Zander",
+      "variants": "Weitere passende Varianten: Dorade, Kabeljau, Rotbarsch, Schellfisch, Scholle, Seelachs oder Zander",
       "reason": "Eiweiß + Hülsenfrüchte + Blattgemüse + Ballaststoffe"
     },
     {
@@ -5631,7 +5631,7 @@ window.APP_DATA = {
       ],
       "situation": "Jakobsmuscheln-Pfanne mit Pak Choi und gelber Zucchini",
       "satiety": "hoch",
-      "variants": "Weitere passende Varianten: Austern, Hummer, Krabben, Muscheln, Sepia oder Tintenfisch",
+      "variants": "Weitere passende Varianten: Austern, Hummer, Kabeljau, Krabben, Muscheln, Sepia oder Tintenfisch",
       "reason": "Eiweiß + Gemüse + Mineralstoffe + Gewürzpflanzen"
     },
     {
@@ -5647,7 +5647,7 @@ window.APP_DATA = {
       ],
       "situation": "Warmer Salat mit Muscheln, Tomaten und Feldsalat",
       "satiety": "hoch",
-      "variants": "Weitere passende Varianten: Austern, Hummer, Jakobsmuscheln, Krabben, Sepia oder Tintenfisch",
+      "variants": "Weitere passende Varianten: Austern, Hummer, Jakobsmuscheln, Kabeljau, Krabben, Sepia oder Tintenfisch",
       "reason": "Eiweiß + Blattgemüse + Tomaten-Polyphenole"
     },
     {
@@ -5663,7 +5663,7 @@ window.APP_DATA = {
       ],
       "situation": "Gemüsesuppe mit Tintenfisch, Brokkoli und Ingwer",
       "satiety": "hoch",
-      "variants": "Weitere passende Varianten: Austern, Hummer, Jakobsmuscheln, Krabben, Muscheln oder Sepia",
+      "variants": "Weitere passende Varianten: Austern, Hummer, Jakobsmuscheln, Kabeljau, Krabben, Muscheln oder Sepia",
       "reason": "Eiweiß + Kreuzblütler + Flüssigkeit + Gewürzpflanzen"
     },
     {
