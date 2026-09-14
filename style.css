@@ -1764,6 +1764,34 @@ dialog::backdrop { background: rgba(6, 31, 20, 0.52); backdrop-filter: blur(4px)
 .meal-selection-count { margin: 0; color: var(--muted); font-size: 12px; font-weight: 700; }
 .meal-variation-action { flex: 0 0 auto; }
 .meal-variation-action:disabled { cursor: not-allowed; opacity: 0.45; }
+.meal-offers-postal-form { margin-top: 24px; }
+.meal-offers-postal-field {
+  display: grid;
+  gap: 8px;
+  color: var(--forest-800);
+  font-size: 12px;
+  font-weight: 800;
+}
+.meal-offers-postal-field input {
+  width: min(240px, 100%);
+  padding: 13px 14px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  color: var(--ink);
+  background: white;
+  font: inherit;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  outline: none;
+  transition: 150ms ease;
+}
+.meal-offers-postal-field input:focus {
+  border-color: var(--forest-700);
+  box-shadow: 0 0 0 3px rgba(20, 92, 56, 0.12);
+}
+.meal-offers-postal-hint { margin: 9px 0 22px; color: var(--muted); font-size: 12px; line-height: 1.55; }
+.meal-offers-food-summary p { overflow-wrap: anywhere; }
 .all-foods-section { padding-bottom: 0; }
 .all-foods-list {
   columns: 2;
@@ -2014,6 +2042,7 @@ dialog::backdrop { background: rgba(6, 31, 20, 0.52); backdrop-filter: blur(4px)
   .meal-choice { padding: 11px; }
   .meal-variation-footer { align-items: stretch; flex-direction: column; gap: 11px; }
   .meal-variation-action { width: 100%; }
+  .meal-offers-postal-field input { width: 100%; }
   .detail-dialog.is-image-dialog { width: calc(100vw - 16px); max-height: calc(100vh - 20px); border-radius: 20px; }
   .meal-guide-image-content { padding: 10px; }
   .meal-guide-dialog-image { border-radius: 13px; }

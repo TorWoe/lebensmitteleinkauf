@@ -2,7 +2,7 @@
   "use strict";
 
   const { foods, meals, sources, foodNames = [] } = window.APP_DATA;
-  const appVersion = "meal-offer-variants-20260914-1";
+  const appVersion = "meal-offers-postal-20260914-1";
   const appVersionFile = "app-version.json";
   const appRefreshParam = "appRefresh";
   const appRefreshSessionKey = "lebensmitteleinkauf:app-refresh-version:v1";
@@ -1377,9 +1377,41 @@
     dom.detailDialog.showModal();
   }
 
+  function openMealOffersPostalCode(mealId, ingredientNames) {
+    const meal = meals.find((item) => item.id === mealId);
+    const names = ingredientNames || meal?.ingredients || [];
+    if (!meal || !names.length) return;
+    dom.detailDialog.classList.remove("is-image-dialog");
+    dom.detailDialog.classList.remove("is-meal-variation-dialog");
+    dom.detailContent.innerHTML = `
+      <div class="detail-content meal-offers-postal-content">
+        <div class="detail-icon">${icon("meal")}</div>
+        <p class="eyebrow">Suche Sonderangebote</p>
+        <h2>Postleitzahl eingeben</h2>
+        <p class="detail-subtitle">Damit die Suche auf lokale Geschäfte in deiner Nähe eingegrenzt werden kann.</p>
+        <form class="meal-offers-postal-form" data-meal-offers-postal-form data-meal-id="${meal.id}">
+          ${names.map((name) => `<input type="hidden" name="meal-offers-food" value="${escapeHtml(name)}" />`).join("")}
+          <label class="meal-offers-postal-field" for="mealOffersPostalCode">
+            <span>Deine Postleitzahl</span>
+            <input id="mealOffersPostalCode" name="postal-code" type="text" inputmode="numeric" autocomplete="postal-code" pattern="[0-9]{5}" minlength="5" maxlength="5" placeholder="z. B. 10115" required autofocus />
+          </label>
+          <p class="meal-offers-postal-hint">Bitte gib eine fünfstellige deutsche Postleitzahl ein. Sie wird nur in den kopierten Suchtext eingefügt.</p>
+          <section class="detail-section meal-offers-food-summary">
+            <h3>Ausgewählte Lebensmittel</h3>
+            <p>${names.map((name) => escapeHtml(name)).join(", ")}</p>
+          </section>
+          <div class="meal-variation-footer">
+            <p class="meal-selection-count">${names.length} Lebensmittel werden berücksichtigt</p>
+            <button class="primary-button meal-variation-action" type="submit">Text kopieren →</button>
+          </div>
+        </form>
+      </div>`;
+    dom.detailDialog.showModal();
+  }
+
   function runMealAction(mealId, action, ingredientNames) {
     if (action === "recipe") void copyMealRecipeSearch(mealId, ingredientNames);
-    else if (action === "offers") void copyMealOffersSearch(mealId, ingredientNames);
+    else if (action === "offers") openMealOffersPostalCode(mealId, ingredientNames);
     else addMealIngredients(mealId, ingredientNames);
   }
 
@@ -1883,11 +1915,11 @@
     showToast("Text für die Rezeptsuche wurde kopiert.");
   }
 
-  async function copyMealOffersSearch(mealId, ingredientNames) {
+  async function copyMealOffersSearch(mealId, ingredientNames, postalCode) {
     const meal = meals.find((item) => item.id === mealId);
     const names = ingredientNames || meal?.ingredients || [];
-    if (!meal || !names.length) return;
-    const offersSearchText = `Bitte sage mir wo die folgenden Lebensmittel im Angebot sind. Bitte frage mich zuerst nach meiner Postleitzahl. Dann suche mir bitte wo genau diese Zutaten in meiner Nähe im Angebot sind und füge bitte keine Zutaten hinzu. Bitte gebe mir nur Anbieter die lokale Läden haben, also keine reinen online Händler. Bitte gebe mir wenn möglich zu den Anbietern der Angebote auch die URL mit an. Die gesuchten Zutaten sind: ${names.join(", ")}`;
+    if (!meal || !names.length || !postalCode) return;
+    const offersSearchText = `Bitte sage mir wo die folgenden Lebensmittel gekauft werden können und zusätzlich auch wo die folgenden Lebensmittel im Angebot sind. Wenn möglich prüfe bitte auch die digitalen Prospekte der Anbieter. Dann suche mir bitte wo genau diese Zutaten in meiner Nähe gekauft werden können und wenn vorhanden auch wo die folgenden Lebensmittel im Angebot sind. Meine Postleitzahl ist ${postalCode}. Füge bitte keine Zutaten hinzu. Bitte gebe mir nur Anbieter die lokale Läden haben, also keine reinen online Händler. Bitte gebe mir wenn möglich zu den Anbietern auch die URL mit an. Bitte gebe mir das Ergebnis als eine klare, realistische und lokal gültige Liste der günstigsten Preise. Bitte gebe mir ca. alle 30 Sekunden einen Status damit ich weiß ob du noch arbeitest oder ob du fertig bist. Die gesuchten Zutaten sind: ${names.join(", ")}`;
     await copyText(offersSearchText);
     showToast("Text für die Sonderangebotssuche wurde kopiert.");
   }
@@ -2138,6 +2170,17 @@
       form.querySelector(".meal-variation-action").disabled = count === 0;
     });
     dom.detailDialog.addEventListener("submit", (event) => {
+      const postalForm = event.target.closest("[data-meal-offers-postal-form]");
+      if (postalForm) {
+        event.preventDefault();
+        const postalCode = postalForm.elements["postal-code"].value.trim();
+        if (!/^[0-9]{5}$/.test(postalCode)) return;
+        const names = [...postalForm.querySelectorAll('input[name="meal-offers-food"]')].map((input) => input.value);
+        if (!names.length) return;
+        dom.detailDialog.close();
+        void copyMealOffersSearch(Number(postalForm.dataset.mealId), names, postalCode);
+        return;
+      }
       const form = event.target.closest("[data-meal-variation-form]");
       if (!form) return;
       event.preventDefault();
