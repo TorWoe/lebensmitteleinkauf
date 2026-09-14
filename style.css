@@ -1017,7 +1017,8 @@ main {
 .food-meals-button,
 .meal-recipe-button,
 .meal-list-button,
-.meal-share-button {
+.meal-share-button,
+.meal-offers-button {
   flex: 0 0 auto;
   padding: 5px 0;
   border: 0;
@@ -1327,7 +1328,7 @@ main {
 .meal-details span { display: block; margin-bottom: 5px; color: var(--forest-700); font-size: 10px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; }
 .meal-details p { margin: 0; color: var(--muted); font-size: 12px; line-height: 1.5; }
 .meal-card-footer { display: flex; align-items: center; justify-content: space-between; gap: 14px; margin-top: auto; padding-top: 18px; }
-.meal-share-row { display: flex; justify-content: flex-start; }
+.meal-share-row { display: flex; align-items: center; justify-content: space-between; gap: 14px; }
 .meal-list-button.is-added { color: var(--muted); }
 
 .meal-card.is-share-target {

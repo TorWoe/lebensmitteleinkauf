@@ -2,7 +2,7 @@
   "use strict";
 
   const { foods, meals, sources, foodNames = [] } = window.APP_DATA;
-  const appVersion = "shared-meals-onedrive-20260903-1";
+  const appVersion = "meal-special-offers-20260914-1";
   const appVersionFile = "app-version.json";
   const appRefreshParam = "appRefresh";
   const appRefreshSessionKey = "lebensmitteleinkauf:app-refresh-version:v1";
@@ -1540,6 +1540,7 @@
         </div>
         <div class="meal-share-row">
           <button class="meal-share-button" type="button" data-share-meal-id="${meal.id}" aria-label="Teilen-Link für ${escapeHtml(meal.situation)} kopieren">zum Teilen →</button>
+          <button class="meal-offers-button" type="button" data-offers-meal-id="${meal.id}" aria-label="Sonderangebotssuchtext für ${escapeHtml(meal.situation)} kopieren">Auf Sonderangebote →</button>
         </div>
       </article>`;
   }
@@ -1879,6 +1880,15 @@
     showToast("Text für die Rezeptsuche wurde kopiert.");
   }
 
+  async function copyMealOffersSearch(mealId) {
+    const meal = meals.find((item) => item.id === mealId);
+    const names = meal?.ingredients || [];
+    if (!meal || !names.length) return;
+    const offersSearchText = `Bitte sage mir wo die folgenden Lebensmittel im Angebot sind. Bitte frage mich zuerst nach meiner Postleitzahl. Dann suche mir bitte wo genau diese Zutaten in meiner Nähe im Angebot sind und füge bitte keine Zutaten hinzu. Bitte gebe mir nur Anbieter die lokale Läden haben, also keine reinen online Händler. Bitte gebe mir wenn möglich zu den Anbietern der Angebote auch die URL mit an. Die gesuchten Zutaten sind: ${names.join(", ")}`;
+    await copyText(offersSearchText);
+    showToast("Text für die Sonderangebotssuche wurde kopiert.");
+  }
+
   function mealShareUrl(mealId) {
     const url = new URL(window.location.href);
     url.search = "";
@@ -1991,6 +2001,11 @@
       if (event.target.closest(".food-meals-button")) applyMealSearchFromFood(foods.find((food) => food.id === id)?.name);
     }));
     [dom.mealGrid, dom.bookmarkedMealGrid, dom.sharedMealGrid].forEach((grid) => grid.addEventListener("click", (event) => {
+      const offersButton = event.target.closest("[data-offers-meal-id]");
+      if (offersButton) {
+        void copyMealOffersSearch(Number(offersButton.dataset.offersMealId));
+        return;
+      }
       const shareButton = event.target.closest("[data-share-meal-id]");
       if (shareButton) {
         void shareMeal(Number(shareButton.dataset.shareMealId));
