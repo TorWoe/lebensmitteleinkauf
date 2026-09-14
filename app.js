@@ -2,7 +2,7 @@
   "use strict";
 
   const { foods, meals, sources, foodNames = [] } = window.APP_DATA;
-  const appVersion = "meal-special-offers-20260914-1";
+  const appVersion = "meal-offer-variants-20260914-1";
   const appVersionFile = "app-version.json";
   const appRefreshParam = "appRefresh";
   const appRefreshSessionKey = "lebensmitteleinkauf:app-refresh-version:v1";
@@ -1346,7 +1346,9 @@
     if (!meal) return;
     const ingredients = meal.ingredients || [];
     const variants = mealVariantFoods(meal).map((food) => food.name);
-    const actionLabel = action === "recipe" ? "für Rezeptsuche →" : "Auf die Liste →";
+    const actionLabel = action === "recipe"
+      ? "für Rezeptsuche →"
+      : action === "offers" ? "Suche Sonderangebote →" : "Auf die Liste →";
     dom.detailDialog.classList.remove("is-image-dialog");
     dom.detailDialog.classList.add("is-meal-variation-dialog");
     dom.detailContent.innerHTML = `
@@ -1377,6 +1379,7 @@
 
   function runMealAction(mealId, action, ingredientNames) {
     if (action === "recipe") void copyMealRecipeSearch(mealId, ingredientNames);
+    else if (action === "offers") void copyMealOffersSearch(mealId, ingredientNames);
     else addMealIngredients(mealId, ingredientNames);
   }
 
@@ -1540,7 +1543,7 @@
         </div>
         <div class="meal-share-row">
           <button class="meal-share-button" type="button" data-share-meal-id="${meal.id}" aria-label="Teilen-Link für ${escapeHtml(meal.situation)} kopieren">zum Teilen →</button>
-          <button class="meal-offers-button" type="button" data-offers-meal-id="${meal.id}" aria-label="Sonderangebotssuchtext für ${escapeHtml(meal.situation)} kopieren">Auf Sonderangebote →</button>
+          <button class="meal-offers-button" type="button" data-offers-meal-id="${meal.id}" aria-label="Sonderangebotssuchtext für ${escapeHtml(meal.situation)} kopieren">Suche Sonderangebote →</button>
         </div>
       </article>`;
   }
@@ -1880,9 +1883,9 @@
     showToast("Text für die Rezeptsuche wurde kopiert.");
   }
 
-  async function copyMealOffersSearch(mealId) {
+  async function copyMealOffersSearch(mealId, ingredientNames) {
     const meal = meals.find((item) => item.id === mealId);
-    const names = meal?.ingredients || [];
+    const names = ingredientNames || meal?.ingredients || [];
     if (!meal || !names.length) return;
     const offersSearchText = `Bitte sage mir wo die folgenden Lebensmittel im Angebot sind. Bitte frage mich zuerst nach meiner Postleitzahl. Dann suche mir bitte wo genau diese Zutaten in meiner Nähe im Angebot sind und füge bitte keine Zutaten hinzu. Bitte gebe mir nur Anbieter die lokale Läden haben, also keine reinen online Händler. Bitte gebe mir wenn möglich zu den Anbietern der Angebote auch die URL mit an. Die gesuchten Zutaten sind: ${names.join(", ")}`;
     await copyText(offersSearchText);
@@ -2003,7 +2006,7 @@
     [dom.mealGrid, dom.bookmarkedMealGrid, dom.sharedMealGrid].forEach((grid) => grid.addEventListener("click", (event) => {
       const offersButton = event.target.closest("[data-offers-meal-id]");
       if (offersButton) {
-        void copyMealOffersSearch(Number(offersButton.dataset.offersMealId));
+        requestMealAction(Number(offersButton.dataset.offersMealId), "offers");
         return;
       }
       const shareButton = event.target.closest("[data-share-meal-id]");
