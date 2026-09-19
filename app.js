@@ -2,7 +2,7 @@
   "use strict";
 
   const { foods, meals, sources, foodNames = [] } = window.APP_DATA;
-  const appVersion = "food-recipes-20260919-1";
+  const appVersion = "recipe-library-20260919-1";
   const appVersionFile = "app-version.json";
   const appRefreshParam = "appRefresh";
   const appRefreshSessionKey = "lebensmitteleinkauf:app-refresh-version:v1";
@@ -42,6 +42,7 @@
   const validFoodIds = new Set(foods.map((food) => food.id));
   const validMealIds = new Set(meals.map((meal) => meal.id));
   const localSnapshot = loadSelectionData();
+  const foodById = new Map(foods.map((food) => [food.id, food]));
   const foodByName = new Map(foods.map((food) => [normalizeFoodName(food.name), food]));
   const mealIndexById = new Map(meals.map((meal, index) => [meal.id, index]));
   const mealGuideImages = {
@@ -59,6 +60,7 @@
     meal: '<path d="M7 3v8M4.5 3v5c0 2 1 3 2.5 3s2.5-1 2.5-3V3M7 11v10"/><path d="M16 3c2 2 3 5 3 8v2h-5V9c0-3 1-5 2-6Zm0 10v8"/>',
     chart: '<path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/>',
     bookmark: '<path d="M6.5 3.5h11v17L12 17l-5.5 3.5v-17Z"/>',
+    recipe: '<path d="M5 4.5A2.5 2.5 0 0 1 7.5 2H19v17H7.5A2.5 2.5 0 0 0 5 21.5v-17Z"/><path d="M5 19a2 2 0 0 1 2-2h12M9 7h6M9 11h7"/>',
     share: '<circle cx="18" cy="5" r="2.5"/><circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="19" r="2.5"/><path d="m8.2 10.8 7.6-4.5M8.2 13.2l7.6 4.5"/>',
     imageOpen: '<rect x="3" y="5" width="13" height="14" rx="2"/><path d="m5.5 16 3.2-3.2 2.5 2.5 1.8-1.8 3 3"/><path d="M14 3h7v7M21 3l-8 8"/>',
     cloud: '<path d="M17.5 18H8a5 5 0 1 1 1.2-9.85A6.5 6.5 0 0 1 21 12a3 3 0 0 1-3.5 6Z"/><path d="M12 13v7M9 16l3-3 3 3"/>',
@@ -83,6 +85,10 @@
     mealSearch: "",
     mealType: "",
     mealCategory: "",
+    recipeSearch: "",
+    recipeCategory: "",
+    recipeFoodId: "",
+    recipeSort: "newest",
     category: "",
     score: "",
     priority: "",
@@ -141,6 +147,13 @@
     resetFilters: document.querySelector("#resetFilters"),
     activeFilters: document.querySelector("#activeFilters"),
     mealResultCount: document.querySelector("#mealResultCount"),
+    recipeSearchInput: document.querySelector("#recipeSearchInput"),
+    recipeCategoryFilter: document.querySelector("#recipeCategoryFilter"),
+    recipeFoodFilter: document.querySelector("#recipeFoodFilter"),
+    recipeDateSort: document.querySelector("#recipeDateSort"),
+    resetRecipeFilters: document.querySelector("#resetRecipeFilters"),
+    recipeResultCount: document.querySelector("#recipeResultCount"),
+    recipeGroups: document.querySelector("#recipeGroups"),
     loadMore: document.querySelector("#loadMore"),
     shoppingPanel: document.querySelector("#shoppingPanel"),
     shoppingItems: document.querySelector("#shoppingItems"),
@@ -735,6 +748,7 @@
     renderShoppingList();
     renderMeals();
     renderBookmarks();
+    renderRecipeOverview();
     renderSharedMeals();
   }
 
@@ -1226,6 +1240,23 @@
     const categoryOptions = categories.map((category) => `<option value="${escapeHtml(category)}">${escapeHtml(category)}</option>`).join("");
     dom.categoryFilter.insertAdjacentHTML("beforeend", categoryOptions);
     dom.mealCategoryFilter.insertAdjacentHTML("beforeend", categoryOptions);
+    dom.recipeCategoryFilter.insertAdjacentHTML("beforeend", categoryOptions);
+  }
+
+  function populateRecipeFoodFilter() {
+    const currentValue = state.recipeFoodId;
+    const foodsWithRecipes = [...new Set(cleanRecipes(state.recipes).map((recipe) => recipe.foodId))]
+      .map((foodId) => foodById.get(foodId))
+      .filter(Boolean)
+      .sort((left, right) => left.name.localeCompare(right.name, "de", { sensitivity: "base" }));
+    dom.recipeFoodFilter.innerHTML = '<option value="">Alle Lebensmittel</option>'
+      + foodsWithRecipes.map((food) => `<option value="${food.id}">${escapeHtml(food.name)}</option>`).join("");
+    if (currentValue && foodsWithRecipes.some((food) => String(food.id) === currentValue)) {
+      dom.recipeFoodFilter.value = currentValue;
+    } else {
+      state.recipeFoodId = "";
+      dom.recipeFoodFilter.value = "";
+    }
   }
 
   function filteredFoods() {
@@ -1333,6 +1364,20 @@
     dom.mealCategoryFilter.selectedIndex = 0;
 
     renderMeals();
+  }
+
+  function resetRecipeFilters() {
+    state.recipeSearch = "";
+    state.recipeCategory = "";
+    state.recipeFoodId = "";
+    state.recipeSort = "newest";
+
+    dom.recipeSearchInput.value = "";
+    dom.recipeCategoryFilter.selectedIndex = 0;
+    dom.recipeFoodFilter.selectedIndex = 0;
+    dom.recipeDateSort.value = "newest";
+
+    renderRecipeOverview();
   }
 
   function selectedFoods() {
@@ -1678,11 +1723,12 @@
       ? state.recipes.map((recipe) => recipe.id === existing.id ? savedRecipe : recipe)
       : [...state.recipes, savedRecipe]);
     persistSelection();
+    renderRecipeOverview();
     openFoodRecipes(foodId);
     showToast(existing ? "Rezept wurde geändert." : "Rezept wurde gespeichert.");
   }
 
-  function requestRecipeDelete(recipeId) {
+  function requestRecipeDelete(recipeId, { reopenManager = true } = {}) {
     const recipe = state.recipes.find((item) => item.id === recipeId);
     if (!recipe) return;
     openConfirm({
@@ -1692,7 +1738,8 @@
       action: () => {
         state.recipes = state.recipes.filter((item) => item.id !== recipe.id);
         persistSelection();
-        openFoodRecipes(recipe.foodId);
+        renderRecipeOverview();
+        if (reopenManager) openFoodRecipes(recipe.foodId);
         showToast("Rezept wurde gelöscht.");
       },
     });
@@ -1865,6 +1912,95 @@
       : '<div class="bookmark-empty"><span class="button-icon">' + icon("bookmark") + '</span><strong>Noch kein Lebensmittel gespeichert</strong><p>Setze bei einem Lebensmittel ein Lesezeichen, um es hier wiederzufinden.</p></div>';
   }
 
+  function recipeCreatedTimestamp(recipe) {
+    const timestamp = Date.parse(recipe.createdAt || "");
+    return Number.isFinite(timestamp) ? timestamp : 0;
+  }
+
+  function formatRecipeCreatedAt(recipe) {
+    const timestamp = recipeCreatedTimestamp(recipe);
+    if (!timestamp) return "Erfassungsdatum nicht verfügbar";
+    return `Erfasst am ${new Intl.DateTimeFormat("de-DE", {
+      day: "2-digit",
+      month: "2-digit",
+      year: "numeric",
+    }).format(new Date(timestamp))}`;
+  }
+
+  function renderRecipeOverviewCard(recipe, food) {
+    const url = safeRecipeUrl(recipe.url);
+    return `
+      <article class="recipe-overview-card" data-recipe-id="${escapeHtml(recipe.id)}">
+        <div class="recipe-overview-card-head">
+          <div>
+            <button class="recipe-food-link" type="button" data-open-recipe-food-id="${food.id}">${escapeHtml(food.name)}</button>
+            <h3>${escapeHtml(recipeDisplayTitle(recipe))}</h3>
+          </div>
+          <span class="recipe-created-date">${escapeHtml(formatRecipeCreatedAt(recipe))}</span>
+        </div>
+        ${food.subcategory ? `<p class="recipe-food-subcategory">${escapeHtml(food.subcategory)}</p>` : ""}
+        ${url ? `<a class="recipe-overview-link" href="${escapeHtml(url)}" target="_blank" rel="noreferrer">Rezept öffnen ↗</a>` : recipe.url ? `<p class="recipe-overview-url">${escapeHtml(recipe.url)}</p>` : ""}
+        ${recipe.notes ? `<div class="recipe-overview-notes">${escapeHtml(recipe.notes).replace(/\n/g, "<br>")}</div>` : ""}
+        <div class="recipe-overview-actions">
+          <button class="recipe-edit-button" type="button" data-edit-recipe-id="${escapeHtml(recipe.id)}">Bearbeiten</button>
+          <button class="recipe-delete-button" type="button" data-delete-recipe-id="${escapeHtml(recipe.id)}">Löschen</button>
+        </div>
+      </article>`;
+  }
+
+  function renderRecipeOverview() {
+    populateRecipeFoodFilter();
+    const term = state.recipeSearch.trim().toLocaleLowerCase("de");
+    const sortDirection = state.recipeSort === "oldest" ? 1 : -1;
+    const matchingRecipes = cleanRecipes(state.recipes)
+      .map((recipe) => ({ recipe, food: foodById.get(recipe.foodId) }))
+      .filter(({ recipe, food }) => {
+        if (!food) return false;
+        const searchable = `${recipe.title} ${recipe.url} ${recipe.notes} ${food.name} ${food.category} ${food.subcategory}`.toLocaleLowerCase("de");
+        return (!term || searchable.includes(term))
+          && (!state.recipeCategory || food.category === state.recipeCategory)
+          && (!state.recipeFoodId || String(food.id) === state.recipeFoodId);
+      })
+      .sort((left, right) => {
+        const categoryOrder = left.food.category.localeCompare(right.food.category, "de", { sensitivity: "base" });
+        if (categoryOrder) return categoryOrder;
+        const dateOrder = (recipeCreatedTimestamp(left.recipe) - recipeCreatedTimestamp(right.recipe)) * sortDirection;
+        if (dateOrder) return dateOrder;
+        return left.food.name.localeCompare(right.food.name, "de", { sensitivity: "base" });
+      });
+
+    dom.recipeResultCount.textContent = `${matchingRecipes.length} ${matchingRecipes.length === 1 ? "Rezept" : "Rezepte"}`;
+    if (!matchingRecipes.length) {
+      const hasRecipes = state.recipes.length > 0;
+      dom.recipeGroups.innerHTML = `
+        <div class="recipe-overview-empty">
+          <span class="button-icon">${icon("recipe")}</span>
+          <strong>${hasRecipes ? "Keine passenden Rezepte gefunden." : "Noch keine eigenen Rezepte gespeichert."}</strong>
+          <p>${hasRecipes ? "Passe die Suche oder Auswahl an und versuche es erneut." : "Füge über eine Lebensmittelkarte dein erstes Rezept hinzu."}</p>
+        </div>`;
+      return;
+    }
+
+    const groups = matchingRecipes.reduce((map, entry) => {
+      if (!map.has(entry.food.category)) map.set(entry.food.category, []);
+      map.get(entry.food.category).push(entry);
+      return map;
+    }, new Map());
+    dom.recipeGroups.innerHTML = [...groups].map(([category, entries]) => `
+      <section class="recipe-category-section" aria-labelledby="recipe-category-${escapeHtml(category).replace(/[^a-z0-9]+/gi, "-")}">
+        <div class="recipe-category-heading">
+          <div class="recipe-category-title">
+            <span class="category-symbol">${categoryIcon(category)}</span>
+            <h2 id="recipe-category-${escapeHtml(category).replace(/[^a-z0-9]+/gi, "-")}">${escapeHtml(category)}</h2>
+          </div>
+          <span class="bookmark-count">${entries.length} ${entries.length === 1 ? "Rezept" : "Rezepte"}</span>
+        </div>
+        <div class="recipe-overview-grid">
+          ${entries.map(({ recipe, food }) => renderRecipeOverviewCard(recipe, food)).join("")}
+        </div>
+      </section>`).join("");
+  }
+
   function renderSharedMeals() {
     state.selectedSharedMeals = new Set([...state.selectedSharedMeals].filter((id) => state.sharedMeals.has(id)));
     const sharedMeals = meals
@@ -1997,7 +2133,7 @@
   }
 
   function viewFromHash() {
-    const viewByHash = { "#lebensmittel": "foods", "#mahlzeiten": "meals", "#tagesbaukasten": "meals", "#lesezeichen": "bookmarks", "#auswertung": "insights", "#teilen": "shares" };
+    const viewByHash = { "#lebensmittel": "foods", "#mahlzeiten": "meals", "#tagesbaukasten": "meals", "#rezepte": "recipes", "#meine-rezepte": "recipes", "#lesezeichen": "bookmarks", "#auswertung": "insights", "#teilen": "shares" };
     return viewByHash[window.location.hash] || "foods";
   }
 
@@ -2231,6 +2367,7 @@
     renderFoods();
     renderMeals();
     renderBookmarks();
+    renderRecipeOverview();
     renderSharedMeals();
     showToast("Alle Lesezeichen wurden gelöscht.");
   }
@@ -2320,6 +2457,38 @@
       renderMeals();
     });
     dom.resetMealFilters.addEventListener("click", resetMealFilters);
+    dom.recipeSearchInput.addEventListener("input", () => {
+      state.recipeSearch = dom.recipeSearchInput.value;
+      renderRecipeOverview();
+    });
+    dom.recipeCategoryFilter.addEventListener("change", () => {
+      state.recipeCategory = dom.recipeCategoryFilter.value;
+      renderRecipeOverview();
+    });
+    dom.recipeFoodFilter.addEventListener("change", () => {
+      state.recipeFoodId = dom.recipeFoodFilter.value;
+      renderRecipeOverview();
+    });
+    dom.recipeDateSort.addEventListener("change", () => {
+      state.recipeSort = dom.recipeDateSort.value;
+      renderRecipeOverview();
+    });
+    dom.resetRecipeFilters.addEventListener("click", resetRecipeFilters);
+    dom.recipeGroups.addEventListener("click", (event) => {
+      const foodButton = event.target.closest("[data-open-recipe-food-id]");
+      if (foodButton) {
+        openFoodRecipes(Number(foodButton.dataset.openRecipeFoodId));
+        return;
+      }
+      const editButton = event.target.closest("[data-edit-recipe-id]");
+      if (editButton) {
+        const recipe = state.recipes.find((item) => item.id === editButton.dataset.editRecipeId);
+        if (recipe) openFoodRecipes(recipe.foodId, recipe.id);
+        return;
+      }
+      const deleteButton = event.target.closest("[data-delete-recipe-id]");
+      if (deleteButton) requestRecipeDelete(deleteButton.dataset.deleteRecipeId, { reopenManager: false });
+    });
     [[dom.categoryFilter, "category"], [dom.scoreFilter, "score"], [dom.priorityFilter, "priority"]].forEach(([element, key]) => {
       element.addEventListener("change", () => {
         state[key] = element.value;
@@ -2490,6 +2659,7 @@
       if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === "k") {
         event.preventDefault();
         if (state.view === "meals") dom.mealSearchInput.focus();
+        else if (state.view === "recipes") dom.recipeSearchInput.focus();
         else {
           setView("foods");
           dom.searchInput.focus();
@@ -2525,6 +2695,7 @@
     renderSyncStatus();
     renderMeals();
     renderBookmarks();
+    renderRecipeOverview();
     renderSharedMeals();
     renderInsights();
     bindEvents();

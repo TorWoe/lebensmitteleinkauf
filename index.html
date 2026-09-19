@@ -9,7 +9,7 @@
       content="Antientzündliche Lebensmittel entdecken, filtern und als Einkaufsliste speichern."
     />
     <title>Lebensmitteleinkauf</title>
-    <link rel="stylesheet" href="style.css?v=food-recipes-20260919-1" />
+    <link rel="stylesheet" href="style.css?v=recipe-library-20260919-1" />
   </head>
   <body>
     <div class="app-shell">
@@ -32,6 +32,7 @@
         <nav class="desktop-nav" aria-label="Hauptnavigation">
           <button class="nav-button is-active" data-view="foods" type="button">Lebensmittel</button>
           <button class="nav-button" data-view="meals" type="button">Mahlzeiten</button>
+          <button class="nav-button" data-view="recipes" type="button">Meine Rezepte</button>
           <button class="nav-button" data-view="bookmarks" type="button">Lesezeichen</button>
           <button class="nav-button" data-view="insights" type="button">Auswertung</button>
           <button class="nav-button" data-view="shares" type="button">Teilen</button>
@@ -236,6 +237,50 @@ Nur bei zu langer Anmeldedauer auf Anmeldung erneuern klicken.</span>
           <div class="meal-grid" id="mealGrid" aria-live="polite"></div>
         </section>
 
+        <section class="view recipes-view" id="recipesView" data-view-panel="recipes">
+          <div class="page-intro compact-intro recipe-overview-intro">
+            <p class="eyebrow">Meine Rezepte</p>
+            <h1>Gesammelt.<br /><span>Nach Kategorien geordnet.</span></h1>
+            <p>Hier findest du alle eigenen Rezepte aus deinen Lebensmittelkarten. Suche im Inhalt oder grenze die Auswahl nach Kategorie und Lebensmittel ein.</p>
+          </div>
+
+          <div class="filter-panel recipe-filter-panel">
+            <label class="search-field recipe-search-field" for="recipeSearchInput">
+              <span class="button-icon" data-icon="search" aria-hidden="true"></span>
+              <span class="sr-only">Eigene Rezepte durchsuchen</span>
+              <input id="recipeSearchInput" type="search" placeholder="Rezepte, Lebensmittel oder Anmerkungen suchen …" autocomplete="off" />
+              <kbd>⌘ K</kbd>
+            </label>
+            <div class="recipe-filter-row">
+              <label>
+                <span class="sr-only">Kategorie für eigene Rezepte</span>
+                <select id="recipeCategoryFilter">
+                  <option value="">Alle Kategorien</option>
+                </select>
+              </label>
+              <label>
+                <span class="sr-only">Lebensmittel für eigene Rezepte</span>
+                <select id="recipeFoodFilter">
+                  <option value="">Alle Lebensmittel</option>
+                </select>
+              </label>
+              <label>
+                <span class="sr-only">Sortierung nach Erfassungsdatum</span>
+                <select id="recipeDateSort">
+                  <option value="newest">Neueste zuerst</option>
+                  <option value="oldest">Älteste zuerst</option>
+                </select>
+              </label>
+              <button class="reset-button recipe-reset-button" id="resetRecipeFilters" type="button">Zurücksetzen</button>
+            </div>
+          </div>
+
+          <div class="recipe-result-bar">
+            <span id="recipeResultCount" aria-live="polite">0 Rezepte</span>
+          </div>
+          <div class="recipe-category-list" id="recipeGroups" aria-live="polite"></div>
+        </section>
+
         <section class="view bookmarks-view" id="bookmarksView" data-view-panel="bookmarks">
           <div class="page-intro compact-intro bookmarks-intro">
             <div>
@@ -336,6 +381,9 @@ Nur bei zu langer Anmeldedauer auf Anmeldung erneuern klicken.</span>
         <button class="mobile-nav-button" data-view="meals" type="button">
           <span class="button-icon" data-icon="meal" aria-hidden="true"></span><span>Mahlzeiten</span>
         </button>
+        <button class="mobile-nav-button" data-view="recipes" type="button" aria-label="Meine Rezepte">
+          <span class="button-icon" data-icon="recipe" aria-hidden="true"></span><span>Rezepte</span>
+        </button>
         <button class="mobile-nav-button" data-view="bookmarks" type="button">
           <span class="button-icon" data-icon="bookmark" aria-hidden="true"></span><span>Lesezeichen</span>
         </button>
@@ -395,6 +443,6 @@ Nur bei zu langer Anmeldedauer auf Anmeldung erneuern klicken.</span>
       document.write('<script src="data.js?v=' + Date.now() + '"><\/script>');
     </script>
     <script src="vendor/msal-browser.min.js?v=2.38.3"></script>
-    <script src="app.js?v=food-recipes-20260919-1"></script>
+    <script src="app.js?v=recipe-library-20260919-1"></script>
   </body>
 </html>
