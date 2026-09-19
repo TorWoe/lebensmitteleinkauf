@@ -2,7 +2,7 @@
   "use strict";
 
   const { foods, meals, sources, foodNames = [] } = window.APP_DATA;
-  const appVersion = "meal-offers-postal-20260914-1";
+  const appVersion = "food-recipes-20260919-1";
   const appVersionFile = "app-version.json";
   const appRefreshParam = "appRefresh";
   const appRefreshSessionKey = "lebensmitteleinkauf:app-refresh-version:v1";
@@ -12,6 +12,7 @@
   const storageMetaKey = "lebensmitteleinkauf:selected:meta:v1";
   const bookmarkStorageKey = "lebensmitteleinkauf:bookmarks:v1";
   const sharedMealStorageKey = "lebensmitteleinkauf:shared-meals:v1";
+  const recipeStorageKey = "lebensmitteleinkauf:recipes:v1";
   const sharedMealUrlParam = "mahlzeit";
   const pendingLoginKey = "lebensmitteleinkauf:onedrive-login-pending:v1";
   const manualLogoutKey = "lebensmitteleinkauf:onedrive-manual-logout:v1";
@@ -90,6 +91,7 @@
     bookmarkedFoods: new Set(localSnapshot.bookmarkedFoodIds),
     bookmarkedMeals: new Set(localSnapshot.bookmarkedMealIds),
     sharedMeals: new Set(localSnapshot.sharedMealIds),
+    recipes: localSnapshot.recipes,
     selectedSharedMeals: new Set(),
     pendingSharedMeals: new Set(),
     sharedTargetMealId: null,
@@ -105,7 +107,7 @@
       redirectAccessTokenExpiresAt: 0,
       status: "local",
       title: "Nicht angemeldet",
-      message: "Deine Einkaufsliste, Lesezeichen und geteilten Mahlzeiten werden lokal auf diesem Gerät gespeichert.",
+      message: "Deine Einkaufsliste, Lesezeichen, geteilten Mahlzeiten und Rezepte werden lokal auf diesem Gerät gespeichert.",
       lastRemoteUpdatedAt: "",
       lastRemoteEtag: "",
       hasRemoteData: false,
@@ -241,9 +243,49 @@
     return cleanIds(value, validMealIds);
   }
 
+  function cleanRecipeText(value, maxLength) {
+    return typeof value === "string" ? value.trim().slice(0, maxLength) : "";
+  }
+
+  function cleanRecipes(value) {
+    if (!Array.isArray(value)) return [];
+    const recipesById = new Map();
+    value.forEach((recipe) => {
+      if (!recipe || typeof recipe !== "object") return;
+      const foodId = Number(recipe.foodId);
+      const id = cleanRecipeText(recipe.id, 120);
+      const title = cleanRecipeText(recipe.title, 160);
+      const url = cleanRecipeText(recipe.url, 2048);
+      const notes = cleanRecipeText(recipe.notes, 20000);
+      if (!validFoodIds.has(foodId) || !id || (!title && !url && !notes)) return;
+      recipesById.set(id, {
+        id,
+        foodId,
+        title,
+        url,
+        notes,
+        createdAt: cleanRecipeText(recipe.createdAt, 40),
+        updatedAt: cleanRecipeText(recipe.updatedAt, 40),
+      });
+    });
+    return [...recipesById.values()];
+  }
+
+  function recipesSignature(value) {
+    return JSON.stringify(cleanRecipes(value).sort((left, right) => left.id.localeCompare(right.id)));
+  }
+
   function loadSharedMealIds() {
     try {
       return cleanSharedMealIds(JSON.parse(localStorage.getItem(sharedMealStorageKey) || "[]"));
+    } catch {
+      return [];
+    }
+  }
+
+  function loadRecipes() {
+    try {
+      return cleanRecipes(JSON.parse(localStorage.getItem(recipeStorageKey) || "[]"));
     } catch {
       return [];
     }
@@ -260,12 +302,13 @@
       const bookmarkedFoodIds = cleanBookmarkedFoodIds(bookmarks.foodIds || []);
       const bookmarkedMealIds = cleanBookmarkedMealIds(bookmarks.mealIds || []);
       const sharedMealIds = loadSharedMealIds();
+      const recipes = loadRecipes();
       const meta = JSON.parse(localStorage.getItem(storageMetaKey) || "{}");
-      const hasLocalData = selected.length || bookmarkedFoodIds.length || bookmarkedMealIds.length || sharedMealIds.length;
+      const hasLocalData = selected.length || bookmarkedFoodIds.length || bookmarkedMealIds.length || sharedMealIds.length || recipes.length;
       const updatedAt = typeof meta.updatedAt === "string" ? meta.updatedAt : hasLocalData ? nowIso() : "";
-      return { selected, bookmarkedFoodIds, bookmarkedMealIds, sharedMealIds, updatedAt };
+      return { selected, bookmarkedFoodIds, bookmarkedMealIds, sharedMealIds, recipes, updatedAt };
     } catch {
-      return { selected: [], bookmarkedFoodIds: [], bookmarkedMealIds: [], sharedMealIds: [], updatedAt: "" };
+      return { selected: [], bookmarkedFoodIds: [], bookmarkedMealIds: [], sharedMealIds: [], recipes: [], updatedAt: "" };
     }
   }
 
@@ -274,15 +317,17 @@
     const bookmarkedFoodIds = cleanBookmarkedFoodIds([...state.bookmarkedFoods]);
     const bookmarkedMealIds = cleanBookmarkedMealIds([...state.bookmarkedMeals]);
     const sharedMealIds = cleanSharedMealIds([...state.sharedMeals]);
+    const recipes = cleanRecipes(state.recipes);
     localStorage.setItem(storageKey, JSON.stringify(selected));
     localStorage.setItem(bookmarkStorageKey, JSON.stringify({
       foodIds: bookmarkedFoodIds,
       mealIds: bookmarkedMealIds,
     }));
     localStorage.setItem(sharedMealStorageKey, JSON.stringify(sharedMealIds));
+    localStorage.setItem(recipeStorageKey, JSON.stringify(recipes));
     localStorage.setItem(storageMetaKey, JSON.stringify({ updatedAt }));
     state.localUpdatedAt = updatedAt;
-    return { selected, bookmarkedFoodIds, bookmarkedMealIds, sharedMealIds, updatedAt };
+    return { selected, bookmarkedFoodIds, bookmarkedMealIds, sharedMealIds, recipes, updatedAt };
   }
 
   function persistSelection() {
@@ -293,12 +338,13 @@
   function selectionPayload(updatedAt = state.localUpdatedAt || nowIso()) {
     return {
       app: "lebensmitteleinkauf",
-      version: 3,
+      version: 4,
       updatedAt,
       selectedIds: cleanSelectedIds([...state.selected]),
       bookmarkedFoodIds: cleanBookmarkedFoodIds([...state.bookmarkedFoods]),
       bookmarkedMealIds: cleanBookmarkedMealIds([...state.bookmarkedMeals]),
       sharedMealIds: cleanSharedMealIds([...state.sharedMeals]),
+      recipes: cleanRecipes(state.recipes),
     };
   }
 
@@ -314,6 +360,8 @@
       bookmarkedMealIds: cleanBookmarkedMealIds(data.bookmarkedMealIds || data.bookmarkMealIds || []),
       sharedMealIds: cleanSharedMealIds(data.sharedMealIds || data.sharedMeals || []),
       hasSharedMealIds: Array.isArray(data.sharedMealIds) || Array.isArray(data.sharedMeals),
+      recipes: cleanRecipes(data.recipes || data.foodRecipes || []),
+      hasRecipes: Array.isArray(data.recipes) || Array.isArray(data.foodRecipes),
     };
   }
 
@@ -321,7 +369,8 @@
     const leftData = Array.isArray(left) ? { selectedIds: left } : left || {};
     const rightData = Array.isArray(right) ? { selectedIds: right } : right || {};
     return sameCoreUserData(leftData, rightData)
-      && cleanSharedMealIds(leftData.sharedMealIds).sort((a, b) => a - b).join(",") === cleanSharedMealIds(rightData.sharedMealIds).sort((a, b) => a - b).join(",");
+      && cleanSharedMealIds(leftData.sharedMealIds).sort((a, b) => a - b).join(",") === cleanSharedMealIds(rightData.sharedMealIds).sort((a, b) => a - b).join(",")
+      && recipesSignature(leftData.recipes) === recipesSignature(rightData.recipes);
   }
 
   function sameCoreUserData(left, right) {
@@ -341,7 +390,7 @@
     if (hasOneDriveManualLogout() && status !== "local" && title !== "OneDrive-Abmeldung") {
       state.sync.status = "local";
       state.sync.title = "Nicht angemeldet";
-      state.sync.message = "Deine Einkaufsliste, Lesezeichen und geteilten Mahlzeiten werden lokal auf diesem Gerät gespeichert.";
+      state.sync.message = "Deine Einkaufsliste, Lesezeichen, geteilten Mahlzeiten und Rezepte werden lokal auf diesem Gerät gespeichert.";
       renderSyncStatus();
       return;
     }
@@ -355,7 +404,7 @@
     if (!state.sync.account) {
       const helpText = "Zuerst auf OneDrive anmelden klicken.\nNur bei zu langer Anmeldedauer auf Anmeldung erneuern klicken.";
       if (state.sync.title === "Nicht angemeldet") {
-        return `Deine Einkaufsliste, Lesezeichen und geteilten Mahlzeiten werden lokal auf diesem Gerät gespeichert.\n${helpText}`;
+        return `Deine Einkaufsliste, Lesezeichen, geteilten Mahlzeiten und Rezepte werden lokal auf diesem Gerät gespeichert.\n${helpText}`;
       }
       return `${state.sync.message}\n${helpText}`;
     }
@@ -413,7 +462,7 @@
     if (text.includes("user_cancelled") || text.includes("cancel")) return "Anmeldung oder Zustimmung wurde abgebrochen.";
     if (text.includes("consent") || text.includes("access_denied")) return "Zustimmung verweigert. OneDrive-Sync bleibt ausgeschaltet.";
     if (text.includes("interaction_required")) return "Bitte melde dich erneut an, damit OneDrive verwendet werden darf.";
-    return `Microsoft-Anmeldung fehlgeschlagen${suffix}. Deine Einkaufsliste, Lesezeichen und geteilten Mahlzeiten bleiben lokal gespeichert.`;
+    return `Microsoft-Anmeldung fehlgeschlagen${suffix}. Deine Einkaufsliste, Lesezeichen, geteilten Mahlzeiten und Rezepte bleiben lokal gespeichert.`;
   }
 
   function clearLoginPending() {
@@ -676,6 +725,7 @@
     state.bookmarkedFoods = new Set(remoteData.bookmarkedFoodIds);
     state.bookmarkedMeals = new Set(remoteData.bookmarkedMealIds);
     state.sharedMeals = new Set(remoteData.sharedMealIds || []);
+    state.recipes = cleanRecipes(remoteData.recipes || []);
     saveSelectionLocally(remoteData.updatedAt || nowIso());
     state.sync.lastRemoteUpdatedAt = remoteData.updatedAt || state.localUpdatedAt;
     state.sync.lastRemoteEtag = remoteEtag;
@@ -695,14 +745,14 @@
     state.sync.conflictData = null;
     state.sync.needsInteractiveToken = false;
     state.pendingSharedMeals.clear();
-    setSyncStatus("synced", "Mit OneDrive synchronisiert", "Deine Einkaufsliste, Lesezeichen und geteilten Mahlzeiten sind im OneDrive-App-Ordner gespeichert.");
+    setSyncStatus("synced", "Mit OneDrive synchronisiert", "Deine Einkaufsliste, Lesezeichen, geteilten Mahlzeiten und Rezepte sind im OneDrive-App-Ordner gespeichert.");
   }
 
   function handleOneDriveError(error, fallbackTitle = "OneDrive nicht verfügbar") {
     if (error?.message === "redirect-started") return;
     if (error?.message === "not-signed-in") {
       state.sync.needsInteractiveToken = false;
-      setSyncStatus("local", "Nicht angemeldet", "Deine Einkaufsliste, Lesezeichen und geteilten Mahlzeiten werden lokal auf diesem Gerät gespeichert.");
+      setSyncStatus("local", "Nicht angemeldet", "Deine Einkaufsliste, Lesezeichen, geteilten Mahlzeiten und Rezepte werden lokal auf diesem Gerät gespeichert.");
       return;
     }
     if (error?.message === "interactive-token-required") {
@@ -744,7 +794,7 @@
 
   function remoteShouldReplaceLocal(remoteData, localData) {
     if (!remoteData) return false;
-    if (!localData.selected.length && !localData.bookmarkedFoodIds.length && !localData.bookmarkedMealIds.length && !localData.sharedMealIds.length) return true;
+    if (!localData.selected.length && !localData.bookmarkedFoodIds.length && !localData.bookmarkedMealIds.length && !localData.sharedMealIds.length && !localData.recipes.length) return true;
     if (remoteIsNewer(remoteData.updatedAt, localData.updatedAt)) return true;
     return Boolean(remoteData.updatedAt && !localData.updatedAt);
   }
@@ -761,6 +811,30 @@
         };
     mergedRemoteData.sharedMealIds = cleanSharedMealIds(local.sharedMealIds);
     mergedRemoteData.hasSharedMealIds = true;
+    if (!remote.data.hasRecipes) {
+      mergedRemoteData.recipes = cleanRecipes(local.recipes);
+      mergedRemoteData.hasRecipes = true;
+    }
+    applyRemoteSelection(mergedRemoteData, remote.etag);
+    const payload = selectionPayload(nowIso());
+    saveSelectionLocally(payload.updatedAt);
+    const metadata = await uploadRemoteSelection(payload);
+    completeRemoteSave(payload, metadata);
+  }
+
+  async function migrateLegacyRemoteRecipes(remote, local, preferRemoteData) {
+    const mergedRemoteData = preferRemoteData
+      ? { ...remote.data }
+      : {
+          ...remote.data,
+          updatedAt: local.updatedAt,
+          selectedIds: local.selected,
+          bookmarkedFoodIds: local.bookmarkedFoodIds,
+          bookmarkedMealIds: local.bookmarkedMealIds,
+          sharedMealIds: local.sharedMealIds,
+        };
+    mergedRemoteData.recipes = cleanRecipes(local.recipes);
+    mergedRemoteData.hasRecipes = true;
     applyRemoteSelection(mergedRemoteData, remote.etag);
     const payload = selectionPayload(nowIso());
     saveSelectionLocally(payload.updatedAt);
@@ -817,7 +891,7 @@
     state.sync.busy = true;
     const previousInteractiveTokenRedirect = state.sync.allowInteractiveTokenRedirect;
     state.sync.allowInteractiveTokenRedirect = true;
-    setSyncStatus("loading", "Prüfe OneDrive", "Einkaufsliste, Lesezeichen und geteilte Mahlzeiten werden mit OneDrive abgeglichen.");
+    setSyncStatus("loading", "Prüfe OneDrive", "Einkaufsliste, Lesezeichen, geteilte Mahlzeiten und Rezepte werden mit OneDrive abgeglichen.");
     try {
       const remote = await loadRemoteSelection();
       const local = loadSelectionData();
@@ -831,6 +905,18 @@
           }));
         await migrateLegacyRemoteSharedMeals(remote, local, preferRemoteData);
         showToast("Geteilte Mahlzeiten wurden nach OneDrive übernommen.");
+        return;
+      }
+
+      if (remote.exists && !remote.data.hasRecipes && local.recipes.length) {
+        const preferRemoteData = remoteShouldReplaceLocal(remote.data, local)
+          || (!remoteIsNewer(local.updatedAt, remote.data.updatedAt) && !sameCoreUserData(remote.data, {
+            selectedIds: local.selected,
+            bookmarkedFoodIds: local.bookmarkedFoodIds,
+            bookmarkedMealIds: local.bookmarkedMealIds,
+          }));
+        await migrateLegacyRemoteRecipes(remote, local, preferRemoteData);
+        showToast("Deine Rezepte wurden nach OneDrive übernommen.");
         return;
       }
 
@@ -852,7 +938,7 @@
         state.sync.lastRemoteUpdatedAt = remote.data.updatedAt || state.sync.lastRemoteUpdatedAt;
         state.sync.lastRemoteEtag = remote.etag || state.sync.lastRemoteEtag;
         state.sync.needsInteractiveToken = false;
-        setSyncStatus("synced", "Mit OneDrive synchronisiert", "Deine Einkaufsliste, Lesezeichen und geteilten Mahlzeiten sind aktuell.");
+        setSyncStatus("synced", "Mit OneDrive synchronisiert", "Deine Einkaufsliste, Lesezeichen, geteilten Mahlzeiten und Rezepte sind aktuell.");
         return;
       }
 
@@ -861,7 +947,7 @@
         saveSelectionLocally(payload.updatedAt);
         const metadata = await uploadRemoteSelection(payload);
         completeRemoteSave(payload, metadata);
-        showToast("Einkaufsliste, Lesezeichen und geteilte Mahlzeiten wurden nach OneDrive gespeichert.");
+        showToast("Einkaufsliste, Lesezeichen, geteilte Mahlzeiten und Rezepte wurden nach OneDrive gespeichert.");
         return;
       }
 
@@ -883,7 +969,7 @@
 
   function queueOneDriveSave() {
     if (hasOneDriveManualLogout() || !state.sync.account) {
-      setSyncStatus("local", "Nicht angemeldet", "Deine Einkaufsliste, Lesezeichen und geteilten Mahlzeiten werden lokal auf diesem Gerät gespeichert.");
+      setSyncStatus("local", "Nicht angemeldet", "Deine Einkaufsliste, Lesezeichen, geteilten Mahlzeiten und Rezepte werden lokal auf diesem Gerät gespeichert.");
       return;
     }
     clearTimeout(oneDriveSaveTimer);
@@ -897,21 +983,21 @@
     state.sync.busy = true;
     const previousInteractiveTokenRedirect = state.sync.allowInteractiveTokenRedirect;
     state.sync.allowInteractiveTokenRedirect = allowInteractiveTokenRedirect;
-    setSyncStatus("loading", "Prüfe OneDrive", "Deine Einkaufsliste, Lesezeichen und geteilten Mahlzeiten werden geladen.");
+    setSyncStatus("loading", "Prüfe OneDrive", "Deine Einkaufsliste, Lesezeichen, geteilten Mahlzeiten und Rezepte werden geladen.");
     try {
       const remote = forceRemote && state.sync.conflictData ? state.sync.conflictData : await loadRemoteSelection();
       const local = loadSelectionData();
 
       if (!remote.exists) {
-        if (local.selected.length || local.bookmarkedFoodIds.length || local.bookmarkedMealIds.length || local.sharedMealIds.length) {
+        if (local.selected.length || local.bookmarkedFoodIds.length || local.bookmarkedMealIds.length || local.sharedMealIds.length || local.recipes.length) {
           const payload = selectionPayload(local.updatedAt || nowIso());
           const metadata = await uploadRemoteSelection(payload);
           completeRemoteSave(payload, metadata);
-          showToast("Lokale Einkaufsliste, Lesezeichen und geteilte Mahlzeiten wurden nach OneDrive übernommen.");
+          showToast("Lokale Einkaufsliste, Lesezeichen, geteilte Mahlzeiten und Rezepte wurden nach OneDrive übernommen.");
         } else {
           state.sync.hasRemoteData = false;
           state.sync.needsInteractiveToken = false;
-          setSyncStatus("synced", "Mit OneDrive verbunden", "Noch keine Einkaufsliste, Lesezeichen oder geteilten Mahlzeiten im OneDrive-App-Ordner.");
+          setSyncStatus("synced", "Mit OneDrive verbunden", "Noch keine Einkaufsliste, Lesezeichen, geteilten Mahlzeiten oder Rezepte im OneDrive-App-Ordner.");
         }
         return;
       }
@@ -931,6 +1017,16 @@
         return;
       }
 
+      if (
+        !remote.data.hasRecipes
+        && local.recipes.length
+        && (forceRemote || remoteShouldReplaceLocal(remote.data, local) || remoteMatchesLocalCore)
+      ) {
+        await migrateLegacyRemoteRecipes(remote, local, forceRemote || remoteShouldReplaceLocal(remote.data, local));
+        showToast("Deine Rezepte wurden nach OneDrive übernommen.");
+        return;
+      }
+
       if (state.pendingSharedMeals.size) {
         await addPendingSharedMealsToRemote(remote);
         showToast("Geöffnete Mahlzeit wurde nach OneDrive übernommen.");
@@ -939,18 +1035,19 @@
 
       if (
         forceRemote
-        || (!local.selected.length && !local.bookmarkedFoodIds.length && !local.bookmarkedMealIds.length && !local.sharedMealIds.length)
+        || (!local.selected.length && !local.bookmarkedFoodIds.length && !local.bookmarkedMealIds.length && !local.sharedMealIds.length && !local.recipes.length)
         || remoteIsNewer(remote.data.updatedAt, local.updatedAt)
         || sameUserData(remote.data, {
           selectedIds: local.selected,
           bookmarkedFoodIds: local.bookmarkedFoodIds,
           bookmarkedMealIds: local.bookmarkedMealIds,
           sharedMealIds: local.sharedMealIds,
+          recipes: local.recipes,
         })
       ) {
         applyRemoteSelection(remote.data, remote.etag);
         state.sync.needsInteractiveToken = false;
-        setSyncStatus("synced", "Mit OneDrive synchronisiert", "Deine Einkaufsliste, Lesezeichen und geteilten Mahlzeiten wurden aus OneDrive geladen.");
+        setSyncStatus("synced", "Mit OneDrive synchronisiert", "Deine Einkaufsliste, Lesezeichen, geteilten Mahlzeiten und Rezepte wurden aus OneDrive geladen.");
         return;
       }
 
@@ -1016,7 +1113,7 @@
       if (state.sync.msal?.clearCache) {
         Promise.resolve(state.sync.msal.clearCache(account ? { account } : {})).catch(() => {});
       }
-      setSyncStatus("local", "Nicht angemeldet", "Deine Einkaufsliste, Lesezeichen und geteilten Mahlzeiten werden lokal auf diesem Gerät gespeichert.");
+      setSyncStatus("local", "Nicht angemeldet", "Deine Einkaufsliste, Lesezeichen, geteilten Mahlzeiten und Rezepte werden lokal auf diesem Gerät gespeichert.");
       state.sync.busy = false;
       renderSyncStatus();
       showToast("OneDrive wurde abgemeldet.");
@@ -1027,7 +1124,7 @@
       clearOneDriveMsalCookies();
       state.sync.account = null;
       state.sync.busy = false;
-      setSyncStatus("local", "Nicht angemeldet", "Deine Einkaufsliste, Lesezeichen und geteilten Mahlzeiten werden lokal auf diesem Gerät gespeichert.");
+      setSyncStatus("local", "Nicht angemeldet", "Deine Einkaufsliste, Lesezeichen, geteilten Mahlzeiten und Rezepte werden lokal auf diesem Gerät gespeichert.");
       showToast("OneDrive wurde lokal getrennt.");
       forceOneDriveLogoutReload();
     }
@@ -1081,7 +1178,7 @@
         state.sync.account = null;
         state.sync.allowInteractiveTokenRedirect = false;
         state.sync.msal.setActiveAccount?.(null);
-        setSyncStatus("local", "Nicht angemeldet", "Deine Einkaufsliste, Lesezeichen und geteilten Mahlzeiten werden lokal auf diesem Gerät gespeichert.");
+        setSyncStatus("local", "Nicht angemeldet", "Deine Einkaufsliste, Lesezeichen, geteilten Mahlzeiten und Rezepte werden lokal auf diesem Gerät gespeichert.");
         return;
       }
       const redirectResponse = await state.sync.msal.handleRedirectPromise();
@@ -1094,7 +1191,7 @@
         state.sync.msal.setActiveAccount(state.sync.account);
         await syncFromOneDrive();
       } else {
-        setSyncStatus("local", "Nicht angemeldet", "Deine Einkaufsliste, Lesezeichen und geteilten Mahlzeiten werden lokal auf diesem Gerät gespeichert. Melde dich an, um OneDrive zu nutzen.");
+        setSyncStatus("local", "Nicht angemeldet", "Deine Einkaufsliste, Lesezeichen, geteilten Mahlzeiten und Rezepte werden lokal auf diesem Gerät gespeichert. Melde dich an, um OneDrive zu nutzen.");
       }
     } catch (error) {
       if (hasOneDriveManualLogout()) {
@@ -1102,7 +1199,7 @@
         clearOneDriveMsalCache();
         clearOneDriveMsalCookies();
         state.sync.account = null;
-        setSyncStatus("local", "Nicht angemeldet", "Deine Einkaufsliste, Lesezeichen und geteilten Mahlzeiten werden lokal auf diesem Gerät gespeichert.");
+        setSyncStatus("local", "Nicht angemeldet", "Deine Einkaufsliste, Lesezeichen, geteilten Mahlzeiten und Rezepte werden lokal auf diesem Gerät gespeichert.");
         return;
       }
       const accounts = state.sync.msal?.getAllAccounts?.() || [];
@@ -1183,6 +1280,7 @@
             <div class="food-card-actions">
               <button class="details-button" type="button">Details →</button>
               <button class="food-meals-button" type="button" aria-label="Mahlzeiten mit ${escapeHtml(food.name)} anzeigen">Mahlzeiten →</button>
+              <button class="food-recipes-button" type="button" aria-label="Eigene Rezepte für ${escapeHtml(food.name)} verwalten">meine Rezepte →</button>
             </div>
           </div>
         </div>
@@ -1351,6 +1449,7 @@
       : action === "offers" ? "Suche Sonderangebote →" : "Auf die Liste →";
     dom.detailDialog.classList.remove("is-image-dialog");
     dom.detailDialog.classList.add("is-meal-variation-dialog");
+    dom.detailDialog.classList.remove("is-recipe-dialog");
     dom.detailContent.innerHTML = `
       <div class="detail-content meal-variation-content">
         <div class="detail-icon">${icon("meal")}</div>
@@ -1383,6 +1482,7 @@
     if (!meal || !names.length) return;
     dom.detailDialog.classList.remove("is-image-dialog");
     dom.detailDialog.classList.remove("is-meal-variation-dialog");
+    dom.detailDialog.classList.remove("is-recipe-dialog");
     dom.detailContent.innerHTML = `
       <div class="detail-content meal-offers-postal-content">
         <div class="detail-icon">${icon("meal")}</div>
@@ -1435,6 +1535,7 @@
     const links = String(food.sources).split(";").map((url) => url.trim()).filter(Boolean);
     dom.detailDialog.classList.remove("is-image-dialog");
     dom.detailDialog.classList.remove("is-meal-variation-dialog");
+    dom.detailDialog.classList.remove("is-recipe-dialog");
     dom.detailContent.innerHTML = `
       <div class="detail-content">
         <div class="detail-icon">${categoryIcon(food.category)}</div>
@@ -1455,6 +1556,146 @@
         ${links.length ? `<section class="detail-section"><h3>Quellen</h3><div class="detail-sources">${links.map((url, index) => `<a href="${escapeHtml(url)}" target="_blank" rel="noreferrer">Quelle ${index + 1} ↗</a>`).join("")}</div></section>` : ""}
       </div>`;
     dom.detailDialog.showModal();
+  }
+
+  function createRecipeId() {
+    if (window.crypto?.randomUUID) return window.crypto.randomUUID();
+    return `recipe-${Date.now()}-${Math.random().toString(36).slice(2, 10)}`;
+  }
+
+  function safeRecipeUrl(value) {
+    try {
+      const url = new URL(String(value || "").trim());
+      return url.protocol === "http:" || url.protocol === "https:" ? url.href : "";
+    } catch {
+      return "";
+    }
+  }
+
+  function recipeDisplayTitle(recipe) {
+    if (recipe.title) return recipe.title;
+    const url = safeRecipeUrl(recipe.url);
+    if (url) {
+      try {
+        return new URL(url).hostname.replace(/^www\./, "");
+      } catch {
+        return "Gespeichertes Rezept";
+      }
+    }
+    return "Rezept ohne Überschrift";
+  }
+
+  function renderSavedRecipe(recipe) {
+    const url = safeRecipeUrl(recipe.url);
+    return `
+      <article class="saved-recipe-card">
+        <div class="saved-recipe-head">
+          <h3>${escapeHtml(recipeDisplayTitle(recipe))}</h3>
+          <div class="saved-recipe-actions">
+            <button class="recipe-edit-button" type="button" data-edit-recipe-id="${escapeHtml(recipe.id)}">Bearbeiten</button>
+            <button class="recipe-delete-button" type="button" data-delete-recipe-id="${escapeHtml(recipe.id)}">Löschen</button>
+          </div>
+        </div>
+        ${url ? `<a class="saved-recipe-link" href="${escapeHtml(url)}" target="_blank" rel="noreferrer">Rezept öffnen ↗</a>` : recipe.url ? `<p class="saved-recipe-url">${escapeHtml(recipe.url)}</p>` : ""}
+        ${recipe.notes ? `<p class="saved-recipe-notes">${escapeHtml(recipe.notes).replace(/\n/g, "<br>")}</p>` : ""}
+      </article>`;
+  }
+
+  function openFoodRecipes(foodId, editRecipeId = "") {
+    const food = foods.find((item) => item.id === foodId);
+    if (!food) return;
+    const recipes = cleanRecipes(state.recipes)
+      .filter((recipe) => recipe.foodId === foodId)
+      .sort((left, right) => String(right.updatedAt).localeCompare(String(left.updatedAt)));
+    const recipeToEdit = recipes.find((recipe) => recipe.id === editRecipeId) || null;
+    dom.detailDialog.classList.remove("is-image-dialog");
+    dom.detailDialog.classList.remove("is-meal-variation-dialog");
+    dom.detailDialog.classList.add("is-recipe-dialog");
+    dom.detailContent.innerHTML = `
+      <div class="detail-content recipe-content">
+        <div class="detail-icon">${categoryIcon(food.category)}</div>
+        <p class="eyebrow">${escapeHtml(food.name)}</p>
+        <h2>Meine Rezepte</h2>
+        <p class="detail-subtitle">Speichere Links, eigene Notizen oder ganze Rezepte passend zu diesem Lebensmittel.</p>
+        <form class="recipe-form" data-food-recipe-form data-food-id="${food.id}">
+          <input type="hidden" name="recipe-id" value="${escapeHtml(recipeToEdit?.id || "")}" />
+          <label class="recipe-field">
+            <span>Überschrift:</span>
+            <input name="recipe-title" type="text" maxlength="160" autocomplete="off" value="${escapeHtml(recipeToEdit?.title || "")}" placeholder="z. B. Ofenlachs mit Kräutern" />
+          </label>
+          <label class="recipe-field">
+            <span>URL:</span>
+            <input name="recipe-url" type="url" maxlength="2048" inputmode="url" autocomplete="url" value="${escapeHtml(recipeToEdit?.url || "")}" placeholder="https://…" />
+          </label>
+          <label class="recipe-field">
+            <span>Anmerkungen:</span>
+            <textarea name="recipe-notes" maxlength="20000" rows="6" placeholder="Eigene Hinweise oder das vollständige Rezept …">${escapeHtml(recipeToEdit?.notes || "")}</textarea>
+          </label>
+          <p class="recipe-form-hint">Mindestens ein Feld muss ausgefüllt sein. Ohne OneDrive-Anmeldung bleiben deine Rezepte nur in diesem Browser gespeichert.</p>
+          <div class="recipe-form-actions">
+            ${recipeToEdit ? '<button class="secondary-button recipe-cancel-edit" type="button">Bearbeiten abbrechen</button>' : ""}
+            <button class="primary-button recipe-save-button" type="submit"${recipeToEdit ? "" : " disabled"}>${recipeToEdit ? "Änderungen speichern" : "Rezept speichern"}</button>
+          </div>
+        </form>
+        <section class="recipe-library" aria-labelledby="savedRecipesTitle">
+          <div class="recipe-library-heading">
+            <h3 id="savedRecipesTitle">Gespeicherte Rezepte</h3>
+            <span>${recipes.length}</span>
+          </div>
+          <div class="saved-recipe-list">
+            ${recipes.length ? recipes.map(renderSavedRecipe).join("") : '<div class="recipe-empty"><strong>Noch keine Rezepte gespeichert.</strong><p>Fülle oben mindestens eines der drei Felder aus.</p></div>'}
+          </div>
+        </section>
+      </div>`;
+    if (!dom.detailDialog.open) dom.detailDialog.showModal();
+    if (recipeToEdit) dom.detailContent.querySelector('[name="recipe-title"]')?.focus();
+  }
+
+  function saveFoodRecipe(form) {
+    const foodId = Number(form.dataset.foodId);
+    if (!validFoodIds.has(foodId)) return;
+    const recipeId = String(form.elements["recipe-id"].value || "");
+    const title = cleanRecipeText(form.elements["recipe-title"].value, 160);
+    const url = cleanRecipeText(form.elements["recipe-url"].value, 2048);
+    const notes = cleanRecipeText(form.elements["recipe-notes"].value, 20000);
+    if (!title && !url && !notes) return;
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      return;
+    }
+    const existing = state.recipes.find((recipe) => recipe.id === recipeId && recipe.foodId === foodId);
+    const timestamp = nowIso();
+    const savedRecipe = {
+      id: existing?.id || createRecipeId(),
+      foodId,
+      title,
+      url,
+      notes,
+      createdAt: existing?.createdAt || timestamp,
+      updatedAt: timestamp,
+    };
+    state.recipes = cleanRecipes(existing
+      ? state.recipes.map((recipe) => recipe.id === existing.id ? savedRecipe : recipe)
+      : [...state.recipes, savedRecipe]);
+    persistSelection();
+    openFoodRecipes(foodId);
+    showToast(existing ? "Rezept wurde geändert." : "Rezept wurde gespeichert.");
+  }
+
+  function requestRecipeDelete(recipeId) {
+    const recipe = state.recipes.find((item) => item.id === recipeId);
+    if (!recipe) return;
+    openConfirm({
+      title: "Rezept löschen?",
+      text: `„${recipeDisplayTitle(recipe)}“ wird dauerhaft gelöscht${state.sync.account ? " und die Änderung mit OneDrive synchronisiert" : " und aus diesem Browser entfernt"}.`,
+      accept: "Rezept löschen",
+      action: () => {
+        state.recipes = state.recipes.filter((item) => item.id !== recipe.id);
+        persistSelection();
+        openFoodRecipes(recipe.foodId);
+        showToast("Rezept wurde gelöscht.");
+      },
+    });
   }
 
   function openAllFoods() {
@@ -1527,6 +1768,7 @@
     if (!guideImage) return;
     dom.detailDialog.classList.add("is-image-dialog");
     dom.detailDialog.classList.remove("is-meal-variation-dialog");
+    dom.detailDialog.classList.remove("is-recipe-dialog");
     dom.detailContent.innerHTML = `
       <div class="meal-guide-image-content">
         <h2 class="sr-only">Bildanleitung zu Schritt ${step}</h2>
@@ -2034,6 +2276,7 @@
       if (event.target.closest(".select-food")) toggleFood(id);
       if (event.target.closest(".details-button")) openDetails(id);
       if (event.target.closest(".food-meals-button")) applyMealSearchFromFood(foods.find((food) => food.id === id)?.name);
+      if (event.target.closest(".food-recipes-button")) openFoodRecipes(id);
     }));
     [dom.mealGrid, dom.bookmarkedMealGrid, dom.sharedMealGrid].forEach((grid) => grid.addEventListener("click", (event) => {
       const offersButton = event.target.closest("[data-offers-meal-id]");
@@ -2155,12 +2398,36 @@
     });
     document.querySelector(".dialog-close").addEventListener("click", () => dom.detailDialog.close());
     dom.detailDialog.addEventListener("click", (event) => {
+      const editRecipeButton = event.target.closest("[data-edit-recipe-id]");
+      if (editRecipeButton) {
+        const recipe = state.recipes.find((item) => item.id === editRecipeButton.dataset.editRecipeId);
+        if (recipe) openFoodRecipes(recipe.foodId, recipe.id);
+        return;
+      }
+      const deleteRecipeButton = event.target.closest("[data-delete-recipe-id]");
+      if (deleteRecipeButton) {
+        requestRecipeDelete(deleteRecipeButton.dataset.deleteRecipeId);
+        return;
+      }
+      const cancelRecipeEdit = event.target.closest(".recipe-cancel-edit");
+      if (cancelRecipeEdit) {
+        const form = cancelRecipeEdit.closest("[data-food-recipe-form]");
+        if (form) openFoodRecipes(Number(form.dataset.foodId));
+        return;
+      }
       const foodSearchButton = event.target.closest("[data-food-search]");
       if (foodSearchButton) {
         applyFoodSearchFromList(foodSearchButton.dataset.foodSearch);
         return;
       }
       if (event.target === dom.detailDialog) dom.detailDialog.close();
+    });
+    dom.detailDialog.addEventListener("input", (event) => {
+      const form = event.target.closest("[data-food-recipe-form]");
+      if (!form) return;
+      const hasContent = ["recipe-title", "recipe-url", "recipe-notes"]
+        .some((name) => String(form.elements[name].value || "").trim());
+      form.querySelector(".recipe-save-button").disabled = !hasContent;
     });
     dom.detailDialog.addEventListener("change", (event) => {
       const form = event.target.closest("[data-meal-variation-form]");
@@ -2170,6 +2437,12 @@
       form.querySelector(".meal-variation-action").disabled = count === 0;
     });
     dom.detailDialog.addEventListener("submit", (event) => {
+      const recipeForm = event.target.closest("[data-food-recipe-form]");
+      if (recipeForm) {
+        event.preventDefault();
+        saveFoodRecipe(recipeForm);
+        return;
+      }
       const postalForm = event.target.closest("[data-meal-offers-postal-form]");
       if (postalForm) {
         event.preventDefault();

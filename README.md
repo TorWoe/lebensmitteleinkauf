@@ -12,7 +12,8 @@ einen beliebigen lokalen Webserver bereitgestellt werden.
 - 269 Lebensmittel aus der Excelvorlage mit Suche und Filtern
 - persönliche Lesezeichen für Mahlzeiten und Lebensmittel mit eigener Übersicht
 - direkte Teilen-Links für einzelne Mahlzeiten mit eigener, selektiv verwaltbarer Übersicht
-- lokal gespeicherte Einkaufsliste, Lesezeichen und geteilte Mahlzeiten mit optionaler OneDrive-Synchronisierung
+- beliebig viele persönliche Rezepte pro Lebensmittel mit Überschrift, URL und Anmerkungen
+- lokal gespeicherte Einkaufsliste, Lesezeichen, geteilte Mahlzeiten und Rezepte mit optionaler OneDrive-Synchronisierung
 - TXT-Export, Kopieren und Zurücksetzen der Markierungen
 - Tagesbaukasten und dynamische Auswertung
 - eigenständige Layouts für große und kleine Bildschirme
@@ -21,7 +22,7 @@ einen beliebigen lokalen Webserver bereitgestellt werden.
 
 Die App bleibt eine statische GitHub-Pages-App und nutzt MSAL.js im Browser.
 Es wird kein Client Secret verwendet. Angemeldete Nutzer speichern ihre Einkaufsliste,
-ihre Lesezeichen und ihre geteilten Mahlzeiten in ihrem eigenen OneDrive-App-Ordner
+ihre Lesezeichen, ihre geteilten Mahlzeiten und ihre persönlichen Rezepte in ihrem eigenen OneDrive-App-Ordner
 mit `Files.ReadWrite.AppFolder`.
 
 Azure App Registration:
