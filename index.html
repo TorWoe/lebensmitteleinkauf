@@ -9,7 +9,7 @@
       content="Antientzündliche Lebensmittel entdecken, filtern und als Einkaufsliste speichern."
     />
     <title>Lebensmitteleinkauf</title>
-    <link rel="stylesheet" href="style.css?v=recipe-library-20260919-1" />
+    <link rel="stylesheet" href="style.css?v=nav-order-20260919-1" />
   </head>
   <body>
     <div class="app-shell">
@@ -34,8 +34,8 @@
           <button class="nav-button" data-view="meals" type="button">Mahlzeiten</button>
           <button class="nav-button" data-view="recipes" type="button">Meine Rezepte</button>
           <button class="nav-button" data-view="bookmarks" type="button">Lesezeichen</button>
-          <button class="nav-button" data-view="insights" type="button">Auswertung</button>
           <button class="nav-button" data-view="shares" type="button">Teilen</button>
+          <button class="nav-button" data-view="insights" type="button">Auswertung</button>
         </nav>
 
         <div class="topbar-actions">
@@ -387,11 +387,11 @@ Nur bei zu langer Anmeldedauer auf Anmeldung erneuern klicken.</span>
         <button class="mobile-nav-button" data-view="bookmarks" type="button">
           <span class="button-icon" data-icon="bookmark" aria-hidden="true"></span><span>Lesezeichen</span>
         </button>
-        <button class="mobile-nav-button" data-view="insights" type="button">
-          <span class="button-icon" data-icon="chart" aria-hidden="true"></span><span>Auswertung</span>
-        </button>
         <button class="mobile-nav-button" data-view="shares" type="button">
           <span class="button-icon" data-icon="share" aria-hidden="true"></span><span>Teilen</span>
+        </button>
+        <button class="mobile-nav-button" data-view="insights" type="button">
+          <span class="button-icon" data-icon="chart" aria-hidden="true"></span><span>Auswertung</span>
         </button>
         <button class="mobile-nav-button mobile-basket" id="mobileBasket" type="button">
           <span class="button-icon" data-icon="basket" aria-hidden="true"></span><span>Liste</span>
@@ -443,6 +443,6 @@ Nur bei zu langer Anmeldedauer auf Anmeldung erneuern klicken.</span>
       document.write('<script src="data.js?v=' + Date.now() + '"><\/script>');
     </script>
     <script src="vendor/msal-browser.min.js?v=2.38.3"></script>
-    <script src="app.js?v=recipe-library-20260919-1"></script>
+    <script src="app.js?v=nav-order-20260919-1"></script>
   </body>
 </html>
