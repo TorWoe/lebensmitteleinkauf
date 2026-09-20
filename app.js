@@ -2,7 +2,7 @@
   "use strict";
 
   const { foods, meals, sources, foodNames = [] } = window.APP_DATA;
-  const appVersion = "food-actions-order-20260920-1";
+  const appVersion = "card-actions-order-20260920-2";
   const appVersionFile = "app-version.json";
   const appRefreshParam = "appRefresh";
   const appRefreshSessionKey = "lebensmitteleinkauf:app-refresh-version:v1";
@@ -1427,8 +1427,8 @@
             </div>
           </div>
           <div class="food-personal-actions">
-            <button class="food-recipes-button" type="button" aria-label="Eigene Rezepte für ${escapeHtml(food.name)} verwalten">meine Rezepte →</button>
             <button class="food-share-button" type="button" data-share-food-id="${food.id}" aria-label="Teilen-Link für ${escapeHtml(food.name)} kopieren">zum Teilen →</button>
+            <button class="food-recipes-button" type="button" aria-label="Eigene Rezepte für ${escapeHtml(food.name)} verwalten">meine Rezepte →</button>
           </div>
         </div>
       </article>`;
@@ -2007,14 +2007,14 @@
           <div><span>Warum sinnvoll</span><p>${escapeHtml(meal.reason)}</p></div>
         </div>
         <div class="meal-card-footer">
-          <button class="meal-recipe-button" type="button" data-recipe-meal-id="${meal.id}" aria-label="Rezeptsuchtext für ${escapeHtml(meal.situation)} kopieren">für Rezeptsuche →</button>
+          <button class="meal-offers-button" type="button" data-offers-meal-id="${meal.id}" aria-label="Sonderangebotssuchtext für ${escapeHtml(meal.situation)} kopieren">Suche Sonderangebote →</button>
           <button class="meal-list-button${allIngredientsSelected ? " is-added" : ""}" type="button" data-meal-id="${meal.id}" aria-pressed="${allIngredientsSelected}">${allIngredientsSelected ? "Auf der Liste ✓" : "Auf die Liste →"}</button>
         </div>
         <div class="meal-share-row">
-          <button class="meal-share-button" type="button" data-share-meal-id="${meal.id}" aria-label="Teilen-Link für ${escapeHtml(meal.situation)} kopieren">zum Teilen →</button>
-          <button class="meal-offers-button" type="button" data-offers-meal-id="${meal.id}" aria-label="Sonderangebotssuchtext für ${escapeHtml(meal.situation)} kopieren">Suche Sonderangebote →</button>
+          <button class="meal-recipe-button" type="button" data-recipe-meal-id="${meal.id}" aria-label="Rezeptsuchtext für ${escapeHtml(meal.situation)} kopieren">für Rezeptsuche →</button>
         </div>
         <div class="meal-personal-actions">
+          <button class="meal-share-button" type="button" data-share-meal-id="${meal.id}" aria-label="Teilen-Link für ${escapeHtml(meal.situation)} kopieren">zum Teilen →</button>
           <button class="meal-personal-recipes-button" type="button" data-open-meal-recipes="${meal.id}" aria-label="Eigene Rezepte für ${escapeHtml(meal.situation)} verwalten">meine Rezepte →</button>
         </div>
       </article>`;
