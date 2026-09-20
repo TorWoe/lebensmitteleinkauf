@@ -9,7 +9,7 @@
       content="Antientzündliche Lebensmittel entdecken, filtern und als Einkaufsliste speichern."
     />
     <title>Lebensmitteleinkauf</title>
-    <link rel="stylesheet" href="style.css?v=meal-offers-row-20260920-1" />
+    <link rel="stylesheet" href="style.css?v=help-page-20260920-1" />
   </head>
   <body>
     <div class="app-shell">
@@ -36,6 +36,7 @@
           <button class="nav-button" data-view="bookmarks" type="button">Lesezeichen</button>
           <button class="nav-button" data-view="shares" type="button">Teilen</button>
           <button class="nav-button" data-view="insights" type="button">Auswertung</button>
+          <button class="nav-button" data-view="help" type="button">so funktioniert's</button>
         </nav>
 
         <div class="topbar-actions">
@@ -200,15 +201,6 @@ Nur bei zu langer Anmeldedauer auf Anmeldung erneuern klicken.</span>
           <div class="page-intro compact-intro">
             <p class="eyebrow">Mahlzeiten</p>
             <h1>Aus guten Zutaten<br /><span>wird ein guter Tag.</span></h1>
-            <div class="meal-guide">
-              <ol class="meal-guide-list">
-                <li><span class="meal-guide-step-content">Suche dir hier eine Mahlzeit mit Lebensmitteln die du gerne essen möchtest. <button class="meal-guide-image-button" type="button" data-meal-guide-step="1" aria-label="Bild zu Schritt 1 öffnen"><span class="button-icon" data-icon="imageOpen" aria-hidden="true"></span><span>Bild</span></button></span></li>
-                <li><span class="meal-guide-step-content">Klicke hier bei einer Mahlzeit auf "für Rezeptsuche". Der Text für die Rezeptsuche ist jetzt automatisch in der Zwischenablage gespeichert. <button class="meal-guide-image-button" type="button" data-meal-guide-step="2" aria-label="Bild zu Schritt 2 öffnen"><span class="button-icon" data-icon="imageOpen" aria-hidden="true"></span><span>Bild</span></button></span></li>
-                <li><span class="meal-guide-step-content">Öffne eine KI wie z.B. Copilot von Microsoft oder Gemini von Google und füge den in der Zwischenablage gespeicherten Text ein.<br />Mit einer KI bekommst du schnell gute Rezepte die zu deiner Suche passen. <button class="meal-guide-image-button" type="button" data-meal-guide-step="3" aria-label="Bild zu Schritt 3 öffnen"><span class="button-icon" data-icon="imageOpen" aria-hidden="true"></span><span>Bild</span></button></span></li>
-                <li><span class="meal-guide-step-content">Klicke wieder hier bei einer Mahlzeit auf "Auf die Liste →". Die Zutaten für dein Rezept stehen jetzt automatisch auf Deiner Einkaufsliste. <button class="meal-guide-image-button" type="button" data-meal-guide-step="4" aria-label="Bild zu Schritt 4 öffnen"><span class="button-icon" data-icon="imageOpen" aria-hidden="true"></span><span>Bild</span></button></span></li>
-              </ol>
-              <p class="meal-guide-closing">Lass es dir schmecken. Du isst jetzt etwas gesundes dass dir gut tut.</p>
-            </div>
             <label class="search-field meal-search-field" for="mealSearchInput">
               <span class="button-icon" data-icon="search" aria-hidden="true"></span>
               <span class="sr-only">Mahlzeiten durchsuchen</span>
@@ -402,6 +394,61 @@ Nur bei zu langer Anmeldedauer auf Anmeldung erneuern klicken.</span>
             <div class="food-grid shared-food-grid" id="sharedFoodGrid" aria-live="polite"></div>
           </section>
         </section>
+
+        <section class="view help-view" id="helpView" data-view-panel="help">
+          <div class="page-intro compact-intro help-intro">
+            <p class="eyebrow">So funktioniert's</p>
+            <h1>so funktioniert's<br /><span>für jeden Bereich</span></h1>
+            <p>Hier wird jeder Bereich mit seinen verschiedenen Funktionen kurz und einfach vorgestellt. Als beschreibender Text mit Bildern oder als kleines Video.</p>
+          </div>
+
+          <nav class="help-section-nav" aria-label="Bereiche auf dieser Seite">
+            <ul class="help-section-list">
+              <li><a href="#hilfe-lebensmittel">so funktioniert's bei: Lebensmittel <span aria-hidden="true">↓</span></a></li>
+              <li><a href="#hilfe-mahlzeiten">so funktioniert's bei: Mahlzeiten <span aria-hidden="true">↓</span></a></li>
+              <li><a href="#hilfe-rezepte">so funktioniert's bei: Meine Rezepte <span aria-hidden="true">↓</span></a></li>
+              <li><a href="#hilfe-lesezeichen">so funktioniert's bei: Lesezeichen <span aria-hidden="true">↓</span></a></li>
+              <li><a href="#hilfe-teilen">so funktioniert's bei: Teilen <span aria-hidden="true">↓</span></a></li>
+              <li><a href="#hilfe-auswertung">so funktioniert's bei: Auswertung <span aria-hidden="true">↓</span></a></li>
+            </ul>
+          </nav>
+
+          <div class="help-sections">
+            <section class="help-section" id="hilfe-lebensmittel" aria-labelledby="hilfe-lebensmittel-title">
+              <h2 id="hilfe-lebensmittel-title">so funktioniert's bei: Lebensmittel</h2>
+            </section>
+
+            <section class="help-section help-meals-section" id="hilfe-mahlzeiten" aria-labelledby="hilfe-mahlzeiten-title">
+              <h2 id="hilfe-mahlzeiten-title">so funktioniert's bei: Mahlzeiten</h2>
+              <p>Suche Dir eine leckere Mahlzeit aus. Passe diese bei Bedarf mit zwei, drei Klicks an. Lass Dir dann dazu das Rezept, die Zubereitung und die Mengen geben.</p>
+              <div class="meal-guide">
+                <ol class="meal-guide-list">
+                  <li><span class="meal-guide-step-content">Suche dir hier eine Mahlzeit mit Lebensmitteln die du gerne essen möchtest. <button class="meal-guide-image-button" type="button" data-meal-guide-step="1" aria-label="Bild zu Schritt 1 öffnen"><span class="button-icon" data-icon="imageOpen" aria-hidden="true"></span><span>Bild</span></button></span></li>
+                  <li><span class="meal-guide-step-content">Klicke hier bei einer Mahlzeit auf "für Rezeptsuche". Der Text für die Rezeptsuche ist jetzt automatisch in der Zwischenablage gespeichert. <button class="meal-guide-image-button" type="button" data-meal-guide-step="2" aria-label="Bild zu Schritt 2 öffnen"><span class="button-icon" data-icon="imageOpen" aria-hidden="true"></span><span>Bild</span></button></span></li>
+                  <li><span class="meal-guide-step-content">Öffne eine KI wie z.B. Copilot von Microsoft oder Gemini von Google und füge den in der Zwischenablage gespeicherten Text ein.<br />Mit einer KI bekommst du schnell gute Rezepte die zu deiner Suche passen. <button class="meal-guide-image-button" type="button" data-meal-guide-step="3" aria-label="Bild zu Schritt 3 öffnen"><span class="button-icon" data-icon="imageOpen" aria-hidden="true"></span><span>Bild</span></button></span></li>
+                  <li><span class="meal-guide-step-content">Klicke wieder hier bei einer Mahlzeit auf "Auf die Liste →". Die Zutaten für dein Rezept stehen jetzt automatisch auf Deiner Einkaufsliste. <button class="meal-guide-image-button" type="button" data-meal-guide-step="4" aria-label="Bild zu Schritt 4 öffnen"><span class="button-icon" data-icon="imageOpen" aria-hidden="true"></span><span>Bild</span></button></span></li>
+                </ol>
+                <p class="meal-guide-closing">Lass es dir schmecken. Du isst jetzt etwas gesundes dass dir gut tut.</p>
+              </div>
+            </section>
+
+            <section class="help-section" id="hilfe-rezepte" aria-labelledby="hilfe-rezepte-title">
+              <h2 id="hilfe-rezepte-title">so funktioniert's bei: Meine Rezepte</h2>
+            </section>
+
+            <section class="help-section" id="hilfe-lesezeichen" aria-labelledby="hilfe-lesezeichen-title">
+              <h2 id="hilfe-lesezeichen-title">so funktioniert's bei: Lesezeichen</h2>
+            </section>
+
+            <section class="help-section" id="hilfe-teilen" aria-labelledby="hilfe-teilen-title">
+              <h2 id="hilfe-teilen-title">so funktioniert's bei: Teilen</h2>
+            </section>
+
+            <section class="help-section" id="hilfe-auswertung" aria-labelledby="hilfe-auswertung-title">
+              <h2 id="hilfe-auswertung-title">so funktioniert's bei: Auswertung</h2>
+            </section>
+          </div>
+        </section>
       </main>
 
       <nav class="mobile-nav" aria-label="Mobile Navigation">
@@ -422,6 +469,9 @@ Nur bei zu langer Anmeldedauer auf Anmeldung erneuern klicken.</span>
         </button>
         <button class="mobile-nav-button" data-view="insights" type="button">
           <span class="button-icon" data-icon="chart" aria-hidden="true"></span><span>Auswertung</span>
+        </button>
+        <button class="mobile-nav-button" data-view="help" type="button" aria-label="so funktioniert's">
+          <span class="button-icon" data-icon="help" aria-hidden="true"></span><span>so funktioniert's</span>
         </button>
         <button class="mobile-nav-button mobile-basket" id="mobileBasket" type="button">
           <span class="button-icon" data-icon="basket" aria-hidden="true"></span><span>Liste</span>
@@ -473,6 +523,6 @@ Nur bei zu langer Anmeldedauer auf Anmeldung erneuern klicken.</span>
       document.write('<script src="data.js?v=' + Date.now() + '"><\/script>');
     </script>
     <script src="vendor/msal-browser.min.js?v=2.38.3"></script>
-    <script src="app.js?v=meal-offers-row-20260920-1"></script>
+    <script src="app.js?v=help-page-20260920-1"></script>
   </body>
 </html>

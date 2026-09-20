@@ -2,7 +2,7 @@
   "use strict";
 
   const { foods, meals, sources, foodNames = [] } = window.APP_DATA;
-  const appVersion = "meal-offers-row-20260920-1";
+  const appVersion = "help-page-20260920-1";
   const appVersionFile = "app-version.json";
   const appRefreshParam = "appRefresh";
   const appRefreshSessionKey = "lebensmitteleinkauf:app-refresh-version:v1";
@@ -64,6 +64,7 @@
     bookmark: '<path d="M6.5 3.5h11v17L12 17l-5.5 3.5v-17Z"/>',
     recipe: '<path d="M5 4.5A2.5 2.5 0 0 1 7.5 2H19v17H7.5A2.5 2.5 0 0 0 5 21.5v-17Z"/><path d="M5 19a2 2 0 0 1 2-2h12M9 7h6M9 11h7"/>',
     share: '<circle cx="18" cy="5" r="2.5"/><circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="19" r="2.5"/><path d="m8.2 10.8 7.6-4.5M8.2 13.2l7.6 4.5"/>',
+    help: '<circle cx="12" cy="12" r="9"/><path d="M9.8 9a2.4 2.4 0 0 1 4.6 1c0 2-2.4 2.1-2.4 4M12 17.5v.1"/>',
     imageOpen: '<rect x="3" y="5" width="13" height="14" rx="2"/><path d="m5.5 16 3.2-3.2 2.5 2.5 1.8-1.8 3 3"/><path d="M14 3h7v7M21 3l-8 8"/>',
     cloud: '<path d="M17.5 18H8a5 5 0 1 1 1.2-9.85A6.5 6.5 0 0 1 21 12a3 3 0 0 1-3.5 6Z"/><path d="M12 13v7M9 16l3-3 3 3"/>',
   };
@@ -2299,8 +2300,16 @@
   }
 
   function viewFromHash() {
-    const viewByHash = { "#lebensmittel": "foods", "#mahlzeiten": "meals", "#tagesbaukasten": "meals", "#rezepte": "recipes", "#meine-rezepte": "recipes", "#lesezeichen": "bookmarks", "#auswertung": "insights", "#teilen": "shares" };
+    const viewByHash = { "#lebensmittel": "foods", "#mahlzeiten": "meals", "#tagesbaukasten": "meals", "#rezepte": "recipes", "#meine-rezepte": "recipes", "#lesezeichen": "bookmarks", "#auswertung": "insights", "#teilen": "shares", "#so-funktionierts": "help", "#hilfe-lebensmittel": "help", "#hilfe-mahlzeiten": "help", "#hilfe-rezepte": "help", "#hilfe-lesezeichen": "help", "#hilfe-teilen": "help", "#hilfe-auswertung": "help" };
     return viewByHash[window.location.hash] || "foods";
+  }
+
+  function scrollHelpSectionFromHash(hash) {
+    if (!hash.startsWith("#hilfe-")) return false;
+    const target = document.querySelector(hash);
+    if (!target) return false;
+    requestAnimationFrame(() => target.scrollIntoView({ behavior: "auto", block: "start" }));
+    return true;
   }
 
   function prepareBrandHomeNavigation() {
@@ -2367,9 +2376,11 @@
     }
 
     if (window.location.hash) {
+      const initialHash = window.location.hash;
       const view = viewFromHash();
-      clearAppUrlHash();
+      if (view !== "help") clearAppUrlHash();
       setView(view, { scroll: false });
+      if (view === "help" && scrollHelpSectionFromHash(initialHash)) return;
       restoreSavedViewPosition(view);
       return;
     }

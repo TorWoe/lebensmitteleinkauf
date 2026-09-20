@@ -1398,6 +1398,71 @@ main {
 }
 .meal-search-field { margin-top: 24px; }
 
+.help-view { padding-bottom: 72px; }
+.help-intro { max-width: 900px; padding-bottom: 38px; }
+.help-section-nav {
+  max-width: 940px;
+  padding: 18px;
+  border: 1px solid rgba(20, 92, 56, 0.12);
+  border-radius: 24px;
+  background: rgba(244, 250, 246, 0.72);
+}
+.help-section-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.help-section-list a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  min-height: 58px;
+  padding: 14px 16px;
+  border: 1px solid rgba(20, 92, 56, 0.1);
+  border-radius: 14px;
+  color: var(--forest-900);
+  background: rgba(255, 255, 255, 0.82);
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.35;
+  text-decoration: none;
+  transition: 160ms ease;
+}
+.help-section-list a:hover {
+  border-color: rgba(20, 92, 56, 0.24);
+  background: white;
+  transform: translateY(-1px);
+}
+.help-section-list a span { flex: 0 0 auto; color: var(--forest-700); font-size: 17px; }
+.help-sections { margin-top: 66px; }
+.help-section {
+  min-height: 150px;
+  padding: 44px 4px 52px;
+  border-top: 1px solid var(--line);
+  scroll-margin-top: 104px;
+}
+.help-section h2 {
+  max-width: 850px;
+  margin: 0;
+  color: var(--forest-950);
+  font-size: clamp(28px, 4vw, 42px);
+  line-height: 1.08;
+  letter-spacing: -0.045em;
+}
+.help-section > p {
+  max-width: 760px;
+  margin: 20px 0 0;
+  color: var(--muted);
+  font-size: 17px;
+  line-height: 1.65;
+}
+.help-meals-section { min-height: 0; }
+.help-meals-section .meal-guide { margin-top: 28px; }
+
 .meal-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -2207,7 +2272,7 @@ dialog::backdrop { background: rgba(6, 31, 20, 0.52); backdrop-filter: blur(4px)
   .close-shopping { display: grid; width: 34px; height: 34px; place-items: center; border: 0; border-radius: 11px; color: var(--muted); background: #f1f4f2; font-size: 21px; }
   .scrim { position: fixed; z-index: 70; inset: 0; display: block; background: rgba(6, 31, 20, 0.48); opacity: 0; pointer-events: none; transition: opacity 220ms ease; }
   .scrim.is-visible { opacity: 1; pointer-events: auto; }
-  .mobile-nav { position: fixed; z-index: 60; right: 12px; bottom: 10px; left: 12px; display: grid; grid-template-columns: repeat(7, 1fr); padding: 7px; border: 1px solid rgba(20, 92, 56, 0.12); border-radius: 20px; background: rgba(255, 254, 250, 0.94); box-shadow: 0 15px 40px rgba(10, 53, 36, 0.18); backdrop-filter: blur(18px); }
+  .mobile-nav { position: fixed; z-index: 60; right: 12px; bottom: 10px; left: 12px; display: grid; grid-template-columns: repeat(8, 1fr); padding: 7px; border: 1px solid rgba(20, 92, 56, 0.12); border-radius: 20px; background: rgba(255, 254, 250, 0.94); box-shadow: 0 15px 40px rgba(10, 53, 36, 0.18); backdrop-filter: blur(18px); }
   .mobile-nav-button { position: relative; display: grid; gap: 3px; place-items: center; padding: 6px 2px; border: 0; border-radius: 14px; color: #758178; background: transparent; font-size: 9px; font-weight: 750; }
   .mobile-nav-button .button-icon { width: 20px; height: 20px; }
   .mobile-nav-button.is-active { color: var(--forest-800); background: var(--forest-50); }
@@ -2279,6 +2344,17 @@ dialog::backdrop { background: rgba(6, 31, 20, 0.52); backdrop-filter: blur(4px)
   .meal-guide-list li { grid-template-columns: 20px minmax(0, 1fr); gap: 8px; font-size: 14px; line-height: 1.55; }
   .meal-guide-image-button { margin-left: 5px; padding: 3px 6px; }
   .meal-guide-closing { margin-top: 16px; padding-top: 14px; font-size: 14px; }
+  .help-view { padding-bottom: 40px; }
+  .help-intro { padding-bottom: 28px; }
+  .help-section-nav { padding: 11px; border-radius: 18px; }
+  .help-section-list { grid-template-columns: 1fr; gap: 7px; }
+  .help-section-list a { min-height: 52px; padding: 12px 13px; font-size: 13px; }
+  .help-sections { margin-top: 42px; }
+  .help-section { min-height: 125px; padding: 34px 4px 40px; scroll-margin-top: 86px; }
+  .help-section h2 { font-size: 28px; }
+  .help-section > p { margin-top: 16px; font-size: 15px; line-height: 1.6; }
+  .help-meals-section { min-height: 0; }
+  .help-meals-section .meal-guide { margin-top: 22px; }
   .meal-search-field { margin-top: 24px; }
   .meal-filter-row { display: grid; width: 100%; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 9px; }
   .meal-filter-row .meal-type-control,
@@ -2332,12 +2408,17 @@ dialog::backdrop { background: rgba(6, 31, 20, 0.52); backdrop-filter: blur(4px)
 }
 
 @media (max-width: 420px) {
+  body { padding-bottom: 136px; }
   .food-search-row { grid-template-columns: 1fr; }
   .all-foods-button { width: 100%; }
   .meal-filter-row { grid-template-columns: 1fr; }
   .recipe-filter-row { grid-template-columns: 1fr; }
   .recipe-overview-card-head { flex-direction: column; gap: 8px; }
-  .mobile-nav-button { min-width: 0; font-size: 7.5px; white-space: nowrap; }
+  .mobile-nav { grid-template-columns: repeat(4, 1fr); }
+  .mobile-nav-button { min-width: 0; padding-block: 5px; font-size: 8.5px; white-space: nowrap; }
+  .mobile-nav-button .button-icon { width: 18px; height: 18px; }
+  .mobile-nav-button[data-view="help"] span:last-child { white-space: normal; line-height: 1.05; }
+  .toast { bottom: 140px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
