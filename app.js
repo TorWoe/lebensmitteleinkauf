@@ -2,7 +2,7 @@
   "use strict";
 
   const { foods, meals, sources, foodNames = [] } = window.APP_DATA;
-  const appVersion = "nav-order-20260919-1";
+  const appVersion = "shared-food-meal-recipes-20260920-1";
   const appVersionFile = "app-version.json";
   const appRefreshParam = "appRefresh";
   const appRefreshSessionKey = "lebensmitteleinkauf:app-refresh-version:v1";
@@ -12,8 +12,10 @@
   const storageMetaKey = "lebensmitteleinkauf:selected:meta:v1";
   const bookmarkStorageKey = "lebensmitteleinkauf:bookmarks:v1";
   const sharedMealStorageKey = "lebensmitteleinkauf:shared-meals:v1";
+  const sharedFoodStorageKey = "lebensmitteleinkauf:shared-foods:v1";
   const recipeStorageKey = "lebensmitteleinkauf:recipes:v1";
   const sharedMealUrlParam = "mahlzeit";
+  const sharedFoodUrlParam = "lebensmittel";
   const pendingLoginKey = "lebensmitteleinkauf:onedrive-login-pending:v1";
   const manualLogoutKey = "lebensmitteleinkauf:onedrive-manual-logout:v1";
   const authReloadKey = "lebensmitteleinkauf:onedrive-auth-reload:v1";
@@ -87,8 +89,7 @@
     mealCategory: "",
     recipeSearch: "",
     recipeCategory: "",
-    recipeFoodId: "",
-    recipeSort: "newest",
+    recipeItemKey: "",
     category: "",
     score: "",
     priority: "",
@@ -97,10 +98,14 @@
     bookmarkedFoods: new Set(localSnapshot.bookmarkedFoodIds),
     bookmarkedMeals: new Set(localSnapshot.bookmarkedMealIds),
     sharedMeals: new Set(localSnapshot.sharedMealIds),
+    sharedFoods: new Set(localSnapshot.sharedFoodIds),
     recipes: localSnapshot.recipes,
     selectedSharedMeals: new Set(),
+    selectedSharedFoods: new Set(),
     pendingSharedMeals: new Set(),
+    pendingSharedFoods: new Set(),
     sharedTargetMealId: null,
+    sharedTargetFoodId: null,
     localUpdatedAt: localSnapshot.updatedAt,
     sync: {
       msal: null,
@@ -113,7 +118,7 @@
       redirectAccessTokenExpiresAt: 0,
       status: "local",
       title: "Nicht angemeldet",
-      message: "Deine Einkaufsliste, Lesezeichen, geteilten Mahlzeiten und Rezepte werden lokal auf diesem Gerät gespeichert.",
+      message: "Deine Einkaufsliste, Lesezeichen, geteilten Mahlzeiten und Lebensmittel sowie Rezepte werden lokal auf diesem Gerät gespeichert.",
       lastRemoteUpdatedAt: "",
       lastRemoteEtag: "",
       hasRemoteData: false,
@@ -129,9 +134,13 @@
     bookmarkedFoodGrid: document.querySelector("#bookmarkedFoodGrid"),
     bookmarkedMealGrid: document.querySelector("#bookmarkedMealGrid"),
     sharedMealGrid: document.querySelector("#sharedMealGrid"),
+    sharedFoodGrid: document.querySelector("#sharedFoodGrid"),
     sharedMealCount: document.querySelector("#sharedMealCount"),
+    sharedFoodCount: document.querySelector("#sharedFoodCount"),
     sharedMealSelectionCount: document.querySelector("#sharedMealSelectionCount"),
+    sharedFoodSelectionCount: document.querySelector("#sharedFoodSelectionCount"),
     removeSelectedSharedMeals: document.querySelector("#removeSelectedSharedMeals"),
+    removeSelectedSharedFoods: document.querySelector("#removeSelectedSharedFoods"),
     bookmarkedFoodCount: document.querySelector("#bookmarkedFoodCount"),
     bookmarkedMealCount: document.querySelector("#bookmarkedMealCount"),
     clearAllBookmarks: document.querySelector("#clearAllBookmarks"),
@@ -149,11 +158,13 @@
     mealResultCount: document.querySelector("#mealResultCount"),
     recipeSearchInput: document.querySelector("#recipeSearchInput"),
     recipeCategoryFilter: document.querySelector("#recipeCategoryFilter"),
-    recipeFoodFilter: document.querySelector("#recipeFoodFilter"),
-    recipeDateSort: document.querySelector("#recipeDateSort"),
+    recipeItemFilter: document.querySelector("#recipeItemFilter"),
     resetRecipeFilters: document.querySelector("#resetRecipeFilters"),
     recipeResultCount: document.querySelector("#recipeResultCount"),
-    recipeGroups: document.querySelector("#recipeGroups"),
+    recipeMealCount: document.querySelector("#recipeMealCount"),
+    recipeFoodCount: document.querySelector("#recipeFoodCount"),
+    recipeMealGrid: document.querySelector("#recipeMealGrid"),
+    recipeFoodGrid: document.querySelector("#recipeFoodGrid"),
     loadMore: document.querySelector("#loadMore"),
     shoppingPanel: document.querySelector("#shoppingPanel"),
     shoppingItems: document.querySelector("#shoppingItems"),
@@ -256,6 +267,10 @@
     return cleanIds(value, validMealIds);
   }
 
+  function cleanSharedFoodIds(value) {
+    return cleanIds(value, validFoodIds);
+  }
+
   function cleanRecipeText(value, maxLength) {
     return typeof value === "string" ? value.trim().slice(0, maxLength) : "";
   }
@@ -265,15 +280,19 @@
     const recipesById = new Map();
     value.forEach((recipe) => {
       if (!recipe || typeof recipe !== "object") return;
-      const foodId = Number(recipe.foodId);
+      const itemType = recipe.itemType === "meal" ? "meal" : "food";
+      const itemId = Number(recipe.itemId ?? recipe.foodId);
+      const validItemIds = itemType === "meal" ? validMealIds : validFoodIds;
       const id = cleanRecipeText(recipe.id, 120);
       const title = cleanRecipeText(recipe.title, 160);
       const url = cleanRecipeText(recipe.url, 2048);
       const notes = cleanRecipeText(recipe.notes, 20000);
-      if (!validFoodIds.has(foodId) || !id || (!title && !url && !notes)) return;
+      if (!validItemIds.has(itemId) || !id || (!title && !url && !notes)) return;
       recipesById.set(id, {
         id,
-        foodId,
+        itemType,
+        itemId,
+        ...(itemType === "food" ? { foodId: itemId } : {}),
         title,
         url,
         notes,
@@ -291,6 +310,14 @@
   function loadSharedMealIds() {
     try {
       return cleanSharedMealIds(JSON.parse(localStorage.getItem(sharedMealStorageKey) || "[]"));
+    } catch {
+      return [];
+    }
+  }
+
+  function loadSharedFoodIds() {
+    try {
+      return cleanSharedFoodIds(JSON.parse(localStorage.getItem(sharedFoodStorageKey) || "[]"));
     } catch {
       return [];
     }
@@ -315,13 +342,14 @@
       const bookmarkedFoodIds = cleanBookmarkedFoodIds(bookmarks.foodIds || []);
       const bookmarkedMealIds = cleanBookmarkedMealIds(bookmarks.mealIds || []);
       const sharedMealIds = loadSharedMealIds();
+      const sharedFoodIds = loadSharedFoodIds();
       const recipes = loadRecipes();
       const meta = JSON.parse(localStorage.getItem(storageMetaKey) || "{}");
-      const hasLocalData = selected.length || bookmarkedFoodIds.length || bookmarkedMealIds.length || sharedMealIds.length || recipes.length;
+      const hasLocalData = selected.length || bookmarkedFoodIds.length || bookmarkedMealIds.length || sharedMealIds.length || sharedFoodIds.length || recipes.length;
       const updatedAt = typeof meta.updatedAt === "string" ? meta.updatedAt : hasLocalData ? nowIso() : "";
-      return { selected, bookmarkedFoodIds, bookmarkedMealIds, sharedMealIds, recipes, updatedAt };
+      return { selected, bookmarkedFoodIds, bookmarkedMealIds, sharedMealIds, sharedFoodIds, recipes, updatedAt };
     } catch {
-      return { selected: [], bookmarkedFoodIds: [], bookmarkedMealIds: [], sharedMealIds: [], recipes: [], updatedAt: "" };
+      return { selected: [], bookmarkedFoodIds: [], bookmarkedMealIds: [], sharedMealIds: [], sharedFoodIds: [], recipes: [], updatedAt: "" };
     }
   }
 
@@ -330,6 +358,7 @@
     const bookmarkedFoodIds = cleanBookmarkedFoodIds([...state.bookmarkedFoods]);
     const bookmarkedMealIds = cleanBookmarkedMealIds([...state.bookmarkedMeals]);
     const sharedMealIds = cleanSharedMealIds([...state.sharedMeals]);
+    const sharedFoodIds = cleanSharedFoodIds([...state.sharedFoods]);
     const recipes = cleanRecipes(state.recipes);
     localStorage.setItem(storageKey, JSON.stringify(selected));
     localStorage.setItem(bookmarkStorageKey, JSON.stringify({
@@ -337,10 +366,11 @@
       mealIds: bookmarkedMealIds,
     }));
     localStorage.setItem(sharedMealStorageKey, JSON.stringify(sharedMealIds));
+    localStorage.setItem(sharedFoodStorageKey, JSON.stringify(sharedFoodIds));
     localStorage.setItem(recipeStorageKey, JSON.stringify(recipes));
     localStorage.setItem(storageMetaKey, JSON.stringify({ updatedAt }));
     state.localUpdatedAt = updatedAt;
-    return { selected, bookmarkedFoodIds, bookmarkedMealIds, sharedMealIds, recipes, updatedAt };
+    return { selected, bookmarkedFoodIds, bookmarkedMealIds, sharedMealIds, sharedFoodIds, recipes, updatedAt };
   }
 
   function persistSelection() {
@@ -351,12 +381,13 @@
   function selectionPayload(updatedAt = state.localUpdatedAt || nowIso()) {
     return {
       app: "lebensmitteleinkauf",
-      version: 4,
+      version: 5,
       updatedAt,
       selectedIds: cleanSelectedIds([...state.selected]),
       bookmarkedFoodIds: cleanBookmarkedFoodIds([...state.bookmarkedFoods]),
       bookmarkedMealIds: cleanBookmarkedMealIds([...state.bookmarkedMeals]),
       sharedMealIds: cleanSharedMealIds([...state.sharedMeals]),
+      sharedFoodIds: cleanSharedFoodIds([...state.sharedFoods]),
       recipes: cleanRecipes(state.recipes),
     };
   }
@@ -373,6 +404,8 @@
       bookmarkedMealIds: cleanBookmarkedMealIds(data.bookmarkedMealIds || data.bookmarkMealIds || []),
       sharedMealIds: cleanSharedMealIds(data.sharedMealIds || data.sharedMeals || []),
       hasSharedMealIds: Array.isArray(data.sharedMealIds) || Array.isArray(data.sharedMeals),
+      sharedFoodIds: cleanSharedFoodIds(data.sharedFoodIds || data.sharedFoods || []),
+      hasSharedFoodIds: Array.isArray(data.sharedFoodIds) || Array.isArray(data.sharedFoods),
       recipes: cleanRecipes(data.recipes || data.foodRecipes || []),
       hasRecipes: Array.isArray(data.recipes) || Array.isArray(data.foodRecipes),
     };
@@ -383,6 +416,7 @@
     const rightData = Array.isArray(right) ? { selectedIds: right } : right || {};
     return sameCoreUserData(leftData, rightData)
       && cleanSharedMealIds(leftData.sharedMealIds).sort((a, b) => a - b).join(",") === cleanSharedMealIds(rightData.sharedMealIds).sort((a, b) => a - b).join(",")
+      && cleanSharedFoodIds(leftData.sharedFoodIds).sort((a, b) => a - b).join(",") === cleanSharedFoodIds(rightData.sharedFoodIds).sort((a, b) => a - b).join(",")
       && recipesSignature(leftData.recipes) === recipesSignature(rightData.recipes);
   }
 
@@ -403,7 +437,7 @@
     if (hasOneDriveManualLogout() && status !== "local" && title !== "OneDrive-Abmeldung") {
       state.sync.status = "local";
       state.sync.title = "Nicht angemeldet";
-      state.sync.message = "Deine Einkaufsliste, Lesezeichen, geteilten Mahlzeiten und Rezepte werden lokal auf diesem Gerät gespeichert.";
+      state.sync.message = "Deine Einkaufsliste, Lesezeichen, geteilten Mahlzeiten und Lebensmittel sowie Rezepte werden lokal auf diesem Gerät gespeichert.";
       renderSyncStatus();
       return;
     }
@@ -417,7 +451,7 @@
     if (!state.sync.account) {
       const helpText = "Zuerst auf OneDrive anmelden klicken.\nNur bei zu langer Anmeldedauer auf Anmeldung erneuern klicken.";
       if (state.sync.title === "Nicht angemeldet") {
-        return `Deine Einkaufsliste, Lesezeichen, geteilten Mahlzeiten und Rezepte werden lokal auf diesem Gerät gespeichert.\n${helpText}`;
+        return `Deine Einkaufsliste, Lesezeichen, geteilten Mahlzeiten und Lebensmittel sowie Rezepte werden lokal auf diesem Gerät gespeichert.\n${helpText}`;
       }
       return `${state.sync.message}\n${helpText}`;
     }
@@ -475,7 +509,7 @@
     if (text.includes("user_cancelled") || text.includes("cancel")) return "Anmeldung oder Zustimmung wurde abgebrochen.";
     if (text.includes("consent") || text.includes("access_denied")) return "Zustimmung verweigert. OneDrive-Sync bleibt ausgeschaltet.";
     if (text.includes("interaction_required")) return "Bitte melde dich erneut an, damit OneDrive verwendet werden darf.";
-    return `Microsoft-Anmeldung fehlgeschlagen${suffix}. Deine Einkaufsliste, Lesezeichen, geteilten Mahlzeiten und Rezepte bleiben lokal gespeichert.`;
+    return `Microsoft-Anmeldung fehlgeschlagen${suffix}. Deine Einkaufsliste, Lesezeichen, geteilten Mahlzeiten und Lebensmittel sowie Rezepte bleiben lokal gespeichert.`;
   }
 
   function clearLoginPending() {
@@ -738,6 +772,7 @@
     state.bookmarkedFoods = new Set(remoteData.bookmarkedFoodIds);
     state.bookmarkedMeals = new Set(remoteData.bookmarkedMealIds);
     state.sharedMeals = new Set(remoteData.sharedMealIds || []);
+    state.sharedFoods = new Set(remoteData.sharedFoodIds || []);
     state.recipes = cleanRecipes(remoteData.recipes || []);
     saveSelectionLocally(remoteData.updatedAt || nowIso());
     state.sync.lastRemoteUpdatedAt = remoteData.updatedAt || state.localUpdatedAt;
@@ -749,7 +784,7 @@
     renderMeals();
     renderBookmarks();
     renderRecipeOverview();
-    renderSharedMeals();
+    renderShares();
   }
 
   function completeRemoteSave(payload, metadata) {
@@ -759,14 +794,15 @@
     state.sync.conflictData = null;
     state.sync.needsInteractiveToken = false;
     state.pendingSharedMeals.clear();
-    setSyncStatus("synced", "Mit OneDrive synchronisiert", "Deine Einkaufsliste, Lesezeichen, geteilten Mahlzeiten und Rezepte sind im OneDrive-App-Ordner gespeichert.");
+    state.pendingSharedFoods.clear();
+    setSyncStatus("synced", "Mit OneDrive synchronisiert", "Deine Einkaufsliste, Lesezeichen, geteilten Mahlzeiten und Lebensmittel sowie Rezepte sind im OneDrive-App-Ordner gespeichert.");
   }
 
   function handleOneDriveError(error, fallbackTitle = "OneDrive nicht verfügbar") {
     if (error?.message === "redirect-started") return;
     if (error?.message === "not-signed-in") {
       state.sync.needsInteractiveToken = false;
-      setSyncStatus("local", "Nicht angemeldet", "Deine Einkaufsliste, Lesezeichen, geteilten Mahlzeiten und Rezepte werden lokal auf diesem Gerät gespeichert.");
+      setSyncStatus("local", "Nicht angemeldet", "Deine Einkaufsliste, Lesezeichen, geteilten Mahlzeiten und Lebensmittel sowie Rezepte werden lokal auf diesem Gerät gespeichert.");
       return;
     }
     if (error?.message === "interactive-token-required") {
@@ -808,7 +844,7 @@
 
   function remoteShouldReplaceLocal(remoteData, localData) {
     if (!remoteData) return false;
-    if (!localData.selected.length && !localData.bookmarkedFoodIds.length && !localData.bookmarkedMealIds.length && !localData.sharedMealIds.length && !localData.recipes.length) return true;
+    if (!localData.selected.length && !localData.bookmarkedFoodIds.length && !localData.bookmarkedMealIds.length && !localData.sharedMealIds.length && !localData.sharedFoodIds.length && !localData.recipes.length) return true;
     if (remoteIsNewer(remoteData.updatedAt, localData.updatedAt)) return true;
     return Boolean(remoteData.updatedAt && !localData.updatedAt);
   }
@@ -825,6 +861,34 @@
         };
     mergedRemoteData.sharedMealIds = cleanSharedMealIds(local.sharedMealIds);
     mergedRemoteData.hasSharedMealIds = true;
+    if (!remote.data.hasSharedFoodIds) {
+      mergedRemoteData.sharedFoodIds = cleanSharedFoodIds(local.sharedFoodIds);
+      mergedRemoteData.hasSharedFoodIds = true;
+    }
+    if (!remote.data.hasRecipes) {
+      mergedRemoteData.recipes = cleanRecipes(local.recipes);
+      mergedRemoteData.hasRecipes = true;
+    }
+    applyRemoteSelection(mergedRemoteData, remote.etag);
+    const payload = selectionPayload(nowIso());
+    saveSelectionLocally(payload.updatedAt);
+    const metadata = await uploadRemoteSelection(payload);
+    completeRemoteSave(payload, metadata);
+  }
+
+  async function migrateLegacyRemoteSharedFoods(remote, local, preferRemoteData) {
+    const mergedRemoteData = preferRemoteData
+      ? { ...remote.data }
+      : {
+          ...remote.data,
+          updatedAt: local.updatedAt,
+          selectedIds: local.selected,
+          bookmarkedFoodIds: local.bookmarkedFoodIds,
+          bookmarkedMealIds: local.bookmarkedMealIds,
+          sharedMealIds: local.sharedMealIds,
+        };
+    mergedRemoteData.sharedFoodIds = cleanSharedFoodIds(local.sharedFoodIds);
+    mergedRemoteData.hasSharedFoodIds = true;
     if (!remote.data.hasRecipes) {
       mergedRemoteData.recipes = cleanRecipes(local.recipes);
       mergedRemoteData.hasRecipes = true;
@@ -846,6 +910,7 @@
           bookmarkedFoodIds: local.bookmarkedFoodIds,
           bookmarkedMealIds: local.bookmarkedMealIds,
           sharedMealIds: local.sharedMealIds,
+          sharedFoodIds: local.sharedFoodIds,
         };
     mergedRemoteData.recipes = cleanRecipes(local.recipes);
     mergedRemoteData.hasRecipes = true;
@@ -856,12 +921,22 @@
     completeRemoteSave(payload, metadata);
   }
 
-  async function addPendingSharedMealsToRemote(remote) {
+  async function addPendingSharedEntriesToRemote(remote) {
     const sharedMealIds = cleanSharedMealIds([
       ...(remote.data.sharedMealIds || []),
       ...state.pendingSharedMeals,
     ]);
-    applyRemoteSelection({ ...remote.data, sharedMealIds, hasSharedMealIds: true }, remote.etag);
+    const sharedFoodIds = cleanSharedFoodIds([
+      ...(remote.data.sharedFoodIds || []),
+      ...state.pendingSharedFoods,
+    ]);
+    applyRemoteSelection({
+      ...remote.data,
+      sharedMealIds,
+      hasSharedMealIds: true,
+      sharedFoodIds,
+      hasSharedFoodIds: true,
+    }, remote.etag);
     const payload = selectionPayload(nowIso());
     saveSelectionLocally(payload.updatedAt);
     const metadata = await uploadRemoteSelection(payload);
@@ -905,7 +980,7 @@
     state.sync.busy = true;
     const previousInteractiveTokenRedirect = state.sync.allowInteractiveTokenRedirect;
     state.sync.allowInteractiveTokenRedirect = true;
-    setSyncStatus("loading", "Prüfe OneDrive", "Einkaufsliste, Lesezeichen, geteilte Mahlzeiten und Rezepte werden mit OneDrive abgeglichen.");
+    setSyncStatus("loading", "Prüfe OneDrive", "Einkaufsliste, Lesezeichen, geteilte Mahlzeiten und Lebensmittel sowie Rezepte werden mit OneDrive abgeglichen.");
     try {
       const remote = await loadRemoteSelection();
       const local = loadSelectionData();
@@ -922,6 +997,18 @@
         return;
       }
 
+      if (remote.exists && !remote.data.hasSharedFoodIds && local.sharedFoodIds.length) {
+        const preferRemoteData = remoteShouldReplaceLocal(remote.data, local)
+          || (!remoteIsNewer(local.updatedAt, remote.data.updatedAt) && !sameCoreUserData(remote.data, {
+            selectedIds: local.selected,
+            bookmarkedFoodIds: local.bookmarkedFoodIds,
+            bookmarkedMealIds: local.bookmarkedMealIds,
+          }));
+        await migrateLegacyRemoteSharedFoods(remote, local, preferRemoteData);
+        showToast("Geteilte Lebensmittel wurden nach OneDrive übernommen.");
+        return;
+      }
+
       if (remote.exists && !remote.data.hasRecipes && local.recipes.length) {
         const preferRemoteData = remoteShouldReplaceLocal(remote.data, local)
           || (!remoteIsNewer(local.updatedAt, remote.data.updatedAt) && !sameCoreUserData(remote.data, {
@@ -934,9 +1021,9 @@
         return;
       }
 
-      if (remote.exists && state.pendingSharedMeals.size) {
-        await addPendingSharedMealsToRemote(remote);
-        showToast("Geöffnete Mahlzeit wurde nach OneDrive übernommen.");
+      if (remote.exists && (state.pendingSharedMeals.size || state.pendingSharedFoods.size)) {
+        await addPendingSharedEntriesToRemote(remote);
+        showToast("Geöffneter Teilen-Link wurde nach OneDrive übernommen.");
         return;
       }
 
@@ -952,7 +1039,7 @@
         state.sync.lastRemoteUpdatedAt = remote.data.updatedAt || state.sync.lastRemoteUpdatedAt;
         state.sync.lastRemoteEtag = remote.etag || state.sync.lastRemoteEtag;
         state.sync.needsInteractiveToken = false;
-        setSyncStatus("synced", "Mit OneDrive synchronisiert", "Deine Einkaufsliste, Lesezeichen, geteilten Mahlzeiten und Rezepte sind aktuell.");
+        setSyncStatus("synced", "Mit OneDrive synchronisiert", "Deine Einkaufsliste, Lesezeichen, geteilten Mahlzeiten und Lebensmittel sowie Rezepte sind aktuell.");
         return;
       }
 
@@ -961,7 +1048,7 @@
         saveSelectionLocally(payload.updatedAt);
         const metadata = await uploadRemoteSelection(payload);
         completeRemoteSave(payload, metadata);
-        showToast("Einkaufsliste, Lesezeichen, geteilte Mahlzeiten und Rezepte wurden nach OneDrive gespeichert.");
+        showToast("Einkaufsliste, Lesezeichen, geteilte Mahlzeiten und Lebensmittel sowie Rezepte wurden nach OneDrive gespeichert.");
         return;
       }
 
@@ -983,7 +1070,7 @@
 
   function queueOneDriveSave() {
     if (hasOneDriveManualLogout() || !state.sync.account) {
-      setSyncStatus("local", "Nicht angemeldet", "Deine Einkaufsliste, Lesezeichen, geteilten Mahlzeiten und Rezepte werden lokal auf diesem Gerät gespeichert.");
+      setSyncStatus("local", "Nicht angemeldet", "Deine Einkaufsliste, Lesezeichen, geteilten Mahlzeiten und Lebensmittel sowie Rezepte werden lokal auf diesem Gerät gespeichert.");
       return;
     }
     clearTimeout(oneDriveSaveTimer);
@@ -997,21 +1084,21 @@
     state.sync.busy = true;
     const previousInteractiveTokenRedirect = state.sync.allowInteractiveTokenRedirect;
     state.sync.allowInteractiveTokenRedirect = allowInteractiveTokenRedirect;
-    setSyncStatus("loading", "Prüfe OneDrive", "Deine Einkaufsliste, Lesezeichen, geteilten Mahlzeiten und Rezepte werden geladen.");
+    setSyncStatus("loading", "Prüfe OneDrive", "Deine Einkaufsliste, Lesezeichen, geteilten Mahlzeiten und Lebensmittel sowie Rezepte werden geladen.");
     try {
       const remote = forceRemote && state.sync.conflictData ? state.sync.conflictData : await loadRemoteSelection();
       const local = loadSelectionData();
 
       if (!remote.exists) {
-        if (local.selected.length || local.bookmarkedFoodIds.length || local.bookmarkedMealIds.length || local.sharedMealIds.length || local.recipes.length) {
+        if (local.selected.length || local.bookmarkedFoodIds.length || local.bookmarkedMealIds.length || local.sharedMealIds.length || local.sharedFoodIds.length || local.recipes.length) {
           const payload = selectionPayload(local.updatedAt || nowIso());
           const metadata = await uploadRemoteSelection(payload);
           completeRemoteSave(payload, metadata);
-          showToast("Lokale Einkaufsliste, Lesezeichen, geteilte Mahlzeiten und Rezepte wurden nach OneDrive übernommen.");
+          showToast("Lokale Einkaufsliste, Lesezeichen, geteilte Mahlzeiten und Lebensmittel sowie Rezepte wurden nach OneDrive übernommen.");
         } else {
           state.sync.hasRemoteData = false;
           state.sync.needsInteractiveToken = false;
-          setSyncStatus("synced", "Mit OneDrive verbunden", "Noch keine Einkaufsliste, Lesezeichen, geteilten Mahlzeiten oder Rezepte im OneDrive-App-Ordner.");
+          setSyncStatus("synced", "Mit OneDrive verbunden", "Noch keine Einkaufsliste, Lesezeichen, geteilten Mahlzeiten und Lebensmittel oder Rezepte im OneDrive-App-Ordner.");
         }
         return;
       }
@@ -1032,6 +1119,16 @@
       }
 
       if (
+        !remote.data.hasSharedFoodIds
+        && local.sharedFoodIds.length
+        && (forceRemote || remoteShouldReplaceLocal(remote.data, local) || remoteMatchesLocalCore)
+      ) {
+        await migrateLegacyRemoteSharedFoods(remote, local, forceRemote || remoteShouldReplaceLocal(remote.data, local));
+        showToast("Geteilte Lebensmittel wurden nach OneDrive übernommen.");
+        return;
+      }
+
+      if (
         !remote.data.hasRecipes
         && local.recipes.length
         && (forceRemote || remoteShouldReplaceLocal(remote.data, local) || remoteMatchesLocalCore)
@@ -1041,27 +1138,28 @@
         return;
       }
 
-      if (state.pendingSharedMeals.size) {
-        await addPendingSharedMealsToRemote(remote);
-        showToast("Geöffnete Mahlzeit wurde nach OneDrive übernommen.");
+      if (state.pendingSharedMeals.size || state.pendingSharedFoods.size) {
+        await addPendingSharedEntriesToRemote(remote);
+        showToast("Geöffneter Teilen-Link wurde nach OneDrive übernommen.");
         return;
       }
 
       if (
         forceRemote
-        || (!local.selected.length && !local.bookmarkedFoodIds.length && !local.bookmarkedMealIds.length && !local.sharedMealIds.length && !local.recipes.length)
+        || (!local.selected.length && !local.bookmarkedFoodIds.length && !local.bookmarkedMealIds.length && !local.sharedMealIds.length && !local.sharedFoodIds.length && !local.recipes.length)
         || remoteIsNewer(remote.data.updatedAt, local.updatedAt)
         || sameUserData(remote.data, {
           selectedIds: local.selected,
           bookmarkedFoodIds: local.bookmarkedFoodIds,
           bookmarkedMealIds: local.bookmarkedMealIds,
           sharedMealIds: local.sharedMealIds,
+          sharedFoodIds: local.sharedFoodIds,
           recipes: local.recipes,
         })
       ) {
         applyRemoteSelection(remote.data, remote.etag);
         state.sync.needsInteractiveToken = false;
-        setSyncStatus("synced", "Mit OneDrive synchronisiert", "Deine Einkaufsliste, Lesezeichen, geteilten Mahlzeiten und Rezepte wurden aus OneDrive geladen.");
+        setSyncStatus("synced", "Mit OneDrive synchronisiert", "Deine Einkaufsliste, Lesezeichen, geteilten Mahlzeiten und Lebensmittel sowie Rezepte wurden aus OneDrive geladen.");
         return;
       }
 
@@ -1127,7 +1225,7 @@
       if (state.sync.msal?.clearCache) {
         Promise.resolve(state.sync.msal.clearCache(account ? { account } : {})).catch(() => {});
       }
-      setSyncStatus("local", "Nicht angemeldet", "Deine Einkaufsliste, Lesezeichen, geteilten Mahlzeiten und Rezepte werden lokal auf diesem Gerät gespeichert.");
+      setSyncStatus("local", "Nicht angemeldet", "Deine Einkaufsliste, Lesezeichen, geteilten Mahlzeiten und Lebensmittel sowie Rezepte werden lokal auf diesem Gerät gespeichert.");
       state.sync.busy = false;
       renderSyncStatus();
       showToast("OneDrive wurde abgemeldet.");
@@ -1138,7 +1236,7 @@
       clearOneDriveMsalCookies();
       state.sync.account = null;
       state.sync.busy = false;
-      setSyncStatus("local", "Nicht angemeldet", "Deine Einkaufsliste, Lesezeichen, geteilten Mahlzeiten und Rezepte werden lokal auf diesem Gerät gespeichert.");
+      setSyncStatus("local", "Nicht angemeldet", "Deine Einkaufsliste, Lesezeichen, geteilten Mahlzeiten und Lebensmittel sowie Rezepte werden lokal auf diesem Gerät gespeichert.");
       showToast("OneDrive wurde lokal getrennt.");
       forceOneDriveLogoutReload();
     }
@@ -1192,7 +1290,7 @@
         state.sync.account = null;
         state.sync.allowInteractiveTokenRedirect = false;
         state.sync.msal.setActiveAccount?.(null);
-        setSyncStatus("local", "Nicht angemeldet", "Deine Einkaufsliste, Lesezeichen, geteilten Mahlzeiten und Rezepte werden lokal auf diesem Gerät gespeichert.");
+        setSyncStatus("local", "Nicht angemeldet", "Deine Einkaufsliste, Lesezeichen, geteilten Mahlzeiten und Lebensmittel sowie Rezepte werden lokal auf diesem Gerät gespeichert.");
         return;
       }
       const redirectResponse = await state.sync.msal.handleRedirectPromise();
@@ -1205,7 +1303,7 @@
         state.sync.msal.setActiveAccount(state.sync.account);
         await syncFromOneDrive();
       } else {
-        setSyncStatus("local", "Nicht angemeldet", "Deine Einkaufsliste, Lesezeichen, geteilten Mahlzeiten und Rezepte werden lokal auf diesem Gerät gespeichert. Melde dich an, um OneDrive zu nutzen.");
+        setSyncStatus("local", "Nicht angemeldet", "Deine Einkaufsliste, Lesezeichen, geteilten Mahlzeiten und Lebensmittel sowie Rezepte werden lokal auf diesem Gerät gespeichert. Melde dich an, um OneDrive zu nutzen.");
       }
     } catch (error) {
       if (hasOneDriveManualLogout()) {
@@ -1213,7 +1311,7 @@
         clearOneDriveMsalCache();
         clearOneDriveMsalCookies();
         state.sync.account = null;
-        setSyncStatus("local", "Nicht angemeldet", "Deine Einkaufsliste, Lesezeichen, geteilten Mahlzeiten und Rezepte werden lokal auf diesem Gerät gespeichert.");
+        setSyncStatus("local", "Nicht angemeldet", "Deine Einkaufsliste, Lesezeichen, geteilten Mahlzeiten und Lebensmittel sowie Rezepte werden lokal auf diesem Gerät gespeichert.");
         return;
       }
       const accounts = state.sync.msal?.getAllAccounts?.() || [];
@@ -1243,19 +1341,29 @@
     dom.recipeCategoryFilter.insertAdjacentHTML("beforeend", categoryOptions);
   }
 
-  function populateRecipeFoodFilter() {
-    const currentValue = state.recipeFoodId;
-    const foodsWithRecipes = [...new Set(cleanRecipes(state.recipes).map((recipe) => recipe.foodId))]
+  function populateRecipeItemFilter() {
+    const currentValue = state.recipeItemKey;
+    const recipes = cleanRecipes(state.recipes);
+    const mealsWithRecipes = [...new Set(recipes.filter((recipe) => recipe.itemType === "meal").map((recipe) => recipe.itemId))]
+      .map((mealId) => meals.find((meal) => meal.id === mealId))
+      .filter(Boolean)
+      .sort((left, right) => left.situation.localeCompare(right.situation, "de", { sensitivity: "base" }));
+    const foodsWithRecipes = [...new Set(recipes.filter((recipe) => recipe.itemType === "food").map((recipe) => recipe.itemId))]
       .map((foodId) => foodById.get(foodId))
       .filter(Boolean)
       .sort((left, right) => left.name.localeCompare(right.name, "de", { sensitivity: "base" }));
-    dom.recipeFoodFilter.innerHTML = '<option value="">Alle Lebensmittel</option>'
-      + foodsWithRecipes.map((food) => `<option value="${food.id}">${escapeHtml(food.name)}</option>`).join("");
-    if (currentValue && foodsWithRecipes.some((food) => String(food.id) === currentValue)) {
-      dom.recipeFoodFilter.value = currentValue;
+    dom.recipeItemFilter.innerHTML = '<option value="">Alle Mahlzeiten und Lebensmittel</option>'
+      + (mealsWithRecipes.length ? `<optgroup label="Mahlzeiten">${mealsWithRecipes.map((meal) => `<option value="meal:${meal.id}">${escapeHtml(meal.situation)}</option>`).join("")}</optgroup>` : "")
+      + (foodsWithRecipes.length ? `<optgroup label="Lebensmittel">${foodsWithRecipes.map((food) => `<option value="food:${food.id}">${escapeHtml(food.name)}</option>`).join("")}</optgroup>` : "");
+    const validValues = new Set([
+      ...mealsWithRecipes.map((meal) => `meal:${meal.id}`),
+      ...foodsWithRecipes.map((food) => `food:${food.id}`),
+    ]);
+    if (currentValue && validValues.has(currentValue)) {
+      dom.recipeItemFilter.value = currentValue;
     } else {
-      state.recipeFoodId = "";
-      dom.recipeFoodFilter.value = "";
+      state.recipeItemKey = "";
+      dom.recipeItemFilter.value = "";
     }
   }
 
@@ -1285,10 +1393,15 @@
       </button>`;
   }
 
-  function renderFoodCard(food) {
+  function renderFoodCard(food, options = {}) {
     const selected = state.selected.has(food.id);
     return `
-      <article class="food-card${selected ? " is-selected" : ""}" data-id="${food.id}">
+      <article class="food-card${selected ? " is-selected" : ""}${options.isShareTarget ? " is-share-target" : ""}" data-id="${food.id}"${options.isShareTarget ? ' tabindex="-1"' : ""}>
+        ${options.isShareView ? `
+          <label class="share-select-control food-share-select-control">
+            <input type="checkbox" data-shared-food-select value="${food.id}"${options.isShareSelected ? " checked" : ""} aria-label="${escapeHtml(food.name)} zum Entfernen auswählen" />
+            <span>${options.isShareSelected ? "Ausgewählt" : "Zum Entfernen auswählen"}</span>
+          </label>` : ""}
         <button class="select-food" type="button" aria-label="${escapeHtml(food.name)} ${selected ? "von der Einkaufsliste entfernen" : "zur Einkaufsliste hinzufügen"}" aria-pressed="${selected}"></button>
         <div class="food-card-body">
           <div class="food-card-top">
@@ -1311,8 +1424,11 @@
             <div class="food-card-actions">
               <button class="details-button" type="button">Details →</button>
               <button class="food-meals-button" type="button" aria-label="Mahlzeiten mit ${escapeHtml(food.name)} anzeigen">Mahlzeiten →</button>
-              <button class="food-recipes-button" type="button" aria-label="Eigene Rezepte für ${escapeHtml(food.name)} verwalten">meine Rezepte →</button>
             </div>
+          </div>
+          <div class="food-personal-actions">
+            <button class="food-share-button" type="button" data-share-food-id="${food.id}" aria-label="Teilen-Link für ${escapeHtml(food.name)} kopieren">zum Teilen →</button>
+            <button class="food-recipes-button" type="button" aria-label="Eigene Rezepte für ${escapeHtml(food.name)} verwalten">meine Rezepte →</button>
           </div>
         </div>
       </article>`;
@@ -1369,13 +1485,11 @@
   function resetRecipeFilters() {
     state.recipeSearch = "";
     state.recipeCategory = "";
-    state.recipeFoodId = "";
-    state.recipeSort = "newest";
+    state.recipeItemKey = "";
 
     dom.recipeSearchInput.value = "";
     dom.recipeCategoryFilter.selectedIndex = 0;
-    dom.recipeFoodFilter.selectedIndex = 0;
-    dom.recipeDateSort.value = "newest";
+    dom.recipeItemFilter.selectedIndex = 0;
 
     renderRecipeOverview();
   }
@@ -1424,7 +1538,7 @@
     renderShoppingList();
     renderMeals();
     renderBookmarks();
-    renderSharedMeals();
+    renderShares();
   }
 
   function toggleBookmark(kind, id) {
@@ -1439,7 +1553,7 @@
     renderFoods();
     renderMeals();
     renderBookmarks();
-    renderSharedMeals();
+    renderShares();
     showToast(wasBookmarked ? "Lesezeichen wurde entfernt." : "Lesezeichen wurde gesetzt.");
   }
 
@@ -1472,7 +1586,7 @@
     renderFoods();
     renderShoppingList();
     renderMeals();
-    renderSharedMeals();
+    renderShares();
     showToast(addedCount ? `${addedCount} Zutaten wurden auf die Liste gesetzt.` : "Alle Zutaten sind bereits auf der Liste.");
   }
 
@@ -1646,11 +1760,34 @@
       </article>`;
   }
 
-  function openFoodRecipes(foodId, editRecipeId = "") {
-    const food = foods.find((item) => item.id === foodId);
-    if (!food) return;
+  function recipeTarget(itemType, itemId) {
+    if (itemType === "meal") {
+      const meal = meals.find((item) => item.id === itemId);
+      return meal ? {
+        itemType: "meal",
+        itemId: meal.id,
+        name: meal.situation,
+        subtitle: "Speichere Links, eigene Notizen oder ganze Rezepte passend zu dieser Mahlzeit.",
+        detail: meal.date ? `Mahlzeit vom ${formatMealDate(meal.date)}` : "Mahlzeit",
+        icon: icon("meal"),
+      } : null;
+    }
+    const food = foodById.get(itemId);
+    return food ? {
+      itemType: "food",
+      itemId: food.id,
+      name: food.name,
+      subtitle: "Speichere Links, eigene Notizen oder ganze Rezepte passend zu diesem Lebensmittel.",
+      detail: food.subcategory,
+      icon: categoryIcon(food.category),
+    } : null;
+  }
+
+  function openRecipes(itemType, itemId, editRecipeId = "") {
+    const target = recipeTarget(itemType, itemId);
+    if (!target) return;
     const recipes = cleanRecipes(state.recipes)
-      .filter((recipe) => recipe.foodId === foodId)
+      .filter((recipe) => recipe.itemType === target.itemType && recipe.itemId === target.itemId)
       .sort((left, right) => String(right.updatedAt).localeCompare(String(left.updatedAt)));
     const recipeToEdit = recipes.find((recipe) => recipe.id === editRecipeId) || null;
     dom.detailDialog.classList.remove("is-image-dialog");
@@ -1658,11 +1795,11 @@
     dom.detailDialog.classList.add("is-recipe-dialog");
     dom.detailContent.innerHTML = `
       <div class="detail-content recipe-content">
-        <div class="detail-icon">${categoryIcon(food.category)}</div>
-        <p class="eyebrow">${escapeHtml(food.name)}</p>
+        <div class="detail-icon">${target.icon}</div>
+        <p class="eyebrow">${escapeHtml(target.name)}</p>
         <h2>Meine Rezepte</h2>
-        <p class="detail-subtitle">Speichere Links, eigene Notizen oder ganze Rezepte passend zu diesem Lebensmittel.</p>
-        <form class="recipe-form" data-food-recipe-form data-food-id="${food.id}">
+        <p class="detail-subtitle">${escapeHtml(target.subtitle)}</p>
+        <form class="recipe-form" data-recipe-form data-recipe-item-type="${target.itemType}" data-recipe-item-id="${target.itemId}">
           <input type="hidden" name="recipe-id" value="${escapeHtml(recipeToEdit?.id || "")}" />
           <label class="recipe-field">
             <span>Überschrift:</span>
@@ -1696,9 +1833,19 @@
     if (recipeToEdit) dom.detailContent.querySelector('[name="recipe-title"]')?.focus();
   }
 
-  function saveFoodRecipe(form) {
-    const foodId = Number(form.dataset.foodId);
-    if (!validFoodIds.has(foodId)) return;
+  function openFoodRecipes(foodId, editRecipeId = "") {
+    openRecipes("food", foodId, editRecipeId);
+  }
+
+  function openMealRecipes(mealId, editRecipeId = "") {
+    openRecipes("meal", mealId, editRecipeId);
+  }
+
+  function saveRecipe(form) {
+    const itemType = form.dataset.recipeItemType === "meal" ? "meal" : "food";
+    const itemId = Number(form.dataset.recipeItemId);
+    const validItemIds = itemType === "meal" ? validMealIds : validFoodIds;
+    if (!validItemIds.has(itemId)) return;
     const recipeId = String(form.elements["recipe-id"].value || "");
     const title = cleanRecipeText(form.elements["recipe-title"].value, 160);
     const url = cleanRecipeText(form.elements["recipe-url"].value, 2048);
@@ -1708,11 +1855,12 @@
       form.reportValidity();
       return;
     }
-    const existing = state.recipes.find((recipe) => recipe.id === recipeId && recipe.foodId === foodId);
+    const existing = state.recipes.find((recipe) => recipe.id === recipeId && recipe.itemType === itemType && recipe.itemId === itemId);
     const timestamp = nowIso();
     const savedRecipe = {
       id: existing?.id || createRecipeId(),
-      foodId,
+      itemType,
+      itemId,
       title,
       url,
       notes,
@@ -1724,7 +1872,7 @@
       : [...state.recipes, savedRecipe]);
     persistSelection();
     renderRecipeOverview();
-    openFoodRecipes(foodId);
+    openRecipes(itemType, itemId);
     showToast(existing ? "Rezept wurde geändert." : "Rezept wurde gespeichert.");
   }
 
@@ -1739,7 +1887,7 @@
         state.recipes = state.recipes.filter((item) => item.id !== recipe.id);
         persistSelection();
         renderRecipeOverview();
-        if (reopenManager) openFoodRecipes(recipe.foodId);
+        if (reopenManager) openRecipes(recipe.itemType, recipe.itemId);
         showToast("Rezept wurde gelöscht.");
       },
     });
@@ -1866,6 +2014,9 @@
           <button class="meal-share-button" type="button" data-share-meal-id="${meal.id}" aria-label="Teilen-Link für ${escapeHtml(meal.situation)} kopieren">zum Teilen →</button>
           <button class="meal-offers-button" type="button" data-offers-meal-id="${meal.id}" aria-label="Sonderangebotssuchtext für ${escapeHtml(meal.situation)} kopieren">Suche Sonderangebote →</button>
         </div>
+        <div class="meal-personal-actions">
+          <button class="meal-personal-recipes-button" type="button" data-open-meal-recipes="${meal.id}" aria-label="Eigene Rezepte für ${escapeHtml(meal.situation)} verwalten">meine Rezepte →</button>
+        </div>
       </article>`;
   }
 
@@ -1927,18 +2078,18 @@
     }).format(new Date(timestamp))}`;
   }
 
-  function renderRecipeOverviewCard(recipe, food) {
+  function renderRecipeOverviewCard(recipe, target) {
     const url = safeRecipeUrl(recipe.url);
     return `
       <article class="recipe-overview-card" data-recipe-id="${escapeHtml(recipe.id)}">
         <div class="recipe-overview-card-head">
           <div>
-            <button class="recipe-food-link" type="button" data-open-recipe-food-id="${food.id}">${escapeHtml(food.name)}</button>
+            <button class="recipe-food-link" type="button" data-open-recipe-item-type="${target.itemType}" data-open-recipe-item-id="${target.itemId}">${escapeHtml(target.name)}</button>
             <h3>${escapeHtml(recipeDisplayTitle(recipe))}</h3>
           </div>
           <span class="recipe-created-date">${escapeHtml(formatRecipeCreatedAt(recipe))}</span>
         </div>
-        ${food.subcategory ? `<p class="recipe-food-subcategory">${escapeHtml(food.subcategory)}</p>` : ""}
+        ${target.detail ? `<p class="recipe-food-subcategory">${escapeHtml(target.detail)}</p>` : ""}
         ${url ? `<a class="recipe-overview-link" href="${escapeHtml(url)}" target="_blank" rel="noreferrer">Rezept öffnen ↗</a>` : recipe.url ? `<p class="recipe-overview-url">${escapeHtml(recipe.url)}</p>` : ""}
         ${recipe.notes ? `<div class="recipe-overview-notes">${escapeHtml(recipe.notes).replace(/\n/g, "<br>")}</div>` : ""}
         <div class="recipe-overview-actions">
@@ -1948,66 +2099,70 @@
       </article>`;
   }
 
+  function recipeTargetCategories(recipe) {
+    if (recipe.itemType === "meal") {
+      const meal = meals.find((item) => item.id === recipe.itemId);
+      return meal ? new Set(mealIngredientFoods(meal).map((food) => food.category)) : new Set();
+    }
+    const food = foodById.get(recipe.itemId);
+    return new Set(food ? [food.category] : []);
+  }
+
+  function recipeOverviewEmpty(itemType, hasMatchingFilters) {
+    const itemLabel = itemType === "meal" ? "Mahlzeit" : "Lebensmittel";
+    return `
+      <div class="recipe-overview-empty">
+        <span class="button-icon">${icon("recipe")}</span>
+        <strong>${hasMatchingFilters ? `Keine passenden Rezepte für ${itemLabel === "Mahlzeit" ? "Mahlzeiten" : "Lebensmittel"} gefunden.` : `Noch keine Rezepte für ${itemLabel === "Mahlzeit" ? "Mahlzeiten" : "Lebensmittel"} gespeichert.`}</strong>
+        <p>${hasMatchingFilters ? "Passe die Suche oder Auswahl an und versuche es erneut." : `Klicke bei ${itemLabel === "Mahlzeit" ? "einer Mahlzeit" : "einem Lebensmittel"} auf „meine Rezepte →“, um das erste Rezept hinzuzufügen.`}</p>
+      </div>`;
+  }
+
   function renderRecipeOverview() {
-    populateRecipeFoodFilter();
+    populateRecipeItemFilter();
     const term = state.recipeSearch.trim().toLocaleLowerCase("de");
-    const sortDirection = state.recipeSort === "oldest" ? 1 : -1;
     const matchingRecipes = cleanRecipes(state.recipes)
-      .map((recipe) => ({ recipe, food: foodById.get(recipe.foodId) }))
-      .filter(({ recipe, food }) => {
-        if (!food) return false;
-        const searchable = `${recipe.title} ${recipe.url} ${recipe.notes} ${food.name} ${food.category} ${food.subcategory}`.toLocaleLowerCase("de");
+      .map((recipe) => ({ recipe, target: recipeTarget(recipe.itemType, recipe.itemId) }))
+      .filter(({ recipe, target }) => {
+        if (!target) return false;
+        const searchable = `${recipe.title} ${recipe.url} ${recipe.notes} ${target.name} ${target.detail}`.toLocaleLowerCase("de");
         return (!term || searchable.includes(term))
-          && (!state.recipeCategory || food.category === state.recipeCategory)
-          && (!state.recipeFoodId || String(food.id) === state.recipeFoodId);
+          && (!state.recipeCategory || recipeTargetCategories(recipe).has(state.recipeCategory))
+          && (!state.recipeItemKey || `${recipe.itemType}:${recipe.itemId}` === state.recipeItemKey);
       })
       .sort((left, right) => {
-        const categoryOrder = left.food.category.localeCompare(right.food.category, "de", { sensitivity: "base" });
-        if (categoryOrder) return categoryOrder;
-        const dateOrder = (recipeCreatedTimestamp(left.recipe) - recipeCreatedTimestamp(right.recipe)) * sortDirection;
+        const itemOrder = right.recipe.itemId - left.recipe.itemId;
+        if (itemOrder) return itemOrder;
+        const dateOrder = recipeCreatedTimestamp(right.recipe) - recipeCreatedTimestamp(left.recipe);
         if (dateOrder) return dateOrder;
-        return left.food.name.localeCompare(right.food.name, "de", { sensitivity: "base" });
+        return left.target.name.localeCompare(right.target.name, "de", { sensitivity: "base" });
       });
 
     dom.recipeResultCount.textContent = `${matchingRecipes.length} ${matchingRecipes.length === 1 ? "Rezept" : "Rezepte"}`;
-    if (!matchingRecipes.length) {
-      const hasRecipes = state.recipes.length > 0;
-      dom.recipeGroups.innerHTML = `
-        <div class="recipe-overview-empty">
-          <span class="button-icon">${icon("recipe")}</span>
-          <strong>${hasRecipes ? "Keine passenden Rezepte gefunden." : "Noch keine eigenen Rezepte gespeichert."}</strong>
-          <p>${hasRecipes ? "Passe die Suche oder Auswahl an und versuche es erneut." : "Füge über eine Lebensmittelkarte dein erstes Rezept hinzu."}</p>
-        </div>`;
-      return;
-    }
-
-    const groups = matchingRecipes.reduce((map, entry) => {
-      if (!map.has(entry.food.category)) map.set(entry.food.category, []);
-      map.get(entry.food.category).push(entry);
-      return map;
-    }, new Map());
-    dom.recipeGroups.innerHTML = [...groups].map(([category, entries]) => `
-      <section class="recipe-category-section" aria-labelledby="recipe-category-${escapeHtml(category).replace(/[^a-z0-9]+/gi, "-")}">
-        <div class="recipe-category-heading">
-          <div class="recipe-category-title">
-            <span class="category-symbol">${categoryIcon(category)}</span>
-            <h2 id="recipe-category-${escapeHtml(category).replace(/[^a-z0-9]+/gi, "-")}">${escapeHtml(category)}</h2>
-          </div>
-          <span class="bookmark-count">${entries.length} ${entries.length === 1 ? "Rezept" : "Rezepte"}</span>
-        </div>
-        <div class="recipe-overview-grid">
-          ${entries.map(({ recipe, food }) => renderRecipeOverviewCard(recipe, food)).join("")}
-        </div>
-      </section>`).join("");
+    const mealRecipes = matchingRecipes.filter(({ recipe }) => recipe.itemType === "meal");
+    const foodRecipes = matchingRecipes.filter(({ recipe }) => recipe.itemType === "food");
+    dom.recipeMealCount.textContent = `${mealRecipes.length} ${mealRecipes.length === 1 ? "Rezept" : "Rezepte"}`;
+    dom.recipeFoodCount.textContent = `${foodRecipes.length} ${foodRecipes.length === 1 ? "Rezept" : "Rezepte"}`;
+    dom.recipeMealGrid.innerHTML = mealRecipes.length
+      ? mealRecipes.map(({ recipe, target }) => renderRecipeOverviewCard(recipe, target)).join("")
+      : recipeOverviewEmpty("meal", Boolean(term || state.recipeCategory || state.recipeItemKey));
+    dom.recipeFoodGrid.innerHTML = foodRecipes.length
+      ? foodRecipes.map(({ recipe, target }) => renderRecipeOverviewCard(recipe, target)).join("")
+      : recipeOverviewEmpty("food", Boolean(term || state.recipeCategory || state.recipeItemKey));
   }
 
-  function renderSharedMeals() {
+  function renderShares() {
     state.selectedSharedMeals = new Set([...state.selectedSharedMeals].filter((id) => state.sharedMeals.has(id)));
+    state.selectedSharedFoods = new Set([...state.selectedSharedFoods].filter((id) => state.sharedFoods.has(id)));
     const sharedMeals = meals
       .filter((meal) => state.sharedMeals.has(meal.id))
-      .reverse();
+      .sort((left, right) => right.id - left.id);
+    const sharedFoods = foods
+      .filter((food) => state.sharedFoods.has(food.id))
+      .sort((left, right) => right.id - left.id);
 
     dom.sharedMealCount.textContent = `${sharedMeals.length} ${sharedMeals.length === 1 ? "Mahlzeit" : "Mahlzeiten"}`;
+    dom.sharedFoodCount.textContent = `${sharedFoods.length} ${sharedFoods.length === 1 ? "Lebensmittel" : "Lebensmittel"}`;
     dom.sharedMealGrid.innerHTML = sharedMeals.length
       ? sharedMeals.map((meal) => renderMealCard(meal, {
         isShareView: true,
@@ -2015,13 +2170,23 @@
         isShareTarget: meal.id === state.sharedTargetMealId,
       })).join("")
       : '<div class="bookmark-empty share-empty"><span class="button-icon">' + icon("share") + '</span><strong>Noch keine Mahlzeit geteilt</strong><p>Klicke bei einer Mahlzeit auf „zum Teilen →“. Der direkte Link wird kopiert und die Mahlzeit erscheint hier.</p></div>';
-    renderSharedMealSelection();
+    dom.sharedFoodGrid.innerHTML = sharedFoods.length
+      ? sharedFoods.map((food) => renderFoodCard(food, {
+        isShareView: true,
+        isShareSelected: state.selectedSharedFoods.has(food.id),
+        isShareTarget: food.id === state.sharedTargetFoodId,
+      })).join("")
+      : '<div class="bookmark-empty share-empty"><span class="button-icon">' + icon("share") + '</span><strong>Noch kein Lebensmittel geteilt</strong><p>Klicke bei einem Lebensmittel auf „zum Teilen →“. Der direkte Link wird kopiert und das Lebensmittel erscheint hier.</p></div>';
+    renderSharedSelections();
   }
 
-  function renderSharedMealSelection() {
-    const count = state.selectedSharedMeals.size;
-    dom.sharedMealSelectionCount.textContent = `${count} ausgewählt`;
-    dom.removeSelectedSharedMeals.disabled = count === 0;
+  function renderSharedSelections() {
+    const mealCount = state.selectedSharedMeals.size;
+    const foodCount = state.selectedSharedFoods.size;
+    dom.sharedMealSelectionCount.textContent = `${mealCount} ausgewählt`;
+    dom.sharedFoodSelectionCount.textContent = `${foodCount} ausgewählt`;
+    dom.removeSelectedSharedMeals.disabled = mealCount === 0;
+    dom.removeSelectedSharedFoods.disabled = foodCount === 0;
   }
 
   function renderInsights() {
@@ -2062,9 +2227,10 @@
 
   function clearAppUrlHash() {
     const url = new URL(window.location.href);
-    if (!url.hash && !url.searchParams.has(sharedMealUrlParam)) return;
+    if (!url.hash && !url.searchParams.has(sharedMealUrlParam) && !url.searchParams.has(sharedFoodUrlParam)) return;
     url.hash = "";
     url.searchParams.delete(sharedMealUrlParam);
+    url.searchParams.delete(sharedFoodUrlParam);
     const cleanUrl = `${url.pathname}${url.search}`;
     if (window.history?.replaceState) {
       window.history.replaceState(null, document.title, cleanUrl);
@@ -2152,9 +2318,23 @@
     return validMealIds.has(id) ? id : null;
   }
 
+  function sharedFoodIdFromUrl() {
+    const id = Number(new URL(window.location.href).searchParams.get(sharedFoodUrlParam));
+    return validFoodIds.has(id) ? id : null;
+  }
+
   function scrollSharedMealIntoView(mealId) {
     requestAnimationFrame(() => {
       const target = dom.sharedMealGrid.querySelector(`.meal-card[data-id="${mealId}"]`);
+      if (!target) return;
+      target.scrollIntoView({ behavior: "auto", block: "start" });
+      target.focus({ preventScroll: true });
+    });
+  }
+
+  function scrollSharedFoodIntoView(foodId) {
+    requestAnimationFrame(() => {
+      const target = dom.sharedFoodGrid.querySelector(`.food-card[data-id="${foodId}"]`);
       if (!target) return;
       target.scrollIntoView({ behavior: "auto", block: "start" });
       target.focus({ preventScroll: true });
@@ -2168,9 +2348,21 @@
       state.pendingSharedMeals.add(sharedMealId);
       state.sharedTargetMealId = sharedMealId;
       persistSelection();
-      renderSharedMeals();
+      renderShares();
       setView("shares", { scroll: false });
       scrollSharedMealIntoView(sharedMealId);
+      return;
+    }
+
+    const sharedFoodId = sharedFoodIdFromUrl();
+    if (sharedFoodId) {
+      state.sharedFoods.add(sharedFoodId);
+      state.pendingSharedFoods.add(sharedFoodId);
+      state.sharedTargetFoodId = sharedFoodId;
+      persistSelection();
+      renderShares();
+      setView("shares", { scroll: false });
+      scrollSharedFoodIntoView(sharedFoodId);
       return;
     }
 
@@ -2310,14 +2502,35 @@
     return url.toString();
   }
 
+  function foodShareUrl(foodId) {
+    const url = new URL(window.location.href);
+    url.search = "";
+    url.searchParams.set(sharedFoodUrlParam, String(foodId));
+    url.hash = "teilen";
+    return url.toString();
+  }
+
   async function shareMeal(mealId) {
     const meal = meals.find((item) => item.id === mealId);
     if (!meal) return;
     state.sharedMeals.add(mealId);
     state.sharedTargetMealId = mealId;
     persistSelection();
-    renderSharedMeals();
+    renderShares();
     const shareUrl = mealShareUrl(mealId);
+    const copied = await copyText(shareUrl);
+    if (window.history?.replaceState) window.history.replaceState(null, document.title, shareUrl);
+    showToast(copied ? "Teilen-Link wurde kopiert." : "Teilen-Link steht jetzt in der Adresszeile.");
+  }
+
+  async function shareFood(foodId) {
+    const food = foodById.get(foodId);
+    if (!food) return;
+    state.sharedFoods.add(foodId);
+    state.sharedTargetFoodId = foodId;
+    persistSelection();
+    renderShares();
+    const shareUrl = foodShareUrl(foodId);
     const copied = await copyText(shareUrl);
     if (window.history?.replaceState) window.history.replaceState(null, document.title, shareUrl);
     showToast(copied ? "Teilen-Link wurde kopiert." : "Teilen-Link steht jetzt in der Adresszeile.");
@@ -2331,8 +2544,20 @@
     if (ids.includes(state.sharedTargetMealId)) state.sharedTargetMealId = null;
     if (ids.includes(sharedMealIdFromUrl())) clearAppUrlHash();
     persistSelection();
-    renderSharedMeals();
+    renderShares();
     showToast(ids.length === 1 ? "Mahlzeit wurde aus Teilen entfernt." : `${ids.length} Mahlzeiten wurden aus Teilen entfernt.`);
+  }
+
+  function removeSelectedSharedFoodEntries() {
+    const ids = [...state.selectedSharedFoods].filter((id) => state.sharedFoods.has(id));
+    if (!ids.length) return;
+    ids.forEach((id) => state.sharedFoods.delete(id));
+    state.selectedSharedFoods.clear();
+    if (ids.includes(state.sharedTargetFoodId)) state.sharedTargetFoodId = null;
+    if (ids.includes(sharedFoodIdFromUrl())) clearAppUrlHash();
+    persistSelection();
+    renderShares();
+    showToast(ids.length === 1 ? "Lebensmittel wurde aus Teilen entfernt." : `${ids.length} Lebensmittel wurden aus Teilen entfernt.`);
   }
 
   function openConfirm({ title, text, cancel = "Abbrechen", accept = "Liste leeren", tone = "danger", cancelAction = null, action }) {
@@ -2355,7 +2580,7 @@
     renderFoods();
     renderShoppingList();
     renderMeals();
-    renderSharedMeals();
+    renderShares();
     closeShopping();
     showToast("Alle Markierungen wurden gelöscht.");
   }
@@ -2368,7 +2593,7 @@
     renderMeals();
     renderBookmarks();
     renderRecipeOverview();
-    renderSharedMeals();
+    renderShares();
     showToast("Alle Lesezeichen wurden gelöscht.");
   }
 
@@ -2406,16 +2631,26 @@
       const guideImageButton = event.target.closest("[data-meal-guide-step]");
       if (guideImageButton) openMealGuideImage(Number(guideImageButton.dataset.mealGuideStep));
     });
-    [dom.foodGrid, dom.bookmarkedFoodGrid].forEach((grid) => grid.addEventListener("click", (event) => {
+    [dom.foodGrid, dom.bookmarkedFoodGrid, dom.sharedFoodGrid].forEach((grid) => grid.addEventListener("click", (event) => {
       const card = event.target.closest(".food-card");
       if (!card) return;
       const id = Number(card.dataset.id);
+      const shareButton = event.target.closest("[data-share-food-id]");
+      if (shareButton) {
+        void shareFood(Number(shareButton.dataset.shareFoodId));
+        return;
+      }
       if (event.target.closest(".select-food")) toggleFood(id);
       if (event.target.closest(".details-button")) openDetails(id);
       if (event.target.closest(".food-meals-button")) applyMealSearchFromFood(foods.find((food) => food.id === id)?.name);
       if (event.target.closest(".food-recipes-button")) openFoodRecipes(id);
     }));
     [dom.mealGrid, dom.bookmarkedMealGrid, dom.sharedMealGrid].forEach((grid) => grid.addEventListener("click", (event) => {
+      const personalRecipeButton = event.target.closest("[data-open-meal-recipes]");
+      if (personalRecipeButton) {
+        openMealRecipes(Number(personalRecipeButton.dataset.openMealRecipes));
+        return;
+      }
       const offersButton = event.target.closest("[data-offers-meal-id]");
       if (offersButton) {
         requestMealAction(Number(offersButton.dataset.offersMealId), "offers");
@@ -2465,30 +2700,26 @@
       state.recipeCategory = dom.recipeCategoryFilter.value;
       renderRecipeOverview();
     });
-    dom.recipeFoodFilter.addEventListener("change", () => {
-      state.recipeFoodId = dom.recipeFoodFilter.value;
-      renderRecipeOverview();
-    });
-    dom.recipeDateSort.addEventListener("change", () => {
-      state.recipeSort = dom.recipeDateSort.value;
+    dom.recipeItemFilter.addEventListener("change", () => {
+      state.recipeItemKey = dom.recipeItemFilter.value;
       renderRecipeOverview();
     });
     dom.resetRecipeFilters.addEventListener("click", resetRecipeFilters);
-    dom.recipeGroups.addEventListener("click", (event) => {
-      const foodButton = event.target.closest("[data-open-recipe-food-id]");
-      if (foodButton) {
-        openFoodRecipes(Number(foodButton.dataset.openRecipeFoodId));
+    [dom.recipeMealGrid, dom.recipeFoodGrid].forEach((grid) => grid.addEventListener("click", (event) => {
+      const itemButton = event.target.closest("[data-open-recipe-item-type][data-open-recipe-item-id]");
+      if (itemButton) {
+        openRecipes(itemButton.dataset.openRecipeItemType, Number(itemButton.dataset.openRecipeItemId));
         return;
       }
       const editButton = event.target.closest("[data-edit-recipe-id]");
       if (editButton) {
         const recipe = state.recipes.find((item) => item.id === editButton.dataset.editRecipeId);
-        if (recipe) openFoodRecipes(recipe.foodId, recipe.id);
+        if (recipe) openRecipes(recipe.itemType, recipe.itemId, recipe.id);
         return;
       }
       const deleteButton = event.target.closest("[data-delete-recipe-id]");
       if (deleteButton) requestRecipeDelete(deleteButton.dataset.deleteRecipeId, { reopenManager: false });
-    });
+    }));
     [[dom.categoryFilter, "category"], [dom.scoreFilter, "score"], [dom.priorityFilter, "priority"]].forEach(([element, key]) => {
       element.addEventListener("change", () => {
         state[key] = element.value;
@@ -2551,7 +2782,17 @@
       if (checkbox.checked) state.selectedSharedMeals.add(mealId);
       else state.selectedSharedMeals.delete(mealId);
       checkbox.nextElementSibling.textContent = checkbox.checked ? "Ausgewählt" : "Zum Entfernen auswählen";
-      renderSharedMealSelection();
+      renderSharedSelections();
+    });
+    dom.sharedFoodGrid.addEventListener("change", (event) => {
+      const checkbox = event.target.closest("[data-shared-food-select]");
+      if (!checkbox) return;
+      const foodId = Number(checkbox.value);
+      if (!state.sharedFoods.has(foodId)) return;
+      if (checkbox.checked) state.selectedSharedFoods.add(foodId);
+      else state.selectedSharedFoods.delete(foodId);
+      checkbox.nextElementSibling.textContent = checkbox.checked ? "Ausgewählt" : "Zum Entfernen auswählen";
+      renderSharedSelections();
     });
     dom.removeSelectedSharedMeals.addEventListener("click", () => {
       const count = state.selectedSharedMeals.size;
@@ -2565,12 +2806,24 @@
         action: removeSelectedSharedMealEntries,
       });
     });
+    dom.removeSelectedSharedFoods.addEventListener("click", () => {
+      const count = state.selectedSharedFoods.size;
+      if (!count) return;
+      openConfirm({
+        title: count === 1 ? "Lebensmittel aus Teilen entfernen?" : `${count} Lebensmittel aus Teilen entfernen?`,
+        text: count === 1
+          ? "Das ausgewählte Lebensmittel wird aus deinem Bereich Teilen entfernt und bei OneDrive-Anmeldung auf deinen Geräten synchronisiert. Bereits versendete Links bleiben erreichbar."
+          : "Die ausgewählten Lebensmittel werden aus deinem Bereich Teilen entfernt und bei OneDrive-Anmeldung auf deinen Geräten synchronisiert. Bereits versendete Links bleiben erreichbar.",
+        accept: "Lebensmittel entfernen",
+        action: removeSelectedSharedFoodEntries,
+      });
+    });
     document.querySelector(".dialog-close").addEventListener("click", () => dom.detailDialog.close());
     dom.detailDialog.addEventListener("click", (event) => {
       const editRecipeButton = event.target.closest("[data-edit-recipe-id]");
       if (editRecipeButton) {
         const recipe = state.recipes.find((item) => item.id === editRecipeButton.dataset.editRecipeId);
-        if (recipe) openFoodRecipes(recipe.foodId, recipe.id);
+        if (recipe) openRecipes(recipe.itemType, recipe.itemId, recipe.id);
         return;
       }
       const deleteRecipeButton = event.target.closest("[data-delete-recipe-id]");
@@ -2580,8 +2833,8 @@
       }
       const cancelRecipeEdit = event.target.closest(".recipe-cancel-edit");
       if (cancelRecipeEdit) {
-        const form = cancelRecipeEdit.closest("[data-food-recipe-form]");
-        if (form) openFoodRecipes(Number(form.dataset.foodId));
+        const form = cancelRecipeEdit.closest("[data-recipe-form]");
+        if (form) openRecipes(form.dataset.recipeItemType, Number(form.dataset.recipeItemId));
         return;
       }
       const foodSearchButton = event.target.closest("[data-food-search]");
@@ -2592,7 +2845,7 @@
       if (event.target === dom.detailDialog) dom.detailDialog.close();
     });
     dom.detailDialog.addEventListener("input", (event) => {
-      const form = event.target.closest("[data-food-recipe-form]");
+      const form = event.target.closest("[data-recipe-form]");
       if (!form) return;
       const hasContent = ["recipe-title", "recipe-url", "recipe-notes"]
         .some((name) => String(form.elements[name].value || "").trim());
@@ -2606,10 +2859,10 @@
       form.querySelector(".meal-variation-action").disabled = count === 0;
     });
     dom.detailDialog.addEventListener("submit", (event) => {
-      const recipeForm = event.target.closest("[data-food-recipe-form]");
+      const recipeForm = event.target.closest("[data-recipe-form]");
       if (recipeForm) {
         event.preventDefault();
-        saveFoodRecipe(recipeForm);
+        saveRecipe(recipeForm);
         return;
       }
       const postalForm = event.target.closest("[data-meal-offers-postal-form]");
@@ -2696,7 +2949,7 @@
     renderMeals();
     renderBookmarks();
     renderRecipeOverview();
-    renderSharedMeals();
+    renderShares();
     renderInsights();
     bindEvents();
 

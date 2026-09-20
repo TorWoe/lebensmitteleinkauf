@@ -9,7 +9,7 @@
       content="Antientzündliche Lebensmittel entdecken, filtern und als Einkaufsliste speichern."
     />
     <title>Lebensmitteleinkauf</title>
-    <link rel="stylesheet" href="style.css?v=nav-order-20260919-1" />
+    <link rel="stylesheet" href="style.css?v=shared-food-meal-recipes-20260920-1" />
   </head>
   <body>
     <div class="app-shell">
@@ -48,7 +48,7 @@
             </button>
             <div class="sync-menu-panel" id="syncMenu" hidden>
               <strong id="syncMenuTitle">Nicht angemeldet</strong>
-              <span id="syncMenuText">Deine Einkaufsliste, Lesezeichen, geteilten Mahlzeiten und Rezepte werden lokal auf diesem Ger&auml;t gespeichert.
+              <span id="syncMenuText">Deine Einkaufsliste, Lesezeichen, geteilten Mahlzeiten und Lebensmittel sowie Rezepte werden lokal auf diesem Ger&auml;t gespeichert.
 Zuerst auf OneDrive anmelden klicken.
 Nur bei zu langer Anmeldedauer auf Anmeldung erneuern klicken.</span>
               <div class="sync-menu-actions">
@@ -240,8 +240,8 @@ Nur bei zu langer Anmeldedauer auf Anmeldung erneuern klicken.</span>
         <section class="view recipes-view" id="recipesView" data-view-panel="recipes">
           <div class="page-intro compact-intro recipe-overview-intro">
             <p class="eyebrow">Meine Rezepte</p>
-            <h1>Gesammelt.<br /><span>Nach Kategorien geordnet.</span></h1>
-            <p>Hier findest du alle eigenen Rezepte aus deinen Lebensmittelkarten. Suche im Inhalt oder grenze die Auswahl nach Kategorie und Lebensmittel ein.</p>
+            <h1>Gesammelt.<br /><span>Klar unterteilt.</span></h1>
+            <p>Hier findest du alle eigenen Rezepte aus deinen Mahlzeiten- und Lebensmittelkarten. Mahlzeiten stehen zuerst, danach folgen Lebensmittel.</p>
           </div>
 
           <div class="filter-panel recipe-filter-panel">
@@ -259,16 +259,9 @@ Nur bei zu langer Anmeldedauer auf Anmeldung erneuern klicken.</span>
                 </select>
               </label>
               <label>
-                <span class="sr-only">Lebensmittel für eigene Rezepte</span>
-                <select id="recipeFoodFilter">
-                  <option value="">Alle Lebensmittel</option>
-                </select>
-              </label>
-              <label>
-                <span class="sr-only">Sortierung nach Erfassungsdatum</span>
-                <select id="recipeDateSort">
-                  <option value="newest">Neueste zuerst</option>
-                  <option value="oldest">Älteste zuerst</option>
+                <span class="sr-only">Mahlzeit oder Lebensmittel für eigene Rezepte</span>
+                <select id="recipeItemFilter">
+                  <option value="">Alle Mahlzeiten und Lebensmittel</option>
                 </select>
               </label>
               <button class="reset-button recipe-reset-button" id="resetRecipeFilters" type="button">Zurücksetzen</button>
@@ -278,7 +271,27 @@ Nur bei zu langer Anmeldedauer auf Anmeldung erneuern klicken.</span>
           <div class="recipe-result-bar">
             <span id="recipeResultCount" aria-live="polite">0 Rezepte</span>
           </div>
-          <div class="recipe-category-list" id="recipeGroups" aria-live="polite"></div>
+          <section class="bookmark-section" aria-labelledby="recipeMealsTitle">
+            <div class="bookmark-section-heading">
+              <div>
+                <p class="eyebrow">Zuerst</p>
+                <h2 id="recipeMealsTitle">Mahlzeiten</h2>
+              </div>
+              <span class="bookmark-count" id="recipeMealCount">0 Rezepte</span>
+            </div>
+            <div class="recipe-overview-grid" id="recipeMealGrid" aria-live="polite"></div>
+          </section>
+
+          <section class="bookmark-section" aria-labelledby="recipeFoodsTitle">
+            <div class="bookmark-section-heading">
+              <div>
+                <p class="eyebrow">Danach</p>
+                <h2 id="recipeFoodsTitle">Lebensmittel</h2>
+              </div>
+              <span class="bookmark-count" id="recipeFoodCount">0 Rezepte</span>
+            </div>
+            <div class="recipe-overview-grid" id="recipeFoodGrid" aria-live="polite"></div>
+          </section>
         </section>
 
         <section class="view bookmarks-view" id="bookmarksView" data-view-panel="bookmarks">
@@ -356,21 +369,38 @@ Nur bei zu langer Anmeldedauer auf Anmeldung erneuern klicken.</span>
         <section class="view shares-view" id="sharesView" data-view-panel="shares">
           <div class="page-intro compact-intro share-intro">
             <p class="eyebrow">Teilen</p>
-            <h1>Gute Mahlzeiten.<br /><span>Einfach weitergeben.</span></h1>
-            <p>Hier erscheinen Mahlzeiten, deren Teilen-Link du erstellt oder geöffnet hast. Der Link führt direkt zur passenden Mahlzeit.</p>
+            <h1>Gute Auswahl.<br /><span>Einfach weitergeben.</span></h1>
+            <p>Hier erscheinen Mahlzeiten und Lebensmittel, deren Teilen-Link du erstellt oder geöffnet hast. Der Link führt direkt zum passenden Eintrag.</p>
           </div>
-          <div class="share-section-heading">
-            <div>
-              <p class="eyebrow">Geteilte Auswahl</p>
-              <h2>Mahlzeiten</h2>
+          <section class="bookmark-section" aria-labelledby="sharedMealsTitle">
+            <div class="bookmark-section-heading">
+              <div>
+                <p class="eyebrow">Zuerst</p>
+                <h2 id="sharedMealsTitle">Mahlzeiten</h2>
+              </div>
+              <span class="bookmark-count" id="sharedMealCount">0 Mahlzeiten</span>
             </div>
-            <span class="bookmark-count" id="sharedMealCount">0 Mahlzeiten</span>
-          </div>
-          <div class="share-selection-toolbar">
-            <span id="sharedMealSelectionCount" aria-live="polite">0 ausgewählt</span>
-            <button class="danger-button" id="removeSelectedSharedMeals" type="button" disabled>Ausgewählte entfernen</button>
-          </div>
-          <div class="meal-grid shared-meal-grid" id="sharedMealGrid" aria-live="polite"></div>
+            <div class="share-selection-toolbar">
+              <span id="sharedMealSelectionCount" aria-live="polite">0 ausgewählt</span>
+              <button class="danger-button" id="removeSelectedSharedMeals" type="button" disabled>Ausgewählte entfernen</button>
+            </div>
+            <div class="meal-grid shared-meal-grid" id="sharedMealGrid" aria-live="polite"></div>
+          </section>
+
+          <section class="bookmark-section" aria-labelledby="sharedFoodsTitle">
+            <div class="bookmark-section-heading">
+              <div>
+                <p class="eyebrow">Danach</p>
+                <h2 id="sharedFoodsTitle">Lebensmittel</h2>
+              </div>
+              <span class="bookmark-count" id="sharedFoodCount">0 Lebensmittel</span>
+            </div>
+            <div class="share-selection-toolbar">
+              <span id="sharedFoodSelectionCount" aria-live="polite">0 ausgewählt</span>
+              <button class="danger-button" id="removeSelectedSharedFoods" type="button" disabled>Ausgewählte entfernen</button>
+            </div>
+            <div class="food-grid shared-food-grid" id="sharedFoodGrid" aria-live="polite"></div>
+          </section>
         </section>
       </main>
 
@@ -443,6 +473,6 @@ Nur bei zu langer Anmeldedauer auf Anmeldung erneuern klicken.</span>
       document.write('<script src="data.js?v=' + Date.now() + '"><\/script>');
     </script>
     <script src="vendor/msal-browser.min.js?v=2.38.3"></script>
-    <script src="app.js?v=nav-order-20260919-1"></script>
+    <script src="app.js?v=shared-food-meal-recipes-20260920-1"></script>
   </body>
 </html>

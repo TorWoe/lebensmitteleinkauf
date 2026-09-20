@@ -776,7 +776,7 @@ main {
 .recipe-filter-panel { margin-top: 0; }
 .recipe-filter-row {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr)) auto;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) auto;
   gap: 10px;
   align-items: center;
   margin-top: 12px;
@@ -911,6 +911,18 @@ main {
 .food-card.is-selected {
   border-color: #7eb795;
   background: linear-gradient(145deg, white, var(--forest-50));
+}
+
+.food-card.is-share-target {
+  scroll-margin-top: 94px;
+  border-color: rgba(28, 113, 71, 0.55);
+  box-shadow: 0 0 0 3px rgba(28, 113, 71, 0.09), var(--shadow-sm);
+  outline: none;
+}
+
+.food-share-select-control {
+  grid-column: 1 / -1;
+  margin-bottom: 0;
 }
 
 .select-food {
@@ -1124,13 +1136,25 @@ main {
   gap: 2px;
 }
 
+.food-personal-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  margin-top: 10px;
+  padding-top: 8px;
+  border-top: 1px solid rgba(20, 92, 56, 0.09);
+}
+
 .details-button,
 .food-meals-button,
 .food-recipes-button,
+.food-share-button,
 .meal-recipe-button,
 .meal-list-button,
 .meal-share-button,
-.meal-offers-button {
+.meal-offers-button,
+.meal-personal-recipes-button {
   flex: 0 0 auto;
   padding: 5px 0;
   border: 0;
@@ -1441,6 +1465,13 @@ main {
 .meal-details p { margin: 0; color: var(--muted); font-size: 12px; line-height: 1.5; }
 .meal-card-footer { display: flex; align-items: center; justify-content: space-between; gap: 14px; margin-top: auto; padding-top: 18px; }
 .meal-share-row { display: flex; align-items: center; justify-content: space-between; gap: 14px; }
+.meal-personal-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px solid rgba(20, 92, 56, 0.09);
+}
 .meal-list-button.is-added { color: var(--muted); }
 
 .meal-card.is-share-target {
@@ -1575,7 +1606,8 @@ main {
   opacity: 0.42;
 }
 
-.shared-meal-grid { padding-bottom: max(80px, calc(100vh - 120px)); }
+.shared-meal-grid { padding-bottom: 0; }
+.shares-view .bookmark-section:last-child { padding-bottom: max(80px, calc(100vh - 120px)); }
 
 .bookmark-section-heading .eyebrow {
   margin-bottom: 5px;
