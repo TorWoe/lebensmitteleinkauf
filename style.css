@@ -1367,6 +1367,7 @@ main {
   font-variant-numeric: tabular-nums;
   text-align: right;
 }
+.meal-guide-list li.meal-guide-note::before { content: "a."; }
 .meal-guide-step-content { min-width: 0; }
 .meal-guide-image-button {
   display: inline-flex;
