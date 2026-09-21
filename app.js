@@ -2,7 +2,7 @@
   "use strict";
 
   const { foods, meals, sources, foodNames = [] } = window.APP_DATA;
-  const appVersion = "meal-action-layout-20260921-1";
+  const appVersion = "meal-action-layout-20260921-2";
   const appVersionFile = "app-version.json";
   const appRefreshParam = "appRefresh";
   const appRefreshSessionKey = "lebensmitteleinkauf:app-refresh-version:v1";
@@ -48,10 +48,10 @@
   const foodByName = new Map(foods.map((food) => [normalizeFoodName(food.name), food]));
   const mealIndexById = new Map(meals.map((meal, index) => [meal.id, index]));
   const mealGuideImages = {
-    1: { src: "assets/meal-guide/step-1.png?v=meal-action-layout-20260921-1", alt: "Bildanleitung zu Schritt 1: Eine Mahlzeit auswählen" },
-    2: { src: "assets/meal-guide/step-2.png?v=meal-action-layout-20260921-1", alt: "Bildanleitung zu Schritt 2: Text für die Rezeptsuche kopieren" },
-    3: { src: "assets/meal-guide/step-3.png?v=meal-action-layout-20260921-1", alt: "Bildanleitung zu Schritt 3: Den kopierten Text in eine KI einfügen" },
-    4: { src: "assets/meal-guide/step-4.png?v=meal-action-layout-20260921-1", alt: "Bildanleitung zu Schritt 4: Zutaten auf die Einkaufsliste setzen" },
+    1: { src: "assets/meal-guide/step-1.png?v=meal-action-layout-20260921-2", alt: "Bildanleitung zu Schritt 1: Eine Mahlzeit auswählen" },
+    2: { src: "assets/meal-guide/step-2.png?v=meal-action-layout-20260921-2", alt: "Bildanleitung zu Schritt 2: Text für die Rezeptsuche kopieren" },
+    3: { src: "assets/meal-guide/step-3.png?v=meal-action-layout-20260921-2", alt: "Bildanleitung zu Schritt 3: Den kopierten Text in eine KI einfügen" },
+    4: { src: "assets/meal-guide/step-4.png?v=meal-action-layout-20260921-2", alt: "Bildanleitung zu Schritt 4: Zutaten auf die Einkaufsliste setzen" },
   };
 
   const iconPaths = {
@@ -2013,12 +2013,10 @@
         </div>
         <div class="meal-share-row">
           <button class="meal-list-button${allIngredientsSelected ? " is-added" : ""}" type="button" data-meal-id="${meal.id}" aria-pressed="${allIngredientsSelected}">${allIngredientsSelected ? "Auf der Liste ✓" : "Auf die Liste →"}</button>
+          <button class="meal-personal-recipes-button" type="button" data-open-meal-recipes="${meal.id}" aria-label="Eigene Rezepte für ${escapeHtml(meal.situation)} verwalten">meine Rezepte →</button>
         </div>
         <div class="meal-personal-actions">
           <button class="meal-offers-button" type="button" data-offers-meal-id="${meal.id}" aria-label="Sonderangebotssuchtext für ${escapeHtml(meal.situation)} kopieren">Suche Sonderangebote →</button>
-          <button class="meal-personal-recipes-button" type="button" data-open-meal-recipes="${meal.id}" aria-label="Eigene Rezepte für ${escapeHtml(meal.situation)} verwalten">meine Rezepte →</button>
-        </div>
-        <div class="meal-share-action-row">
           <button class="meal-share-button" type="button" data-share-meal-id="${meal.id}" aria-label="Teilen-Link für ${escapeHtml(meal.situation)} kopieren">zum Teilen →</button>
         </div>
       </article>`;
