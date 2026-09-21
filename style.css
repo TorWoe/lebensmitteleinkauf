@@ -1136,11 +1136,15 @@ main {
   gap: 2px;
 }
 
-.food-personal-actions {
+.food-personal-actions,
+.food-offers-actions {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 14px;
+}
+
+.food-personal-actions {
   margin-top: 10px;
   padding-top: 8px;
   border-top: 1px solid rgba(20, 92, 56, 0.09);
@@ -1148,6 +1152,8 @@ main {
 
 .details-button,
 .food-meals-button,
+.food-list-button,
+.food-offers-button,
 .food-recipes-button,
 .food-share-button,
 .meal-recipe-button,
@@ -1163,6 +1169,8 @@ main {
   font-size: 12px;
   font-weight: 800;
 }
+
+.food-list-button.is-added { color: var(--muted); }
 
 .load-more {
   display: block;
