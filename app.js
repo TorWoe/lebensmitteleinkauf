@@ -2,7 +2,7 @@
   "use strict";
 
   const { foods, meals, sources, foodNames = [] } = window.APP_DATA;
-  const appVersion = "food-card-actions-20260921-1";
+  const appVersion = "food-offers-copy-20260921-1";
   const appVersionFile = "app-version.json";
   const appRefreshParam = "appRefresh";
   const appRefreshSessionKey = "lebensmitteleinkauf:app-refresh-version:v1";
@@ -48,10 +48,10 @@
   const foodByName = new Map(foods.map((food) => [normalizeFoodName(food.name), food]));
   const mealIndexById = new Map(meals.map((meal, index) => [meal.id, index]));
   const mealGuideImages = {
-    1: { src: "assets/meal-guide/step-1.png?v=food-card-actions-20260921-1", alt: "Bildanleitung zu Schritt 1: Eine Mahlzeit auswählen" },
-    2: { src: "assets/meal-guide/step-2.png?v=food-card-actions-20260921-1", alt: "Bildanleitung zu Schritt 2: Text für die Rezeptsuche kopieren" },
-    3: { src: "assets/meal-guide/step-3.png?v=food-card-actions-20260921-1", alt: "Bildanleitung zu Schritt 3: Den kopierten Text in eine KI einfügen" },
-    4: { src: "assets/meal-guide/step-4.png?v=food-card-actions-20260921-1", alt: "Bildanleitung zu Hinweis a: Zutaten auf die Einkaufsliste setzen" },
+    1: { src: "assets/meal-guide/step-1.png?v=food-offers-copy-20260921-1", alt: "Bildanleitung zu Schritt 1: Eine Mahlzeit auswählen" },
+    2: { src: "assets/meal-guide/step-2.png?v=food-offers-copy-20260921-1", alt: "Bildanleitung zu Schritt 2: Text für die Rezeptsuche kopieren" },
+    3: { src: "assets/meal-guide/step-3.png?v=food-offers-copy-20260921-1", alt: "Bildanleitung zu Schritt 3: Den kopierten Text in eine KI einfügen" },
+    4: { src: "assets/meal-guide/step-4.png?v=food-offers-copy-20260921-1", alt: "Bildanleitung zu Hinweis a: Zutaten auf die Einkaufsliste setzen" },
   };
 
   const iconPaths = {
@@ -2503,9 +2503,11 @@
     showToast("Text für die Rezeptsuche wurde kopiert.");
   }
 
-  async function copyOffersSearch(names, postalCode) {
+  async function copyOffersSearch(names, postalCode, itemType) {
     if (!names.length || !postalCode) return;
-    const offersSearchText = `Bitte sage mir wo die folgenden Lebensmittel gekauft werden können und zusätzlich auch wo die folgenden Lebensmittel im Angebot sind. Wenn möglich prüfe bitte auch die digitalen Prospekte der Anbieter. Dann suche mir bitte wo genau diese Zutaten in meiner Nähe gekauft werden können und wenn vorhanden auch wo die folgenden Lebensmittel im Angebot sind. Meine Postleitzahl ist ${postalCode}. Füge bitte keine Zutaten hinzu. Bitte gebe mir nur Anbieter die lokale Läden haben, also keine reinen online Händler. Bitte gebe mir wenn möglich zu den Anbietern auch die URL mit an. Bitte gebe mir das Ergebnis als eine klare, realistische und lokal gültige Liste der günstigsten Preise. Bitte gebe mir ca. alle 30 Sekunden einen Status damit ich weiß ob du noch arbeitest oder ob du fertig bist. Die gesuchten Zutaten sind: ${names.join(", ")}`;
+    const offersSearchText = itemType === "food"
+      ? `Bitte sage mir wo dieses Lebensmittel gekauft werden kann und zusätzlich auch wo dieses Lebensmittel im Angebot ist. Wenn möglich prüfe bitte auch die digitalen Prospekte der Anbieter. Dann suche mir bitte wo genau dieses Lebensmittel in meiner Nähe gekauft werden kann und wenn vorhanden auch wo das Lebensmittel im Angebot ist. Meine Postleitzahl ist ${postalCode}. Füge bitte keine Lebensmittel und Zutaten hinzu. Bitte gebe mir nur Anbieter die lokale Läden haben, also keine reinen online Händler. Bitte gebe mir wenn möglich zu den Anbietern auch die URL mit an. Bitte gebe mir das Ergebnis als eine klare, realistische und lokal gültige Liste der günstigsten Preise. Bitte gebe mir ca. alle 30 Sekunden einen Status damit ich weiß ob du noch arbeitest oder ob du fertig bist. Das gesuchte Lebensmittel ist: ${names[0]}`
+      : `Bitte sage mir wo die folgenden Lebensmittel gekauft werden können und zusätzlich auch wo die folgenden Lebensmittel im Angebot sind. Wenn möglich prüfe bitte auch die digitalen Prospekte der Anbieter. Dann suche mir bitte wo genau diese Zutaten in meiner Nähe gekauft werden können und wenn vorhanden auch wo die folgenden Lebensmittel im Angebot sind. Meine Postleitzahl ist ${postalCode}. Füge bitte keine Zutaten hinzu. Bitte gebe mir nur Anbieter die lokale Läden haben, also keine reinen online Händler. Bitte gebe mir wenn möglich zu den Anbietern auch die URL mit an. Bitte gebe mir das Ergebnis als eine klare, realistische und lokal gültige Liste der günstigsten Preise. Bitte gebe mir ca. alle 30 Sekunden einen Status damit ich weiß ob du noch arbeitest oder ob du fertig bist. Die gesuchten Zutaten sind: ${names.join(", ")}`;
     await copyText(offersSearchText);
     showToast("Text für die Sonderangebotssuche wurde kopiert.");
   }
@@ -2901,7 +2903,7 @@
         const names = [...postalForm.querySelectorAll('input[name="offers-food"]')].map((input) => input.value);
         if (!names.length) return;
         dom.detailDialog.close();
-        void copyOffersSearch(names, postalCode);
+        void copyOffersSearch(names, postalCode, postalForm.dataset.offersItemType);
         return;
       }
       const form = event.target.closest("[data-meal-variation-form]");
