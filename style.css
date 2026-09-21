@@ -1369,6 +1369,11 @@ main {
 }
 .meal-guide-list li.meal-guide-note::before { content: "a."; }
 .meal-guide-step-content { min-width: 0; }
+.meal-guide-action-label {
+  text-decoration-line: underline;
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 3px;
+}
 .meal-guide-image-button {
   display: inline-flex;
   gap: 4px;
@@ -1562,7 +1567,6 @@ main {
   align-items: center;
   justify-content: space-between;
   gap: 14px;
-  margin-top: 8px;
 }
 .meal-list-button.is-added { color: var(--muted); }
 
