@@ -2222,12 +2222,13 @@ dialog::backdrop { background: rgba(6, 31, 20, 0.52); backdrop-filter: blur(4px)
   border: 1px solid var(--line);
   border-radius: 13px;
   background: white;
+  box-shadow: none;
   cursor: pointer;
 }
 .share-recipe-choice:hover,
-.share-recipe-choice:has(input:checked) { border-color: var(--forest-700); background: var(--forest-50); }
-.share-recipe-choice:focus-within { outline: 3px solid rgba(20, 92, 56, 0.2); outline-offset: 2px; }
+.share-recipe-choice:has(input:checked) { background: var(--forest-50); }
 .share-recipe-choice input { flex: 0 0 auto; width: 18px; height: 18px; margin: 0; accent-color: var(--forest-700); }
+.share-recipe-choice input:focus-visible { outline: 2px solid var(--forest-700); outline-offset: 2px; }
 .share-recipe-choice > span { display: grid; min-width: 0; gap: 2px; overflow-wrap: anywhere; font-size: 13px; line-height: 1.35; }
 .share-recipe-choice strong { color: var(--forest-800); font-size: 11px; }
 .share-recipe-actions { display: flex; justify-content: flex-end; gap: 9px; margin-top: 23px; }
