@@ -2,7 +2,7 @@
   "use strict";
 
   const { foods, meals, sources, foodNames = [] } = window.APP_DATA;
-  const appVersion = "share-link-spacing-20260922-1";
+  const appVersion = "recipe-overview-share-20260922-1";
   const appVersionFile = "app-version.json";
   const appRefreshParam = "appRefresh";
   const appRefreshSessionKey = "lebensmitteleinkauf:app-refresh-version:v1";
@@ -48,10 +48,10 @@
   const foodByName = new Map(foods.map((food) => [normalizeFoodName(food.name), food]));
   const mealIndexById = new Map(meals.map((meal, index) => [meal.id, index]));
   const mealGuideImages = {
-    1: { src: "assets/meal-guide/step-1.png?v=share-link-spacing-20260922-1", alt: "Bildanleitung zu Schritt 1: Eine Mahlzeit auswählen" },
-    2: { src: "assets/meal-guide/step-2.png?v=share-link-spacing-20260922-1", alt: "Bildanleitung zu Schritt 2: Text für die Rezeptsuche kopieren" },
-    3: { src: "assets/meal-guide/step-3.png?v=share-link-spacing-20260922-1", alt: "Bildanleitung zu Schritt 3: Den kopierten Text in eine KI einfügen" },
-    4: { src: "assets/meal-guide/step-4.png?v=share-link-spacing-20260922-1", alt: "Bildanleitung zu Hinweis a: Zutaten auf die Einkaufsliste setzen" },
+    1: { src: "assets/meal-guide/step-1.png?v=recipe-overview-share-20260922-1", alt: "Bildanleitung zu Schritt 1: Eine Mahlzeit auswählen" },
+    2: { src: "assets/meal-guide/step-2.png?v=recipe-overview-share-20260922-1", alt: "Bildanleitung zu Schritt 2: Text für die Rezeptsuche kopieren" },
+    3: { src: "assets/meal-guide/step-3.png?v=recipe-overview-share-20260922-1", alt: "Bildanleitung zu Schritt 3: Den kopierten Text in eine KI einfügen" },
+    4: { src: "assets/meal-guide/step-4.png?v=recipe-overview-share-20260922-1", alt: "Bildanleitung zu Hinweis a: Zutaten auf die Einkaufsliste setzen" },
   };
 
   const iconPaths = {
@@ -2126,8 +2126,11 @@
         ${url ? `<a class="recipe-overview-link" href="${escapeHtml(url)}" target="_blank" rel="noreferrer">Rezept öffnen ↗</a>` : recipe.url ? `<p class="recipe-overview-url">${escapeHtml(recipe.url)}</p>` : ""}
         ${recipe.notes ? `<div class="recipe-overview-notes">${escapeHtml(recipe.notes).replace(/\n/g, "<br>")}</div>` : ""}
         <div class="recipe-overview-actions">
-          <button class="recipe-edit-button" type="button" data-edit-recipe-id="${escapeHtml(recipe.id)}">Bearbeiten</button>
-          <button class="recipe-delete-button" type="button" data-delete-recipe-id="${escapeHtml(recipe.id)}">Löschen</button>
+          <button class="recipe-overview-share-button" type="button" data-share-recipe-item-type="${target.itemType}" data-share-recipe-item-id="${target.itemId}" aria-label="Teilen-Link für ${escapeHtml(target.name)} kopieren">zum Teilen →</button>
+          <div class="recipe-overview-edit-actions">
+            <button class="recipe-edit-button" type="button" data-edit-recipe-id="${escapeHtml(recipe.id)}">Bearbeiten</button>
+            <button class="recipe-delete-button" type="button" data-delete-recipe-id="${escapeHtml(recipe.id)}">Löschen</button>
+          </div>
         </div>
       </article>`;
   }
@@ -2798,6 +2801,11 @@
     });
     dom.resetRecipeFilters.addEventListener("click", resetRecipeFilters);
     [dom.recipeMealGrid, dom.recipeFoodGrid].forEach((grid) => grid.addEventListener("click", (event) => {
+      const shareButton = event.target.closest("[data-share-recipe-item-type][data-share-recipe-item-id]");
+      if (shareButton) {
+        requestShare(shareButton.dataset.shareRecipeItemType, Number(shareButton.dataset.shareRecipeItemId));
+        return;
+      }
       const itemButton = event.target.closest("[data-open-recipe-item-type][data-open-recipe-item-id]");
       if (itemButton) {
         openRecipes(itemButton.dataset.openRecipeItemType, Number(itemButton.dataset.openRecipeItemId));

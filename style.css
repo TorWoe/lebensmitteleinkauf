@@ -862,7 +862,9 @@ main {
 }
 .recipe-overview-url { color: var(--muted); }
 .recipe-overview-notes { padding-top: 14px; border-top: 1px solid rgba(20, 92, 56, 0.09); }
-.recipe-overview-actions { display: flex; gap: 7px; margin-top: auto; padding-top: 18px; }
+.recipe-overview-actions { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 7px 14px; margin-top: auto; padding-top: 18px; }
+.recipe-overview-edit-actions { display: flex; gap: 7px; }
+.recipe-overview-actions .recipe-overview-share-button { min-height: 38px; text-align: left; }
 .recipe-overview-actions .recipe-edit-button,
 .recipe-overview-actions .recipe-delete-button { min-height: 38px; padding: 8px 12px; }
 .recipe-overview-empty {
@@ -1161,6 +1163,7 @@ main {
 .meal-list-button,
 .meal-share-button,
 .meal-offers-button,
+.recipe-overview-share-button,
 .meal-personal-recipes-button {
   flex: 0 0 auto;
   padding: 5px 0;
