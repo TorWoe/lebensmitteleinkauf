@@ -9,7 +9,7 @@
       content="Antientzündliche Lebensmittel entdecken, filtern und als Einkaufsliste speichern."
     />
     <title>Lebensmitteleinkauf</title>
-    <link rel="stylesheet" href="style.css?v=recipe-numbers-20260922-1" />
+    <link rel="stylesheet" href="style.css?v=share-recipes-20260922-1" />
   </head>
   <body>
     <div class="app-shell">
@@ -525,6 +525,19 @@ Nur bei zu langer Anmeldedauer auf Anmeldung erneuern klicken.</span>
       </div>
     </dialog>
 
+    <dialog class="share-recipe-dialog" id="shareRecipeDialog" aria-labelledby="shareRecipeTitle" aria-describedby="shareRecipeHint">
+      <form id="shareRecipeForm">
+        <p class="eyebrow">Zum Teilen</p>
+        <h2 id="shareRecipeTitle">Eigene Rezepte mit teilen?</h2>
+        <p id="shareRecipeHint">Wähle die Rezepte aus, die zusammen mit dem Kartenlink kopiert werden sollen. Ohne Auswahl wird nur der Link kopiert.</p>
+        <div class="share-recipe-list" id="shareRecipeList"></div>
+        <div class="share-recipe-actions">
+          <button class="secondary-button" id="cancelShareRecipes" type="button">Abbrechen</button>
+          <button class="primary-button" type="submit">In die Zwischenablage kopieren</button>
+        </div>
+      </form>
+    </dialog>
+
     <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
     <div class="modal-overlay" id="legal-modal" hidden>
@@ -541,6 +554,6 @@ Nur bei zu langer Anmeldedauer auf Anmeldung erneuern klicken.</span>
       document.write('<script src="data.js?v=' + Date.now() + '"><\/script>');
     </script>
     <script src="vendor/msal-browser.min.js?v=2.38.3"></script>
-    <script src="app.js?v=recipe-numbers-20260922-1"></script>
+    <script src="app.js?v=share-recipes-20260922-1"></script>
   </body>
 </html>

@@ -2,7 +2,7 @@
   "use strict";
 
   const { foods, meals, sources, foodNames = [] } = window.APP_DATA;
-  const appVersion = "recipe-numbers-20260922-1";
+  const appVersion = "share-recipes-20260922-1";
   const appVersionFile = "app-version.json";
   const appRefreshParam = "appRefresh";
   const appRefreshSessionKey = "lebensmitteleinkauf:app-refresh-version:v1";
@@ -48,10 +48,10 @@
   const foodByName = new Map(foods.map((food) => [normalizeFoodName(food.name), food]));
   const mealIndexById = new Map(meals.map((meal, index) => [meal.id, index]));
   const mealGuideImages = {
-    1: { src: "assets/meal-guide/step-1.png?v=recipe-numbers-20260922-1", alt: "Bildanleitung zu Schritt 1: Eine Mahlzeit auswählen" },
-    2: { src: "assets/meal-guide/step-2.png?v=recipe-numbers-20260922-1", alt: "Bildanleitung zu Schritt 2: Text für die Rezeptsuche kopieren" },
-    3: { src: "assets/meal-guide/step-3.png?v=recipe-numbers-20260922-1", alt: "Bildanleitung zu Schritt 3: Den kopierten Text in eine KI einfügen" },
-    4: { src: "assets/meal-guide/step-4.png?v=recipe-numbers-20260922-1", alt: "Bildanleitung zu Hinweis a: Zutaten auf die Einkaufsliste setzen" },
+    1: { src: "assets/meal-guide/step-1.png?v=share-recipes-20260922-1", alt: "Bildanleitung zu Schritt 1: Eine Mahlzeit auswählen" },
+    2: { src: "assets/meal-guide/step-2.png?v=share-recipes-20260922-1", alt: "Bildanleitung zu Schritt 2: Text für die Rezeptsuche kopieren" },
+    3: { src: "assets/meal-guide/step-3.png?v=share-recipes-20260922-1", alt: "Bildanleitung zu Schritt 3: Den kopierten Text in eine KI einfügen" },
+    4: { src: "assets/meal-guide/step-4.png?v=share-recipes-20260922-1", alt: "Bildanleitung zu Hinweis a: Zutaten auf die Einkaufsliste setzen" },
   };
 
   const iconPaths = {
@@ -197,6 +197,11 @@
     detailDialog: document.querySelector("#detailDialog"),
     detailContent: document.querySelector("#detailContent"),
     confirmDialog: document.querySelector("#confirmDialog"),
+    shareRecipeDialog: document.querySelector("#shareRecipeDialog"),
+    shareRecipeForm: document.querySelector("#shareRecipeForm"),
+    shareRecipeHint: document.querySelector("#shareRecipeHint"),
+    shareRecipeList: document.querySelector("#shareRecipeList"),
+    cancelShareRecipes: document.querySelector("#cancelShareRecipes"),
     confirmTitle: document.querySelector("#confirmTitle"),
     confirmText: document.querySelector("#confirmText"),
     cancelConfirm: document.querySelector("#cancelConfirm"),
@@ -2550,30 +2555,64 @@
     return url.toString();
   }
 
-  async function shareMeal(mealId) {
-    const meal = meals.find((item) => item.id === mealId);
-    if (!meal) return;
-    state.sharedMeals.add(mealId);
-    state.sharedTargetMealId = mealId;
-    persistSelection();
-    renderShares();
-    const shareUrl = mealShareUrl(mealId);
-    const copied = await copyText(shareUrl);
-    if (window.history?.replaceState) window.history.replaceState(null, document.title, shareUrl);
-    showToast(copied ? "Teilen-Link wurde kopiert." : "Teilen-Link steht jetzt in der Adresszeile.");
+  function shareText(shareUrl, selectedRecipes, numbers) {
+    if (!selectedRecipes.length) return shareUrl;
+    const recipeTexts = selectedRecipes.map((recipe) => [
+      `Rezept ${numbers.get(recipe.id)}`,
+      `Überschrift: ${recipe.title || "(nicht angegeben)"}`,
+      `URL: ${recipe.url || "(nicht angegeben)"}`,
+      `Anmerkungen: ${recipe.notes || "(nicht angegeben)"}`,
+    ].join("\n"));
+    return `${shareUrl}\n\nHier sind noch Rezepte von mir:\n\n${recipeTexts.join("\n\n--------------------\n\n")}`;
   }
 
-  async function shareFood(foodId) {
-    const food = foodById.get(foodId);
-    if (!food) return;
-    state.sharedFoods.add(foodId);
-    state.sharedTargetFoodId = foodId;
+  async function completeShare(itemType, itemId, selectedRecipeIds = []) {
+    const target = recipeTarget(itemType, itemId);
+    if (!target) return;
+    const allRecipes = cleanRecipes(state.recipes);
+    const numbers = recipeNumbers(allRecipes);
+    const selectedIds = new Set(selectedRecipeIds);
+    const selectedRecipes = allRecipes
+      .filter((recipe) => recipe.itemType === itemType && recipe.itemId === itemId && selectedIds.has(recipe.id))
+      .sort((left, right) => numbers.get(left.id) - numbers.get(right.id));
+    const shareUrl = itemType === "meal" ? mealShareUrl(itemId) : foodShareUrl(itemId);
+    if (itemType === "meal") {
+      state.sharedMeals.add(itemId);
+      state.sharedTargetMealId = itemId;
+    } else {
+      state.sharedFoods.add(itemId);
+      state.sharedTargetFoodId = itemId;
+    }
     persistSelection();
     renderShares();
-    const shareUrl = foodShareUrl(foodId);
-    const copied = await copyText(shareUrl);
+    const copied = await copyText(shareText(shareUrl, selectedRecipes, numbers));
     if (window.history?.replaceState) window.history.replaceState(null, document.title, shareUrl);
-    showToast(copied ? "Teilen-Link wurde kopiert." : "Teilen-Link steht jetzt in der Adresszeile.");
+    showToast(copied
+      ? selectedRecipes.length ? "Teilen-Link und ausgewählte Rezepte wurden kopiert." : "Teilen-Link wurde kopiert."
+      : selectedRecipes.length ? "Kopieren fehlgeschlagen. Nur der Kartenlink steht in der Adresszeile." : "Teilen-Link steht jetzt in der Adresszeile.");
+  }
+
+  function requestShare(itemType, itemId) {
+    const target = recipeTarget(itemType, itemId);
+    if (!target) return;
+    const allRecipes = cleanRecipes(state.recipes);
+    const numbers = recipeNumbers(allRecipes);
+    const recipes = allRecipes
+      .filter((recipe) => recipe.itemType === itemType && recipe.itemId === itemId)
+      .sort((left, right) => numbers.get(left.id) - numbers.get(right.id));
+    if (!recipes.length) {
+      void completeShare(itemType, itemId);
+      return;
+    }
+    dom.shareRecipeForm.dataset.itemType = itemType;
+    dom.shareRecipeForm.dataset.itemId = String(itemId);
+    dom.shareRecipeHint.textContent = `Welche eigenen Rezepte zu „${target.name}“ möchtest du mit teilen? Wähle eines oder mehrere aus. Ohne Auswahl wird nur der Kartenlink kopiert.`;
+    dom.shareRecipeList.innerHTML = recipes.map((recipe) => `
+      <label class="share-recipe-choice">
+        <input type="checkbox" name="share-recipe" value="${escapeHtml(recipe.id)}" />
+        <span><strong>Rezept ${numbers.get(recipe.id)}</strong><span>${escapeHtml(recipeDisplayTitle(recipe))}</span></span>
+      </label>`).join("");
+    dom.shareRecipeDialog.showModal();
   }
 
   function removeSelectedSharedMealEntries() {
@@ -2677,7 +2716,7 @@
       const id = Number(card.dataset.id);
       const shareButton = event.target.closest("[data-share-food-id]");
       if (shareButton) {
-        void shareFood(Number(shareButton.dataset.shareFoodId));
+        requestShare("food", Number(shareButton.dataset.shareFoodId));
         return;
       }
       const offersButton = event.target.closest("[data-offers-food-id]");
@@ -2710,7 +2749,7 @@
       }
       const shareButton = event.target.closest("[data-share-meal-id]");
       if (shareButton) {
-        void shareMeal(Number(shareButton.dataset.shareMealId));
+        requestShare("meal", Number(shareButton.dataset.shareMealId));
         return;
       }
       const recipeButton = event.target.closest("[data-recipe-meal-id]");
@@ -2949,6 +2988,19 @@
       state.confirmAction = null;
       state.confirmCancelAction = null;
       if (action) action();
+    });
+    dom.cancelShareRecipes.addEventListener("click", () => dom.shareRecipeDialog.close());
+    dom.shareRecipeDialog.addEventListener("click", (event) => {
+      if (event.target === dom.shareRecipeDialog) dom.shareRecipeDialog.close();
+    });
+    dom.shareRecipeForm.addEventListener("submit", (event) => {
+      event.preventDefault();
+      const itemType = dom.shareRecipeForm.dataset.itemType;
+      const itemId = Number(dom.shareRecipeForm.dataset.itemId);
+      const selectedRecipeIds = [...dom.shareRecipeForm.querySelectorAll('input[name="share-recipe"]:checked')]
+        .map((input) => input.value);
+      dom.shareRecipeDialog.close();
+      void completeShare(itemType, itemId, selectedRecipeIds);
     });
     document.querySelector("#legal-modal-close")?.addEventListener("click", closeLegalModal);
     document.querySelector("#legal-modal")?.addEventListener("click", (event) => {
