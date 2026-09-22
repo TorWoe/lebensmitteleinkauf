@@ -2,7 +2,7 @@
   "use strict";
 
   const { foods, meals, sources, foodNames = [] } = window.APP_DATA;
-  const appVersion = "share-recipe-border-20260922-1";
+  const appVersion = "share-link-spacing-20260922-1";
   const appVersionFile = "app-version.json";
   const appRefreshParam = "appRefresh";
   const appRefreshSessionKey = "lebensmitteleinkauf:app-refresh-version:v1";
@@ -48,10 +48,10 @@
   const foodByName = new Map(foods.map((food) => [normalizeFoodName(food.name), food]));
   const mealIndexById = new Map(meals.map((meal, index) => [meal.id, index]));
   const mealGuideImages = {
-    1: { src: "assets/meal-guide/step-1.png?v=share-recipe-border-20260922-1", alt: "Bildanleitung zu Schritt 1: Eine Mahlzeit auswählen" },
-    2: { src: "assets/meal-guide/step-2.png?v=share-recipe-border-20260922-1", alt: "Bildanleitung zu Schritt 2: Text für die Rezeptsuche kopieren" },
-    3: { src: "assets/meal-guide/step-3.png?v=share-recipe-border-20260922-1", alt: "Bildanleitung zu Schritt 3: Den kopierten Text in eine KI einfügen" },
-    4: { src: "assets/meal-guide/step-4.png?v=share-recipe-border-20260922-1", alt: "Bildanleitung zu Hinweis a: Zutaten auf die Einkaufsliste setzen" },
+    1: { src: "assets/meal-guide/step-1.png?v=share-link-spacing-20260922-1", alt: "Bildanleitung zu Schritt 1: Eine Mahlzeit auswählen" },
+    2: { src: "assets/meal-guide/step-2.png?v=share-link-spacing-20260922-1", alt: "Bildanleitung zu Schritt 2: Text für die Rezeptsuche kopieren" },
+    3: { src: "assets/meal-guide/step-3.png?v=share-link-spacing-20260922-1", alt: "Bildanleitung zu Schritt 3: Den kopierten Text in eine KI einfügen" },
+    4: { src: "assets/meal-guide/step-4.png?v=share-link-spacing-20260922-1", alt: "Bildanleitung zu Hinweis a: Zutaten auf die Einkaufsliste setzen" },
   };
 
   const iconPaths = {
@@ -2556,7 +2556,7 @@
   }
 
   function shareText(shareUrl, targetName, selectedRecipes, numbers) {
-    const cardText = `hier geht's zu ${targetName} in der WebApp Lebensmitteleinkauf:\n${shareUrl}`;
+    const cardText = `hier geht's zu ${targetName} in der WebApp Lebensmitteleinkauf:\n\n${shareUrl}`;
     if (!selectedRecipes.length) return cardText;
     const recipeTexts = selectedRecipes.map((recipe) => [
       `Rezept ${numbers.get(recipe.id)}`,
