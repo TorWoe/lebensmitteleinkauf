@@ -833,6 +833,7 @@ main {
   text-transform: uppercase;
 }
 .recipe-food-link:hover { color: var(--forest-950); text-decoration: underline; text-underline-offset: 3px; }
+.recipe-number { display: block; margin-top: 7px; color: var(--forest-700); font-size: 11px; font-weight: 800; letter-spacing: 0.04em; }
 .recipe-overview-card h3 {
   margin: 7px 0 0;
   overflow-wrap: anywhere;
@@ -2040,6 +2041,8 @@ dialog::backdrop { background: rgba(6, 31, 20, 0.52); backdrop-filter: blur(4px)
   background: white;
 }
 .saved-recipe-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 14px; }
+.saved-recipe-title { min-width: 0; }
+.saved-recipe-title .recipe-number { margin-top: 0; }
 .saved-recipe-head h3 { margin: 1px 0 0; color: var(--forest-950); font-size: 16px; line-height: 1.35; }
 .saved-recipe-actions { display: flex; flex: 0 0 auto; gap: 5px; }
 .recipe-edit-button,

@@ -2,7 +2,7 @@
   "use strict";
 
   const { foods, meals, sources, foodNames = [] } = window.APP_DATA;
-  const appVersion = "food-offers-copy-20260921-1";
+  const appVersion = "recipe-numbers-20260922-1";
   const appVersionFile = "app-version.json";
   const appRefreshParam = "appRefresh";
   const appRefreshSessionKey = "lebensmitteleinkauf:app-refresh-version:v1";
@@ -48,10 +48,10 @@
   const foodByName = new Map(foods.map((food) => [normalizeFoodName(food.name), food]));
   const mealIndexById = new Map(meals.map((meal, index) => [meal.id, index]));
   const mealGuideImages = {
-    1: { src: "assets/meal-guide/step-1.png?v=food-offers-copy-20260921-1", alt: "Bildanleitung zu Schritt 1: Eine Mahlzeit auswählen" },
-    2: { src: "assets/meal-guide/step-2.png?v=food-offers-copy-20260921-1", alt: "Bildanleitung zu Schritt 2: Text für die Rezeptsuche kopieren" },
-    3: { src: "assets/meal-guide/step-3.png?v=food-offers-copy-20260921-1", alt: "Bildanleitung zu Schritt 3: Den kopierten Text in eine KI einfügen" },
-    4: { src: "assets/meal-guide/step-4.png?v=food-offers-copy-20260921-1", alt: "Bildanleitung zu Hinweis a: Zutaten auf die Einkaufsliste setzen" },
+    1: { src: "assets/meal-guide/step-1.png?v=recipe-numbers-20260922-1", alt: "Bildanleitung zu Schritt 1: Eine Mahlzeit auswählen" },
+    2: { src: "assets/meal-guide/step-2.png?v=recipe-numbers-20260922-1", alt: "Bildanleitung zu Schritt 2: Text für die Rezeptsuche kopieren" },
+    3: { src: "assets/meal-guide/step-3.png?v=recipe-numbers-20260922-1", alt: "Bildanleitung zu Schritt 3: Den kopierten Text in eine KI einfügen" },
+    4: { src: "assets/meal-guide/step-4.png?v=recipe-numbers-20260922-1", alt: "Bildanleitung zu Hinweis a: Zutaten auf die Einkaufsliste setzen" },
   };
 
   const iconPaths = {
@@ -1752,12 +1752,29 @@
     return "Rezept ohne Überschrift";
   }
 
-  function renderSavedRecipe(recipe) {
+  function recipeNumbers(recipes) {
+    const numbers = new Map();
+    const countsByItem = new Map();
+    recipes.map((recipe, index) => ({ recipe, index }))
+      .sort((left, right) => recipeCreatedTimestamp(left.recipe) - recipeCreatedTimestamp(right.recipe) || left.index - right.index)
+      .forEach(({ recipe }) => {
+        const itemKey = `${recipe.itemType}:${recipe.itemId}`;
+        const number = (countsByItem.get(itemKey) || 0) + 1;
+        countsByItem.set(itemKey, number);
+        numbers.set(recipe.id, number);
+      });
+    return numbers;
+  }
+
+  function renderSavedRecipe(recipe, number) {
     const url = safeRecipeUrl(recipe.url);
     return `
       <article class="saved-recipe-card">
         <div class="saved-recipe-head">
-          <h3>${escapeHtml(recipeDisplayTitle(recipe))}</h3>
+          <div class="saved-recipe-title">
+            <span class="recipe-number">Rezept ${number}</span>
+            <h3>${escapeHtml(recipeDisplayTitle(recipe))}</h3>
+          </div>
           <div class="saved-recipe-actions">
             <button class="recipe-edit-button" type="button" data-edit-recipe-id="${escapeHtml(recipe.id)}">Bearbeiten</button>
             <button class="recipe-delete-button" type="button" data-delete-recipe-id="${escapeHtml(recipe.id)}">Löschen</button>
@@ -1794,9 +1811,11 @@
   function openRecipes(itemType, itemId, editRecipeId = "") {
     const target = recipeTarget(itemType, itemId);
     if (!target) return;
-    const recipes = cleanRecipes(state.recipes)
+    const allRecipes = cleanRecipes(state.recipes);
+    const numbers = recipeNumbers(allRecipes);
+    const recipes = allRecipes
       .filter((recipe) => recipe.itemType === target.itemType && recipe.itemId === target.itemId)
-      .sort((left, right) => String(right.updatedAt).localeCompare(String(left.updatedAt)));
+      .sort((left, right) => numbers.get(left.id) - numbers.get(right.id));
     const recipeToEdit = recipes.find((recipe) => recipe.id === editRecipeId) || null;
     dom.detailDialog.classList.remove("is-image-dialog");
     dom.detailDialog.classList.remove("is-meal-variation-dialog");
@@ -1833,7 +1852,7 @@
             <span>${recipes.length}</span>
           </div>
           <div class="saved-recipe-list">
-            ${recipes.length ? recipes.map(renderSavedRecipe).join("") : '<div class="recipe-empty"><strong>Noch keine Rezepte gespeichert.</strong><p>Fülle oben mindestens eines der drei Felder aus.</p></div>'}
+            ${recipes.length ? recipes.map((recipe) => renderSavedRecipe(recipe, numbers.get(recipe.id))).join("") : '<div class="recipe-empty"><strong>Noch keine Rezepte gespeichert.</strong><p>Fülle oben mindestens eines der drei Felder aus.</p></div>'}
           </div>
         </section>
       </div>`;
@@ -2086,13 +2105,14 @@
     }).format(new Date(timestamp))}`;
   }
 
-  function renderRecipeOverviewCard(recipe, target) {
+  function renderRecipeOverviewCard(recipe, target, number) {
     const url = safeRecipeUrl(recipe.url);
     return `
       <article class="recipe-overview-card" data-recipe-id="${escapeHtml(recipe.id)}">
         <div class="recipe-overview-card-head">
           <div>
             <button class="recipe-food-link" type="button" data-open-recipe-item-type="${target.itemType}" data-open-recipe-item-id="${target.itemId}">${escapeHtml(target.name)}</button>
+            <span class="recipe-number">Rezept ${number}</span>
             <h3>${escapeHtml(recipeDisplayTitle(recipe))}</h3>
           </div>
           <span class="recipe-created-date">${escapeHtml(formatRecipeCreatedAt(recipe))}</span>
@@ -2129,7 +2149,9 @@
   function renderRecipeOverview() {
     populateRecipeItemFilter();
     const term = state.recipeSearch.trim().toLocaleLowerCase("de");
-    const matchingRecipes = cleanRecipes(state.recipes)
+    const allRecipes = cleanRecipes(state.recipes);
+    const numbers = recipeNumbers(allRecipes);
+    const matchingRecipes = allRecipes
       .map((recipe) => ({ recipe, target: recipeTarget(recipe.itemType, recipe.itemId) }))
       .filter(({ recipe, target }) => {
         if (!target) return false;
@@ -2152,10 +2174,10 @@
     dom.recipeMealCount.textContent = `${mealRecipes.length} ${mealRecipes.length === 1 ? "Rezept" : "Rezepte"}`;
     dom.recipeFoodCount.textContent = `${foodRecipes.length} ${foodRecipes.length === 1 ? "Rezept" : "Rezepte"}`;
     dom.recipeMealGrid.innerHTML = mealRecipes.length
-      ? mealRecipes.map(({ recipe, target }) => renderRecipeOverviewCard(recipe, target)).join("")
+      ? mealRecipes.map(({ recipe, target }) => renderRecipeOverviewCard(recipe, target, numbers.get(recipe.id))).join("")
       : recipeOverviewEmpty("meal", Boolean(term || state.recipeCategory || state.recipeItemKey));
     dom.recipeFoodGrid.innerHTML = foodRecipes.length
-      ? foodRecipes.map(({ recipe, target }) => renderRecipeOverviewCard(recipe, target)).join("")
+      ? foodRecipes.map(({ recipe, target }) => renderRecipeOverviewCard(recipe, target, numbers.get(recipe.id))).join("")
       : recipeOverviewEmpty("food", Boolean(term || state.recipeCategory || state.recipeItemKey));
   }
 
