@@ -761,6 +761,25 @@ window.APP_DATA = {
       "sources": "https://fdc.nal.usda.gov/; https://www.health.harvard.edu/diet-and-nutrition/quick-start-guide-to-an-antiinflammation-diet; https://lpi.oregonstate.edu/mic/dietary-factors/phytochemicals/flavonoids"
     },
     {
+      "id": 285,
+      "category": "Gemüse, Pilze, Hülsenfrüchte & Nüsse",
+      "subcategory": "Gewürze",
+      "sort": 2,
+      "satiety": "niedrig",
+      "score": 1,
+      "name": "Dijon-Senf",
+      "selected": false,
+      "compounds": "Senfsaat, Wasser, Essig und Salz; Zusammensetzung und Salzgehalt unterscheiden sich je nach Produkt.",
+      "benefit": "Geschmacksintensive Würzzutat für Dressings und Dips.",
+      "carbs": "sehr niedrig",
+      "use": "In kleinen Mengen in Zitronen-Olivenöl-Dressings oder Dips verrühren.",
+      "caution": "Bei Senfallergie meiden; Salzgehalt und gegebenenfalls Sulfite in der Zutatenliste beachten.",
+      "priority": "mittel",
+      "nutrition": "Beispiel je 100 ml Dijon-Senf; Werte produktabhängig: Energie / Kalorien: ca. 157 kcal; Fett: 10,0 g; davon gesättigte Fettsäuren: 1,1 g; Kohlenhydrate: 5,4 g; davon Zucker: 3,1 g; Eiweiß / Protein: 9,4 g; Salz: 5,5 g; Ballaststoffe: 3,7 g",
+      "portion": "3 ml",
+      "sources": "https://www.rewe.de/shop/p/rewe-beste-wahl-dijon-senf-pikant-wuerzig-185ml/8290264"
+    },
+    {
       "id": 230,
       "category": "Gemüse, Pilze, Hülsenfrüchte & Nüsse",
       "subcategory": "Kräuter",
@@ -1825,6 +1844,25 @@ window.APP_DATA = {
       "sources": "https://www.health.harvard.edu/healthy-aging-and-longevity/foods-that-fight-inflammation; https://lpi.oregonstate.edu/mic/dietary-factors/phytochemicals/flavonoids; https://lpi.oregonstate.edu/mic/food-beverages/fruit-vegetables"
     },
     {
+      "id": 286,
+      "category": "Gemüse, Pilze, Hülsenfrüchte & Nüsse",
+      "subcategory": "Gewürze",
+      "sort": 2,
+      "satiety": "niedrig",
+      "score": 1,
+      "name": "Honig",
+      "selected": false,
+      "compounds": "Vor allem Zucker, insbesondere Glucose und Fructose; geringe Mengen weiterer Inhaltsstoffe je nach Herkunft.",
+      "benefit": "Süßende Würzzutat zum sparsamen Abschmecken; kein notwendiger Bestandteil der Mahlzeit.",
+      "carbs": "hoch",
+      "use": "Optional in sehr kleinen Mengen zum Ausgleich saurer Dressings verwenden.",
+      "caution": "Zuckerreich; sparsam verwenden. Für Kinder unter zwölf Monaten nicht geeignet.",
+      "priority": "niedrig",
+      "nutrition": "Beispiel je 100 g Blütenhonig; Werte produktabhängig: Energie / Kalorien: ca. 331 kcal; Fett: < 0,5 g; davon gesättigte Fettsäuren: < 0,1 g; Kohlenhydrate: 81,0 g; davon Zucker: 75,0 g; Eiweiß / Protein: < 0,5 g; Salz: < 0,01 g; Ballaststoffe: 0,0 g",
+      "portion": "3 g",
+      "sources": "https://www.rewe.de/shop/p/rewe-bio-deutscher-bluetenhonig-250g/9036587"
+    },
+    {
       "id": 38,
       "category": "Fleisch & Eier",
       "subcategory": "Eier",
@@ -2357,6 +2395,25 @@ window.APP_DATA = {
       "sources": "https://www.hopkinsmedicine.org/health/wellness-and-prevention/anti-inflammatory-diet; https://health.clevelandclinic.org/anti-inflammatory-diet"
     },
     {
+      "id": 283,
+      "category": "Gemüse, Pilze, Hülsenfrüchte & Nüsse",
+      "subcategory": "Kräuter",
+      "sort": 1,
+      "satiety": "niedrig",
+      "score": 1,
+      "name": "Kräuter der Provence",
+      "selected": false,
+      "compounds": "Ätherische Öle und Polyphenole verschiedener mediterraner Kräuter; Zusammensetzung je nach Mischung.",
+      "benefit": "Aromatische Kräutermischung zum Würzen von Gemüse und Dips.",
+      "carbs": "sehr niedrig",
+      "use": "In kleinen Mengen zum Würzen von Ofengemüse, Salaten und Dips verwenden.",
+      "caution": "Reine Kräutermischungen ohne zugesetztes Salz bevorzugen; Zutatenliste beachten.",
+      "priority": "hoch",
+      "nutrition": "Beispiel je 100 g getrockneter Kräutermischung; Werte produktabhängig: Energie / Kalorien: ca. 318 kcal; Fett: 10,1 g; davon gesättigte Fettsäuren: 2,4 g; Kohlenhydrate: 30,2 g; davon Zucker: 23,7 g; Eiweiß / Protein: 11,4 g; Salz: 0,2 g; Ballaststoffe: 30,3 g",
+      "portion": "2 g",
+      "sources": "https://www.rewe.de/shop/p/ostmann-kraeuter-der-provence-35g/4208331"
+    },
+    {
       "id": 103,
       "category": "Gemüse, Pilze, Hülsenfrüchte & Nüsse",
       "subcategory": "Pilze",
@@ -2792,6 +2849,25 @@ window.APP_DATA = {
       "nutrition": "Energie / Kalorien: ca. 53 kcal; Fett: ca. 0,3 g; davon gesättigte Fettsäuren: ca. 0,0 g; Kohlenhydrate: ca. 13,3 g; davon Zucker: ca. 10,6 g; Eiweiß / Protein: ca. 0,8 g; Salz: ca. 0,0 g; Ballaststoffe: ca. 1,8 g",
       "portion": "150 g",
       "sources": "https://www.health.harvard.edu/healthy-aging-and-longevity/foods-that-fight-inflammation; https://lpi.oregonstate.edu/mic/dietary-factors/phytochemicals/flavonoids; https://lpi.oregonstate.edu/mic/food-beverages/fruit-vegetables"
+    },
+    {
+      "id": 282,
+      "category": "Gemüse, Pilze, Hülsenfrüchte & Nüsse",
+      "subcategory": "Nüsse",
+      "sort": 1,
+      "satiety": "niedrig",
+      "score": 1,
+      "name": "Mandeldrink",
+      "selected": false,
+      "compounds": "Wasser, geringe Mengen Mandelbestandteile und ungesättigte Fettsäuren; angereicherte Produkte können Calcium und Vitamine liefern.",
+      "benefit": "Ungesüßte pflanzliche Alternative für Marinaden und andere Speisen; enthält wenig Eiweiß.",
+      "carbs": "sehr niedrig",
+      "use": "Ungesüßt in Marinaden, Dips, Porridge oder Getränken verwenden.",
+      "caution": "Bei Mandelallergie meiden; ungesüßte Produkte wählen und die produktabhängige Anreicherung beachten.",
+      "priority": "mittel",
+      "nutrition": "Beispiel je 100 ml ungesüßtem Mandeldrink; Werte produktabhängig: Energie / Kalorien: ca. 14 kcal; Fett: 1,1 g; davon gesättigte Fettsäuren: 0,0 g; Kohlenhydrate: 0,0 g; davon Zucker: 0,0 g; Eiweiß / Protein: 0,5 g; Salz: 0,15 g; Ballaststoffe: 0,3 g",
+      "portion": "50 ml",
+      "sources": "https://www.alpro.com/de-de/products/drinks/almond-roasted-unsweetened-1l"
     },
     {
       "id": 199,
@@ -4255,6 +4331,25 @@ window.APP_DATA = {
       "nutrition": "Energie / Kalorien: ca. 315 kcal; Fett: ca. 12,8 g; davon gesättigte Fettsäuren: ca. 7,0 g; Kohlenhydrate: ca. 60,7 g; davon Zucker: ca. 1,7 g; Eiweiß / Protein: ca. 10,6 g; Salz: ca. 0,0 g; Ballaststoffe: ca. 40,3 g",
       "portion": "2 g",
       "sources": "https://www.health.harvard.edu/diet-and-nutrition/quick-start-guide-to-an-antiinflammation-diet; https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/in-depth/mediterranean-diet/art-20047801"
+    },
+    {
+      "id": 284,
+      "category": "Gemüse, Pilze, Hülsenfrüchte & Nüsse",
+      "subcategory": "Gewürze",
+      "sort": 2,
+      "satiety": "niedrig",
+      "score": 1,
+      "name": "Salz",
+      "selected": false,
+      "compounds": "Natrium und Chlorid; jodiertes Speisesalz enthält zusätzlich Jod.",
+      "benefit": "Würzmittel in kleinen Mengen; liefert keine Ballaststoffe oder sättigenden Nährstoffe.",
+      "carbs": "sehr niedrig",
+      "use": "Sparsam zum Abschmecken verwenden.",
+      "caution": "Salz sparsam verwenden und auch den Salzgehalt anderer Zutaten berücksichtigen.",
+      "priority": "niedrig",
+      "nutrition": "Je 100 g Speisesalz: Energie / Kalorien: ca. 0 kcal; Fett: 0,0 g; davon gesättigte Fettsäuren: 0,0 g; Kohlenhydrate: 0,0 g; davon Zucker: 0,0 g; Eiweiß / Protein: 0,0 g; Salz: ca. 100,0 g; Ballaststoffe: 0,0 g",
+      "portion": "1 g",
+      "sources": "https://www.rewe.de/shop/p/rewe-beste-wahl-jodsalz-500g/614817"
     },
     {
       "id": 8,
@@ -7723,6 +7818,48 @@ window.APP_DATA = {
       "satiety": "sehr hoch",
       "variants": "Kidneybohnen statt schwarze Bohnen oder Feldsalat statt Rucola",
       "reason": "Vollkorngetreide + Hülsenfrüchte + ungesättigte Fettsäuren + Blattgemüse"
+    },
+    {
+      "id": 147,
+      "date": "2026-10-02",
+      "mealType": "warm",
+      "ingredients": [
+        "Karotten",
+        "Olivenöl extra vergine",
+        "Mandeldrink",
+        "Kräuter der Provence",
+        "Thymian",
+        "Zimt",
+        "Salz",
+        "Skyr",
+        "Schwarzer Pfeffer"
+      ],
+      "situation": "Ofenkarotten à la Provence mit würzigem Skyr-Dip",
+      "satiety": "mittel",
+      "variants": "Naturjoghurt ungesüßt statt Skyr; Oregano statt Thymian; Walnüsse optional für zusätzliche Sättigung; Chili optional; Zimt optional auch im Dip.",
+      "reason": "Gemüse + Carotinoide + ungesättigte Fettsäuren + Kräuter und Gewürze. Karotten, Olivenöl extra vergine und mediterrane Kräuter passen zu einer antientzündlich ausgerichteten Ernährungsweise."
+    },
+    {
+      "id": 148,
+      "date": "2026-10-02",
+      "mealType": "kalt",
+      "ingredients": [
+        "Rote Bete",
+        "Avocado",
+        "Orange",
+        "Koriandergrün",
+        "Kürbiskerne",
+        "Olivenöl extra vergine",
+        "Zitrone",
+        "Dijon-Senf",
+        "Salz",
+        "Schwarzer Pfeffer",
+        "Kreuzkümmel"
+      ],
+      "situation": "Rote-Bete-Avocado-Orangen-Salat mit Kürbiskernen",
+      "satiety": "mittel",
+      "variants": "Kichererbsen oder Grüne Linsen für eine sättigendere Hauptmahlzeit; Feta optional für eine Variante mit Milchprodukt; Lachs optional für eine Fischvariante; Petersilie statt Koriandergrün; Honig optional bei zu saurem Dressing.",
+      "reason": "Gemüse + Obst + Ballaststoffe + ungesättigte Fettsäuren + unterschiedliche pflanzliche Inhaltsstoffe. Rote Bete, Avocado, Orange, Kürbiskerne und Olivenöl extra vergine bilden die Basis; Kreuzkümmel, Schwarzer Pfeffer und frische Kräuter ergänzen sie."
     }
   ],
   "sources": [
