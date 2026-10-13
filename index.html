@@ -9,7 +9,7 @@
       content="Antientzündliche Lebensmittel entdecken, filtern und als Einkaufsliste speichern."
     />
     <title>Lebensmitteleinkauf</title>
-    <link rel="stylesheet" href="style.css?v=shopping-title-icon-20261013-1" />
+    <link rel="stylesheet" href="style.css?v=unified-nav-icons-20261013-1" />
   </head>
   <body>
     <div class="app-shell">
@@ -30,13 +30,13 @@
         </a>
 
         <nav class="desktop-nav" aria-label="Hauptnavigation">
-          <button class="nav-button is-active" data-view="foods" type="button">Lebensmittel</button>
+          <button class="nav-button is-active" data-view="foods" type="button">Lebensmittel<span class="button-icon nav-icon" data-icon="leaf" aria-hidden="true"></span></button>
           <button class="nav-button" data-view="meals" type="button">Mahlzeiten<span class="button-icon nav-icon" data-icon="meal" aria-hidden="true"></span></button>
           <button class="nav-button" data-view="recipes" type="button">Meine Rezepte<span class="button-icon nav-icon" data-icon="chef" aria-hidden="true"></span></button>
           <button class="nav-button" data-view="bookmarks" type="button">Lesezeichen<span class="button-icon nav-icon" data-icon="bookmark" aria-hidden="true"></span></button>
           <button class="nav-button" data-view="shares" type="button">Teilen<span class="button-icon nav-icon" data-icon="share" aria-hidden="true"></span></button>
-          <button class="nav-button" data-view="insights" type="button">Auswertung</button>
-          <button class="nav-button" data-view="help" type="button">so funktioniert's</button>
+          <button class="nav-button" data-view="insights" type="button">Auswertung<span class="button-icon nav-icon" data-icon="chart" aria-hidden="true"></span></button>
+          <button class="nav-button" data-view="help" type="button">so funktioniert's<span class="button-icon nav-icon" data-icon="help" aria-hidden="true"></span></button>
         </nav>
 
         <div class="topbar-actions">
@@ -60,7 +60,7 @@ Nur bei zu langer Anmeldedauer auf Anmeldung erneuern klicken.</span>
             </div>
           </div>
           <button class="basket-button" id="basketButton" type="button" aria-controls="shoppingPanel">
-            <span class="button-icon" data-icon="basket" aria-hidden="true"></span>
+            <span class="button-icon" data-icon="list" aria-hidden="true"></span>
             <span class="basket-button-label">Einkaufsliste</span>
             <span class="count-badge" id="headerCount">0</span>
           </button>
@@ -498,7 +498,7 @@ Nur bei zu langer Anmeldedauer auf Anmeldung erneuern klicken.</span>
           <span class="button-icon" data-icon="meal" aria-hidden="true"></span><span>Mahlzeiten</span>
         </button>
         <button class="mobile-nav-button" data-view="recipes" type="button" aria-label="Meine Rezepte">
-          <span class="button-icon" data-icon="recipe" aria-hidden="true"></span><span>Rezepte</span>
+          <span class="button-icon" data-icon="chef" aria-hidden="true"></span><span>Rezepte</span>
         </button>
         <button class="mobile-nav-button" data-view="bookmarks" type="button">
           <span class="button-icon" data-icon="bookmark" aria-hidden="true"></span><span>Lesezeichen</span>
@@ -513,7 +513,7 @@ Nur bei zu langer Anmeldedauer auf Anmeldung erneuern klicken.</span>
           <span class="button-icon" data-icon="help" aria-hidden="true"></span><span>so funktioniert's</span>
         </button>
         <button class="mobile-nav-button mobile-basket" id="mobileBasket" type="button">
-          <span class="button-icon" data-icon="basket" aria-hidden="true"></span><span>Liste</span>
+          <span class="button-icon" data-icon="list" aria-hidden="true"></span><span>Liste</span>
           <i id="mobileCount">0</i>
         </button>
       </nav>
@@ -575,6 +575,6 @@ Nur bei zu langer Anmeldedauer auf Anmeldung erneuern klicken.</span>
       document.write('<script src="data.js?v=' + Date.now() + '"><\/script>');
     </script>
     <script src="vendor/msal-browser.min.js?v=2.38.3"></script>
-    <script src="app.js?v=shopping-title-icon-20261013-1"></script>
+    <script src="app.js?v=unified-nav-icons-20261013-1"></script>
   </body>
 </html>
