@@ -2,7 +2,7 @@
   "use strict";
 
   const { foods, meals, sources, foodNames = [] } = window.APP_DATA;
-  const appVersion = "meal-guide-design-20261013-1";
+  const appVersion = "food-guide-search-20261013-1";
   const appVersionFile = "app-version.json";
   const appRefreshParam = "appRefresh";
   const appRefreshSessionKey = "lebensmitteleinkauf:app-refresh-version:v1";
@@ -55,7 +55,7 @@
   };
 
   const foodGuideImages = {
-    1: { src: "assets/food-guide/step-1.png?v=food-guide-20261013-1", alt: "Bildanleitung zu Lebensmittel-Punkt 1: Ein Lebensmittel finden" },
+    1: { src: "assets/food-guide/step-1.png?v=food-guide-search-20261013-1", alt: "Bildanleitung zu Lebensmittel-Punkt 1: Ein Lebensmittel finden" },
     2: { src: "assets/food-guide/step-2.png?v=food-guide-20261013-1", alt: "Bildanleitung zu Lebensmittel-Punkt 2: Die Lebensmittelkarte kennenlernen" },
     3: { src: "assets/food-guide/step-3.png?v=food-guide-20261013-1", alt: "Bildanleitung zu Lebensmittel-Punkt 3: Mehr erfahren" },
     4: { src: "assets/food-guide/step-4.png?v=food-guide-20261013-1", alt: "Bildanleitung zu Lebensmittel-Punkt 4: Passende Mahlzeiten finden" },
