@@ -2,7 +2,7 @@
   "use strict";
 
   const { foods, meals, sources, foodNames = [] } = window.APP_DATA;
-  const appVersion = "recipe-overview-share-20260922-1";
+  const appVersion = "food-guide-20261013-1";
   const appVersionFile = "app-version.json";
   const appRefreshParam = "appRefresh";
   const appRefreshSessionKey = "lebensmitteleinkauf:app-refresh-version:v1";
@@ -52,6 +52,18 @@
     2: { src: "assets/meal-guide/step-2.png?v=recipe-overview-share-20260922-1", alt: "Bildanleitung zu Schritt 2: Text für die Rezeptsuche kopieren" },
     3: { src: "assets/meal-guide/step-3.png?v=recipe-overview-share-20260922-1", alt: "Bildanleitung zu Schritt 3: Den kopierten Text in eine KI einfügen" },
     4: { src: "assets/meal-guide/step-4.png?v=recipe-overview-share-20260922-1", alt: "Bildanleitung zu Hinweis a: Zutaten auf die Einkaufsliste setzen" },
+  };
+
+  const foodGuideImages = {
+    1: { src: "assets/food-guide/step-1.png?v=food-guide-20261013-1", alt: "Bildanleitung zu Lebensmittel-Punkt 1: Ein Lebensmittel finden" },
+    2: { src: "assets/food-guide/step-2.png?v=food-guide-20261013-1", alt: "Bildanleitung zu Lebensmittel-Punkt 2: Die Lebensmittelkarte kennenlernen" },
+    3: { src: "assets/food-guide/step-3.png?v=food-guide-20261013-1", alt: "Bildanleitung zu Lebensmittel-Punkt 3: Mehr erfahren" },
+    4: { src: "assets/food-guide/step-4.png?v=food-guide-20261013-1", alt: "Bildanleitung zu Lebensmittel-Punkt 4: Passende Mahlzeiten finden" },
+    5: { src: "assets/food-guide/step-5.png?v=food-guide-20261013-1", alt: "Bildanleitung zu Lebensmittel-Punkt 5: Das Lebensmittel auf die Einkaufsliste setzen" },
+    6: { src: "assets/food-guide/step-6.png?v=food-guide-20261013-1", alt: "Bildanleitung zu Lebensmittel-Punkt 6: Einen Suchtext für Sonderangebote erstellen" },
+    7: { src: "assets/food-guide/step-7.png?v=food-guide-20261013-1", alt: "Bildanleitung zu Lebensmittel-Punkt 7: Eigene Rezepte speichern" },
+    8: { src: "assets/food-guide/step-8.png?v=food-guide-20261013-1", alt: "Bildanleitung zu Lebensmittel-Punkt 8: Die Lebensmittelkarte und eigene Rezepte teilen" },
+    9: { src: "assets/food-guide/step-9.png?v=food-guide-20261013-1", alt: "Bildanleitung zu Lebensmittel-Punkt 9: Ein Lebensmittel merken" },
   };
 
   const iconPaths = {
@@ -1991,14 +2003,22 @@
   }
 
   function openMealGuideImage(step) {
-    const guideImage = mealGuideImages[step];
+    openGuideImage(step, mealGuideImages);
+  }
+
+  function openFoodGuideImage(step) {
+    openGuideImage(step, foodGuideImages);
+  }
+
+  function openGuideImage(step, guideImages) {
+    const guideImage = guideImages[step];
     if (!guideImage) return;
     dom.detailDialog.classList.add("is-image-dialog");
     dom.detailDialog.classList.remove("is-meal-variation-dialog");
     dom.detailDialog.classList.remove("is-recipe-dialog");
     dom.detailContent.innerHTML = `
       <div class="meal-guide-image-content">
-        <h2 class="sr-only">Bildanleitung zu Schritt ${step}</h2>
+        <h2 class="sr-only">${escapeHtml(guideImage.alt)}</h2>
         <img class="meal-guide-dialog-image" src="${escapeHtml(guideImage.src)}" alt="${escapeHtml(guideImage.alt)}" />
       </div>`;
     dom.detailDialog.showModal();
@@ -2713,6 +2733,8 @@
       }
       const guideImageButton = event.target.closest("[data-meal-guide-step]");
       if (guideImageButton) openMealGuideImage(Number(guideImageButton.dataset.mealGuideStep));
+      const foodGuideImageButton = event.target.closest("[data-food-guide-step]");
+      if (foodGuideImageButton) openFoodGuideImage(Number(foodGuideImageButton.dataset.foodGuideStep));
     });
     [dom.foodGrid, dom.bookmarkedFoodGrid, dom.sharedFoodGrid].forEach((grid) => grid.addEventListener("click", (event) => {
       const card = event.target.closest(".food-card");

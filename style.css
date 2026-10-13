@@ -1381,6 +1381,8 @@ main {
 }
 .meal-guide-list li.meal-guide-note::before { content: "a."; }
 .meal-guide-step-content { min-width: 0; }
+.food-guide-intro { margin: 0 0 20px; color: #35443b; font-size: 15px; line-height: 1.6; }
+.food-guide-video { display: block; width: 100%; max-width: 780px; height: auto; margin-top: 24px; border-radius: 18px; background: #12382b; }
 .meal-guide-action-label {
   text-decoration-line: underline;
   text-decoration-thickness: 1.5px;
