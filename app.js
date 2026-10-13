@@ -2,7 +2,7 @@
   "use strict";
 
   const { foods, meals, sources, foodNames = [] } = window.APP_DATA;
-  const appVersion = "food-guide-search-20261013-1";
+  const appVersion = "action-icon-labels-20261013-1";
   const appVersionFile = "app-version.json";
   const appRefreshParam = "appRefresh";
   const appRefreshSessionKey = "lebensmitteleinkauf:app-refresh-version:v1";
@@ -67,6 +67,12 @@
   };
 
   const iconPaths = {
+    info: '<circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7v.1"/>',
+    list: '<path d="M9 6h11M9 12h11M9 18h11"/><circle cx="4" cy="6" r=".7"/><circle cx="4" cy="12" r=".7"/><circle cx="4" cy="18" r=".7"/>',
+    chef: '<path d="M7 13a4 4 0 1 1 1-7 4.2 4.2 0 0 1 8 0 4 4 0 1 1 1 7v8H7v-8Z"/><path d="M7 17h10"/>',
+    tag: '<path d="M3 11 11 3h9v9l-8 8-9-9Z"/><circle cx="16" cy="7" r="1"/>',
+    recipeSearch: '<path d="M4 6h8M4 11h5M4 16h5"/><circle cx="15" cy="13" r="4"/><path d="m18 16 3 4"/>',
+    check: '<path d="m5 12 4 4L19 6"/>',
     basket: '<path d="M7 10 10 4M17 10l-3-6M4 10h16l-1.4 9H5.4L4 10Z"/><path d="M9 13v3M15 13v3"/>',
     download: '<path d="M12 3v12M7.5 10.5 12 15l4.5-4.5"/><path d="M4 18v2h16v-2"/>',
     search: '<circle cx="11" cy="11" r="6.5"/><path d="m16 16 4 4"/>',
@@ -225,6 +231,19 @@
 
   function icon(name, viewBox = "0 0 24 24") {
     return `<svg viewBox="${viewBox}" aria-hidden="true">${iconPaths[name] || iconPaths.leaf}</svg>`;
+  }
+
+  function actionIcon(name, selected = false) {
+    const labels = { info: "Details", meal: "Mahlzeiten", list: selected ? "Auf der Liste" : "Auf die Liste", chef: "meine Rezepte", tag: "Suche Sonderangebote", share: "zum Teilen", recipeSearch: "für Rezeptsuche" };
+    return `<span class="button-icon">${icon(name)}</span><span class="action-icon-label">${escapeHtml(labels[name] || name)}</span>${selected ? `<span class="action-icon-check">${icon("check")}</span>` : ""}`;
+  }
+
+  function actionLabel(label) {
+    return `aria-label="${escapeHtml(label)}" title="${escapeHtml(label)}"`;
+  }
+
+  function inlineActionIcon(name, label) {
+    return `<span class="inline-action-icon" role="img" ${actionLabel(label)}>${actionIcon(name)}</span>`;
   }
 
   function categoryIcon(category) {
@@ -1441,17 +1460,17 @@
           <div class="food-card-footer">
             <span class="compound">${escapeHtml(food.compounds)}</span>
             <div class="food-card-actions">
-              <button class="details-button" type="button">Details →</button>
-              <button class="food-meals-button" type="button" aria-label="Mahlzeiten mit ${escapeHtml(food.name)} anzeigen">Mahlzeiten →</button>
+              <button class="details-button action-icon-button" type="button" ${actionLabel(`Details zu ${food.name}`)}>${actionIcon("info")}</button>
+              <button class="food-meals-button action-icon-button" type="button" ${actionLabel(`Mahlzeiten mit ${food.name} anzeigen`)}>${actionIcon("meal")}</button>
             </div>
           </div>
           <div class="food-personal-actions">
-            <button class="food-list-button${selected ? " is-added" : ""}" type="button" data-food-list-id="${food.id}" aria-pressed="${selected}">${selected ? "Auf der Liste ✓" : "Auf die Liste →"}</button>
-            <button class="food-recipes-button" type="button" aria-label="Eigene Rezepte für ${escapeHtml(food.name)} verwalten">meine Rezepte →</button>
+            <button class="food-list-button action-icon-button${selected ? " is-added" : ""}" type="button" data-food-list-id="${food.id}" aria-pressed="${selected}" ${actionLabel(selected ? `Auf der Liste: ${food.name} entfernen` : `Auf die Liste: ${food.name} hinzufügen`)}>${actionIcon("list", selected)}</button>
+            <button class="food-recipes-button action-icon-button" type="button" ${actionLabel(`Meine Rezepte für ${food.name} verwalten`)}>${actionIcon("chef")}</button>
           </div>
           <div class="food-offers-actions">
-            <button class="food-offers-button" type="button" data-offers-food-id="${food.id}" aria-label="Sonderangebotssuchtext für ${escapeHtml(food.name)} kopieren">Suche Sonderangebote →</button>
-            <button class="food-share-button" type="button" data-share-food-id="${food.id}" aria-label="Teilen-Link für ${escapeHtml(food.name)} kopieren">zum Teilen →</button>
+            <button class="food-offers-button action-icon-button" type="button" data-offers-food-id="${food.id}" ${actionLabel(`Suche Sonderangebote für ${food.name}`)}>${actionIcon("tag")}</button>
+            <button class="food-share-button action-icon-button" type="button" data-share-food-id="${food.id}" ${actionLabel(`Zum Teilen: Link für ${food.name} kopieren`)}>${actionIcon("share")}</button>
           </div>
         </div>
       </article>`;
@@ -1626,9 +1645,10 @@
     if (!meal) return;
     const ingredients = meal.ingredients || [];
     const variants = mealVariantFoods(meal).map((food) => food.name);
-    const actionLabel = action === "recipe"
-      ? "für Rezeptsuche →"
-      : action === "offers" ? "Suche Sonderangebote →" : "Auf die Liste →";
+    const variationActionLabel = action === "recipe"
+      ? "Für Rezeptsuche kopieren"
+      : action === "offers" ? "Suche Sonderangebote" : "Auf die Liste";
+    const variationActionIcon = action === "recipe" ? "recipeSearch" : action === "offers" ? "tag" : "list";
     dom.detailDialog.classList.remove("is-image-dialog");
     dom.detailDialog.classList.add("is-meal-variation-dialog");
     dom.detailDialog.classList.remove("is-recipe-dialog");
@@ -1651,7 +1671,7 @@
           </section>
           <div class="meal-variation-footer">
             <p class="meal-selection-count" aria-live="polite">${ingredients.length} Lebensmittel ausgewählt</p>
-            <button class="primary-button meal-variation-action" type="submit">${actionLabel}</button>
+            <button class="primary-button meal-variation-action action-icon-button" type="submit" ${actionLabel(variationActionLabel)}>${actionIcon(variationActionIcon)}</button>
           </div>
         </form>
       </div>`;
@@ -2059,15 +2079,15 @@
           <div><span>Warum sinnvoll</span><p>${escapeHtml(meal.reason)}</p></div>
         </div>
         <div class="meal-card-footer">
-          <button class="meal-recipe-button" type="button" data-recipe-meal-id="${meal.id}" aria-label="Rezeptsuchtext für ${escapeHtml(meal.situation)} kopieren">für Rezeptsuche →</button>
+          <button class="meal-recipe-button action-icon-button" type="button" data-recipe-meal-id="${meal.id}" ${actionLabel(`Für Rezeptsuche: Zutaten von ${meal.situation} kopieren`)}>${actionIcon("recipeSearch")}</button>
         </div>
         <div class="meal-share-row">
-          <button class="meal-list-button${allIngredientsSelected ? " is-added" : ""}" type="button" data-meal-id="${meal.id}" aria-pressed="${allIngredientsSelected}">${allIngredientsSelected ? "Auf der Liste ✓" : "Auf die Liste →"}</button>
-          <button class="meal-personal-recipes-button" type="button" data-open-meal-recipes="${meal.id}" aria-label="Eigene Rezepte für ${escapeHtml(meal.situation)} verwalten">meine Rezepte →</button>
+          <button class="meal-list-button action-icon-button${allIngredientsSelected ? " is-added" : ""}" type="button" data-meal-id="${meal.id}" aria-pressed="${allIngredientsSelected}" ${actionLabel(allIngredientsSelected ? `Auf der Liste: Zutaten von ${meal.situation}` : `Auf die Liste: Zutaten von ${meal.situation} hinzufügen`)}>${actionIcon("list", allIngredientsSelected)}</button>
+          <button class="meal-personal-recipes-button action-icon-button" type="button" data-open-meal-recipes="${meal.id}" ${actionLabel(`Meine Rezepte für ${meal.situation} verwalten`)}>${actionIcon("chef")}</button>
         </div>
         <div class="meal-personal-actions">
-          <button class="meal-offers-button" type="button" data-offers-meal-id="${meal.id}" aria-label="Sonderangebotssuchtext für ${escapeHtml(meal.situation)} kopieren">Suche Sonderangebote →</button>
-          <button class="meal-share-button" type="button" data-share-meal-id="${meal.id}" aria-label="Teilen-Link für ${escapeHtml(meal.situation)} kopieren">zum Teilen →</button>
+          <button class="meal-offers-button action-icon-button" type="button" data-offers-meal-id="${meal.id}" ${actionLabel(`Suche Sonderangebote für ${meal.situation}`)}>${actionIcon("tag")}</button>
+          <button class="meal-share-button action-icon-button" type="button" data-share-meal-id="${meal.id}" ${actionLabel(`Zum Teilen: Link für ${meal.situation} kopieren`)}>${actionIcon("share")}</button>
         </div>
       </article>`;
   }
@@ -2146,7 +2166,7 @@
         ${url ? `<a class="recipe-overview-link" href="${escapeHtml(url)}" target="_blank" rel="noreferrer">Rezept öffnen ↗</a>` : recipe.url ? `<p class="recipe-overview-url">${escapeHtml(recipe.url)}</p>` : ""}
         ${recipe.notes ? `<div class="recipe-overview-notes">${escapeHtml(recipe.notes).replace(/\n/g, "<br>")}</div>` : ""}
         <div class="recipe-overview-actions">
-          <button class="recipe-overview-share-button" type="button" data-share-recipe-item-type="${target.itemType}" data-share-recipe-item-id="${target.itemId}" aria-label="Teilen-Link für ${escapeHtml(target.name)} kopieren">zum Teilen →</button>
+          <button class="recipe-overview-share-button action-icon-button" type="button" data-share-recipe-item-type="${target.itemType}" data-share-recipe-item-id="${target.itemId}" ${actionLabel(`Zum Teilen: Link für ${target.name} kopieren`)}>${actionIcon("share")}</button>
           <div class="recipe-overview-edit-actions">
             <button class="recipe-edit-button" type="button" data-edit-recipe-id="${escapeHtml(recipe.id)}">Bearbeiten</button>
             <button class="recipe-delete-button" type="button" data-delete-recipe-id="${escapeHtml(recipe.id)}">Löschen</button>
@@ -2170,7 +2190,7 @@
       <div class="recipe-overview-empty">
         <span class="button-icon">${icon("recipe")}</span>
         <strong>${hasMatchingFilters ? `Keine passenden Rezepte für ${itemLabel === "Mahlzeit" ? "Mahlzeiten" : "Lebensmittel"} gefunden.` : `Noch keine Rezepte für ${itemLabel === "Mahlzeit" ? "Mahlzeiten" : "Lebensmittel"} gespeichert.`}</strong>
-        <p>${hasMatchingFilters ? "Passe die Suche oder Auswahl an und versuche es erneut." : `Klicke bei ${itemLabel === "Mahlzeit" ? "einer Mahlzeit" : "einem Lebensmittel"} auf „meine Rezepte →“, um das erste Rezept hinzuzufügen.`}</p>
+        <p>${hasMatchingFilters ? "Passe die Suche oder Auswahl an und versuche es erneut." : `Klicke bei ${itemLabel === "Mahlzeit" ? "einer Mahlzeit" : "einem Lebensmittel"} auf ${inlineActionIcon("chef", "Meine Rezepte")}, um das erste Rezept hinzuzufügen.`}</p>
       </div>`;
   }
 
@@ -2227,14 +2247,14 @@
         isShareSelected: state.selectedSharedMeals.has(meal.id),
         isShareTarget: meal.id === state.sharedTargetMealId,
       })).join("")
-      : '<div class="bookmark-empty share-empty"><span class="button-icon">' + icon("share") + '</span><strong>Noch keine Mahlzeit geteilt</strong><p>Klicke bei einer Mahlzeit auf „zum Teilen →“. Der direkte Link wird kopiert und die Mahlzeit erscheint hier.</p></div>';
+      : '<div class="bookmark-empty share-empty"><span class="button-icon">' + icon("share") + '</span><strong>Noch keine Mahlzeit geteilt</strong><p>Klicke bei einer Mahlzeit auf ' + inlineActionIcon("share", "Zum Teilen") + '. Der direkte Link wird kopiert und die Mahlzeit erscheint hier.</p></div>';
     dom.sharedFoodGrid.innerHTML = sharedFoods.length
       ? sharedFoods.map((food) => renderFoodCard(food, {
         isShareView: true,
         isShareSelected: state.selectedSharedFoods.has(food.id),
         isShareTarget: food.id === state.sharedTargetFoodId,
       })).join("")
-      : '<div class="bookmark-empty share-empty"><span class="button-icon">' + icon("share") + '</span><strong>Noch kein Lebensmittel geteilt</strong><p>Klicke bei einem Lebensmittel auf „zum Teilen →“. Der direkte Link wird kopiert und das Lebensmittel erscheint hier.</p></div>';
+      : '<div class="bookmark-empty share-empty"><span class="button-icon">' + icon("share") + '</span><strong>Noch kein Lebensmittel geteilt</strong><p>Klicke bei einem Lebensmittel auf ' + inlineActionIcon("share", "Zum Teilen") + '. Der direkte Link wird kopiert und das Lebensmittel erscheint hier.</p></div>';
     renderSharedSelections();
   }
 
