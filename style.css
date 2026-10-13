@@ -1503,7 +1503,7 @@ main {
   background: white;
   transform: translateY(-1px);
 }
-.help-section-list a span { flex: 0 0 auto; color: var(--forest-700); font-size: 17px; }
+.help-section-list a span[aria-hidden="true"] { flex: 0 0 auto; color: var(--forest-700); font-size: 17px; }
 .help-sections { margin-top: 66px; }
 .help-section {
   min-height: 150px;
