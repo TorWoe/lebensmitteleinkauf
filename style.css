@@ -1262,7 +1262,8 @@ main {
   align-items: flex-start;
 }
 
-.shopping-heading h2 { font-size: 24px; }
+.shopping-heading h2 { display: flex; align-items: center; gap: 8px; font-size: 24px; }
+.shopping-heading .shopping-title-icon { width: 22px; height: 22px; }
 .close-shopping,
 .panel-handle { display: none; }
 
