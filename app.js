@@ -2,7 +2,7 @@
   "use strict";
 
   const { foods, meals, sources, foodNames = [] } = window.APP_DATA;
-  const appVersion = "unified-nav-icons-20261013-1";
+  const appVersion = "help-meal-recipe-section-20261013-1";
   const appVersionFile = "app-version.json";
   const appRefreshParam = "appRefresh";
   const appRefreshSessionKey = "lebensmitteleinkauf:app-refresh-version:v1";
@@ -2377,7 +2377,7 @@
   }
 
   function viewFromHash() {
-    const viewByHash = { "#lebensmittel": "foods", "#mahlzeiten": "meals", "#tagesbaukasten": "meals", "#rezepte": "recipes", "#meine-rezepte": "recipes", "#lesezeichen": "bookmarks", "#auswertung": "insights", "#teilen": "shares", "#so-funktionierts": "help", "#hilfe-oben": "help", "#hilfe-lebensmittel": "help", "#hilfe-mahlzeiten": "help", "#hilfe-rezepte": "help", "#hilfe-lesezeichen": "help", "#hilfe-teilen": "help", "#hilfe-auswertung": "help" };
+    const viewByHash = { "#lebensmittel": "foods", "#mahlzeiten": "meals", "#tagesbaukasten": "meals", "#rezepte": "recipes", "#meine-rezepte": "recipes", "#lesezeichen": "bookmarks", "#auswertung": "insights", "#teilen": "shares", "#so-funktionierts": "help", "#hilfe-oben": "help", "#hilfe-lebensmittel": "help", "#hilfe-mahlzeiten": "help", "#hilfe-mahlzeiten-rezeptsuche": "help", "#hilfe-rezepte": "help", "#hilfe-lesezeichen": "help", "#hilfe-teilen": "help", "#hilfe-auswertung": "help" };
     return viewByHash[window.location.hash] || "foods";
   }
 
