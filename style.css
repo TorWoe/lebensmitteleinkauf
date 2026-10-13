@@ -1180,8 +1180,8 @@ main {
   position: relative;
   display: inline-flex;
   align-items: center;
-  justify-content: center;
-  width: auto;
+  justify-content: flex-end;
+  width: fit-content;
   min-width: 44px;
   min-height: 44px;
   padding: 10px;
@@ -1194,7 +1194,7 @@ main {
   cursor: pointer;
 }
 .action-icon-button .button-icon { width: 22px; height: 22px; }
-.action-icon-label { min-width: 0; font-size: 12px; font-weight: 800; line-height: 1.35; text-align: left; }
+.action-icon-label { min-width: 0; font-size: 12px; font-weight: 800; line-height: 1.35; text-align: right; }
 .food-personal-actions .action-icon-button,
 .food-offers-actions .action-icon-button,
 .meal-share-row .action-icon-button,
@@ -1202,14 +1202,16 @@ main {
 .food-offers-actions,
 .meal-personal-actions { display: grid; grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr); }
 .food-offers-actions .action-icon-button,
-.meal-personal-actions .action-icon-button { max-width: 100%; }
+.meal-personal-actions .action-icon-button { max-width: 100%; justify-self: start; }
+.food-offers-actions .food-share-button,
+.meal-personal-actions .meal-share-button { justify-self: end; }
 .action-icon-button:hover { background: #e3efe5; border-color: var(--forest-700); }
 .action-icon-button:focus-visible { outline: 2px solid var(--forest-700); outline-offset: 3px; }
 .action-icon-button.is-added { color: var(--forest-700); background: #dcefe0; }
 .action-icon-check { position: absolute; right: 1px; top: 1px; display: grid; place-items: center; width: 15px; height: 15px; border-radius: 50%; background: var(--forest-700); color: white; }
 .action-icon-check svg { width: 11px; height: 11px; fill: none; stroke: currentColor; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
-.meal-variation-action.action-icon-button { width: auto; }
-.inline-action-icon { display: inline-flex; gap: 5px; align-items: center; vertical-align: middle; color: var(--forest-700); text-decoration: none; }
+.meal-variation-action.action-icon-button { width: fit-content; }
+.inline-action-icon { display: inline-flex; gap: 5px; align-items: center; justify-content: flex-end; width: fit-content; vertical-align: middle; color: var(--forest-700); text-decoration: none; }
 .meal-guide-action-label.inline-action-icon { text-decoration: none; }
 
 .load-more {
