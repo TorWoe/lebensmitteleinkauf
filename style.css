@@ -1204,7 +1204,7 @@ main {
 .food-offers-actions .action-icon-button,
 .meal-personal-actions .action-icon-button { max-width: 100%; justify-self: start; }
 .food-offers-actions .food-share-button,
-.meal-personal-actions .meal-share-button { justify-self: end; }
+.meal-personal-actions .meal-personal-recipes-button { justify-self: end; }
 .action-icon-button:hover { background: #e3efe5; border-color: var(--forest-700); }
 .action-icon-button:focus-visible { outline: 2px solid var(--forest-700); outline-offset: 3px; }
 .action-icon-button.is-added { color: var(--forest-700); background: #dcefe0; }
@@ -1612,8 +1612,8 @@ main {
 .meal-details { display: grid; grid-template-columns: 1fr; gap: 16px; margin-top: 24px; padding-top: 18px; border-top: 1px solid rgba(20, 92, 56, 0.12); }
 .meal-details span { display: block; margin-bottom: 5px; color: var(--forest-700); font-size: 10px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; }
 .meal-details p { margin: 0; color: var(--muted); font-size: 12px; line-height: 1.5; }
-.meal-card-footer { display: flex; align-items: center; justify-content: flex-end; gap: 14px; margin-top: 18px; padding-top: 8px; border-top: 1px solid rgba(20, 92, 56, 0.09); }
-.meal-share-row { display: flex; align-items: center; justify-content: space-between; gap: 14px; }
+.meal-card-footer { display: flex; align-items: center; justify-content: space-between; gap: 14px; margin-top: 18px; padding-top: 8px; border-top: 1px solid rgba(20, 92, 56, 0.09); }
+.meal-share-row { display: flex; align-items: center; justify-content: flex-start; gap: 14px; }
 .meal-personal-actions {
   display: flex;
   align-items: center;

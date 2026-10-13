@@ -2,7 +2,7 @@
   "use strict";
 
   const { foods, meals, sources, foodNames = [] } = window.APP_DATA;
-  const appVersion = "compact-action-icons-20261013-1";
+  const appVersion = "meal-action-rows-20261013-1";
   const appVersionFile = "app-version.json";
   const appRefreshParam = "appRefresh";
   const appRefreshSessionKey = "lebensmitteleinkauf:app-refresh-version:v1";
@@ -2079,14 +2079,14 @@
           <div><span>Warum sinnvoll</span><p>${escapeHtml(meal.reason)}</p></div>
         </div>
         <div class="meal-card-footer">
-          <button class="meal-recipe-button action-icon-button" type="button" data-recipe-meal-id="${meal.id}" ${actionLabel(`Für Rezeptsuche: Zutaten von ${meal.situation} kopieren`)}>${actionIcon("recipeSearch")}</button>
-        </div>
-        <div class="meal-share-row">
           <button class="meal-list-button action-icon-button${allIngredientsSelected ? " is-added" : ""}" type="button" data-meal-id="${meal.id}" aria-pressed="${allIngredientsSelected}" ${actionLabel(allIngredientsSelected ? `Auf der Liste: Zutaten von ${meal.situation}` : `Auf die Liste: Zutaten von ${meal.situation} hinzufügen`)}>${actionIcon("list", allIngredientsSelected)}</button>
-          <button class="meal-personal-recipes-button action-icon-button" type="button" data-open-meal-recipes="${meal.id}" ${actionLabel(`Meine Rezepte für ${meal.situation} verwalten`)}>${actionIcon("chef")}</button>
+          <button class="meal-recipe-button action-icon-button" type="button" data-recipe-meal-id="${meal.id}" ${actionLabel(`Für Rezeptsuche: Zutaten von ${meal.situation} kopieren`)}>${actionIcon("recipeSearch")}</button>
         </div>
         <div class="meal-personal-actions">
           <button class="meal-offers-button action-icon-button" type="button" data-offers-meal-id="${meal.id}" ${actionLabel(`Suche Sonderangebote für ${meal.situation}`)}>${actionIcon("tag")}</button>
+          <button class="meal-personal-recipes-button action-icon-button" type="button" data-open-meal-recipes="${meal.id}" ${actionLabel(`Meine Rezepte für ${meal.situation} verwalten`)}>${actionIcon("chef")}</button>
+        </div>
+        <div class="meal-share-row">
           <button class="meal-share-button action-icon-button" type="button" data-share-meal-id="${meal.id}" ${actionLabel(`Zum Teilen: Link für ${meal.situation} kopieren`)}>${actionIcon("share")}</button>
         </div>
       </article>`;
