@@ -2,7 +2,7 @@
   "use strict";
 
   const { foods, meals, sources, foodNames = [] } = window.APP_DATA;
-  const appVersion = "help-meal-recipe-section-20261013-3";
+  const appVersion = "meal-recipe-guide-20261015-1";
   const appVersionFile = "app-version.json";
   const appRefreshParam = "appRefresh";
   const appRefreshSessionKey = "lebensmitteleinkauf:app-refresh-version:v1";
@@ -48,10 +48,13 @@
   const foodByName = new Map(foods.map((food) => [normalizeFoodName(food.name), food]));
   const mealIndexById = new Map(meals.map((meal, index) => [meal.id, index]));
   const mealGuideImages = {
-    1: { src: "assets/meal-guide/step-1.png?v=meal-guide-design-20261013-1", alt: "Bildanleitung zu Schritt 1: Eine Mahlzeit auswählen" },
-    2: { src: "assets/meal-guide/step-2.png?v=meal-guide-design-20261013-1", alt: "Bildanleitung zu Schritt 2: Text für die Rezeptsuche kopieren" },
-    3: { src: "assets/meal-guide/step-3.png?v=meal-guide-design-20261013-1", alt: "Bildanleitung zu Schritt 3: Den kopierten Text in eine KI einfügen" },
-    4: { src: "assets/meal-guide/step-4.png?v=meal-guide-design-20261013-1", alt: "Bildanleitung zu Hinweis a: Zutaten auf die Einkaufsliste setzen" },
+    1: { src: "assets/meal-recipe-guide/step-1.png?v=meal-recipe-guide-20261015-1", alt: "Bildanleitung zu Mahlzeiten-Punkt 1: Über ein Lebensmittel einsteigen" },
+    2: { src: "assets/meal-recipe-guide/step-2.png?v=meal-recipe-guide-20261015-1", alt: "Bildanleitung zu Mahlzeiten-Punkt 2: Direkt nach einer Mahlzeit suchen" },
+    3: { src: "assets/meal-recipe-guide/step-3.png?v=meal-recipe-guide-20261015-1", alt: "Bildanleitung zu Mahlzeiten-Punkt 3: Eine passende Mahlzeit auswählen" },
+    4: { src: "assets/meal-recipe-guide/step-4.png?v=meal-recipe-guide-20261015-1", alt: "Bildanleitung zu Mahlzeiten-Punkt 4: Die Rezeptsuche starten" },
+    5: { src: "assets/meal-recipe-guide/step-5.png?v=meal-recipe-guide-20261015-1", alt: "Bildanleitung zu Mahlzeiten-Punkt 5: Die Zutaten nach deinem Geschmack anpassen" },
+    6: { src: "assets/meal-recipe-guide/step-6.png?v=meal-recipe-guide-20261015-1", alt: "Bildanleitung zu Mahlzeiten-Punkt 6: Den Suchtext in eine KI einfügen" },
+    7: { src: "assets/meal-recipe-guide/step-7.png?v=meal-recipe-guide-20261015-1", alt: "Bildanleitung zu Mahlzeiten-Punkt 7: Rezeptvorschläge entdecken" },
   };
 
   const foodGuideImages = {

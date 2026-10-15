@@ -9,7 +9,7 @@
       content="Antientzündliche Lebensmittel entdecken, filtern und als Einkaufsliste speichern."
     />
     <title>Lebensmitteleinkauf</title>
-    <link rel="stylesheet" href="style.css?v=help-meal-recipe-section-20261013-3" />
+    <link rel="stylesheet" href="style.css?v=meal-recipe-guide-20261015-1" />
   </head>
   <body>
     <div class="app-shell">
@@ -405,7 +405,7 @@ Nur bei zu langer Anmeldedauer auf Anmeldung erneuern klicken.</span>
           <nav class="help-section-nav" aria-label="Bereiche auf dieser Seite">
             <ul class="help-section-list">
               <li><a href="#hilfe-lebensmittel">so funktioniert's bei: Lebensmittel <span aria-hidden="true">↓</span></a></li>
-              <li><a href="#hilfe-mahlzeiten">so funktioniert's bei: Mahlzeiten <span aria-hidden="true">↓</span></a></li>
+              <li><a href="#hilfe-mahlzeiten">so funktioniert's bei: Mahlzeiten und Rezeptsuche <span aria-hidden="true">↓</span></a></li>
               <li><a href="#hilfe-mahlzeiten-rezeptsuche"><span>so funktioniert's bei: Mahlzeiten<br />und bei: für Rezeptsuche</span> <span aria-hidden="true">↓</span></a></li>
               <li><a href="#hilfe-rezepte">so funktioniert's bei: Meine Rezepte <span aria-hidden="true">↓</span></a></li>
               <li><a href="#hilfe-lesezeichen">so funktioniert's bei: Lesezeichen <span aria-hidden="true">↓</span></a></li>
@@ -445,18 +445,26 @@ Nur bei zu langer Anmeldedauer auf Anmeldung erneuern klicken.</span>
 
             <section class="help-section help-meals-section" id="hilfe-mahlzeiten" aria-labelledby="hilfe-mahlzeiten-title">
               <div class="help-section-heading">
-                <h2 id="hilfe-mahlzeiten-title">so funktioniert's bei: Mahlzeiten</h2>
+                <h2 id="hilfe-mahlzeiten-title">so funktioniert's bei: Mahlzeiten und Rezeptsuche</h2>
                 <a class="help-back-to-top" href="#hilfe-oben" aria-label="Zurück zum Anfang der Seite" title="Zurück nach oben"><span class="button-icon" data-icon="arrowUp" aria-hidden="true"></span></a>
               </div>
-              <p>Suche Dir eine leckere Mahlzeit aus. Passe diese bei Bedarf mit zwei, drei Klicks an. Lass Dir dann dazu das Rezept, die Zubereitung und die Mengen geben.</p>
+              <p>Finde eine Mahlzeit nach deinem Geschmack, passe die Zutaten bei Bedarf an und nutze eine KI, um passende Rezeptvorschläge zu erhalten.</p>
+              <p id="mealGuideVideoIntro">Schau gern in unser kurzes Erklärvideo: Wir zeigen dir, wie du eine Mahlzeit findest, die Zutaten anpasst und passende Rezeptvorschläge mit einer KI erhältst.</p>
+              <video class="food-guide-video" controls playsinline preload="metadata" aria-label="Erklärvideo: Mahlzeiten und Rezeptsuche" aria-describedby="mealGuideVideoIntro">
+                <source src="assets/meal-recipe-guide/mahlzeiten-rezeptsuche.mp4?v=meal-recipe-guide-20261015-1" type="video/mp4" />
+                Dein Browser kann das Video hier nicht abspielen. <a href="assets/meal-recipe-guide/mahlzeiten-rezeptsuche.mp4">Erklärvideo öffnen</a>.
+              </video>
               <div class="meal-guide">
                 <ol class="meal-guide-list">
-                  <li><span class="meal-guide-step-content">Suche dir hier eine Mahlzeit mit Lebensmitteln die du gerne essen möchtest. <button class="meal-guide-image-button" type="button" data-meal-guide-step="1" aria-label="Bild zu Schritt 1 öffnen"><span class="button-icon" data-icon="imageOpen" aria-hidden="true"></span><span>Bild</span></button></span></li>
-                  <li><span class="meal-guide-step-content">Klicke hier bei einer Mahlzeit auf "<span class="meal-guide-action-label inline-action-icon" role="img" aria-label="Für Rezeptsuche" title="Für Rezeptsuche"><span class="button-icon" data-icon="recipeSearch" aria-hidden="true"></span><span class="action-icon-label">Für Rezeptsuche</span></span>". Der Text für die Rezeptsuche ist jetzt automatisch in der Zwischenablage gespeichert. <button class="meal-guide-image-button" type="button" data-meal-guide-step="2" aria-label="Bild zu Schritt 2 öffnen"><span class="button-icon" data-icon="imageOpen" aria-hidden="true"></span><span>Bild</span></button></span></li>
-                  <li><span class="meal-guide-step-content">Öffne eine KI wie z.B. Copilot von Microsoft oder Gemini von Google und füge den in der Zwischenablage gespeicherten Text ein.<br />Mit einer KI bekommst du schnell gute Rezepte die zu deiner Suche passen. <button class="meal-guide-image-button" type="button" data-meal-guide-step="3" aria-label="Bild zu Schritt 3 öffnen"><span class="button-icon" data-icon="imageOpen" aria-hidden="true"></span><span>Bild</span></button></span></li>
-                  <li class="meal-guide-note"><span class="meal-guide-step-content">Klicke wieder hier bei einer Mahlzeit auf "<span class="meal-guide-action-label inline-action-icon" role="img" aria-label="Auf die Liste" title="Auf die Liste"><span class="button-icon" data-icon="list" aria-hidden="true"></span><span class="action-icon-label">Auf die Liste</span></span>". Die Zutaten für dein Rezept stehen jetzt automatisch auf Deiner Einkaufsliste. <button class="meal-guide-image-button" type="button" data-meal-guide-step="4" aria-label="Bild zu Hinweis a öffnen"><span class="button-icon" data-icon="imageOpen" aria-hidden="true"></span><span>Bild</span></button></span></li>
+                  <li><span class="meal-guide-step-content"><strong>Über ein Lebensmittel einsteigen</strong><br />Suche im Bereich „Lebensmittel“ nach einer Zutat, die du gerne essen möchtest, zum Beispiel „Lachs“. Über „Alle Lebensmittel“ kannst du auch einen Eintrag aus der Übersicht auswählen. Klicke anschließend auf der Lebensmittelkarte auf „Mahlzeiten“. Die App wechselt zu den Mahlzeiten und übernimmt das Lebensmittel als Suchbegriff. <button class="meal-guide-image-button" type="button" data-meal-guide-step="1" aria-label="Bild zu Mahlzeiten-Punkt 1 öffnen: Über ein Lebensmittel einsteigen"><span class="button-icon" data-icon="imageOpen" aria-hidden="true"></span><span>Bild</span></button></span></li>
+                  <li><span class="meal-guide-step-content"><strong>Direkt nach einer Mahlzeit suchen</strong><br />Alternativ kannst du direkt den Bereich „Mahlzeiten“ öffnen. Gib eine Zutat oder eine Mahlzeit in das Suchfeld ein. Mit den Filtern kannst du die Auswahl zusätzlich eingrenzen, zum Beispiel auf „Warm“ und „Fisch &amp; Meeresfrüchte“. Mit „Zurücksetzen“ entfernst du die Suche und die Filter. <button class="meal-guide-image-button" type="button" data-meal-guide-step="2" aria-label="Bild zu Mahlzeiten-Punkt 2 öffnen: Direkt nach einer Mahlzeit suchen"><span class="button-icon" data-icon="imageOpen" aria-hidden="true"></span><span>Bild</span></button></span></li>
+                  <li><span class="meal-guide-step-content"><strong>Eine passende Mahlzeit auswählen</strong><br />Schau dir die vorgeschlagenen Mahlzeiten an. Auf den Karten findest du die Zutaten, mögliche Varianten und eine kurze Erklärung zur Zusammenstellung. Im Video wird die „Lachs-Bulgur-Bowl mit Brokkoli und roter Paprika“ ausgewählt. <button class="meal-guide-image-button" type="button" data-meal-guide-step="3" aria-label="Bild zu Mahlzeiten-Punkt 3 öffnen: Eine passende Mahlzeit auswählen"><span class="button-icon" data-icon="imageOpen" aria-hidden="true"></span><span>Bild</span></button></span></li>
+                  <li><span class="meal-guide-step-content"><strong>Die Rezeptsuche starten</strong><br />Klicke auf der gewünschten Mahlzeitenkarte auf „für Rezeptsuche“. Die App fragt dich, ob du die Lebensmittel für diese Aktion selbst auswählen möchtest. Wähle „Nein“, um die vorgegebenen Zutaten zu übernehmen, oder „Ja“, um die Auswahl anzupassen. <button class="meal-guide-image-button" type="button" data-meal-guide-step="4" aria-label="Bild zu Mahlzeiten-Punkt 4 öffnen: Die Rezeptsuche starten"><span class="button-icon" data-icon="imageOpen" aria-hidden="true"></span><span>Bild</span></button></span></li>
+                  <li><span class="meal-guide-step-content"><strong>Die Zutaten nach deinem Geschmack anpassen</strong><br />Wenn du „Ja“ gewählt hast, kannst du Zutaten abwählen und angebotene Varianten hinzufügen. Im Video werden Brokkoli und Knoblauch abgewählt und Blumenkohl hinzugefügt. Klicke anschließend im Dialog auf „für Rezeptsuche“. Der Suchtext mit deiner Auswahl wird in die Zwischenablage kopiert. <button class="meal-guide-image-button" type="button" data-meal-guide-step="5" aria-label="Bild zu Mahlzeiten-Punkt 5 öffnen: Die Zutaten nach deinem Geschmack anpassen"><span class="button-icon" data-icon="imageOpen" aria-hidden="true"></span><span>Bild</span></button></span></li>
+                  <li><span class="meal-guide-step-content"><strong>Den Suchtext in eine KI einfügen</strong><br />Öffne eine KI, im Video ist es Copilot. Füge den kopierten Text in das Eingabefeld ein und sende ihn ab. Der vorbereitete Text fordert Rezeptvorschläge mit genau den ausgewählten Zutaten an. <button class="meal-guide-image-button" type="button" data-meal-guide-step="6" aria-label="Bild zu Mahlzeiten-Punkt 6 öffnen: Den Suchtext in eine KI einfügen"><span class="button-icon" data-icon="imageOpen" aria-hidden="true"></span><span>Bild</span></button></span></li>
+                  <li><span class="meal-guide-step-content"><strong>Rezeptvorschläge entdecken</strong><br />Die KI erstellt passende Vorschläge zu deiner Auswahl. Schau dir die Ergebnisse an und wähle das Rezept, das du zubereiten möchtest. <button class="meal-guide-image-button" type="button" data-meal-guide-step="7" aria-label="Bild zu Mahlzeiten-Punkt 7 öffnen: Rezeptvorschläge entdecken"><span class="button-icon" data-icon="imageOpen" aria-hidden="true"></span><span>Bild</span></button></span></li>
                 </ol>
-                <p class="meal-guide-closing">Lass es dir schmecken. Du isst jetzt etwas gesundes dass dir gut tut.</p>
+                <p class="meal-guide-closing">Lass es dir schmecken!</p>
               </div>
             </section>
 
@@ -583,6 +591,6 @@ Nur bei zu langer Anmeldedauer auf Anmeldung erneuern klicken.</span>
       document.write('<script src="data.js?v=' + Date.now() + '"><\/script>');
     </script>
     <script src="vendor/msal-browser.min.js?v=2.38.3"></script>
-    <script src="app.js?v=help-meal-recipe-section-20261013-3"></script>
+    <script src="app.js?v=meal-recipe-guide-20261015-1"></script>
   </body>
 </html>
