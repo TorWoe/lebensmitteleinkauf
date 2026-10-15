@@ -2,7 +2,7 @@
   "use strict";
 
   const { foods, meals, sources, foodNames = [] } = window.APP_DATA;
-  const appVersion = "meal-recipe-guide-20261015-1";
+  const appVersion = "recipe-search-guide-20261015-1";
   const appVersionFile = "app-version.json";
   const appRefreshParam = "appRefresh";
   const appRefreshSessionKey = "lebensmitteleinkauf:app-refresh-version:v1";
@@ -55,6 +55,13 @@
     5: { src: "assets/meal-recipe-guide/step-5.png?v=meal-recipe-guide-20261015-1", alt: "Bildanleitung zu Mahlzeiten-Punkt 5: Die Zutaten nach deinem Geschmack anpassen" },
     6: { src: "assets/meal-recipe-guide/step-6.png?v=meal-recipe-guide-20261015-1", alt: "Bildanleitung zu Mahlzeiten-Punkt 6: Den Suchtext in eine KI einfügen" },
     7: { src: "assets/meal-recipe-guide/step-7.png?v=meal-recipe-guide-20261015-1", alt: "Bildanleitung zu Mahlzeiten-Punkt 7: Rezeptvorschläge entdecken" },
+  };
+
+  const recipeSearchGuideImages = {
+    1: { src: "assets/recipe-search-guide/step-1.png?v=recipe-search-guide-20261015-1", alt: "Bildanleitung zu Rezeptsuche-Punkt 1: Die Rezeptsuche starten" },
+    2: { src: "assets/recipe-search-guide/step-2.png?v=recipe-search-guide-20261015-1", alt: "Bildanleitung zu Rezeptsuche-Punkt 2: Die Zutaten nach deinem Geschmack anpassen" },
+    3: { src: "assets/recipe-search-guide/step-3.png?v=recipe-search-guide-20261015-1", alt: "Bildanleitung zu Rezeptsuche-Punkt 3: Den Suchtext in eine KI einfügen" },
+    4: { src: "assets/recipe-search-guide/step-4.png?v=recipe-search-guide-20261015-1", alt: "Bildanleitung zu Rezeptsuche-Punkt 4: Rezeptvorschläge entdecken" },
   };
 
   const foodGuideImages = {
@@ -2758,6 +2765,8 @@
       if (guideImageButton) openMealGuideImage(Number(guideImageButton.dataset.mealGuideStep));
       const foodGuideImageButton = event.target.closest("[data-food-guide-step]");
       if (foodGuideImageButton) openFoodGuideImage(Number(foodGuideImageButton.dataset.foodGuideStep));
+      const recipeSearchGuideImageButton = event.target.closest("[data-recipe-search-guide-step]");
+      if (recipeSearchGuideImageButton) openGuideImage(Number(recipeSearchGuideImageButton.dataset.recipeSearchGuideStep), recipeSearchGuideImages);
     });
     [dom.foodGrid, dom.bookmarkedFoodGrid, dom.sharedFoodGrid].forEach((grid) => grid.addEventListener("click", (event) => {
       const card = event.target.closest(".food-card");

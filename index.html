@@ -9,7 +9,7 @@
       content="Antientzündliche Lebensmittel entdecken, filtern und als Einkaufsliste speichern."
     />
     <title>Lebensmitteleinkauf</title>
-    <link rel="stylesheet" href="style.css?v=meal-recipe-guide-20261015-1" />
+    <link rel="stylesheet" href="style.css?v=recipe-search-guide-20261015-1" />
   </head>
   <body>
     <div class="app-shell">
@@ -406,7 +406,7 @@ Nur bei zu langer Anmeldedauer auf Anmeldung erneuern klicken.</span>
             <ul class="help-section-list">
               <li><a href="#hilfe-lebensmittel">so funktioniert's bei: Lebensmittel <span aria-hidden="true">↓</span></a></li>
               <li><a href="#hilfe-mahlzeiten">so funktioniert's bei: Mahlzeiten und Rezeptsuche <span aria-hidden="true">↓</span></a></li>
-              <li><a href="#hilfe-mahlzeiten-rezeptsuche"><span>so funktioniert's bei: Mahlzeiten<br />und bei: für Rezeptsuche</span> <span aria-hidden="true">↓</span></a></li>
+              <li><a href="#hilfe-mahlzeiten-rezeptsuche">so funktioniert's bei: für Rezeptsuche <span aria-hidden="true">↓</span></a></li>
               <li><a href="#hilfe-rezepte">so funktioniert's bei: Meine Rezepte <span aria-hidden="true">↓</span></a></li>
               <li><a href="#hilfe-lesezeichen">so funktioniert's bei: Lesezeichen <span aria-hidden="true">↓</span></a></li>
               <li><a href="#hilfe-teilen">so funktioniert's bei: Teilen <span aria-hidden="true">↓</span></a></li>
@@ -470,8 +470,23 @@ Nur bei zu langer Anmeldedauer auf Anmeldung erneuern klicken.</span>
 
             <section class="help-section" id="hilfe-mahlzeiten-rezeptsuche" aria-labelledby="hilfe-mahlzeiten-rezeptsuche-title">
               <div class="help-section-heading">
-                <h2 id="hilfe-mahlzeiten-rezeptsuche-title">so funktioniert's bei: Mahlzeiten<br />und bei: für Rezeptsuche</h2>
+                <h2 id="hilfe-mahlzeiten-rezeptsuche-title">so funktioniert's bei: für Rezeptsuche</h2>
                 <a class="help-back-to-top" href="#hilfe-oben" aria-label="Zurück zum Anfang der Seite" title="Zurück nach oben"><span class="button-icon" data-icon="arrowUp" aria-hidden="true"></span></a>
+              </div>
+              <p>Passe die Zutaten deiner gewählten Mahlzeit bei Bedarf an und nutze eine KI, um passende Rezeptvorschläge zu erhalten.</p>
+              <p id="recipeSearchGuideVideoIntro">Schau gern in unser kurzes Erklärvideo: Wir zeigen dir, wie du die Rezeptsuche startest, Zutaten anpasst und den Suchtext in eine KI einfügst.</p>
+              <video class="food-guide-video" controls playsinline preload="metadata" aria-label="Erklärvideo: für Rezeptsuche" aria-describedby="recipeSearchGuideVideoIntro">
+                <source src="assets/recipe-search-guide/rezeptsuche.mp4?v=recipe-search-guide-20261015-1" type="video/mp4" />
+                Dein Browser kann das Video hier nicht abspielen. <a href="assets/recipe-search-guide/rezeptsuche.mp4">Erklärvideo öffnen</a>.
+              </video>
+              <div class="meal-guide">
+                <ol class="meal-guide-list">
+                  <li><span class="meal-guide-step-content"><strong>Die Rezeptsuche starten</strong><br />Klicke auf der gewünschten Mahlzeitenkarte auf „für Rezeptsuche“. Die App fragt dich, ob du die Lebensmittel für diese Aktion selbst auswählen möchtest. Wähle „Nein“, um die vorgegebenen Zutaten zu übernehmen, oder „Ja“, um die Auswahl anzupassen. <button class="meal-guide-image-button" type="button" data-recipe-search-guide-step="1" aria-label="Bild zu Rezeptsuche-Punkt 1 öffnen: Die Rezeptsuche starten"><span class="button-icon" data-icon="imageOpen" aria-hidden="true"></span><span>Bild</span></button></span></li>
+                  <li><span class="meal-guide-step-content"><strong>Die Zutaten nach deinem Geschmack anpassen</strong><br />Wenn du „Ja“ gewählt hast, kannst du Zutaten abwählen und angebotene Varianten hinzufügen. Im Video werden Brokkoli und Knoblauch abgewählt und Blumenkohl hinzugefügt. Klicke anschließend im Dialog auf „für Rezeptsuche“. Der Suchtext mit deiner Auswahl wird in die Zwischenablage kopiert. <button class="meal-guide-image-button" type="button" data-recipe-search-guide-step="2" aria-label="Bild zu Rezeptsuche-Punkt 2 öffnen: Die Zutaten nach deinem Geschmack anpassen"><span class="button-icon" data-icon="imageOpen" aria-hidden="true"></span><span>Bild</span></button></span></li>
+                  <li><span class="meal-guide-step-content"><strong>Den Suchtext in eine KI einfügen</strong><br />Öffne eine KI, im Video ist es Copilot. Füge den kopierten Text in das Eingabefeld ein und sende ihn ab. Der vorbereitete Text fordert Rezeptvorschläge mit genau den ausgewählten Zutaten an. <button class="meal-guide-image-button" type="button" data-recipe-search-guide-step="3" aria-label="Bild zu Rezeptsuche-Punkt 3 öffnen: Den Suchtext in eine KI einfügen"><span class="button-icon" data-icon="imageOpen" aria-hidden="true"></span><span>Bild</span></button></span></li>
+                  <li><span class="meal-guide-step-content"><strong>Rezeptvorschläge entdecken</strong><br />Die KI erstellt passende Vorschläge zu deiner Auswahl. Schau dir die Ergebnisse an und wähle das Rezept, das du zubereiten möchtest. <button class="meal-guide-image-button" type="button" data-recipe-search-guide-step="4" aria-label="Bild zu Rezeptsuche-Punkt 4 öffnen: Rezeptvorschläge entdecken"><span class="button-icon" data-icon="imageOpen" aria-hidden="true"></span><span>Bild</span></button></span></li>
+                </ol>
+                <p class="meal-guide-closing">Lass es dir schmecken!</p>
               </div>
             </section>
 
@@ -591,6 +606,6 @@ Nur bei zu langer Anmeldedauer auf Anmeldung erneuern klicken.</span>
       document.write('<script src="data.js?v=' + Date.now() + '"><\/script>');
     </script>
     <script src="vendor/msal-browser.min.js?v=2.38.3"></script>
-    <script src="app.js?v=meal-recipe-guide-20261015-1"></script>
+    <script src="app.js?v=recipe-search-guide-20261015-1"></script>
   </body>
 </html>
