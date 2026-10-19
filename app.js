@@ -2,7 +2,7 @@
   "use strict";
 
   const { foods, meals, sources, foodNames = [] } = window.APP_DATA;
-  const appVersion = "recipe-search-guide-20261015-1";
+  const appVersion = "my-recipes-guide-20261019-1";
   const appVersionFile = "app-version.json";
   const appRefreshParam = "appRefresh";
   const appRefreshSessionKey = "lebensmitteleinkauf:app-refresh-version:v1";
@@ -55,6 +55,16 @@
     5: { src: "assets/meal-recipe-guide/step-5.png?v=meal-recipe-guide-20261015-1", alt: "Bildanleitung zu Mahlzeiten-Punkt 5: Die Zutaten nach deinem Geschmack anpassen" },
     6: { src: "assets/meal-recipe-guide/step-6.png?v=meal-recipe-guide-20261015-1", alt: "Bildanleitung zu Mahlzeiten-Punkt 6: Den Suchtext in eine KI einfügen" },
     7: { src: "assets/meal-recipe-guide/step-7.png?v=meal-recipe-guide-20261015-1", alt: "Bildanleitung zu Mahlzeiten-Punkt 7: Rezeptvorschläge entdecken" },
+  };
+
+  const myRecipesGuideImages = {
+    1: { src: "assets/my-recipes-guide/step-1.png?v=my-recipes-guide-20261019-1", alt: "Bildanleitung zu Meine-Rezepte-Punkt 1: „Meine Rezepte“ bei einer Mahlzeit öffnen" },
+    2: { src: "assets/my-recipes-guide/step-2.png?v=my-recipes-guide-20261019-1", alt: "Bildanleitung zu Meine-Rezepte-Punkt 2: Ein eigenes Rezept eintragen" },
+    3: { src: "assets/my-recipes-guide/step-3.png?v=my-recipes-guide-20261019-1", alt: "Bildanleitung zu Meine-Rezepte-Punkt 3: Das Rezept speichern" },
+    4: { src: "assets/my-recipes-guide/step-4.png?v=my-recipes-guide-20261019-1", alt: "Bildanleitung zu Meine-Rezepte-Punkt 4: Gespeicherte Rezepte in der Übersicht finden" },
+    5: { src: "assets/my-recipes-guide/step-5.png?v=my-recipes-guide-20261019-1", alt: "Bildanleitung zu Meine-Rezepte-Punkt 5: Ein gespeichertes Rezept bearbeiten" },
+    6: { src: "assets/my-recipes-guide/step-6.png?v=my-recipes-guide-20261019-1", alt: "Bildanleitung zu Meine-Rezepte-Punkt 6: Rezepte zu einem Lebensmittel speichern" },
+    7: { src: "assets/my-recipes-guide/step-7.png?v=my-recipes-guide-20261019-1", alt: "Bildanleitung zu Meine-Rezepte-Punkt 7: Ein Rezept löschen" },
   };
 
   const recipeSearchGuideImages = {
@@ -2767,6 +2777,8 @@
       if (foodGuideImageButton) openFoodGuideImage(Number(foodGuideImageButton.dataset.foodGuideStep));
       const recipeSearchGuideImageButton = event.target.closest("[data-recipe-search-guide-step]");
       if (recipeSearchGuideImageButton) openGuideImage(Number(recipeSearchGuideImageButton.dataset.recipeSearchGuideStep), recipeSearchGuideImages);
+      const myRecipesGuideImageButton = event.target.closest("[data-my-recipes-guide-step]");
+      if (myRecipesGuideImageButton) openGuideImage(Number(myRecipesGuideImageButton.dataset.myRecipesGuideStep), myRecipesGuideImages);
     });
     [dom.foodGrid, dom.bookmarkedFoodGrid, dom.sharedFoodGrid].forEach((grid) => grid.addEventListener("click", (event) => {
       const card = event.target.closest(".food-card");
