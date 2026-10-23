@@ -2,7 +2,7 @@
   "use strict";
 
   const { foods, meals, sources, foodNames = [] } = window.APP_DATA;
-  const appVersion = "remove-search-shortcut-20261023-1";
+  const appVersion = "help-inline-icons-20261023-1";
   const appVersionFile = "app-version.json";
   const appRefreshParam = "appRefresh";
   const appRefreshSessionKey = "lebensmitteleinkauf:app-refresh-version:v1";
@@ -111,6 +111,13 @@
     tag: '<path d="M3 11 11 3h9v9l-8 8-9-9Z"/><circle cx="16" cy="7" r="1"/>',
     recipeSearch: '<path d="M4 6h8M4 11h5M4 16h5"/><circle cx="15" cy="13" r="4"/><path d="m18 16 3 4"/>',
     check: '<path d="m5 12 4 4L19 6"/>',
+    reset: '<path d="M3 11a9 9 0 1 1 2.6 7M3 4v7h7"/>',
+    copy: '<rect x="8" y="8" width="12" height="13" rx="2"/><path d="M16 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h3"/>',
+    edit: '<path d="m15 4 5 5M4 20l4.5-1 12-12a2 2 0 0 0-5-5l-12 12L4 20Z"/>',
+    trash: '<path d="M3 6h18M9 6V3h6v3M5 6l1 15h12l1-15M10 10v7M14 10v7"/>',
+    close: '<path d="m6 6 12 12M18 6 6 18"/>',
+    checkbox: '<rect x="4" y="4" width="16" height="16" rx="2"/>',
+    checkboxChecked: '<rect x="4" y="4" width="16" height="16" rx="2"/><path d="m7 12 3 3 7-7"/>',
     basket: '<path d="M7 10 10 4M17 10l-3-6M4 10h16l-1.4 9H5.4L4 10Z"/><path d="M9 13v3M15 13v3"/>',
     download: '<path d="M12 3v12M7.5 10.5 12 15l4.5-4.5"/><path d="M4 18v2h16v-2"/>',
     search: '<circle cx="11" cy="11" r="6.5"/><path d="m16 16 4 4"/>',
