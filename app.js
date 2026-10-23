@@ -2,7 +2,7 @@
   "use strict";
 
   const { foods, meals, sources, foodNames = [] } = window.APP_DATA;
-  const appVersion = "share-button-state-20261023-1";
+  const appVersion = "remove-search-shortcut-20261023-1";
   const appVersionFile = "app-version.json";
   const appRefreshParam = "appRefresh";
   const appRefreshSessionKey = "lebensmitteleinkauf:app-refresh-version:v1";
@@ -3140,15 +3140,6 @@
       });
     });
     document.addEventListener("keydown", (event) => {
-      if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === "k") {
-        event.preventDefault();
-        if (state.view === "meals") dom.mealSearchInput.focus();
-        else if (state.view === "recipes") dom.recipeSearchInput.focus();
-        else {
-          setView("foods");
-          dom.searchInput.focus();
-        }
-      }
       if (event.key === "Escape") {
         closeShopping();
         closeSyncMenu();

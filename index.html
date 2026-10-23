@@ -9,7 +9,7 @@
       content="Antientzündliche Lebensmittel entdecken, filtern und als Einkaufsliste speichern."
     />
     <title>Lebensmitteleinkauf</title>
-    <link rel="stylesheet" href="style.css?v=share-button-state-20261023-1" />
+    <link rel="stylesheet" href="style.css?v=remove-search-shortcut-20261023-1" />
   </head>
   <body>
     <div class="app-shell">
@@ -128,7 +128,6 @@ Nur bei zu langer Anmeldedauer auf Anmeldung erneuern klicken.</span>
                     <span class="button-icon" data-icon="search" aria-hidden="true"></span>
                     <span class="sr-only">Lebensmittel suchen</span>
                     <input id="searchInput" type="search" placeholder="Lebensmittel oder Wirkstoff suchen …" autocomplete="off" />
-                    <kbd>⌘ K</kbd>
                   </label>
                   <button class="all-foods-button" id="allFoodsButton" type="button">Alle Lebensmittel</button>
                 </div>
@@ -205,7 +204,6 @@ Nur bei zu langer Anmeldedauer auf Anmeldung erneuern klicken.</span>
               <span class="button-icon" data-icon="search" aria-hidden="true"></span>
               <span class="sr-only">Mahlzeiten durchsuchen</span>
               <input id="mealSearchInput" type="search" placeholder="Zutat oder Mahlzeit suchen …" autocomplete="off" />
-              <kbd>⌘ K</kbd>
             </label>
             <div class="meal-filter-row">
               <label class="meal-type-control" for="mealTypeFilter">
@@ -241,7 +239,6 @@ Nur bei zu langer Anmeldedauer auf Anmeldung erneuern klicken.</span>
               <span class="button-icon" data-icon="search" aria-hidden="true"></span>
               <span class="sr-only">Eigene Rezepte durchsuchen</span>
               <input id="recipeSearchInput" type="search" placeholder="Rezepte, Lebensmittel oder Anmerkungen suchen …" autocomplete="off" />
-              <kbd>⌘ K</kbd>
             </label>
             <div class="recipe-filter-row">
               <label>
@@ -652,6 +649,6 @@ Nur bei zu langer Anmeldedauer auf Anmeldung erneuern klicken.</span>
       document.write('<script src="data.js?v=' + Date.now() + '"><\/script>');
     </script>
     <script src="vendor/msal-browser.min.js?v=2.38.3"></script>
-    <script src="app.js?v=share-button-state-20261023-1"></script>
+    <script src="app.js?v=remove-search-shortcut-20261023-1"></script>
   </body>
 </html>
