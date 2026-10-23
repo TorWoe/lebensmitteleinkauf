@@ -2,7 +2,7 @@
   "use strict";
 
   const { foods, meals, sources, foodNames = [] } = window.APP_DATA;
-  const appVersion = "recipe-guide-tip-20261023-1";
+  const appVersion = "share-button-state-20261023-1";
   const appVersionFile = "app-version.json";
   const appRefreshParam = "appRefresh";
   const appRefreshSessionKey = "lebensmitteleinkauf:app-refresh-version:v1";
@@ -1480,6 +1480,16 @@
       ${actionLabel(label)}>${actionIcon("chef")}</button>`;
   }
 
+  function renderShareButton(itemType, itemId, name, isRecipeOverview = false) {
+    const isShared = (itemType === "meal" ? state.sharedMeals : state.sharedFoods).has(itemId);
+    const buttonClass = isRecipeOverview ? "recipe-overview-share-button" : itemType === "meal" ? "meal-share-button" : "food-share-button";
+    const attributes = isRecipeOverview
+      ? `data-share-recipe-item-type="${itemType}" data-share-recipe-item-id="${itemId}"`
+      : `data-share-${itemType}-id="${itemId}"`;
+    const label = `Zum Teilen: Link für ${name} kopieren${isShared ? " – Bereits im Bereich Teilen" : ""}`;
+    return `<button class="${buttonClass} action-icon-button${isShared ? " is-shared" : ""}" type="button" ${attributes} ${actionLabel(label)}>${actionIcon("share")}</button>`;
+  }
+
   function renderFoodCard(food, options = {}) {
     const selected = state.selected.has(food.id);
     return `
@@ -1519,7 +1529,7 @@
           </div>
           <div class="food-offers-actions">
             <button class="food-offers-button action-icon-button" type="button" data-offers-food-id="${food.id}" ${actionLabel(`Suche Sonderangebote für ${food.name}`)}>${actionIcon("tag")}</button>
-            <button class="food-share-button action-icon-button" type="button" data-share-food-id="${food.id}" ${actionLabel(`Zum Teilen: Link für ${food.name} kopieren`)}>${actionIcon("share")}</button>
+            ${renderShareButton("food", food.id, food.name)}
           </div>
         </div>
       </article>`;
@@ -1984,7 +1994,7 @@
       ? state.recipes.map((recipe) => recipe.id === existing.id ? savedRecipe : recipe)
       : [...state.recipes, savedRecipe]);
     persistSelection();
-    renderRecipeCards();
+    renderItemCards();
     openRecipes(itemType, itemId);
     showToast(existing ? "Rezept wurde geändert." : "Rezept wurde gespeichert.");
   }
@@ -1999,7 +2009,7 @@
       action: () => {
         state.recipes = state.recipes.filter((item) => item.id !== recipe.id);
         persistSelection();
-        renderRecipeCards();
+        renderItemCards();
         if (reopenManager) openRecipes(recipe.itemType, recipe.itemId);
         showToast("Rezept wurde gelöscht.");
       },
@@ -2136,7 +2146,7 @@
           <button class="meal-recipe-button action-icon-button" type="button" data-recipe-meal-id="${meal.id}" ${actionLabel(`Für Rezeptsuche: Zutaten von ${meal.situation} kopieren`)}>${actionIcon("recipeSearch")}</button>
         </div>
         <div class="meal-share-row">
-          <button class="meal-share-button action-icon-button" type="button" data-share-meal-id="${meal.id}" ${actionLabel(`Zum Teilen: Link für ${meal.situation} kopieren`)}>${actionIcon("share")}</button>
+          ${renderShareButton("meal", meal.id, meal.situation)}
         </div>
       </article>`;
   }
@@ -2216,7 +2226,7 @@
         ${recipe.notes ? `<div class="recipe-overview-notes">${escapeHtml(recipe.notes).replace(/\n/g, "<br>")}</div>` : ""}
         <div class="recipe-overview-actions">
           ${renderPersonalRecipesButton(target.itemType, target.itemType === "meal" ? meals.find((item) => item.id === target.itemId) : foodById.get(target.itemId))}
-          <button class="recipe-overview-share-button action-icon-button" type="button" data-share-recipe-item-type="${target.itemType}" data-share-recipe-item-id="${target.itemId}" ${actionLabel(`Zum Teilen: Link für ${target.name} kopieren`)}>${actionIcon("share")}</button>
+          ${renderShareButton(target.itemType, target.itemId, target.name, true)}
           <div class="recipe-overview-edit-actions">
             <button class="recipe-edit-button" type="button" data-edit-recipe-id="${escapeHtml(recipe.id)}">Bearbeiten</button>
             <button class="recipe-delete-button" type="button" data-delete-recipe-id="${escapeHtml(recipe.id)}">Löschen</button>
@@ -2244,7 +2254,7 @@
       </div>`;
   }
 
-  function renderRecipeCards() {
+  function renderItemCards() {
     renderFoods();
     renderMeals();
     renderBookmarks();
@@ -2492,7 +2502,7 @@
       state.pendingSharedMeals.add(sharedMealId);
       state.sharedTargetMealId = sharedMealId;
       persistSelection();
-      renderShares();
+      renderItemCards();
       setView("shares", { scroll: false });
       scrollSharedMealIntoView(sharedMealId);
       return;
@@ -2504,7 +2514,7 @@
       state.pendingSharedFoods.add(sharedFoodId);
       state.sharedTargetFoodId = sharedFoodId;
       persistSelection();
-      renderShares();
+      renderItemCards();
       setView("shares", { scroll: false });
       scrollSharedFoodIntoView(sharedFoodId);
       return;
@@ -2686,7 +2696,7 @@
       state.sharedTargetFoodId = itemId;
     }
     persistSelection();
-    renderShares();
+    renderItemCards();
     const copied = await copyText(shareText(shareUrl, target.name, selectedRecipes, numbers));
     if (window.history?.replaceState) window.history.replaceState(null, document.title, shareUrl);
     showToast(copied
@@ -2725,7 +2735,7 @@
     if (ids.includes(state.sharedTargetMealId)) state.sharedTargetMealId = null;
     if (ids.includes(sharedMealIdFromUrl())) clearAppUrlHash();
     persistSelection();
-    renderShares();
+    renderItemCards();
     showToast(ids.length === 1 ? "Mahlzeit wurde aus Teilen entfernt." : `${ids.length} Mahlzeiten wurden aus Teilen entfernt.`);
   }
 
@@ -2737,7 +2747,7 @@
     if (ids.includes(state.sharedTargetFoodId)) state.sharedTargetFoodId = null;
     if (ids.includes(sharedFoodIdFromUrl())) clearAppUrlHash();
     persistSelection();
-    renderShares();
+    renderItemCards();
     showToast(ids.length === 1 ? "Lebensmittel wurde aus Teilen entfernt." : `${ids.length} Lebensmittel wurden aus Teilen entfernt.`);
   }
 

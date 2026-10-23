@@ -1215,8 +1215,10 @@ main {
 .action-icon-button:hover { background: #e3efe5; border-color: var(--forest-700); }
 .action-icon-button:focus-visible { outline: 2px solid var(--forest-700); outline-offset: 3px; }
 .action-icon-button.is-added { color: var(--forest-700); background: #dcefe0; }
-.action-icon-button.has-recipes { border-color: #79aa8d; color: white; background: var(--forest-700); }
-.action-icon-button.has-recipes:hover { border-color: var(--forest-900); background: var(--forest-800); }
+.action-icon-button.has-recipes,
+.action-icon-button.is-shared { border-color: #79aa8d; color: white; background: var(--forest-700); }
+.action-icon-button.has-recipes:hover,
+.action-icon-button.is-shared:hover { border-color: var(--forest-900); background: var(--forest-800); }
 .action-icon-check { position: absolute; right: 1px; top: 1px; display: grid; place-items: center; width: 15px; height: 15px; border-radius: 50%; background: var(--forest-700); color: white; }
 .action-icon-check svg { width: 11px; height: 11px; fill: none; stroke: currentColor; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
 .meal-variation-action.action-icon-button { width: fit-content; }
