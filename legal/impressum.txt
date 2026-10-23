@@ -20,6 +20,9 @@ Deutschland
 **Hinweis zur Nutzung**
 Diese Web-App wurde privat entwickelt und wird kostenlos zur Verfügung gestellt. Sie ist nicht zur gewerblichen Nutzung durch den Anbieter bestimmt. Es werden keine kostenpflichtigen Leistungen angeboten.
 
+**Hinweis zu KI-generierten Erklärbildern**
+Die Erklärbilder wurden mithilfe künstlicher Intelligenz (KI) erstellt. Sie veranschaulichen die Bedienung; einzelne Darstellungen können von der aktuellen App abweichen.
+
 **Haftung für Inhalte**
 Die Inhalte dieser Web-App wurden mit größter Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte kann jedoch keine Gewähr übernommen werden.
 

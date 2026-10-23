@@ -2,7 +2,7 @@
   "use strict";
 
   const { foods, meals, sources, foodNames = [] } = window.APP_DATA;
-  const appVersion = "sharing-guide-20261023-1";
+  const appVersion = "recipe-button-state-20261023-1";
   const appVersionFile = "app-version.json";
   const appRefreshParam = "appRefresh";
   const appRefreshSessionKey = "lebensmitteleinkauf:app-refresh-version:v1";
@@ -1469,6 +1469,17 @@
       </button>`;
   }
 
+  function renderPersonalRecipesButton(itemType, item) {
+    const hasRecipes = state.recipes.some((recipe) => recipe.itemType === itemType && recipe.itemId === item.id);
+    const isMeal = itemType === "meal";
+    const name = isMeal ? item.situation : item.name;
+    const buttonClass = isMeal ? "meal-personal-recipes-button" : "food-recipes-button";
+    const label = `Meine Rezepte für ${name} verwalten${hasRecipes ? " – Eigene Rezepte vorhanden" : ""}`;
+    return `<button class="${buttonClass} action-icon-button${hasRecipes ? " has-recipes" : ""}" type="button"
+      data-open-recipe-item-type="${itemType}" data-open-recipe-item-id="${item.id}"${isMeal ? ` data-open-meal-recipes="${item.id}"` : ""}
+      ${actionLabel(label)}>${actionIcon("chef")}</button>`;
+  }
+
   function renderFoodCard(food, options = {}) {
     const selected = state.selected.has(food.id);
     return `
@@ -1504,7 +1515,7 @@
           </div>
           <div class="food-personal-actions">
             <button class="food-list-button action-icon-button${selected ? " is-added" : ""}" type="button" data-food-list-id="${food.id}" aria-pressed="${selected}" ${actionLabel(selected ? `Auf der Liste: ${food.name} entfernen` : `Auf die Liste: ${food.name} hinzufügen`)}>${actionIcon("list", selected)}</button>
-            <button class="food-recipes-button action-icon-button" type="button" ${actionLabel(`Meine Rezepte für ${food.name} verwalten`)}>${actionIcon("chef")}</button>
+            ${renderPersonalRecipesButton("food", food)}
           </div>
           <div class="food-offers-actions">
             <button class="food-offers-button action-icon-button" type="button" data-offers-food-id="${food.id}" ${actionLabel(`Suche Sonderangebote für ${food.name}`)}>${actionIcon("tag")}</button>
@@ -1973,7 +1984,7 @@
       ? state.recipes.map((recipe) => recipe.id === existing.id ? savedRecipe : recipe)
       : [...state.recipes, savedRecipe]);
     persistSelection();
-    renderRecipeOverview();
+    renderRecipeCards();
     openRecipes(itemType, itemId);
     showToast(existing ? "Rezept wurde geändert." : "Rezept wurde gespeichert.");
   }
@@ -1988,7 +1999,7 @@
       action: () => {
         state.recipes = state.recipes.filter((item) => item.id !== recipe.id);
         persistSelection();
-        renderRecipeOverview();
+        renderRecipeCards();
         if (reopenManager) openRecipes(recipe.itemType, recipe.itemId);
         showToast("Rezept wurde gelöscht.");
       },
@@ -2118,7 +2129,7 @@
         </div>
         <div class="meal-card-footer">
           <button class="meal-list-button action-icon-button${allIngredientsSelected ? " is-added" : ""}" type="button" data-meal-id="${meal.id}" aria-pressed="${allIngredientsSelected}" ${actionLabel(allIngredientsSelected ? `Auf der Liste: Zutaten von ${meal.situation}` : `Auf die Liste: Zutaten von ${meal.situation} hinzufügen`)}>${actionIcon("list", allIngredientsSelected)}</button>
-          <button class="meal-personal-recipes-button action-icon-button" type="button" data-open-meal-recipes="${meal.id}" ${actionLabel(`Meine Rezepte für ${meal.situation} verwalten`)}>${actionIcon("chef")}</button>
+          ${renderPersonalRecipesButton("meal", meal)}
         </div>
         <div class="meal-personal-actions">
           <button class="meal-offers-button action-icon-button" type="button" data-offers-meal-id="${meal.id}" ${actionLabel(`Suche Sonderangebote für ${meal.situation}`)}>${actionIcon("tag")}</button>
@@ -2204,6 +2215,7 @@
         ${url ? `<a class="recipe-overview-link" href="${escapeHtml(url)}" target="_blank" rel="noreferrer">Rezept öffnen ↗</a>` : recipe.url ? `<p class="recipe-overview-url">${escapeHtml(recipe.url)}</p>` : ""}
         ${recipe.notes ? `<div class="recipe-overview-notes">${escapeHtml(recipe.notes).replace(/\n/g, "<br>")}</div>` : ""}
         <div class="recipe-overview-actions">
+          ${renderPersonalRecipesButton(target.itemType, target.itemType === "meal" ? meals.find((item) => item.id === target.itemId) : foodById.get(target.itemId))}
           <button class="recipe-overview-share-button action-icon-button" type="button" data-share-recipe-item-type="${target.itemType}" data-share-recipe-item-id="${target.itemId}" ${actionLabel(`Zum Teilen: Link für ${target.name} kopieren`)}>${actionIcon("share")}</button>
           <div class="recipe-overview-edit-actions">
             <button class="recipe-edit-button" type="button" data-edit-recipe-id="${escapeHtml(recipe.id)}">Bearbeiten</button>
@@ -2230,6 +2242,14 @@
         <strong>${hasMatchingFilters ? `Keine passenden Rezepte für ${itemLabel === "Mahlzeit" ? "Mahlzeiten" : "Lebensmittel"} gefunden.` : `Noch keine Rezepte für ${itemLabel === "Mahlzeit" ? "Mahlzeiten" : "Lebensmittel"} gespeichert.`}</strong>
         <p>${hasMatchingFilters ? "Passe die Suche oder Auswahl an und versuche es erneut." : `Klicke bei ${itemLabel === "Mahlzeit" ? "einer Mahlzeit" : "einem Lebensmittel"} auf ${inlineActionIcon("chef", "Meine Rezepte")}, um das erste Rezept hinzuzufügen.`}</p>
       </div>`;
+  }
+
+  function renderRecipeCards() {
+    renderFoods();
+    renderMeals();
+    renderBookmarks();
+    renderShares();
+    renderRecipeOverview();
   }
 
   function renderRecipeOverview() {
