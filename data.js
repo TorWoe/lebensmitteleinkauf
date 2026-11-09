@@ -4276,6 +4276,25 @@ window.APP_DATA = {
       "sources": "https://www.health.harvard.edu/healthy-aging-and-longevity/foods-that-fight-inflammation; https://www.health.harvard.edu/diet-and-nutrition/quick-start-guide-to-an-antiinflammation-diet; https://lpi.oregonstate.edu/mic/food-beverages/fruit-vegetables"
     },
     {
+      "id": 289,
+      "category": "Gemüse, Pilze, Hülsenfrüchte & Nüsse",
+      "subcategory": "Gewürze",
+      "sort": 2,
+      "satiety": "niedrig",
+      "score": 1,
+      "name": "Rotweinessig",
+      "selected": false,
+      "compounds": "Essigsäure und je nach Herstellung geringe Mengen an Polyphenolen aus roten Trauben.",
+      "benefit": "Aromatische, energiearme Zutat für Dressings; eine eigenständige antientzündliche Wirkung ist nicht ausreichend belegt.",
+      "carbs": "sehr niedrig",
+      "use": "Als säuerliche Würzzutat für Salate, Dressings und Gemüsegerichte geeignet.",
+      "caution": "Bei empfindlichem Magen oder Reflux die Verträglichkeit beachten. Kann Sulfite enthalten; Zutatenliste prüfen.",
+      "priority": "mittel",
+      "nutrition": "Beispiel je 100 ml Rotweinessig; Werte produktabhängig: Energie / Kalorien: ca. 26 kcal; Fett: ca. 0,0 g; davon gesättigte Fettsäuren: ca. 0,0 g; Kohlenhydrate: ca. 1,2 g; davon Zucker: ca. 0,0 g; Eiweiß / Protein: ca. 0,0 g; Salz: ca. 0,0 g; Ballaststoffe: ca. 0,0 g",
+      "portion": "5 ml",
+      "sources": "https://www.kuehne.de/produkte/essig/rotwein-essig-flasche; https://nutritionsource.hsph.harvard.edu/food-features/vinegar/"
+    },
+    {
       "id": 118,
       "category": "Gemüse, Pilze, Hülsenfrüchte & Nüsse",
       "subcategory": "Grünes Blattgemüse",
@@ -4749,6 +4768,25 @@ window.APP_DATA = {
       "nutrition": "Energie / Kalorien: ca. 584 kcal; Fett: ca. 51,5 g; davon gesättigte Fettsäuren: ca. 4,5 g; Kohlenhydrate: ca. 20,0 g; davon Zucker: ca. 2,6 g; Eiweiß / Protein: ca. 20,8 g; Salz: ca. 0,0 g; Ballaststoffe: ca. 8,6 g",
       "portion": "25 g",
       "sources": "https://www.health.harvard.edu/diet-and-nutrition/quick-start-guide-to-an-antiinflammation-diet; https://www.hopkinsmedicine.org/health/wellness-and-prevention/anti-inflammatory-diet; https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/in-depth/mediterranean-diet/art-20047801"
+    },
+    {
+      "id": 290,
+      "category": "Gemüse, Pilze, Hülsenfrüchte & Nüsse",
+      "subcategory": "Wurzel-, Knollen- & Stängelgemüse",
+      "sort": 4,
+      "satiety": "mittel",
+      "score": 3,
+      "name": "Spargel",
+      "selected": false,
+      "compounds": "Ballaststoffe, Folat, Vitamin K, Vitamin C und verschiedene pflanzliche Inhaltsstoffe; Gehalte unterscheiden sich je nach Sorte.",
+      "benefit": "Wasserreiches, kalorienarmes Stängelgemüse, das eine pflanzenbetonte Ernährung durch Volumen und Ballaststoffe ergänzt.",
+      "carbs": "niedrig",
+      "use": "Als Gemüse in Salaten, Pfannengerichten, Suppen und Beilagen geeignet; grüner und weißer Spargel sind verwendbar.",
+      "caution": "Frischen Spargel kühl lagern und zeitnah verbrauchen; bei bekannter Spargelallergie meiden.",
+      "priority": "hoch",
+      "nutrition": "Je 100 g rohem Spargel; Werte sortenabhängig: Energie / Kalorien: ca. 20 kcal; Fett: ca. 0,1 g; davon gesättigte Fettsäuren: ca. 0,0 g; Kohlenhydrate: ca. 3,9 g; davon Zucker: ca. 1,9 g; Eiweiß / Protein: ca. 2,2 g; Salz: ca. 0,0 g; Ballaststoffe: ca. 2,1 g",
+      "portion": "150 g",
+      "sources": "https://fdc.nal.usda.gov/food-details/168389/nutrients; https://www.rewe.de/lexikon/gruener-spargel/; https://nutritionsource.hsph.harvard.edu/healthy-weight/diet-reviews/anti-inflammatory-diet/"
     },
     {
       "id": 119,
@@ -7958,6 +7996,119 @@ window.APP_DATA = {
       "satiety": "hoch",
       "variants": "Oregano statt Basilikum für die Tomatensoße.",
       "reason": "Kreuzblütler-Gemüse + Vollkorn + Ballaststoffe + Eiweiß + ungesättigte Fettsäuren. Blumenkohl und Tomaten ergänzen sich mit Vollkornpaniermehl, Mozzarella und Kräutern. Tomaten, Tomatenmark, Knoblauch, Basilikum und Olivenöl extra vergine bilden die Zutatenbasis der Tomatensoße."
+    },
+    {
+      "id": 152,
+      "date": "2026-11-09",
+      "mealType": "kalt",
+      "ingredients": [
+        "Hühnerei",
+        "Avocado",
+        "Gurke",
+        "Tomaten",
+        "Rote Zwiebel",
+        "Petersilie",
+        "Olivenöl extra vergine",
+        "Zitrone",
+        "Dijon-Senf",
+        "Knoblauch",
+        "Salz",
+        "Schwarzer Pfeffer"
+      ],
+      "situation": "Avocado-Ei-Salat mit Gurke, Tomaten und roter Zwiebel",
+      "satiety": "hoch",
+      "variants": "Koriandergrün statt Petersilie als frisches Kraut.",
+      "reason": "Eiweiß + Gemüse + Ballaststoffe + ungesättigte Fettsäuren + Kräuter. Hühnerei und Avocado ergänzen Gurke, Tomaten und rote Zwiebel; Zitrone, Olivenöl extra vergine und Dijon-Senf bilden die Dressingbasis."
+    },
+    {
+      "id": 153,
+      "date": "2026-11-09",
+      "mealType": "kalt",
+      "ingredients": [
+        "Romanasalat",
+        "Gurke",
+        "Tomaten",
+        "Paprika orange",
+        "Rote Zwiebel",
+        "Oliven",
+        "Feta",
+        "Olivenöl extra vergine",
+        "Zitrone",
+        "Rotweinessig",
+        "Oregano",
+        "Knoblauch",
+        "Salz",
+        "Schwarzer Pfeffer"
+      ],
+      "situation": "Griechischer Salat mit Feta, schwarzen Oliven und orangefarbener Paprika",
+      "satiety": "mittel bis hoch",
+      "variants": "Petersilie optional als frisches Kraut.",
+      "reason": "Blattgemüse + farbiges Gemüse + Eiweiß und Calcium + ungesättigte Fettsäuren. Romanasalat, Gurke, Tomaten und Paprika orange bilden die Gemüsegrundlage; Feta und schwarze Oliven ergänzen das Zitronen-Oregano-Dressing mit Rotweinessig."
+    },
+    {
+      "id": 154,
+      "date": "2026-11-09",
+      "mealType": "kalt",
+      "ingredients": [
+        "Avocado",
+        "Gurke",
+        "Rote Zwiebel",
+        "Cashews",
+        "Koriandergrün",
+        "Limette",
+        "Olivenöl extra vergine",
+        "Honig",
+        "Dijon-Senf",
+        "Knoblauch",
+        "Salz",
+        "Schwarzer Pfeffer"
+      ],
+      "situation": "Avocado-Gurken-Salat mit Cashews und Limettendressing",
+      "satiety": "mittel bis hoch",
+      "variants": "Petersilie optional als zusätzliches frisches Kraut; Chili optional als Chiliflocken für mehr Schärfe.",
+      "reason": "Gemüse + Nüsse + Ballaststoffe + ungesättigte Fettsäuren + frische Kräuter. Avocado, Gurke und ungesalzene Cashews verbinden sich mit Koriandergrün und einem Dressing aus Limette, Olivenöl extra vergine, Dijon-Senf und Honig."
+    },
+    {
+      "id": 155,
+      "date": "2026-11-09",
+      "mealType": "warm",
+      "ingredients": [
+        "Garnelen",
+        "Spargel",
+        "Olivenöl extra vergine",
+        "Knoblauch",
+        "Zitrone",
+        "Paprikapulver",
+        "Chili",
+        "Schwarzer Pfeffer",
+        "Salz",
+        "Petersilie"
+      ],
+      "situation": "Garnelen-Spargel-Pfanne mit Knoblauch, Zitrone und Olivenöl",
+      "satiety": "hoch",
+      "variants": "Grüner oder weißer Spargel als Gemüsegrundlage.",
+      "reason": "Eiweiß + Gemüse + Ballaststoffe + ungesättigte Fettsäuren + Kräuter und Gewürze. Garnelen und Spargel ergänzen sich mit Knoblauch, Zitrone, Petersilie und Olivenöl extra vergine."
+    },
+    {
+      "id": 156,
+      "date": "2026-11-09",
+      "mealType": "kalt",
+      "ingredients": [
+        "Avocado",
+        "Hühnerei",
+        "Spinat",
+        "Rote Zwiebel",
+        "Petersilie",
+        "Schnittlauch",
+        "Olivenöl extra vergine",
+        "Zitrone",
+        "Salz",
+        "Schwarzer Pfeffer"
+      ],
+      "situation": "Avocado-Ei-Spinat-Salat mit Petersilie und Schnittlauch",
+      "satiety": "hoch",
+      "variants": "Babyspinat als zarte Variante von Spinat.",
+      "reason": "Eiweiß + Blattgemüse + Ballaststoffe + ungesättigte Fettsäuren + frische Kräuter. Hühnerei, Avocado und Spinat bilden die Grundlage; rote Zwiebel, Petersilie und Schnittlauch ergänzen das Zitronen-Olivenöl-Dressing."
     }
   ],
   "sources": [
