@@ -5074,6 +5074,25 @@ window.APP_DATA = {
       "sources": "https://www.health.harvard.edu/diet-and-nutrition/quick-start-guide-to-an-antiinflammation-diet; https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/in-depth/mediterranean-diet/art-20047801; https://www.health.harvard.edu/diet-and-nutrition/fighting-inflammation-with-food"
     },
     {
+      "id": 288,
+      "category": "Getreide & Samen",
+      "subcategory": "Vollkorngetreide",
+      "sort": 3,
+      "satiety": "mittel bis hoch",
+      "score": 3,
+      "name": "Vollkornpaniermehl",
+      "selected": false,
+      "compounds": "Stärke, Ballaststoffe, pflanzliches Eiweiß, B-Vitamine und Mineralstoffe aus Vollkorngetreide; die Zusammensetzung variiert je nach Getreideart und Produkt.",
+      "benefit": "Ballaststoffreiche Alternative zu herkömmlichem Paniermehl aus ausgemahlenem Mehl; passt als Vollkornprodukt zu einer pflanzenbetonten Ernährung.",
+      "carbs": "mittel bis hoch",
+      "use": "Als Panade für Gemüse und als Bestandteil von Gemüsegerichten und Bratlingen geeignet.",
+      "caution": "Enthält in der Regel Gluten. Vollkornanteil, Salzgehalt und weitere Zutaten auf der Verpackung prüfen; bei Zöliakie oder Getreideallergie die Verträglichkeit beachten.",
+      "priority": "mittel",
+      "nutrition": "Beispiel je 100 g Vollkornpaniermehl auf Dinkelbasis; Werte produktabhängig: Energie / Kalorien: ca. 355 kcal; Fett: ca. 2,8 g; davon gesättigte Fettsäuren: ca. 0,3 g; Kohlenhydrate: ca. 65,3 g; davon Zucker: ca. 1,5 g; Eiweiß / Protein: ca. 12,7 g; Salz: ca. 2,2 g; Ballaststoffe: ca. 9,0 g",
+      "portion": "20 g",
+      "sources": "https://www.mauracherhof.com/brotpaket/produkte/dinkelbroesel-vollkorn-500g.html; https://nutritionsource.hsph.harvard.edu/what-should-you-eat/whole-grains/"
+    },
+    {
       "id": 40,
       "category": "Fleisch & Eier",
       "subcategory": "Eier",
@@ -7917,6 +7936,28 @@ window.APP_DATA = {
       "satiety": "mittel",
       "variants": "Minze optional als getrocknetes Kraut im Dressing.",
       "reason": "Kreuzblütler-Gemüse + Obst + Ballaststoffe + Nüsse + ungesättigte Fettsäuren + Kräuter und Gewürze. Rotkohl, Karotten, Orange und Granatapfel bringen unterschiedliche pflanzliche Inhaltsstoffe ein; Walnüsse und Olivenöl extra vergine ergänzen den Salat."
+    },
+    {
+      "id": 151,
+      "date": "2026-11-09",
+      "mealType": "warm",
+      "ingredients": [
+        "Blumenkohl",
+        "Vollkornpaniermehl",
+        "Tomaten",
+        "Tomatenmark",
+        "Mozzarella",
+        "Olivenöl extra vergine",
+        "Knoblauch",
+        "Basilikum",
+        "Salz",
+        "Schwarzer Pfeffer",
+        "Petersilie"
+      ],
+      "situation": "Blumenkohlsteaks mit Vollkornpanade, Tomaten und Mozzarella",
+      "satiety": "hoch",
+      "variants": "Oregano statt Basilikum für die Tomatensoße.",
+      "reason": "Kreuzblütler-Gemüse + Vollkorn + Ballaststoffe + Eiweiß + ungesättigte Fettsäuren. Blumenkohl und Tomaten ergänzen sich mit Vollkornpaniermehl, Mozzarella und Kräutern. Tomaten, Tomatenmark, Knoblauch, Basilikum und Olivenöl extra vergine bilden die Zutatenbasis der Tomatensoße."
     }
   ],
   "sources": [
