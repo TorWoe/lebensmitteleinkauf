@@ -2281,6 +2281,25 @@ window.APP_DATA = {
       "sources": "https://lpi.oregonstate.edu/mic/dietary-factors/phytochemicals/flavonoids; https://www.health.harvard.edu/diet-and-nutrition/quick-start-guide-to-an-antiinflammation-diet"
     },
     {
+      "id": 287,
+      "category": "Gemüse, Pilze, Hülsenfrüchte & Nüsse",
+      "subcategory": "Gewürze",
+      "sort": 2,
+      "satiety": "niedrig",
+      "score": 1,
+      "name": "Knoblauchpulver",
+      "selected": false,
+      "compounds": "Schwefelhaltige Verbindungen und Polyphenole aus getrocknetem Knoblauch; die Zusammensetzung hängt von Trocknung und Verarbeitung ab.",
+      "benefit": "Aromatische Würzzutat mit pflanzlichen Inhaltsstoffen; passt als reines Gewürz zu einer pflanzenbetonten Ernährung.",
+      "carbs": "sehr niedrig",
+      "use": "Als Gewürz für Gemüsegerichte, Suppen, Saucen und Dips geeignet.",
+      "caution": "Reines Knoblauchpulver ohne zugesetztes Salz wählen. Kann bei empfindlichem Magen, Reflux oder Reizdarm Beschwerden verstärken; individuell auf Verträglichkeit achten.",
+      "priority": "hoch",
+      "nutrition": "Je 100 g getrocknetem Knoblauchpulver; Werte produktabhängig: Energie / Kalorien: ca. 331 kcal; Fett: ca. 0,7 g; davon gesättigte Fettsäuren: ca. 0,2 g; Kohlenhydrate: ca. 72,7 g; davon Zucker: ca. 2,4 g; Eiweiß / Protein: ca. 16,6 g; Salz: ca. 0,15 g; Ballaststoffe: ca. 9,0 g",
+      "portion": "2 g",
+      "sources": "https://fdc.nal.usda.gov/food-details/171325/nutrients; https://www.rewe.de/shop/p/rewe-bio-knoblauch-gemahlen-65g/9459528; https://www.nccih.nih.gov/health/garlic"
+    },
+    {
       "id": 90,
       "category": "Gemüse, Pilze, Hülsenfrüchte & Nüsse",
       "subcategory": "Kreuzblütler-Gemüse",
@@ -7860,6 +7879,22 @@ window.APP_DATA = {
       "satiety": "mittel",
       "variants": "Kichererbsen oder Grüne Linsen für eine sättigendere Hauptmahlzeit; Feta optional für eine Variante mit Milchprodukt; Lachs optional für eine Fischvariante; Petersilie statt Koriandergrün; Honig optional bei zu saurem Dressing.",
       "reason": "Gemüse + Obst + Ballaststoffe + ungesättigte Fettsäuren + unterschiedliche pflanzliche Inhaltsstoffe. Rote Bete, Avocado, Orange, Kürbiskerne und Olivenöl extra vergine bilden die Basis; Kreuzkümmel, Schwarzer Pfeffer und frische Kräuter ergänzen sie."
+    },
+    {
+      "id": 149,
+      "date": "2026-11-09",
+      "mealType": "warm",
+      "ingredients": [
+        "Weißkohl",
+        "Olivenöl extra vergine",
+        "Knoblauchpulver",
+        "Paprikapulver",
+        "Salz"
+      ],
+      "situation": "Ofen-Weißkohlsteaks mit Olivenöl, Knoblauch und Paprika",
+      "satiety": "mittel",
+      "variants": "Chili optional für mehr Schärfe; Knoblauch frisch statt Knoblauchpulver; Avocadoöl oder Rapsöl alternativ zu Olivenöl extra vergine.",
+      "reason": "Kreuzblütler-Gemüse + Ballaststoffe + ungesättigte Fettsäuren + pflanzliche Würzstoffe. Weißkohl liefert Vitamin C und Senfölglykoside; Olivenöl extra vergine und Gewürze ergänzen das Gemüsegericht."
     }
   ],
   "sources": [
