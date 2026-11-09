@@ -1388,6 +1388,25 @@ window.APP_DATA = {
       "sources": "https://www.health.harvard.edu/diet-and-nutrition/quick-start-guide-to-an-antiinflammation-diet; https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/in-depth/mediterranean-diet/art-20047801"
     },
     {
+      "id": 291,
+      "category": "Gemüse, Pilze, Hülsenfrüchte & Nüsse",
+      "subcategory": "Bohnen",
+      "sort": 3,
+      "satiety": "mittel",
+      "score": 3,
+      "name": "Grüne Bohnen",
+      "selected": false,
+      "compounds": "Ballaststoffe, Folat, Kalium und verschiedene pflanzliche Inhaltsstoffe; Zusammensetzung abhängig von Sorte und Verarbeitung.",
+      "benefit": "Kalorienarmes Gemüse mit Ballaststoffen, das eine pflanzenbetonte Ernährung ergänzt.",
+      "carbs": "niedrig",
+      "use": "Als Gemüsegrundlage für Pfannengerichte, Salate, Suppen und Beilagen geeignet.",
+      "caution": "Nicht roh verzehren: Rohe grüne Bohnen enthalten Phasin und sind nur ausreichend gegart zum Verzehr geeignet. Bei Konserven den Salzgehalt beachten.",
+      "priority": "hoch",
+      "nutrition": "Beispiel je 100 g gegarten grünen Bohnen aus der Konserve; Werte produktabhängig: Energie / Kalorien: ca. 26 kcal; Fett: ca. 0,2 g; davon gesättigte Fettsäuren: ca. 0,0 g; Kohlenhydrate: ca. 3,1 g; davon Zucker: ca. 1,0 g; Eiweiß / Protein: ca. 1,6 g; Salz: ca. 0,57 g; Ballaststoffe: ca. 2,9 g",
+      "portion": "150 g",
+      "sources": "https://www.rewe.de/shop/p/bonduelle-gruene-bohnen-440g/7707009; https://www.bfr.bund.de/presseinformation/bohnen-nur-gegart-geniessen/; https://nutritionsource.hsph.harvard.edu/healthy-weight/diet-reviews/anti-inflammatory-diet/"
+    },
+    {
       "id": 62,
       "category": "Gemüse, Pilze, Hülsenfrüchte & Nüsse",
       "subcategory": "Kichererbsen, Erbsen, Lupinen",
@@ -4751,6 +4770,25 @@ window.APP_DATA = {
       "sources": "https://www.health.harvard.edu/diet-and-nutrition/quick-start-guide-to-an-antiinflammation-diet; https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/in-depth/mediterranean-diet/art-20047801; https://lpi.oregonstate.edu/mic/dietary-factors/phytochemicals/flavonoids"
     },
     {
+      "id": 292,
+      "category": "Gemüse, Pilze, Hülsenfrüchte & Nüsse",
+      "subcategory": "Sojaprodukte",
+      "sort": 1,
+      "satiety": "mittel",
+      "score": 3,
+      "name": "Sojajoghurt ungesüßt",
+      "selected": false,
+      "compounds": "Pflanzliches Eiweiß, Isoflavone und Joghurtkulturen; Calcium und Vitamine je nach Anreicherung und Produkt.",
+      "benefit": "Pflanzliche Eiweißquelle und ungesüßte Alternative für Dips, Dressings und andere Speisen.",
+      "carbs": "niedrig",
+      "use": "Naturbelassen als Grundlage für Dips, Dressings, Frühstück und andere Speisen geeignet.",
+      "caution": "Bei Sojaallergie meiden. Produkte ohne zugesetzten Zucker wählen; Calciumgehalt, weitere Zutaten und Lagerhinweise auf der Verpackung beachten.",
+      "priority": "hoch",
+      "nutrition": "Beispiel je 100 g ungesüßtem Sojajoghurt; Werte produktabhängig: Energie / Kalorien: ca. 42 kcal; Fett: ca. 2,3 g; davon gesättigte Fettsäuren: ca. 0,4 g; Kohlenhydrate: ca. 0,0 g; davon Zucker: ca. 0,0 g; Eiweiß / Protein: ca. 4,0 g; Salz: ca. 0,24 g; Ballaststoffe: ca. 0,9 g",
+      "portion": "200 g",
+      "sources": "https://www.rewe.de/shop/p/alpro-joghurtalternative-soja-natur-ohne-zucker-400g/8936874; https://www.health.harvard.edu/healthy-aging-and-longevity/how-to-choose-a-healthy-yogurt; https://nutritionsource.hsph.harvard.edu/soy/"
+    },
+    {
       "id": 194,
       "category": "Getreide & Samen",
       "subcategory": "Samen & Kerne",
@@ -8109,6 +8147,195 @@ window.APP_DATA = {
       "satiety": "hoch",
       "variants": "Babyspinat als zarte Variante von Spinat.",
       "reason": "Eiweiß + Blattgemüse + Ballaststoffe + ungesättigte Fettsäuren + frische Kräuter. Hühnerei, Avocado und Spinat bilden die Grundlage; rote Zwiebel, Petersilie und Schnittlauch ergänzen das Zitronen-Olivenöl-Dressing."
+    },
+    {
+      "id": 157,
+      "date": "2026-11-09",
+      "mealType": "warm",
+      "ingredients": [
+        "Feta",
+        "Paprika rot",
+        "Paprika gelb",
+        "Zucchini",
+        "Tomaten",
+        "Gelbe Zwiebel",
+        "Knoblauch",
+        "Olivenöl extra vergine",
+        "Oregano",
+        "Thymian",
+        "Basilikum",
+        "Salz",
+        "Schwarzer Pfeffer"
+      ],
+      "situation": "Gebackener Feta mit Paprika, Zucchini und Tomaten",
+      "satiety": "hoch",
+      "variants": "Cayennepfeffer optional für mehr Schärfe.",
+      "reason": "Gemüse + Eiweiß und Calcium + ungesättigte Fettsäuren + mediterrane Kräuter. Feta ergänzt Paprika, Zucchini und Tomaten; Knoblauch und Kräuter sorgen für Aroma."
+    },
+    {
+      "id": 158,
+      "date": "2026-11-09",
+      "mealType": "warm",
+      "ingredients": [
+        "Aubergine",
+        "Kichererbsen",
+        "Rote Zwiebel",
+        "Knoblauch",
+        "Paprika",
+        "Tomaten",
+        "Tomatenmark",
+        "Karotten",
+        "Lauch",
+        "Staudensellerie",
+        "Petersilie",
+        "Mandeldrink",
+        "Tahini",
+        "Paprikapulver",
+        "Oregano",
+        "Olivenöl extra vergine",
+        "Salz"
+      ],
+      "situation": "Auberginen-Kichererbsen-Curry mit Tahini",
+      "satiety": "sehr hoch",
+      "variants": "Mandeldrink ungesüßt und Tahini als cremige, nussige Grundlage.",
+      "reason": "Gemüse + Hülsenfrüchte + Ballaststoffe + pflanzliches Eiweiß + ungesättigte Fettsäuren. Karotten, Lauch, Staudensellerie und Petersilie bilden die Gemüsegrundlage; Mandeldrink und Tahini ergänzen Aubergine und Kichererbsen."
+    },
+    {
+      "id": 159,
+      "date": "2026-11-09",
+      "mealType": "warm",
+      "ingredients": [
+        "Mangold",
+        "Tofu",
+        "Kimchi",
+        "Karotten",
+        "Frühlingszwiebel",
+        "Shiitake",
+        "Ingwer",
+        "Rapsöl",
+        "Sesam",
+        "Miso",
+        "Sojajoghurt ungesüßt",
+        "Tahini",
+        "Limette"
+      ],
+      "situation": "Mangoldpäckchen mit Kimchi, Tofu und Sesam-Limetten-Dip",
+      "satiety": "hoch",
+      "variants": "Champignons statt Shiitake als Pilzvariante; Chili optional für mehr Schärfe.",
+      "reason": "Blattgemüse + pflanzliches Eiweiß + Ballaststoffe + fermentierte Zutaten + Sesam. Mangold bildet die Gemüseblatthülle; Sojajoghurt ungesüßt, Tahini und Limette gehören zum Dip. Miso dient als Würzzutat; Salzgehalt des Produkts beachten."
+    },
+    {
+      "id": 160,
+      "date": "2026-11-09",
+      "mealType": "warm",
+      "ingredients": [
+        "Rosenkohl",
+        "Rotweinessig",
+        "Olivenöl extra vergine",
+        "Knoblauch",
+        "Salz",
+        "Schwarzer Pfeffer",
+        "Paprikapulver",
+        "Thymian"
+      ],
+      "situation": "Ofen-Rosenkohl mit Rotweinessig, Knoblauch und Thymian",
+      "satiety": "mittel",
+      "variants": "Parmesan optional als Käseergänzung; Walnüsse optional für zusätzlichen Biss; Chili optional für mehr Schärfe; Petersilie optional als frisches Kraut.",
+      "reason": "Kreuzblütler-Gemüse + Ballaststoffe + ungesättigte Fettsäuren + Kräuter und Gewürze. Rotweinessig ergänzt den Rosenkohl mit einer säuerlichen Note."
+    },
+    {
+      "id": 161,
+      "date": "2026-11-09",
+      "mealType": "kalt",
+      "ingredients": [
+        "Rote Bete",
+        "Kichererbsen",
+        "Feta",
+        "Petersilie",
+        "Olivenöl extra vergine",
+        "Zitrone",
+        "Oregano",
+        "Salz",
+        "Schwarzer Pfeffer"
+      ],
+      "situation": "Rote-Bete-Kichererbsen-Salat mit Feta und Kräutern",
+      "satiety": "hoch",
+      "variants": "Kreuzkümmel optional für das Dressing.",
+      "reason": "Gemüse + Hülsenfrüchte + Ballaststoffe + Eiweiß und Calcium + ungesättigte Fettsäuren. Rote Bete, Kichererbsen und Feta ergänzen sich mit Petersilie, Oregano und einem Zitronen-Olivenöl-Dressing."
+    },
+    {
+      "id": 162,
+      "date": "2026-11-09",
+      "mealType": "warm",
+      "ingredients": [
+        "Pak Choi",
+        "Champignons",
+        "Shiitake",
+        "Rapsöl",
+        "Knoblauch",
+        "Ingwer",
+        "Miso",
+        "Sesam",
+        "Chili",
+        "Schwarzer Pfeffer"
+      ],
+      "situation": "Pak-Choi-Pilz-Pfanne mit Ingwer und Sesam",
+      "satiety": "mittel",
+      "variants": "Champignons und Shiitake als ergänzende Pilzsorten.",
+      "reason": "Kreuzblütler-Gemüse + Pilze + Ballaststoffe + Sesam + aromatische Gewürze. Miso und Shiitake liefern herzhafte Würze; Miso ist eine Würzzutat, deren Salzgehalt berücksichtigt werden sollte."
+    },
+    {
+      "id": 163,
+      "date": "2026-11-09",
+      "mealType": "warm",
+      "ingredients": [
+        "Weißkohl",
+        "Knoblauch",
+        "Rapsöl",
+        "Miso",
+        "Shiitake",
+        "Salz",
+        "Schwarzer Pfeffer"
+      ],
+      "situation": "Taiwanesisch inspirierte Weißkohlpfanne mit Knoblauch",
+      "satiety": "mittel",
+      "variants": "Shiitake als herzhafte Pilzergänzung zum Weißkohl.",
+      "reason": "Kreuzblütler-Gemüse + Ballaststoffe + Pilze + ungesättigte Fettsäuren. Knoblauch und Shiitake ergänzen den Weißkohl; Miso dient als salzhaltige Würzzutat."
+    },
+    {
+      "id": 164,
+      "date": "2026-11-09",
+      "mealType": "warm",
+      "ingredients": [
+        "Grüne Bohnen",
+        "Knoblauch",
+        "Rapsöl",
+        "Shiitake",
+        "Miso",
+        "Salz",
+        "Schwarzer Pfeffer"
+      ],
+      "situation": "Grüne Bohnen mit Knoblauch und Shiitake",
+      "satiety": "mittel",
+      "variants": "Shiitake als herzhafte Pilzergänzung zu den grünen Bohnen.",
+      "reason": "Gemüse + Ballaststoffe + Pilze + ungesättigte Fettsäuren. Grüne Bohnen und Shiitake verbinden sich mit Knoblauch; Miso ergänzt die Würze. Grüne Bohnen sind nur ausreichend gegart zum Verzehr geeignet."
+    },
+    {
+      "id": 165,
+      "date": "2026-11-09",
+      "mealType": "warm",
+      "ingredients": [
+        "Zucchini",
+        "Knoblauch",
+        "Olivenöl extra vergine",
+        "Shiitake",
+        "Miso",
+        "Schwarzer Pfeffer"
+      ],
+      "situation": "Zucchinipfanne mit Knoblauch und Shiitake",
+      "satiety": "mittel",
+      "variants": "Chili optional für mehr Schärfe; Frühlingszwiebel optional als Gemüseergänzung; Sesam optional für zusätzlichen Biss.",
+      "reason": "Gemüse + Pilze + Ballaststoffe + ungesättigte Fettsäuren. Zucchini und Shiitake ergänzen sich mit Knoblauch und Olivenöl extra vergine; Miso dient als salzhaltige Würzzutat."
     }
   ],
   "sources": [
