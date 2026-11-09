@@ -7895,6 +7895,28 @@ window.APP_DATA = {
       "satiety": "mittel",
       "variants": "Chili optional für mehr Schärfe; Knoblauch frisch statt Knoblauchpulver; Avocadoöl oder Rapsöl alternativ zu Olivenöl extra vergine.",
       "reason": "Kreuzblütler-Gemüse + Ballaststoffe + ungesättigte Fettsäuren + pflanzliche Würzstoffe. Weißkohl liefert Vitamin C und Senfölglykoside; Olivenöl extra vergine und Gewürze ergänzen das Gemüsegericht."
+    },
+    {
+      "id": 150,
+      "date": "2026-11-09",
+      "mealType": "kalt",
+      "ingredients": [
+        "Rotkohl",
+        "Karotten",
+        "Orange",
+        "Granatapfel",
+        "Walnüsse",
+        "Petersilie",
+        "Zitrone",
+        "Olivenöl extra vergine",
+        "Knoblauch",
+        "Chili",
+        "Salz"
+      ],
+      "situation": "Rotkohlsalat mit Karotten, Orange, Granatapfel und Walnüssen",
+      "satiety": "mittel",
+      "variants": "Minze optional als getrocknetes Kraut im Dressing.",
+      "reason": "Kreuzblütler-Gemüse + Obst + Ballaststoffe + Nüsse + ungesättigte Fettsäuren + Kräuter und Gewürze. Rotkohl, Karotten, Orange und Granatapfel bringen unterschiedliche pflanzliche Inhaltsstoffe ein; Walnüsse und Olivenöl extra vergine ergänzen den Salat."
     }
   ],
   "sources": [
