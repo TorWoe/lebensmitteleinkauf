@@ -8350,7 +8350,7 @@ window.APP_DATA = {
         "Olivenöl extra vergine",
         "Rotweinessig"
       ],
-      "situation": "Rote-Bete-Carpaccio mit Rucola, Feta, Walnüssen und Granatapfel",
+      "situation": "Rote Bete mit Rucola, Feta, Walnüssen und Granatapfel",
       "satiety": "mittel bis hoch",
       "variants": "Schwarzer Pfeffer optional zum Würzen.",
       "reason": "Gemüse + Blattgemüse + Eiweiß und Calcium + Nüsse + ungesättigte Fettsäuren. Rote Bete und Rucola ergänzen sich mit Feta, Walnüssen und Granatapfel; Olivenöl extra vergine und Rotweinessig bilden die Dressingbasis."
