@@ -8336,6 +8336,45 @@ window.APP_DATA = {
       "satiety": "mittel",
       "variants": "Chili optional für mehr Schärfe; Frühlingszwiebel optional als Gemüseergänzung; Sesam optional für zusätzlichen Biss.",
       "reason": "Gemüse + Pilze + Ballaststoffe + ungesättigte Fettsäuren. Zucchini und Shiitake ergänzen sich mit Knoblauch und Olivenöl extra vergine; Miso dient als salzhaltige Würzzutat."
+    },
+    {
+      "id": 166,
+      "date": "2026-11-10",
+      "mealType": "kalt",
+      "ingredients": [
+        "Rote Bete",
+        "Rucola",
+        "Feta",
+        "Walnüsse",
+        "Granatapfel",
+        "Olivenöl extra vergine",
+        "Rotweinessig"
+      ],
+      "situation": "Rote-Bete-Carpaccio mit Rucola, Feta, Walnüssen und Granatapfel",
+      "satiety": "mittel bis hoch",
+      "variants": "Schwarzer Pfeffer optional zum Würzen.",
+      "reason": "Gemüse + Blattgemüse + Eiweiß und Calcium + Nüsse + ungesättigte Fettsäuren. Rote Bete und Rucola ergänzen sich mit Feta, Walnüssen und Granatapfel; Olivenöl extra vergine und Rotweinessig bilden die Dressingbasis."
+    },
+    {
+      "id": 167,
+      "date": "2026-11-10",
+      "mealType": "kalt",
+      "ingredients": [
+        "Chinakohl",
+        "Karotten",
+        "Paprika rot",
+        "Shiitake",
+        "Koriandergrün",
+        "Knoblauch",
+        "Chili",
+        "Limette",
+        "Olivenöl extra vergine",
+        "Miso"
+      ],
+      "situation": "Scharfer Chinakohlsalat mit Karotten, Paprika und Shiitake",
+      "satiety": "mittel",
+      "variants": "Salz optional nur bei Bedarf; Rapsöl alternativ zu Olivenöl extra vergine.",
+      "reason": "Kreuzblütler-Gemüse + farbiges Gemüse + Pilze + Ballaststoffe + ungesättigte Fettsäuren. Koriandergrün, Knoblauch, Chili und Limette ergänzen den Salat. Miso dient als salzhaltige Würzzutat; Shiitake nur gegart verzehren."
     }
   ],
   "sources": [
